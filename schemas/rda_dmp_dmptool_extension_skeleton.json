@@ -1,0 +1,250 @@
+{
+  "dmp": {
+    "title": null,
+    "description": null,
+    "dmp_id": {
+      "identifier": null,
+      "type": null
+    },
+    "created": null,
+    "modified": null,
+    "ethical_issues_exist": null,
+    "ethical_issues_description": null,
+    "ethical_issues_report": null,
+    "language": null,
+    "contact": {
+      "name": null,
+      "mbox": null,
+      "affiliation": [
+        {
+          "name": null,
+          "affiliation_id": {
+            "identifier": null,
+            "type": null
+          }
+        }
+      ],
+      "contact_id": [
+        {
+          "identifier": null,
+          "type": null
+        }
+      ]
+    },
+    "contributor": [
+      {
+        "name": null,
+        "contributor_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "affiliation": [
+          {
+            "name": null,
+            "affiliation_id": {
+              "identifier": null,
+              "type": null
+            }
+          }
+        ],
+        "role": []
+      }
+    ],
+    "dataset": [
+      {
+        "title": null,
+        "type": null,
+        "description": null,
+        "dataset_id": {
+          "identifier": null,
+          "type": null
+        },
+        "personal_data": null,
+        "sensitive_data": null,
+        "issued": null,
+        "metadata": [
+          {
+            "description": null,
+            "language": null,
+            "metadata_standard_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ],
+        "distribution": [
+          {
+            "title": null,
+            "byte_size": null,
+            "issued": null,
+            "data_access": null,
+            "license": [
+              {
+                "license_ref": null,
+                "start_date": null
+              }
+            ],
+            "host": {
+              "title": null,
+              "url": null,
+              "host_id": [
+                {
+                  "identifier": null,
+                  "type": null
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": null,
+        "relation_type": null,
+        "resource_type": null,
+        "type": null
+      }
+    ],
+    "alternate_identifier": [
+      {
+        "identifier": null,
+        "type": null
+      }
+    ],
+    "project": [
+      {
+        "title": null,
+        "description": null,
+        "project_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "start": null,
+        "end": null,
+        "funding": [
+          {
+            "name": null,
+            "funding_status": null,
+            "funder_id": {
+              "identifier": null,
+              "type": null
+            },
+            "grant_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rda_schema_version": null,
+  "provenance": null,
+  "status": null,
+  "privacy": null,
+  "featured": null,
+  "registered": null,
+  "research_domain": {
+    "name": null,
+    "research_domain_identifier": {
+      "identifier": null,
+      "type": null
+    }
+  },
+  "research_facility": [
+    {
+      "name": null,
+      "type": null,
+      "research_facility_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_opportunity": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "opportunity_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_project": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "project_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "version": [
+    {
+      "access_url": null,
+      "version": null
+    }
+  ],
+  "narrative": {
+    "download_url": null,
+    "template": {
+      "id": null,
+      "title": null,
+      "description": null,
+      "version": null,
+      "section": [
+        {
+          "id": null,
+          "title": null,
+          "description": null,
+          "order": null,
+          "question": [
+            {
+              "id": null,
+              "text": null,
+              "order": null,
+              "answer": {
+                "id": null,
+                "json": {
+                  "type": null,
+                  "answer": [
+                    {
+                      "repositoryId": null,
+                      "repositoryName": null
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

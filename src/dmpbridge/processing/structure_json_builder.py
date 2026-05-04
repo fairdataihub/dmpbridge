@@ -1,24 +1,37 @@
 from pathlib import Path
 from typing import List, Dict, Any
+import copy
 
-from dmpbridge.utils.file_io import save_json
+from dmpbridge.utils.file_io import load_json, save_json
 from dmpbridge.utils.logger import log
 
 
-def build_structure_json(structured_blocks: List[Dict]) -> Dict[str, Any]:
+def get_project_root() -> Path:
+    return Path(__file__).resolve().parents[3]
+
+
+def build_narrative_json_from_blocks(
+    structured_blocks: List[Dict],
+    skeleton_path: str | Path | None = None
+) -> Dict[str, Any]:
     """
-    Convert labeled line blocks into grouped structure:
-    section → subsection → content
+    Build full RDA + DMPTool extension JSON skeleton,
+    but only fill narrative.template.section.
     """
 
-    result = {
-        "source_pdf": structured_blocks[0].get("source_pdf") if structured_blocks else "",
-        "structure_type": "section_subsection_content",
-        "sections": []
-    }
+    project_root = get_project_root()
 
+    if skeleton_path is None:
+        skeleton_path = project_root / "schemas" / "rda_dmp_dmptool_extension_skeleton.json"
+    else:
+        skeleton_path = Path(skeleton_path)
+
+    skeleton = load_json(skeleton_path)
+    output = copy.deepcopy(skeleton)
+
+    sections = []
     current_section = None
-    current_subsection = None
+    current_question = None
 
     for block in structured_blocks:
         label = block.get("label")
@@ -29,56 +42,87 @@ def build_structure_json(structured_blocks: List[Dict]) -> Dict[str, Any]:
 
         if label == "section":
             current_section = {
-                "order": len(result["sections"]) + 1,
+                "id": f"section_{len(sections) + 1}",
                 "title": text,
-                "page": block.get("page"),
-                "subsections": [],
-                "content": []
+                "description": None,
+                "order": len(sections) + 1,
+                "question": []
             }
-            result["sections"].append(current_section)
-            current_subsection = None
+
+            sections.append(current_section)
+            current_question = None
 
         elif label == "subsection":
             if current_section is None:
                 current_section = {
-                    "order": len(result["sections"]) + 1,
+                    "id": f"section_{len(sections) + 1}",
                     "title": "Untitled Section",
-                    "page": block.get("page"),
-                    "subsections": [],
-                    "content": []
+                    "description": None,
+                    "order": len(sections) + 1,
+                    "question": []
                 }
-                result["sections"].append(current_section)
+                sections.append(current_section)
 
-            current_subsection = {
-                "order": len(current_section["subsections"]) + 1,
-                "title": text,
-                "page": block.get("page"),
-                "content": []
+            current_question = {
+                "id": f"question_{current_section['order']}_{len(current_section['question']) + 1}",
+                "text": text,
+                "order": len(current_section["question"]) + 1,
+                "answer": {
+                    "id": f"answer_{current_section['order']}_{len(current_section['question']) + 1}",
+                    "json": {
+                        "type": "text",
+                        "answer": [
+                            {
+                                "text": ""
+                            }
+                        ],
+                        "meta": {
+                            "schemaVersion": None
+                        }
+                    }
+                }
             }
-            current_section["subsections"].append(current_subsection)
+
+            current_section["question"].append(current_question)
 
         else:
-            content_item = {
-                "text": text,
-                "page": block.get("page"),
-                "line_order": block.get("line_order"),
-                "label": label
-            }
+            # content/question/instruction lines become answer text
+            if current_question is not None:
+                answer_list = current_question["answer"]["json"]["answer"]
+                existing_text = answer_list[0].get("text", "")
 
-            if current_subsection is not None:
-                current_subsection["content"].append(content_item)
+                if existing_text:
+                    answer_list[0]["text"] = existing_text + "\n" + text
+                else:
+                    answer_list[0]["text"] = text
+
             elif current_section is not None:
-                current_section["content"].append(content_item)
+                # content before first subsection becomes section description
+                existing_description = current_section.get("description")
 
-    return result
+                if existing_description:
+                    current_section["description"] = existing_description + "\n" + text
+                else:
+                    current_section["description"] = text
+
+    output["narrative"]["template"]["section"] = sections
+
+    return output
 
 
-def save_structure_json(structured_blocks: List[Dict], output_path: str | Path) -> Dict[str, Any]:
-    structure = build_structure_json(structured_blocks)
+def save_narrative_json(
+    structured_blocks: List[Dict],
+    output_path: str | Path,
+    skeleton_path: str | Path | None = None
+) -> Dict[str, Any]:
+    narrative_json = build_narrative_json_from_blocks(
+        structured_blocks=structured_blocks,
+        skeleton_path=skeleton_path
+    )
 
     output_path = Path(output_path)
-    save_json(structure, output_path)
+    save_json(narrative_json, output_path)
 
-    log(f"Saved structure JSON: {output_path}")
+    log(f"Saved narrative JSON: {output_path}")
 
-    return structure
+    return narrative_json
