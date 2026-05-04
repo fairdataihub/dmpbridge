@@ -1,1 +1,106 @@
-# dmpbridge
+# DMP Bridge
+DMP Bridge is an open-source (MIT License), Python-based pipeline that extract fileds to RDA Common Standard WITH DMPTool Extensions json
+
+## Repository Structure
+```text
+dmpbridge/
+│
+├── data/
+│   ├── raw_pdfs/                  # input PDFs (organized by type)
+│   │   ├── nih_pre_2026/
+│   │   ├── nih_current/
+│   │   ├── nsf/
+│   │   └── other/
+│   │
+│   ├── page_images/              # PDF → images (for Qwen2-VL)
+│   │   └── {pdf_name}/page_1.png
+│   │
+│   ├── pdfplumber_blocks/        # raw extracted text + layout
+│   │   └── {pdf_name}.json
+│   │
+│   ├── qwen_outputs/             # detected headers/structure
+│   │   └── {pdf_name}.json
+│   │
+│   ├── markdown/                 # reconstructed Markdown
+│   │   └── {pdf_name}.md
+│   │
+│   └── structure_json/           # FINAL output of phase 1
+│       └── {pdf_name}.json
+│
+├── src/
+│   └── dmpbridge/
+│       ├── __init__.py
+│       │
+│       ├── pdf/
+│       │   ├── pdf_type_detector.py
+│       │   ├── pdfplumber_extractor.py
+│       │   └── page_image_converter.py
+│       │
+│       ├── vision/
+│       │   └── qwen_structure_detector.py
+│       │
+│       ├── processing/
+│       │   ├── block_fusion.py
+│       │   ├── structure_detector.py
+│       │   ├── markdown_builder.py
+│       │   └── structure_json_builder.py
+│       │
+│       ├── evaluation/
+│       │   ├── extraction_evaluator.py
+│       │   └── header_evaluator.py
+│       │
+│       └── utils/
+│           ├── logger.py
+│           └── file_io.py
+│
+├── notebooks/
+│   ├── 01_pdfplumber_test.ipynb
+│   ├── 02_qwen_test.ipynb
+│   ├── 03_fusion_test.ipynb
+│   └── 04_structure_output.ipynb
+│
+├── outputs/
+│   ├── debug/
+│   ├── logs/
+│   └── reports/
+│
+├── schemas/
+│   └── structure_schema.json     # your intermediate JSON schema
+│
+├── tests/
+│
+├── requirements.txt
+├── pyproject.toml
+└── README.md
+
+
+```
+## Setup (Local Development)
+
+### Step 1 — Clone the repository
+```bash
+git clone https://github.com/fairdataihub/dmpchef.git
+cd dmpchef
+code .
+```
+
+### Step 2 — Create and activate a virtual environment
+
+**Windows (cmd):**
+```bash
+python -m venv venv
+venv\Scripts\activate.bat
+```
+
+**macOS/Linux:**
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+### Step 3 — Install dependencies
+```bash
+pip install -r requirements.txt
+# or (recommended for local dev)
+pip install -e .
+```
