@@ -1,0 +1,7 @@
+pdfplumber
+pymupdf
+pandas
+pydantic
+jsonschema
+python-dotenv
+tqdm

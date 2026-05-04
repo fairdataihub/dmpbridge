@@ -1,0 +1,54 @@
+
+
+# Python Cache & Virtual Environments
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+
+env/
+venv/
+.venv/
+
+# OS & Editor Files
+.DS_Store
+.vscode/
+.idea/
+
+# LangChain / Vector Store
+faiss_index/
+*.faiss
+*.pkl
+
+# Data & Archives
+archive/
+main_archive/
+
+
+# Secrets & Configs
+.env
+.env.*
+*.yaml
+*.yml
+
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Build & Distribution
+dist/
+build/
+document_portal.egg-info/
+
+# Ignore generated images
+*.png
+
+# Ignore text and data files
+*.csv
+
+# Ignore Word files
