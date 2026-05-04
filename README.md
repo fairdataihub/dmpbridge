@@ -32,24 +32,29 @@ dmpbridge/
 │       ├── __init__.py
 │       │
 │       ├── pdf/
+│       │   ├── __init__.py
 │       │   ├── pdf_type_detector.py
 │       │   ├── pdfplumber_extractor.py
 │       │   └── page_image_converter.py
 │       │
 │       ├── vision/
+│       │   ├── __init__.py
 │       │   └── qwen_structure_detector.py
 │       │
 │       ├── processing/
+│       │   ├── __init__.py
 │       │   ├── block_fusion.py
 │       │   ├── structure_detector.py
 │       │   ├── markdown_builder.py
 │       │   └── structure_json_builder.py
 │       │
 │       ├── evaluation/
+│       │   ├── __init__.py
 │       │   ├── extraction_evaluator.py
 │       │   └── header_evaluator.py
 │       │
 │       └── utils/
+│       │   ├── __init__.py
 │           ├── logger.py
 │           └── file_io.py
 │
