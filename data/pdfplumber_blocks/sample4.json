@@ -1,0 +1,1250 @@
+[
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 1,
+    "text": "Oxide Oxide Surfaces, Surfaces, From From Bulk Bulk to to Nanoparticles Nanoparticles",
+    "x0": 74.97187506148828,
+    "top": 72.28440002453544,
+    "x1": 310.52332830032066,
+    "bottom": 85.4844002060355,
+    "avg_font_size": 13.200000181500059,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 2,
+    "text": "Types Types of of data data produced produced",
+    "x0": 74.97187506148828,
+    "top": 99.88440040403543,
+    "x1": 199.47532677341073,
+    "bottom": 113.08440058553549,
+    "avg_font_size": 13.200000181500059,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 3,
+    "text": "Types Types of of data, data, samples, samples, physical physical collections, collections, software, software, curriculum curriculum materials, materials, and and other other",
+    "x0": 74.98593756168164,
+    "top": 141.09420097067027,
+    "x1": 510.2861310470592,
+    "bottom": 153.69420114392028,
+    "avg_font_size": 12.60000017325001,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 4,
+    "text": "materials materials to to be be produced produced in in the the course course of of the the project. project.",
+    "x0": 74.98593756168164,
+    "top": 157.89420120167028,
+    "x1": 340.10917870712615,
+    "bottom": 170.4942013749203,
+    "avg_font_size": 12.60000017325001,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 5,
+    "text": "There will be in general x types of data generated for this research. The following will outline each",
+    "x0": 75.300000066,
+    "top": 186.9138016006898,
+    "x1": 526.3981562685997,
+    "bottom": 198.31380175743982,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 6,
+    "text": "type and how it will all be collected, processed, and stored.",
+    "x0": 75.300000066,
+    "top": 203.7138018316897,
+    "x1": 344.5647037683896,
+    "bottom": 215.11380198843972,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 7,
+    "text": "1. Transmission electron microscopy (TEM) images",
+    "x0": 84.900000198,
+    "top": 231.3138022111898,
+    "x1": 325.82227851068126,
+    "bottom": 242.71380236793982,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 8,
+    "text": "1. File File type: type: .dm3, .dm4, .tiff, etc. (image files)",
+    "x0": 108.90000052799999,
+    "top": 248.1138024421897,
+    "x1": 326.8807535252353,
+    "bottom": 259.5138025989397,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 9,
+    "text": "2. Captured: Captured: Using TEMs at different facilities",
+    "x0": 108.90000052799999,
+    "top": 264.9138026731897,
+    "x1": 324.87540349766175,
+    "bottom": 276.31380282993973,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 10,
+    "text": "3. Processed: Processed: Generally using DigitalMicrograph, but also ImageJ, MacTempasX, and other",
+    "x0": 108.90000052799999,
+    "top": 281.7138029041897,
+    "x1": 531.3307563364228,
+    "bottom": 293.11380306093974,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 11,
+    "text": "types of image analysis programs",
+    "x0": 123.30000072600001,
+    "top": 298.51380313518973,
+    "x1": 275.7972778228375,
+    "bottom": 309.91380329193976,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 12,
+    "text": "2. X-ray diffraction patterns",
+    "x0": 84.900000198,
+    "top": 315.31380336618975,
+    "x1": 215.65665199590393,
+    "bottom": 326.71380352293977,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 13,
+    "text": "1. File File type: type: .txt",
+    "x0": 108.90000052799999,
+    "top": 332.11380359718976,
+    "x1": 184.81515157183333,
+    "bottom": 343.5138037539398,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 14,
+    "text": "2. Captured: Captured: Using X-ray diffractometers",
+    "x0": 108.90000052799999,
+    "top": 348.9138038281897,
+    "x1": 300.1629031578649,
+    "bottom": 360.31380398493974,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 15,
+    "text": "3. Processed: Processed: Will be plotted in Origin or similar data plotting software. Data analysis will",
+    "x0": 108.90000052799999,
+    "top": 365.7138040591897,
+    "x1": 523.7964062328255,
+    "bottom": 377.11380421593975,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 16,
+    "text": "primarily be conducted using MDI Jade. Python or Mathematica may be employed for",
+    "x0": 123.30000072600001,
+    "top": 382.51380429018974,
+    "x1": 517.2588811429345,
+    "bottom": 393.91380444693976,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 17,
+    "text": "further analysis.",
+    "x0": 123.30000072600001,
+    "top": 399.31380452118975,
+    "x1": 196.67407673489353,
+    "bottom": 410.7138046779398,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 18,
+    "text": "3. Sample statistics",
+    "x0": 84.900000198,
+    "top": 416.1138047521897,
+    "x1": 175.55040144444297,
+    "bottom": 427.51380490893973,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 19,
+    "text": "1. File File type: type: Likely spreadsheets (.xlsx)",
+    "x0": 108.90000052799999,
+    "top": 432.9138049831897,
+    "x1": 292.3713780507314,
+    "bottom": 444.31380513993975,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 20,
+    "text": "2. Captured: Captured: Will vary, likely couting statistics",
+    "x0": 108.90000052799999,
+    "top": 449.71380521418973,
+    "x1": 325.2691535030758,
+    "bottom": 461.11380537093976,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 21,
+    "text": "3. Processed: Processed: Will vary depending on what is being measured",
+    "x0": 108.90000052799999,
+    "top": 466.51380544518975,
+    "x1": 392.74815443091205,
+    "bottom": 477.91380560193977,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 22,
+    "text": "4. Spectorscopy (e.g. EDX, EELS, XPS)",
+    "x0": 84.900000198,
+    "top": 483.3138056761897,
+    "x1": 273.2932527884072,
+    "bottom": 494.7138058329397,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 23,
+    "text": "1. File File type: type: Native software file types",
+    "x0": 108.90000052799999,
+    "top": 500.1138059071897,
+    "x1": 287.2722779806188,
+    "bottom": 511.51380606393974,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 24,
+    "text": "2. Captured: Captured: TEMs",
+    "x0": 108.90000052799999,
+    "top": 516.9138061381898,
+    "x1": 199.59727677508752,
+    "bottom": 528.3138062949397,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 25,
+    "text": "3. Processed: Processed: Native software, Python, Mathematica, etc.",
+    "x0": 108.90000052799999,
+    "top": 533.7138063691898,
+    "x1": 372.15532914776077,
+    "bottom": 545.1138065259397,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 26,
+    "text": "Quality Quality Assurance/Control Assurance/Control",
+    "x0": 75.000000061875,
+    "top": 561.3138067486898,
+    "x1": 197.743276749595,
+    "bottom": 572.7138069054397,
+    "avg_font_size": 11.400000156749996,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 27,
+    "text": "All data will be analyzed for any relevant information for each experiment. In addition, all data will",
+    "x0": 75.300000066,
+    "top": 588.9138071281898,
+    "x1": 529.6182813128763,
+    "bottom": 600.3138072849398,
+    "avg_font_size": 11.400000156749996,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 28,
+    "text": "be saved for future reference in case any more information is needed for future analysis.",
+    "x0": 75.300000066,
+    "top": 605.7138073591897,
+    "x1": 476.6959555851943,
+    "bottom": 617.1138075159397,
+    "avg_font_size": 11.400000156749996,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 29,
+    "text": "Data Data and and metadata metadata standards standards",
+    "x0": 74.97187506148828,
+    "top": 642.8844078702855,
+    "x1": 226.59832714635198,
+    "bottom": 656.0844080517855,
+    "avg_font_size": 13.200000181500002,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 30,
+    "text": "Standards Standards to to be be used used for for data data and and metadata metadata format format and and content content (where (where existing existing standards standards",
+    "x0": 74.98593756168164,
+    "top": 684.0942084369202,
+    "x1": 520.7604811910816,
+    "bottom": 696.6942086101702,
+    "avg_font_size": 12.60000017325001,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 31,
+    "text": "are are absent absent or or deemed deemed inadequate, inadequate, this this should should be be documented documented along along with with any any proposed proposed",
+    "x0": 74.98593756168164,
+    "top": 700.8942086679202,
+    "x1": 507.47460600840077,
+    "bottom": 713.4942088411702,
+    "avg_font_size": 12.60000017325001,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 1,
+    "text": "solutions solutions or or remedies). remedies).",
+    "x0": 74.98593756168164,
+    "top": 70.89419995667038,
+    "x1": 190.24980164655975,
+    "bottom": 83.49420012992039,
+    "avg_font_size": 12.60000017325001,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 2,
+    "text": "All data acquired will be linked back to the specific sample tested. The samples are typically",
+    "x0": 75.300000066,
+    "top": 99.91380035568989,
+    "x1": 497.34503086911906,
+    "bottom": 111.31380051243991,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 3,
+    "text": "nanoparticles, which will be identified according to the date synthesized. Synthesis conditions and",
+    "x0": 75.300000066,
+    "top": 116.7138005866899,
+    "x1": 523.3794062270917,
+    "bottom": 128.11380074343992,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 4,
+    "text": "post-processing will be notated in a lab notebook accordingly.",
+    "x0": 75.300000066,
+    "top": 133.5138008176899,
+    "x1": 358.52407896033105,
+    "bottom": 144.91380097443994,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 5,
+    "text": "In addition, metadata may be needed for the instrument conditions used for acquiring. In general,",
+    "x0": 75.300000066,
+    "top": 161.1138011971899,
+    "x1": 517.9647061526396,
+    "bottom": 172.51380135393993,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 6,
+    "text": "these will apply for each type of data:",
+    "x0": 75.300000066,
+    "top": 177.9138014281899,
+    "x1": 247.07452742789974,
+    "bottom": 189.31380158493994,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 7,
+    "text": "1. TEM",
+    "x0": 84.900000198,
+    "top": 205.5138018076899,
+    "x1": 123.26730072555037,
+    "bottom": 216.91380196443993,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 8,
+    "text": "Microscope used",
+    "x0": 123.30000072600001,
+    "top": 222.31380203868991,
+    "x1": 200.77627679129876,
+    "bottom": 233.71380219543994,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 9,
+    "text": "Accelerating voltage",
+    "x0": 123.30000072600001,
+    "top": 239.1138022696898,
+    "x1": 217.83787702589578,
+    "bottom": 250.51380242643984,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 10,
+    "text": "Imaging/Diffraction mode",
+    "x0": 123.30000072600001,
+    "top": 255.91380250068983,
+    "x1": 243.17850237432936,
+    "bottom": 267.31380265743985,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 11,
+    "text": "Relevant apertures",
+    "x0": 123.30000072600001,
+    "top": 272.71380273168984,
+    "x1": 208.35352689548597,
+    "bottom": 284.11380288843986,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 12,
+    "text": "Probe size",
+    "x0": 123.30000072600001,
+    "top": 289.51380296268985,
+    "x1": 170.40037637363014,
+    "bottom": 300.9138031194399,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 13,
+    "text": "Camera length",
+    "x0": 123.30000072600001,
+    "top": 306.31380319368986,
+    "x1": 190.0137766433144,
+    "bottom": 317.7138033504399,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 14,
+    "text": "2. XRD",
+    "x0": 84.900000198,
+    "top": 323.1138034246899,
+    "x1": 123.28740072582676,
+    "bottom": 334.5138035814399,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 15,
+    "text": "1. Instrument used",
+    "x0": 108.90000052799999,
+    "top": 339.9138036556899,
+    "x1": 196.36065173058392,
+    "bottom": 351.3138038124399,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 16,
+    "text": "2. X-ray source",
+    "x0": 108.90000052799999,
+    "top": 356.7138038866899,
+    "x1": 182.39100153850123,
+    "bottom": 368.1138040434399,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 17,
+    "text": "3. Acquisition time",
+    "x0": 108.90000052799999,
+    "top": 373.5138041176899,
+    "x1": 199.55662677452858,
+    "bottom": 384.91380427443994,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 18,
+    "text": "3. Spectroscopy",
+    "x0": 84.900000198,
+    "top": 390.3138043486898,
+    "x1": 160.6419012394511,
+    "bottom": 401.71380450543984,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 19,
+    "text": "1. Instrument used",
+    "x0": 108.90000052799999,
+    "top": 407.1138045796898,
+    "x1": 196.36065173058392,
+    "bottom": 418.51380473643985,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 20,
+    "text": "2. Relevant settings (e.g. probe size)",
+    "x0": 108.90000052799999,
+    "top": 423.91380481068984,
+    "x1": 277.6807528487353,
+    "bottom": 435.31380496743986,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 21,
+    "text": "3. Acquisiton time",
+    "x0": 108.90000052799999,
+    "top": 440.71380504168997,
+    "x1": 196.38787673095825,
+    "bottom": 452.11380519844,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 22,
+    "text": "4. Any data smoothing or processing method",
+    "x0": 108.90000052799999,
+    "top": 457.51380527268975,
+    "x1": 316.65127838458005,
+    "bottom": 468.9138054294398,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 23,
+    "text": "5. Normalization method used",
+    "x0": 108.90000052799999,
+    "top": 474.31380550368976,
+    "x1": 249.8450274659941,
+    "bottom": 485.7138056604398,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 24,
+    "text": "Metadata will be stored primarily in the file name of each dataset acquired. Additionally, it may be",
+    "x0": 75.300000066,
+    "top": 501.91380588318975,
+    "x1": 525.8441312609817,
+    "bottom": 513.3138060399398,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 25,
+    "text": "notated in the lab notebook used when acquiring.",
+    "x0": 75.300000066,
+    "top": 518.7138061141898,
+    "x1": 299.3490781466748,
+    "bottom": 530.1138062709398,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 26,
+    "text": "Policies Policies for for access access and and sharing, sharing, and and provisions provisions for for appropriate appropriate protection/privacy protection/privacy",
+    "x0": 74.97187506148828,
+    "top": 555.8844066252857,
+    "x1": 503.22533094997317,
+    "bottom": 569.0844068067858,
+    "avg_font_size": 13.200000181500002,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 27,
+    "text": "Policies Policies for for access access and and sharing; sharing; Provisions Provisions for for appropriate appropriate protection protection of of privacy, privacy,",
+    "x0": 74.98593756168164,
+    "top": 597.0942071919204,
+    "x1": 479.5435556243488,
+    "bottom": 609.6942073651704,
+    "avg_font_size": 12.600000173249983,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 28,
+    "text": "confidentiality, confidentiality, security, security, intellectual intellectual property, property, or or other other rights rights or or requirements. requirements.",
+    "x0": 74.98593756168164,
+    "top": 613.8942074229204,
+    "x1": 465.9123054369191,
+    "bottom": 626.4942075961704,
+    "avg_font_size": 12.600000173249981,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 29,
+    "text": "All data will be stored on the research group RAID server, which may be made available in a shared",
+    "x0": 75.300000066,
+    "top": 642.9138078219398,
+    "x1": 532.4075313512285,
+    "bottom": 654.3138079786899,
+    "avg_font_size": 11.400000156749996,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 30,
+    "text": "folder upon request. Depending on the type of data, specific software may be needed to read",
+    "x0": 75.300000066,
+    "top": 659.7138080529398,
+    "x1": 495.7231558468183,
+    "bottom": 671.1138082096899,
+    "avg_font_size": 11.400000156749979,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 31,
+    "text": "propietary file formats. Such details will be explained if requested. There should not be any delay or",
+    "x0": 75.300000066,
+    "top": 676.5138082839399,
+    "x1": 532.1838813481532,
+    "bottom": 687.9138084406899,
+    "avg_font_size": 11.400000156749996,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 32,
+    "text": "embargo periods on the data acquired for this research. If there is, this data management plan will be",
+    "x0": 75.300000066,
+    "top": 693.3138085149399,
+    "x1": 533.7097563691341,
+    "bottom": 704.7138086716899,
+    "avg_font_size": 11.400000156749996,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 1,
+    "text": "updated.",
+    "x0": 75.300000066,
+    "top": 70.51380290268958,
+    "x1": 114.20220060090524,
+    "bottom": 81.9138030594396,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 2,
+    "text": "Policies Policies and and provisions provisions for for re-use, re-use, re-distribution re-distribution",
+    "x0": 74.97187506148828,
+    "top": 107.68440341378528,
+    "x1": 333.93157862218413,
+    "bottom": 120.88440359528533,
+    "avg_font_size": 13.200000181500059,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 3,
+    "text": "Policies Policies and and provisions provisions for for re-use, re-use, re-distribution, re-distribution, and and the the production production of of derivatives. derivatives.",
+    "x0": 74.98593756168164,
+    "top": 148.89420398042023,
+    "x1": 497.71230587416915,
+    "bottom": 161.49420415367024,
+    "avg_font_size": 12.60000017325001,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 4,
+    "text": "Permission to re-use or re-distribute data will be granted within reasonable request. The source of the",
+    "x0": 75.300000066,
+    "top": 177.91380437943963,
+    "x1": 536.5597564083216,
+    "bottom": 189.31380453618965,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 5,
+    "text": "data must be adequately acknowleged if used, and the appropriate citation should be made if",
+    "x0": 75.300000066,
+    "top": 194.71380461043964,
+    "x1": 496.43700585663373,
+    "bottom": 206.11380476718966,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 6,
+    "text": "available.",
+    "x0": 75.300000066,
+    "top": 211.51380484143965,
+    "x1": 119.2459506702568,
+    "bottom": 222.91380499818968,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 7,
+    "text": "Plans Plans for for archiving archiving and and preservation preservation",
+    "x0": 74.97187506148828,
+    "top": 248.68440535253535,
+    "x1": 266.51595269521926,
+    "bottom": 261.8844055340354,
+    "avg_font_size": 13.200000181500059,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 8,
+    "text": "Plans Plans for for archiving archiving data, data, samples, samples, and and other other research research products, products, and and for for preservation preservation of of",
+    "x0": 74.98593756168164,
+    "top": 289.8942059191701,
+    "x1": 508.1392560175397,
+    "bottom": 302.4942060924201,
+    "avg_font_size": 12.60000017325001,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 9,
+    "text": "access access to to them. them.",
+    "x0": 74.98593756168164,
+    "top": 306.6942061501701,
+    "x1": 151.8029261179152,
+    "bottom": 319.2942063234201,
+    "avg_font_size": 12.60000017325001,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 10,
+    "text": "All data will be stored and archived in our research group's RAID server, which already incorporates",
+    "x0": 75.300000066,
+    "top": 335.7138065491897,
+    "x1": 534.753531383486,
+    "bottom": 347.11380670593974,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 11,
+    "text": "data redundancy for backups. It will remain there for at least 5 years after the release of the",
+    "x0": 75.300000066,
+    "top": 352.5138067801897,
+    "x1": 490.2660057717825,
+    "bottom": 363.91380693693975,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 12,
+    "text": "corresponding publication or project. All data require for the creation of a research manuscript will",
+    "x0": 75.300000066,
+    "top": 369.31380701118974,
+    "x1": 526.1026562645364,
+    "bottom": 380.71380716793976,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 13,
+    "text": "be stored. Additional data acquired will also be stored for future reference in the research group.",
+    "x0": 75.300000066,
+    "top": 386.11380724218975,
+    "x1": 514.0459560987568,
+    "bottom": 397.5138073989398,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 14,
+    "text": "Data may be compressed as necessary for data sharing. Metadata files will be stored in appropriate",
+    "x0": 75.300000066,
+    "top": 402.91380747318954,
+    "x1": 525.1316312511849,
+    "bottom": 414.31380762993956,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 15,
+    "text": "directories to detail what is being stored in the server.",
+    "x0": 75.300000066,
+    "top": 419.71380770418955,
+    "x1": 319.55220342446773,
+    "bottom": 431.1138078609396,
+    "avg_font_size": 11.400000156750025,
+    "font_names": [
+      "QUBAAA+TimesLTPro-Roman"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  }
+]

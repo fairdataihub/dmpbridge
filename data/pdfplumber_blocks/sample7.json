@@ -1,0 +1,1540 @@
+[
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 1,
+    "text": "(cid:15)(cid:5)(cid:19)(cid:17)(cid:22)(cid:12)(cid:1)(cid:1)(cid:25)(cid:39)(cid:29)(cid:41)(cid:1)(cid:34)(cid:42)(cid:44)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)(cid:1)(cid:22)(cid:29)(cid:41)(cid:29)(cid:35)(cid:33)(cid:40)(cid:33)(cid:41)(cid:46)",
+    "x0": 71.88059999999996,
+    "top": 73.38825599999996,
+    "x1": 248.1460079999999,
+    "bottom": 83.94825600000001,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 2,
+    "text": "(cid:24)(cid:48)(cid:33)(cid:44)(cid:48)(cid:37)(cid:33)(cid:49)(cid:6)(cid:1) (cid:32)(cid:43)(cid:44)(cid:54) (cid:1) (cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:26)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:29)(cid:47)(cid:36)(cid:49)(cid:1)(cid:43)(cid:36)(cid:54)(cid:1)(cid:37)(cid:40)(cid:40)(cid:49)(cid:1)(cid:51)(cid:53)(cid:40)(cid:51)(cid:36)(cid:53)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:53)(cid:39)(cid:36)(cid:49)(cid:38)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:42)(cid:56)(cid:44)(cid:39)(cid:40)(cid:47)(cid:44)(cid:49)(cid:40)(cid:54)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)",
+    "x0": 71.88059999999996,
+    "top": 93.79017599999997,
+    "x1": 532.922808,
+    "bottom": 104.35017600000003,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 3,
+    "text": "(cid:27)(cid:31)(cid:21)(cid:1)(cid:19)(cid:44)(cid:57)(cid:44)(cid:54)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:1)(cid:18)(cid:43)(cid:40)(cid:48)(cid:44)(cid:54)(cid:55)(cid:53)(cid:60)(cid:4)(cid:1)(cid:62) (cid:3)(cid:10)(cid:20)(cid:13)(cid:9)(cid:11)(cid:1)(cid:19)(cid:17)(cid:1)(cid:7)(cid:5)(cid:18)(cid:1)(cid:17)(cid:16)(cid:1)(cid:4)(cid:8)(cid:19)(cid:8)(cid:1)(cid:6)(cid:8)(cid:16)(cid:8)(cid:12)(cid:11)(cid:15)(cid:11)(cid:16)(cid:19)(cid:1)(cid:7)(cid:14)(cid:8)(cid:16)(cid:18)(cid:2) (cid:63)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:44)(cid:54)(cid:1)(cid:38)(cid:50)(cid:49)(cid:54)(cid:44)(cid:54)(cid:55)(cid:40)(cid:49)(cid:55)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)",
+    "x0": 71.88059999999996,
+    "top": 107.708256,
+    "x1": 527.6903280000001,
+    "bottom": 118.26825600000006,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT",
+      "CMNDNN+Arial-ItalicMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 4,
+    "text": "(cid:27)(cid:31)(cid:21)(cid:1)(cid:29)(cid:50)(cid:47)(cid:44)(cid:38)(cid:60)(cid:1)(cid:50)(cid:49)(cid:1)(cid:19)(cid:44)(cid:54)(cid:54)(cid:40)(cid:48)(cid:44)(cid:49)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:31)(cid:43)(cid:36)(cid:53)(cid:44)(cid:49)(cid:42)(cid:1)(cid:50)(cid:41)(cid:1)(cid:30)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:1)(cid:30)(cid:40)(cid:54)(cid:56)(cid:47)(cid:55)(cid:54)(cid:6)(cid:1)",
+    "x0": 71.88060000000002,
+    "top": 121.62633600000004,
+    "x1": 370.0844400000001,
+    "bottom": 132.1863360000001,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 5,
+    "text": "(cid:16)(cid:29)(cid:46)(cid:29)(cid:1)(cid:27)(cid:36)(cid:29)(cid:44)(cid:37)(cid:41)(cid:35)(cid:1)(cid:13)(cid:31)(cid:44)(cid:42)(cid:45)(cid:45)(cid:1)(cid:28)(cid:33)(cid:29)(cid:40)(cid:45) (cid:6)(cid:1)(cid:32)(cid:43)(cid:40)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:55)(cid:40)(cid:36)(cid:48)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:54)(cid:55)(cid:50)(cid:53)(cid:40)(cid:4)(cid:1)(cid:54)(cid:43)(cid:36)(cid:53)(cid:40)(cid:4)(cid:1)(cid:39)(cid:44)(cid:54)(cid:54)(cid:40)(cid:48)(cid:44)(cid:49)(cid:36)(cid:55)(cid:40)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:36)(cid:53)(cid:38)(cid:43)(cid:44)(cid:57)(cid:40)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)",
+    "x0": 71.88060000000002,
+    "top": 135.54441600000007,
+    "x1": 523.6880880000001,
+    "bottom": 146.10441600000013,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 6,
+    "text": "(cid:41)(cid:50)(cid:47)(cid:47)(cid:50)(cid:58)(cid:44)(cid:49)(cid:42)(cid:1)(cid:58)(cid:40)(cid:47)(cid:47)(cid:5)(cid:40)(cid:54)(cid:55)(cid:36)(cid:37)(cid:47)(cid:44)(cid:54)(cid:43)(cid:40)(cid:39)(cid:4)(cid:1)(cid:50)(cid:51)(cid:40)(cid:49)(cid:4)(cid:1)(cid:40)(cid:41)(cid:41)(cid:40)(cid:38)(cid:55)(cid:44)(cid:57)(cid:40)(cid:4)(cid:1)(cid:54)(cid:40)(cid:38)(cid:56)(cid:53)(cid:40)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:55)(cid:44)(cid:48)(cid:40)(cid:47)(cid:60)(cid:1)(cid:51)(cid:53)(cid:50)(cid:38)(cid:40)(cid:54)(cid:54)(cid:40)(cid:54)(cid:6)(cid:1)(cid:16)(cid:55)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:38)(cid:50)(cid:53)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)(cid:50)(cid:56)(cid:53)(cid:1)(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)",
+    "x0": 71.87004000000002,
+    "top": 149.4624960000001,
+    "x1": 520.6974960000002,
+    "bottom": 160.02249600000016,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 7,
+    "text": "(cid:26)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:54)(cid:55)(cid:53)(cid:36)(cid:55)(cid:40)(cid:42)(cid:60)(cid:1)(cid:44)(cid:54)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:4)(cid:1)(cid:36)(cid:1)(cid:54)(cid:40)(cid:55)(cid:1)(cid:50)(cid:41)(cid:1)(cid:58)(cid:40)(cid:37)(cid:1)(cid:55)(cid:50)(cid:50)(cid:47)(cid:54)(cid:1)(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:54)(cid:56)(cid:51)(cid:51)(cid:50)(cid:53)(cid:55)(cid:1)(cid:57)(cid:44)(cid:53)(cid:55)(cid:56)(cid:36)(cid:47)(cid:1)(cid:55)(cid:40)(cid:36)(cid:48)(cid:58)(cid:50)(cid:53)(cid:46)(cid:1) (cid:20)(cid:13)(cid:8) (cid:1)(cid:36)(cid:1)(cid:22)(cid:50)(cid:50)(cid:42)(cid:47)(cid:40)(cid:1)",
+    "x0": 71.88060000000002,
+    "top": 163.38057600000013,
+    "x1": 525.3333360000001,
+    "bottom": 173.9405760000002,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT",
+      "CMNDNN+Arial-ItalicMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 8,
+    "text": "(cid:32)(cid:40)(cid:36)(cid:48)(cid:1)(cid:19)(cid:53)(cid:44)(cid:57)(cid:40)(cid:1)(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:51)(cid:53)(cid:50)(cid:57)(cid:44)(cid:39)(cid:40)(cid:54)(cid:1)(cid:56)(cid:49)(cid:47)(cid:44)(cid:48)(cid:44)(cid:55)(cid:40)(cid:39)(cid:1)(cid:54)(cid:55)(cid:50)(cid:53)(cid:36)(cid:42)(cid:40)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:51)(cid:53)(cid:40)(cid:54)(cid:40)(cid:49)(cid:55)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:4)(cid:1)(cid:39)(cid:50)(cid:38)(cid:56)(cid:48)(cid:40)(cid:49)(cid:55)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:50)(cid:55)(cid:43)(cid:40)(cid:53)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:4)(cid:1)(cid:44)(cid:49)(cid:38)(cid:47)(cid:56)(cid:39)(cid:44)(cid:49)(cid:42)(cid:1)",
+    "x0": 71.85842400000001,
+    "top": 177.29865600000016,
+    "x1": 534.12876,
+    "bottom": 187.85865600000022,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 9,
+    "text": "(cid:55)(cid:43)(cid:40)(cid:1)(cid:56)(cid:49)(cid:39)(cid:40)(cid:53)(cid:47)(cid:60)(cid:44)(cid:49)(cid:42)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:54)(cid:55)(cid:50)(cid:53)(cid:36)(cid:42)(cid:40)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:50)(cid:56)(cid:53)(cid:1)(cid:38)(cid:56)(cid:54)(cid:55)(cid:50)(cid:48)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:48)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:36)(cid:51)(cid:51)(cid:54)(cid:6)(cid:1)(cid:32)(cid:43)(cid:40)(cid:54)(cid:40)(cid:1)(cid:38)(cid:56)(cid:54)(cid:55)(cid:50)(cid:48)(cid:1)(cid:36)(cid:51)(cid:51)(cid:54)(cid:1)(cid:44)(cid:49)(cid:38)(cid:47)(cid:56)(cid:39)(cid:40)(cid:14)(cid:1)",
+    "x0": 71.85842400000001,
+    "top": 190.97491200000013,
+    "x1": 521.8358640000001,
+    "bottom": 201.5349120000002,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 10,
+    "text": "(cid:27)(cid:46)(cid:44)(cid:29)(cid:37)(cid:41)(cid:45)(cid:4) (cid:1)(cid:58)(cid:43)(cid:44)(cid:38)(cid:43)(cid:1)(cid:55)(cid:53)(cid:36)(cid:38)(cid:46)(cid:54)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:44)(cid:39)(cid:40)(cid:49)(cid:55)(cid:44)(cid:55)(cid:60)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:55)(cid:53)(cid:36)(cid:49)(cid:54)(cid:41)(cid:40)(cid:53)(cid:1)(cid:50)(cid:41)(cid:1)(cid:54)(cid:55)(cid:53)(cid:36)(cid:44)(cid:49)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:51)(cid:47)(cid:36)(cid:54)(cid:48)(cid:44)(cid:39)(cid:54)(cid:15)(cid:1) (cid:25)(cid:44)(cid:42)(cid:46)(cid:42)(cid:31)(cid:42)(cid:39)(cid:45) (cid:4)(cid:1)(cid:58)(cid:43)(cid:44)(cid:38)(cid:43)(cid:1)(cid:39)(cid:50)(cid:38)(cid:56)(cid:48)(cid:40)(cid:49)(cid:55)(cid:54)(cid:1)",
+    "x0": 71.83730400000002,
+    "top": 204.89299200000016,
+    "x1": 538.1616240000001,
+    "bottom": 215.45299200000022,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 11,
+    "text": "(cid:50)(cid:56)(cid:53)(cid:1)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:50)(cid:53)(cid:60)(cid:1)(cid:51)(cid:53)(cid:50)(cid:38)(cid:40)(cid:39)(cid:56)(cid:53)(cid:40)(cid:54)(cid:15)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1) (cid:22)(cid:42)(cid:39)(cid:33)(cid:31)(cid:47)(cid:39)(cid:33)(cid:45) (cid:1)(cid:2)(cid:44)(cid:49)(cid:1)(cid:51)(cid:53)(cid:50)(cid:42)(cid:53)(cid:40)(cid:54)(cid:54)(cid:3)(cid:4)(cid:1)(cid:58)(cid:43)(cid:44)(cid:38)(cid:43)(cid:1)(cid:43)(cid:50)(cid:56)(cid:54)(cid:40)(cid:54)(cid:1)(cid:44)(cid:49)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:54)(cid:55)(cid:53)(cid:56)(cid:38)(cid:55)(cid:56)(cid:53)(cid:40)(cid:54)(cid:4)(cid:1)",
+    "x0": 71.83730400000002,
+    "top": 218.8110720000002,
+    "x1": 542.224056,
+    "bottom": 229.37107200000025,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 12,
+    "text": "(cid:54)(cid:60)(cid:49)(cid:55)(cid:43)(cid:40)(cid:54)(cid:44)(cid:54)(cid:4)(cid:1)(cid:38)(cid:43)(cid:36)(cid:53)(cid:36)(cid:38)(cid:55)(cid:40)(cid:53)(cid:44)(cid:61)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:55)(cid:40)(cid:36)(cid:48)(cid:1)(cid:56)(cid:54)(cid:36)(cid:42)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:48)(cid:50)(cid:49)(cid:50)(cid:48)(cid:40)(cid:53)(cid:54)(cid:6)(cid:1)(cid:21)(cid:56)(cid:55)(cid:56)(cid:53)(cid:40)(cid:1)(cid:58)(cid:50)(cid:53)(cid:46)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:44)(cid:49)(cid:38)(cid:50)(cid:53)(cid:51)(cid:50)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:36)(cid:1)",
+    "x0": 71.82568800000001,
+    "top": 232.72915200000023,
+    "x1": 524.7641520000002,
+    "bottom": 243.28915200000029,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 13,
+    "text": "(cid:62)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:1)(cid:37)(cid:60)(cid:1)(cid:54)(cid:55)(cid:53)(cid:56)(cid:38)(cid:55)(cid:56)(cid:53)(cid:40)(cid:63)(cid:1)(cid:38)(cid:36)(cid:51)(cid:36)(cid:37)(cid:44)(cid:47)(cid:44)(cid:55)(cid:60)(cid:1)(cid:55)(cid:50)(cid:1)(cid:43)(cid:40)(cid:47)(cid:51)(cid:1)(cid:56)(cid:54)(cid:40)(cid:53)(cid:54)(cid:1)(cid:41)(cid:44)(cid:49)(cid:39)(cid:1)(cid:48)(cid:50)(cid:49)(cid:50)(cid:48)(cid:40)(cid:53)(cid:54)(cid:1)(cid:52)(cid:56)(cid:44)(cid:38)(cid:46)(cid:47)(cid:60)(cid:1)(cid:40)(cid:57)(cid:40)(cid:49)(cid:1)(cid:58)(cid:43)(cid:40)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:36)(cid:53)(cid:38)(cid:43)(cid:44)(cid:57)(cid:40)(cid:1)(cid:54)(cid:38)(cid:36)(cid:47)(cid:40)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)",
+    "x0": 71.81512800000002,
+    "top": 246.64723200000026,
+    "x1": 540.577752,
+    "bottom": 257.2072320000003,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 14,
+    "text": "(cid:55)(cid:43)(cid:50)(cid:56)(cid:54)(cid:36)(cid:49)(cid:39)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:40)(cid:49)(cid:55)(cid:53)(cid:44)(cid:40)(cid:54)(cid:6)(cid:1)(cid:34)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:36)(cid:47)(cid:54)(cid:50)(cid:1)(cid:39)(cid:40)(cid:57)(cid:40)(cid:47)(cid:50)(cid:51)(cid:1)(cid:36)(cid:1)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:36)(cid:53)(cid:38)(cid:43)(cid:44)(cid:57)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1) (cid:19)(cid:17)(cid:22)(cid:5)(cid:23)(cid:17)(cid:28)(cid:1)(cid:21)(cid:29)(cid:30)(cid:42)(cid:44)(cid:29)(cid:46)(cid:42)(cid:44)(cid:51)(cid:1)",
+    "x0": 71.81407200000001,
+    "top": 260.5653120000003,
+    "x1": 490.8697200000001,
+    "bottom": 271.12531200000035,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 15,
+    "text": "(cid:23)(cid:42)(cid:46)(cid:33)(cid:30)(cid:42)(cid:42)(cid:38)(cid:45)(cid:1) (cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:39)(cid:50)(cid:38)(cid:56)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:53)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:38)(cid:36)(cid:49)(cid:1)(cid:37)(cid:40)(cid:1)(cid:36)(cid:54)(cid:54)(cid:50)(cid:38)(cid:44)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:54)(cid:51)(cid:40)(cid:38)(cid:44)(cid:41)(cid:44)(cid:38)(cid:1)(cid:53)(cid:40)(cid:38)(cid:50)(cid:53)(cid:39)(cid:54)(cid:1)(cid:44)(cid:49)(cid:1)(cid:50)(cid:56)(cid:53)(cid:1) (cid:25)(cid:44)(cid:42)(cid:46)(cid:42)(cid:31)(cid:42)(cid:39)(cid:45) (cid:4)(cid:1)",
+    "x0": 71.81407200000007,
+    "top": 274.4833920000003,
+    "x1": 531.1159920000002,
+    "bottom": 285.0433920000003,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 16,
+    "text": "(cid:27)(cid:46)(cid:44)(cid:29)(cid:37)(cid:41)(cid:45) (cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1) (cid:22)(cid:42)(cid:39)(cid:33)(cid:31)(cid:47)(cid:39)(cid:33)(cid:45) (cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:37)(cid:36)(cid:54)(cid:40)(cid:54)(cid:6)(cid:1)(cid:16)(cid:47)(cid:47)(cid:1)(cid:49)(cid:40)(cid:58)(cid:1)(cid:55)(cid:40)(cid:36)(cid:48)(cid:1)(cid:48)(cid:40)(cid:48)(cid:37)(cid:40)(cid:53)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:53)(cid:40)(cid:38)(cid:40)(cid:44)(cid:57)(cid:40)(cid:1)(cid:36)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:50)(cid:53)(cid:44)(cid:40)(cid:49)(cid:55)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:55)(cid:50)(cid:1)",
+    "x0": 71.81407200000018,
+    "top": 288.15859200000034,
+    "x1": 529.3387440000004,
+    "bottom": 298.71859200000034,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 17,
+    "text": "(cid:43)(cid:40)(cid:47)(cid:51)(cid:1)(cid:55)(cid:43)(cid:40)(cid:48)(cid:1)(cid:37)(cid:40)(cid:38)(cid:50)(cid:48)(cid:40)(cid:1)(cid:53)(cid:36)(cid:51)(cid:44)(cid:39)(cid:47)(cid:60)(cid:1)(cid:51)(cid:53)(cid:50)(cid:41)(cid:44)(cid:38)(cid:44)(cid:40)(cid:49)(cid:55)(cid:1)(cid:44)(cid:49)(cid:1)(cid:40)(cid:36)(cid:38)(cid:43)(cid:1)(cid:50)(cid:41)(cid:1)(cid:55)(cid:43)(cid:40)(cid:54)(cid:40)(cid:1)(cid:55)(cid:50)(cid:50)(cid:47)(cid:54)(cid:6)(cid:1)(cid:1)",
+    "x0": 71.81301600000012,
+    "top": 302.0766720000003,
+    "x1": 348.4480560000002,
+    "bottom": 312.6366720000003,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 18,
+    "text": "(cid:7)(cid:6)(cid:15)(cid:5)(cid:19)(cid:17)(cid:22)(cid:1)(cid:26)(cid:33)(cid:45)(cid:33)(cid:29)(cid:44)(cid:31)(cid:36)(cid:1)(cid:25)(cid:44)(cid:42)(cid:32)(cid:47)(cid:31)(cid:46)(cid:45)(cid:6)(cid:1)(cid:2)(cid:13)(cid:3)(cid:1)(cid:22)(cid:29)(cid:46)(cid:33)(cid:44)(cid:37)(cid:29)(cid:39)(cid:45)(cid:6) (cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:54)(cid:38)(cid:44)(cid:40)(cid:49)(cid:55)(cid:44)(cid:54)(cid:55)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:51)(cid:53)(cid:50)(cid:39)(cid:56)(cid:38)(cid:40)(cid:1)(cid:49)(cid:40)(cid:58)(cid:1)(cid:38)(cid:43)(cid:40)(cid:48)(cid:44)(cid:38)(cid:36)(cid:47)",
+    "x0": 71.81301600000012,
+    "top": 322.7214720000003,
+    "x1": 497.75695200000024,
+    "bottom": 333.2814720000003,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 19,
+    "text": "(cid:38)(cid:50)(cid:48)(cid:51)(cid:50)(cid:56)(cid:49)(cid:39)(cid:54)(cid:4)(cid:1)(cid:49)(cid:40)(cid:58)(cid:1)(cid:37)(cid:44)(cid:50)(cid:47)(cid:50)(cid:42)(cid:44)(cid:38)(cid:36)(cid:47)(cid:1)(cid:53)(cid:40)(cid:36)(cid:42)(cid:40)(cid:49)(cid:55)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:49)(cid:40)(cid:58)(cid:1)(cid:37)(cid:36)(cid:38)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:1)(cid:54)(cid:55)(cid:53)(cid:36)(cid:44)(cid:49)(cid:54)(cid:6)(cid:1) (cid:2)(cid:14)(cid:3)(cid:1)(cid:17)(cid:50)(cid:43)(cid:33)(cid:44)(cid:37)(cid:40)(cid:33)(cid:41)(cid:46)(cid:29)(cid:39)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)(cid:6)(cid:1) (cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)",
+    "x0": 71.81407200000024,
+    "top": 336.3966720000003,
+    "x1": 538.7244720000002,
+    "bottom": 346.9566720000003,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 20,
+    "text": "(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:40)(cid:39)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:38)(cid:43)(cid:40)(cid:48)(cid:44)(cid:38)(cid:36)(cid:47)(cid:1)(cid:54)(cid:60)(cid:49)(cid:55)(cid:43)(cid:40)(cid:54)(cid:44)(cid:54)(cid:1)(cid:51)(cid:53)(cid:50)(cid:38)(cid:40)(cid:39)(cid:56)(cid:53)(cid:40)(cid:54)(cid:4)(cid:1)(cid:37)(cid:44)(cid:50)(cid:38)(cid:43)(cid:40)(cid:48)(cid:44)(cid:38)(cid:36)(cid:47)(cid:4)(cid:1)(cid:54)(cid:55)(cid:53)(cid:56)(cid:38)(cid:55)(cid:56)(cid:53)(cid:36)(cid:47)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:48)(cid:50)(cid:47)(cid:40)(cid:38)(cid:56)(cid:47)(cid:36)(cid:53)(cid:1)(cid:37)(cid:44)(cid:50)(cid:47)(cid:50)(cid:42)(cid:60)",
+    "x0": 71.80245600000023,
+    "top": 350.3158080000003,
+    "x1": 502.1235120000002,
+    "bottom": 360.9096000000003,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 21,
+    "text": "(cid:40)(cid:59)(cid:51)(cid:40)(cid:53)(cid:44)(cid:48)(cid:40)(cid:49)(cid:55)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:54)(cid:55)(cid:53)(cid:56)(cid:38)(cid:55)(cid:56)(cid:53)(cid:36)(cid:47)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:41)(cid:56)(cid:49)(cid:38)(cid:55)(cid:44)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:38)(cid:43)(cid:36)(cid:53)(cid:36)(cid:38)(cid:55)(cid:40)(cid:53)(cid:44)(cid:61)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:51)(cid:50)(cid:47)(cid:60)(cid:48)(cid:40)(cid:53)(cid:54)(cid:6)(cid:1)(cid:31)(cid:56)(cid:38)(cid:43)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:44)(cid:49)(cid:38)(cid:47)(cid:56)(cid:39)(cid:40)",
+    "x0": 71.87637600000022,
+    "top": 364.2697920000003,
+    "x1": 528.2795760000002,
+    "bottom": 374.8297920000003,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 22,
+    "text": "(cid:54)(cid:51)(cid:40)(cid:38)(cid:55)(cid:53)(cid:36)(cid:4)(cid:1)(cid:38)(cid:43)(cid:53)(cid:50)(cid:48)(cid:36)(cid:55)(cid:50)(cid:42)(cid:53)(cid:36)(cid:48)(cid:54)(cid:4)(cid:1)(cid:39)(cid:44)(cid:41)(cid:41)(cid:53)(cid:36)(cid:38)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:4)(cid:1)(cid:44)(cid:48)(cid:36)(cid:42)(cid:40)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:53)(cid:40)(cid:54)(cid:56)(cid:47)(cid:55)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:51)(cid:53)(cid:50)(cid:51)(cid:40)(cid:53)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:36)(cid:49)(cid:36)(cid:47)(cid:60)(cid:54)(cid:44)(cid:54)(cid:6)(cid:1)(cid:26)(cid:40)(cid:55)(cid:36)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)",
+    "x0": 71.87637600000022,
+    "top": 378.18998400000027,
+    "x1": 525.9532080000002,
+    "bottom": 388.74998400000027,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 23,
+    "text": "(cid:37)(cid:40)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:39)(cid:40)(cid:54)(cid:38)(cid:53)(cid:44)(cid:37)(cid:44)(cid:49)(cid:42)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:54)(cid:55)(cid:50)(cid:53)(cid:36)(cid:42)(cid:40)(cid:1)(cid:47)(cid:50)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:38)(cid:43)(cid:40)(cid:48)(cid:44)(cid:38)(cid:36)(cid:47)(cid:1)(cid:38)(cid:50)(cid:48)(cid:51)(cid:50)(cid:56)(cid:49)(cid:39)(cid:54)(cid:4)(cid:1)(cid:51)(cid:47)(cid:36)(cid:54)(cid:48)(cid:44)(cid:39)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:37)(cid:36)(cid:38)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)",
+    "x0": 71.87637600000022,
+    "top": 392.10806400000024,
+    "x1": 510.6940080000002,
+    "bottom": 402.66806400000024,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 24,
+    "text": "(cid:54)(cid:55)(cid:53)(cid:36)(cid:44)(cid:49)(cid:54)(cid:6)(cid:1)(cid:34)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:36)(cid:47)(cid:54)(cid:50)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:36)(cid:49)(cid:49)(cid:50)(cid:55)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:57)(cid:36)(cid:53)(cid:44)(cid:50)(cid:56)(cid:54)(cid:1)(cid:54)(cid:40)(cid:52)(cid:56)(cid:40)(cid:49)(cid:38)(cid:40)(cid:1)(cid:44)(cid:49)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:2)(cid:51)(cid:50)(cid:47)(cid:60)(cid:48)(cid:40)(cid:53)(cid:54)(cid:4)(cid:1)(cid:51)(cid:53)(cid:50)(cid:55)(cid:40)(cid:44)(cid:49)(cid:54)(cid:4)",
+    "x0": 71.86581600000017,
+    "top": 406.0261440000002,
+    "x1": 512.4533040000002,
+    "bottom": 416.5861440000002,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 25,
+    "text": "(cid:19)(cid:27)(cid:16)(cid:3)(cid:6)(cid:1) (cid:2)(cid:15)(cid:3)(cid:1)(cid:27)(cid:42)(cid:34)(cid:46)(cid:49)(cid:29)(cid:44)(cid:33)(cid:6) (cid:1)(cid:34)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:54)(cid:50)(cid:41)(cid:55)(cid:58)(cid:36)(cid:53)(cid:40)(cid:1)(cid:44)(cid:49)(cid:38)(cid:47)(cid:56)(cid:39)(cid:44)(cid:49)(cid:42)(cid:1)(cid:38)(cid:56)(cid:54)(cid:55)(cid:50)(cid:48)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:36)(cid:51)(cid:51)(cid:54)(cid:1)(cid:58)(cid:53)(cid:44)(cid:55)(cid:55)(cid:40)(cid:49)(cid:1)(cid:44)(cid:49)(cid:1)(cid:29)(cid:60)(cid:55)(cid:43)(cid:50)(cid:49)(cid:4)",
+    "x0": 71.86581600000017,
+    "top": 419.9442240000002,
+    "x1": 532.8795120000003,
+    "bottom": 430.51056000000017,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 26,
+    "text": "(cid:36)(cid:47)(cid:42)(cid:50)(cid:53)(cid:44)(cid:55)(cid:43)(cid:48)(cid:54)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:30)(cid:50)(cid:54)(cid:40)(cid:55)(cid:55)(cid:36)(cid:1)(cid:48)(cid:50)(cid:47)(cid:40)(cid:38)(cid:56)(cid:47)(cid:36)(cid:53)(cid:1)(cid:48)(cid:50)(cid:39)(cid:40)(cid:47)(cid:44)(cid:49)(cid:42)(cid:1)(cid:54)(cid:50)(cid:41)(cid:55)(cid:58)(cid:36)(cid:53)(cid:40)(cid:1)(cid:54)(cid:56)(cid:44)(cid:55)(cid:40)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:54)(cid:44)(cid:48)(cid:56)(cid:47)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:51)(cid:53)(cid:50)(cid:42)(cid:53)(cid:36)(cid:48)(cid:54)(cid:6)(cid:1) (cid:2)(cid:16)(cid:3)(cid:1)(cid:24)(cid:46)(cid:36)(cid:33)(cid:44)",
+    "x0": 71.87532000000027,
+    "top": 433.63104000000016,
+    "x1": 525.9088560000004,
+    "bottom": 444.19104000000016,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 27,
+    "text": "(cid:25)(cid:44)(cid:42)(cid:32)(cid:47)(cid:31)(cid:46)(cid:45)(cid:6)(cid:1) (cid:34)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:40)(cid:59)(cid:51)(cid:40)(cid:53)(cid:44)(cid:48)(cid:40)(cid:49)(cid:55)(cid:36)(cid:47)(cid:1)(cid:51)(cid:53)(cid:50)(cid:55)(cid:50)(cid:38)(cid:50)(cid:47)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:50)(cid:49)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:56)(cid:54)(cid:36)(cid:42)(cid:40)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)",
+    "x0": 71.87532000000027,
+    "top": 447.55123200000014,
+    "x1": 507.27151200000026,
+    "bottom": 458.11123200000014,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 28,
+    "text": "(cid:38)(cid:50)(cid:48)(cid:51)(cid:50)(cid:49)(cid:40)(cid:49)(cid:55)(cid:1)(cid:54)(cid:40)(cid:53)(cid:57)(cid:44)(cid:38)(cid:40)(cid:54)(cid:6)(cid:1) (cid:2)(cid:17)(cid:3)(cid:1)(cid:17)(cid:32)(cid:47)(cid:31)(cid:29)(cid:46)(cid:37)(cid:42)(cid:41)(cid:1)(cid:29)(cid:41)(cid:32)(cid:1)(cid:24)(cid:47)(cid:46)(cid:44)(cid:33)(cid:29)(cid:31)(cid:36)(cid:1)(cid:22)(cid:29)(cid:46)(cid:33)(cid:44)(cid:37)(cid:29)(cid:39)(cid:45)(cid:6) (cid:1)(cid:28)(cid:56)(cid:53)(cid:1)(cid:37)(cid:53)(cid:50)(cid:36)(cid:39)(cid:40)(cid:53)(cid:1)(cid:44)(cid:48)(cid:51)(cid:36)(cid:38)(cid:55)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)",
+    "x0": 71.86476000000033,
+    "top": 461.46816,
+    "x1": 510.154,
+    "bottom": 472.0293120000001,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 29,
+    "text": "(cid:40)(cid:49)(cid:42)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:36)(cid:38)(cid:55)(cid:44)(cid:57)(cid:44)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:40)(cid:39)(cid:56)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:54)(cid:1)(cid:2)(cid:54)(cid:60)(cid:47)(cid:47)(cid:36)(cid:37)(cid:44)(cid:4)(cid:1)(cid:47)(cid:40)(cid:38)(cid:55)(cid:56)(cid:53)(cid:40)(cid:54)(cid:4)(cid:1)(cid:39)(cid:40)(cid:48)(cid:50)(cid:49)(cid:54)(cid:55)(cid:53)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:4)(cid:1)(cid:43)(cid:36)(cid:49)(cid:39)(cid:54)(cid:5)",
+    "x0": 71.88020799999998,
+    "top": 475.388352,
+    "x1": 531.2095840000001,
+    "bottom": 485.948352,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 30,
+    "text": "(cid:50)(cid:49)(cid:1)(cid:36)(cid:38)(cid:55)(cid:44)(cid:57)(cid:44)(cid:55)(cid:44)(cid:40)(cid:54)(cid:3)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:50)(cid:49)(cid:47)(cid:44)(cid:49)(cid:40)(cid:1)(cid:38)(cid:50)(cid:49)(cid:55)(cid:40)(cid:49)(cid:55)(cid:1)(cid:2)(cid:57)(cid:44)(cid:39)(cid:40)(cid:50)(cid:54)(cid:4)(cid:1)(cid:37)(cid:47)(cid:50)(cid:42)(cid:1)(cid:51)(cid:50)(cid:54)(cid:55)(cid:54)(cid:4)(cid:1)(cid:51)(cid:50)(cid:39)(cid:38)(cid:36)(cid:54)(cid:55)(cid:54)(cid:3)(cid:6)(cid:1) (cid:2)(cid:18)(cid:3)(cid:1)(cid:17)(cid:48)(cid:29)(cid:39)(cid:47)(cid:29)(cid:46)(cid:37)(cid:42)(cid:41)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)(cid:6) (cid:1)(cid:28)(cid:56)(cid:53)",
+    "x0": 71.87915199999998,
+    "top": 489.306432,
+    "x1": 485.080336,
+    "bottom": 499.866432,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 31,
+    "text": "(cid:36)(cid:38)(cid:55)(cid:44)(cid:57)(cid:44)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:36)(cid:54)(cid:54)(cid:40)(cid:54)(cid:54)(cid:48)(cid:40)(cid:49)(cid:55)(cid:54)(cid:4)(cid:1)(cid:49)(cid:36)(cid:53)(cid:53)(cid:36)(cid:55)(cid:44)(cid:57)(cid:40)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)",
+    "x0": 229.472,
+    "top": 503.32944000000003,
+    "x1": 482.59601599999996,
+    "bottom": 514.3694399999999,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 32,
+    "text": "(cid:48)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:37)(cid:53)(cid:50)(cid:36)(cid:39)(cid:40)(cid:53)(cid:1)(cid:44)(cid:48)(cid:51)(cid:36)(cid:38)(cid:55)(cid:1)",
+    "x0": 71.88020799999993,
+    "top": 503.710272,
+    "x1": 229.52939199999994,
+    "bottom": 514.270272,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 33,
+    "text": "(cid:36)(cid:42)(cid:42)(cid:53)(cid:40)(cid:42)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:36)(cid:37)(cid:50)(cid:56)(cid:55)(cid:1)(cid:51)(cid:36)(cid:53)(cid:55)(cid:44)(cid:38)(cid:44)(cid:51)(cid:36)(cid:49)(cid:55)(cid:54)",
+    "x0": 71.88041600000008,
+    "top": 517.730016,
+    "x1": 274.94355199999995,
+    "bottom": 528.7700159999999,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 34,
+    "text": "(cid:6)(cid:1)(cid:23)(cid:56)(cid:48)(cid:36)(cid:49)(cid:1)(cid:54)(cid:56)(cid:37)(cid:45)(cid:40)(cid:38)(cid:55)(cid:1)(cid:51)(cid:53)(cid:50)(cid:55)(cid:50)(cid:38)(cid:50)(cid:47)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:39)(cid:40)(cid:57)(cid:40)(cid:47)(cid:50)(cid:51)(cid:40)(cid:39)(cid:1)(cid:36)(cid:49)(cid:39)",
+    "x0": 274.902,
+    "top": 518.10816,
+    "x1": 500.235504,
+    "bottom": 528.66816,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 35,
+    "text": "(cid:54)(cid:56)(cid:37)(cid:48)(cid:44)(cid:55)(cid:55)(cid:40)(cid:39)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:24)(cid:30)(cid:17)(cid:1)(cid:53)(cid:40)(cid:57)(cid:44)(cid:40)(cid:58)(cid:7)(cid:36)(cid:51)(cid:51)(cid:53)(cid:50)(cid:57)(cid:36)(cid:47)(cid:1)(cid:36)(cid:55)(cid:1)(cid:40)(cid:36)(cid:38)(cid:43)(cid:1)(cid:44)(cid:49)(cid:54)(cid:55)(cid:44)(cid:55)(cid:56)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:51)(cid:40)(cid:49)(cid:39)(cid:44)(cid:49)(cid:42)(cid:1)(cid:49)(cid:50)(cid:55)(cid:44)(cid:38)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)(cid:36)(cid:58)(cid:36)(cid:53)(cid:39)(cid:6)",
+    "x0": 71.87543999999997,
+    "top": 532.2691199999999,
+    "x1": 431.40331199999997,
+    "bottom": 542.82912,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 36,
+    "text": "(cid:8)(cid:6)(cid:16)(cid:29)(cid:46)(cid:29)(cid:1)(cid:18)(cid:42)(cid:44)(cid:40)(cid:29)(cid:46)(cid:6)(cid:1) (cid:18)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:40)(cid:39)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:55)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:54)(cid:40)(cid:57)(cid:40)(cid:53)(cid:36)(cid:47)(cid:1)(cid:58)(cid:36)(cid:60)(cid:54)(cid:14)(cid:1)(cid:2)(cid:16)(cid:3)(cid:1)(cid:44)(cid:48)(cid:36)(cid:42)(cid:40)(cid:54)(cid:1)(cid:36)(cid:54)(cid:1)(cid:6)(cid:55)(cid:44)(cid:41)(cid:41)(cid:1)(cid:41)(cid:44)(cid:47)(cid:40)(cid:54)(cid:15)(cid:1)(cid:2)(cid:17)(cid:3)",
+    "x0": 71.87543999999997,
+    "top": 552.667872,
+    "x1": 500.800464,
+    "bottom": 563.23104,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 37,
+    "text": "(cid:40)(cid:59)(cid:51)(cid:40)(cid:53)(cid:44)(cid:48)(cid:40)(cid:49)(cid:55)(cid:36)(cid:47)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:36)(cid:54)(cid:1)(cid:38)(cid:54)(cid:57)(cid:7)(cid:20)(cid:59)(cid:38)(cid:40)(cid:47)(cid:1)(cid:41)(cid:44)(cid:47)(cid:40)(cid:54)(cid:1)(cid:50)(cid:53)(cid:1)(cid:48)(cid:50)(cid:53)(cid:40)(cid:1)(cid:54)(cid:51)(cid:40)(cid:38)(cid:44)(cid:36)(cid:47)(cid:44)(cid:61)(cid:40)(cid:39)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:54)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:50)(cid:56)(cid:55)(cid:51)(cid:56)(cid:55)(cid:1)(cid:50)(cid:41)(cid:1)(cid:21)(cid:16)(cid:18)(cid:31)(cid:4)(cid:1)(cid:25)(cid:18)(cid:5)(cid:26)(cid:31)(cid:4)",
+    "x0": 71.87966399999993,
+    "top": 566.588064,
+    "x1": 527.662992,
+    "bottom": 577.148064,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 38,
+    "text": "(cid:38)(cid:53)(cid:60)(cid:50)(cid:5)(cid:20)(cid:26)(cid:4)(cid:1)(cid:40)(cid:55)(cid:38)(cid:6)(cid:15)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:2)(cid:18)(cid:3)(cid:1)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:50)(cid:53)(cid:60)(cid:1)(cid:51)(cid:53)(cid:50)(cid:55)(cid:50)(cid:38)(cid:50)(cid:47)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:49)(cid:50)(cid:55)(cid:40)(cid:54)(cid:4)(cid:1)(cid:44)(cid:49)(cid:44)(cid:55)(cid:44)(cid:36)(cid:47)(cid:47)(cid:60)(cid:1)(cid:36)(cid:54)(cid:1)(cid:51)(cid:39)(cid:41)(cid:54)(cid:1)(cid:50)(cid:53)(cid:1)(cid:44)(cid:48)(cid:36)(cid:42)(cid:40)(cid:54)(cid:1)(cid:54)(cid:38)(cid:36)(cid:49)(cid:49)(cid:40)(cid:39)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:47)(cid:36)(cid:37)",
+    "x0": 71.87966399999993,
+    "top": 580.506144,
+    "x1": 525.461232,
+    "bottom": 591.066144,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 39,
+    "text": "(cid:49)(cid:50)(cid:55)(cid:40)(cid:37)(cid:50)(cid:50)(cid:46)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:55)(cid:43)(cid:40)(cid:49)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:1)(cid:38)(cid:50)(cid:48)(cid:48)(cid:50)(cid:49)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:27)(cid:50)(cid:55)(cid:40)(cid:37)(cid:50)(cid:50)(cid:46)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:6)(cid:1)(cid:34)(cid:43)(cid:40)(cid:49)(cid:40)(cid:57)(cid:40)(cid:53)(cid:1)(cid:51)(cid:50)(cid:54)(cid:54)(cid:44)(cid:37)(cid:47)(cid:40)(cid:4)(cid:1)(cid:58)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:54)(cid:36)(cid:57)(cid:40)",
+    "x0": 71.87966399999993,
+    "top": 594.424224,
+    "x1": 519.011184,
+    "bottom": 604.984224,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 40,
+    "text": "(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:44)(cid:49)(cid:1)(cid:48)(cid:36)(cid:38)(cid:43)(cid:44)(cid:49)(cid:40)(cid:5)(cid:53)(cid:40)(cid:36)(cid:39)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:49)(cid:50)(cid:49)(cid:5)(cid:51)(cid:53)(cid:50)(cid:51)(cid:53)(cid:44)(cid:40)(cid:55)(cid:36)(cid:53)(cid:60)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:54)(cid:15)(cid:1)(cid:44)(cid:49)(cid:1)(cid:38)(cid:36)(cid:54)(cid:40)(cid:54)(cid:1)(cid:58)(cid:43)(cid:40)(cid:53)(cid:40)(cid:1)(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:44)(cid:54)(cid:1)(cid:49)(cid:50)(cid:55)(cid:1)(cid:51)(cid:50)(cid:54)(cid:54)(cid:44)(cid:37)(cid:47)(cid:40)(cid:4)(cid:1)(cid:58)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)",
+    "x0": 71.87966399999993,
+    "top": 608.342304,
+    "x1": 504.9220319999999,
+    "bottom": 618.902304,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 41,
+    "text": "(cid:51)(cid:53)(cid:50)(cid:57)(cid:44)(cid:39)(cid:40)(cid:1)(cid:44)(cid:48)(cid:36)(cid:42)(cid:40)(cid:54)(cid:1)(cid:50)(cid:53)(cid:1)(cid:40)(cid:59)(cid:55)(cid:53)(cid:36)(cid:38)(cid:55)(cid:40)(cid:39)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:55)(cid:50)(cid:1)(cid:44)(cid:49)(cid:55)(cid:40)(cid:53)(cid:40)(cid:54)(cid:55)(cid:40)(cid:39)(cid:1)(cid:51)(cid:36)(cid:53)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:56)(cid:51)(cid:50)(cid:49)(cid:1)(cid:53)(cid:40)(cid:52)(cid:56)(cid:40)(cid:54)(cid:55)(cid:6)",
+    "x0": 71.87966399999993,
+    "top": 622.260384,
+    "x1": 387.0692639999999,
+    "bottom": 632.820384,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 42,
+    "text": "(cid:9)(cid:6)(cid:13)(cid:31)(cid:31)(cid:33)(cid:45)(cid:45)(cid:1)(cid:46)(cid:42)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)(cid:1)(cid:29)(cid:41)(cid:32)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)(cid:1)(cid:27)(cid:36)(cid:29)(cid:44)(cid:37)(cid:41)(cid:35)(cid:1)(cid:25)(cid:44)(cid:29)(cid:31)(cid:46)(cid:37)(cid:31)(cid:33)(cid:45)(cid:1)(cid:29)(cid:41)(cid:32)(cid:1)(cid:25)(cid:42)(cid:39)(cid:37)(cid:31)(cid:37)(cid:33)(cid:45)(cid:6)(cid:1)(cid:2)(cid:13)(cid:3)(cid:1)(cid:20)(cid:41)(cid:46)(cid:33)(cid:39)(cid:39)(cid:33)(cid:31)(cid:46)(cid:47)(cid:29)(cid:39)(cid:1)(cid:25)(cid:44)(cid:42)(cid:43)(cid:33)(cid:44)(cid:46)(cid:51) (cid:4)",
+    "x0": 71.87966399999993,
+    "top": 642.662304,
+    "x1": 489.11899199999993,
+    "bottom": 653.22864,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 43,
+    "text": "(cid:38)(cid:50)(cid:51)(cid:60)(cid:53)(cid:44)(cid:42)(cid:43)(cid:55)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:36)(cid:39)(cid:48)(cid:44)(cid:49)(cid:44)(cid:54)(cid:55)(cid:40)(cid:53)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:53)(cid:39)(cid:36)(cid:49)(cid:38)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:51)(cid:50)(cid:47)(cid:44)(cid:38)(cid:44)(cid:40)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:27)(cid:31)(cid:21)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:55)(cid:43)(cid:40)",
+    "x0": 71.87966399999993,
+    "top": 656.588832,
+    "x1": 480.54638399999993,
+    "bottom": 667.148832,
+    "avg_font_size": 10.560000000000016,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 44,
+    "text": "(cid:51)(cid:36)(cid:53)(cid:55)(cid:44)(cid:38)(cid:44)(cid:51)(cid:36)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)(cid:44)(cid:49)(cid:54)(cid:55)(cid:44)(cid:55)(cid:56)(cid:55)(cid:44)(cid:50)(cid:49)(cid:2)(cid:54)(cid:3)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:38)(cid:50)(cid:39)(cid:44)(cid:41)(cid:44)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:18)(cid:50)(cid:47)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:16)(cid:42)(cid:53)(cid:40)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:6)(cid:1)(cid:34)(cid:40)(cid:1)(cid:40)(cid:59)(cid:51)(cid:40)(cid:38)(cid:55)(cid:1)(cid:36)(cid:47)(cid:47)",
+    "x0": 71.8796639999999,
+    "top": 670.509024,
+    "x1": 501.996912,
+    "bottom": 681.069024,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 45,
+    "text": "(cid:53)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:40)(cid:53)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)(cid:53)(cid:40)(cid:54)(cid:51)(cid:40)(cid:38)(cid:55)(cid:1)(cid:55)(cid:43)(cid:40)(cid:44)(cid:53)(cid:1)(cid:53)(cid:40)(cid:54)(cid:51)(cid:50)(cid:49)(cid:54)(cid:44)(cid:37)(cid:44)(cid:47)(cid:44)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:38)(cid:43)(cid:40)(cid:48)(cid:44)(cid:38)(cid:36)(cid:47)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:37)(cid:53)(cid:50)(cid:36)(cid:39)(cid:40)(cid:53)(cid:1)(cid:54)(cid:38)(cid:44)(cid:40)(cid:49)(cid:55)(cid:44)(cid:41)(cid:44)(cid:38)(cid:1)(cid:38)(cid:50)(cid:48)(cid:48)(cid:56)(cid:49)(cid:44)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)",
+    "x0": 71.869104,
+    "top": 684.427104,
+    "x1": 530.1393119999999,
+    "bottom": 694.987104,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 46,
+    "text": "(cid:51)(cid:53)(cid:50)(cid:57)(cid:44)(cid:39)(cid:40)(cid:1)(cid:55)(cid:43)(cid:40)(cid:44)(cid:53)(cid:1)(cid:53)(cid:40)(cid:54)(cid:56)(cid:47)(cid:55)(cid:54)(cid:4)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)(cid:50)(cid:55)(cid:43)(cid:40)(cid:53)(cid:1)(cid:53)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:40)(cid:53)(cid:54)(cid:1)(cid:56)(cid:51)(cid:50)(cid:49)(cid:1)(cid:53)(cid:40)(cid:52)(cid:56)(cid:40)(cid:54)(cid:55)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:53)(cid:39)(cid:36)(cid:49)(cid:38)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)",
+    "x0": 71.869104,
+    "top": 698.102304,
+    "x1": 536.468976,
+    "bottom": 708.6623040000001,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 47,
+    "text": "(cid:1)",
+    "x0": 308.912472,
+    "top": 744.90816,
+    "x1": 311.84815199999997,
+    "bottom": 755.46816,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 48,
+    "text": "(cid:20)",
+    "x0": 303.039,
+    "top": 745.54176,
+    "x1": 308.91035999999997,
+    "bottom": 756.10176,
+    "avg_font_size": 10.559999999999995,
+    "font_names": [
+      "CMNFLC+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 1,
+    "text": "(cid:36)(cid:47)(cid:47)(cid:1)(cid:56)(cid:49)(cid:44)(cid:57)(cid:40)(cid:53)(cid:54)(cid:44)(cid:55)(cid:60)(cid:1)(cid:42)(cid:56)(cid:44)(cid:39)(cid:40)(cid:47)(cid:44)(cid:49)(cid:40)(cid:54)(cid:6)(cid:1) (cid:2)(cid:14)(cid:3)(cid:1)(cid:22)(cid:29)(cid:46)(cid:33)(cid:44)(cid:37)(cid:29)(cid:39)(cid:45)(cid:1) (cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:39)(cid:44)(cid:54)(cid:54)(cid:40)(cid:48)(cid:44)(cid:49)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:53)(cid:39)(cid:36)(cid:49)(cid:38)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:51)(cid:36)(cid:53)(cid:55)(cid:44)(cid:38)(cid:44)(cid:51)(cid:36)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)",
+    "x0": 71.88059999999996,
+    "top": 73.38825599999996,
+    "x1": 497.937528,
+    "bottom": 83.94825600000001,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 2,
+    "text": "(cid:44)(cid:49)(cid:54)(cid:55)(cid:44)(cid:55)(cid:56)(cid:55)(cid:44)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:27)(cid:31)(cid:21)(cid:1)(cid:51)(cid:50)(cid:47)(cid:44)(cid:38)(cid:44)(cid:40)(cid:54)(cid:6)(cid:1)(cid:19)(cid:40)(cid:51)(cid:40)(cid:49)(cid:39)(cid:44)(cid:49)(cid:42)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:55)(cid:40)(cid:53)(cid:48)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:55)(cid:43)(cid:50)(cid:54)(cid:40)(cid:1)(cid:51)(cid:50)(cid:47)(cid:44)(cid:38)(cid:44)(cid:40)(cid:54)(cid:4)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:54)(cid:1)(cid:48)(cid:36)(cid:60)(cid:1)(cid:37)(cid:40)(cid:1)",
+    "x0": 71.88165599999996,
+    "top": 87.30633599999999,
+    "x1": 491.44840800000003,
+    "bottom": 97.86633600000005,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 3,
+    "text": "(cid:55)(cid:53)(cid:36)(cid:49)(cid:54)(cid:41)(cid:40)(cid:53)(cid:53)(cid:40)(cid:39)(cid:1)(cid:55)(cid:50)(cid:1)(cid:50)(cid:55)(cid:43)(cid:40)(cid:53)(cid:54)(cid:1)(cid:56)(cid:49)(cid:39)(cid:40)(cid:53)(cid:1)(cid:26)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:1)(cid:32)(cid:53)(cid:36)(cid:49)(cid:54)(cid:41)(cid:40)(cid:53)(cid:1)(cid:16)(cid:42)(cid:53)(cid:40)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:54)(cid:1)(cid:2)(cid:26)(cid:32)(cid:16)(cid:54)(cid:3)(cid:6)(cid:1) (cid:2)(cid:15)(cid:3)(cid:1)(cid:26)(cid:33)(cid:45)(cid:33)(cid:29)(cid:44)(cid:31)(cid:36)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29) (cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:48)(cid:36)(cid:39)(cid:40)(cid:1)",
+    "x0": 71.88165599999996,
+    "top": 101.22441600000002,
+    "x1": 535.819416,
+    "bottom": 111.78441600000008,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 4,
+    "text": "(cid:36)(cid:57)(cid:36)(cid:44)(cid:47)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:36)(cid:41)(cid:55)(cid:40)(cid:53)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:41)(cid:44)(cid:49)(cid:39)(cid:44)(cid:49)(cid:42)(cid:54)(cid:1)(cid:43)(cid:36)(cid:57)(cid:40)(cid:1)(cid:37)(cid:40)(cid:40)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:51)(cid:55)(cid:40)(cid:39)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:6)(cid:1)(cid:30)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:1)(cid:51)(cid:53)(cid:50)(cid:39)(cid:56)(cid:38)(cid:55)(cid:54) (cid:1) (cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:51)(cid:53)(cid:40)(cid:54)(cid:40)(cid:53)(cid:57)(cid:40)(cid:39)(cid:1)",
+    "x0": 71.88059999999996,
+    "top": 115.14249600000005,
+    "x1": 538.25244,
+    "bottom": 125.70249600000011,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 5,
+    "text": "(cid:41)(cid:50)(cid:53)(cid:1)(cid:50)(cid:51)(cid:40)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:1)(cid:58)(cid:43)(cid:40)(cid:53)(cid:40)(cid:57)(cid:40)(cid:53)(cid:1)(cid:51)(cid:50)(cid:54)(cid:54)(cid:44)(cid:37)(cid:47)(cid:40)(cid:6)(cid:1)(cid:31)(cid:55)(cid:53)(cid:56)(cid:38)(cid:55)(cid:56)(cid:53)(cid:36)(cid:47)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:39)(cid:40)(cid:51)(cid:50)(cid:54)(cid:44)(cid:55)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:36)(cid:51)(cid:51)(cid:53)(cid:50)(cid:51)(cid:53)(cid:44)(cid:36)(cid:55)(cid:40)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:37)(cid:36)(cid:54)(cid:40)(cid:1)",
+    "x0": 71.88059999999996,
+    "top": 128.81769600000007,
+    "x1": 521.8231920000003,
+    "bottom": 139.37769600000013,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 6,
+    "text": "(cid:56)(cid:51)(cid:50)(cid:49)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:4)(cid:1)(cid:41)(cid:50)(cid:47)(cid:47)(cid:50)(cid:58)(cid:44)(cid:49)(cid:42)(cid:1)(cid:54)(cid:55)(cid:36)(cid:49)(cid:39)(cid:36)(cid:53)(cid:39)(cid:1)(cid:51)(cid:53)(cid:36)(cid:38)(cid:55)(cid:44)(cid:38)(cid:40)(cid:6)(cid:1) (cid:2)(cid:16)(cid:3)(cid:1)(cid:27)(cid:42)(cid:34)(cid:46)(cid:49)(cid:29)(cid:44)(cid:33) (cid:6)(cid:1)(cid:31)(cid:50)(cid:56)(cid:53)(cid:38)(cid:40)(cid:1)(cid:38)(cid:50)(cid:39)(cid:40)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:38)(cid:56)(cid:54)(cid:55)(cid:50)(cid:48)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)",
+    "x0": 71.88060000000002,
+    "top": 142.73683200000005,
+    "x1": 517.1694000000002,
+    "bottom": 153.2968320000001,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 7,
+    "text": "(cid:36)(cid:51)(cid:51)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:39)(cid:44)(cid:54)(cid:55)(cid:53)(cid:44)(cid:37)(cid:56)(cid:55)(cid:40)(cid:39)(cid:1)(cid:55)(cid:43)(cid:53)(cid:50)(cid:56)(cid:42)(cid:43)(cid:1)(cid:22)(cid:44)(cid:55)(cid:23)(cid:56)(cid:37)(cid:6)(cid:1)(cid:30)(cid:50)(cid:54)(cid:40)(cid:55)(cid:55)(cid:36)(cid:1)(cid:36)(cid:47)(cid:42)(cid:50)(cid:53)(cid:44)(cid:55)(cid:43)(cid:48)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:48)(cid:36)(cid:39)(cid:40)(cid:1)(cid:36)(cid:57)(cid:36)(cid:44)(cid:47)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:30)(cid:50)(cid:54)(cid:40)(cid:55)(cid:55)(cid:36)(cid:1)",
+    "x0": 71.88165600000002,
+    "top": 156.65491200000008,
+    "x1": 525.3829680000002,
+    "bottom": 167.21491200000014,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 8,
+    "text": "(cid:18)(cid:50)(cid:48)(cid:48)(cid:50)(cid:49)(cid:54)(cid:6)(cid:1)(cid:32)(cid:43)(cid:40)(cid:1)(cid:31)(cid:18)(cid:16)(cid:11)(cid:30)(cid:27)(cid:16)(cid:1)(cid:36)(cid:47)(cid:42)(cid:50)(cid:53)(cid:44)(cid:55)(cid:43)(cid:48)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:48)(cid:36)(cid:39)(cid:40)(cid:1)(cid:36)(cid:57)(cid:36)(cid:44)(cid:47)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:58)(cid:40)(cid:37)(cid:54)(cid:44)(cid:55)(cid:40)(cid:6)(cid:1) (cid:2)(cid:17)(cid:3)(cid:1)",
+    "x0": 71.88165600000002,
+    "top": 170.5729920000001,
+    "x1": 479.215704,
+    "bottom": 181.13299200000017,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 9,
+    "text": "(cid:25)(cid:47)(cid:30)(cid:39)(cid:37)(cid:31)(cid:29)(cid:46)(cid:37)(cid:42)(cid:41)(cid:45)(cid:6) (cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:44)(cid:49)(cid:57)(cid:40)(cid:54)(cid:55)(cid:44)(cid:42)(cid:36)(cid:55)(cid:50)(cid:53)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:51)(cid:53)(cid:50)(cid:48)(cid:51)(cid:55)(cid:47)(cid:60)(cid:1)(cid:51)(cid:53)(cid:40)(cid:51)(cid:36)(cid:53)(cid:40)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:54)(cid:56)(cid:37)(cid:48)(cid:44)(cid:55)(cid:1)(cid:48)(cid:36)(cid:49)(cid:56)(cid:54)(cid:38)(cid:53)(cid:44)(cid:51)(cid:55)(cid:54)(cid:1)(cid:53)(cid:40)(cid:54)(cid:56)(cid:47)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)",
+    "x0": 71.88165600000002,
+    "top": 184.49107200000014,
+    "x1": 519.9477360000003,
+    "bottom": 195.0510720000002,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 10,
+    "text": "(cid:27)(cid:31)(cid:21)(cid:1)(cid:54)(cid:56)(cid:51)(cid:51)(cid:50)(cid:53)(cid:55)(cid:4)(cid:1)(cid:36)(cid:54)(cid:54)(cid:44)(cid:42)(cid:49)(cid:1)(cid:36)(cid:56)(cid:55)(cid:43)(cid:50)(cid:53)(cid:54)(cid:43)(cid:44)(cid:51)(cid:1)(cid:55)(cid:50)(cid:1)(cid:36)(cid:38)(cid:38)(cid:56)(cid:53)(cid:36)(cid:55)(cid:40)(cid:47)(cid:60)(cid:1)(cid:53)(cid:40)(cid:41)(cid:47)(cid:40)(cid:38)(cid:55)(cid:1)(cid:38)(cid:50)(cid:49)(cid:55)(cid:53)(cid:44)(cid:37)(cid:56)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:36)(cid:38)(cid:46)(cid:49)(cid:50)(cid:58)(cid:47)(cid:40)(cid:39)(cid:42)(cid:40)(cid:1)(cid:41)(cid:56)(cid:49)(cid:39)(cid:44)(cid:49)(cid:42)(cid:1)(cid:54)(cid:56)(cid:51)(cid:51)(cid:50)(cid:53)(cid:55)(cid:1)",
+    "x0": 71.87004000000005,
+    "top": 198.40915200000018,
+    "x1": 541.2050160000001,
+    "bottom": 208.96915200000024,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 11,
+    "text": "(cid:44)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:53)(cid:39)(cid:36)(cid:49)(cid:38)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:36)(cid:42)(cid:40)(cid:49)(cid:38)(cid:60)(cid:1)(cid:51)(cid:50)(cid:47)(cid:44)(cid:38)(cid:44)(cid:40)(cid:54)(cid:6)(cid:1)(cid:28)(cid:56)(cid:53)(cid:1) (cid:15)(cid:42)(cid:32)(cid:33)(cid:1)(cid:42)(cid:34)(cid:1)(cid:15)(cid:42)(cid:41)(cid:32)(cid:47)(cid:31)(cid:46) (cid:1)(cid:40)(cid:49)(cid:38)(cid:50)(cid:56)(cid:53)(cid:36)(cid:42)(cid:40)(cid:54)(cid:1)(cid:54)(cid:56)(cid:37)(cid:48)(cid:44)(cid:54)(cid:54)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:1)(cid:51)(cid:53)(cid:40)(cid:5)(cid:51)(cid:53)(cid:44)(cid:49)(cid:55)(cid:54)(cid:1)",
+    "x0": 71.87004000000002,
+    "top": 212.3272320000002,
+    "x1": 519.4366320000001,
+    "bottom": 222.88723200000027,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 12,
+    "text": "(cid:51)(cid:53)(cid:44)(cid:50)(cid:53)(cid:1)(cid:55)(cid:50)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:6) (cid:1)(cid:2)(cid:18)(cid:3)(cid:1)(cid:17)(cid:46)(cid:33)(cid:26)(cid:23)(cid:13)(cid:6)(cid:1) (cid:18)(cid:44)(cid:55)(cid:44)(cid:61)(cid:40)(cid:49)(cid:1)(cid:54)(cid:38)(cid:44)(cid:40)(cid:49)(cid:55)(cid:44)(cid:54)(cid:55)(cid:54)(cid:1)(cid:58)(cid:43)(cid:50)(cid:1)(cid:40)(cid:49)(cid:42)(cid:36)(cid:42)(cid:40)(cid:1)(cid:44)(cid:49)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:64)(cid:20)(cid:55)(cid:40)(cid:30)(cid:27)(cid:16)(cid:1)(cid:39)(cid:40)(cid:54)(cid:44)(cid:42)(cid:49)(cid:1)",
+    "x0": 71.85947999999996,
+    "top": 226.00243200000023,
+    "x1": 492.8835120000002,
+    "bottom": 236.56243200000029,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 13,
+    "text": "(cid:38)(cid:43)(cid:36)(cid:47)(cid:47)(cid:40)(cid:49)(cid:42)(cid:40)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:1)(cid:51)(cid:53)(cid:50)(cid:45)(cid:40)(cid:38)(cid:55)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:1)(cid:38)(cid:50)(cid:49)(cid:57)(cid:40)(cid:49)(cid:44)(cid:40)(cid:49)(cid:55)(cid:4)(cid:1)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:1)(cid:55)(cid:43)(cid:53)(cid:50)(cid:56)(cid:42)(cid:43)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:20)(cid:55)(cid:40)(cid:30)(cid:27)(cid:16)(cid:1)(cid:47)(cid:36)(cid:37)(cid:1)",
+    "x0": 71.84891999999994,
+    "top": 239.92051200000026,
+    "x1": 513.020376,
+    "bottom": 250.48051200000032,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 14,
+    "text": "(cid:57)(cid:44)(cid:54)(cid:56)(cid:36)(cid:47)(cid:44)(cid:61)(cid:40)(cid:53)(cid:1)(cid:36)(cid:41)(cid:55)(cid:40)(cid:53)(cid:1)(cid:53)(cid:40)(cid:42)(cid:44)(cid:54)(cid:55)(cid:53)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:2)(cid:41)(cid:53)(cid:40)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)(cid:38)(cid:43)(cid:36)(cid:53)(cid:42)(cid:40)(cid:3)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:20)(cid:55)(cid:40)(cid:30)(cid:27)(cid:16)(cid:1)(cid:51)(cid:53)(cid:50)(cid:45)(cid:40)(cid:38)(cid:55)(cid:1)(cid:2)(cid:43)(cid:55)(cid:55)(cid:51)(cid:14)(cid:7)(cid:7)(cid:40)(cid:55)(cid:40)(cid:53)(cid:49)(cid:36)(cid:42)(cid:36)(cid:48)(cid:40)(cid:6)(cid:50)(cid:53)(cid:42)(cid:3)(cid:6)(cid:1)(cid:33)(cid:49)(cid:39)(cid:40)(cid:53)(cid:1)",
+    "x0": 71.84997599999991,
+    "top": 253.8385920000003,
+    "x1": 531.1476720000001,
+    "bottom": 264.39859200000035,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 15,
+    "text": "(cid:55)(cid:43)(cid:40)(cid:1)(cid:20)(cid:55)(cid:40)(cid:30)(cid:27)(cid:16)(cid:1)(cid:33)(cid:54)(cid:40)(cid:53)(cid:1)(cid:16)(cid:42)(cid:53)(cid:40)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:4)(cid:1)(cid:51)(cid:47)(cid:36)(cid:60)(cid:40)(cid:53)(cid:54)(cid:1)(cid:53)(cid:40)(cid:47)(cid:44)(cid:49)(cid:52)(cid:56)(cid:44)(cid:54)(cid:43)(cid:1)(cid:36)(cid:49)(cid:60)(cid:1)(cid:24)(cid:29)(cid:1)(cid:38)(cid:47)(cid:36)(cid:44)(cid:48)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:38)(cid:50)(cid:49)(cid:54)(cid:40)(cid:49)(cid:55)(cid:1)(cid:55)(cid:50)(cid:1)(cid:54)(cid:43)(cid:36)(cid:53)(cid:44)(cid:49)(cid:42)(cid:1)(cid:55)(cid:43)(cid:40)(cid:44)(cid:53)(cid:1)(cid:39)(cid:40)(cid:54)(cid:44)(cid:42)(cid:49)(cid:54)(cid:1)",
+    "x0": 71.8799,
+    "top": 267.78815999999995,
+    "x1": 534.2262680000001,
+    "bottom": 278.34816,
+    "avg_font_size": 10.56000000000006,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 16,
+    "text": "(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:50)(cid:53)(cid:54)(cid:6)(cid:1)(cid:32)(cid:43)(cid:40)(cid:1)(cid:20)(cid:55)(cid:40)(cid:30)(cid:27)(cid:16)(cid:1)(cid:51)(cid:53)(cid:50)(cid:45)(cid:40)(cid:38)(cid:55)(cid:1)(cid:2)(cid:36)(cid:49)(cid:39)(cid:1)(cid:44)(cid:49)(cid:39)(cid:44)(cid:57)(cid:44)(cid:39)(cid:56)(cid:36)(cid:47)(cid:1)(cid:51)(cid:47)(cid:36)(cid:60)(cid:40)(cid:53)(cid:54)(cid:4)(cid:1)(cid:58)(cid:43)(cid:40)(cid:49)(cid:1)(cid:36)(cid:51)(cid:51)(cid:53)(cid:50)(cid:51)(cid:53)(cid:44)(cid:36)(cid:55)(cid:40)(cid:3)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:53)(cid:40)(cid:38)(cid:40)(cid:44)(cid:57)(cid:40)(cid:1)",
+    "x0": 71.88095600000008,
+    "top": 281.70624,
+    "x1": 507.8611160000002,
+    "bottom": 292.26624,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 17,
+    "text": "(cid:36)(cid:56)(cid:55)(cid:43)(cid:50)(cid:53)(cid:54)(cid:43)(cid:44)(cid:51)(cid:1)(cid:36)(cid:49)(cid:39)(cid:7)(cid:50)(cid:53)(cid:1)(cid:36)(cid:38)(cid:46)(cid:49)(cid:50)(cid:58)(cid:47)(cid:40)(cid:39)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:50)(cid:49)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:1)(cid:41)(cid:50)(cid:47)(cid:47)(cid:50)(cid:58)(cid:44)(cid:49)(cid:42)(cid:1)(cid:40)(cid:54)(cid:55)(cid:36)(cid:37)(cid:47)(cid:44)(cid:54)(cid:43)(cid:40)(cid:39)(cid:1)(cid:49)(cid:50)(cid:53)(cid:48)(cid:54)(cid:6)(cid:1)",
+    "x0": 71.88095600000008,
+    "top": 295.62431999999995,
+    "x1": 489.77711600000004,
+    "bottom": 306.18431999999996,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 18,
+    "text": "(cid:10)(cid:6)(cid:25)(cid:42)(cid:39)(cid:37)(cid:31)(cid:37)(cid:33)(cid:45)(cid:1)(cid:34)(cid:42)(cid:44)(cid:1)(cid:26)(cid:33)(cid:5)(cid:47)(cid:45)(cid:33)(cid:4)(cid:1)(cid:26)(cid:33)(cid:5)(cid:32)(cid:37)(cid:45)(cid:46)(cid:44)(cid:37)(cid:30)(cid:47)(cid:46)(cid:37)(cid:42)(cid:41)(cid:4)(cid:1)(cid:29)(cid:41)(cid:32)(cid:1)(cid:25)(cid:44)(cid:42)(cid:32)(cid:47)(cid:31)(cid:46)(cid:37)(cid:42)(cid:41)(cid:1)(cid:42)(cid:34)(cid:1)(cid:16)(cid:33)(cid:44)(cid:37)(cid:48)(cid:29)(cid:46)(cid:37)(cid:48)(cid:33)(cid:45)(cid:6)(cid:1) (cid:32)(cid:43)(cid:40)(cid:1)(cid:19)(cid:44)(cid:53)(cid:40)(cid:38)(cid:55)(cid:50)(cid:53)(cid:1)(cid:43)(cid:36)(cid:54)(cid:1)(cid:50)(cid:57)(cid:40)(cid:53)(cid:36)(cid:47)(cid:47)",
+    "x0": 71.88095600000008,
+    "top": 316.02624,
+    "x1": 530.4774680000002,
+    "bottom": 326.58624,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 19,
+    "text": "(cid:53)(cid:40)(cid:54)(cid:51)(cid:50)(cid:49)(cid:54)(cid:44)(cid:37)(cid:44)(cid:47)(cid:44)(cid:55)(cid:60)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:37)(cid:50)(cid:55)(cid:43)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:48)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:39)(cid:44)(cid:54)(cid:54)(cid:40)(cid:48)(cid:44)(cid:49)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:6)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:24)(cid:49)(cid:57)(cid:40)(cid:54)(cid:55)(cid:44)(cid:42)(cid:36)(cid:55)(cid:50)(cid:53)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:54)(cid:43)(cid:36)(cid:53)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)",
+    "x0": 71.87039600000008,
+    "top": 329.94431999999995,
+    "x1": 517.8001880000002,
+    "bottom": 340.508544,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 20,
+    "text": "(cid:50)(cid:55)(cid:43)(cid:40)(cid:53)(cid:1)(cid:53)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:40)(cid:53)(cid:54)(cid:4)(cid:1)(cid:36)(cid:55)(cid:1)(cid:49)(cid:50)(cid:1)(cid:48)(cid:50)(cid:53)(cid:40)(cid:1)(cid:55)(cid:43)(cid:36)(cid:49)(cid:1)(cid:44)(cid:49)(cid:38)(cid:53)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:36)(cid:47)(cid:1)(cid:38)(cid:50)(cid:54)(cid:55)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:44)(cid:49)(cid:1)(cid:53)(cid:40)(cid:36)(cid:54)(cid:50)(cid:49)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:55)(cid:44)(cid:48)(cid:40)(cid:4)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:51)(cid:53)(cid:44)(cid:48)(cid:36)(cid:53)(cid:60)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:4)",
+    "x0": 71.88201200000009,
+    "top": 343.86873599999996,
+    "x1": 525.2840600000002,
+    "bottom": 354.42873599999996,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 21,
+    "text": "(cid:54)(cid:36)(cid:48)(cid:51)(cid:47)(cid:40)(cid:54)(cid:4)(cid:1)(cid:51)(cid:43)(cid:60)(cid:54)(cid:44)(cid:38)(cid:36)(cid:47)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:4)(cid:1)(cid:54)(cid:50)(cid:41)(cid:55)(cid:58)(cid:36)(cid:53)(cid:40)(cid:4)(cid:1)(cid:38)(cid:56)(cid:53)(cid:53)(cid:44)(cid:38)(cid:56)(cid:47)(cid:56)(cid:48)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:50)(cid:55)(cid:43)(cid:40)(cid:53)(cid:1)(cid:54)(cid:56)(cid:51)(cid:51)(cid:50)(cid:53)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:54)(cid:1)(cid:38)(cid:53)(cid:40)(cid:36)(cid:55)(cid:40)(cid:39)",
+    "x0": 71.88201200000009,
+    "top": 357.78681599999993,
+    "x1": 537.7269080000001,
+    "bottom": 368.34892799999994,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 22,
+    "text": "(cid:50)(cid:53)(cid:1)(cid:42)(cid:36)(cid:55)(cid:43)(cid:40)(cid:53)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:38)(cid:50)(cid:56)(cid:53)(cid:54)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)(cid:27)(cid:31)(cid:21)(cid:5)(cid:41)(cid:56)(cid:49)(cid:39)(cid:40)(cid:39)(cid:1)(cid:58)(cid:50)(cid:53)(cid:46)(cid:6)(cid:1)(cid:20)(cid:36)(cid:38)(cid:43)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:50)(cid:53)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:54)(cid:44)(cid:42)(cid:49)(cid:1)(cid:36)(cid:1)(cid:18)(cid:50)(cid:47)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)",
+    "x0": 71.88201200000009,
+    "top": 371.46940799999993,
+    "x1": 485.71574000000015,
+    "bottom": 382.02940799999993,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 23,
+    "text": "(cid:16)(cid:42)(cid:53)(cid:40)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:51)(cid:47)(cid:40)(cid:39)(cid:42)(cid:44)(cid:49)(cid:42)(cid:1)(cid:55)(cid:50)(cid:1)(cid:36)(cid:37)(cid:44)(cid:39)(cid:40)(cid:1)(cid:37)(cid:60)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:55)(cid:40)(cid:53)(cid:48)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:55)(cid:43)(cid:44)(cid:54)(cid:1)(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:26)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:29)(cid:47)(cid:36)(cid:49)(cid:6) (cid:1)(cid:2)(cid:13)(cid:3)(cid:1)(cid:27)(cid:33)(cid:41)(cid:45)(cid:37)(cid:46)(cid:37)(cid:48)(cid:33)(cid:1)(cid:32)(cid:29)(cid:46)(cid:29) (cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)",
+    "x0": 71.88201200000009,
+    "top": 385.3895999999999,
+    "x1": 537.0679640000001,
+    "bottom": 395.9495999999999,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 24,
+    "text": "(cid:48)(cid:36)(cid:39)(cid:40)(cid:1)(cid:36)(cid:57)(cid:36)(cid:44)(cid:47)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:55)(cid:50)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:19)(cid:44)(cid:53)(cid:40)(cid:38)(cid:55)(cid:50)(cid:53)(cid:4)(cid:1)(cid:18)(cid:40)(cid:49)(cid:55)(cid:40)(cid:53)(cid:1)(cid:54)(cid:55)(cid:36)(cid:41)(cid:41)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:54)(cid:40)(cid:47)(cid:40)(cid:38)(cid:55)(cid:1)(cid:48)(cid:40)(cid:48)(cid:37)(cid:40)(cid:53)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:20)(cid:59)(cid:55)(cid:40)(cid:53)(cid:49)(cid:36)(cid:47)(cid:1)(cid:16)(cid:39)(cid:57)(cid:44)(cid:54)(cid:50)(cid:53)(cid:60)(cid:1)(cid:17)(cid:50)(cid:36)(cid:53)(cid:39)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)",
+    "x0": 71.88095600000008,
+    "top": 399.3076799999999,
+    "x1": 538.4027480000001,
+    "bottom": 409.8676799999999,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 25,
+    "text": "(cid:53)(cid:40)(cid:47)(cid:40)(cid:57)(cid:36)(cid:49)(cid:55)(cid:1)(cid:40)(cid:59)(cid:51)(cid:40)(cid:53)(cid:55)(cid:44)(cid:54)(cid:40)(cid:6)(cid:1)(cid:29)(cid:53)(cid:44)(cid:57)(cid:36)(cid:38)(cid:60)(cid:4)(cid:1)(cid:38)(cid:50)(cid:49)(cid:41)(cid:44)(cid:39)(cid:40)(cid:49)(cid:55)(cid:44)(cid:36)(cid:47)(cid:44)(cid:55)(cid:60)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:54)(cid:40)(cid:38)(cid:56)(cid:53)(cid:44)(cid:55)(cid:60)(cid:1)(cid:50)(cid:41)(cid:1)(cid:51)(cid:40)(cid:53)(cid:54)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:40)(cid:39)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:40)(cid:57)(cid:36)(cid:47)(cid:56)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)",
+    "x0": 71.88095600000008,
+    "top": 413.22575999999987,
+    "x1": 532.8640280000003,
+    "bottom": 423.78575999999987,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 26,
+    "text": "(cid:37)(cid:40)(cid:1)(cid:40)(cid:49)(cid:54)(cid:56)(cid:53)(cid:40)(cid:39)(cid:1) (cid:20)(cid:13)(cid:8) (cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:41)(cid:50)(cid:47)(cid:47)(cid:50)(cid:58)(cid:44)(cid:49)(cid:42)(cid:1)(cid:54)(cid:55)(cid:36)(cid:49)(cid:39)(cid:36)(cid:53)(cid:39)(cid:1)(cid:51)(cid:53)(cid:36)(cid:38)(cid:55)(cid:44)(cid:38)(cid:40)(cid:54)(cid:14)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:36)(cid:49)(cid:50)(cid:49)(cid:60)(cid:48)(cid:50)(cid:56)(cid:54)(cid:47)(cid:60)(cid:1)(cid:2)(cid:55)(cid:43)(cid:53)(cid:50)(cid:56)(cid:42)(cid:43)(cid:1)(cid:22)(cid:50)(cid:50)(cid:42)(cid:47)(cid:40)",
+    "x0": 71.88095600000008,
+    "top": 427.14383999999984,
+    "x1": 507.4978520000001,
+    "bottom": 437.70383999999984,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT",
+      "CMNDNN+Arial-ItalicMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 27,
+    "text": "(cid:21)(cid:50)(cid:53)(cid:48)(cid:54)(cid:3)(cid:15)(cid:1)(cid:53)(cid:40)(cid:41)(cid:53)(cid:36)(cid:44)(cid:49)(cid:44)(cid:49)(cid:42)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:1)(cid:39)(cid:40)(cid:48)(cid:50)(cid:42)(cid:53)(cid:36)(cid:51)(cid:43)(cid:44)(cid:38)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:38)(cid:50)(cid:56)(cid:47)(cid:39)(cid:1)(cid:53)(cid:40)(cid:49)(cid:39)(cid:40)(cid:53)(cid:1)(cid:44)(cid:49)(cid:39)(cid:44)(cid:57)(cid:44)(cid:39)(cid:56)(cid:36)(cid:47)(cid:54)(cid:1)(cid:44)(cid:39)(cid:40)(cid:49)(cid:55)(cid:44)(cid:41)(cid:44)(cid:36)(cid:37)(cid:47)(cid:40)(cid:15)(cid:1)(cid:36)(cid:49)(cid:39)",
+    "x0": 71.87039600000008,
+    "top": 441.0619199999998,
+    "x1": 534.1565720000001,
+    "bottom": 451.6303679999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 28,
+    "text": "(cid:54)(cid:55)(cid:50)(cid:53)(cid:44)(cid:49)(cid:42)(cid:1)(cid:54)(cid:40)(cid:49)(cid:54)(cid:44)(cid:55)(cid:44)(cid:57)(cid:40)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:50)(cid:49)(cid:1)(cid:36)(cid:1)(cid:54)(cid:40)(cid:51)(cid:36)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:51)(cid:36)(cid:54)(cid:54)(cid:58)(cid:50)(cid:53)(cid:39)(cid:5)(cid:1)(cid:51)(cid:53)(cid:50)(cid:55)(cid:40)(cid:38)(cid:55)(cid:40)(cid:39)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:32)(cid:40)(cid:36)(cid:48)(cid:1)(cid:19)(cid:53)(cid:44)(cid:57)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:47)(cid:44)(cid:48)(cid:44)(cid:55)(cid:40)(cid:39)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:6)",
+    "x0": 71.88095600000014,
+    "top": 454.9905599999998,
+    "x1": 537.5716760000003,
+    "bottom": 465.5505599999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 29,
+    "text": "(cid:2)(cid:14)(cid:3)(cid:22)(cid:29)(cid:46)(cid:33)(cid:44)(cid:37)(cid:29)(cid:39)(cid:45)(cid:1)(cid:34)(cid:42)(cid:44)(cid:1)(cid:35)(cid:33)(cid:41)(cid:33)(cid:44)(cid:29)(cid:39)(cid:1)(cid:29)(cid:31)(cid:31)(cid:33)(cid:45)(cid:45) (cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:54)(cid:43)(cid:36)(cid:53)(cid:40)(cid:39)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:58)(cid:40)(cid:37)(cid:54)(cid:44)(cid:55)(cid:40)(cid:1)(cid:2)(cid:40)(cid:39)(cid:56)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:54)(cid:4)(cid:1)(cid:37)(cid:47)(cid:50)(cid:42)",
+    "x0": 71.88095600000014,
+    "top": 468.6657599999998,
+    "x1": 537.08486,
+    "bottom": 479.23103999999984,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 30,
+    "text": "(cid:51)(cid:50)(cid:54)(cid:55)(cid:54)(cid:4)(cid:1)(cid:53)(cid:40)(cid:54)(cid:50)(cid:56)(cid:53)(cid:38)(cid:40)(cid:54)(cid:3)(cid:1)(cid:56)(cid:49)(cid:39)(cid:40)(cid:53)(cid:1)(cid:36)(cid:1)(cid:18)(cid:18)(cid:1)(cid:17)(cid:35)(cid:5)(cid:27)(cid:18)(cid:5)(cid:31)(cid:16)(cid:1)(cid:10)(cid:6)(cid:8)(cid:1)(cid:47)(cid:44)(cid:38)(cid:40)(cid:49)(cid:54)(cid:40)(cid:1)(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:36)(cid:47)(cid:47)(cid:50)(cid:58)(cid:54)(cid:1)(cid:56)(cid:54)(cid:40)(cid:53)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)(cid:54)(cid:43)(cid:36)(cid:53)(cid:40)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:36)(cid:39)(cid:36)(cid:51)(cid:55)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)",
+    "x0": 71.8851800000001,
+    "top": 482.5891199999998,
+    "x1": 527.0982680000003,
+    "bottom": 493.1491199999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 31,
+    "text": "(cid:41)(cid:50)(cid:53)(cid:1)(cid:49)(cid:50)(cid:49)(cid:38)(cid:50)(cid:48)(cid:48)(cid:40)(cid:53)(cid:38)(cid:44)(cid:36)(cid:47)(cid:1)(cid:56)(cid:54)(cid:40)(cid:4)(cid:1)(cid:53)(cid:40)(cid:52)(cid:56)(cid:44)(cid:53)(cid:40)(cid:54)(cid:1)(cid:36)(cid:55)(cid:55)(cid:53)(cid:44)(cid:37)(cid:56)(cid:55)(cid:44)(cid:50)(cid:49)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:53)(cid:40)(cid:52)(cid:56)(cid:44)(cid:53)(cid:40)(cid:54)(cid:1)(cid:36)(cid:49)(cid:60)(cid:1)(cid:49)(cid:40)(cid:58)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:1)(cid:38)(cid:53)(cid:40)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:55)(cid:50)(cid:1)(cid:37)(cid:40)(cid:1)(cid:39)(cid:44)(cid:54)(cid:55)(cid:53)(cid:44)(cid:37)(cid:56)(cid:55)(cid:40)(cid:39)",
+    "x0": 71.8957400000001,
+    "top": 496.5071999999998,
+    "x1": 533.0065880000001,
+    "bottom": 507.0671999999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 32,
+    "text": "(cid:56)(cid:49)(cid:39)(cid:40)(cid:53)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:54)(cid:36)(cid:48)(cid:40)(cid:1)(cid:55)(cid:40)(cid:53)(cid:48)(cid:54)(cid:6)(cid:1)(cid:29)(cid:50)(cid:39)(cid:38)(cid:36)(cid:54)(cid:55)(cid:54)(cid:1)(cid:36)(cid:53)(cid:40)(cid:1)(cid:39)(cid:44)(cid:54)(cid:54)(cid:40)(cid:48)(cid:44)(cid:49)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:55)(cid:43)(cid:53)(cid:50)(cid:56)(cid:42)(cid:43)(cid:1)(cid:35)(cid:36)(cid:47)(cid:40)(cid:1)(cid:33)(cid:49)(cid:44)(cid:57)(cid:40)(cid:53)(cid:54)(cid:44)(cid:55)(cid:60)(cid:1)(cid:50)(cid:49)(cid:1)(cid:16)(cid:51)(cid:51)(cid:47)(cid:40)(cid:1)(cid:29)(cid:50)(cid:39)(cid:38)(cid:36)(cid:54)(cid:55)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)",
+    "x0": 71.8957400000001,
+    "top": 510.42527999999976,
+    "x1": 528.4277720000001,
+    "bottom": 520.9852799999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 33,
+    "text": "(cid:31)(cid:50)(cid:56)(cid:49)(cid:39)(cid:18)(cid:47)(cid:50)(cid:56)(cid:39)(cid:1)(cid:2)(cid:18)(cid:18)(cid:1)(cid:17)(cid:35)(cid:5)(cid:27)(cid:18)(cid:5)(cid:31)(cid:16)(cid:1)(cid:10)(cid:6)(cid:8)(cid:1)(cid:47)(cid:44)(cid:38)(cid:40)(cid:49)(cid:54)(cid:40)(cid:3)(cid:6)",
+    "x0": 71.8957400000001,
+    "top": 524.3433599999997,
+    "x1": 263.8860440000001,
+    "bottom": 534.9033599999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 34,
+    "text": "(cid:11)(cid:6)(cid:13)(cid:44)(cid:31)(cid:36)(cid:37)(cid:48)(cid:29)(cid:39)(cid:1)(cid:27)(cid:46)(cid:42)(cid:44)(cid:29)(cid:35)(cid:33)(cid:1)(cid:27)(cid:46)(cid:29)(cid:41)(cid:32)(cid:29)(cid:44)(cid:32)(cid:45) (cid:6)(cid:1)(cid:29)(cid:53)(cid:40)(cid:47)(cid:44)(cid:48)(cid:44)(cid:49)(cid:36)(cid:53)(cid:60)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:54)(cid:55)(cid:50)(cid:53)(cid:40)(cid:39)(cid:1)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:41)(cid:44)(cid:38)(cid:40)(cid:1)(cid:38)(cid:50)(cid:48)(cid:51)(cid:56)(cid:55)(cid:40)(cid:53)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:47)(cid:50)(cid:38)(cid:36)(cid:47)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)",
+    "x0": 71.8851800000001,
+    "top": 544.7452799999998,
+    "x1": 530.1796760000001,
+    "bottom": 555.3052799999997,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 35,
+    "text": "(cid:54)(cid:60)(cid:54)(cid:55)(cid:40)(cid:48)(cid:54)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:44)(cid:37)(cid:47)(cid:40)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:58)(cid:50)(cid:53)(cid:46)(cid:54)(cid:55)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:1)(cid:36)(cid:54)(cid:54)(cid:50)(cid:38)(cid:44)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:40)(cid:36)(cid:38)(cid:43)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:24)(cid:49)(cid:57)(cid:40)(cid:54)(cid:55)(cid:44)(cid:42)(cid:36)(cid:55)(cid:50)(cid:53)(cid:6)(cid:1)(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:44)(cid:49)(cid:1)(cid:49)(cid:50)(cid:49)(cid:5)",
+    "x0": 71.87462000000005,
+    "top": 558.6633599999998,
+    "x1": 506.0352920000001,
+    "bottom": 569.2233599999997,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 36,
+    "text": "(cid:40)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:50)(cid:49)(cid:44)(cid:38)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:38)(cid:50)(cid:49)(cid:57)(cid:40)(cid:53)(cid:55)(cid:40)(cid:39)(cid:1)(cid:55)(cid:50)(cid:1)(cid:39)(cid:44)(cid:42)(cid:44)(cid:55)(cid:36)(cid:47)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:51)(cid:53)(cid:40)(cid:54)(cid:40)(cid:53)(cid:57)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:6)(cid:1)(cid:21)(cid:44)(cid:49)(cid:36)(cid:47)(cid:1)(cid:53)(cid:40)(cid:54)(cid:51)(cid:50)(cid:49)(cid:54)(cid:44)(cid:37)(cid:44)(cid:47)(cid:44)(cid:55)(cid:60)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:36)(cid:53)(cid:38)(cid:43)(cid:44)(cid:57)(cid:44)(cid:49)(cid:42)",
+    "x0": 71.85350000000005,
+    "top": 572.5814399999997,
+    "x1": 539.3161879999999,
+    "bottom": 583.1414399999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 37,
+    "text": "(cid:36)(cid:49)(cid:39)(cid:1)(cid:51)(cid:53)(cid:40)(cid:54)(cid:40)(cid:53)(cid:57)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:47)(cid:44)(cid:40)(cid:54)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:40)(cid:36)(cid:38)(cid:43)(cid:1)(cid:24)(cid:49)(cid:57)(cid:40)(cid:54)(cid:55)(cid:44)(cid:42)(cid:36)(cid:55)(cid:50)(cid:53)(cid:6)(cid:1)(cid:16)(cid:55)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:38)(cid:50)(cid:49)(cid:38)(cid:47)(cid:56)(cid:54)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:42)(cid:53)(cid:36)(cid:49)(cid:55)(cid:4)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:38)(cid:36)(cid:49)(cid:1)(cid:37)(cid:40)(cid:1)(cid:48)(cid:36)(cid:44)(cid:49)(cid:55)(cid:36)(cid:44)(cid:49)(cid:40)(cid:39)",
+    "x0": 71.85350000000005,
+    "top": 586.4995199999997,
+    "x1": 530.035004,
+    "bottom": 597.0711359999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 38,
+    "text": "(cid:44)(cid:49)(cid:39)(cid:40)(cid:41)(cid:44)(cid:49)(cid:44)(cid:55)(cid:40)(cid:47)(cid:60)(cid:1)(cid:50)(cid:49)(cid:1)(cid:47)(cid:50)(cid:38)(cid:36)(cid:47)(cid:1)(cid:37)(cid:36)(cid:38)(cid:46)(cid:56)(cid:51)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:36)(cid:47)(cid:54)(cid:50)(cid:4)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:36)(cid:54)(cid:1)(cid:47)(cid:50)(cid:49)(cid:42)(cid:1)(cid:36)(cid:54)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:40)(cid:59)(cid:44)(cid:54)(cid:55)(cid:54)(cid:1)(cid:36)(cid:54)(cid:1)(cid:36)(cid:49)(cid:1)(cid:40)(cid:39)(cid:56)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:40)(cid:49)(cid:55)(cid:44)(cid:55)(cid:60)(cid:4)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)",
+    "x0": 71.87990000000002,
+    "top": 600.4313279999998,
+    "x1": 530.164892,
+    "bottom": 610.9913279999997,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 39,
+    "text": "(cid:32)(cid:40)(cid:36)(cid:48)(cid:1)(cid:19)(cid:53)(cid:44)(cid:57)(cid:40)(cid:6)(cid:1) (cid:2)(cid:13)(cid:3)(cid:1)(cid:28)(cid:37)(cid:40)(cid:37)(cid:41)(cid:35)(cid:6) (cid:1)(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:36)(cid:53)(cid:38)(cid:43)(cid:44)(cid:57)(cid:40)(cid:39)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:44)(cid:49)(cid:1)(cid:9)(cid:1)(cid:48)(cid:50)(cid:49)(cid:55)(cid:43)(cid:1)(cid:50)(cid:41)(cid:1)(cid:57)(cid:36)(cid:47)(cid:44)(cid:39)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:53)(cid:1)(cid:56)(cid:51)(cid:50)(cid:49)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:6)(cid:1) (cid:2)(cid:14)(cid:3)",
+    "x0": 71.87990000000002,
+    "top": 614.3494079999998,
+    "x1": 528.2461400000001,
+    "bottom": 624.9115199999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 40,
+    "text": "(cid:22)(cid:33)(cid:46)(cid:36)(cid:42)(cid:32)(cid:1)(cid:42)(cid:34)(cid:1)(cid:13)(cid:44)(cid:31)(cid:36)(cid:37)(cid:48)(cid:37)(cid:41)(cid:35)(cid:6)(cid:1) (cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:56)(cid:51)(cid:47)(cid:50)(cid:36)(cid:39)(cid:40)(cid:39)(cid:1)(cid:55)(cid:50)(cid:1)(cid:36)(cid:1)(cid:62)(cid:19)(cid:36)(cid:55)(cid:36)(cid:63)(cid:1)(cid:32)(cid:40)(cid:36)(cid:48)(cid:1)(cid:19)(cid:53)(cid:44)(cid:57)(cid:40)(cid:4)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:38)(cid:50)(cid:49)(cid:55)(cid:40)(cid:49)(cid:55)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:58)(cid:43)(cid:44)(cid:38)(cid:43)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)",
+    "x0": 71.88201200000009,
+    "top": 628.0319999999997,
+    "x1": 525.918716,
+    "bottom": 638.5919999999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 41,
+    "text": "(cid:37)(cid:36)(cid:38)(cid:46)(cid:40)(cid:39)(cid:1)(cid:56)(cid:51)(cid:1)(cid:58)(cid:40)(cid:40)(cid:46)(cid:47)(cid:60)(cid:1)(cid:55)(cid:50)(cid:1)(cid:36)(cid:1)(cid:47)(cid:50)(cid:38)(cid:36)(cid:47)(cid:1)(cid:54)(cid:40)(cid:53)(cid:57)(cid:40)(cid:53)(cid:1)(cid:36)(cid:55)(cid:1)(cid:33)(cid:18)(cid:5)(cid:17)(cid:40)(cid:53)(cid:46)(cid:40)(cid:47)(cid:40)(cid:60)(cid:6)(cid:1) (cid:2)(cid:15)(cid:3)(cid:1)(cid:25)(cid:44)(cid:33)(cid:45)(cid:33)(cid:44)(cid:48)(cid:29)(cid:46)(cid:37)(cid:42)(cid:41)(cid:1)(cid:42)(cid:34)(cid:1)(cid:13)(cid:31)(cid:31)(cid:33)(cid:45)(cid:45)(cid:6)(cid:1) (cid:16)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)(cid:32)(cid:40)(cid:36)(cid:48)",
+    "x0": 71.89257200000009,
+    "top": 641.9500799999997,
+    "x1": 527.1172760000001,
+    "bottom": 652.5100799999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 42,
+    "text": "(cid:19)(cid:53)(cid:44)(cid:57)(cid:40)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:36)(cid:51)(cid:51)(cid:54)(cid:1)(cid:44)(cid:54)(cid:1)(cid:51)(cid:53)(cid:50)(cid:57)(cid:44)(cid:54)(cid:44)(cid:50)(cid:49)(cid:40)(cid:39)(cid:1)(cid:55)(cid:50)(cid:1)(cid:44)(cid:49)(cid:39)(cid:44)(cid:57)(cid:44)(cid:39)(cid:56)(cid:36)(cid:47)(cid:1)(cid:42)(cid:50)(cid:50)(cid:42)(cid:47)(cid:40)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:56)(cid:49)(cid:55)(cid:54)(cid:6)(cid:1)(cid:34)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:56)(cid:54)(cid:40)(cid:1)(cid:22)(cid:50)(cid:50)(cid:42)(cid:47)(cid:40)(cid:1)(cid:22)(cid:53)(cid:50)(cid:56)(cid:51)(cid:54)",
+    "x0": 71.88095600000008,
+    "top": 655.8681599999998,
+    "x1": 531.7763480000001,
+    "bottom": 666.4323839999997,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 43,
+    "text": "(cid:41)(cid:50)(cid:53)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:1)(cid:38)(cid:50)(cid:49)(cid:55)(cid:53)(cid:50)(cid:47)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:38)(cid:53)(cid:40)(cid:36)(cid:55)(cid:40)(cid:1)(cid:36)(cid:49)(cid:1)(cid:62)(cid:36)(cid:47)(cid:56)(cid:48)(cid:49)(cid:44)(cid:63)(cid:1)(cid:42)(cid:53)(cid:50)(cid:56)(cid:51)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:40)(cid:53)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:48)(cid:40)(cid:48)(cid:37)(cid:40)(cid:53)(cid:54)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:53)(cid:40)(cid:36)(cid:39)(cid:5)(cid:50)(cid:49)(cid:47)(cid:60)",
+    "x0": 71.88095600000008,
+    "top": 669.7925759999997,
+    "x1": 510.7186520000001,
+    "bottom": 680.3525759999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 44,
+    "text": "(cid:51)(cid:40)(cid:53)(cid:48)(cid:44)(cid:54)(cid:54)(cid:44)(cid:50)(cid:49)(cid:54)(cid:6)(cid:1)(cid:24)(cid:41)(cid:1)(cid:49)(cid:40)(cid:38)(cid:40)(cid:54)(cid:54)(cid:36)(cid:53)(cid:60)(cid:4)(cid:1)(cid:58)(cid:40)(cid:1)(cid:38)(cid:36)(cid:49)(cid:1)(cid:38)(cid:53)(cid:40)(cid:36)(cid:55)(cid:40)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:6)(cid:49)(cid:40)(cid:55)(cid:1)(cid:22)(cid:50)(cid:50)(cid:42)(cid:47)(cid:40)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:56)(cid:49)(cid:55)(cid:54)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:39)(cid:40)(cid:51)(cid:36)(cid:53)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)(cid:48)(cid:40)(cid:48)(cid:37)(cid:40)(cid:53)(cid:54)(cid:6)",
+    "x0": 71.8799000000001,
+    "top": 683.7127679999998,
+    "x1": 523.6641560000002,
+    "bottom": 694.2727679999998,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 45,
+    "text": "(cid:1)",
+    "x0": 308.912472,
+    "top": 744.90816,
+    "x1": 311.84815199999997,
+    "bottom": 755.46816,
+    "avg_font_size": 10.560000000000002,
+    "font_names": [
+      "CMNDNL+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 46,
+    "text": "(cid:21)",
+    "x0": 303.039,
+    "top": 745.54176,
+    "x1": 308.91035999999997,
+    "bottom": 756.10176,
+    "avg_font_size": 10.559999999999995,
+    "font_names": [
+      "CMNFLC+ArialMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  }
+]

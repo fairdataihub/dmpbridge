@@ -1,0 +1,397 @@
+{
+  "dmp": {
+    "title": null,
+    "description": null,
+    "dmp_id": {
+      "identifier": null,
+      "type": null
+    },
+    "created": null,
+    "modified": null,
+    "ethical_issues_exist": null,
+    "ethical_issues_description": null,
+    "ethical_issues_report": null,
+    "language": null,
+    "contact": {
+      "name": null,
+      "mbox": null,
+      "affiliation": [
+        {
+          "name": null,
+          "affiliation_id": {
+            "identifier": null,
+            "type": null
+          }
+        }
+      ],
+      "contact_id": [
+        {
+          "identifier": null,
+          "type": null
+        }
+      ]
+    },
+    "contributor": [
+      {
+        "name": null,
+        "contributor_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "affiliation": [
+          {
+            "name": null,
+            "affiliation_id": {
+              "identifier": null,
+              "type": null
+            }
+          }
+        ],
+        "role": []
+      }
+    ],
+    "dataset": [
+      {
+        "title": null,
+        "type": null,
+        "description": null,
+        "dataset_id": {
+          "identifier": null,
+          "type": null
+        },
+        "personal_data": null,
+        "sensitive_data": null,
+        "issued": null,
+        "metadata": [
+          {
+            "description": null,
+            "language": null,
+            "metadata_standard_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ],
+        "distribution": [
+          {
+            "title": null,
+            "byte_size": null,
+            "issued": null,
+            "data_access": null,
+            "license": [
+              {
+                "license_ref": null,
+                "start_date": null
+              }
+            ],
+            "host": {
+              "title": null,
+              "url": null,
+              "host_id": [
+                {
+                  "identifier": null,
+                  "type": null
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": null,
+        "relation_type": null,
+        "resource_type": null,
+        "type": null
+      }
+    ],
+    "alternate_identifier": [
+      {
+        "identifier": null,
+        "type": null
+      }
+    ],
+    "project": [
+      {
+        "title": null,
+        "description": null,
+        "project_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "start": null,
+        "end": null,
+        "funding": [
+          {
+            "name": null,
+            "funding_status": null,
+            "funder_id": {
+              "identifier": null,
+              "type": null
+            },
+            "grant_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rda_schema_version": null,
+  "provenance": null,
+  "status": null,
+  "privacy": null,
+  "featured": null,
+  "registered": null,
+  "research_domain": {
+    "name": null,
+    "research_domain_identifier": {
+      "identifier": null,
+      "type": null
+    }
+  },
+  "research_facility": [
+    {
+      "name": null,
+      "type": null,
+      "research_facility_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_opportunity": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "opportunity_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_project": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "project_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "version": [
+    {
+      "access_url": null,
+      "version": null
+    }
+  ],
+  "narrative": {
+    "download_url": null,
+    "template": {
+      "id": null,
+      "title": null,
+      "description": null,
+      "version": null,
+      "section": [
+        {
+          "id": "section_1",
+          "title": "1. Transmission electron microscopy (TEM) images",
+          "description": null,
+          "order": 1,
+          "question": []
+        },
+        {
+          "id": "section_2",
+          "title": "1. File type: .dm3, .dm4, .tiff, etc. (image files)",
+          "description": null,
+          "order": 2,
+          "question": []
+        },
+        {
+          "id": "section_3",
+          "title": "2. Captured: Using TEMs at different facilities",
+          "description": null,
+          "order": 3,
+          "question": []
+        },
+        {
+          "id": "section_4",
+          "title": "3. Processed: Generally using DigitalMicrograph, but also ImageJ, MacTempasX, and other",
+          "description": "types of image analysis programs\n2. X-ray diffraction patterns",
+          "order": 4,
+          "question": []
+        },
+        {
+          "id": "section_5",
+          "title": "1. File type: .txt",
+          "description": null,
+          "order": 5,
+          "question": []
+        },
+        {
+          "id": "section_6",
+          "title": "2. Captured: Using X-ray diffractometers",
+          "description": null,
+          "order": 6,
+          "question": []
+        },
+        {
+          "id": "section_7",
+          "title": "3. Processed: Will be plotted in Origin or similar data plotting software. Data analysis will",
+          "description": "primarily be conducted using MDI Jade. Python or Mathematica may be employed for\nfurther analysis.",
+          "order": 7,
+          "question": []
+        },
+        {
+          "id": "section_8",
+          "title": "3. Sample statistics",
+          "description": null,
+          "order": 8,
+          "question": []
+        },
+        {
+          "id": "section_9",
+          "title": "1. File type: Likely spreadsheets (.xlsx)",
+          "description": null,
+          "order": 9,
+          "question": []
+        },
+        {
+          "id": "section_10",
+          "title": "2. Captured: Will vary, likely couting statistics",
+          "description": null,
+          "order": 10,
+          "question": []
+        },
+        {
+          "id": "section_11",
+          "title": "3. Processed: Will vary depending on what is being measured",
+          "description": null,
+          "order": 11,
+          "question": []
+        },
+        {
+          "id": "section_12",
+          "title": "4. Spectorscopy (e.g. EDX, EELS, XPS)",
+          "description": null,
+          "order": 12,
+          "question": []
+        },
+        {
+          "id": "section_13",
+          "title": "1. File type: Native software file types",
+          "description": null,
+          "order": 13,
+          "question": []
+        },
+        {
+          "id": "section_14",
+          "title": "2. Captured: TEMs",
+          "description": null,
+          "order": 14,
+          "question": []
+        },
+        {
+          "id": "section_15",
+          "title": "3. Processed: Native software, Python, Mathematica, etc.",
+          "description": "Quality Assurance/Control\nAll data will be analyzed for any relevant information for each experiment. In addition, all data will\nbe saved for future reference in case any more information is needed for future analysis.\nData and metadata standards\nStandards to be used for data and metadata format and content (where existing standards\nare absent or deemed inadequate, this should be documented along with any proposed\nsolutions or remedies).\nAll data acquired will be linked back to the specific sample tested. The samples are typically\nnanoparticles, which will be identified according to the date synthesized. Synthesis conditions and\npost-processing will be notated in a lab notebook accordingly.\nIn addition, metadata may be needed for the instrument conditions used for acquiring. In general,\nthese will apply for each type of data:",
+          "order": 15,
+          "question": []
+        },
+        {
+          "id": "section_16",
+          "title": "1. TEM",
+          "description": "Microscope used\nAccelerating voltage\nImaging/Diffraction mode\nRelevant apertures\nProbe size\nCamera length",
+          "order": 16,
+          "question": []
+        },
+        {
+          "id": "section_17",
+          "title": "2. XRD",
+          "description": null,
+          "order": 17,
+          "question": []
+        },
+        {
+          "id": "section_18",
+          "title": "1. Instrument used",
+          "description": "2. X-ray source",
+          "order": 18,
+          "question": []
+        },
+        {
+          "id": "section_19",
+          "title": "3. Acquisition time",
+          "description": null,
+          "order": 19,
+          "question": []
+        },
+        {
+          "id": "section_20",
+          "title": "3. Spectroscopy",
+          "description": null,
+          "order": 20,
+          "question": []
+        },
+        {
+          "id": "section_21",
+          "title": "1. Instrument used",
+          "description": null,
+          "order": 21,
+          "question": []
+        },
+        {
+          "id": "section_22",
+          "title": "2. Relevant settings (e.g. probe size)",
+          "description": null,
+          "order": 22,
+          "question": []
+        },
+        {
+          "id": "section_23",
+          "title": "3. Acquisiton time",
+          "description": null,
+          "order": 23,
+          "question": []
+        },
+        {
+          "id": "section_24",
+          "title": "4. Any data smoothing or processing method",
+          "description": null,
+          "order": 24,
+          "question": []
+        },
+        {
+          "id": "section_25",
+          "title": "5. Normalization method used",
+          "description": "Metadata will be stored primarily in the file name of each dataset acquired. Additionally, it may be\nnotated in the lab notebook used when acquiring.\nPolicies for access and sharing, and provisions for appropriate protection/privacy\nPolicies for access and sharing; Provisions for appropriate protection of privacy,\nconfidentiality, security, intellectual property, or other rights or requirements.\nAll data will be stored on the research group RAID server, which may be made available in a shared\nfolder upon request. Depending on the type of data, specific software may be needed to read\npropietary file formats. Such details will be explained if requested. There should not be any delay or\nembargo periods on the data acquired for this research. If there is, this data management plan will be\nupdated.\nPolicies and provisions for re-use, re-distribution\nPolicies and provisions for re-use, re-distribution, and the production of derivatives.\nPermission to re-use or re-distribute data will be granted within reasonable request. The source of the\ndata must be adequately acknowleged if used, and the appropriate citation should be made if\navailable.\nPlans for archiving and preservation\nPlans for archiving data, samples, and other research products, and for preservation of\naccess to them.\nAll data will be stored and archived in our research group's RAID server, which already incorporates\ndata redundancy for backups. It will remain there for at least 5 years after the release of the\ncorresponding publication or project. All data require for the creation of a research manuscript will\nbe stored. Additional data acquired will also be stored for future reference in the research group.\nData may be compressed as necessary for data sharing. Metadata files will be stored in appropriate\ndirectories to detail what is being stored in the server.",
+          "order": 25,
+          "question": []
+        }
+      ]
+    }
+  }
+}

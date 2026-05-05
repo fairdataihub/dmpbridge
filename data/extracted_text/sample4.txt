@@ -1,0 +1,90 @@
+
+
+<!-- Page 1 -->
+
+Oxide Oxide Surfaces, Surfaces, From From Bulk Bulk to to Nanoparticles Nanoparticles
+Types Types of of data data produced produced
+Types Types of of data, data, samples, samples, physical physical collections, collections, software, software, curriculum curriculum materials, materials, and and other other
+materials materials to to be be produced produced in in the the course course of of the the project. project.
+There will be in general x types of data generated for this research. The following will outline each
+type and how it will all be collected, processed, and stored.
+1. Transmission electron microscopy (TEM) images
+1. File File type: type: .dm3, .dm4, .tiff, etc. (image files)
+2. Captured: Captured: Using TEMs at different facilities
+3. Processed: Processed: Generally using DigitalMicrograph, but also ImageJ, MacTempasX, and other
+types of image analysis programs
+2. X-ray diffraction patterns
+1. File File type: type: .txt
+2. Captured: Captured: Using X-ray diffractometers
+3. Processed: Processed: Will be plotted in Origin or similar data plotting software. Data analysis will
+primarily be conducted using MDI Jade. Python or Mathematica may be employed for
+further analysis.
+3. Sample statistics
+1. File File type: type: Likely spreadsheets (.xlsx)
+2. Captured: Captured: Will vary, likely couting statistics
+3. Processed: Processed: Will vary depending on what is being measured
+4. Spectorscopy (e.g. EDX, EELS, XPS)
+1. File File type: type: Native software file types
+2. Captured: Captured: TEMs
+3. Processed: Processed: Native software, Python, Mathematica, etc.
+Quality Quality Assurance/Control Assurance/Control
+All data will be analyzed for any relevant information for each experiment. In addition, all data will
+be saved for future reference in case any more information is needed for future analysis.
+Data Data and and metadata metadata standards standards
+Standards Standards to to be be used used for for data data and and metadata metadata format format and and content content (where (where existing existing standards standards
+are are absent absent or or deemed deemed inadequate, inadequate, this this should should be be documented documented along along with with any any proposed proposed
+
+
+<!-- Page 2 -->
+
+solutions solutions or or remedies). remedies).
+All data acquired will be linked back to the specific sample tested. The samples are typically
+nanoparticles, which will be identified according to the date synthesized. Synthesis conditions and
+post-processing will be notated in a lab notebook accordingly.
+In addition, metadata may be needed for the instrument conditions used for acquiring. In general,
+these will apply for each type of data:
+1. TEM
+Microscope used
+Accelerating voltage
+Imaging/Diffraction mode
+Relevant apertures
+Probe size
+Camera length
+2. XRD
+1. Instrument used
+2. X-ray source
+3. Acquisition time
+3. Spectroscopy
+1. Instrument used
+2. Relevant settings (e.g. probe size)
+3. Acquisiton time
+4. Any data smoothing or processing method
+5. Normalization method used
+Metadata will be stored primarily in the file name of each dataset acquired. Additionally, it may be
+notated in the lab notebook used when acquiring.
+Policies Policies for for access access and and sharing, sharing, and and provisions provisions for for appropriate appropriate protection/privacy protection/privacy
+Policies Policies for for access access and and sharing; sharing; Provisions Provisions for for appropriate appropriate protection protection of of privacy, privacy,
+confidentiality, confidentiality, security, security, intellectual intellectual property, property, or or other other rights rights or or requirements. requirements.
+All data will be stored on the research group RAID server, which may be made available in a shared
+folder upon request. Depending on the type of data, specific software may be needed to read
+propietary file formats. Such details will be explained if requested. There should not be any delay or
+embargo periods on the data acquired for this research. If there is, this data management plan will be
+
+
+<!-- Page 3 -->
+
+updated.
+Policies Policies and and provisions provisions for for re-use, re-use, re-distribution re-distribution
+Policies Policies and and provisions provisions for for re-use, re-use, re-distribution, re-distribution, and and the the production production of of derivatives. derivatives.
+Permission to re-use or re-distribute data will be granted within reasonable request. The source of the
+data must be adequately acknowleged if used, and the appropriate citation should be made if
+available.
+Plans Plans for for archiving archiving and and preservation preservation
+Plans Plans for for archiving archiving data, data, samples, samples, and and other other research research products, products, and and for for preservation preservation of of
+access access to to them. them.
+All data will be stored and archived in our research group's RAID server, which already incorporates
+data redundancy for backups. It will remain there for at least 5 years after the release of the
+corresponding publication or project. All data require for the creation of a research manuscript will
+be stored. Additional data acquired will also be stored for future reference in the research group.
+Data may be compressed as necessary for data sharing. Metadata files will be stored in appropriate
+directories to detail what is being stored in the server.

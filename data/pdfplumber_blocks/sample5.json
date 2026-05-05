@@ -1,0 +1,1312 @@
+[
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 1,
+    "text": "DATA MANAGEMENT PLAN",
+    "x0": 231.1404,
+    "top": 73.66464000000008,
+    "x1": 380.9024160000001,
+    "bottom": 84.70464000000004,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 2,
+    "text": "REVIEW OF PROPOSAL COMPONENTS",
+    "x0": 72.0,
+    "top": 98.86464000000001,
+    "x1": 280.12387200000006,
+    "bottom": 109.90463999999997,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 3,
+    "text": "The proposal is separated into three sections.",
+    "x0": 72.0,
+    "top": 111.58464000000004,
+    "x1": 269.6448,
+    "bottom": 122.62464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 4,
+    "text": "Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and",
+    "x0": 108.0,
+    "top": 125.02464000000009,
+    "x1": 540.1434960000003,
+    "bottom": 136.06464000000005,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 5,
+    "text": "•",
+    "x0": 90.0,
+    "top": 125.06880000000001,
+    "x1": 95.0784,
+    "bottom": 136.1088000000001,
+    "avg_font_size": 11.040000000000077,
+    "font_names": [
+      "AAAAAH+SymbolMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 6,
+    "text": "compares well construction patterns before and after the establishment of regulatory controls.",
+    "x0": 108.0,
+    "top": 137.74464000000012,
+    "x1": 519.3018239999997,
+    "bottom": 148.78464000000008,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 7,
+    "text": "• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)",
+    "x0": 90.0,
+    "top": 151.18464000000006,
+    "x1": 540.0878640000003,
+    "bottom": 162.26880000000006,
+    "avg_font_size": 11.039999999999973,
+    "font_names": [
+      "AAAAAH+SymbolMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 8,
+    "text": "yearly (2016-2021) at the field scale.",
+    "x0": 108.0,
+    "top": 163.66464000000008,
+    "x1": 270.46178399999997,
+    "bottom": 174.70464000000004,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 9,
+    "text": "• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic",
+    "x0": 90.0,
+    "top": 177.10464000000002,
+    "x1": 540.02568,
+    "bottom": 188.18880000000001,
+    "avg_font_size": 11.039999999999973,
+    "font_names": [
+      "AAAAAH+SymbolMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAL+TimesNewRomanPS-ItalicMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 10,
+    "text": "Sciences Workshops.",
+    "x0": 108.0,
+    "top": 189.82464000000004,
+    "x1": 200.263896,
+    "bottom": 200.86464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 11,
+    "text": "TYPES OF DATA",
+    "x0": 72.0,
+    "top": 215.0246400000001,
+    "x1": 159.43900799999997,
+    "bottom": 226.06464000000005,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 12,
+    "text": "The PI and PhD student will be responsible for all data-related activities including: collection,",
+    "x0": 72.0,
+    "top": 227.74464000000012,
+    "x1": 485.51712,
+    "bottom": 238.78464000000008,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 13,
+    "text": "documentation and metadata description, quality control, storage and backup, archiving, and sharing.",
+    "x0": 72.0,
+    "top": 240.46464000000003,
+    "x1": 516.8877119999997,
+    "bottom": 251.50464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 14,
+    "text": "The project will result in new sets of data, code, and tools. These outputs include: (a) source code to",
+    "x0": 72.0,
+    "top": 252.94464000000005,
+    "x1": 512.4430079999989,
+    "bottom": 263.98464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 15,
+    "text": "quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and",
+    "x0": 72.0,
+    "top": 265.6646400000001,
+    "x1": 531.455616,
+    "bottom": 276.70464000000004,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 16,
+    "text": "(c) sharable instructional materials ( Scientist Spotlight activities and workshop materials).",
+    "x0": 72.0,
+    "top": 278.38464,
+    "x1": 467.32310399999994,
+    "bottom": 289.42464,
+    "avg_font_size": 11.04000000000002,
+    "font_names": [
+      "AAAAAL+TimesNewRomanPS-ItalicMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 17,
+    "text": "Input data: Available data will be systematically reviewed and downloaded. These data are likely",
+    "x0": 72.0,
+    "top": 303.58464000000004,
+    "x1": 505.81099199999994,
+    "bottom": 314.62464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 18,
+    "text": "available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files;",
+    "x0": 72.0,
+    "top": 316.30464000000006,
+    "x1": 534.8167199999999,
+    "bottom": 327.34464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 19,
+    "text": "or text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be",
+    "x0": 72.0,
+    "top": 329.0246400000001,
+    "x1": 519.3936959999996,
+    "bottom": 340.06464000000005,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 20,
+    "text": "adopted and will likely evolve as new datasets provide for challenging formats and organization.",
+    "x0": 72.0,
+    "top": 341.50464000000005,
+    "x1": 497.3380799999997,
+    "bottom": 352.54464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 21,
+    "text": "Produced Data: Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be",
+    "x0": 72.0,
+    "top": 366.94464000000005,
+    "x1": 519.287424,
+    "bottom": 377.98464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 22,
+    "text": "formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+    "x0": 72.0,
+    "top": 379.42464000000007,
+    "x1": 481.461408,
+    "bottom": 390.46464000000003,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 23,
+    "text": "DATA AND METADATA STANDARDS",
+    "x0": 72.0,
+    "top": 404.86464000000007,
+    "x1": 266.708064,
+    "bottom": 415.90464000000003,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 24,
+    "text": "The data will be shared along with a README.txt, which will describe all files, their relationships,",
+    "x0": 72.0,
+    "top": 417.58464000000004,
+    "x1": 509.9391359999987,
+    "bottom": 428.62464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 25,
+    "text": "naming conventions, etc. Data elements and attributes will be described following ISO 19115",
+    "x0": 72.0,
+    "top": 430.06464000000005,
+    "x1": 483.9402719999997,
+    "bottom": 441.10464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 26,
+    "text": "specifications and metadata schema and standards in Hydrology (e.g., following any establish standards",
+    "x0": 72.0,
+    "top": 442.7846400000001,
+    "x1": 528.674016,
+    "bottom": 453.82464000000004,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 27,
+    "text": "of the Water Information Coordination Program’s Open Water Data Initiative (Larsen et al., 2016)) to",
+    "x0": 72.0,
+    "top": 455.50464000000005,
+    "x1": 520.420032,
+    "bottom": 466.54464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 28,
+    "text": "allow for better interpretability and interoperability. Code and scripts produced in R and/or python will be",
+    "x0": 72.0,
+    "top": 467.98464000000007,
+    "x1": 538.179744,
+    "bottom": 479.02464000000003,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 29,
+    "text": "documented for reproducibility purposes. The metadata for the codes will include: (1) description of the",
+    "x0": 72.0,
+    "top": 480.70464000000004,
+    "x1": 529.3164959999995,
+    "bottom": 491.74464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 30,
+    "text": "functions required to operate the analyses; (2) description of input parameters and outputs; and (3) test",
+    "x0": 72.0,
+    "top": 493.42464000000007,
+    "x1": 522.577056,
+    "bottom": 504.46464000000003,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 31,
+    "text": "case, files and plots documenting the expected response of the model (Section 2.1) to a standard set of",
+    "x0": 72.0,
+    "top": 506.14464000000004,
+    "x1": 521.296752,
+    "bottom": 517.18464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 32,
+    "text": "input parameters. Documentation will focus on the description of the functions, input parameters, outputs,",
+    "x0": 72.0,
+    "top": 518.62464,
+    "x1": 538.5238559999999,
+    "bottom": 529.66464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 33,
+    "text": "the format of input data, instructions to run the model, and instructions to export the results. The outputs",
+    "x0": 72.0,
+    "top": 531.34464,
+    "x1": 530.92128,
+    "bottom": 542.38464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 34,
+    "text": "will be stored in CSV format with a metadata document describing the data structure of the output data.",
+    "x0": 72.0,
+    "top": 544.06464,
+    "x1": 527.5457039999991,
+    "bottom": 555.10464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 35,
+    "text": "POLICIES FOR ACCESS AND SHARING",
+    "x0": 72.0,
+    "top": 569.26464,
+    "x1": 277.43232,
+    "bottom": 580.3046400000001,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 36,
+    "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information",
+    "x0": 72.0,
+    "top": 581.98464,
+    "x1": 540.1931039999989,
+    "bottom": 593.0246400000001,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 37,
+    "text": "or websites for direct download and citations to all datasets will be provided to allow for accessibility and",
+    "x0": 72.0,
+    "top": 594.46464,
+    "x1": 537.1925279999999,
+    "bottom": 605.50464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 38,
+    "text": "correct attribution to original collectors. All methodological procedures for data quality control and",
+    "x0": 72.0,
+    "top": 607.1846400000001,
+    "x1": 509.25292799999977,
+    "bottom": 618.22464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 39,
+    "text": "aggregation will be described in the data documentation. This information will be provided in the form of",
+    "x0": 72.0,
+    "top": 619.90464,
+    "x1": 536.61288,
+    "bottom": 630.9446399999999,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 40,
+    "text": "supplementary documentation for publications, in the README.txt file, and at the repository (record-",
+    "x0": 72.0,
+    "top": 632.62464,
+    "x1": 521.97672,
+    "bottom": 643.66464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 41,
+    "text": "level). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the",
+    "x0": 72.0,
+    "top": 645.10464,
+    "x1": 529.273536,
+    "bottom": 656.14464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 42,
+    "text": "agnostic open access repository backed by UCSB and the California Digital Library (CDL), which",
+    "x0": 72.0,
+    "top": 657.82464,
+    "x1": 505.790544,
+    "bottom": 668.86464,
+    "avg_font_size": 11.040000000000008,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 43,
+    "text": "implements the latest best practices in data curation, publication, citation, and archival. Dryad assigns",
+    "x0": 72.0,
+    "top": 670.5446400000001,
+    "x1": 519.5172,
+    "bottom": 681.58464,
+    "avg_font_size": 11.040000000000008,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 44,
+    "text": "Digital Object Identifiers (DOIs) to deposited datasets and makes data discoverable through such services",
+    "x0": 72.0,
+    "top": 683.02464,
+    "x1": 537.2819040000002,
+    "bottom": 694.06464,
+    "avg_font_size": 11.040000000000008,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 45,
+    "text": "as the Thomson-Reuters Data Citation Index, Scopus, and Google Dataset Search. All data in Dryad is",
+    "x0": 72.0,
+    "top": 695.74464,
+    "x1": 522.889392,
+    "bottom": 706.78464,
+    "avg_font_size": 11.04000000000001,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 1,
+    "text": "publicly accessible and released under a CC0 license. Data will be linked to publications and vice versa",
+    "x0": 72.0,
+    "top": 73.66464000000008,
+    "x1": 527.5293600000002,
+    "bottom": 84.70464000000004,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 2,
+    "text": "through DOIs.",
+    "x0": 72.0,
+    "top": 86.1446400000001,
+    "x1": 135.56078399999998,
+    "bottom": 97.18464000000006,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 3,
+    "text": "Scripts and code for analyses: All scripts and code will be archived in supplementary information",
+    "x0": 72.0,
+    "top": 111.58464000000004,
+    "x1": 509.43292799999995,
+    "bottom": 122.62464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 4,
+    "text": "appendices in publications as well as uploaded to Zenodo through the Dryad repository submission",
+    "x0": 72.0,
+    "top": 124.30464000000006,
+    "x1": 507.90863999999993,
+    "bottom": 135.34464000000003,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 5,
+    "text": "process along with the sharable raw and processed data in order to allow citations and a better connection",
+    "x0": 72.0,
+    "top": 136.78464000000008,
+    "x1": 536.018736,
+    "bottom": 147.82464000000004,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 6,
+    "text": "to the research data curation and publication processes.",
+    "x0": 72.0,
+    "top": 149.5046400000001,
+    "x1": 314.481456,
+    "bottom": 160.54464000000007,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 7,
+    "text": "Scientist spotlight: All scientist spotlight biographies, assignments, and open-access readings will be",
+    "x0": 72.0,
+    "top": 174.70464000000004,
+    "x1": 519.56136,
+    "bottom": 185.74464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 8,
+    "text": "posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
+    "x0": 72.0,
+    "top": 187.42464000000007,
+    "x1": 483.51624,
+    "bottom": 198.46464000000003,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 9,
+    "text": "Workshop frameworks: Workshop material will be shared with UCSB’s Diversity Committee through",
+    "x0": 72.0,
+    "top": 212.6246400000001,
+    "x1": 530.626944,
+    "bottom": 223.66464000000008,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 10,
+    "text": "Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will",
+    "x0": 72.0,
+    "top": 225.34464000000003,
+    "x1": 535.8420719999996,
+    "bottom": 236.38464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 11,
+    "text": "also be shared through eSholarship for broader dissemination.",
+    "x0": 72.0,
+    "top": 238.06464000000005,
+    "x1": 344.50176,
+    "bottom": 249.10464000000002,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 12,
+    "text": "The PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist",
+    "x0": 72.0,
+    "top": 263.2646400000001,
+    "x1": 538.6155839999993,
+    "bottom": 274.30464000000006,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 13,
+    "text": "faculty in paying for open access journals.",
+    "x0": 72.0,
+    "top": 275.98464,
+    "x1": 257.9091839999999,
+    "bottom": 287.02464000000003,
+    "avg_font_size": 11.04000000000002,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 14,
+    "text": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+    "x0": 72.0,
+    "top": 301.18464000000006,
+    "x1": 397.196304,
+    "bottom": 312.22464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 15,
+    "text": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may",
+    "x0": 72.0,
+    "top": 313.9046400000001,
+    "x1": 512.7191519999999,
+    "bottom": 324.94464000000005,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 16,
+    "text": "freely build upon, enhance and reuse the works for any purposes without restriction under copyright or",
+    "x0": 72.0,
+    "top": 326.62464000000006,
+    "x1": 523.8208320000001,
+    "bottom": 337.66464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 17,
+    "text": "database law. CC0 does not exempt those who reuse the data from following community norms for",
+    "x0": 72.0,
+    "top": 339.1046400000001,
+    "x1": 508.3604159999997,
+    "bottom": 350.14464000000004,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 18,
+    "text": "scholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the",
+    "x0": 72.0,
+    "top": 351.82464000000004,
+    "x1": 522.0273119999999,
+    "bottom": 362.86464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 19,
+    "text": "original data authors.",
+    "x0": 72.0,
+    "top": 364.5446400000001,
+    "x1": 165.21292799999998,
+    "bottom": 375.58464000000004,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 20,
+    "text": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
+    "x0": 72.0,
+    "top": 389.74464000000006,
+    "x1": 383.14031999999986,
+    "bottom": 400.78464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 21,
+    "text": "UCSB Box will be used as the primary means to store and back up all collected input, generated output",
+    "x0": 72.0,
+    "top": 402.46464000000003,
+    "x1": 526.2808799999999,
+    "bottom": 413.50464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 22,
+    "text": "data sets and code, and educational materials over the course of the project and prior to data sharing. Box",
+    "x0": 72.0,
+    "top": 415.18464000000006,
+    "x1": 535.071936,
+    "bottom": 426.22464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 23,
+    "text": "provides encryption of data at rest and in-transit, detailed logging of file actions, two-factor",
+    "x0": 72.0,
+    "top": 427.6646400000001,
+    "x1": 474.28848,
+    "bottom": 438.70464000000004,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 24,
+    "text": "authentication, and access review of collaborators. Data will be accessed using Box Drive, which requires",
+    "x0": 72.0,
+    "top": 440.38464000000005,
+    "x1": 537.9409919999996,
+    "bottom": 451.42464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 25,
+    "text": "full disk encryption, firewall, and an antivirus software in order to install on a local computer.",
+    "x0": 72.0,
+    "top": 453.1046400000001,
+    "x1": 484.8789599999997,
+    "bottom": 464.14464000000004,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 26,
+    "text": "At the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and",
+    "x0": 72.0,
+    "top": 478.30464000000006,
+    "x1": 539.325047999999,
+    "bottom": 489.34464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 27,
+    "text": "code will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits",
+    "x0": 72.0,
+    "top": 491.02464000000003,
+    "x1": 496.4878559999997,
+    "bottom": 502.06464,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 28,
+    "text": "submitted to Dryad are curated prior to public release to conform with quality standards and enable future",
+    "x0": 72.0,
+    "top": 503.74464000000006,
+    "x1": 537.738383999999,
+    "bottom": 514.7846400000001,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 29,
+    "text": "reuse.",
+    "x0": 72.0,
+    "top": 516.2246400000001,
+    "x1": 97.95504000000001,
+    "bottom": 527.2646400000001,
+    "avg_font_size": 11.039999999999964,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 30,
+    "text": "The source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved,",
+    "x0": 72.0,
+    "top": 541.6646400000001,
+    "x1": 522.5869919999999,
+    "bottom": 552.70464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 31,
+    "text": "stored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three",
+    "x0": 72.0,
+    "top": 554.14464,
+    "x1": 537.3441840000003,
+    "bottom": 565.18464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 32,
+    "text": "planned publications. After the evaluation and refinement of the developed datasets and tools and once",
+    "x0": 72.0,
+    "top": 566.86464,
+    "x1": 524.5207679999994,
+    "bottom": 577.90464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 33,
+    "text": "the research is completed and published, the final version of the tools and the documentation will be",
+    "x0": 72.0,
+    "top": 579.58464,
+    "x1": 512.7299999999999,
+    "bottom": 590.62464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 34,
+    "text": "shared on the UCSB’s Dryad Data Repository. The final shareable instructional and teaching materials",
+    "x0": 72.0,
+    "top": 592.3046400000001,
+    "x1": 524.1664800000002,
+    "bottom": 603.34464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 35,
+    "text": "will also be shared via on a publicly accessible webpage ( Scientist Spotlight ) and UCSB Google Drive",
+    "x0": 72.0,
+    "top": 604.78464,
+    "x1": 522.566304,
+    "bottom": 615.82464,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAL+TimesNewRomanPS-ItalicMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 2,
+    "line_order": 36,
+    "text": "(workshop materials) and Dryad in pdf format.",
+    "x0": 72.0,
+    "top": 617.50464,
+    "x1": 278.2686240000001,
+    "bottom": 628.5446400000001,
+    "avg_font_size": 11.039999999999992,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  }
+]
