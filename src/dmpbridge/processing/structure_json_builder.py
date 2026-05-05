@@ -15,8 +15,10 @@ def build_narrative_json_from_blocks(
     skeleton_path: str | Path | None = None
 ) -> Dict[str, Any]:
     """
-    Build full RDA + DMPTool extension JSON skeleton,
-    but only fill narrative.template.section.
+    Build full RDA + DMPTool extension JSON skeleton.
+    Fill:
+    - narrative.template.title from document_title
+    - narrative.template.section from detected DMP sections/questions/answers
     """
 
     project_root = get_project_root()
@@ -38,6 +40,11 @@ def build_narrative_json_from_blocks(
         text = block.get("text", "").strip()
 
         if not text or label == "empty":
+            continue
+
+        # Document title should NOT become a narrative section
+        if label == "document_title":
+            output["narrative"]["template"]["title"] = text
             continue
 
         if label == "section":
@@ -63,12 +70,14 @@ def build_narrative_json_from_blocks(
                 }
                 sections.append(current_section)
 
+            question_order = len(current_section["question"]) + 1
+
             current_question = {
-                "id": f"question_{current_section['order']}_{len(current_section['question']) + 1}",
+                "id": f"question_{current_section['order']}_{question_order}",
                 "text": text,
-                "order": len(current_section["question"]) + 1,
+                "order": question_order,
                 "answer": {
-                    "id": f"answer_{current_section['order']}_{len(current_section['question']) + 1}",
+                    "id": f"answer_{current_section['order']}_{question_order}",
                     "json": {
                         "type": "text",
                         "answer": [

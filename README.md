@@ -6,11 +6,7 @@ DMP Bridge is an open-source (MIT License), Python-based pipeline that extract f
 dmpbridge/
 │
 ├── data/
-│   ├── raw_pdfs/                  # input PDFs (organized by type)
-│   │   ├── nih_pre_2026/
-│   │   ├── nih_current/
-│   │   ├── nsf/
-│   │   └── other/
+│   ├── raw_pdfs/                  # input PDFs 
 │   │
 │   ├── page_images/              # PDF → images (for Qwen2-VL)
 │   │   └── {pdf_name}/page_1.png

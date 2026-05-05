@@ -2,11 +2,22 @@ from typing import List, Dict
 import re
 
 
-def classify_line(block):
+def classify_line(block: Dict) -> str:
     text = block["text"].strip()
 
     if not text:
         return "empty"
+
+    # Document/template title, not a narrative section
+    title_patterns = [
+        r"^DATA MANAGEMENT AND SHARING PLAN$",
+        r"^DATA MANAGEMENT PLAN$",
+        r"^DMP$",
+    ]
+
+    for pattern in title_patterns:
+        if re.match(pattern, text, flags=re.IGNORECASE):
+            return "document_title"
 
     # Main NIH section: Element 1, Element 2, etc.
     if re.match(r"^Element\s+\d+:", text, flags=re.IGNORECASE):
@@ -29,7 +40,7 @@ def classify_line(block):
     if text.endswith(":"):
         return "question"
 
-    # Visual fallback
+    # Visual fallback, but avoid turning document title into section
     if block.get("is_bold") and (block.get("avg_font_size") or 0) > 11:
         return "section"
 

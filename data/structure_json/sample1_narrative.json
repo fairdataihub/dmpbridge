@@ -212,29 +212,22 @@
     "download_url": null,
     "template": {
       "id": null,
-      "title": null,
+      "title": "DATA MANAGEMENT AND SHARING PLAN",
       "description": null,
       "version": null,
       "section": [
         {
           "id": "section_1",
-          "title": "DATA MANAGEMENT AND SHARING PLAN",
-          "description": null,
-          "order": 1,
-          "question": []
-        },
-        {
-          "id": "section_2",
           "title": "Element 1: Data Type:",
           "description": null,
-          "order": 2,
+          "order": 1,
           "question": [
             {
-              "id": "question_2_1",
+              "id": "question_1_1",
               "text": "A. Types and amount of scientific data expected to be generated in the project:",
               "order": 1,
               "answer": {
-                "id": "answer_2_1",
+                "id": "answer_1_1",
                 "json": {
                   "type": "text",
                   "answer": [
@@ -249,11 +242,11 @@
               }
             },
             {
-              "id": "question_2_2",
+              "id": "question_1_2",
               "text": "B. Scientific data that will be preserved and shared, and the rationale for doing so:",
               "order": 2,
               "answer": {
-                "id": "answer_2_2",
+                "id": "answer_1_2",
                 "json": {
                   "type": "text",
                   "answer": [
@@ -268,11 +261,11 @@
               }
             },
             {
-              "id": "question_2_3",
+              "id": "question_1_3",
               "text": "C. Metadata, other relevant data, and associated documentation:",
               "order": 3,
               "answer": {
-                "id": "answer_2_3",
+                "id": "answer_1_3",
                 "json": {
                   "type": "text",
                   "answer": [
@@ -289,31 +282,31 @@
           ]
         },
         {
-          "id": "section_3",
+          "id": "section_2",
           "title": "Element 2: Related Tools, Software and/or Code:",
           "description": "Data will be analyzed with custom code by our statistical and computer science team. ActiGraph data will be\nprocessed and analyzed using ActiLife software which requires a paid license. All custom code and models\nwill also be shared in the data repository and on our project’s GitHub website, hosted as part of the UCSD\nAdvance Data Analytics Lab GitHub and titled “Deep Postures”.",
+          "order": 2,
+          "question": []
+        },
+        {
+          "id": "section_3",
+          "title": "Element 3: Standards:",
+          "description": "The following data will be created as a result of this project:\nObjective sedentary behavior metrics – no existing standards",
           "order": 3,
           "question": []
         },
         {
           "id": "section_4",
-          "title": "Element 3: Standards:",
-          "description": "The following data will be created as a result of this project:\nObjective sedentary behavior metrics – no existing standards",
-          "order": 4,
-          "question": []
-        },
-        {
-          "id": "section_5",
           "title": "Element 4: Data Preservation, Access, and Associated Timelines:",
           "description": null,
-          "order": 5,
+          "order": 4,
           "question": [
             {
-              "id": "question_5_1",
+              "id": "question_4_1",
               "text": "A. Repository where scientific data and metadata will be archived:",
               "order": 1,
               "answer": {
-                "id": "answer_5_1",
+                "id": "answer_4_1",
                 "json": {
                   "type": "text",
                   "answer": [
@@ -328,11 +321,11 @@
               }
             },
             {
-              "id": "question_5_2",
+              "id": "question_4_2",
               "text": "B. How scientific data will be findable and identifiable:",
               "order": 2,
               "answer": {
-                "id": "answer_5_2",
+                "id": "answer_4_2",
                 "json": {
                   "type": "text",
                   "answer": [
@@ -347,11 +340,11 @@
               }
             },
             {
-              "id": "question_5_3",
+              "id": "question_4_3",
               "text": "C. When and how long the scientific data will be made available:",
               "order": 3,
               "answer": {
-                "id": "answer_5_3",
+                "id": "answer_4_3",
                 "json": {
                   "type": "text",
                   "answer": [
@@ -368,17 +361,17 @@
           ]
         },
         {
-          "id": "section_6",
+          "id": "section_5",
           "title": "Element 5: Access, Distribution, or Reuse Considerations:",
           "description": null,
-          "order": 6,
+          "order": 5,
           "question": [
             {
-              "id": "question_6_1",
+              "id": "question_5_1",
               "text": "A. Factors affecting subsequent access, distribution, or reuse of scientific data:",
               "order": 1,
               "answer": {
-                "id": "answer_6_1",
+                "id": "answer_5_1",
                 "json": {
                   "type": "text",
                   "answer": [
@@ -393,11 +386,11 @@
               }
             },
             {
-              "id": "question_6_2",
+              "id": "question_5_2",
               "text": "B. Whether access to scientific data will be controlled:",
               "order": 2,
               "answer": {
-                "id": "answer_6_2",
+                "id": "answer_5_2",
                 "json": {
                   "type": "text",
                   "answer": [
@@ -414,10 +407,10 @@
           ]
         },
         {
-          "id": "section_7",
+          "id": "section_6",
           "title": "Element 6: Oversight of Data Management and Sharing:",
           "description": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The\nPI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to\nensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once\nthe main outcome manuscript has been published. The Statistician/Data Manager will work closely with the\nUniversity of California San Diego Library repository manager to ensure that the datasets, protocols, and\ncode are correctly stored and available for sharing.",
-          "order": 7,
+          "order": 6,
           "question": []
         }
       ]
