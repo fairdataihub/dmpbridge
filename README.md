@@ -67,7 +67,7 @@ dmpbridge/
 │   └── reports/
 │
 ├── schemas/
-│   └── structure_schema.json     # your intermediate JSON schema
+│   └── rda_dmp_dmptool_extension_skeleton.json     # your intermediate JSON schema
 │
 ├── tests/
 │
