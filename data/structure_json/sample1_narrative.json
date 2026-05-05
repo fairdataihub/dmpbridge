@@ -1,0 +1,426 @@
+{
+  "dmp": {
+    "title": null,
+    "description": null,
+    "dmp_id": {
+      "identifier": null,
+      "type": null
+    },
+    "created": null,
+    "modified": null,
+    "ethical_issues_exist": null,
+    "ethical_issues_description": null,
+    "ethical_issues_report": null,
+    "language": null,
+    "contact": {
+      "name": null,
+      "mbox": null,
+      "affiliation": [
+        {
+          "name": null,
+          "affiliation_id": {
+            "identifier": null,
+            "type": null
+          }
+        }
+      ],
+      "contact_id": [
+        {
+          "identifier": null,
+          "type": null
+        }
+      ]
+    },
+    "contributor": [
+      {
+        "name": null,
+        "contributor_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "affiliation": [
+          {
+            "name": null,
+            "affiliation_id": {
+              "identifier": null,
+              "type": null
+            }
+          }
+        ],
+        "role": []
+      }
+    ],
+    "dataset": [
+      {
+        "title": null,
+        "type": null,
+        "description": null,
+        "dataset_id": {
+          "identifier": null,
+          "type": null
+        },
+        "personal_data": null,
+        "sensitive_data": null,
+        "issued": null,
+        "metadata": [
+          {
+            "description": null,
+            "language": null,
+            "metadata_standard_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ],
+        "distribution": [
+          {
+            "title": null,
+            "byte_size": null,
+            "issued": null,
+            "data_access": null,
+            "license": [
+              {
+                "license_ref": null,
+                "start_date": null
+              }
+            ],
+            "host": {
+              "title": null,
+              "url": null,
+              "host_id": [
+                {
+                  "identifier": null,
+                  "type": null
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": null,
+        "relation_type": null,
+        "resource_type": null,
+        "type": null
+      }
+    ],
+    "alternate_identifier": [
+      {
+        "identifier": null,
+        "type": null
+      }
+    ],
+    "project": [
+      {
+        "title": null,
+        "description": null,
+        "project_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "start": null,
+        "end": null,
+        "funding": [
+          {
+            "name": null,
+            "funding_status": null,
+            "funder_id": {
+              "identifier": null,
+              "type": null
+            },
+            "grant_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rda_schema_version": null,
+  "provenance": null,
+  "status": null,
+  "privacy": null,
+  "featured": null,
+  "registered": null,
+  "research_domain": {
+    "name": null,
+    "research_domain_identifier": {
+      "identifier": null,
+      "type": null
+    }
+  },
+  "research_facility": [
+    {
+      "name": null,
+      "type": null,
+      "research_facility_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_opportunity": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "opportunity_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_project": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "project_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "version": [
+    {
+      "access_url": null,
+      "version": null
+    }
+  ],
+  "narrative": {
+    "download_url": null,
+    "template": {
+      "id": null,
+      "title": null,
+      "description": null,
+      "version": null,
+      "section": [
+        {
+          "id": "section_1",
+          "title": "DATA MANAGEMENT AND SHARING PLAN",
+          "description": null,
+          "order": 1,
+          "question": []
+        },
+        {
+          "id": "section_2",
+          "title": "Element 1: Data Type:",
+          "description": null,
+          "order": 2,
+          "question": [
+            {
+              "id": "question_2_1",
+              "text": "A. Types and amount of scientific data expected to be generated in the project:",
+              "order": 1,
+              "answer": {
+                "id": "answer_2_1",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies\nand the publicly available NHANES cohorts (wrist NHANES 2011-2014; hip/counts-NHANES 2003-2006).\nThe studies include (i) the RISE Study, (ii) the SOL-VIDA Study, (iii) the iWATCH Study, (iv) the MOCA Study,\n(v) the PHASE Study, (vi) the AusDiab Study, (vii) the ACT Study, and (viii) the WHISH accelerometer sub-\nstudy."
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            },
+            {
+              "id": "question_2_2",
+              "text": "B. Scientific data that will be preserved and shared, and the rationale for doing so:",
+              "order": 2,
+              "answer": {
+                "id": "answer_2_2",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library\nRepository sitting behavior metrics or analysis that were created in this project from the following UCSD-\nbased study datasets:\n(i) The RISE study\n(ii) The iWATCH study\n(iii) NHANES cohorts\nSufficient data from those datasets will be preserved to enable sharing to validate and replicate research\nfindings described in the Aims with those datasets only. Please see Element 5 for data access information\nabout other studies."
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            },
+            {
+              "id": "question_2_3",
+              "text": "C. Metadata, other relevant data, and associated documentation:",
+              "order": 3,
+              "answer": {
+                "id": "answer_2_3",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": "In addition to the data described above, code and models will be included in the repository and in on our\nproject’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep\nPostures”."
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section_3",
+          "title": "Element 2: Related Tools, Software and/or Code:",
+          "description": "Data will be analyzed with custom code by our statistical and computer science team. ActiGraph data will be\nprocessed and analyzed using ActiLife software which requires a paid license. All custom code and models\nwill also be shared in the data repository and on our project’s GitHub website, hosted as part of the UCSD\nAdvance Data Analytics Lab GitHub and titled “Deep Postures”.",
+          "order": 3,
+          "question": []
+        },
+        {
+          "id": "section_4",
+          "title": "Element 3: Standards:",
+          "description": "The following data will be created as a result of this project:\nObjective sedentary behavior metrics – no existing standards",
+          "order": 4,
+          "question": []
+        },
+        {
+          "id": "section_5",
+          "title": "Element 4: Data Preservation, Access, and Associated Timelines:",
+          "description": null,
+          "order": 5,
+          "question": [
+            {
+              "id": "question_5_1",
+              "text": "A. Repository where scientific data and metadata will be archived:",
+              "order": 1,
+              "answer": {
+                "id": "answer_5_1",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": "De-identified data will be uploaded to the University of California San Diego Library repository."
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            },
+            {
+              "id": "question_5_2",
+              "text": "B. How scientific data will be findable and identifiable:",
+              "order": 2,
+              "answer": {
+                "id": "answer_5_2",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": "Data will be findable via publications and on our project’s GitHub website, hosted as part of the UCSD\nAdvance Data Analytics Lab GitHub and titled “Deep Postures”."
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            },
+            {
+              "id": "question_5_3",
+              "text": "C. When and how long the scientific data will be made available:",
+              "order": 3,
+              "answer": {
+                "id": "answer_5_3",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": "The research community will have access to data when the main outcome manuscript has been published.\n$2,500 in years 2-5 of the project has been budgeted for preparing the data that is able to be stored in the\nrepository (the RISE study, the iWATCH study, and NHANES) and for data storage on the University of\nCalifornia San Diego Library repository. We anticipate data being available for the foreseeable future\n(minimum of at least 5 years) after the study has been completed. The University of California San Diego\nLibrary repository does not currently have a limit on how long data can be stored."
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section_6",
+          "title": "Element 5: Access, Distribution, or Reuse Considerations:",
+          "description": null,
+          "order": 6,
+          "question": [
+            {
+              "id": "question_6_1",
+              "text": "A. Factors affecting subsequent access, distribution, or reuse of scientific data:",
+              "order": 1,
+              "answer": {
+                "id": "answer_6_1",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": "The following studies have independent data use agreement & approved paper proposal processes for use\nof their data that are specific to each institution that collected the data: (i) the SOL-VIDA Study, (ii) the\nMOCA Study, (iii) the PHASE Study, (iv) the AusDiab Study, (v) the ACT Study, and (vi) the WHISH\naccelerometer sub-study such as data use agreements or approved publication proposals. We will be\nsecuring the appropriate approvals from each institution to use their data for purposes of this study\nincluding publications, but are unable to publicly share their data in our study data repository Researchers\nwho wish to use data from those studies will need to follow those studies data use protocols to inquire\n:\nabout using their data\n(i) the SOL-VIDA Study – Data requests may be made by following instructions on the Hispanic Community\nHealth Study/ Study of Latinos dbGap page.\n(ii) the MOCA Study – Data requests may be made by following MOCA Study policies\n(iii) the PHASE Study – Data requests may be made by following PHASE Study policies\n(iv) the AusDiab Study – Data may be requested by following AusDiab policies available from the AusDiab\nstudy website, hosted by the Baker Heart & Diabetes Institute.\n(v) the ACT Study - Data are managed and stored in the ACT Data Repository and sharing requests may\nbe made according to the policies and procedures available on the “Work With Us” page of the Adult\nChanges in Thought Study website.\n(vi) the WHISH accelerometer sub-study – Data are managed by the Women’s Health Initiative\nCoordinating Center. Requests may be made according to policies and procedures available on the\n“Working with WHI Data” page on the WHI study website."
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            },
+            {
+              "id": "question_6_2",
+              "text": "B. Whether access to scientific data will be controlled:",
+              "order": 2,
+              "answer": {
+                "id": "answer_6_2",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": "The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It\nwill be deposited into the UC San Diego Library Data repository along with study protocols, code, and models\nfor public use. De-identified data will be available after the main outcome papers are published.\nProtections for privacy, rights, and confidentiality of human research participants:\nAll data used in this study was de-identified prior to use."
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section_7",
+          "title": "Element 6: Oversight of Data Management and Sharing:",
+          "description": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The\nPI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to\nensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once\nthe main outcome manuscript has been published. The Statistician/Data Manager will work closely with the\nUniversity of California San Diego Library repository manager to ensure that the datasets, protocols, and\ncode are correctly stored and available for sharing.",
+          "order": 7,
+          "question": []
+        }
+      ]
+    }
+  }
+}
