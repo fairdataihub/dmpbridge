@@ -1,0 +1,2745 @@
+[
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 1,
+    "text": "Center for Bio-Inspired Energy Science",
+    "x0": 77.99999675,
+    "top": 66.15527063153024,
+    "x1": 300.10574020759367,
+    "bottom": 79.3552700815302,
+    "avg_font_size": 13.19999944999995,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 2,
+    "text": "1. Data sharing and preservation",
+    "x0": 77.99999675,
+    "top": 90.15526963153025,
+    "x1": 262.8721943849914,
+    "bottom": 103.3552690815302,
+    "avg_font_size": 13.19999944999995,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 3,
+    "text": "Data management plans should describe whether and how data generated in the course",
+    "x0": 77.99999675,
+    "top": 128.51928828276925,
+    "x1": 527.2714175308979,
+    "bottom": 140.61678717870677,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 4,
+    "text": "of the proposed research will be shared and preserved. If the plan is not to share and/or",
+    "x0": 77.99999675,
+    "top": 142.0192877202693,
+    "x1": 527.8711107559109,
+    "bottom": 154.1167866162068,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 5,
+    "text": "preserve certain data, then the plan must explain the basis of the decision (for example,",
+    "x0": 77.99999675,
+    "top": 154.76928718901922,
+    "x1": 526.3434448190222,
+    "bottom": 166.86678608495674,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 6,
+    "text": "cost/benefit considerations, other parameters of feasibility, scientific appropriateness, or",
+    "x0": 77.99999675,
+    "top": 168.26928662651926,
+    "x1": 531.3456975611363,
+    "bottom": 180.36678552245678,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 7,
+    "text": "limitations discussed in #4). At a minimum, DMPs must describe how data sharing and",
+    "x0": 77.99999675,
+    "top": 181.7692860640193,
+    "x1": 525.1812776419046,
+    "bottom": 193.86678495995682,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 8,
+    "text": "preservation will enable validation of results, or how results could be validated if data",
+    "x0": 77.99999675,
+    "top": 194.51928553276923,
+    "x1": 518.5571126934527,
+    "bottom": 206.61678442870675,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 9,
+    "text": "are not shared or preserved.",
+    "x0": 77.99999675,
+    "top": 208.01928497026927,
+    "x1": 223.2260409739146,
+    "bottom": 220.1167838662068,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 10,
+    "text": "Roles & Responsibilities. For the proposed research, Director Samuel Stupp with help from the",
+    "x0": 77.99999675,
+    "top": 233.63330332988232,
+    "x1": 501.44499491158075,
+    "bottom": 244.62830272175734,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular",
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 11,
+    "text": "Executive Director of Research will take the lead and responsibility for coordinating and ensuring data",
+    "x0": 77.99999675,
+    "top": 246.38330279863237,
+    "x1": 529.7487964322555,
+    "bottom": 257.3783021905074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 12,
+    "text": "storage and access and communicating expectations to all investigators. However, all senior",
+    "x0": 77.99999675,
+    "top": 259.8833022361323,
+    "x1": 482.0064017623981,
+    "bottom": 270.8783016280073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 13,
+    "text": "investigators will also be involved in managing, storing, and disseminating the results of the project",
+    "x0": 77.99999675,
+    "top": 272.63330170488234,
+    "x1": 516.3891378119603,
+    "bottom": 283.62830109675735,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 14,
+    "text": "and will be responsible for checking that the plan is being followed.",
+    "x0": 77.99999675,
+    "top": 286.1333011423823,
+    "x1": 376.544770073134,
+    "bottom": 297.12830053425733,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 15,
+    "text": "Data Types and Sources. A brief, high-level description of the data to be generated or used through",
+    "x0": 77.99999675,
+    "top": 334.1332991423823,
+    "x1": 520.7207447783013,
+    "bottom": 345.12829853425734,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic",
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 16,
+    "text": "the course of the proposed research and which of these are considered Digital Research Data",
+    "x0": 77.99999675,
+    "top": 347.6332985798823,
+    "x1": 488.90873417880204,
+    "bottom": 358.6282979717573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 17,
+    "text": "necessary to Validate the research findings.",
+    "x0": 77.99999675,
+    "top": 361.1332980173823,
+    "x1": 268.90355790818455,
+    "bottom": 372.1282974092573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 18,
+    "text": "The proposed research in this proposal includes both computational and experimental data that will be",
+    "x0": 77.99999675,
+    "top": 385.1332970173823,
+    "x1": 527.32805040812,
+    "bottom": 396.1282964092573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 19,
+    "text": "generated at Northwestern University and its five partner institutions (Columbia University, Harvard",
+    "x0": 77.99999675,
+    "top": 397.8832964861323,
+    "x1": 519.9159048118365,
+    "bottom": 408.8782958780073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 20,
+    "text": "University, University of Michigan, and University of Pittsburgh). The computational data includes",
+    "x0": 77.99999675,
+    "top": 411.3832959236323,
+    "x1": 514.6608896816216,
+    "bottom": 422.37829531550733,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 21,
+    "text": "coarse-grained and atomistic simulations, finite element analysis, etc., which yield trajectories or",
+    "x0": 77.99999675,
+    "top": 424.8832953611323,
+    "x1": 503.80826552898714,
+    "bottom": 435.8782947530073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 22,
+    "text": "ensembles of configurations. The experimental data is generated by a variety of different sources",
+    "x0": 77.99999675,
+    "top": 437.6332948298823,
+    "x1": 503.6904469387235,
+    "bottom": 448.6282942217573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 23,
+    "text": "include spectroscopy, microscopy, crystallography, magnetic measurements, and X-ray scattering (from",
+    "x0": 77.99999675,
+    "top": 451.1332942673823,
+    "x1": 533.4096017777742,
+    "bottom": 462.12829365925734,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 24,
+    "text": "the Advanced Photon Source at Argonne National Lab).",
+    "x0": 77.99999675,
+    "top": 463.8832937361323,
+    "x1": 323.2312574945304,
+    "bottom": 474.87829312800733,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 25,
+    "text": "In most cases, the raw data will be converted to some other format (graph, table, schematic, video, etc.)",
+    "x0": 77.99999675,
+    "top": 488.6332927048823,
+    "x1": 532.4857396840922,
+    "bottom": 499.6282920967573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 26,
+    "text": "prior to use in publications, conference talks, etc.",
+    "x0": 77.99999675,
+    "top": 501.3832921736323,
+    "x1": 294.10876883296737,
+    "bottom": 512.3782915655073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 27,
+    "text": "Content and Format. A statement of plans for data and metadata content and format including, where",
+    "x0": 77.99999675,
+    "top": 550.1332901423823,
+    "x1": 532.4257520457154,
+    "bottom": 561.1282895342573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic",
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 28,
+    "text": "applicable, a description of documentation plans, annotation of relevant software, and the rationale for",
+    "x0": 77.99999675,
+    "top": 562.8832896111323,
+    "x1": 533.3229978290335,
+    "bottom": 573.8782890030074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 29,
+    "text": "the selection of appropriate standards. (Existing, accepted community standards should be used where",
+    "x0": 77.99999675,
+    "top": 576.3832890486323,
+    "x1": 528.8198564459612,
+    "bottom": 587.3782884405073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 30,
+    "text": "possible. Where community standards are missing or inadequate, the DMP could propose alternate",
+    "x0": 77.99999675,
+    "top": 589.8832884861323,
+    "x1": 514.5857871140475,
+    "bottom": 600.8782878780073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 31,
+    "text": "strategies that facilitate data sharing, and should advise the sponsoring program of any need to",
+    "x0": 77.99999675,
+    "top": 602.6332879548823,
+    "x1": 499.24663969805573,
+    "bottom": 613.6282873467574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 32,
+    "text": "develop or generalize standards.)",
+    "x0": 77.99999675,
+    "top": 616.1332873923823,
+    "x1": 225.35410298124413,
+    "bottom": 627.1282867842573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 33,
+    "text": "Data are output from the various instruments in lab in formats, which are occasionally proprietary.",
+    "x0": 77.99999675,
+    "top": 640.1332863923823,
+    "x1": 510.12519360728277,
+    "bottom": 651.1282857842573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 34,
+    "text": "When possible, the data are converted to comma delimited or other universally accessible formats. If",
+    "x0": 77.99999675,
+    "top": 664.1332853923823,
+    "x1": 521.1928931796275,
+    "bottom": 675.1282847842573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 35,
+    "text": "the format is not comma delimited, all instruments can export into a format compatible with common",
+    "x0": 77.99999675,
+    "top": 677.6332848298823,
+    "x1": 523.6892505046138,
+    "bottom": 688.6282842217573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 36,
+    "text": "software such as Microsoft Excel, OriginPro, Shelx, etc. Files are typically stored electronically on",
+    "x0": 77.99999675,
+    "top": 690.3832842986322,
+    "x1": 512.9868737255462,
+    "bottom": 701.3782836905073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 37,
+    "text": "group servers with file names that are related to lab notebook pages. Data sharing and preservation will",
+    "x0": 77.99999675,
+    "top": 703.8832837361323,
+    "x1": 531.8898394910976,
+    "bottom": 714.8782831280073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 1,
+    "line_order": 38,
+    "text": "enable validation of results by enabling students to repeat synthetic preps and data analysis. Every",
+    "x0": 77.99999675,
+    "top": 717.3832831736323,
+    "x1": 509.3210566532886,
+    "bottom": 728.3782825655073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 1,
+    "text": "piece of data fitting including the equations used to fit the data are backed up on local group servers or",
+    "x0": 77.99999675,
+    "top": 58.13331064238241,
+    "x1": 528.8359900111651,
+    "bottom": 69.12831003425742,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 2,
+    "text": "to secure cloud services. This enables validation through equation checking, reproducing data and",
+    "x0": 77.99999675,
+    "top": 71.63331007988245,
+    "x1": 508.1886408504726,
+    "bottom": 82.62830947175746,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 3,
+    "text": "analyses. Binary data files will be accompanied by a text file describing their content and by source",
+    "x0": 77.99999675,
+    "top": 84.38330954863238,
+    "x1": 515.4020255800378,
+    "bottom": 95.3783089405074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 4,
+    "text": "code for reading the binary format. The video will be encoded following standard conventions readable",
+    "x0": 77.99999675,
+    "top": 97.88330898613242,
+    "x1": 532.2928181512544,
+    "bottom": 108.87830837800743,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 5,
+    "text": "by the majority of widely and freely available video decoding programs. Lossless compression of the",
+    "x0": 77.99999675,
+    "top": 110.63330845488247,
+    "x1": 522.7606223734293,
+    "bottom": 121.62830784675748,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 6,
+    "text": "data files may be performed on large data sets.",
+    "x0": 77.99999675,
+    "top": 124.13330789238239,
+    "x1": 282.6013230374443,
+    "bottom": 135.1283072842574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 7,
+    "text": "Public talks and outreach activities will generate audio and video files (.mpeg, .avi etc) and is expected",
+    "x0": 77.99999675,
+    "top": 148.1333068923824,
+    "x1": 530.6613574641094,
+    "bottom": 159.1283062842574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 8,
+    "text": "to be less than XX GB. Experimental techniques will generate text and Microsoft Office files and",
+    "x0": 77.99999675,
+    "top": 161.63330632988243,
+    "x1": 506.3690306012897,
+    "bottom": 172.62830572175744,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 9,
+    "text": "videos that are expected to be less than XX GB.",
+    "x0": 77.99999675,
+    "top": 174.38330579863236,
+    "x1": 288.6234554365221,
+    "bottom": 185.37830519050738,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 10,
+    "text": "Data Sharing and Data Preservation. A description of the plans for data sharing and preservation.",
+    "x0": 77.99999675,
+    "top": 199.13330476738247,
+    "x1": 521.1584417975639,
+    "bottom": 210.12830415925748,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic",
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 11,
+    "text": "This should include, where appropriate:",
+    "x0": 77.99999675,
+    "top": 211.8833042361324,
+    "x1": 254.57883321354694,
+    "bottom": 222.87830362800742,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 12,
+    "text": "the anticipated means for sharing and rationale for any restrictions on who may access the data",
+    "x0": 107.99999549999998,
+    "top": 236.6333032048824,
+    "x1": 531.0606641974714,
+    "bottom": 247.6283025967574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 13,
+    "text": "and under what conditions;",
+    "x0": 107.99999549999998,
+    "top": 249.38330267363244,
+    "x1": 229.21555694535022,
+    "bottom": 260.37830206550746,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 14,
+    "text": "a timeline for sharing and preservation that addresses both the minimum length of time the data",
+    "x0": 107.99999549999998,
+    "top": 262.88330211113237,
+    "x1": 530.0462599147381,
+    "bottom": 273.8783015030074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 15,
+    "text": "will be available and any anticipated delay to data access after research findings are published;",
+    "x0": 107.99999549999998,
+    "top": 275.6333015798824,
+    "x1": 531.1243959158148,
+    "bottom": 286.6283009717574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 16,
+    "text": "any special requirements for data sharing, for example, proprietary software needed to access",
+    "x0": 107.99999549999998,
+    "top": 289.13330101738245,
+    "x1": 522.1772773184385,
+    "bottom": 300.12830040925746,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 17,
+    "text": "or interpret data, applicable policies, provisions, and licenses for re-use and re-distribution, and",
+    "x0": 107.99999549999998,
+    "top": 301.8833004861324,
+    "x1": 533.1966352334725,
+    "bottom": 312.8782998780074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 18,
+    "text": "for the production of derivatives, including guidance for how data and data products should be",
+    "x0": 107.99999549999998,
+    "top": 315.3832999236324,
+    "x1": 526.3802962976096,
+    "bottom": 326.37829931550743,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 19,
+    "text": "cited;",
+    "x0": 107.99999549999998,
+    "top": 328.88329936113246,
+    "x1": 133.02318587836587,
+    "bottom": 339.87829875300747,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 20,
+    "text": "any resources and capabilities (equipment, connections, systems, software, expertise, etc.)",
+    "x0": 107.99999549999998,
+    "top": 341.6332988298824,
+    "x1": 503.9337843987569,
+    "bottom": 352.6282982217574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 21,
+    "text": "requested in the research proposal that are needed to meet the stated goals for sharing and",
+    "x0": 107.99999549999998,
+    "top": 355.13329826738243,
+    "x1": 508.0400504816638,
+    "bottom": 366.12829765925744,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 22,
+    "text": "preservation. (This could reference the relevant section of the associated research proposal and",
+    "x0": 107.99999549999998,
+    "top": 367.88329773613236,
+    "x1": 527.9578047517573,
+    "bottom": 378.8782971280074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 23,
+    "text": "budget request);",
+    "x0": 107.99999549999998,
+    "top": 381.3832971736324,
+    "x1": 179.93846709856237,
+    "bottom": 392.3782965655074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 24,
+    "text": "cost/benefit considerations to support whether/where the data will be preserved after direct",
+    "x0": 107.99999549999998,
+    "top": 394.8832966111323,
+    "x1": 509.4619376255936,
+    "bottom": 405.87829600300734,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 25,
+    "text": "project funding ends and any plans for the transfer of responsibilities for sharing and",
+    "x0": 107.99999549999998,
+    "top": 407.63329607988237,
+    "x1": 483.6675233471857,
+    "bottom": 418.6282954717574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 26,
+    "text": "preservation;",
+    "x0": 107.99999549999998,
+    "top": 421.1332955173824,
+    "x1": 166.81547029535392,
+    "bottom": 432.1282949092574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 27,
+    "text": "whether, when, or under what conditions the management responsibility for the research data",
+    "x0": 107.99999549999998,
+    "top": 433.88329498613246,
+    "x1": 518.9462695272379,
+    "bottom": 444.87829437800747,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 28,
+    "text": "will be transferred to a third party (e.g. institutional, or community repository);",
+    "x0": 107.99999549999998,
+    "top": 447.3832944236325,
+    "x1": 457.89340371710625,
+    "bottom": 458.3782938155075,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 29,
+    "text": "any future decision points regarding the management of the research data including plans to",
+    "x0": 107.99999549999998,
+    "top": 460.8832938611323,
+    "x1": 514.7599293766689,
+    "bottom": 471.8782932530073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 30,
+    "text": "reevaluate the costs and benefits of data sharing and preservation.",
+    "x0": 107.99999549999998,
+    "top": 473.63329332988235,
+    "x1": 400.88204900908056,
+    "bottom": 484.62829272175736,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 31,
+    "text": "All data pertaining to any published work will be made available to any person on request. Numerical",
+    "x0": 77.99999675,
+    "top": 497.63329232988247,
+    "x1": 525.1914753951964,
+    "bottom": 508.6282917217575,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 32,
+    "text": "published data as well as the original raw data files will be freely accessible either as supplementary",
+    "x0": 77.99999675,
+    "top": 511.1332917673825,
+    "x1": 518.1394158108569,
+    "bottom": 522.1282911592575,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 33,
+    "text": "data files included with published papers, or as files posted on the web sites of the laboratories in the",
+    "x0": 77.99999675,
+    "top": 524.6332912048823,
+    "x1": 520.9357016744677,
+    "bottom": 535.6282905967573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 34,
+    "text": "Center. Additional data or programs required by third parties will be provided on request. Data that",
+    "x0": 77.99999675,
+    "top": 537.3832906736324,
+    "x1": 512.9914332785314,
+    "bottom": 548.3782900655074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 35,
+    "text": "may support intellectual property claims will be published only after we seek advice from the",
+    "x0": 77.99999675,
+    "top": 550.8832901111324,
+    "x1": 488.86084338592025,
+    "bottom": 561.8782895030074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 36,
+    "text": "Northwestern Innovation and New Ventures Office (INVO). Such advice will be sought in a timely",
+    "x0": 77.99999675,
+    "top": 563.6332895798824,
+    "x1": 513.2066004663907,
+    "bottom": 574.6282889717575,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 37,
+    "text": "manner. Otherwise, there are no restrictions on who will be allowed to use the data generated after",
+    "x0": 77.99999675,
+    "top": 577.1332890173825,
+    "x1": 510.2006606126372,
+    "bottom": 588.1282884092575,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 38,
+    "text": "publishing is complete, provided that the requester acknowledges the original work. A requester can",
+    "x0": 77.99999675,
+    "top": 590.6332884548823,
+    "x1": 517.259044922539,
+    "bottom": 601.6282878467573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 39,
+    "text": "use data output of our work, provided guidelines by the publisher for use of published data are",
+    "x0": 77.99999675,
+    "top": 603.3832879236323,
+    "x1": 492.85414479453283,
+    "bottom": 614.3782873155074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 40,
+    "text": "followed.",
+    "x0": 77.99999675,
+    "top": 616.8832873611324,
+    "x1": 119.82253649489411,
+    "bottom": 627.8782867530074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 41,
+    "text": "Electronic files are stored on secure servers hosted by the individual research groups and safeguarded",
+    "x0": 77.99999675,
+    "top": 640.8832863611325,
+    "x1": 524.2367361568017,
+    "bottom": 651.8782857530075,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 42,
+    "text": "by automated backup systems and/or backups to off-site servers maintained by their institution. We",
+    "x0": 77.99999675,
+    "top": 654.3832857986323,
+    "x1": 513.8612845942351,
+    "bottom": 665.3782851905073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 43,
+    "text": "project that all of these systems will be in place for at least 10 years. All non-electronic data including",
+    "x0": 77.99999675,
+    "top": 667.1332852673823,
+    "x1": 528.5410876774539,
+    "bottom": 678.1282846592574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 44,
+    "text": "detailed experimental procedures and observations are recorded in laboratory notebooks that do not",
+    "x0": 77.99999675,
+    "top": 680.6332847048824,
+    "x1": 515.0903711160757,
+    "bottom": 691.6282840967574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 45,
+    "text": "leave the senior investigator's lab. Data should be accessible to the rest of the laboratory, but access is",
+    "x0": 77.99999675,
+    "top": 693.3832841736324,
+    "x1": 524.6118936169963,
+    "bottom": 704.3782835655074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 2,
+    "line_order": 46,
+    "text": "typically revoked when junior investigators leave the lab.",
+    "x0": 77.99999675,
+    "top": 706.8832836111325,
+    "x1": 330.1338985569203,
+    "bottom": 717.8782830030075,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 1,
+    "text": "Data will also be deposited into Northwestern Libraries’ institutional repository, Arch, upon",
+    "x0": 77.99999675,
+    "top": 58.1333106423823,
+    "x1": 480.95989738500367,
+    "bottom": 69.12831003425731,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 2,
+    "text": "publication. https://arch.library.northwestern.edu/ Arch assigns DOIs, making it easy to find the data.",
+    "x0": 77.99999675,
+    "top": 71.63331007988234,
+    "x1": 527.5789471050431,
+    "bottom": 82.62830947175735,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 3,
+    "text": "Necessary metadata and other resources to make the data accessible to future users will be submitted.",
+    "x0": 77.99999675,
+    "top": 84.38330954863238,
+    "x1": 523.6294960946035,
+    "bottom": 95.3783089405074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 4,
+    "text": "Arch will preserve the data for future use. External investigators may choose to instead archive their",
+    "x0": 77.99999675,
+    "top": 97.88330898613242,
+    "x1": 518.7508617063788,
+    "bottom": 108.87830837800743,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 5,
+    "text": "data with similar repositories provided by the partner institution (such as Academic Commons at",
+    "x0": 77.99999675,
+    "top": 110.63330845488247,
+    "x1": 502.6380554099223,
+    "bottom": 121.62830784675748,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 6,
+    "text": "Columbia University, D-Scholarship@Pitt at the University of Pittsburgh, and Harvard University",
+    "x0": 77.99999675,
+    "top": 124.1333078923825,
+    "x1": 509.133007286124,
+    "bottom": 135.12830728425752,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 7,
+    "text": "Archives).",
+    "x0": 77.99999675,
+    "top": 137.6333073298823,
+    "x1": 124.08952316710298,
+    "bottom": 148.62830672175733,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 8,
+    "text": "Rationale. A discussion of the rationale or justification for the proposed data management plan",
+    "x0": 77.99999675,
+    "top": 185.63330532988232,
+    "x1": 500.57278101779985,
+    "bottom": 196.62830472175733,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic",
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 9,
+    "text": "including, for example, the potential impact of the data within the immediate field and in other fields,",
+    "x0": 77.99999675,
+    "top": 199.13330476738236,
+    "x1": 523.4255618781007,
+    "bottom": 210.12830415925737,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 10,
+    "text": "and any broader societal impact.",
+    "x0": 77.99999675,
+    "top": 211.8833042361324,
+    "x1": 223.21769268676238,
+    "bottom": 222.87830362800742,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 11,
+    "text": "The Department of Energy stipulates in their \"Statement on Digital Data Management\" that \"To the",
+    "x0": 77.99999675,
+    "top": 236.6333032048825,
+    "x1": 514.7899041055429,
+    "bottom": 247.62830259675752,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 12,
+    "text": "greatest extent and with the fewest constraints possible, and consistent with the requirements and other",
+    "x0": 77.99999675,
+    "top": 249.38330267363233,
+    "x1": 530.0865542840583,
+    "bottom": 260.37830206550734,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 13,
+    "text": "principles of this Statement, data sharing should make digital research data available to and useful for",
+    "x0": 77.99999675,
+    "top": 262.88330211113237,
+    "x1": 524.8749610262081,
+    "bottom": 273.8783015030074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 14,
+    "text": "the scientific community, industry, and the public.\" The Center will make every effort to comply with",
+    "x0": 77.99999675,
+    "top": 275.6333015798824,
+    "x1": 523.8981738709085,
+    "bottom": 286.6283009717574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 15,
+    "text": "these guidelines.",
+    "x0": 77.99999675,
+    "top": 289.13330101738245,
+    "x1": 151.26405573483072,
+    "bottom": 300.12830040925746,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 16,
+    "text": "Data that is not deemed to be useful for a publication may still be archived at the discretion of the",
+    "x0": 77.99999675,
+    "top": 313.13330001738234,
+    "x1": 506.8679833856228,
+    "bottom": 324.12829940925735,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 17,
+    "text": "senior investigator overseeing the work, taking into the costs and benefits of doing so.",
+    "x0": 77.99999675,
+    "top": 326.6332994548824,
+    "x1": 456.23808045257925,
+    "bottom": 337.6282988467574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 18,
+    "text": "The data acquired and preserved in the context of this proposal will be further governed by policies of",
+    "x0": 77.99999675,
+    "top": 350.6332984548825,
+    "x1": 529.1420507484127,
+    "bottom": 361.6282978467575,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 19,
+    "text": "the Northwestern University and its partner institutions pertaining to intellectual property, record",
+    "x0": 77.99999675,
+    "top": 364.1332978923823,
+    "x1": 503.42762409884847,
+    "bottom": 375.1282972842573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 20,
+    "text": "retention, and data management.",
+    "x0": 77.99999675,
+    "top": 376.88329736113235,
+    "x1": 221.14602612308178,
+    "bottom": 387.87829675300736,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 21,
+    "text": "2. Data used in publications",
+    "x0": 77.99999675,
+    "top": 415.65525606903043,
+    "x1": 233.81989921950372,
+    "bottom": 428.8552555190304,
+    "avg_font_size": 13.19999944999995,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 22,
+    "text": "Data management plans should provide a plan for making all research data displayed in",
+    "x0": 77.99999675,
+    "top": 454.0192747202693,
+    "x1": 531.7004727452713,
+    "bottom": 466.11677361620684,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 23,
+    "text": "publications resulting from the proposed research open, machine-readable, and digitally",
+    "x0": 77.99999675,
+    "top": 467.51927415776936,
+    "x1": 531.8890898629536,
+    "bottom": 479.6167730537069,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 24,
+    "text": "accessible to the public at the time of publication. This includes data that are displayed",
+    "x0": 77.99999675,
+    "top": 480.2692736265194,
+    "x1": 524.0475344141439,
+    "bottom": 492.3667725224569,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 25,
+    "text": "in charts, figures, images, etc. In addition, the underlying digital research data used to",
+    "x0": 77.99999675,
+    "top": 493.7692730640192,
+    "x1": 520.7817296757604,
+    "bottom": 505.86677195995674,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 26,
+    "text": "generate the displayed data should be made as accessible as possible to the public in",
+    "x0": 77.99999675,
+    "top": 506.51927253276926,
+    "x1": 508.7119942781248,
+    "bottom": 518.6167714287068,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 27,
+    "text": "accordance with the Principles published in the DOE Policy for Digital Research Data",
+    "x0": 77.99999675,
+    "top": 520.0192719702693,
+    "x1": 520.3133954202743,
+    "bottom": 532.1167708662068,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 28,
+    "text": "Management. The published article should indicate how these data can be accessed.",
+    "x0": 77.99999675,
+    "top": 533.5192714077693,
+    "x1": 508.1261450030765,
+    "bottom": 545.6167703037069,
+    "avg_font_size": 12.097498895937548,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 29,
+    "text": "Research conducted within the Center will be published in appropriate scientific journals. The",
+    "x0": 77.99999675,
+    "top": 558.3832897986323,
+    "x1": 491.41031212969256,
+    "bottom": 569.3782891905073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 30,
+    "text": "publisher may restrict the redistribution of that data. When not prohibitively expensive, open access",
+    "x0": 77.99999675,
+    "top": 571.8832892361323,
+    "x1": 516.4484571571395,
+    "bottom": 582.8782886280073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 31,
+    "text": "will be selected. This will be supplemented by publishing the data in a preprint repository such as the",
+    "x0": 77.99999675,
+    "top": 585.3832886736324,
+    "x1": 522.8840350932873,
+    "bottom": 596.3782880655074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 32,
+    "text": "arXiv subsequent to peer-reviewed publication if possible. All publishers we previously worked with",
+    "x0": 77.99999675,
+    "top": 598.1332881423824,
+    "x1": 521.3436238023481,
+    "bottom": 609.1282875342574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 33,
+    "text": "allow arXiv publication or open access, so we do not anticipate a problem. Crystallographic data will",
+    "x0": 77.99999675,
+    "top": 611.6332875798824,
+    "x1": 522.7493518969515,
+    "bottom": 622.6282869717575,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 34,
+    "text": "be deposited into the ICSD or the CCDC databases for broad access. Data will also be disseminated",
+    "x0": 77.99999675,
+    "top": 624.3832870486323,
+    "x1": 516.6688043971324,
+    "bottom": 635.3782864405073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 35,
+    "text": "through seminars at conferences and at other academic institutions. Raw data files can be provided to",
+    "x0": 77.99999675,
+    "top": 637.8832864861323,
+    "x1": 523.0344655068965,
+    "bottom": 648.8782858780073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 36,
+    "text": "others upon request, but will be limited to their personal use only and cannot be redistributed without",
+    "x0": 77.99999675,
+    "top": 651.3832859236323,
+    "x1": 522.7870260453816,
+    "bottom": 662.3782853155074,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 37,
+    "text": "written consent from the PI.",
+    "x0": 77.99999675,
+    "top": 664.1332853923824,
+    "x1": 201.02409793649556,
+    "bottom": 675.1282847842574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 38,
+    "text": "Access to data and results prior to publication or file for intellectual property is provided to all",
+    "x0": 77.99999675,
+    "top": 688.1332843923823,
+    "x1": 492.53164083102286,
+    "bottom": 699.1282837842573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 39,
+    "text": "personnel involved in the project, after publication or filing for provisional patents, the data will be in",
+    "x0": 77.99999675,
+    "top": 701.6332838298823,
+    "x1": 524.8968769042959,
+    "bottom": 712.6282832217573,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 3,
+    "line_order": 40,
+    "text": "the public domain and any further data will be provided to the community upon request or through",
+    "x0": 77.99999675,
+    "top": 715.1332832673824,
+    "x1": 511.4788629633799,
+    "bottom": 726.1282826592574,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 1,
+    "text": "appropriate websites (i.e. lab web sites). All of the fabrication methods, characterization results, and",
+    "x0": 77.99999675,
+    "top": 58.13331064238184,
+    "x1": 517.5381890609082,
+    "bottom": 69.12831003425686,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 2,
+    "text": "data acquired through the proposed research towards the development of the bioactive platforms will",
+    "x0": 77.99999675,
+    "top": 71.63331007988188,
+    "x1": 521.50954494861,
+    "bottom": 82.62830947175689,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 3,
+    "text": "be shared with others through publication in conferences and journals.",
+    "x0": 77.99999675,
+    "top": 84.38330954863193,
+    "x1": 386.91439871606605,
+    "bottom": 95.37830894050694,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 4,
+    "text": "3. Data management resources",
+    "x0": 77.99999675,
+    "top": 123.15526825652978,
+    "x1": 250.48784062500619,
+    "bottom": 136.35526770652973,
+    "avg_font_size": 13.19999944999995,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 5,
+    "text": "Data management plans should consult and reference available information about data",
+    "x0": 77.99999675,
+    "top": 161.51928690776867,
+    "x1": 526.391668917013,
+    "bottom": 173.6167858037062,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 6,
+    "text": "management resources to be used in the course of the proposed research. In particular,",
+    "x0": 77.99999675,
+    "top": 175.01928634526894,
+    "x1": 524.2171326576184,
+    "bottom": 187.11678524120646,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 7,
+    "text": "DMPs tht explicitly or implicitly commit data management resources at a facility",
+    "x0": 77.99999675,
+    "top": 187.76928581401899,
+    "x1": 494.14949846043663,
+    "bottom": 199.8667847099565,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 8,
+    "text": "beyond what is conventionally made available to approved users should be accompanied",
+    "x0": 77.99999675,
+    "top": 201.2692852515188,
+    "x1": 532.3561734929505,
+    "bottom": 213.36678414745631,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 9,
+    "text": "by written approval from that facility. In determining the resources available for data",
+    "x0": 77.99999675,
+    "top": 214.01928472026884,
+    "x1": 518.6141732160752,
+    "bottom": 226.11678361620636,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 10,
+    "text": "management at DOE Scientific User Facilities, researchers should consult the",
+    "x0": 77.99999675,
+    "top": 227.51928415776865,
+    "x1": 475.7074550793967,
+    "bottom": 239.61678305370617,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 11,
+    "text": "published description of data management resources and practices at that facility and",
+    "x0": 77.99999675,
+    "top": 241.01928359526892,
+    "x1": 519.3236005859742,
+    "bottom": 253.11678249120644,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 12,
+    "text": "reference it in the DMP. Information about other Office of Science facilities can be",
+    "x0": 77.99999675,
+    "top": 253.76928306401896,
+    "x1": 501.4181628331172,
+    "bottom": 265.8667819599565,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 13,
+    "text": "found in the additional guidance from the sponsporing program.",
+    "x0": 77.99999675,
+    "top": 267.2692825015188,
+    "x1": 410.5321702444922,
+    "bottom": 279.3667813974563,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 14,
+    "text": "DMPs should consult and reference available information about data management resources to be",
+    "x0": 77.99999675,
+    "top": 292.8833008611317,
+    "x1": 511.7197288334667,
+    "bottom": 303.8783002530067,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 15,
+    "text": "used in the course of the proposed research. In particular, DMPs that explicitly or implicitly commit",
+    "x0": 77.99999675,
+    "top": 305.63330032988176,
+    "x1": 517.9181597482511,
+    "bottom": 316.6282997217568,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 16,
+    "text": "data management resources at a facility beyond what is conventionally made available to approved",
+    "x0": 77.99999675,
+    "top": 319.133299767382,
+    "x1": 515.4609487224596,
+    "bottom": 330.12829915925704,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 17,
+    "text": "users should be accompanied by written approval from that facility. In determining the resources",
+    "x0": 77.99999675,
+    "top": 331.8832992361321,
+    "x1": 503.78653063471984,
+    "bottom": 342.8782986280071,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 18,
+    "text": "available for data management at Office of Science User Facilities, researchers should consult the",
+    "x0": 77.99999675,
+    "top": 345.3832986736319,
+    "x1": 511.9022852008601,
+    "bottom": 356.3782980655069,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 19,
+    "text": "published description of data management resources and practices at that facility and reference it in",
+    "x0": 77.99999675,
+    "top": 358.88329811113215,
+    "x1": 519.6666978972199,
+    "bottom": 369.87829750300716,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 20,
+    "text": "the DMP. Information about other Office of Science facilities can be found in the additional guidance",
+    "x0": 77.99999675,
+    "top": 371.63329757988174,
+    "x1": 524.124551766599,
+    "bottom": 382.62829697175675,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 21,
+    "text": "from the sponsoring program.",
+    "x0": 77.99999675,
+    "top": 385.133297017382,
+    "x1": 209.71358872443344,
+    "bottom": 396.128296409257,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "CAAAAA+Tinos-Italic"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 22,
+    "text": "Data Repositories. Senior investigators typically archive relevant data using their own group servers.",
+    "x0": 77.99999675,
+    "top": 433.1332950173818,
+    "x1": 526.1265967655578,
+    "bottom": 444.1282944092568,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular",
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 23,
+    "text": "Whenever possible, investigators will be encouraged to also copy data to a centralized data server for",
+    "x0": 77.99999675,
+    "top": 446.63329445488205,
+    "x1": 523.0124123038142,
+    "bottom": 457.62829384675706,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 24,
+    "text": "CBES investigators. Additionally, researchers can archive data on repositories at their home",
+    "x0": 77.99999675,
+    "top": 459.3832939236321,
+    "x1": 481.74353418247495,
+    "bottom": 470.3782933155071,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 25,
+    "text": "institutions. For example, researchers at Northwestern are encouraged to deposit data into",
+    "x0": 77.99999675,
+    "top": 472.8832933611319,
+    "x1": 472.06687745554603,
+    "bottom": 483.8782927530069,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 26,
+    "text": "Northwestern Libraries’ institutional repository, Arch, upon publication",
+    "x0": 77.99999675,
+    "top": 486.3832927986317,
+    "x1": 391.51429878690357,
+    "bottom": 497.3782921905067,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 27,
+    "text": "(https://arch.library.northwestern.edu/). Arch assigns DOIs, making it easy to find the data. Necessary",
+    "x0": 77.99999675,
+    "top": 499.13329226738176,
+    "x1": 527.8576694809296,
+    "bottom": 510.1282916592568,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 28,
+    "text": "metadata and other resources to make the data accessible to future users will be submitted. Arch will",
+    "x0": 77.99999675,
+    "top": 512.633291704882,
+    "x1": 522.4271321853772,
+    "bottom": 523.628291096757,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 29,
+    "text": "preserve the data for future use.",
+    "x0": 77.99999675,
+    "top": 525.3832911736321,
+    "x1": 217.16887266379658,
+    "bottom": 536.3782905655071,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 30,
+    "text": "Data Volume. Generally, the volume of data generated by CBES researchers should not prohibit their",
+    "x0": 77.99999675,
+    "top": 550.133290142382,
+    "x1": 525.4279852781651,
+    "bottom": 561.128289534257,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular",
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 31,
+    "text": "deposition in available repositories. However, in cases where large volumes of data are generated (e.g.,",
+    "x0": 77.99999675,
+    "top": 562.883289611132,
+    "x1": 530.6122232036566,
+    "bottom": 573.878289003007,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 32,
+    "text": "temperature/time dependent microscopy or X-ray studies), the data may need to be averaged,",
+    "x0": 77.99999675,
+    "top": 576.3832890486318,
+    "x1": 486.9924739461463,
+    "bottom": 587.3782884405068,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 33,
+    "text": "condensed, or minimally processed prior to deposition.",
+    "x0": 77.99999675,
+    "top": 589.1332885173819,
+    "x1": 322.528521548811,
+    "bottom": 600.1282879092569,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 34,
+    "text": "4. Confidentiality, security and rights",
+    "x0": 77.99999675,
+    "top": 627.9052472252797,
+    "x1": 287.67040270073267,
+    "bottom": 641.1052466752797,
+    "avg_font_size": 13.199999450000007,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 35,
+    "text": "Data management plans must protect confidentiality, personal privacy, Personally",
+    "x0": 77.99999675,
+    "top": 666.2692658765191,
+    "x1": 500.3748587260466,
+    "bottom": 678.3667647724566,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 36,
+    "text": "Identifiable Information and U.S. national, homeland, and economic security; recognize",
+    "x0": 77.99999675,
+    "top": 679.7692653140189,
+    "x1": 530.2967126548441,
+    "bottom": 691.8667642099564,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 37,
+    "text": "proprietary interests, business confidential information, and intellectual property",
+    "x0": 77.99999675,
+    "top": 693.2692647515187,
+    "x1": 496.9130630952883,
+    "bottom": 705.3667636474562,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 38,
+    "text": "rights; avoid significant negative impact on innovation and U.S. competitiveness; and",
+    "x0": 77.99999675,
+    "top": 706.0192642202687,
+    "x1": 516.7666204425152,
+    "bottom": 718.1167631162062,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 4,
+    "line_order": 39,
+    "text": "otherwise be consistent with all applicable laws, regulations, agreement terms and",
+    "x0": 77.99999675,
+    "top": 719.519263657769,
+    "x1": 499.47029568819556,
+    "bottom": 731.6167625537065,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 5,
+    "line_order": 1,
+    "text": "conditions, and DOE orders and policies. There is no requirement to share proprietary",
+    "x0": 77.99999675,
+    "top": 58.019291220269224,
+    "x1": 524.1474368105225,
+    "bottom": 70.11679011620674,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 5,
+    "line_order": 2,
+    "text": "data.",
+    "x0": 77.99999675,
+    "top": 71.51929065776949,
+    "x1": 103.87140114702476,
+    "bottom": 83.61678955370701,
+    "avg_font_size": 12.09749889593752,
+    "font_names": [
+      "AAAAAA+Tinos-Bold"
+    ],
+    "is_bold": true,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 5,
+    "line_order": 3,
+    "text": "Data that may support intellectual property claims will be published only after we seek advice from the",
+    "x0": 77.99999675,
+    "top": 96.38330904863221,
+    "x1": 531.5896469805533,
+    "bottom": 107.37830844050723,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 5,
+    "line_order": 4,
+    "text": "Northwestern Innovation and New Ventures Office (INVO). Such advice will be sought in a timely",
+    "x0": 77.99999675,
+    "top": 109.88330848613248,
+    "x1": 513.2066004663907,
+    "bottom": 120.87830787800749,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 5,
+    "line_order": 5,
+    "text": "manner.",
+    "x0": 77.99999675,
+    "top": 123.38330792363229,
+    "x1": 113.10254314989383,
+    "bottom": 134.3783073155073,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 5,
+    "line_order": 6,
+    "text": "The proposed research does not include the collection of any confidential personal information.",
+    "x0": 77.99999675,
+    "top": 147.3833069236324,
+    "x1": 497.70025207498884,
+    "bottom": 158.37830631550742,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 5,
+    "line_order": 7,
+    "text": "The Director, the Executive Director for Research, and the Executive Committee will regularly review",
+    "x0": 77.99999675,
+    "top": 171.38330592363252,
+    "x1": 528.364729681627,
+    "bottom": 182.37830531550753,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  },
+  {
+    "source_pdf": "sample2.pdf",
+    "page": 5,
+    "line_order": 8,
+    "text": "polices for data storage to ensure accessibility and security of CBES research data.",
+    "x0": 77.99999675,
+    "top": 184.88330536113233,
+    "x1": 444.2798290258397,
+    "bottom": 195.87830475300734,
+    "avg_font_size": 10.994999391875012,
+    "font_names": [
+      "BAAAAA+Tinos-Regular"
+    ],
+    "is_bold": false,
+    "extractor": "pdfplumber"
+  }
+]
