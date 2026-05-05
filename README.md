@@ -43,6 +43,7 @@ dmpbridge/
 │       │   ├── structure_detector.py
 │       │   ├── markdown_builder.py
 │       │   └── structure_json_builder.py
+│       │   └── text_cleaner.py
 │       │
 │       ├── evaluation/
 │       │   ├── __init__.py
