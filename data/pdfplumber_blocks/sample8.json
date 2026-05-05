@@ -42,8 +42,8 @@
     "bottom": 124.62667999999996,
     "avg_font_size": 9.840000000000032,
     "font_names": [
-      "CKFMEP+Times-Roman",
-      "CKFMGD+Times-Bold"
+      "CKFMGD+Times-Bold",
+      "CKFMEP+Times-Roman"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
