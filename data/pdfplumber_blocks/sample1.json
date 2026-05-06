@@ -266,8 +266,8 @@
     "bottom": 331.64159999999987,
     "avg_font_size": 11.04000000000002,
     "font_names": [
-      "COGWQT+ArialMT",
-      "JERCKF+Arial-ItalicMT"
+      "JERCKF+Arial-ItalicMT",
+      "COGWQT+ArialMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -475,8 +475,8 @@
     "bottom": 559.3843199999997,
     "avg_font_size": 11.039999999999992,
     "font_names": [
-      "COGWQT+ArialMT",
-      "JERCKF+Arial-ItalicMT"
+      "JERCKF+Arial-ItalicMT",
+      "COGWQT+ArialMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"

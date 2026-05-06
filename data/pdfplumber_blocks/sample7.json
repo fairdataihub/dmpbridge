@@ -26,8 +26,8 @@
     "bottom": 104.35017600000003,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -43,8 +43,8 @@
     "bottom": 118.26825600000006,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNN+Arial-ItalicMT"
+      "CMNDNN+Arial-ItalicMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -76,8 +76,8 @@
     "bottom": 146.10441600000013,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -109,8 +109,8 @@
     "bottom": 173.9405760000002,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNN+Arial-ItalicMT"
+      "CMNDNN+Arial-ItalicMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -158,8 +158,8 @@
     "bottom": 215.45299200000022,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -175,8 +175,8 @@
     "bottom": 229.37107200000025,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -224,8 +224,8 @@
     "bottom": 271.12531200000035,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -241,8 +241,8 @@
     "bottom": 285.0433920000003,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -258,8 +258,8 @@
     "bottom": 298.71859200000034,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -291,8 +291,8 @@
     "bottom": 333.2814720000003,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -308,8 +308,8 @@
     "bottom": 346.9566720000003,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -405,8 +405,8 @@
     "bottom": 430.51056000000017,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -422,8 +422,8 @@
     "bottom": 444.19104000000016,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -439,8 +439,8 @@
     "bottom": 458.11123200000014,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -456,8 +456,8 @@
     "bottom": 472.0293120000001,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -489,8 +489,8 @@
     "bottom": 499.866432,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -586,8 +586,8 @@
     "bottom": 563.23104,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -683,8 +683,8 @@
     "bottom": 653.22864,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -796,8 +796,8 @@
     "bottom": 83.94825600000001,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -829,8 +829,8 @@
     "bottom": 111.78441600000008,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -846,8 +846,8 @@
     "bottom": 125.70249600000011,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -879,8 +879,8 @@
     "bottom": 153.2968320000001,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -912,8 +912,8 @@
     "bottom": 181.13299200000017,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -929,8 +929,8 @@
     "bottom": 195.0510720000002,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -962,8 +962,8 @@
     "bottom": 222.88723200000027,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -979,8 +979,8 @@
     "bottom": 236.56243200000029,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -1076,8 +1076,8 @@
     "bottom": 326.58624,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -1157,8 +1157,8 @@
     "bottom": 395.9495999999999,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -1206,8 +1206,8 @@
     "bottom": 437.70383999999984,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNN+Arial-ItalicMT"
+      "CMNDNN+Arial-ItalicMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1255,8 +1255,8 @@
     "bottom": 479.23103999999984,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -1336,8 +1336,8 @@
     "bottom": 555.3052799999997,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -1417,8 +1417,8 @@
     "bottom": 624.9115199999998,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -1434,8 +1434,8 @@
     "bottom": 638.5919999999998,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -1451,8 +1451,8 @@
     "bottom": 652.5100799999998,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNM+Arial-BoldMT"
+      "CMNDNM+Arial-BoldMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
