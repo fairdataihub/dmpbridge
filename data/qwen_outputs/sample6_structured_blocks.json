@@ -12,7 +12,7 @@
     "source_pdf": "sample6.pdf",
     "page": 1,
     "line_order": 2,
-    "text": "DATA MANAGEMENT PLAN",
+    "text": "PI Gu",
     "label": "section",
     "document_format": "qwen_vl",
     "extractor": "qwen_vl"
@@ -21,8 +21,8 @@
     "source_pdf": "sample6.pdf",
     "page": 1,
     "line_order": 3,
-    "text": "PI Gu",
-    "label": "subsection",
+    "text": "Proteomic Data",
+    "label": "section",
     "document_format": "qwen_vl",
     "extractor": "qwen_vl"
   },
@@ -30,8 +30,8 @@
     "source_pdf": "sample6.pdf",
     "page": 1,
     "line_order": 4,
-    "text": "Proteomic Data",
-    "label": "subsection",
+    "text": "Archiving and Dissemination",
+    "label": "section",
     "document_format": "qwen_vl",
     "extractor": "qwen_vl"
   },
@@ -39,8 +39,8 @@
     "source_pdf": "sample6.pdf",
     "page": 1,
     "line_order": 5,
-    "text": "Archiving and Dissemination",
-    "label": "subsection",
+    "text": "Mutants, Transgenic Lines, and Plasmid Constructs",
+    "label": "section",
     "document_format": "qwen_vl",
     "extractor": "qwen_vl"
   },
@@ -48,8 +48,8 @@
     "source_pdf": "sample6.pdf",
     "page": 1,
     "line_order": 6,
-    "text": "Mutants, Transgenic Lines, and Plasmid Constructs",
-    "label": "subsection",
+    "text": "Archiving and Dissemination",
+    "label": "section",
     "document_format": "qwen_vl",
     "extractor": "qwen_vl"
   },
@@ -57,25 +57,7 @@
     "source_pdf": "sample6.pdf",
     "page": 1,
     "line_order": 7,
-    "text": "Archiving and Dissemination",
-    "label": "subsection",
-    "document_format": "qwen_vl",
-    "extractor": "qwen_vl"
-  },
-  {
-    "source_pdf": "sample6.pdf",
-    "page": 1,
-    "line_order": 8,
     "text": "Publications",
-    "label": "subsection",
-    "document_format": "qwen_vl",
-    "extractor": "qwen_vl"
-  },
-  {
-    "source_pdf": "sample6.pdf",
-    "page": 2,
-    "line_order": 9,
-    "text": "Archiving and Dissemination",
     "label": "section",
     "document_format": "qwen_vl",
     "extractor": "qwen_vl"
@@ -83,36 +65,9 @@
   {
     "source_pdf": "sample6.pdf",
     "page": 2,
-    "line_order": 10,
-    "text": "In accordance with the University of California Open Access Policy, publications will be uploaded to eScholarship, UC’s open access repository, and publishing platform, to be made available to the public at no charge.",
-    "label": "subsection",
-    "document_format": "qwen_vl",
-    "extractor": "qwen_vl"
-  },
-  {
-    "source_pdf": "sample6.pdf",
-    "page": 2,
-    "line_order": 11,
+    "line_order": 8,
     "text": "Archiving and Dissemination",
-    "label": "subsection",
-    "document_format": "qwen_vl",
-    "extractor": "qwen_vl"
-  },
-  {
-    "source_pdf": "sample6.pdf",
-    "page": 2,
-    "line_order": 12,
-    "text": "Teaching Curricula",
     "label": "section",
-    "document_format": "qwen_vl",
-    "extractor": "qwen_vl"
-  },
-  {
-    "source_pdf": "sample6.pdf",
-    "page": 2,
-    "line_order": 13,
-    "text": "Description",
-    "label": "subsection",
     "document_format": "qwen_vl",
     "extractor": "qwen_vl"
   }

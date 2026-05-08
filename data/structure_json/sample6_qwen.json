@@ -218,198 +218,52 @@
       "section": [
         {
           "id": "section_1",
-          "title": "DATA MANAGEMENT PLAN",
+          "title": "PI Gu",
           "description": null,
           "order": 1,
-          "question": [
-            {
-              "id": "question_1_1",
-              "text": "PI Gu",
-              "order": 1,
-              "answer": {
-                "id": "answer_1_1",
-                "json": {
-                  "type": "text",
-                  "answer": [
-                    {
-                      "text": ""
-                    }
-                  ],
-                  "meta": {
-                    "schemaVersion": null
-                  }
-                }
-              }
-            },
-            {
-              "id": "question_1_2",
-              "text": "Proteomic Data",
-              "order": 2,
-              "answer": {
-                "id": "answer_1_2",
-                "json": {
-                  "type": "text",
-                  "answer": [
-                    {
-                      "text": ""
-                    }
-                  ],
-                  "meta": {
-                    "schemaVersion": null
-                  }
-                }
-              }
-            },
-            {
-              "id": "question_1_3",
-              "text": "Archiving and Dissemination",
-              "order": 3,
-              "answer": {
-                "id": "answer_1_3",
-                "json": {
-                  "type": "text",
-                  "answer": [
-                    {
-                      "text": ""
-                    }
-                  ],
-                  "meta": {
-                    "schemaVersion": null
-                  }
-                }
-              }
-            },
-            {
-              "id": "question_1_4",
-              "text": "Mutants, Transgenic Lines, and Plasmid Constructs",
-              "order": 4,
-              "answer": {
-                "id": "answer_1_4",
-                "json": {
-                  "type": "text",
-                  "answer": [
-                    {
-                      "text": ""
-                    }
-                  ],
-                  "meta": {
-                    "schemaVersion": null
-                  }
-                }
-              }
-            },
-            {
-              "id": "question_1_5",
-              "text": "Archiving and Dissemination",
-              "order": 5,
-              "answer": {
-                "id": "answer_1_5",
-                "json": {
-                  "type": "text",
-                  "answer": [
-                    {
-                      "text": ""
-                    }
-                  ],
-                  "meta": {
-                    "schemaVersion": null
-                  }
-                }
-              }
-            },
-            {
-              "id": "question_1_6",
-              "text": "Publications",
-              "order": 6,
-              "answer": {
-                "id": "answer_1_6",
-                "json": {
-                  "type": "text",
-                  "answer": [
-                    {
-                      "text": ""
-                    }
-                  ],
-                  "meta": {
-                    "schemaVersion": null
-                  }
-                }
-              }
-            }
-          ]
+          "question": []
         },
         {
           "id": "section_2",
-          "title": "Archiving and Dissemination",
+          "title": "Proteomic Data",
           "description": null,
           "order": 2,
-          "question": [
-            {
-              "id": "question_2_1",
-              "text": "In accordance with the University of California Open Access Policy, publications will be uploaded to eScholarship, UC’s open access repository, and publishing platform, to be made available to the public at no charge.",
-              "order": 1,
-              "answer": {
-                "id": "answer_2_1",
-                "json": {
-                  "type": "text",
-                  "answer": [
-                    {
-                      "text": ""
-                    }
-                  ],
-                  "meta": {
-                    "schemaVersion": null
-                  }
-                }
-              }
-            },
-            {
-              "id": "question_2_2",
-              "text": "Archiving and Dissemination",
-              "order": 2,
-              "answer": {
-                "id": "answer_2_2",
-                "json": {
-                  "type": "text",
-                  "answer": [
-                    {
-                      "text": ""
-                    }
-                  ],
-                  "meta": {
-                    "schemaVersion": null
-                  }
-                }
-              }
-            }
-          ]
+          "question": []
         },
         {
           "id": "section_3",
-          "title": "Teaching Curricula",
+          "title": "Archiving and Dissemination",
           "description": null,
           "order": 3,
-          "question": [
-            {
-              "id": "question_3_1",
-              "text": "Description",
-              "order": 1,
-              "answer": {
-                "id": "answer_3_1",
-                "json": {
-                  "type": "text",
-                  "answer": [
-                    {
-                      "text": ""
-                    }
-                  ],
-                  "meta": {
-                    "schemaVersion": null
-                  }
-                }
-              }
-            }
-          ]
+          "question": []
+        },
+        {
+          "id": "section_4",
+          "title": "Mutants, Transgenic Lines, and Plasmid Constructs",
+          "description": null,
+          "order": 4,
+          "question": []
+        },
+        {
+          "id": "section_5",
+          "title": "Archiving and Dissemination",
+          "description": null,
+          "order": 5,
+          "question": []
+        },
+        {
+          "id": "section_6",
+          "title": "Publications",
+          "description": null,
+          "order": 6,
+          "question": []
+        },
+        {
+          "id": "section_7",
+          "title": "Archiving and Dissemination",
+          "description": null,
+          "order": 7,
+          "question": []
         }
       ]
     }
