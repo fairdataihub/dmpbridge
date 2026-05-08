@@ -62,13 +62,13 @@ def detect_document_format(blocks: List[Dict]) -> str:
     if len(all_caps_sections) >= 3:
         return "all_caps_sections"
 
-    title_case_sections = [
+    title_style_sections = [
         text for text in texts
-        if is_title_case_section_heading(text)
+        if is_title_style_heading(text)
     ]
 
-    if len(title_case_sections) >= 3:
-        return "title_case_sections"
+    if len(title_style_sections) >= 3:
+        return "title_style_sections"
 
     return "unknown"
 
@@ -94,8 +94,8 @@ def classify_line(block: Dict, document_format: str) -> str:
     if document_format == "all_caps_sections":
         return classify_all_caps_line(text)
 
-    if document_format == "title_case_sections":
-        return classify_title_case_line(text)
+    if document_format == "title_style_sections":
+        return classify_title_style_line(text)
 
     return classify_unknown_line(text)
 
@@ -134,8 +134,6 @@ def classify_numbered_line(text: str) -> str:
     if re.match(r"^\d+\.\d+\s+", text):
         return "subsection"
 
-    # In numbered documents, avoid aggressive question detection.
-    # Period headings are unreliable without layout/model support.
     return "content"
 
 
@@ -152,8 +150,8 @@ def classify_all_caps_line(text: str) -> str:
     return "content"
 
 
-def classify_title_case_line(text: str) -> str:
-    if is_title_case_section_heading(text):
+def classify_title_style_line(text: str) -> str:
+    if is_title_style_heading(text):
         return "section"
 
     if is_numbered_section(text):
@@ -188,7 +186,7 @@ def classify_unknown_line(text: str) -> str:
     if is_all_caps_heading(text):
         return "section"
 
-    if is_title_case_section_heading(text):
+    if is_title_style_heading(text):
         return "section"
 
     if re.match(r"^[A-Z]\.\s+", text):
@@ -228,7 +226,19 @@ def is_all_caps_heading(text: str) -> bool:
     return text.isupper()
 
 
-def is_title_case_section_heading(text: str) -> bool:
+def is_title_style_heading(text: str) -> bool:
+    """
+    General detector for standalone narrative headings.
+
+    It does not depend on specific DMP section names.
+    It uses structural signals:
+    - short/medium length
+    - no sentence-ending punctuation
+    - not a list item
+    - not body-like sentence
+    - mostly alphabetic text
+    """
+
     text = text.strip()
 
     if not text:
@@ -236,49 +246,51 @@ def is_title_case_section_heading(text: str) -> bool:
 
     words = text.split()
 
-    if not (2 <= len(words) <= 10):
+    if not (2 <= len(words) <= 14):
         return False
 
-    if text.endswith(".") or text.endswith(":"):
+    if text.endswith(".") or text.endswith(":") or text.endswith("?"):
         return False
 
-    bad_starts = [
-        "The ",
-        "This ",
-        "We ",
-        "Data will ",
-        "All ",
-        "Upon ",
-        "First,",
-        "Our ",
-        "There ",
-        "Research records",
-        "Software generated",
-        "Select videos",
-        "Materials will",
-        "Stored materials",
+    if re.match(r"^\d+[\.\)]\s+", text):
+        return False
+
+    if re.match(r"^[A-Z][\.\)]\s+", text):
+        return False
+
+    if looks_like_sentence(text):
+        return False
+
+    punctuation_count = sum(1 for ch in text if ch in ",;()[]{}")
+    if punctuation_count >= 3:
+        return False
+
+    alpha_chars = sum(1 for ch in text if ch.isalpha())
+    if alpha_chars / max(len(text), 1) < 0.6:
+        return False
+
+    return True
+
+
+def looks_like_sentence(text: str) -> bool:
+    words = [
+        w.strip(".,;:()[]{}").lower()
+        for w in text.split()
     ]
 
-    if any(text.startswith(start) for start in bad_starts):
-        return False
-
-    small_words = {
-        "and", "or", "of", "for", "to", "in", "on", "with",
-        "the", "a", "an", "by"
+    sentence_markers = {
+        "we", "our", "they", "this", "these", "those",
+        "is", "are", "was", "were", "will", "would",
+        "should", "could", "can", "may", "must",
+        "be", "been", "being", "have", "has", "had"
     }
 
-    valid_words = 0
+    marker_count = sum(1 for word in words if word in sentence_markers)
 
-    for word in words:
-        clean = word.strip("():;,-/&")
+    if marker_count >= 1 and len(words) >= 6:
+        return True
 
-        if not clean:
-            continue
-
-        if clean[0].isupper() or clean.lower() in small_words:
-            valid_words += 1
-
-    return valid_words / len(words) >= 0.8
+    return False
 
 
 def detect_structure(blocks: List[Dict]) -> List[Dict]:

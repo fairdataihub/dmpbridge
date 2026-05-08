@@ -1,0 +1,70 @@
+[
+  {
+    "document_title": "Oxide Surfaces, From Bulk to Nanoparticles",
+    "sections": [
+      {
+        "title": "Types of data produced",
+        "subsections": [
+          {
+            "title": "Transmission electron microscopy (TEM) images"
+          },
+          {
+            "title": "X-ray diffraction patterns"
+          },
+          {
+            "title": "Sample statistics"
+          },
+          {
+            "title": "Spectroscopy (e.g. EDX, EELS, XPS)"
+          }
+        ]
+      },
+      {
+        "title": "Quality Assurance/Control"
+      },
+      {
+        "title": "Data and metadata standards"
+      }
+    ],
+    "page": 1
+  },
+  {
+    "document_title": null,
+    "sections": [
+      {
+        "title": "Policies for access and sharing, and provisions for appropriate protection/privacy",
+        "subsections": [
+          {
+            "title": "Policies for access and sharing"
+          },
+          {
+            "title": "Provisions for appropriate protection of privacy, confidentiality, security, intellectual property, or other rights or requirements"
+          }
+        ]
+      }
+    ],
+    "page": 2
+  },
+  {
+    "document_title": null,
+    "sections": [
+      {
+        "title": "Policies and provisions for re-use, re-distribution",
+        "subsections": [
+          {
+            "title": "Policies and provisions for re-use, re-distribution, and the production of derivatives"
+          }
+        ]
+      },
+      {
+        "title": "Plans for archiving and preservation",
+        "subsections": [
+          {
+            "title": "Plans for archiving data, samples, and other research products, and for preservation of access to them"
+          }
+        ]
+      }
+    ],
+    "page": 3
+  }
+]

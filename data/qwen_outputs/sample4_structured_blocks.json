@@ -1,0 +1,110 @@
+[
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 1,
+    "text": "Oxide Surfaces, From Bulk to Nanoparticles",
+    "label": "document_title",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 2,
+    "text": "Types of data produced",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 3,
+    "text": "Transmission electron microscopy (TEM) images",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 4,
+    "text": "X-ray diffraction patterns",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 5,
+    "text": "Sample statistics",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 6,
+    "text": "Spectroscopy (e.g. EDX, EELS, XPS)",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 7,
+    "text": "Quality Assurance/Control",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 1,
+    "line_order": 8,
+    "text": "Data and metadata standards",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 9,
+    "text": "Policies for access and sharing, and provisions for appropriate protection/privacy",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 2,
+    "line_order": 10,
+    "text": "Policies for access and sharing",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 11,
+    "text": "Policies and provisions for re-use, re-distribution",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample4.pdf",
+    "page": 3,
+    "line_order": 12,
+    "text": "Plans for archiving and preservation",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  }
+]
