@@ -69,7 +69,8 @@ Rules:
 - Do not include page numbers, footers, or running headers.
 - If a heading and body text appear on the same line, keep only the heading.
 - Main topic headings should become sections.
-- Smaller repeated headings under a topic should become subsections.
+- Smaller headings under a topic should become subsections.
+- Do not use the generic phrase "Data Management Plan" as a section title.
 - If no structure is visible, return:
   {"document_title": null, "sections": []}
 
@@ -125,8 +126,8 @@ Return JSON only.
         return json.loads(response)
     except Exception:
         return {
-            "page": None,
-            "items": [],
+            "document_title": None,
+            "sections": [],
             "raw_response": response,
             "error": "Could not parse Qwen output as JSON"
         }
