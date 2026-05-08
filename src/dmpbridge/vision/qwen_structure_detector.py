@@ -43,47 +43,43 @@ def detect_structure_from_image(
     prompt = """
 You are analyzing one page of a Data Management Plan PDF.
 
-Your task is to detect ONLY the document structure.
+Extract the document structure as a hierarchy.
 
-Return valid JSON only in this format:
+Return valid JSON only:
 
 {
-  "items": [
+  "document_title": null,
+  "sections": [
     {
-      "text": "exact structural text visible on the page",
-      "label": "section"
+      "title": "exact section heading visible on the page",
+      "subsections": [
+        {
+          "title": "exact subsection heading visible on the page"
+        }
+      ]
     }
   ]
 }
 
-Allowed labels:
-- document_title
-- section
-- subsection
-- question
-- content
-
-General rules:
-- Include only structural text: document titles, section headings, subsection headings, and explicit questions.
-- Do not include normal paragraph/body text.
-- Do not include explanations or reasons.
+Rules:
+- Use exact visible text only.
 - Do not summarize or rewrite.
-- Use the exact visible text from the page.
-- If a heading and paragraph appear on the same line, return only the heading part.
-- Ignore page numbers, footers, and headers unless they are the document title.
-- If no structural text is found, return {"items": []}.
+- Do not include paragraph/body text.
+- Do not include explanations or reasons.
+- Do not include page numbers, footers, or running headers.
+- If a heading and body text appear on the same line, keep only the heading.
+- Main topic headings should become sections.
+- Smaller repeated headings under a topic should become subsections.
+- If no structure is visible, return:
+  {"document_title": null, "sections": []}
 
-How to identify structural text:
-- It is usually visually separated from body text.
-- It may be bold, larger, centered, numbered, lettered, all-caps, or followed by a colon.
-- It often introduces the content that follows.
-- It is usually shorter than normal paragraphs.
-
-Do not return:
-- Long sentences.
-- Full paragraphs.
-- Explanatory body text.
-- Continuation lines from a previous paragraph.
+How to decide hierarchy:
+- A document title describes the whole DMP.
+- A section introduces a major topic.
+- A subsection is a smaller heading that belongs under the nearest previous section.
+- Use visual cues such as size, bolding, spacing, indentation, alignment, and repetition.
+- Do not infer missing headings.
+- Do not invent text.
 
 Return JSON only.
 """
