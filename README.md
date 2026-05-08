@@ -81,8 +81,8 @@ dmpbridge/
 
 ### Step 1 — Clone the repository
 ```bash
-git clone https://github.com/fairdataihub/dmpchef.git
-cd dmpchef
+git clone https://github.com/fairdataihub/dmpbridge.git
+cd dmpbridge
 code .
 ```
 
