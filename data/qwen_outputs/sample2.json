@@ -1,0 +1,105 @@
+[
+  {
+    "document_title": "Center for Bio-Inspired Energy Science",
+    "sections": [
+      {
+        "title": "Data sharing and preservation",
+        "subsections": [
+          {
+            "title": "Roles & Responsibilities"
+          },
+          {
+            "title": "Data Types and Sources"
+          },
+          {
+            "title": "Content and Format"
+          }
+        ]
+      }
+    ],
+    "page": 1
+  },
+  {
+    "document_title": null,
+    "sections": [
+      {
+        "title": "Data Sharing and Data Preservation",
+        "subsections": [
+          {
+            "title": "the anticipated means for sharing and rationale for any restrictions on who may access the data and under what conditions"
+          },
+          {
+            "title": "a timeline for sharing and preservation that addresses both the minimum length of time the data will be available and any anticipated delay to data access after research findings are published"
+          },
+          {
+            "title": "any special requirements for data sharing, for example, proprietary software needed to access or interpret data, applicable policies, provisions, and licenses for re-use and re-distribution, and for the production of derivatives, including guidance for how data and data products should be cited"
+          },
+          {
+            "title": "any resources and capabilities (equipment, connections, systems, software, expertise, etc.) requested in the research proposal that are needed to meet the stated goals for sharing and preservation. (This could reference the relevant section of the associated research proposal and budget request)"
+          },
+          {
+            "title": "cost/benefit considerations to support whether/where the data will be preserved after direct project funding ends and any plans for the transfer of responsibilities for sharing and preservation"
+          },
+          {
+            "title": "whether, when, or under what conditions the management responsibility for the research data will be transferred to a third party (e.g. institutional, or community repository)"
+          },
+          {
+            "title": "any future decision points regarding the management of the research data including plans to reevaluate the costs and benefits of data sharing and preservation"
+          }
+        ]
+      }
+    ],
+    "page": 2
+  },
+  {
+    "document_title": null,
+    "sections": [
+      {
+        "title": "Data used in publications",
+        "subsections": [
+          {
+            "title": "Data management plans should provide a plan for making all research data displayed in publications resulting from the proposed research open, machine-readable, and digitally accessible to the public at the time of publication. This includes data that are displayed in charts, figures, images, etc. In addition, the underlying digital research data used to generate the displayed data should be made as accessible as possible to the public in accordance with the Principles published in the DOE Policy for Digital Research Data Management. The published article should indicate how these data can be accessed."
+          }
+        ]
+      }
+    ],
+    "page": 3
+  },
+  {
+    "document_title": null,
+    "sections": [
+      {
+        "title": "Data management resources",
+        "subsections": [
+          {
+            "title": "Data Repositories"
+          },
+          {
+            "title": "Data Volume"
+          }
+        ]
+      },
+      {
+        "title": "Confidentiality, security and rights"
+      }
+    ],
+    "page": 4
+  },
+  {
+    "document_title": null,
+    "sections": [
+      {
+        "title": "Data Management Plan",
+        "subsections": [
+          {
+            "title": "Data Collection and Sharing"
+          },
+          {
+            "title": "Data Access and Security"
+          }
+        ]
+      }
+    ],
+    "page": 5
+  }
+]

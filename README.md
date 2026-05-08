@@ -17,8 +17,11 @@ dmpbridge/
 │   ├── qwen_outputs/             # detected headers/structure
 │   │   └── {pdf_name}.json
 │   │
-│   ├── markdown/                 # reconstructed Markdown
+│   ├── docling_markdown/                 # reconstructed Markdown
 │   │   └── {pdf_name}.md
+│   │
+│   ├── docling_json/                 # 
+│   │   └── {pdf_name}.json
 │   │
 │   └── structure_json/           # FINAL output of phase 1
 │       └── {pdf_name}.json
@@ -59,9 +62,11 @@ dmpbridge/
 │
 ├── notebooks/
 │   ├── 01_pdfplumber_test.ipynb
-│   ├── 02_qwen_test.ipynb
-│   ├── 03_fusion_test.ipynb
-│   └── 04_structure_output.ipynb
+│   ├── 02_page_image_test.ipynb
+│   ├── 03_qwen_structure_test.ipynb
+│   ├── 04_docling_extraction_test.ipynb
+│   ├── 05_docling_structure_test.ipynb
+│   └── 06_fusion_test.ipynb
 │
 ├── outputs/
 │   ├── debug/

@@ -1,0 +1,55 @@
+[
+  {
+    "document_title": null,
+    "sections": [
+      {
+        "title": "DATA MANAGEMENT AND SHARING PLAN",
+        "subsections": [
+          {
+            "title": "Element 1: Data Type"
+          },
+          {
+            "title": "Element 2: Related Tools, Software and/or Code"
+          },
+          {
+            "title": "Element 3: Standards"
+          },
+          {
+            "title": "Element 4: Data Preservation, Access, and Associated Timelines"
+          }
+        ]
+      }
+    ],
+    "page": 1
+  },
+  {
+    "document_title": null,
+    "sections": [
+      {
+        "title": "Element 5: Access, Distribution, or Reuse Considerations",
+        "subsections": [
+          {
+            "title": "Factors affecting subsequent access, distribution, or reuse of scientific data"
+          }
+        ]
+      },
+      {
+        "title": "Whether access to scientific data will be controlled",
+        "subsections": [
+          {
+            "title": "Protections for privacy, rights, and confidentiality of human research participants"
+          }
+        ]
+      },
+      {
+        "title": "Element 6: Oversight of Data Management and Sharing",
+        "subsections": [
+          {
+            "title": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The PI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to ensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once the main outcome manuscript has been published. The Statistician/Data Manager will work closely with the University of California San Diego Library repository manager to ensure that the datasets, protocols, and code are correctly stored and available for sharing."
+          }
+        ]
+      }
+    ],
+    "page": 2
+  }
+]
