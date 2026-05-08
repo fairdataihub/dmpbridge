@@ -1,0 +1,236 @@
+[
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 1,
+    "text": "C-GEM: Plan for Data Management",
+    "label": "document_title",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 2,
+    "text": "Data Sharing Across Teams",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 3,
+    "text": "Strains",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 4,
+    "text": "Protocols",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 5,
+    "text": "Molecules",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 6,
+    "text": "C-GEM Research Products",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 7,
+    "text": "Materials",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 8,
+    "text": "Experimental Data",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 9,
+    "text": "Software",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 10,
+    "text": "Other Products",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 11,
+    "text": "Education and Outreach Materials",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 12,
+    "text": "Evaluation Data",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 13,
+    "text": "Data Format",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 14,
+    "text": "Images",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 15,
+    "text": "Experimental Data",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 16,
+    "text": "Laboratory Protocols and Notes",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 17,
+    "text": "Access to Data and Data Sharing Practices and Policies",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 18,
+    "text": "Intellectual Property",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 19,
+    "text": "Copyrights",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 1,
+    "line_order": 20,
+    "text": "Data Sharing",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 21,
+    "text": "Sensitive data",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 22,
+    "text": "Materials for general access",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 23,
+    "text": "Archival Storage Standards",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 24,
+    "text": "Timing",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 25,
+    "text": "Method of Archiving",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample7.pdf",
+    "page": 2,
+    "line_order": 26,
+    "text": "Preservation of Access",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  }
+]
