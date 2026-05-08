@@ -154,8 +154,8 @@
     "bottom": 244.62830272175734,
     "avg_font_size": 10.994999391875012,
     "font_names": [
-      "AAAAAA+Tinos-Bold",
-      "BAAAAA+Tinos-Regular"
+      "BAAAAA+Tinos-Regular",
+      "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -235,8 +235,8 @@
     "bottom": 345.12829853425734,
     "avg_font_size": 10.994999391875012,
     "font_names": [
-      "AAAAAA+Tinos-Bold",
-      "CAAAAA+Tinos-Italic"
+      "CAAAAA+Tinos-Italic",
+      "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -428,8 +428,8 @@
     "bottom": 561.1282895342573,
     "avg_font_size": 10.994999391875012,
     "font_names": [
-      "AAAAAA+Tinos-Bold",
-      "CAAAAA+Tinos-Italic"
+      "CAAAAA+Tinos-Italic",
+      "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -765,8 +765,8 @@
     "bottom": 210.12830415925748,
     "avg_font_size": 10.994999391875012,
     "font_names": [
-      "AAAAAA+Tinos-Bold",
-      "CAAAAA+Tinos-Italic"
+      "CAAAAA+Tinos-Italic",
+      "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -1470,8 +1470,8 @@
     "bottom": 196.62830472175733,
     "avg_font_size": 10.994999391875012,
     "font_names": [
-      "AAAAAA+Tinos-Bold",
-      "CAAAAA+Tinos-Italic"
+      "CAAAAA+Tinos-Italic",
+      "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -2335,8 +2335,8 @@
     "bottom": 444.1282944092568,
     "avg_font_size": 10.994999391875012,
     "font_names": [
-      "AAAAAA+Tinos-Bold",
-      "BAAAAA+Tinos-Regular"
+      "BAAAAA+Tinos-Regular",
+      "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -2464,8 +2464,8 @@
     "bottom": 561.128289534257,
     "avg_font_size": 10.994999391875012,
     "font_names": [
-      "AAAAAA+Tinos-Bold",
-      "BAAAAA+Tinos-Regular"
+      "BAAAAA+Tinos-Regular",
+      "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"

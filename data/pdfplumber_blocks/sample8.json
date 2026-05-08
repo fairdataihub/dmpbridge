@@ -283,8 +283,8 @@
     "bottom": 305.8264760000001,
     "avg_font_size": 9.839999999999975,
     "font_names": [
-      "CKFMEP+Times-Roman",
-      "CKFMGF+Times-Italic"
+      "CKFMGF+Times-Italic",
+      "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -813,8 +813,8 @@
     "bottom": 141.6470240000001,
     "avg_font_size": 9.840000000000032,
     "font_names": [
-      "CKFMEP+Times-Roman",
-      "CKFMGF+Times-Italic"
+      "CKFMGF+Times-Italic",
+      "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -847,8 +847,8 @@
     "bottom": 164.92748000000006,
     "avg_font_size": 9.840000000000032,
     "font_names": [
-      "CKFMEP+Times-Roman",
-      "CKFMGF+Times-Italic"
+      "CKFMGF+Times-Italic",
+      "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"

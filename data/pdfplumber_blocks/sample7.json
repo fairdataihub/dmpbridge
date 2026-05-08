@@ -43,8 +43,8 @@
     "bottom": 118.26825600000006,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNN+Arial-ItalicMT"
+      "CMNDNN+Arial-ItalicMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -109,8 +109,8 @@
     "bottom": 173.9405760000002,
     "avg_font_size": 10.56000000000006,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNN+Arial-ItalicMT"
+      "CMNDNN+Arial-ItalicMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1206,8 +1206,8 @@
     "bottom": 437.70383999999984,
     "avg_font_size": 10.560000000000002,
     "font_names": [
-      "CMNDNL+ArialMT",
-      "CMNDNN+Arial-ItalicMT"
+      "CMNDNN+Arial-ItalicMT",
+      "CMNDNL+ArialMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"

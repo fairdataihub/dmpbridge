@@ -1,0 +1,299 @@
+{
+  "dmp": {
+    "title": null,
+    "description": null,
+    "dmp_id": {
+      "identifier": null,
+      "type": null
+    },
+    "created": null,
+    "modified": null,
+    "ethical_issues_exist": null,
+    "ethical_issues_description": null,
+    "ethical_issues_report": null,
+    "language": null,
+    "contact": {
+      "name": null,
+      "mbox": null,
+      "affiliation": [
+        {
+          "name": null,
+          "affiliation_id": {
+            "identifier": null,
+            "type": null
+          }
+        }
+      ],
+      "contact_id": [
+        {
+          "identifier": null,
+          "type": null
+        }
+      ]
+    },
+    "contributor": [
+      {
+        "name": null,
+        "contributor_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "affiliation": [
+          {
+            "name": null,
+            "affiliation_id": {
+              "identifier": null,
+              "type": null
+            }
+          }
+        ],
+        "role": []
+      }
+    ],
+    "dataset": [
+      {
+        "title": null,
+        "type": null,
+        "description": null,
+        "dataset_id": {
+          "identifier": null,
+          "type": null
+        },
+        "personal_data": null,
+        "sensitive_data": null,
+        "issued": null,
+        "metadata": [
+          {
+            "description": null,
+            "language": null,
+            "metadata_standard_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ],
+        "distribution": [
+          {
+            "title": null,
+            "byte_size": null,
+            "issued": null,
+            "data_access": null,
+            "license": [
+              {
+                "license_ref": null,
+                "start_date": null
+              }
+            ],
+            "host": {
+              "title": null,
+              "url": null,
+              "host_id": [
+                {
+                  "identifier": null,
+                  "type": null
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": null,
+        "relation_type": null,
+        "resource_type": null,
+        "type": null
+      }
+    ],
+    "alternate_identifier": [
+      {
+        "identifier": null,
+        "type": null
+      }
+    ],
+    "project": [
+      {
+        "title": null,
+        "description": null,
+        "project_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "start": null,
+        "end": null,
+        "funding": [
+          {
+            "name": null,
+            "funding_status": null,
+            "funder_id": {
+              "identifier": null,
+              "type": null
+            },
+            "grant_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rda_schema_version": null,
+  "provenance": null,
+  "status": null,
+  "privacy": null,
+  "featured": null,
+  "registered": null,
+  "research_domain": {
+    "name": null,
+    "research_domain_identifier": {
+      "identifier": null,
+      "type": null
+    }
+  },
+  "research_facility": [
+    {
+      "name": null,
+      "type": null,
+      "research_facility_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_opportunity": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "opportunity_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_project": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "project_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "version": [
+    {
+      "access_url": null,
+      "version": null
+    }
+  ],
+  "narrative": {
+    "download_url": null,
+    "template": {
+      "id": null,
+      "title": null,
+      "description": null,
+      "version": null,
+      "section": [
+        {
+          "id": "section_1",
+          "title": "Oxide Surfaces, From Bulk to Nanoparticles",
+          "description": null,
+          "order": 1,
+          "question": []
+        },
+        {
+          "id": "section_2",
+          "title": "Types of data produced",
+          "description": "Types of data, samples, physical collections, software, curriculum materials, and other materials to be produced in the course of the project.\nThere will be in general x types of data generated for this research. The following will outline each type and how it will all be collected, processed, and stored.\n1.  Transmission electron microscopy (TEM) images\n1.  File type: .dm3, .dm4, .tiff, etc. (image files)\n2.  Captured: Using TEMs at different facilities\n3.  Processed: Generally using DigitalMicrograph, but also ImageJ, MacTempasX, and other types of image analysis programs\n2.  X-ray diffraction patterns\n1.  File type: .txt\n2.  Captured: Using X-ray diffractometers\n3.  Processed: Will be plotted in Origin or similar data plotting software. Data analysis will primarily be conducted using MDI Jade. Python or Mathematica may be employed for further analysis.\n3.  Sample statistics\n1.  File type: Likely spreadsheets (.xlsx)\n2.  Captured: Will vary, likely couting statistics\n3.  Processed: Will vary depending on what is being measured\n4.  Spectorscopy (e.g. EDX, EELS, XPS)\n1.  File type: Native software file types\n2.  Captured: TEMs\n3.  Processed: Native software, Python, Mathematica, etc.",
+          "order": 2,
+          "question": []
+        },
+        {
+          "id": "section_3",
+          "title": "Quality Assurance/Control",
+          "description": "All data will be analyzed for any relevant information for each experiment. In addition, all data will be saved for future reference in case any more information is needed for future analysis.",
+          "order": 3,
+          "question": []
+        },
+        {
+          "id": "section_4",
+          "title": "Data and metadata standards",
+          "description": "Standards to be used for data and metadata format and content (where existing standards are absent or deemed inadequate, this should be documented along with any proposed",
+          "order": 4,
+          "question": []
+        },
+        {
+          "id": "section_5",
+          "title": "solutions or remedies).",
+          "description": "All data acquired will be linked back to the specific sample tested. The samples are typically nanoparticles, which will be identified according to the date synthesized. Synthesis conditions and post-processing will be notated in a lab notebook accordingly.\nIn addition, metadata may be needed for the instrument conditions used for acquiring. In general, these will apply for each type of data:",
+          "order": 5,
+          "question": []
+        },
+        {
+          "id": "section_6",
+          "title": "1.  TEM",
+          "description": "- Microscope used\n- Accelerating voltage\n- Imaging/Diffraction mode\n- Relevant apertures\n- Probe size\n- Camera length",
+          "order": 6,
+          "question": []
+        },
+        {
+          "id": "section_7",
+          "title": "2.  XRD",
+          "description": "1.  Instrument used\n2.  X-ray source\n3.  Acquisition time\n3.  Spectroscopy\n1.  Instrument used\n2.  Relevant settings (e.g. probe size)\n3.  Acquisiton time\n4.  Any data smoothing or processing method\n5.  Normalization method used\nMetadata will be stored primarily in the file name of each dataset acquired. Additionally, it may be notated in the lab notebook used when acquiring.\nPolicies for access and sharing, and provisions for appropriate protection/privacy\nPolicies for access and sharing; Provisions for appropriate protection of privacy, confidentiality, security, intellectual property, or other rights or requirements.\nAll data will be stored on the research group RAID server, which may be made available in a shared folder upon request. Depending on the type of data, specific software may be needed to read propietary file formats. Such details will be explained if requested. There should not be any delay or embargo periods on the data acquired for this research. If there is, this data management plan will be updated.",
+          "order": 7,
+          "question": []
+        },
+        {
+          "id": "section_8",
+          "title": "Policies and provisions for re-use, re-distribution",
+          "description": null,
+          "order": 8,
+          "question": []
+        },
+        {
+          "id": "section_9",
+          "title": "Policies and provisions for re-use, re-distribution, and the production of derivatives.",
+          "description": "Permission to re-use or re-distribute data will be granted within reasonable request. The source of the data must be adequately acknowleged if used, and the appropriate citation should be made if available.",
+          "order": 9,
+          "question": []
+        },
+        {
+          "id": "section_10",
+          "title": "Plans for archiving and preservation",
+          "description": null,
+          "order": 10,
+          "question": []
+        },
+        {
+          "id": "section_11",
+          "title": "Plans for archiving data, samples, and other research products, and for preservation of access to them.",
+          "description": "All data will be stored and archived in our research group's RAID server, which already incorporates data redundancy for backups. It will remain there for at least 5 years after the release of the corresponding publication or project. All data require for the creation of a research manuscript will be stored. Additional data acquired will also be stored for future reference in the research group. Data may be compressed as necessary for data sharing. Metadata files will be stored in appropriate directories to detail what is being stored in the server.",
+          "order": 11,
+          "question": []
+        }
+      ]
+    }
+  }
+}

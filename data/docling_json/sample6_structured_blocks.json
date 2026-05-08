@@ -1,0 +1,173 @@
+[
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 1,
+    "text": "+(  8  $%25$725&lt; ,6 &amp;200,77(' 72 7+( 23(1 6+$5,1* $1' 352037 ',66(0,1$7,21 2) $// '$7$ $1' 5(6285&amp;(6 *(1(5$7(' '85,1* 7+,6 352-(&amp;7  !( :,// $'+(5( 72 32/,&amp;,(6 )25 '$7$ 0$1$*(0(17 $1' '$7$ 6+$5,1* 6(7 %&lt; 7+(",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 2,
+    "text": "(6&amp;5,37,21",
+    "label": "section",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 3,
+    "text": "+,6 352-(&amp;7 :,// *(1(5$7(          352),/,1* '$7$ 86,1*    1(:/&lt; ,'(17,),('      3527(,16 $6 :(// $6 $1'  83    $6 %$,7   1 $'',7,21  :( :,// 3(5)250 68%675$7( 75$3          352),/,1* 86,1* 7:2 3527(,16 72 ,'(17,)&lt; 327(17,$/ &amp;$1','$7(6 2)    6",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 4,
+    "text": "5&amp;+,9,1* $1'  ,66(0,1$7,21",
+    "label": "section",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 5,
+    "text": "!( :,// 0$.( 7+( 5$: 3527(20,&amp; '$7$ $9$,/$%/( 72 7+( 38%/,&amp; $6 6221 $6 ,7 +$6 3$66(' 48$/,7&lt; &amp;21752/ &amp;5,7(5,$ ,1 285 +$1'6   +(6( '$7$ :,// %( '(326,7(' 72 7+(  527(20(\"&amp;+$1*(  216257,80  :+,&amp;+ +$6 %((1 6(7 83 72 3529,'( $ &amp;225',1$7(' 68%0,66,21 2)    3527(20,&amp;6 '$7$ 72 7+( 0$,1 (;,67,1* 3527(20,&amp;6 5(326,725,(6   // 68%0,66,216 :,// %( 6(7 $6 38%/,&amp;/&lt; $&amp;&amp;(66,%/( $1' ,1&amp;/8'( 0(7$'$7$ 68&amp;+ $6 75$16*(1,&amp; %$&amp;.*5281'  %$,7 3527(,1  7$* ,1)250$7,21  &amp;21752/6  (7&amp;   5,25 72 7+( 68%0,66,21 72  527(20(\"&amp;+$1*(  216257,80  7+( '$7$ :,// %( 0$,17$,1(' %27+ 21 /2&amp;$/ +$5' '5,9(6 $1' ,1 7+(  &lt; (56(  $7$  725(   &lt; (56( ,6 $1     )81'(' &amp;&lt;%(5,1)5$6758&amp;785( ,1,7,$7,9( '(',&amp;$7(' 72 0$.,1* /$5*( 6&amp;$/( &amp;20387$7,21$/ 5(6285&amp;( $9$,/$%/( 72 $ %52$' 5$1*( 2) 6&amp;,(17,676",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 6,
+    "text": "250$/,=('    '$7$  ',))(5(17,$/ (15,&amp;+0(17 $1$/&lt;6(6  $1' $662&amp;,$7(' 67$7,67,&amp;6 :,// %( 38%/,6+(' ,1 3((5 5(9,(:(' -2851$/6 $1' 3529,'(' $6 6833/(0(17$5&lt; 7$%/(6   // $1$/&lt;6(6 $1' 5(68/76 ,1 3$3(56 :,// $/62 %( 0$'( )5((/&lt; $9$,/$%/( 8321 5(48(67 )2//2:,1* 7+(,5 38%/,&amp;$7,21",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 7,
+    "text": "(6&amp;5,37,21",
+    "label": "section",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 8,
+    "text": "+,6  352-(&amp;7  :,//  *(1(5$7(  %,2/2*,&amp;$/  0$7(5,$/6  2)  86(  72  7+(  5(6($5&amp;+  &amp;20081,7&lt;   ,1&amp;/8',1*   5$%,'236,6 75$16*(1,&amp; /,1(6 (;35(66,1* )/825(6&amp;(17 3527(,1  $1' 352;,0,7&lt; %,27,1&lt;/$7,21 (1=&lt;0( 7$**('    3527(,16 5$%,'236,6 087$176 ,1 :+,&amp;+    $662&amp;,$7(' *(1(6 +$9( %((1 ',65837(' 7+528*+        %$6(' *(120( (',7,1*  $6 :(// $6 3/$60,' &amp;216758&amp;76 )25 (;35(66,21 2)    $662&amp;,$7('  5$%,'236,6 *(1(6",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 9,
+    "text": "5&amp;+,9,1* $1'  ,66(0,1$7,21",
+    "label": "section",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 10,
+    "text": "// 3/$60,'6 &amp;216758&amp;7(' :,// %( 6725(' $6 */&lt;&amp;(52/ 672&amp;.6 ,1 25 ,1 ° )5((=(5   // 75$16*(1,&amp; $1' 087$17 6(('6 *(1(5$7(' :,// %( 0$,17$,1(' ,1 7+( /$% ,1 '(6,&amp;&amp;$7(' (19,5210(17 $7 5220 7(03(5$785(    //  $%29(  6(('6  $1'       &amp;216758&amp;76  :,//  $/62  %(  '(326,7('  ,172  38%/,&amp;/&lt;  $&amp;&amp;(66,%/( 5(326,725,(6   68&amp;+  $6   ''*(1(  $1'  7+(   5$%,'236,6   ,2/2*,&amp;$/   (6285&amp;(   (17(5          $7   +,2   7$7( 1,9(56,7&lt;  :+,&amp;+ :,// 0$.( 7+(0 $9$,/$%/( 72 7+( 5(6($5&amp;+ &amp;20081,7&lt;   +(&lt; :,// $/62 %( )5((/&lt; $9$,/$%/( 8321 5(48(67 72     8",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 11,
+    "text": "(6&amp;5,37,21",
+    "label": "section",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 12,
+    "text": "$7$ 2%7$,1(' ,1 7+( 352-(&amp;7 :,// %( 38%/,6+(' 352037/&lt;  !( $17,&amp;,3$7( 7+$7 38%/,&amp;$7,21 2) 5(68/76 2%7$,1(' 81'(5 7+,6 352-(&amp;7 :,// 67$57 $7 #($5   $1' %( &amp;203/(7(' :,7+,1 $ &lt;($5 )2//2:,1* 7+( (1' 2) 7+( 6833257(' 3(5,2'    //  '$7$  :,//  %(  0$'(  )5((/&lt;  $9$,/$%/(  8321  5(48(67  )2//2:,1*  7+(,5  38%/,&amp;$7,21    +(5(  $5(  12",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 13,
+    "text": "$17,&amp;,3$7(' (7+,&amp;$/ 25 35,9$&amp;&lt; ,668(6  3(50,66,21 5(675,&amp;7,216  25 ,17(//(&amp;78$/ 35,9$&amp;&lt; ,668(6 $662&amp;,$7(' :,7+ 7+( '$7$ )2//2:,1* 7+(,5 38%/,&amp;$7,21   +(    $1' 7+( 7:2 0$,1 3$57,&amp;,3$176 2) 7+,6 352-(&amp;7 $5( $/62 (;3(&amp;7(' 72 35(6(17 7+(,5 ),1',1*6 $7 7:2 0$-25 6&amp;,(17,),&amp; &amp;21)(5(1&amp;(6 $1' 27+(5 /2&amp;$/ 6&amp;,(17,),&amp; (9(176",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 14,
+    "text": "5&amp;+,9,1* $1'  ,66(0,1$7,21",
+    "label": "section",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 15,
+    "text": "1  $&amp;&amp;25'$1&amp;(  :,7+  7+(   1,9(56,7&lt;  2)   $/,)251,$   3(1   &amp;&amp;(66   2/,&amp;&lt;   38%/,&amp;$7,216  :,//  %(  83/2$'('  72 ( &amp;+2/$56+,3    &gt;6 23(1 $&amp;&amp;(66 5(326,725&lt;  $1' 38%/,6+,1* 3/$7)250  72 %( 0$'( $9$,/$%/( 72 7+( 38%/,&amp; $7 12 &amp;+$5*(",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 16,
+    "text": "(6&amp;5,37,21",
+    "label": "section",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 17,
+    "text": "(&amp;785(6 21 7+(    (92/87,21  6758&amp;785(  &amp;20326,7,21  $1' )81&amp;7,21 :,// %( '(9(/23('   1 $'',7,21 $1'      678'(17 75$,1,1* 3/$16 :,// %( *(1(5$7('",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 18,
+    "text": "5&amp;+,9,1* $1'  ,66(0,1$7,21",
+    "label": "section",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": null,
+    "line_order": 19,
+    "text": "(&amp;785(6  678'(17 35(6(17$7,216  '$7$ &amp;2//(&amp;7,21  75$,1,1* 5(6285&amp;(6 :,// %( 0$,17$,1(' 21/,1( 7+528*+ 7+( (5.(/(&lt; % 2856(6 &amp;2856( 0$1$*(0(17 6&lt;67(0 $1' %$&amp;.(' 83 21/,1( 7+528*+ 7+( 81/,0,7(' &amp;/28' %$6(' 6725$*( 63$&amp;( 2))(5(' %&lt;  22*/(",
+    "label": "content",
+    "document_format": "docling_markdown",
+    "extractor": "docling"
+  }
+]

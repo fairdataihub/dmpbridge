@@ -29,3 +29,9 @@ def save_text(text: str, output_path: str | Path) -> None:
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(text)
+        
+def load_text(path: str | Path) -> str:
+    path = Path(path)
+
+    with open(path, "r", encoding="utf-8") as f:
+        return f.read()

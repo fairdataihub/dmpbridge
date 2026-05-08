@@ -634,8 +634,8 @@
     "bottom": 569.60688,
     "avg_font_size": 10.080000000000013,
     "font_names": [
-      "EOIGIJ+Arial-ItalicMT",
-      "EOIDNI+ArialMT"
+      "EOIDNI+ArialMT",
+      "EOIGIJ+Arial-ItalicMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
