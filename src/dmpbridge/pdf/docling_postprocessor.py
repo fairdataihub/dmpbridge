@@ -1,43 +1,89 @@
 from pathlib import Path
 from typing import List, Dict, Any
+import re
 
-from dmpbridge.utils.file_io import load_text, save_json
+from dmpbridge.utils.file_io import save_json
 from dmpbridge.utils.logger import log
 
+
+def clean_text(text: str) -> str:
+    return text.strip().replace("&amp;", "&")
+
+
+def is_generic_document_title(text: str) -> bool:
+    return text.strip().lower() in {
+        "data management plan",
+        "data management and sharing plan",
+        "dmp",
+    }
+
+
+def is_nih_element_heading(text: str) -> bool:
+    return re.match(r"^Element\s+\d+\s*:", text, flags=re.IGNORECASE) is not None
+
+
+def is_lettered_question(text: str) -> bool:
+    return re.match(r"^[A-Z]\.\s+", text) is not None
 
 
 def markdown_to_structured_blocks(
     markdown_text: str,
     source_pdf: str | None = None
 ) -> List[Dict[str, Any]]:
+
     structured_blocks = []
     line_order = 1
     seen_title = False
+    seen_real_section = False
 
-    for line in markdown_text.splitlines():
-        text = line.strip()
+    for raw_line in markdown_text.splitlines():
+        line = raw_line.strip()
 
-        if not text:
+        if not line:
             continue
 
         label = "content"
 
-        if text.startswith("#"):
-            heading_level = len(text) - len(text.lstrip("#"))
-            heading_text = text.lstrip("#").strip()
+        # Remove markdown heading marks
+        if line.startswith("#"):
+            heading_level = len(line) - len(line.lstrip("#"))
+            text = clean_text(line.lstrip("#").strip())
+        else:
+            heading_level = 0
+            text = clean_text(line)
 
-            if not heading_text:
-                continue
+        if not text:
+            continue
 
-            text = heading_text
+        # Skip repeated generic title after real sections have started
+        if is_generic_document_title(text) and seen_real_section:
+            continue
 
-            if heading_level == 1 and not seen_title:
-                label = "document_title"
-                seen_title = True
-            elif heading_level in [1, 2]:
-                label = "section"
-            else:
-                label = "subsection"
+        # First generic DMP title can be template title
+        if is_generic_document_title(text) and not seen_title:
+            label = "document_title"
+            seen_title = True
+
+        elif is_nih_element_heading(text):
+            label = "section"
+            seen_real_section = True
+
+        elif is_lettered_question(text):
+            label = "question"
+
+        elif heading_level == 1 and not seen_title:
+            label = "document_title"
+            seen_title = True
+
+        elif heading_level in [1, 2]:
+            label = "section"
+            seen_real_section = True
+
+        elif heading_level >= 3:
+            label = "question"
+
+        else:
+            label = "content"
 
         structured_blocks.append({
             "source_pdf": source_pdf,
@@ -59,10 +105,12 @@ def save_docling_structured_blocks(
     output_path: str | Path,
     source_pdf: str | None = None
 ) -> List[Dict[str, Any]]:
+
     markdown_path = Path(markdown_path)
     output_path = Path(output_path)
 
-    markdown_text = load_text(markdown_path)
+    with open(markdown_path, "r", encoding="utf-8") as f:
+        markdown_text = f.read()
 
     structured_blocks = markdown_to_structured_blocks(
         markdown_text=markdown_text,

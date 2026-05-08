@@ -13,7 +13,7 @@
     "page": null,
     "line_order": 2,
     "text": "A. Types and amount of scientific data expected to be generated in the project:",
-    "label": "section",
+    "label": "question",
     "document_format": "docling_markdown",
     "extractor": "docling"
   },
@@ -31,7 +31,7 @@
     "page": null,
     "line_order": 4,
     "text": "B. Scientific data that will be preserved and shared, and the rationale for doing so:",
-    "label": "section",
+    "label": "question",
     "document_format": "docling_markdown",
     "extractor": "docling"
   },
@@ -85,7 +85,7 @@
     "page": null,
     "line_order": 10,
     "text": "C. Metadata, other relevant data, and associated documentation:",
-    "label": "section",
+    "label": "question",
     "document_format": "docling_markdown",
     "extractor": "docling"
   },
@@ -157,7 +157,7 @@
     "page": null,
     "line_order": 18,
     "text": "A. Repository where scientific data and metadata will be archived:",
-    "label": "section",
+    "label": "question",
     "document_format": "docling_markdown",
     "extractor": "docling"
   },
@@ -175,7 +175,7 @@
     "page": null,
     "line_order": 20,
     "text": "B. How scientific data will be findable and identifiable:",
-    "label": "section",
+    "label": "question",
     "document_format": "docling_markdown",
     "extractor": "docling"
   },
@@ -193,7 +193,7 @@
     "page": null,
     "line_order": 22,
     "text": "C. When and how long the scientific data will be made available:",
-    "label": "section",
+    "label": "question",
     "document_format": "docling_markdown",
     "extractor": "docling"
   },
@@ -210,15 +210,6 @@
     "source_pdf": "sample1.pdf",
     "page": null,
     "line_order": 24,
-    "text": "DATA MANAGEMENT AND SHARING PLAN",
-    "label": "section",
-    "document_format": "docling_markdown",
-    "extractor": "docling"
-  },
-  {
-    "source_pdf": "sample1.pdf",
-    "page": null,
-    "line_order": 25,
     "text": "repository (the RISE study, the iWATCH study, and NHANES) and for data storage on the University of California  San  Diego  Library  repository.  We  anticipate  data  being  available  for  the  foreseeable  future (minimum of at least 5 years) after the study has been completed. The University of California San Diego Library repository does not currently have a limit on how long data can be stored.",
     "label": "content",
     "document_format": "docling_markdown",
@@ -227,7 +218,7 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 26,
+    "line_order": 25,
     "text": "Element 5: Access, Distribution, or Reuse Considerations:",
     "label": "section",
     "document_format": "docling_markdown",
@@ -236,17 +227,17 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 27,
+    "line_order": 26,
     "text": "A. Factors affecting subsequent access, distribution, or reuse of scientific data:",
-    "label": "section",
+    "label": "question",
     "document_format": "docling_markdown",
     "extractor": "docling"
   },
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 28,
-    "text": "The following studies have independent data use agreement &amp; approved paper proposal processes for use of their data that are specific to each institution that collected the data: (i) the SOL-VIDA Study, (ii) the MOCA Study, (iii) the PHASE Study, (iv) the AusDiab Study, (v) the ACT Study, and (vi) the WHISH accelerometer sub-study such as data use agreements or approved publication proposals.  We will be securing the appropriate approvals from each institution to use their data for purposes of this study including publications, but are unable to publicly share their data in our study data repository Researchers who wish to use data from those studies will need to follow those studies data use protocols to inquire about using their data :",
+    "line_order": 27,
+    "text": "The following studies have independent data use agreement & approved paper proposal processes for use of their data that are specific to each institution that collected the data: (i) the SOL-VIDA Study, (ii) the MOCA Study, (iii) the PHASE Study, (iv) the AusDiab Study, (v) the ACT Study, and (vi) the WHISH accelerometer sub-study such as data use agreements or approved publication proposals.  We will be securing the appropriate approvals from each institution to use their data for purposes of this study including publications, but are unable to publicly share their data in our study data repository Researchers who wish to use data from those studies will need to follow those studies data use protocols to inquire about using their data :",
     "label": "content",
     "document_format": "docling_markdown",
     "extractor": "docling"
@@ -254,7 +245,7 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 29,
+    "line_order": 28,
     "text": "(i) the SOL-VIDA Study - Data requests may be made by following instructions on the Hispanic Community Health Study/ Study of Latinos dbGap page.",
     "label": "content",
     "document_format": "docling_markdown",
@@ -263,7 +254,7 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 30,
+    "line_order": 29,
     "text": "(ii) the MOCA Study - Data requests may be made by following MOCA Study policies",
     "label": "content",
     "document_format": "docling_markdown",
@@ -272,7 +263,7 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 31,
+    "line_order": 30,
     "text": "(iii) the PHASE Study - Data requests may be made by following PHASE Study policies",
     "label": "content",
     "document_format": "docling_markdown",
@@ -281,8 +272,8 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 32,
-    "text": "(iv) the AusDiab Study - Data may be requested by following AusDiab policies available from the AusDiab study website, hosted by the Baker Heart &amp; Diabetes Institute.",
+    "line_order": 31,
+    "text": "(iv) the AusDiab Study - Data may be requested by following AusDiab policies available from the AusDiab study website, hosted by the Baker Heart & Diabetes Institute.",
     "label": "content",
     "document_format": "docling_markdown",
     "extractor": "docling"
@@ -290,7 +281,7 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 33,
+    "line_order": 32,
     "text": "(v) the ACT Study - Data are managed and stored in the ACT Data Repository and sharing requests may be made according to the policies and procedures available on the 'Work With Us' page of the Adult Changes in Thought Study website.",
     "label": "content",
     "document_format": "docling_markdown",
@@ -299,7 +290,7 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 34,
+    "line_order": 33,
     "text": "(vi) the WHISH accelerometer sub-study - Data are managed by the Women's Health Initiative Coordinating Center. Requests may be made according to policies and procedures available on the 'Working with WHI Data' page on the WHI study website.",
     "label": "content",
     "document_format": "docling_markdown",
@@ -308,16 +299,16 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 35,
+    "line_order": 34,
     "text": "B. Whether access to scientific data will be controlled:",
-    "label": "section",
+    "label": "question",
     "document_format": "docling_markdown",
     "extractor": "docling"
   },
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 36,
+    "line_order": 35,
     "text": "The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It will be deposited into the UC San Diego Library Data repository along with study protocols, code, and models for public use.  De-identified data will be available after the main outcome papers are published.",
     "label": "content",
     "document_format": "docling_markdown",
@@ -326,7 +317,7 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 37,
+    "line_order": 36,
     "text": "Protections for privacy, rights, and confidentiality of human research participants:",
     "label": "section",
     "document_format": "docling_markdown",
@@ -335,7 +326,7 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 38,
+    "line_order": 37,
     "text": "All data used in this study was de-identified prior to use.",
     "label": "content",
     "document_format": "docling_markdown",
@@ -344,7 +335,7 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 39,
+    "line_order": 38,
     "text": "Element 6: Oversight of Data Management and Sharing:",
     "label": "section",
     "document_format": "docling_markdown",
@@ -353,8 +344,8 @@
   {
     "source_pdf": "sample1.pdf",
     "page": null,
-    "line_order": 40,
-    "text": "The PI and Trial &amp; IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The PI, Trial &amp; IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to ensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once the main outcome manuscript has been published. The Statistician/Data Manager will work closely with the University of California San Diego Library repository manager to ensure that the datasets, protocols, and code are correctly stored and available for sharing.",
+    "line_order": 39,
+    "text": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The PI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to ensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once the main outcome manuscript has been published. The Statistician/Data Manager will work closely with the University of California San Diego Library repository manager to ensure that the datasets, protocols, and code are correctly stored and available for sharing.",
     "label": "content",
     "document_format": "docling_markdown",
     "extractor": "docling"

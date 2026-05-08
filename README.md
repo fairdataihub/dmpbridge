@@ -30,6 +30,8 @@ dmpbridge/
 │       ├── pdf/
 │       │   ├── __init__.py
 │       │   ├── pdf_type_detector.py                  # optional, keep for later
+│       │   ├── docling_extractor.py
+│       │   ├── docling_postprocessor.py
 │       │   ├── pdfplumber_extractor.py
 │       │   └── page_image_converter.py
 │       │

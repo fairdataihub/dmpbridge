@@ -4,7 +4,7 @@
     "page": null,
     "line_order": 1,
     "text": "DATA MANAGEMENT PLAN",
-    "label": "section",
+    "label": "document_title",
     "document_format": "docling_markdown",
     "extractor": "docling"
   },

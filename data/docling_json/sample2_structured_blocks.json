@@ -30,7 +30,7 @@
     "source_pdf": "sample2.pdf",
     "page": null,
     "line_order": 4,
-    "text": "Roles &amp; Responsibilities. For the proposed research, Director Samuel Stupp with help from the Executive Director of Research will take the lead and responsibility for coordinating and ensuring data storage and access and communicating expectations to all investigators. However, all senior investigators will also be involved in managing, storing, and disseminating the results of the project and will be responsible for checking that the plan is being followed.",
+    "text": "Roles & Responsibilities. For the proposed research, Director Samuel Stupp with help from the Executive Director of Research will take the lead and responsibility for coordinating and ensuring data storage and access and communicating expectations to all investigators. However, all senior investigators will also be involved in managing, storing, and disseminating the results of the project and will be responsible for checking that the plan is being followed.",
     "label": "content",
     "document_format": "docling_markdown",
     "extractor": "docling"
