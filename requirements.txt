@@ -5,3 +5,11 @@ pydantic
 jsonschema
 python-dotenv
 tqdm
+torch 
+torchvision 
+torchaudio
+transformers 
+accelerate 
+pillow
+qwen-vl-utils
+ipywidgets
