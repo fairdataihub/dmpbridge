@@ -98,7 +98,7 @@ Rules:
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
-            max_new_tokens=1500,
+            max_new_tokens=700,
             do_sample=False
         )
 
