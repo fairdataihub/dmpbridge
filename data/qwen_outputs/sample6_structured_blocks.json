@@ -1,0 +1,102 @@
+[
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 1,
+    "line_order": 1,
+    "text": "Understanding the protein composition and dynamics of the nuclear envelope in plants",
+    "label": "document_title",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl",
+    "reason": null
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 1,
+    "line_order": 2,
+    "text": "DATA MANAGEMENT PLAN",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl",
+    "reason": null
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 1,
+    "line_order": 3,
+    "text": "PI Gu",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl",
+    "reason": null
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 1,
+    "line_order": 4,
+    "text": "Proteomic Data",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl",
+    "reason": null
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 1,
+    "line_order": 5,
+    "text": "Archiving and Dissemination",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl",
+    "reason": null
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 1,
+    "line_order": 6,
+    "text": "Mutants, Transgenic Lines, and Plasmid Constructs",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl",
+    "reason": null
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 1,
+    "line_order": 7,
+    "text": "Archiving and Dissemination",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl",
+    "reason": null
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 1,
+    "line_order": 8,
+    "text": "Publications",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl",
+    "reason": null
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 2,
+    "line_order": 9,
+    "text": "Archiving and Dissemination",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl",
+    "reason": null
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 2,
+    "line_order": 10,
+    "text": "Teaching Curricula",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl",
+    "reason": null
+  }
+]
