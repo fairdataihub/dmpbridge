@@ -58,8 +58,8 @@
     "bottom": 136.06464000000005,
     "avg_font_size": 11.039999999999964,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -107,9 +107,9 @@
     "bottom": 162.26880000000006,
     "avg_font_size": 11.039999999999973,
     "font_names": [
+      "AAAAAG+TimesNewRomanPSMT",
       "AAAAAH+SymbolMT",
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -141,10 +141,10 @@
     "bottom": 188.18880000000001,
     "avg_font_size": 11.039999999999973,
     "font_names": [
-      "AAAAAH+SymbolMT",
-      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT",
-      "AAAAAL+TimesNewRomanPS-ItalicMT"
+      "AAAAAH+SymbolMT",
+      "AAAAAL+TimesNewRomanPS-ItalicMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -256,8 +256,8 @@
     "bottom": 289.42464,
     "avg_font_size": 11.04000000000002,
     "font_names": [
-      "AAAAAL+TimesNewRomanPS-ItalicMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -273,8 +273,8 @@
     "bottom": 314.62464,
     "avg_font_size": 11.039999999999964,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -338,8 +338,8 @@
     "bottom": 377.98464,
     "avg_font_size": 11.039999999999964,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -579,8 +579,8 @@
     "bottom": 593.0246400000001,
     "avg_font_size": 11.039999999999992,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -772,8 +772,8 @@
     "bottom": 122.62464,
     "avg_font_size": 11.039999999999964,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -837,8 +837,8 @@
     "bottom": 185.74464,
     "avg_font_size": 11.039999999999964,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -870,8 +870,8 @@
     "bottom": 223.66464000000008,
     "avg_font_size": 11.039999999999964,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -1287,8 +1287,8 @@
     "bottom": 615.82464,
     "avg_font_size": 11.039999999999992,
     "font_names": [
-      "AAAAAL+TimesNewRomanPS-ItalicMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"

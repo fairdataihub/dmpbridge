@@ -1,0 +1,101 @@
+[
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 1,
+    "text": "Review of Proposal Components",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 2,
+    "text": "Section 2.1",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 3,
+    "text": "Section 2.2",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 4,
+    "text": "Section 2.3",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 5,
+    "text": "Types of Data",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 6,
+    "text": "Input data",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 7,
+    "text": "Produced Data",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 8,
+    "text": "Data and Metadata Standards",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 9,
+    "text": "Data and Metadata Standards",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 10,
+    "text": "Policies for Access and Sharing",
+    "label": "section",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample5.pdf",
+    "page": 1,
+    "line_order": 11,
+    "text": "Raw data",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  }
+]

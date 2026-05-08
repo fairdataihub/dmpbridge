@@ -1,0 +1,56 @@
+[
+  {
+    "document_title": null,
+    "sections": [
+      {
+        "title": "Review of Proposal Components",
+        "subsections": [
+          {
+            "title": "Section 2.1"
+          },
+          {
+            "title": "Section 2.2"
+          },
+          {
+            "title": "Section 2.3"
+          }
+        ]
+      },
+      {
+        "title": "Types of Data",
+        "subsections": [
+          {
+            "title": "Input data"
+          },
+          {
+            "title": "Produced Data"
+          }
+        ]
+      },
+      {
+        "title": "Data and Metadata Standards",
+        "subsections": [
+          {
+            "title": "Data and Metadata Standards"
+          }
+        ]
+      },
+      {
+        "title": "Policies for Access and Sharing",
+        "subsections": [
+          {
+            "title": "Raw data"
+          }
+        ]
+      }
+    ],
+    "page": 1
+  },
+  {
+    "document_title": null,
+    "sections": [],
+    "raw_response": "{\n  \"document_title\": null,\n  \"sections\": [\n    {\n      \"title\": \"Scripts and code for analyses\",\n      \"subsections\": [\n        {\n          \"title\": \"All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes.\"\n        }\n      ]\n    },\n    {\n      \"title\": \"Scientist spotlight\",\n      \"subsections\": [\n        {\n          \"title\": \"All scientist spotlight biographies, assignments, and open-access readings will be posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.\"\n        }\n      ]\n    },\n    {\n      \"title\": \"Workshop frameworks\",\n      \"subsections\": [\n        {\n          \"title\": \"Workshop material will be shared with UCSB’s Diversity Committee through Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.\"\n        }\n      ]\n    },\n    {\n      \"title\": \"POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION\",\n      \"subsections\": [\n        {\n          \"title\": \"All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may freely build upon, enhance and reuse the works for any purposes without restriction under copyright or database law. CC0 does not exempt those who reuse the data from following community norms for scholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the original data authors.\"\n        }\n      ]\n    },\n    {\n      \"title\": \"PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS\",\n      \"subsections\": [\n        {\n          \"title\": \"UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing. Box provides encryption of data at rest and in-transit, detailed logging of file actions, two-factor authentication, and access review of collaborators. Data will be accessed using Box Drive, which requires full disk encryption, firewall, and an antivirus software in order to install on a local computer.\"\n        }\n      ]\n    },\n    {\n      \"",
+    "error": "Could not parse Qwen output as JSON",
+    "page": 2
+  }
+]
