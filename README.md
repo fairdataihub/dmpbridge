@@ -29,7 +29,7 @@ dmpbridge/
 │       │
 │       ├── pdf/
 │       │   ├── __init__.py
-│       │   ├── pdf_type_detector.py
+│       │   ├── pdf_type_detector.py                  # optional, keep for later
 │       │   ├── pdfplumber_extractor.py
 │       │   └── page_image_converter.py
 │       │
@@ -39,16 +39,16 @@ dmpbridge/
 │       │
 │       ├── processing/
 │       │   ├── __init__.py
-│       │   ├── block_fusion.py
+│       │   ├── block_fusion.py                     # later, for rule + Qwen fusion
 │       │   ├── structure_detector.py
-│       │   ├── markdown_builder.py
+│       │   ├── markdown_builder.py                 # optional, later
 │       │   └── structure_json_builder.py
 │       │   └── text_cleaner.py
 │       │
 │       ├── evaluation/
 │       │   ├── __init__.py
-│       │   ├── extraction_evaluator.py
-│       │   └── header_evaluator.py
+│       │   ├── extraction_evaluator.py                     # later
+│       │   └── header_evaluator.py                         # later
 │       │
 │       └── utils/
 │       │   ├── __init__.py
