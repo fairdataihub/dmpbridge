@@ -1,72 +1,52 @@
 [
   {
-    "page": 1,
     "items": [
       {
+        "text": "Understanding the protein composition and dynamics of the nuclear envelope in plants",
+        "label": "document_title"
+      },
+      {
         "text": "DATA MANAGEMENT PLAN",
-        "label": "section",
-        "reason": "document title"
+        "label": "section"
       },
       {
         "text": "PI Gu",
-        "label": "subsection",
-        "reason": "subsection heading"
+        "label": "subsection"
       },
       {
         "text": "Proteomic Data",
-        "label": "subsection",
-        "reason": "subsection heading"
+        "label": "subsection"
       },
       {
         "text": "Archiving and Dissemination",
-        "label": "subsection",
-        "reason": "subsection heading"
+        "label": "subsection"
       },
       {
         "text": "Mutants, Transgenic Lines, and Plasmid Constructs",
-        "label": "subsection",
-        "reason": "subsection heading"
+        "label": "subsection"
       },
       {
         "text": "Archiving and Dissemination",
-        "label": "subsection",
-        "reason": "subsection heading"
+        "label": "subsection"
       },
       {
         "text": "Publications",
-        "label": "subsection",
-        "reason": "subsection heading"
+        "label": "subsection"
       }
-    ]
+    ],
+    "page": 1
   },
   {
-    "page": 2,
     "items": [
       {
         "text": "Archiving and Dissemination",
-        "label": "section",
-        "reason": "document structure"
-      },
-      {
-        "text": "In accordance with the University of California Open Access Policy, publications will be uploaded to eScholarship, UC’s open access repository, and publishing platform, to be made available to the public at no charge.",
-        "label": "subsection",
-        "reason": "document structure"
+        "label": "section"
       },
       {
         "text": "Teaching Curricula",
-        "label": "section",
-        "reason": "document structure"
-      },
-      {
-        "text": "Description\nLectures on the NE evolution, structure, composition, and function will be developed. In addition, URAP and SPUR student training plans will be generated.",
-        "label": "subsection",
-        "reason": "document structure"
-      },
-      {
-        "text": "Archiving and Dissemination\nLectures, student presentations, data collection, training resources will be maintained online through the UC Berkeley bCourses course management system and backed up online through the unlimited cloud-based storage space offered by Google.",
-        "label": "subsection",
-        "reason": "document structure"
+        "label": "section"
       }
-    ]
+    ],
+    "page": 2
   }
 ]

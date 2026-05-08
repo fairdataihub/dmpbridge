@@ -41,36 +41,51 @@ def detect_structure_from_image(
     image = Image.open(image_path).convert("RGB")
 
     prompt = """
-You are analyzing a Data Management Plan PDF page.
+You are analyzing one page of a Data Management Plan PDF.
 
-Detect only the document structure.
+Your task is to detect ONLY the document structure.
 
-Return valid JSON only with this format:
+Return valid JSON only in this format:
 
 {
-  "page": 1,
   "items": [
     {
-      "text": "section or subsection text exactly as shown",
-      "label": "section",
-      "reason": "brief reason"
+      "text": "exact structural text visible on the page",
+      "label": "section"
     }
   ]
 }
 
-Labels must be one of:
+Allowed labels:
 - document_title
 - section
 - subsection
 - question
 - content
 
-Rules:
-- Do not summarize.
-- Do not invent text.
-- Use text exactly visible in the page image.
-- Focus on section headings, subsection headings, and questions.
-- Ignore normal paragraph content unless it is clearly a question.
+General rules:
+- Include only structural text: document titles, section headings, subsection headings, and explicit questions.
+- Do not include normal paragraph/body text.
+- Do not include explanations or reasons.
+- Do not summarize or rewrite.
+- Use the exact visible text from the page.
+- If a heading and paragraph appear on the same line, return only the heading part.
+- Ignore page numbers, footers, and headers unless they are the document title.
+- If no structural text is found, return {"items": []}.
+
+How to identify structural text:
+- It is usually visually separated from body text.
+- It may be bold, larger, centered, numbered, lettered, all-caps, or followed by a colon.
+- It often introduces the content that follows.
+- It is usually shorter than normal paragraphs.
+
+Do not return:
+- Long sentences.
+- Full paragraphs.
+- Explanatory body text.
+- Continuation lines from a previous paragraph.
+
+Return JSON only.
 """
 
     messages = [
@@ -98,7 +113,7 @@ Rules:
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
-            max_new_tokens=700,
+            max_new_tokens=500,
             do_sample=False
         )
 
