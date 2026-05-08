@@ -343,14 +343,73 @@
           "title": "Archiving and Dissemination",
           "description": null,
           "order": 2,
-          "question": []
+          "question": [
+            {
+              "id": "question_2_1",
+              "text": "In accordance with the University of California Open Access Policy, publications will be uploaded to eScholarship, UC’s open access repository, and publishing platform, to be made available to the public at no charge.",
+              "order": 1,
+              "answer": {
+                "id": "answer_2_1",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            },
+            {
+              "id": "question_2_2",
+              "text": "Archiving and Dissemination",
+              "order": 2,
+              "answer": {
+                "id": "answer_2_2",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            }
+          ]
         },
         {
           "id": "section_3",
           "title": "Teaching Curricula",
           "description": null,
           "order": 3,
-          "question": []
+          "question": [
+            {
+              "id": "question_3_1",
+              "text": "Description",
+              "order": 1,
+              "answer": {
+                "id": "answer_3_1",
+                "json": {
+                  "type": "text",
+                  "answer": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "meta": {
+                    "schemaVersion": null
+                  }
+                }
+              }
+            }
+          ]
         }
       ]
     }

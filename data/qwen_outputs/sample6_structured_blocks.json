@@ -6,8 +6,7 @@
     "text": "Understanding the protein composition and dynamics of the nuclear envelope in plants",
     "label": "document_title",
     "document_format": "qwen_vl",
-    "extractor": "qwen_vl",
-    "reason": null
+    "extractor": "qwen_vl"
   },
   {
     "source_pdf": "sample6.pdf",
@@ -16,8 +15,7 @@
     "text": "DATA MANAGEMENT PLAN",
     "label": "section",
     "document_format": "qwen_vl",
-    "extractor": "qwen_vl",
-    "reason": null
+    "extractor": "qwen_vl"
   },
   {
     "source_pdf": "sample6.pdf",
@@ -26,8 +24,7 @@
     "text": "PI Gu",
     "label": "subsection",
     "document_format": "qwen_vl",
-    "extractor": "qwen_vl",
-    "reason": null
+    "extractor": "qwen_vl"
   },
   {
     "source_pdf": "sample6.pdf",
@@ -36,8 +33,7 @@
     "text": "Proteomic Data",
     "label": "subsection",
     "document_format": "qwen_vl",
-    "extractor": "qwen_vl",
-    "reason": null
+    "extractor": "qwen_vl"
   },
   {
     "source_pdf": "sample6.pdf",
@@ -46,8 +42,7 @@
     "text": "Archiving and Dissemination",
     "label": "subsection",
     "document_format": "qwen_vl",
-    "extractor": "qwen_vl",
-    "reason": null
+    "extractor": "qwen_vl"
   },
   {
     "source_pdf": "sample6.pdf",
@@ -56,8 +51,7 @@
     "text": "Mutants, Transgenic Lines, and Plasmid Constructs",
     "label": "subsection",
     "document_format": "qwen_vl",
-    "extractor": "qwen_vl",
-    "reason": null
+    "extractor": "qwen_vl"
   },
   {
     "source_pdf": "sample6.pdf",
@@ -66,8 +60,7 @@
     "text": "Archiving and Dissemination",
     "label": "subsection",
     "document_format": "qwen_vl",
-    "extractor": "qwen_vl",
-    "reason": null
+    "extractor": "qwen_vl"
   },
   {
     "source_pdf": "sample6.pdf",
@@ -76,8 +69,7 @@
     "text": "Publications",
     "label": "subsection",
     "document_format": "qwen_vl",
-    "extractor": "qwen_vl",
-    "reason": null
+    "extractor": "qwen_vl"
   },
   {
     "source_pdf": "sample6.pdf",
@@ -86,17 +78,42 @@
     "text": "Archiving and Dissemination",
     "label": "section",
     "document_format": "qwen_vl",
-    "extractor": "qwen_vl",
-    "reason": null
+    "extractor": "qwen_vl"
   },
   {
     "source_pdf": "sample6.pdf",
     "page": 2,
     "line_order": 10,
+    "text": "In accordance with the University of California Open Access Policy, publications will be uploaded to eScholarship, UC’s open access repository, and publishing platform, to be made available to the public at no charge.",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 2,
+    "line_order": 11,
+    "text": "Archiving and Dissemination",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 2,
+    "line_order": 12,
     "text": "Teaching Curricula",
     "label": "section",
     "document_format": "qwen_vl",
-    "extractor": "qwen_vl",
-    "reason": null
+    "extractor": "qwen_vl"
+  },
+  {
+    "source_pdf": "sample6.pdf",
+    "page": 2,
+    "line_order": 13,
+    "text": "Description",
+    "label": "subsection",
+    "document_format": "qwen_vl",
+    "extractor": "qwen_vl"
   }
 ]
