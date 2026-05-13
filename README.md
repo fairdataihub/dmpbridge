@@ -1,5 +1,5 @@
 # DMP Bridge
-DMP Bridge is an open-source, MIT-licensed, Python-based pipeline that extracts DMP fields and converts them into RDA Common Standard JSON with DMPTool extensions.
+DMP Bridge is an open-source, MIT-licensed, Python-based pipeline that extracts DMP fields and converts them into RDA Common Standard JSON with DMPTool extensions..
 
 ## Repository Structure
 ```text
