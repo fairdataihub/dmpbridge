@@ -17,9 +17,6 @@ dmpbridge/
 │   ├── qwen_outputs/             # detected headers/structure
 │   │   └── {pdf_name}.json
 │   │
-│   │
-│   │
-│   │
 │   └── structure_json/           # FINAL output of phase 1
 │       └── {pdf_name}.json
 │
