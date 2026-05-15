@@ -5,6 +5,12 @@ from dmpbridge.processing.text_cleaner import clean_blocks
 
 
 def is_noisy_pdf(blocks: List[Dict]) -> bool:
+    """
+    Detect whether the extracted PDF text looks noisy.
+
+    If the text contains too many strange characters, we treat it as OCR/messy.
+    This helps the pipeline use safer structure rules.
+    """
     texts = [
         block.get("text", "").strip()
         for block in blocks
@@ -32,6 +38,16 @@ def is_noisy_pdf(blocks: List[Dict]) -> bool:
 
 
 def detect_document_format(blocks: List[Dict]) -> str:
+    """
+    Detect the general format of the DMP.
+
+    This helps choose the best classification logic.
+    Examples:
+    - NIH Element format: Element 1:, Element 2:
+    - Numbered format: 1. Data sharing
+    - All-caps headings
+    - Title-style headings
+    """
     if is_noisy_pdf(blocks):
         return "ocr_messy"
 
@@ -74,6 +90,15 @@ def detect_document_format(blocks: List[Dict]) -> str:
 
 
 def classify_line(block: Dict, document_format: str) -> str:
+    """
+    Classify one extracted line as:
+    - document_title
+    - section
+    - subsection
+    - question
+    - content
+    - empty
+    """
     text = block.get("text", "").strip()
 
     if not text:
@@ -101,6 +126,13 @@ def classify_line(block: Dict, document_format: str) -> str:
 
 
 def classify_nih_line(block: Dict) -> str:
+    """
+    Classify lines for NIH-style DMPs.
+
+    Example:
+    Element 1: Data Type -> section
+    A. Types and amount... -> subsection
+    """
     text = block.get("text", "").strip()
 
     if re.match(r"^Element\s+\d+\s*:", text, flags=re.IGNORECASE):
@@ -125,6 +157,13 @@ def classify_nih_line(block: Dict) -> str:
 
 
 def classify_numbered_line(text: str) -> str:
+    """
+    Classify DMPs that use numbered sections.
+
+    Example:
+    1. Types of data -> section
+    1.1 Subtopic -> subsection
+    """
     if is_numbered_section(text):
         return "section"
 
@@ -138,6 +177,9 @@ def classify_numbered_line(text: str) -> str:
 
 
 def classify_all_caps_line(text: str) -> str:
+    """
+    Classify DMPs that use all-caps headings.
+    """
     if is_all_caps_heading(text):
         return "section"
 
@@ -151,6 +193,15 @@ def classify_all_caps_line(text: str) -> str:
 
 
 def classify_title_style_line(block: Dict) -> str:
+    """
+    Classify DMPs with title-style headings.
+
+    Example:
+    Products of Research -> section
+    Data Format Standards -> section
+
+    Uses font size and short-line logic to avoid treating paragraphs as sections.
+    """
     text = block.get("text", "").strip()
 
     if is_likely_title_style_section(block):
@@ -166,6 +217,9 @@ def classify_title_style_line(block: Dict) -> str:
 
 
 def classify_ocr_messy_line(text: str) -> str:
+    """
+    Conservative classifier for noisy/OCR-like PDFs.
+    """
     if is_numbered_section(text):
         return "section"
 
@@ -179,6 +233,9 @@ def classify_ocr_messy_line(text: str) -> str:
 
 
 def classify_unknown_line(block: Dict) -> str:
+    """
+    Fallback classifier when document format is unknown.
+    """
     text = block.get("text", "").strip()
 
     if re.match(r"^Element\s+\d+\s*:", text, flags=re.IGNORECASE):
@@ -200,26 +257,32 @@ def classify_unknown_line(block: Dict) -> str:
 
 
 def is_numbered_section(text: str) -> bool:
+    """
+    Detect numbered section headings.
+
+    Handles both:
+    1. Types of data
+    1. Types of data. The answer starts here...
+
+    The inline version is important for sample6.
+    """
     text = text.strip()
 
     if not text:
         return False
 
-    # Matches:
+    # Inline heading + answer:
     # 1. Types of data. The bulk of the data...
-    # 2. Data and metadata standards. The PI's...
     inline_match = re.match(r"^\d+\.\s+(.+?)\.\s+.+", text)
 
     if inline_match:
         heading_part = inline_match.group(1).strip()
         heading_words = heading_part.split()
 
-        # Only accept if the heading part is short
         return 2 <= len(heading_words) <= 10
 
-    # Matches standalone numbered headings:
+    # Standalone numbered heading:
     # 1. Types of data
-    # 2. Data and metadata standards
     words = text.split()
 
     if len(words) > 14:
@@ -229,6 +292,10 @@ def is_numbered_section(text: str) -> bool:
 
 
 def is_document_title(text: str) -> bool:
+    """
+    Detect known document title patterns.
+    The first-line fallback in detect_structure() also catches unknown titles.
+    """
     title_patterns = [
         r"^DATA MANAGEMENT AND SHARING PLAN$",
         r"^DATA MANAGEMENT PLAN$",
@@ -244,6 +311,9 @@ def is_document_title(text: str) -> bool:
 
 
 def is_all_caps_heading(text: str) -> bool:
+    """
+    Detect headings written in all caps.
+    """
     words = text.split()
 
     if not (2 <= len(words) <= 12):
@@ -253,6 +323,11 @@ def is_all_caps_heading(text: str) -> bool:
 
 
 def is_likely_title_style_section(block: Dict) -> bool:
+    """
+    Detect short title-style section headings using text + layout metadata.
+
+    This prevents long body paragraphs from being mislabeled as sections.
+    """
     text = block.get("text", "").strip()
     font_size = block.get("avg_font_size") or 0
 
@@ -277,6 +352,15 @@ def is_likely_title_style_section(block: Dict) -> bool:
 
 
 def is_title_style_heading(text: str) -> bool:
+    """
+    General title-style heading detector.
+
+    Uses:
+    - short length
+    - no sentence-ending punctuation
+    - not a list item
+    - not sentence-like
+    """
     text = text.strip()
 
     if not text:
@@ -311,6 +395,9 @@ def is_title_style_heading(text: str) -> bool:
 
 
 def looks_like_sentence(text: str) -> bool:
+    """
+    Detect whether a line looks like normal body text rather than a heading.
+    """
     words = [
         w.strip(".,;:()[]{}").lower()
         for w in text.split()
@@ -332,6 +419,21 @@ def looks_like_sentence(text: str) -> bool:
 
 
 def detect_structure(blocks: List[Dict]) -> List[Dict]:
+    """
+    Main entry point for structure detection.
+
+    Input:
+    - line-level blocks from pdfplumber_extractor.py
+
+    Output:
+    - same blocks with two new fields:
+      - label: document_title / section / subsection / question / content / empty
+      - document_format: detected overall format
+
+    Important:
+    The first non-empty line is treated as document_title.
+    This fixes PDFs whose title is not in the hardcoded title list.
+    """
     blocks = clean_blocks(blocks)
     document_format = detect_document_format(blocks)
 
@@ -345,7 +447,6 @@ def detect_structure(blocks: List[Dict]) -> List[Dict]:
             label = "empty"
 
         elif not seen_non_empty_text:
-            # First real text line is usually the DMP/title line.
             label = "document_title"
             seen_non_empty_text = True
 

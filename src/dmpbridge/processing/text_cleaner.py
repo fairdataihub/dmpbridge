@@ -8,6 +8,9 @@ def remove_repeated_adjacent_words(text: str) -> str:
 
     Example:
     'CPS CPS 2015 2015' -> 'CPS 2015'
+
+    This is safe because it only removes repeated full words,
+    not repeated characters.
     """
     words = text.split()
 
@@ -17,6 +20,7 @@ def remove_repeated_adjacent_words(text: str) -> str:
     cleaned = []
 
     for word in words:
+        # Add the word only if it is not the same as the previous word.
         if not cleaned or word != cleaned[-1]:
             cleaned.append(word)
 
@@ -25,7 +29,12 @@ def remove_repeated_adjacent_words(text: str) -> str:
 
 def normalize_text(text: str) -> str:
     """
-    Normalize extracted text safely.
+    Normalize one extracted text line.
+
+    This function is intentionally conservative:
+    - trims leading/trailing spaces
+    - removes duplicated adjacent words
+    - normalizes multiple spaces into one space
 
     Important:
     Do NOT remove repeated characters because valid words like
@@ -35,19 +44,45 @@ def normalize_text(text: str) -> str:
         return ""
 
     text = text.strip()
+
+    # Fix pdfplumber duplication like:
+    # 'Types Types of of data data'
     text = remove_repeated_adjacent_words(text)
+
+    # Replace repeated whitespace, tabs, or line breaks with one space.
     text = re.sub(r"\s+", " ", text)
 
     return text.strip()
 
 
 def clean_blocks(blocks: List[Dict]) -> List[Dict]:
+    """
+    Clean a list of pdfplumber line blocks.
+
+    Input:
+    [
+        {"text": "CPS CPS 2015 2015", ...}
+    ]
+
+    Output:
+    [
+        {
+            "raw_text": "CPS CPS 2015 2015",
+            "text": "CPS 2015",
+            ...
+        }
+    ]
+
+    raw_text keeps the original extracted text for debugging.
+    text stores the cleaned version used by structure detection.
+    """
     cleaned_blocks = []
 
     for block in blocks:
         raw_text = block.get("text", "")
         cleaned_text = normalize_text(raw_text)
 
+        # Skip empty lines after cleaning.
         if not cleaned_text:
             continue
 
