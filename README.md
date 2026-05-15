@@ -17,11 +17,8 @@ dmpbridge/
 │   ├── qwen_outputs/             # detected headers/structure
 │   │   └── {pdf_name}.json
 │   │
-│   ├── docling_markdown/                 # reconstructed Markdown
-│   │   └── {pdf_name}.md
 │   │
-│   ├── docling_json/                 # 
-│   │   └── {pdf_name}.json
+│   │
 │   │
 │   └── structure_json/           # FINAL output of phase 1
 │       └── {pdf_name}.json
@@ -32,21 +29,19 @@ dmpbridge/
 │       │
 │       ├── pdf/
 │       │   ├── __init__.py
-│       │   ├── pdf_type_detector.py                  # optional, keep for later
-│       │   ├── docling_extractor.py
-│       │   ├── docling_postprocessor.py
 │       │   ├── pdfplumber_extractor.py
 │       │   └── page_image_converter.py
 │       │
 │       ├── vision/
 │       │   ├── __init__.py
-│       │   └── qwen_structure_detector.py
+│       │   └── qwen_structure_detector.py 
+│       │   └── qwen_postprocessor.py
 │       │
 │       ├── processing/
 │       │   ├── __init__.py
 │       │   ├── block_fusion.py                     # later, for rule + Qwen fusion
 │       │   ├── structure_detector.py
-│       │   ├── markdown_builder.py                 # optional, later
+│       │   ├── markdown_builder.py               
 │       │   └── structure_json_builder.py
 │       │   └── text_cleaner.py
 │       │
