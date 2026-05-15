@@ -147,12 +147,13 @@
       }
     ]
   },
-  "rda_schema_version": null,
+  "rda_schema_version": "1.2",
   "provenance": null,
-  "status": null,
-  "privacy": null,
-  "featured": null,
+  "status": "draft",
+  "privacy": "private",
+  "featured": "no",
   "registered": null,
+  "tombstoned": null,
   "research_domain": {
     "name": null,
     "research_domain_identifier": {
@@ -211,45 +212,125 @@
   "narrative": {
     "download_url": null,
     "template": {
-      "id": null,
+      "id": 1,
       "title": null,
       "description": null,
       "version": null,
       "section": [
         {
-          "id": "section_1",
+          "id": 1,
           "title": "1. Types of data. The bulk of the data generated in this project will be 1, 2, 3, and 4",
-          "description": "dimensional arrays of numbers and bytes representing fluid state variables generated via\ncomputer simulations of fluid flow. Images and video files will be created from the fluid\ndata using both commercial packages, such as Matlab and free visualization packages\nsuch as VAPOR (developed at NCAR).",
+          "description": null,
           "order": 1,
-          "question": []
+          "question": [
+            {
+              "id": 1,
+              "text": "1. Types of data. The bulk of the data generated in this project will be 1, 2, 3, and 4",
+              "order": 1,
+              "answer": {
+                "id": 1,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "dimensional arrays of numbers and bytes representing fluid state variables generated via\ncomputer simulations of fluid flow. Images and video files will be created from the fluid\ndata using both commercial packages, such as Matlab and free visualization packages\nsuch as VAPOR (developed at NCAR)."
+                }
+              }
+            }
+          ]
         },
         {
-          "id": "section_2",
+          "id": 2,
           "title": "2. Data and metadata standards. The PI’s research group will adopt the longstanding",
-          "description": "practice that all generated data should be straightforwardly reproducible. Thus, codes are\nstored within the same directory on a mass storage system along with the data they\ngenerate. “Readme” files will also be provided for explanation of the directory content.",
+          "description": null,
           "order": 2,
-          "question": []
+          "question": [
+            {
+              "id": 2,
+              "text": "2. Data and metadata standards. The PI’s research group will adopt the longstanding",
+              "order": 1,
+              "answer": {
+                "id": 2,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "practice that all generated data should be straightforwardly reproducible. Thus, codes are\nstored within the same directory on a mass storage system along with the data they\ngenerate. “Readme” files will also be provided for explanation of the directory content."
+                }
+              }
+            }
+          ]
         },
         {
-          "id": "section_3",
+          "id": 3,
           "title": "3. Policies for access and sharing. Interested parties will be able to request data and codes at",
-          "description": "the end of the project. Such parties will be responsible for their own version control and\nexecution.",
+          "description": null,
           "order": 3,
-          "question": []
+          "question": [
+            {
+              "id": 3,
+              "text": "3. Policies for access and sharing. Interested parties will be able to request data and codes at",
+              "order": 1,
+              "answer": {
+                "id": 3,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "the end of the project. Such parties will be responsible for their own version control and\nexecution."
+                }
+              }
+            }
+          ]
         },
         {
-          "id": "section_4",
+          "id": 4,
           "title": "4. Policies and provisions for re-use, re-distribution. Simulation data will in essence grow to",
-          "description": "several terrabytes with an associated cost of storage. Data will be made publicly\navailable upon request at the end of the project. Although open-source, we envisage that\nintellectual rights to the code will be retained by the CU group. Dissemination of open-\nsource software will be released once fully tested and published.",
+          "description": null,
           "order": 4,
-          "question": []
+          "question": [
+            {
+              "id": 4,
+              "text": "4. Policies and provisions for re-use, re-distribution. Simulation data will in essence grow to",
+              "order": 1,
+              "answer": {
+                "id": 4,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "several terrabytes with an associated cost of storage. Data will be made publicly\navailable upon request at the end of the project. Although open-source, we envisage that\nintellectual rights to the code will be retained by the CU group. Dissemination of open-\nsource software will be released once fully tested and published."
+                }
+              }
+            }
+          ]
         },
         {
-          "id": "section_5",
+          "id": 5,
           "title": "5. Plans for archiving and preservation of access. Local data will be archived on the group’s",
-          "description": "mass storage system. As mentioned above, all data generated is archived with the entire\ncode that generated it. Additionally, further backups of the data will be provided by CU’s\nNSF-funded research computing. We imagine the data being of relevance and stored for\n> 10 years.\n1",
+          "description": null,
           "order": 5,
-          "question": []
+          "question": [
+            {
+              "id": 5,
+              "text": "5. Plans for archiving and preservation of access. Local data will be archived on the group’s",
+              "order": 1,
+              "answer": {
+                "id": 5,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "mass storage system. As mentioned above, all data generated is archived with the entire\ncode that generated it. Additionally, further backups of the data will be provided by CU’s\nNSF-funded research computing. We imagine the data being of relevance and stored for\n> 10 years.\n1"
+                }
+              }
+            }
+          ]
         }
       ]
     }

@@ -106,8 +106,8 @@
     "bottom": 195.86239999999975,
     "avg_font_size": 12.0,
     "font_names": [
-      "ICODPB+TimesNewRoman",
-      "PNIDII+TimesNewRomanPSMT"
+      "PNIDII+TimesNewRomanPSMT",
+      "ICODPB+TimesNewRoman"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -299,8 +299,8 @@
     "bottom": 402.79240000000004,
     "avg_font_size": 12.0,
     "font_names": [
-      "ICODPB+TimesNewRoman",
-      "PNIDII+TimesNewRomanPSMT"
+      "PNIDII+TimesNewRomanPSMT",
+      "ICODPB+TimesNewRoman"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -332,8 +332,8 @@
     "bottom": 430.4124,
     "avg_font_size": 12.0,
     "font_names": [
-      "ICODPB+TimesNewRoman",
-      "PNIDII+TimesNewRomanPSMT"
+      "PNIDII+TimesNewRomanPSMT",
+      "ICODPB+TimesNewRoman"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"

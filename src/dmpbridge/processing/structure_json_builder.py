@@ -10,16 +10,32 @@ def get_project_root() -> Path:
     return Path(__file__).resolve().parents[3]
 
 
+def make_textarea_answer(answer_id: int, answer_text: str | None = None) -> Dict[str, Any]:
+    return {
+        "id": answer_id,
+        "json": {
+            "type": "textArea",
+            "meta": {
+                "schemaVersion": "1.0"
+            },
+            "answer": answer_text.strip() if answer_text and answer_text.strip() else "Not answered"
+        }
+    }
+
+
+def append_text_to_answer(question: Dict[str, Any], text: str) -> None:
+    current_answer = question["answer"]["json"]["answer"]
+
+    if current_answer == "Not answered":
+        question["answer"]["json"]["answer"] = text
+    else:
+        question["answer"]["json"]["answer"] = current_answer + "\n" + text
+
+
 def build_narrative_json_from_blocks(
     structured_blocks: List[Dict],
     skeleton_path: str | Path | None = None
 ) -> Dict[str, Any]:
-    """
-    Build full RDA + DMPTool extension JSON skeleton.
-    Fill:
-    - narrative.template.title from document_title
-    - narrative.template.section from detected DMP sections/questions/answers
-    """
 
     project_root = get_project_root()
 
@@ -35,6 +51,10 @@ def build_narrative_json_from_blocks(
     current_section = None
     current_question = None
 
+    section_id = 0
+    question_id = 0
+    answer_id = 0
+
     for block in structured_blocks:
         label = block.get("label")
         text = block.get("text", "").strip()
@@ -42,17 +62,18 @@ def build_narrative_json_from_blocks(
         if not text or label == "empty":
             continue
 
-        # Document title should NOT become a narrative section
         if label == "document_title":
             output["narrative"]["template"]["title"] = text
             continue
 
         if label == "section":
+            section_id += 1
+
             current_section = {
-                "id": f"section_{len(sections) + 1}",
+                "id": section_id,
                 "title": text,
                 "description": None,
-                "order": len(sections) + 1,
+                "order": section_id,
                 "question": []
             }
 
@@ -61,58 +82,53 @@ def build_narrative_json_from_blocks(
 
         elif label == "subsection":
             if current_section is None:
+                section_id += 1
                 current_section = {
-                    "id": f"section_{len(sections) + 1}",
+                    "id": section_id,
                     "title": "Untitled Section",
                     "description": None,
-                    "order": len(sections) + 1,
+                    "order": section_id,
                     "question": []
                 }
                 sections.append(current_section)
 
+            question_id += 1
+            answer_id += 1
             question_order = len(current_section["question"]) + 1
 
             current_question = {
-                "id": f"question_{current_section['order']}_{question_order}",
+                "id": question_id,
                 "text": text,
                 "order": question_order,
-                "answer": {
-                    "id": f"answer_{current_section['order']}_{question_order}",
-                    "json": {
-                        "type": "text",
-                        "answer": [
-                            {
-                                "text": ""
-                            }
-                        ],
-                        "meta": {
-                            "schemaVersion": None
-                        }
-                    }
-                }
+                "answer": make_textarea_answer(
+                    answer_id=answer_id,
+                    answer_text=None
+                )
             }
 
             current_section["question"].append(current_question)
 
         else:
-            # content/question/instruction lines become answer text
             if current_question is not None:
-                answer_list = current_question["answer"]["json"]["answer"]
-                existing_text = answer_list[0].get("text", "")
-
-                if existing_text:
-                    answer_list[0]["text"] = existing_text + "\n" + text
-                else:
-                    answer_list[0]["text"] = text
+                append_text_to_answer(current_question, text)
 
             elif current_section is not None:
-                # content before first subsection becomes section description
-                existing_description = current_section.get("description")
+                # Section has answer text but no explicit A/B/C subsection.
+                # Create one default question so narrative text goes into answer.json.answer.
+                question_id += 1
+                answer_id += 1
 
-                if existing_description:
-                    current_section["description"] = existing_description + "\n" + text
-                else:
-                    current_section["description"] = text
+                current_question = {
+                    "id": question_id,
+                    "text": current_section["title"],
+                    "order": 1,
+                    "answer": make_textarea_answer(
+                        answer_id=answer_id,
+                        answer_text=text
+                    )
+                }
+
+                current_section["question"].append(current_question)
 
     output["narrative"]["template"]["section"] = sections
 
@@ -124,6 +140,7 @@ def save_narrative_json(
     output_path: str | Path,
     skeleton_path: str | Path | None = None
 ) -> Dict[str, Any]:
+
     narrative_json = build_narrative_json_from_blocks(
         structured_blocks=structured_blocks,
         skeleton_path=skeleton_path

@@ -147,12 +147,13 @@
       }
     ]
   },
-  "rda_schema_version": null,
+  "rda_schema_version": "1.2",
   "provenance": null,
-  "status": null,
-  "privacy": null,
-  "featured": null,
+  "status": "draft",
+  "privacy": "private",
+  "featured": "no",
   "registered": null,
+  "tombstoned": null,
   "research_domain": {
     "name": null,
     "research_domain_identifier": {
@@ -211,7 +212,7 @@
   "narrative": {
     "download_url": null,
     "template": {
-      "id": null,
+      "id": 1,
       "title": null,
       "description": null,
       "version": null,

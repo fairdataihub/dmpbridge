@@ -90,8 +90,8 @@
     "bottom": 165.23786336,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -139,8 +139,8 @@
     "bottom": 203.85171372000002,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -188,9 +188,9 @@
     "bottom": 229.59692209000002,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIIBF+CMR10",
+      "MNIKAP+CMR10",
       "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -222,8 +222,8 @@
     "bottom": 255.33912536000003,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -287,8 +287,8 @@
     "bottom": 306.8246228100001,
     "avg_font_size": 10.909100000000024,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -304,8 +304,8 @@
     "bottom": 319.6951789900001,
     "avg_font_size": 10.909100000000024,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -481,8 +481,8 @@
     "bottom": 451.40018148,
     "avg_font_size": 10.909100000000024,
     "font_names": [
-      "MNIJPO+CMBX10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIJPO+CMBX10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -578,8 +578,8 @@
     "bottom": 528.62570038,
     "avg_font_size": 10.909100000000024,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -627,8 +627,8 @@
     "bottom": 569.23373422,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIJPO+CMBX10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIJPO+CMBX10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -868,8 +868,8 @@
     "bottom": 98.55782208999995,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1061,8 +1061,8 @@
     "bottom": 455.28860000000003,
     "avg_font_size": 8.966400000000021,
     "font_names": [
-      "MNIKOD+CMBX9",
-      "MNIJOO+CMR9"
+      "MNIJOO+CMR9",
+      "MNIKOD+CMBX9"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1095,8 +1095,8 @@
     "avg_font_size": 10.909100000000024,
     "font_names": [
       "MNILFD+CMTI10",
-      "MNIJPO+CMBX10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIJPO+CMBX10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1160,8 +1160,8 @@
     "bottom": 539.46486336,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1274,8 +1274,8 @@
     "bottom": 629.56639299,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1291,8 +1291,8 @@
     "bottom": 644.4300417400001,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIJPO+CMBX10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIJPO+CMBX10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1308,8 +1308,8 @@
     "bottom": 657.3016888300001,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1357,9 +1357,9 @@
     "bottom": 695.9144482800001,
     "avg_font_size": 10.90910000000001,
     "font_names": [
-      "MNIIBF+CMR10",
+      "MNIKAP+CMR10",
       "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1375,8 +1375,8 @@
     "bottom": 708.7850044600001,
     "avg_font_size": 10.909100000000013,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1504,8 +1504,8 @@
     "bottom": 164.90805920000003,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIJPO+CMBX10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIJPO+CMBX10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1521,8 +1521,8 @@
     "bottom": 177.77861538000002,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1554,8 +1554,8 @@
     "bottom": 203.52190956000004,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1619,9 +1619,9 @@
     "bottom": 255.00631610000005,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIIBF+CMR10",
+      "MNIKAP+CMR10",
       "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1797,8 +1797,8 @@
     "bottom": 398.5853448400002,
     "avg_font_size": 10.909100000000024,
     "font_names": [
-      "MNIJPO+CMBX10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIJPO+CMBX10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1830,8 +1830,8 @@
     "bottom": 424.3286390200002,
     "avg_font_size": 10.909100000000024,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2071,8 +2071,8 @@
     "bottom": 617.3924362700002,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2104,8 +2104,8 @@
     "bottom": 645.1277321100001,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIJPO+CMBX10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIJPO+CMBX10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2137,8 +2137,8 @@
     "bottom": 670.8710262900001,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2218,8 +2218,8 @@
     "bottom": 85.68617499999993,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2283,8 +2283,8 @@
     "bottom": 137.17276335999998,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2332,8 +2332,8 @@
     "bottom": 175.78661372,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2445,8 +2445,8 @@
     "bottom": 270.92705664000005,
     "avg_font_size": 10.909099999999967,
     "font_names": [
-      "MNIJPO+CMBX10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIJPO+CMBX10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2462,8 +2462,8 @@
     "bottom": 283.7987037300001,
     "avg_font_size": 10.909100000000024,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2623,8 +2623,8 @@
     "bottom": 414.5017217400001,
     "avg_font_size": 10.909100000000024,
     "font_names": [
-      "MNIJPO+CMBX10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIJPO+CMBX10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2689,8 +2689,8 @@
     "avg_font_size": 10.909100000000024,
     "font_names": [
       "MNILFD+CMTI10",
-      "MNIJPO+CMBX10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIJPO+CMBX10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2770,8 +2770,8 @@
     "bottom": 535.3865497500002,
     "avg_font_size": 10.909100000000024,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2803,8 +2803,8 @@
     "bottom": 561.1276621100002,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2836,8 +2836,8 @@
     "bottom": 586.8698653800002,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "MNIJNN+CMR10",
+      "MNIIBF+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2885,9 +2885,9 @@
     "bottom": 625.4848066500002,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNJCJO+CMMI10",
+      "MNIJNN+CMR10",
       "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "MNJCJO+CMMI10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2903,9 +2903,9 @@
     "bottom": 638.3564537400002,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNJCJO+CMMI10",
+      "MNIKAP+CMR10",
       "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNJCJO+CMMI10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -2921,8 +2921,8 @@
     "bottom": 651.2281008300002,
     "avg_font_size": 10.909099999999995,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "MNIKAP+CMR10",
+      "MNIJNN+CMR10"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
