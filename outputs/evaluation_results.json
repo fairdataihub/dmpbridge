@@ -1,0 +1,75 @@
+[
+  {
+    "sample_id": "sample10_pdfplumber",
+    "passed": false,
+    "error": "Missing reference file: ..\\data\\reference_json\\sample10_reference.json"
+  },
+  {
+    "sample_id": "sample11_pdfplumber",
+    "passed": false,
+    "error": "Missing reference file: ..\\data\\reference_json\\sample11_reference.json"
+  },
+  {
+    "sample_id": "sample1_pdfplumber",
+    "word_capture": 0.996,
+    "rouge_l": 0.996,
+    "number_capture": 1.0,
+    "section_match": 1.0,
+    "answer_match": 0.996,
+    "json_valid": true,
+    "validation_errors": [],
+    "passed": true
+  },
+  {
+    "sample_id": "sample2_pdfplumber",
+    "word_capture": 0.997,
+    "rouge_l": 0.993,
+    "number_capture": 1.0,
+    "section_match": 1.0,
+    "answer_match": 0.993,
+    "json_valid": true,
+    "validation_errors": [],
+    "passed": true
+  },
+  {
+    "sample_id": "sample3_pdfplumber",
+    "word_capture": 1.0,
+    "rouge_l": 1.0,
+    "number_capture": 1.0,
+    "section_match": 1.0,
+    "answer_match": 1.0,
+    "json_valid": true,
+    "validation_errors": [],
+    "passed": true
+  },
+  {
+    "sample_id": "sample4_pdfplumber",
+    "passed": false,
+    "error": "Missing reference file: ..\\data\\reference_json\\sample4_reference.json"
+  },
+  {
+    "sample_id": "sample5_pdfplumber",
+    "passed": false,
+    "error": "Missing reference file: ..\\data\\reference_json\\sample5_reference.json"
+  },
+  {
+    "sample_id": "sample6_pdfplumber",
+    "passed": false,
+    "error": "Missing reference file: ..\\data\\reference_json\\sample6_reference.json"
+  },
+  {
+    "sample_id": "sample7_pdfplumber",
+    "passed": false,
+    "error": "Missing reference file: ..\\data\\reference_json\\sample7_reference.json"
+  },
+  {
+    "sample_id": "sample8_pdfplumber",
+    "passed": false,
+    "error": "Missing reference file: ..\\data\\reference_json\\sample8_reference.json"
+  },
+  {
+    "sample_id": "sample9_pdfplumber",
+    "passed": false,
+    "error": "Missing reference file: ..\\data\\reference_json\\sample9_reference.json"
+  }
+]

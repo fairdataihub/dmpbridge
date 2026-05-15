@@ -148,7 +148,7 @@
     ]
   },
   "rda_schema_version": "1.2",
-  "provenance": null,
+  "provenance": "dmp-bridge",
   "status": "draft",
   "privacy": "private",
   "featured": "no",
