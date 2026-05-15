@@ -108,8 +108,8 @@
     "avg_font_size": 11.039999999999973,
     "font_names": [
       "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAH+SymbolMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAH+SymbolMT"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -142,8 +142,8 @@
     "avg_font_size": 11.039999999999973,
     "font_names": [
       "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAH+SymbolMT",
       "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAH+SymbolMT",
       "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": true,

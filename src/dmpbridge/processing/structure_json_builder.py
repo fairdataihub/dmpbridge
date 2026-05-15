@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import List, Dict, Any
 import copy
+import re
 
 from dmpbridge.utils.file_io import load_json, save_json
 from dmpbridge.utils.logger import log
@@ -30,6 +31,53 @@ def append_text_to_answer(question: Dict[str, Any], text: str) -> None:
         question["answer"]["json"]["answer"] = text
     else:
         question["answer"]["json"]["answer"] = current_answer + "\n" + text
+
+
+def split_numbered_heading_and_answer(text: str) -> tuple[str, str | None]:
+    """
+    Split inline numbered headings.
+
+    Example:
+    '1. Types of data. The bulk of the data generated...'
+
+    becomes:
+    title = '1. Types of data'
+    answer = 'The bulk of the data generated...'
+    """
+    pattern = r"^(\d+\.\s+[A-Z][^.]+)\.\s+(.*)$"
+    match = re.match(pattern, text)
+
+    if match:
+        title = match.group(1).strip()
+        answer = match.group(2).strip()
+        return title, answer
+
+    return text, None
+
+
+def is_page_number(block: Dict[str, Any], text: str) -> bool:
+    """
+    Skip standalone page numbers such as '1', '2', etc.
+    """
+    return text.isdigit() and block.get("page") is not None
+
+
+def create_default_question(
+    question_id: int,
+    answer_id: int,
+    question_text: str,
+    answer_text: str | None = None,
+    question_order: int = 1
+) -> Dict[str, Any]:
+    return {
+        "id": question_id,
+        "text": question_text,
+        "order": question_order,
+        "answer": make_textarea_answer(
+            answer_id=answer_id,
+            answer_text=answer_text
+        )
+    }
 
 
 def build_narrative_json_from_blocks(
@@ -62,6 +110,9 @@ def build_narrative_json_from_blocks(
         if not text or label == "empty":
             continue
 
+        if is_page_number(block, text):
+            continue
+
         if label == "document_title":
             output["narrative"]["template"]["title"] = text
             continue
@@ -69,9 +120,11 @@ def build_narrative_json_from_blocks(
         if label == "section":
             section_id += 1
 
+            section_title, first_answer = split_numbered_heading_and_answer(text)
+
             current_section = {
                 "id": section_id,
-                "title": text,
+                "title": section_title,
                 "description": None,
                 "order": section_id,
                 "question": []
@@ -79,6 +132,20 @@ def build_narrative_json_from_blocks(
 
             sections.append(current_section)
             current_question = None
+
+            if first_answer:
+                question_id += 1
+                answer_id += 1
+
+                current_question = create_default_question(
+                    question_id=question_id,
+                    answer_id=answer_id,
+                    question_text=section_title,
+                    answer_text=first_answer,
+                    question_order=1
+                )
+
+                current_section["question"].append(current_question)
 
         elif label == "subsection":
             if current_section is None:
@@ -96,15 +163,13 @@ def build_narrative_json_from_blocks(
             answer_id += 1
             question_order = len(current_section["question"]) + 1
 
-            current_question = {
-                "id": question_id,
-                "text": text,
-                "order": question_order,
-                "answer": make_textarea_answer(
-                    answer_id=answer_id,
-                    answer_text=None
-                )
-            }
+            current_question = create_default_question(
+                question_id=question_id,
+                answer_id=answer_id,
+                question_text=text,
+                answer_text=None,
+                question_order=question_order
+            )
 
             current_section["question"].append(current_question)
 
@@ -113,20 +178,16 @@ def build_narrative_json_from_blocks(
                 append_text_to_answer(current_question, text)
 
             elif current_section is not None:
-                # Section has answer text but no explicit A/B/C subsection.
-                # Create one default question so narrative text goes into answer.json.answer.
                 question_id += 1
                 answer_id += 1
 
-                current_question = {
-                    "id": question_id,
-                    "text": current_section["title"],
-                    "order": 1,
-                    "answer": make_textarea_answer(
-                        answer_id=answer_id,
-                        answer_text=text
-                    )
-                }
+                current_question = create_default_question(
+                    question_id=question_id,
+                    answer_id=answer_id,
+                    question_text=current_section["title"],
+                    answer_text=text,
+                    question_order=1
+                )
 
                 current_section["question"].append(current_question)
 
