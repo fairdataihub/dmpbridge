@@ -154,8 +154,8 @@
     "bottom": 244.62830272175734,
     "avg_font_size": 10.994999391875012,
     "font_names": [
-      "BAAAAA+Tinos-Regular",
-      "AAAAAA+Tinos-Bold"
+      "AAAAAA+Tinos-Bold",
+      "BAAAAA+Tinos-Regular"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -2335,8 +2335,8 @@
     "bottom": 444.1282944092568,
     "avg_font_size": 10.994999391875012,
     "font_names": [
-      "BAAAAA+Tinos-Regular",
-      "AAAAAA+Tinos-Bold"
+      "AAAAAA+Tinos-Bold",
+      "BAAAAA+Tinos-Regular"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"
@@ -2464,8 +2464,8 @@
     "bottom": 561.128289534257,
     "avg_font_size": 10.994999391875012,
     "font_names": [
-      "BAAAAA+Tinos-Regular",
-      "AAAAAA+Tinos-Bold"
+      "AAAAAA+Tinos-Bold",
+      "BAAAAA+Tinos-Regular"
     ],
     "is_bold": true,
     "extractor": "pdfplumber"

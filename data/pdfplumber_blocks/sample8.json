@@ -283,8 +283,8 @@
     "bottom": 305.8264760000001,
     "avg_font_size": 9.839999999999975,
     "font_names": [
-      "CKFMGF+Times-Italic",
-      "CKFMEP+Times-Roman"
+      "CKFMEP+Times-Roman",
+      "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -300,8 +300,8 @@
     "bottom": 317.1031160000001,
     "avg_font_size": 9.839999999999975,
     "font_names": [
-      "CKFMGF+Times-Italic",
-      "CKFMEP+Times-Roman"
+      "CKFMEP+Times-Roman",
+      "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -813,8 +813,8 @@
     "bottom": 141.6470240000001,
     "avg_font_size": 9.840000000000032,
     "font_names": [
-      "CKFMGF+Times-Italic",
-      "CKFMEP+Times-Roman"
+      "CKFMEP+Times-Roman",
+      "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -830,8 +830,8 @@
     "bottom": 153.40582400000005,
     "avg_font_size": 9.840000000000032,
     "font_names": [
-      "CKFMGF+Times-Italic",
-      "CKFMEP+Times-Roman"
+      "CKFMEP+Times-Roman",
+      "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -847,8 +847,8 @@
     "bottom": 164.92748000000006,
     "avg_font_size": 9.840000000000032,
     "font_names": [
-      "CKFMGF+Times-Italic",
-      "CKFMEP+Times-Roman"
+      "CKFMEP+Times-Roman",
+      "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -864,8 +864,8 @@
     "bottom": 176.2041200000001,
     "avg_font_size": 9.840000000000032,
     "font_names": [
-      "CKFMGF+Times-Italic",
-      "CKFMEP+Times-Roman"
+      "CKFMEP+Times-Roman",
+      "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
