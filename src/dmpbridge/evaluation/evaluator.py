@@ -23,17 +23,23 @@ def normalize_eval_text(text: str) -> str:
     text = text.replace("‘", "'").replace("’", "'")
     text = text.replace("–", "-").replace("—", "-")
     text = re.sub(r"\s+", " ", text)
+
     return text.lower().strip()
 
 
 def tokenize_words(text: str) -> set[str]:
     text = normalize_eval_text(text)
     words = re.findall(r"\b[a-zA-Z]+\b", text)
-    return {word for word in words if word not in STOPWORDS and len(word) > 1}
+
+    return {
+        word for word in words
+        if word not in STOPWORDS and len(word) > 1
+    }
 
 
 def extract_numbers(text: str) -> set[str]:
     text = normalize_eval_text(text)
+
     return set(re.findall(r"\b\d+(?:\.\d+)?%?\b", text))
 
 
@@ -60,24 +66,34 @@ def word_capture(extracted: str, reference: str) -> float:
     return len(extracted_words & reference_words) / len(reference_words)
 
 
-def number_capture(extracted: str, reference: str) -> float:
-    extracted_numbers = extract_numbers(extracted)
-    reference_numbers = extract_numbers(reference)
+def section_order_match_score(
+    extracted_json: Dict[str, Any],
+    reference_json: Dict[str, Any]
+) -> float:
+    extracted_titles = get_section_titles(extracted_json)
+    reference_titles = get_section_titles(reference_json)
 
-    if not reference_numbers:
+    if not reference_titles:
         return 1.0
 
-    return len(extracted_numbers & reference_numbers) / len(reference_numbers)
+    matches = 0
+
+    for index, ref_title in enumerate(reference_titles):
+        if index < len(extracted_titles) and extracted_titles[index] == ref_title:
+            matches += 1
+
+    return matches / len(reference_titles)
 
 
 def get_narrative_template(dmp_json: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Supports your current structure:
-    root["narrative"]
+    Supports both structures:
 
-    If later you move to official DMPTool structure:
-    root["dmp"]["narrative"]
-    this function will still work.
+    Current DMPBridge structure:
+    root["narrative"]["template"]
+
+    Future official-style structure:
+    root["dmp"]["narrative"]["template"]
     """
     if "narrative" in dmp_json:
         return dmp_json["narrative"]["template"]
@@ -89,6 +105,9 @@ def get_narrative_template(dmp_json: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def flatten_narrative_text(dmp_json: Dict[str, Any]) -> str:
+    """
+    Flatten all narrative text into one string for global text metrics.
+    """
     template = get_narrative_template(dmp_json)
 
     parts = []
@@ -119,6 +138,7 @@ def flatten_narrative_text(dmp_json: Dict[str, Any]) -> str:
 
 def get_section_titles(dmp_json: Dict[str, Any]) -> List[str]:
     template = get_narrative_template(dmp_json)
+
     return [
         normalize_eval_text(section.get("title", ""))
         for section in template.get("section", [])
@@ -126,7 +146,30 @@ def get_section_titles(dmp_json: Dict[str, Any]) -> List[str]:
     ]
 
 
-def section_match_score(extracted_json: Dict[str, Any], reference_json: Dict[str, Any]) -> float:
+def get_question_texts(dmp_json: Dict[str, Any]) -> List[str]:
+    """
+    Extract all question.text values.
+
+    This catches cases where the extracted JSON puts the section title
+    into question.text instead of the actual prompt/question.
+    """
+    template = get_narrative_template(dmp_json)
+
+    question_texts = []
+
+    for section in template.get("section", []):
+        for question in section.get("question", []):
+            text = question.get("text", "")
+            if text:
+                question_texts.append(normalize_eval_text(text))
+
+    return question_texts
+
+
+def section_match_score(
+    extracted_json: Dict[str, Any],
+    reference_json: Dict[str, Any]
+) -> float:
     extracted_titles = set(get_section_titles(extracted_json))
     reference_titles = set(get_section_titles(reference_json))
 
@@ -136,9 +179,47 @@ def section_match_score(extracted_json: Dict[str, Any], reference_json: Dict[str
     return len(extracted_titles & reference_titles) / len(reference_titles)
 
 
-def answer_match_score(extracted_json: Dict[str, Any], reference_json: Dict[str, Any]) -> float:
+def question_text_match_score(
+    extracted_json: Dict[str, Any],
+    reference_json: Dict[str, Any]
+) -> float:
     """
-    Simple answer quality score using ROUGE-L over all narrative answer text.
+    Match extracted question text against reference question text.
+
+    Uses best-match ROUGE-L for each reference question.
+    """
+    extracted_questions = get_question_texts(extracted_json)
+    reference_questions = get_question_texts(reference_json)
+
+    if not reference_questions:
+        return 1.0
+
+    if not extracted_questions:
+        return 0.0
+
+    scores = []
+
+    for ref_question in reference_questions:
+        best_score = 0.0
+
+        for ext_question in extracted_questions:
+            score = rouge_l_score(ext_question, ref_question)
+            best_score = max(best_score, score)
+
+        scores.append(best_score)
+
+    return sum(scores) / len(scores)
+
+
+def answer_match_score(
+    extracted_json: Dict[str, Any],
+    reference_json: Dict[str, Any]
+) -> float:
+    """
+    Simple answer quality score using ROUGE-L over all narrative text.
+
+    Note:
+    This is global and forgiving, so question_text_match is also needed.
     """
     extracted_text = flatten_narrative_text(extracted_json)
     reference_text = flatten_narrative_text(reference_json)
@@ -163,8 +244,11 @@ def evaluate_one_dmp(
         "sample_id": Path(extracted_json_path).stem,
         "word_capture": round(word_capture(extracted_text, reference_text), 3),
         "rouge_l": round(rouge_l_score(extracted_text, reference_text), 3),
-        "number_capture": round(number_capture(extracted_text, reference_text), 3),
         "section_match": round(section_match_score(extracted_json, reference_json), 3),
+        "section_order_match": round(section_order_match_score(extracted_json, reference_json), 3),
+        "question_text_match": round(
+            question_text_match_score(extracted_json, reference_json), 3
+        ),
         "answer_match": round(answer_match_score(extracted_json, reference_json), 3),
         "json_valid": len(validation_errors) == 0,
         "validation_errors": validation_errors,
@@ -173,8 +257,9 @@ def evaluate_one_dmp(
     scores["passed"] = (
         scores["word_capture"] >= 0.75
         and scores["rouge_l"] >= 0.75
-        and scores["number_capture"] >= 0.75
+        and scores["section_order_match"] >= 0.80
         and scores["section_match"] >= 0.80
+        and scores["question_text_match"] >= 0.80
         and scores["answer_match"] >= 0.80
         and scores["json_valid"]
     )
@@ -229,10 +314,11 @@ def print_evaluation_report(results: List[Dict[str, Any]]) -> None:
             print(f"   {result['error']}")
             continue
 
-        print(f"  Word Capture:   {result['word_capture']}")
-        print(f"  ROUGE-L:        {result['rouge_l']}")
-        print(f"  Number Capture: {result['number_capture']}")
-        print(f"  Section Match:  {result['section_match']}")
-        print(f"  Answer Match:   {result['answer_match']}")
-        print(f"  JSON Valid:     {result['json_valid']}")
-        print(f"  Status:         {' Passed' if result['passed'] else ' Failed'}")
+        print(f"  Word Capture:        {result['word_capture']}")
+        print(f"  ROUGE-L:             {result['rouge_l']}")
+        print(f"  Section Order Match: {result['section_order_match']}")
+        print(f"  Section Match:       {result['section_match']}")
+        print(f"  Question Text Match: {result['question_text_match']}")
+        print(f"  Answer Match:        {result['answer_match']}")
+        print(f"  JSON Valid:          {result['json_valid']}")
+        print(f"  Status:              {'Passed' if result['passed'] else 'Failed'}")
