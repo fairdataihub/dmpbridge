@@ -213,7 +213,7 @@
     "download_url": null,
     "template": {
       "id": 1,
-      "title": null,
+      "title": "Data and Computing Resource Management Plan",
       "description": null,
       "version": null,
       "section": [
@@ -311,13 +311,13 @@
         },
         {
           "id": 5,
-          "title": "4. Use of Vertebrate Animals: Vertebrateanimals(mice, M",
+          "title": "4. Use of Vertebrate Animals",
           "description": null,
           "order": 5,
           "question": [
             {
               "id": 5,
-              "text": "4. Use of Vertebrate Animals: Vertebrateanimals(mice, M",
+              "text": "4. Use of Vertebrate Animals",
               "order": 1,
               "answer": {
                 "id": 5,
@@ -326,7 +326,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "musculus ) will beused ineachof\ntheIRGs.Miceareanidealmammalianmodelsystembecausetheyarehighlyolfactoryanimalsand\nhave olfactory circuits that are highly homologous to other vertebrates—including humans—and\nbecause genetic-based tools are available and essential to the proposed experiments. Procedures to\nbeperformedareprovidedinthedescriptionforeachIRG,andinvolveodorantexposurefollowedby\neuthanasia (IRG1); imaging in anesthetized or awake, head- fi xed mice (IRGs1 & 3); measurements\nusing chronically-implanted probes in freely-moving mice (IRGs 2 & 3); and conditioning of odor-\ndriven navigation behavior in head- fi xed mice (IRG3). The number of animals to be used in each\nstudy will be determined based on estimates of the success rates of the various experiments and on\nstatistical power analysis using assumptions of e ff ect sizes, measurement variability and number of\ndata points that can be collected per experiment. This analysis will be done in consultation with\nbiostatisticians at each institution; a typical goal will be achieving a statistical power of 0.8 for\ncomparison of two di ff erent populations with an anticipated medium e ff ect size (Cohen’s d = 0.6),\natacon fi dencelevelof p =0.05.Inallcases,appropriateprotocolswillbeusedtominimizeexposure\nto discomfort, pain or injury, including general anesthetics (iso fl urane, ketamine/xylazine), local\nanesthetics around incision sites (bupivicaine); administration of post-operative analgesics; and\nmonitoring of body weight and signs of stress in conditioned animals. Animals will be euthanized\nwith an overdose of pentobarbital (200 mg/kg), consistent with AVMA Guidelines on Euthanasia\nof Animals. All procedures will be approved by Institutional Animal Care and Use Committees."
+                  "answer": "Vertebrateanimals(mice, M. musculus ) will beused ineachof\ntheIRGs.Miceareanidealmammalianmodelsystembecausetheyarehighlyolfactoryanimalsand\nhave olfactory circuits that are highly homologous to other vertebrates—including humans—and\nbecause genetic-based tools are available and essential to the proposed experiments. Procedures to\nbeperformedareprovidedinthedescriptionforeachIRG,andinvolveodorantexposurefollowedby\neuthanasia (IRG1); imaging in anesthetized or awake, head- fi xed mice (IRGs1 & 3); measurements\nusing chronically-implanted probes in freely-moving mice (IRGs 2 & 3); and conditioning of odor-\ndriven navigation behavior in head- fi xed mice (IRG3). The number of animals to be used in each\nstudy will be determined based on estimates of the success rates of the various experiments and on\nstatistical power analysis using assumptions of e ff ect sizes, measurement variability and number of\ndata points that can be collected per experiment. This analysis will be done in consultation with\nbiostatisticians at each institution; a typical goal will be achieving a statistical power of 0.8 for\ncomparison of two di ff erent populations with an anticipated medium e ff ect size (Cohen’s d = 0.6),\natacon fi dencelevelof p =0.05.Inallcases,appropriateprotocolswillbeusedtominimizeexposure\nto discomfort, pain or injury, including general anesthetics (iso fl urane, ketamine/xylazine), local\nanesthetics around incision sites (bupivicaine); administration of post-operative analgesics; and\nmonitoring of body weight and signs of stress in conditioned animals. Animals will be euthanized\nwith an overdose of pentobarbital (200 mg/kg), consistent with AVMA Guidelines on Euthanasia\nof Animals. All procedures will be approved by Institutional Animal Care and Use Committees."
                 }
               }
             }

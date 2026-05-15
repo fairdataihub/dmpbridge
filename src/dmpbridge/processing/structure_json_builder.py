@@ -37,28 +37,38 @@ def split_numbered_heading_and_answer(text: str) -> tuple[str, str | None]:
     """
     Split inline numbered headings.
 
-    Example:
+    Examples:
     '1. Types of data. The bulk of the data generated...'
+    -> title = '1. Types of data'
+       answer = 'The bulk of the data generated...'
 
-    becomes:
-    title = '1. Types of data'
-    answer = 'The bulk of the data generated...'
+    '4. Use of Vertebrate Animals: Vertebrate animals...'
+    -> title = '4. Use of Vertebrate Animals'
+       answer = 'Vertebrate animals...'
     """
-    pattern = r"^(\d+\.\s+[A-Z][^.]+)\.\s+(.*)$"
-    match = re.match(pattern, text)
 
-    if match:
-        title = match.group(1).strip()
-        answer = match.group(2).strip()
+    # Colon-style inline heading
+    colon_pattern = r"^(\d+\.\s+[A-Z][^:]+):\s+(.*)$"
+    colon_match = re.match(colon_pattern, text)
+
+    if colon_match:
+        title = colon_match.group(1).strip()
+        answer = colon_match.group(2).strip()
+        return title, answer
+
+    # Period-style inline heading
+    period_pattern = r"^(\d+\.\s+[A-Z][^.]+)\.\s+(.*)$"
+    period_match = re.match(period_pattern, text)
+
+    if period_match:
+        title = period_match.group(1).strip()
+        answer = period_match.group(2).strip()
         return title, answer
 
     return text, None
 
 
 def is_page_number(block: Dict[str, Any], text: str) -> bool:
-    """
-    Skip standalone page numbers such as '1', '2', etc.
-    """
     return text.isdigit() and block.get("page") is not None
 
 
@@ -77,6 +87,30 @@ def create_default_question(
             answer_id=answer_id,
             answer_text=answer_text
         )
+    }
+
+
+def create_default_section(
+    section_id: int,
+    section_title: str,
+    question_id: int,
+    answer_id: int,
+    answer_text: str,
+) -> Dict[str, Any]:
+    return {
+        "id": section_id,
+        "title": section_title,
+        "description": None,
+        "order": section_id,
+        "question": [
+            create_default_question(
+                question_id=question_id,
+                answer_id=answer_id,
+                question_text=section_title,
+                answer_text=answer_text,
+                question_order=1
+            )
+        ]
     }
 
 
@@ -190,6 +224,29 @@ def build_narrative_json_from_blocks(
                 )
 
                 current_section["question"].append(current_question)
+
+            else:
+                # Content appears before any detected section.
+                # This handles one-paragraph DMPs like sample7.
+                section_id += 1
+                question_id += 1
+                answer_id += 1
+
+                section_title = (
+                    output["narrative"]["template"].get("title")
+                    or "Narrative"
+                )
+
+                current_section = create_default_section(
+                    section_id=section_id,
+                    section_title=section_title,
+                    question_id=question_id,
+                    answer_id=answer_id,
+                    answer_text=text
+                )
+
+                current_question = current_section["question"][0]
+                sections.append(current_section)
 
     output["narrative"]["template"]["section"] = sections
 

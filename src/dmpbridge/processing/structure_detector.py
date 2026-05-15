@@ -63,8 +63,8 @@ def detect_document_format(blocks: List[Dict]) -> str:
         return "all_caps_sections"
 
     title_style_sections = [
-        text for text in texts
-        if is_title_style_heading(text)
+        block for block in blocks
+        if is_likely_title_style_section(block)
     ]
 
     if len(title_style_sections) >= 3:
@@ -95,9 +95,9 @@ def classify_line(block: Dict, document_format: str) -> str:
         return classify_all_caps_line(text)
 
     if document_format == "title_style_sections":
-        return classify_title_style_line(text)
+        return classify_title_style_line(block)
 
-    return classify_unknown_line(text)
+    return classify_unknown_line(block)
 
 
 def classify_nih_line(block: Dict) -> str:
@@ -150,8 +150,10 @@ def classify_all_caps_line(text: str) -> str:
     return "content"
 
 
-def classify_title_style_line(text: str) -> str:
-    if is_title_style_heading(text):
+def classify_title_style_line(block: Dict) -> str:
+    text = block.get("text", "").strip()
+
+    if is_likely_title_style_section(block):
         return "section"
 
     if is_numbered_section(text):
@@ -176,7 +178,9 @@ def classify_ocr_messy_line(text: str) -> str:
     return "content"
 
 
-def classify_unknown_line(text: str) -> str:
+def classify_unknown_line(block: Dict) -> str:
+    text = block.get("text", "").strip()
+
     if re.match(r"^Element\s+\d+\s*:", text, flags=re.IGNORECASE):
         return "section"
 
@@ -186,7 +190,7 @@ def classify_unknown_line(text: str) -> str:
     if is_all_caps_heading(text):
         return "section"
 
-    if is_title_style_heading(text):
+    if is_likely_title_style_section(block):
         return "section"
 
     if re.match(r"^[A-Z]\.\s+", text):
@@ -196,6 +200,31 @@ def classify_unknown_line(text: str) -> str:
 
 
 def is_numbered_section(text: str) -> bool:
+    text = text.strip()
+
+    if not text:
+        return False
+
+    # Matches:
+    # 1. Types of data. The bulk of the data...
+    # 2. Data and metadata standards. The PI's...
+    inline_match = re.match(r"^\d+\.\s+(.+?)\.\s+.+", text)
+
+    if inline_match:
+        heading_part = inline_match.group(1).strip()
+        heading_words = heading_part.split()
+
+        # Only accept if the heading part is short
+        return 2 <= len(heading_words) <= 10
+
+    # Matches standalone numbered headings:
+    # 1. Types of data
+    # 2. Data and metadata standards
+    words = text.split()
+
+    if len(words) > 14:
+        return False
+
     return re.match(r"^\d+\.\s+[A-Z][A-Za-z]", text) is not None
 
 
@@ -205,10 +234,7 @@ def is_document_title(text: str) -> bool:
         r"^DATA MANAGEMENT PLAN$",
         r"^DATA MANAGEMENT$",
         r"^DMP$",
-        r"^CPS\s+\d{4}$",
-        r"^CENTER FOR BIO-INSPIRED ENERGY SCIENCE$",
-        r"^UNIV\.?\s+OF\s+CALIFORNIA.*DATA MANAGEMENT PLAN$",
-        r"^CAREER:.*$",
+        r"^RESOURCE/DATA SHARING PLAN$"
     ]
 
     return any(
@@ -226,19 +252,31 @@ def is_all_caps_heading(text: str) -> bool:
     return text.isupper()
 
 
+def is_likely_title_style_section(block: Dict) -> bool:
+    text = block.get("text", "").strip()
+    font_size = block.get("avg_font_size") or 0
+
+    if not text:
+        return False
+
+    words = text.split()
+
+    if not (2 <= len(words) <= 10):
+        return False
+
+    if font_size < 13:
+        return False
+
+    if text.endswith(".") or text.endswith("?"):
+        return False
+
+    if looks_like_sentence(text):
+        return False
+
+    return is_title_style_heading(text)
+
+
 def is_title_style_heading(text: str) -> bool:
-    """
-    General detector for standalone narrative headings.
-
-    It does not depend on specific DMP section names.
-    It uses structural signals:
-    - short/medium length
-    - no sentence-ending punctuation
-    - not a list item
-    - not body-like sentence
-    - mostly alphabetic text
-    """
-
     text = text.strip()
 
     if not text:
@@ -298,9 +336,21 @@ def detect_structure(blocks: List[Dict]) -> List[Dict]:
     document_format = detect_document_format(blocks)
 
     structured_blocks = []
+    seen_non_empty_text = False
 
     for block in blocks:
-        label = classify_line(block, document_format)
+        text = block.get("text", "").strip()
+
+        if not text:
+            label = "empty"
+
+        elif not seen_non_empty_text:
+            # First real text line is usually the DMP/title line.
+            label = "document_title"
+            seen_non_empty_text = True
+
+        else:
+            label = classify_line(block, document_format)
 
         structured_blocks.append({
             **block,
