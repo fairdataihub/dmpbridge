@@ -62,9 +62,9 @@
     "question_order_match": 1.0,
     "question_count_match": 1.0,
     "answer_match": 0.299,
-    "answer_order_match": 0.5,
+    "answer_order_match": 1.0,
     "answer_count_match": 1.0,
-    "alignment_issue": "Failed: answer_order_match",
+    "alignment_issue": "Passed",
     "notes": ""
   },
   {
@@ -79,9 +79,9 @@
     "question_order_match": 1.0,
     "question_count_match": 1.0,
     "answer_match": 0.712,
-    "answer_order_match": 0.6,
+    "answer_order_match": 1.0,
     "answer_count_match": 1.0,
-    "alignment_issue": "Failed: answer_order_match",
+    "alignment_issue": "Passed",
     "notes": "Question text unavailable or not matched."
   },
   {
@@ -164,9 +164,9 @@
     "question_order_match": 0.0,
     "question_count_match": 1.0,
     "answer_match": 0.999,
-    "answer_order_match": 1.0,
+    "answer_order_match": 0.0,
     "answer_count_match": 1.0,
-    "alignment_issue": "Failed: section_order_match, question_order_match",
-    "notes": "Section titles captured but section order/alignment is wrong. Question text unavailable or not matched."
+    "alignment_issue": "Failed: section_order_match, question_order_match, answer_order_match",
+    "notes": "Section titles captured but section order/alignment is wrong. Answer text captured but answer order/alignment is wrong. Question text unavailable or not matched."
   }
 ]

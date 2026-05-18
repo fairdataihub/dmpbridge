@@ -340,35 +340,24 @@ def answer_order_match_score(
     reference_json: Dict[str, Any]
 ) -> float | None:
     """
-    Compare answer order inside matched sections.
+    Compare answer order by section/question position.
 
-    This avoids unfairly failing all answers when one extra section is inserted.
+    This checks whether answers appear under the correct section and question order,
+    not whether the answer wording is exactly clean.
     """
-    extracted_map = get_section_answer_map(extracted_json)
-    reference_map = get_section_answer_map(reference_json)
+    extracted_keys = get_question_order_keys(extracted_json)
+    reference_keys = get_question_order_keys(reference_json)
 
-    if not reference_map:
+    if not reference_keys:
         return None
 
-    total = 0
     matches = 0
 
-    for section_title, reference_answers in reference_map.items():
-        extracted_answers = extracted_map.get(section_title, [])
+    for i, ref_key in enumerate(reference_keys):
+        if i < len(extracted_keys) and extracted_keys[i] == ref_key:
+            matches += 1
 
-        for index, ref_answer in enumerate(reference_answers):
-            total += 1
-
-            if index < len(extracted_answers):
-                score = rouge_l_score(extracted_answers[index], ref_answer)
-
-                if score >= 0.70:
-                    matches += 1
-
-    if total == 0:
-        return None
-
-    return matches / total
+    return matches / len(reference_keys)
 
 
 def build_alignment_issue(metrics: Dict[str, float]) -> str:
