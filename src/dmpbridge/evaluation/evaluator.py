@@ -8,6 +8,7 @@ from dmpbridge.utils.file_io import load_json, save_json
 from dmpbridge.validation.schema_validator import validate_narrative_json
 
 
+# Common words removed when calculating Word Capture.
 STOPWORDS = {
     "the", "a", "an", "and", "or", "of", "to", "in", "on", "for", "with",
     "by", "from", "as", "is", "are", "was", "were", "be", "been", "will"
@@ -15,6 +16,10 @@ STOPWORDS = {
 
 
 def normalize_eval_text(text: str) -> str:
+    """
+    Normalize text before evaluation so small formatting differences do not
+    unfairly reduce scores.
+    """
     if not text:
         return ""
 
@@ -28,6 +33,9 @@ def normalize_eval_text(text: str) -> str:
 
 
 def tokenize_words(text: str) -> set[str]:
+    """
+    Convert text into a set of meaningful words for Word Capture.
+    """
     text = normalize_eval_text(text)
     words = re.findall(r"\b[a-zA-Z]+\b", text)
 
@@ -37,13 +45,12 @@ def tokenize_words(text: str) -> set[str]:
     }
 
 
-def extract_numbers(text: str) -> set[str]:
-    text = normalize_eval_text(text)
-
-    return set(re.findall(r"\b\d+(?:\.\d+)?%?\b", text))
-
-
 def rouge_l_score(extracted: str, reference: str) -> float:
+    """
+    Approximate ROUGE-L using longest matching blocks.
+
+    Measures how similar the extracted text sequence is to the reference text.
+    """
     extracted = normalize_eval_text(extracted)
     reference = normalize_eval_text(reference)
 
@@ -57,6 +64,9 @@ def rouge_l_score(extracted: str, reference: str) -> float:
 
 
 def word_capture(extracted: str, reference: str) -> float:
+    """
+    Measure how much reference vocabulary was captured in the extracted text.
+    """
     extracted_words = tokenize_words(extracted)
     reference_words = tokenize_words(reference)
 
@@ -66,34 +76,9 @@ def word_capture(extracted: str, reference: str) -> float:
     return len(extracted_words & reference_words) / len(reference_words)
 
 
-def section_order_match_score(
-    extracted_json: Dict[str, Any],
-    reference_json: Dict[str, Any]
-) -> float:
-    extracted_titles = get_section_titles(extracted_json)
-    reference_titles = get_section_titles(reference_json)
-
-    if not reference_titles:
-        return 1.0
-
-    matches = 0
-
-    for index, ref_title in enumerate(reference_titles):
-        if index < len(extracted_titles) and extracted_titles[index] == ref_title:
-            matches += 1
-
-    return matches / len(reference_titles)
-
-
 def get_narrative_template(dmp_json: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Supports both structures:
-
-    Current DMPBridge structure:
-    root["narrative"]["template"]
-
-    Future official-style structure:
-    root["dmp"]["narrative"]["template"]
+    Return narrative.template from either supported JSON shape.
     """
     if "narrative" in dmp_json:
         return dmp_json["narrative"]["template"]
@@ -106,7 +91,12 @@ def get_narrative_template(dmp_json: Dict[str, Any]) -> Dict[str, Any]:
 
 def flatten_narrative_text(dmp_json: Dict[str, Any]) -> str:
     """
-    Flatten all narrative text into one string for global text metrics.
+    Combine title, section titles, question text, and answers into one string.
+
+    Used for global metrics:
+    - Word Capture
+    - ROUGE-L
+    - Answer Match
     """
     template = get_narrative_template(dmp_json)
 
@@ -137,6 +127,9 @@ def flatten_narrative_text(dmp_json: Dict[str, Any]) -> str:
 
 
 def get_section_titles(dmp_json: Dict[str, Any]) -> List[str]:
+    """
+    Extract normalized section titles from narrative.template.section.
+    """
     template = get_narrative_template(dmp_json)
 
     return [
@@ -146,12 +139,52 @@ def get_section_titles(dmp_json: Dict[str, Any]) -> List[str]:
     ]
 
 
+def section_match_score(
+    extracted_json: Dict[str, Any],
+    reference_json: Dict[str, Any]
+) -> float:
+    """
+    Check whether the extracted JSON found the same section titles as reference.
+
+    This ignores order.
+    """
+    extracted_titles = set(get_section_titles(extracted_json))
+    reference_titles = set(get_section_titles(reference_json))
+
+    if not reference_titles:
+        return 1.0
+
+    return len(extracted_titles & reference_titles) / len(reference_titles)
+
+
+def section_order_match_score(
+    extracted_json: Dict[str, Any],
+    reference_json: Dict[str, Any]
+) -> float:
+    """
+    Check whether sections appear in the correct order.
+    """
+    extracted_titles = get_section_titles(extracted_json)
+    reference_titles = get_section_titles(reference_json)
+
+    if not reference_titles:
+        return 1.0
+
+    matches = 0
+
+    for index, ref_title in enumerate(reference_titles):
+        if index < len(extracted_titles) and extracted_titles[index] == ref_title:
+            matches += 1
+
+    return matches / len(reference_titles)
+
+
 def get_question_texts(dmp_json: Dict[str, Any]) -> List[str]:
     """
     Extract all question.text values.
 
-    This catches cases where the extracted JSON puts the section title
-    into question.text instead of the actual prompt/question.
+    This is important because an output can capture all text but put it in
+    the wrong place, such as using section title as question text.
     """
     template = get_narrative_template(dmp_json)
 
@@ -166,25 +199,12 @@ def get_question_texts(dmp_json: Dict[str, Any]) -> List[str]:
     return question_texts
 
 
-def section_match_score(
-    extracted_json: Dict[str, Any],
-    reference_json: Dict[str, Any]
-) -> float:
-    extracted_titles = set(get_section_titles(extracted_json))
-    reference_titles = set(get_section_titles(reference_json))
-
-    if not reference_titles:
-        return 1.0
-
-    return len(extracted_titles & reference_titles) / len(reference_titles)
-
-
 def question_text_match_score(
     extracted_json: Dict[str, Any],
     reference_json: Dict[str, Any]
 ) -> float:
     """
-    Match extracted question text against reference question text.
+    Compare extracted question text to reference question text.
 
     Uses best-match ROUGE-L for each reference question.
     """
@@ -216,10 +236,10 @@ def answer_match_score(
     reference_json: Dict[str, Any]
 ) -> float:
     """
-    Simple answer quality score using ROUGE-L over all narrative text.
+    Compare overall narrative answer quality.
 
-    Note:
-    This is global and forgiving, so question_text_match is also needed.
+    This is intentionally broad, so it should be interpreted together with
+    Question Text Match and Section Match.
     """
     extracted_text = flatten_narrative_text(extracted_json)
     reference_text = flatten_narrative_text(reference_json)
@@ -231,6 +251,9 @@ def evaluate_one_dmp(
     extracted_json_path: str | Path,
     reference_json_path: str | Path
 ) -> Dict[str, Any]:
+    """
+    Evaluate one extracted DMP JSON against one manually created reference JSON.
+    """
 
     extracted_json = load_json(extracted_json_path)
     reference_json = load_json(reference_json_path)
@@ -257,8 +280,8 @@ def evaluate_one_dmp(
     scores["passed"] = (
         scores["word_capture"] >= 0.75
         and scores["rouge_l"] >= 0.75
-        and scores["section_order_match"] >= 0.80
         and scores["section_match"] >= 0.80
+        and scores["section_order_match"] >= 0.80
         and scores["question_text_match"] >= 0.80
         and scores["answer_match"] >= 0.80
         and scores["json_valid"]
@@ -272,6 +295,13 @@ def evaluate_folder(
     reference_folder: str | Path,
     output_path: str | Path | None = None
 ) -> List[Dict[str, Any]]:
+    """
+    Evaluate all extracted JSON files against reference JSON files.
+
+    Expected naming:
+    extracted: sample1_pdfplumber.json
+    reference: sample1_reference.json
+    """
 
     extracted_folder = Path(extracted_folder)
     reference_folder = Path(reference_folder)
@@ -279,9 +309,6 @@ def evaluate_folder(
     results = []
 
     for extracted_file in sorted(extracted_folder.glob("*.json")):
-        # Example:
-        # extracted: sample1_pdfplumber.json
-        # reference: sample1_reference.json
         sample_id = extracted_file.stem.replace("_pdfplumber", "")
         reference_file = reference_folder / f"{sample_id}_reference.json"
 
@@ -307,6 +334,9 @@ def evaluate_folder(
 
 
 def print_evaluation_report(results: List[Dict[str, Any]]) -> None:
+    """
+    Print evaluation results in a readable format.
+    """
     for result in results:
         print(f"\n{result.get('sample_id')}")
 
@@ -316,8 +346,8 @@ def print_evaluation_report(results: List[Dict[str, Any]]) -> None:
 
         print(f"  Word Capture:        {result['word_capture']}")
         print(f"  ROUGE-L:             {result['rouge_l']}")
-        print(f"  Section Order Match: {result['section_order_match']}")
         print(f"  Section Match:       {result['section_match']}")
+        print(f"  Section Order Match: {result['section_order_match']}")
         print(f"  Question Text Match: {result['question_text_match']}")
         print(f"  Answer Match:        {result['answer_match']}")
         print(f"  JSON Valid:          {result['json_valid']}")

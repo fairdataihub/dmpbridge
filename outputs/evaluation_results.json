@@ -47,8 +47,15 @@
   },
   {
     "sample_id": "sample4_pdfplumber",
-    "passed": false,
-    "error": "Missing reference file: ..\\data\\reference_json\\sample4_reference.json"
+    "word_capture": 0.903,
+    "rouge_l": 0.728,
+    "section_match": 1.0,
+    "section_order_match": 1.0,
+    "question_text_match": 1.0,
+    "answer_match": 0.728,
+    "json_valid": true,
+    "validation_errors": [],
+    "passed": false
   },
   {
     "sample_id": "sample5_pdfplumber",
