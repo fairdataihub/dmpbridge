@@ -274,7 +274,7 @@ def question_text_match_score(
     reference_questions = get_question_texts(reference_json)
 
     if not reference_questions:
-        return 1.0
+        return None
 
     if not extracted_questions:
         return 0.0
@@ -320,7 +320,10 @@ def evaluate_one_dmp(
 
     This returns metric values only.
     It does not assign Passed/Failed.
+
+    If the reference JSON has no question text, question_text_match is set to "N/A".
     """
+
     extracted_json = load_json(extracted_json_path)
     reference_json = load_json(reference_json_path)
 
@@ -329,20 +332,29 @@ def evaluate_one_dmp(
 
     validation_errors = validate_narrative_json(extracted_json)
 
+    question_text_score = question_text_match_score(
+        extracted_json,
+        reference_json
+    )
+
     return {
-         "sample_id": Path(extracted_json_path).stem,
-         "word_capture": round(word_capture(extracted_text, reference_text), 3),
-         "rouge_l": round(rouge_l_score(extracted_text, reference_text), 3),
-         "section_match": round(section_match_score(extracted_json, reference_json), 3),
-         "section_order_match": round(section_order_match_score(extracted_json, reference_json), 3),
-         "question_title_match": round(question_title_match_score(extracted_json, reference_json), 3
+        "sample_id": Path(extracted_json_path).stem,
+        "word_capture": round(word_capture(extracted_text, reference_text), 3),
+        "rouge_l": round(rouge_l_score(extracted_text, reference_text), 3),
+        "section_match": round(section_match_score(extracted_json, reference_json), 3),
+        "section_order_match": round(section_order_match_score(extracted_json, reference_json), 3),
+        "question_title_match": round(
+            question_title_match_score(extracted_json, reference_json), 3
         ),
-         "question_text_match": round(question_text_match_score(extracted_json, reference_json), 3
+        "question_text_match": (
+            round(question_text_score, 3)
+            if question_text_score is not None                                             
+            else "N/A"
         ),
-         "answer_match": round(answer_match_score(extracted_json, reference_json), 3),
+        "answer_match": round(answer_match_score(extracted_json, reference_json), 3),
         "json_valid": len(validation_errors) == 0,
         "validation_errors": validation_errors,
-  }
+    }
 
 
 def evaluate_folder(
