@@ -17,8 +17,13 @@ STOPWORDS = {
 
 def normalize_eval_text(text: str) -> str:
     """
-    Normalize text before evaluation so small formatting differences do not
-    unfairly reduce scores.
+    Normalize text before evaluation.
+
+    This reduces scoring differences caused by:
+    - curly quotes vs straight quotes
+    - em dash/en dash vs hyphen
+    - extra whitespace or line breaks
+    - uppercase/lowercase differences
     """
     if not text:
         return ""
@@ -34,7 +39,10 @@ def normalize_eval_text(text: str) -> str:
 
 def tokenize_words(text: str) -> set[str]:
     """
-    Convert text into a set of meaningful words for Word Capture.
+    Convert text into a set of meaningful words.
+
+    Used for Word Capture.
+    Stopwords are removed so the score focuses on meaningful content words.
     """
     text = normalize_eval_text(text)
     words = re.findall(r"\b[a-zA-Z]+\b", text)
@@ -47,9 +55,9 @@ def tokenize_words(text: str) -> set[str]:
 
 def rouge_l_score(extracted: str, reference: str) -> float:
     """
-    Approximate ROUGE-L using longest matching blocks.
+    Approximate ROUGE-L using longest matching text blocks.
 
-    Measures how similar the extracted text sequence is to the reference text.
+    This measures how similar the extracted text sequence is to the reference.
     """
     extracted = normalize_eval_text(extracted)
     reference = normalize_eval_text(reference)
@@ -65,7 +73,10 @@ def rouge_l_score(extracted: str, reference: str) -> float:
 
 def word_capture(extracted: str, reference: str) -> float:
     """
-    Measure how much reference vocabulary was captured in the extracted text.
+    Measure how much reference vocabulary appears in the extracted output.
+
+    Formula:
+    captured reference words / all reference words
     """
     extracted_words = tokenize_words(extracted)
     reference_words = tokenize_words(reference)
@@ -79,6 +90,12 @@ def word_capture(extracted: str, reference: str) -> float:
 def get_narrative_template(dmp_json: Dict[str, Any]) -> Dict[str, Any]:
     """
     Return narrative.template from either supported JSON shape.
+
+    Current project shape:
+    root["narrative"]["template"]
+
+    Future official-style shape:
+    root["dmp"]["narrative"]["template"]
     """
     if "narrative" in dmp_json:
         return dmp_json["narrative"]["template"]
@@ -91,9 +108,15 @@ def get_narrative_template(dmp_json: Dict[str, Any]) -> Dict[str, Any]:
 
 def flatten_narrative_text(dmp_json: Dict[str, Any]) -> str:
     """
-    Combine title, section titles, question text, and answers into one string.
+    Combine all narrative text into one string.
 
-    Used for global metrics:
+    Includes:
+    - template title
+    - section titles
+    - question text
+    - answer text
+
+    Used for global text metrics:
     - Word Capture
     - ROUGE-L
     - Answer Match
@@ -144,7 +167,7 @@ def section_match_score(
     reference_json: Dict[str, Any]
 ) -> float:
     """
-    Check whether the extracted JSON found the same section titles as reference.
+    Measure whether extracted section titles match reference section titles.
 
     This ignores order.
     """
@@ -162,7 +185,7 @@ def section_order_match_score(
     reference_json: Dict[str, Any]
 ) -> float:
     """
-    Check whether sections appear in the correct order.
+    Measure whether section titles appear in the same order as the reference.
     """
     extracted_titles = get_section_titles(extracted_json)
     reference_titles = get_section_titles(reference_json)
@@ -183,8 +206,7 @@ def get_question_texts(dmp_json: Dict[str, Any]) -> List[str]:
     """
     Extract all question.text values.
 
-    This is important because an output can capture all text but put it in
-    the wrong place, such as using section title as question text.
+    This catches cases where text is captured but placed in the wrong field.
     """
     template = get_narrative_template(dmp_json)
 
@@ -236,10 +258,12 @@ def answer_match_score(
     reference_json: Dict[str, Any]
 ) -> float:
     """
-    Compare overall narrative answer quality.
+    Compare overall narrative answer quality using ROUGE-L.
 
-    This is intentionally broad, so it should be interpreted together with
-    Question Text Match and Section Match.
+    This is broad and forgiving, so interpret it with:
+    - Section Match
+    - Section Order Match
+    - Question Text Match
     """
     extracted_text = flatten_narrative_text(extracted_json)
     reference_text = flatten_narrative_text(reference_json)
@@ -252,9 +276,11 @@ def evaluate_one_dmp(
     reference_json_path: str | Path
 ) -> Dict[str, Any]:
     """
-    Evaluate one extracted DMP JSON against one manually created reference JSON.
-    """
+    Evaluate one extracted DMP JSON against one reference JSON.
 
+    This returns metric values only.
+    It does not assign Passed/Failed.
+    """
     extracted_json = load_json(extracted_json_path)
     reference_json = load_json(reference_json_path)
 
@@ -263,7 +289,7 @@ def evaluate_one_dmp(
 
     validation_errors = validate_narrative_json(extracted_json)
 
-    scores = {
+    return {
         "sample_id": Path(extracted_json_path).stem,
         "word_capture": round(word_capture(extracted_text, reference_text), 3),
         "rouge_l": round(rouge_l_score(extracted_text, reference_text), 3),
@@ -277,18 +303,6 @@ def evaluate_one_dmp(
         "validation_errors": validation_errors,
     }
 
-    scores["passed"] = (
-        scores["word_capture"] >= 0.75
-        and scores["rouge_l"] >= 0.75
-        and scores["section_match"] >= 0.80
-        and scores["section_order_match"] >= 0.80
-        and scores["question_text_match"] >= 0.80
-        and scores["answer_match"] >= 0.80
-        and scores["json_valid"]
-    )
-
-    return scores
-
 
 def evaluate_folder(
     extracted_folder: str | Path,
@@ -296,13 +310,12 @@ def evaluate_folder(
     output_path: str | Path | None = None
 ) -> List[Dict[str, Any]]:
     """
-    Evaluate all extracted JSON files against reference JSON files.
+    Evaluate all extracted JSON files in a folder.
 
     Expected naming:
     extracted: sample1_pdfplumber.json
     reference: sample1_reference.json
     """
-
     extracted_folder = Path(extracted_folder)
     reference_folder = Path(reference_folder)
 
@@ -315,8 +328,15 @@ def evaluate_folder(
         if not reference_file.exists():
             results.append({
                 "sample_id": extracted_file.stem,
-                "passed": False,
-                "error": f"Missing reference file: {reference_file}"
+                "word_capture": None,
+                "rouge_l": None,
+                "section_match": None,
+                "section_order_match": None,
+                "question_text_match": None,
+                "answer_match": None,
+                "json_valid": False,
+                "validation_errors": [],
+                "notes": f"Missing reference file: {reference_file}"
             })
             continue
 
@@ -325,6 +345,7 @@ def evaluate_folder(
             reference_json_path=reference_file
         )
 
+        result["notes"] = ""
         results.append(result)
 
     if output_path:
@@ -333,22 +354,64 @@ def evaluate_folder(
     return results
 
 
-def print_evaluation_report(results: List[Dict[str, Any]]) -> None:
+def print_evaluation_table(results: List[Dict[str, Any]]) -> None:
     """
-    Print evaluation results in a readable format.
+    Print evaluation results as a clean aligned table.
     """
+
+    headers = [
+        "sample_id",
+        "word_capture",
+        "rouge_l",
+        "section_match",
+        "section_order_match",
+        "question_text_match",
+        "answer_match",
+        "json_valid",
+        "notes"
+    ]
+
+    # Convert all values to strings
+    rows = []
     for result in results:
-        print(f"\n{result.get('sample_id')}")
+        row = []
+        for header in headers:
+            value = result.get(header, "")
+            row.append(str(value))
+        rows.append(row)
 
-        if "error" in result:
-            print(f"   {result['error']}")
-            continue
+    # Calculate column widths
+    col_widths = []
 
-        print(f"  Word Capture:        {result['word_capture']}")
-        print(f"  ROUGE-L:             {result['rouge_l']}")
-        print(f"  Section Match:       {result['section_match']}")
-        print(f"  Section Order Match: {result['section_order_match']}")
-        print(f"  Question Text Match: {result['question_text_match']}")
-        print(f"  Answer Match:        {result['answer_match']}")
-        print(f"  JSON Valid:          {result['json_valid']}")
-        print(f"  Status:              {'Passed' if result['passed'] else 'Failed'}")
+    for col_index, header in enumerate(headers):
+        max_width = len(header)
+
+        for row in rows:
+            max_width = max(max_width, len(row[col_index]))
+
+        col_widths.append(max_width)
+
+    # Print header
+    header_line = " | ".join(
+        header.ljust(col_widths[i])
+        for i, header in enumerate(headers)
+    )
+
+    print(header_line)
+
+    # Print divider
+    divider_line = "-+-".join(
+        "-" * col_widths[i]
+        for i in range(len(headers))
+    )
+
+    print(divider_line)
+
+    # Print rows
+    for row in rows:
+        row_line = " | ".join(
+            row[i].ljust(col_widths[i])
+            for i in range(len(headers))
+        )
+
+        print(row_line)

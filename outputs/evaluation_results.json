@@ -1,13 +1,27 @@
 [
   {
     "sample_id": "sample10_pdfplumber",
-    "passed": false,
-    "error": "Missing reference file: ..\\data\\reference_json\\sample10_reference.json"
+    "word_capture": null,
+    "rouge_l": null,
+    "section_match": null,
+    "section_order_match": null,
+    "question_text_match": null,
+    "answer_match": null,
+    "json_valid": false,
+    "validation_errors": [],
+    "notes": "Missing reference file: ..\\data\\reference_json\\sample10_reference.json"
   },
   {
     "sample_id": "sample11_pdfplumber",
-    "passed": false,
-    "error": "Missing reference file: ..\\data\\reference_json\\sample11_reference.json"
+    "word_capture": null,
+    "rouge_l": null,
+    "section_match": null,
+    "section_order_match": null,
+    "question_text_match": null,
+    "answer_match": null,
+    "json_valid": false,
+    "validation_errors": [],
+    "notes": "Missing reference file: ..\\data\\reference_json\\sample11_reference.json"
   },
   {
     "sample_id": "sample1_pdfplumber",
@@ -19,7 +33,7 @@
     "answer_match": 0.996,
     "json_valid": true,
     "validation_errors": [],
-    "passed": true
+    "notes": ""
   },
   {
     "sample_id": "sample2_pdfplumber",
@@ -31,7 +45,7 @@
     "answer_match": 0.993,
     "json_valid": true,
     "validation_errors": [],
-    "passed": false
+    "notes": ""
   },
   {
     "sample_id": "sample3_pdfplumber",
@@ -43,7 +57,7 @@
     "answer_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
-    "passed": false
+    "notes": ""
   },
   {
     "sample_id": "sample4_pdfplumber",
@@ -55,31 +69,66 @@
     "answer_match": 0.728,
     "json_valid": true,
     "validation_errors": [],
-    "passed": false
+    "notes": ""
   },
   {
     "sample_id": "sample5_pdfplumber",
-    "passed": false,
-    "error": "Missing reference file: ..\\data\\reference_json\\sample5_reference.json"
+    "word_capture": null,
+    "rouge_l": null,
+    "section_match": null,
+    "section_order_match": null,
+    "question_text_match": null,
+    "answer_match": null,
+    "json_valid": false,
+    "validation_errors": [],
+    "notes": "Missing reference file: ..\\data\\reference_json\\sample5_reference.json"
   },
   {
     "sample_id": "sample6_pdfplumber",
-    "passed": false,
-    "error": "Missing reference file: ..\\data\\reference_json\\sample6_reference.json"
+    "word_capture": null,
+    "rouge_l": null,
+    "section_match": null,
+    "section_order_match": null,
+    "question_text_match": null,
+    "answer_match": null,
+    "json_valid": false,
+    "validation_errors": [],
+    "notes": "Missing reference file: ..\\data\\reference_json\\sample6_reference.json"
   },
   {
     "sample_id": "sample7_pdfplumber",
-    "passed": false,
-    "error": "Missing reference file: ..\\data\\reference_json\\sample7_reference.json"
+    "word_capture": null,
+    "rouge_l": null,
+    "section_match": null,
+    "section_order_match": null,
+    "question_text_match": null,
+    "answer_match": null,
+    "json_valid": false,
+    "validation_errors": [],
+    "notes": "Missing reference file: ..\\data\\reference_json\\sample7_reference.json"
   },
   {
     "sample_id": "sample8_pdfplumber",
-    "passed": false,
-    "error": "Missing reference file: ..\\data\\reference_json\\sample8_reference.json"
+    "word_capture": null,
+    "rouge_l": null,
+    "section_match": null,
+    "section_order_match": null,
+    "question_text_match": null,
+    "answer_match": null,
+    "json_valid": false,
+    "validation_errors": [],
+    "notes": "Missing reference file: ..\\data\\reference_json\\sample8_reference.json"
   },
   {
     "sample_id": "sample9_pdfplumber",
-    "passed": false,
-    "error": "Missing reference file: ..\\data\\reference_json\\sample9_reference.json"
+    "word_capture": null,
+    "rouge_l": null,
+    "section_match": null,
+    "section_order_match": null,
+    "question_text_match": null,
+    "answer_match": null,
+    "json_valid": false,
+    "validation_errors": [],
+    "notes": "Missing reference file: ..\\data\\reference_json\\sample9_reference.json"
   }
 ]
