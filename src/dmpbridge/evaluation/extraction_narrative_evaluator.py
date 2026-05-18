@@ -574,8 +574,9 @@ def evaluate_folder(
                 "answer_count_match": None,
 
                 "json_valid": False,
-                "alignment_issue": "",
-                "notes": f"Missing reference file: {reference_file}"
+                "notes": f"Missing reference file: {reference_file}",
+                "alignment_issue": ""
+                
             })
             continue
 
