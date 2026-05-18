@@ -392,12 +392,27 @@ def answer_order_match_score(
 # Main evaluation functions
 # ---------------------------------------------------------
 
-def format_score(score: float | None) -> float | str:
+def format_score(score: float | None) -> float:
     """
     Format scores for output table.
     """
-    return round(score, 3) if score is not None else "N/A"
+    return round(score, 3) if score is not None else 0.0
 
+def build_alignment_issue(metrics: Dict[str, float]) -> str:
+    """
+    Mark alignment as failed if any alignment metric is below 1.0.
+    """
+
+    failed_metrics = [
+        metric_name
+        for metric_name, metric_value in metrics.items()
+        if metric_value < 1.0
+    ]
+
+    if failed_metrics:
+        return "Failed: " + ", ".join(failed_metrics)
+
+    return "Passed"
 
 def evaluate_one_dmp(
     extracted_json_path: str | Path,
@@ -415,100 +430,84 @@ def evaluate_one_dmp(
     extracted_text = flatten_narrative_text(extracted_json)
     reference_text = flatten_narrative_text(reference_json)
 
-    validation_errors = validate_narrative_json(extracted_json)
-
-    narrative_title_score = narrative_title_match_score(extracted_json, reference_json)
-
-    section_title_score = section_title_match_score(extracted_json, reference_json)
-    section_order_score = section_order_match_score(extracted_json, reference_json)
-
-
-    question_text_score = question_text_match_score(extracted_json, reference_json)
-    question_order_score = question_order_match_score(extracted_json, reference_json)
-
-    answer_score = answer_match_score(extracted_json, reference_json)
-    answer_order_score = answer_order_match_score(extracted_json, reference_json)
-
-    section_count_score = count_match_score(
-        len(get_sections(extracted_json)),
-        len(get_sections(reference_json))
+    narrative_title_score = format_score(
+        narrative_title_match_score(extracted_json, reference_json)
     )
 
-    question_count_score = count_match_score(
-        len(get_question_texts(extracted_json)),
-        len(get_question_texts(reference_json))
+    section_title_score = format_score(
+        section_title_match_score(extracted_json, reference_json)
+    )
+    section_order_score = format_score(
+        section_order_match_score(extracted_json, reference_json)
+    )
+    section_count_score = format_score(
+        count_match_score(len(get_sections(extracted_json)), len(get_sections(reference_json)))
     )
 
-    answer_count_score = count_match_score(
-        len(get_answer_texts(extracted_json)),
-        len(get_answer_texts(reference_json))
+    question_text_score = format_score(
+        question_text_match_score(extracted_json, reference_json)
     )
+    question_order_score = format_score(
+        question_order_match_score(extracted_json, reference_json)
+    )
+    question_count_score = format_score(
+        count_match_score(len(get_question_texts(extracted_json)), len(get_question_texts(reference_json)))
+    )
+
+    answer_score = round(answer_match_score(extracted_json, reference_json), 3)
+    answer_order_score = format_score(
+        answer_order_match_score(extracted_json, reference_json)
+    )
+    answer_count_score = format_score(
+        count_match_score(len(get_answer_texts(extracted_json)), len(get_answer_texts(reference_json)))
+    )
+
+    alignment_metrics = {
+        "narrative_title_match": narrative_title_score,
+        "section_title_match": section_title_score,
+        "section_order_match": section_order_score,
+        "section_count_match": section_count_score,
+        "question_order_match": question_order_score,
+        "question_count_match": question_count_score,
+        "answer_order_match": answer_order_score,
+        "answer_count_match": answer_count_score,
+    }
+
+    alignment_issue = build_alignment_issue(alignment_metrics)
 
     notes = []
-    alignment_issues = []
 
-    if narrative_title_score is None:
-        notes.append("No reference narrative title.")
+    if section_title_score == 1.0 and section_order_score < 1.0:
+        notes.append("Section titles captured but order/alignment is wrong.")
 
-    if section_title_score is None:
-        notes.append("No reference section title.")
+    if answer_score >= 0.95 and answer_order_score < 1.0:
+        notes.append("Answer text captured but attached to wrong order.")
 
-    if question_text_score is None:
-        notes.append("No reference question text.")
-
-    if answer_order_score is None:
-        notes.append("No reference answer text.")
-
-    # Diagnostic: correct section titles exist, but the order is wrong.
-    if (
-        isinstance(section_title_score, float)
-        and isinstance(section_order_score, float)
-        and section_title_score >= 0.95
-        and section_order_score < 0.50
-    ):
-        alignment_issues.append("Section titles detected but order shifted.")
-
-    # Diagnostic: answer text is mostly captured, but attached in wrong order.
-    if (
-        isinstance(answer_score, float)
-        and isinstance(answer_order_score, float)
-        and answer_score >= 0.95
-        and answer_order_score < 0.50
-    ):
-        alignment_issues.append("Answer text captured but attached to wrong section/order.")
-
-    # Diagnostic: number of sections is correct, but order is wrong.
-    if (
-        isinstance(section_count_score, float)
-        and isinstance(section_order_score, float)
-        and section_count_score == 1.0
-        and section_order_score < 0.50
-    ):
-        alignment_issues.append("Section count correct but alignment/order incorrect.")
+    if question_text_score == 0.0:
+        notes.append("Question text not available or not matched.")
 
     return {
         "sample_id": Path(extracted_json_path).stem,
         "word_capture": round(word_capture(extracted_text, reference_text), 3),
         "rouge_l": round(rouge_l_score(extracted_text, reference_text), 3),
 
-        "narrative_title_match": format_score(narrative_title_score),
+        "narrative_title_match": narrative_title_score,
 
-        "section_title_match": format_score(section_title_score),
-        "section_order_match": format_score(section_order_score),
-        "section_count_match": format_score(section_count_score),
+        "section_title_match": section_title_score,
+        "section_order_match": section_order_score,
+        "section_count_match": section_count_score,
 
-        "question_order_match": format_score(question_order_score),
-        "question_count_match": format_score(question_count_score),
+        "question_text_match": question_text_score,
+        "question_order_match": question_order_score,
+        "question_count_match": question_count_score,
 
-        "answer_match": round(answer_score, 3),
-        "answer_order_match": format_score(answer_order_score),
-        "answer_count_match": format_score(answer_count_score),
+        "answer_match": answer_score,
+        "answer_order_match": answer_order_score,
+        "answer_count_match": answer_count_score,
 
-        "json_valid": len(validation_errors) == 0,
         "notes": " ".join(notes),
-        "alignment_issue": " ".join(alignment_issues)
+        "alignment_issue": alignment_issue
     }
-
 
 def evaluate_folder(
     extracted_folder: str | Path,
@@ -534,22 +533,22 @@ def evaluate_folder(
         if not reference_file.exists():
             results.append({
                 "sample_id": extracted_file.stem,
-                "word_capture": None,
-                "rouge_l": None,
+                "word_capture": 0.0,
+                "rouge_l": 0.0,
 
-                "narrative_title_match": None,
+                "narrative_title_match": 0.0,
 
-                "section_title_match": None,
-                "section_order_match": None,
-                "section_count_match": None,
+                "section_title_match": 0.0,
+                "section_order_match": 0.0,
+                "section_count_match": 0.0,
 
-                "question_text_match": None,
-                "question_order_match": None,
-                "question_count_match": None,
+                "question_text_match": 0.0,
+                "question_order_match": 0.0,
+                "question_count_match": 0.0,
 
-                "answer_match": None,
-                "answer_order_match": None,
-                "answer_count_match": None,
+                "answer_match": 0.0,
+                "answer_order_match": 0.0,
+                "answer_count_match": 0.0,
 
                 "json_valid": False,
                 "notes": f"Missing reference file: {reference_file}",
