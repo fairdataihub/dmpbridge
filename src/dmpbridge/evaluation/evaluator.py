@@ -220,6 +220,46 @@ def get_question_texts(dmp_json: Dict[str, Any]) -> List[str]:
 
     return question_texts
 
+def get_question_titles(dmp_json: Dict[str, Any]) -> List[str]:
+    """
+    Extract short question/subsection titles.
+
+    This is different from question_texts.
+
+    Example question title:
+    "Roles & Responsibilities"
+
+    Example question text:
+    "Data management plans should describe whether and how data..."
+    """
+    template = get_narrative_template(dmp_json)
+
+    titles = []
+
+    for section in template.get("section", []):
+        for question in section.get("question", []):
+            text = question.get("text", "")
+
+            if text and len(text.split()) <= 12:
+                titles.append(normalize_eval_text(text))
+
+    return titles
+
+
+def question_title_match_score(
+    extracted_json: Dict[str, Any],
+    reference_json: Dict[str, Any]
+) -> float:
+    """
+    Compare short question/subsection titles only.
+    """
+    extracted_titles = set(get_question_titles(extracted_json))
+    reference_titles = set(get_question_titles(reference_json))
+
+    if not reference_titles:
+        return 1.0
+
+    return len(extracted_titles & reference_titles) / len(reference_titles)
 
 def question_text_match_score(
     extracted_json: Dict[str, Any],
@@ -290,18 +330,19 @@ def evaluate_one_dmp(
     validation_errors = validate_narrative_json(extracted_json)
 
     return {
-        "sample_id": Path(extracted_json_path).stem,
-        "word_capture": round(word_capture(extracted_text, reference_text), 3),
-        "rouge_l": round(rouge_l_score(extracted_text, reference_text), 3),
-        "section_match": round(section_match_score(extracted_json, reference_json), 3),
-        "section_order_match": round(section_order_match_score(extracted_json, reference_json), 3),
-        "question_text_match": round(
-            question_text_match_score(extracted_json, reference_json), 3
+         "sample_id": Path(extracted_json_path).stem,
+         "word_capture": round(word_capture(extracted_text, reference_text), 3),
+         "rouge_l": round(rouge_l_score(extracted_text, reference_text), 3),
+         "section_match": round(section_match_score(extracted_json, reference_json), 3),
+         "section_order_match": round(section_order_match_score(extracted_json, reference_json), 3),
+         "question_title_match": round(question_title_match_score(extracted_json, reference_json), 3
         ),
-        "answer_match": round(answer_match_score(extracted_json, reference_json), 3),
+         "question_text_match": round(question_text_match_score(extracted_json, reference_json), 3
+        ),
+         "answer_match": round(answer_match_score(extracted_json, reference_json), 3),
         "json_valid": len(validation_errors) == 0,
         "validation_errors": validation_errors,
-    }
+  }
 
 
 def evaluate_folder(
@@ -332,6 +373,7 @@ def evaluate_folder(
                 "rouge_l": None,
                 "section_match": None,
                 "section_order_match": None,
+                "question_title_match": None,
                 "question_text_match": None,
                 "answer_match": None,
                 "json_valid": False,
@@ -365,6 +407,7 @@ def print_evaluation_table(results: List[Dict[str, Any]]) -> None:
         "rouge_l",
         "section_match",
         "section_order_match",
+        "question_title_match",
         "question_text_match",
         "answer_match",
         "json_valid",
