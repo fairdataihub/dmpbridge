@@ -8,22 +8,26 @@ from dmpbridge.utils.file_io import load_json, save_json
 from dmpbridge.validation.schema_validator import validate_narrative_json
 
 
-# Common words removed when calculating Word Capture.
+# Common words removed for Word Capture.
 STOPWORDS = {
     "the", "a", "an", "and", "or", "of", "to", "in", "on", "for", "with",
     "by", "from", "as", "is", "are", "was", "were", "be", "been", "will"
 }
 
 
+# ---------------------------------------------------------
+# Text normalization and basic similarity metrics
+# ---------------------------------------------------------
+
 def normalize_eval_text(text: str) -> str:
     """
     Normalize text before evaluation.
 
-    This reduces scoring differences caused by:
+    This reduces differences caused by:
     - curly quotes vs straight quotes
     - em dash/en dash vs hyphen
-    - extra whitespace or line breaks
-    - uppercase/lowercase differences
+    - extra whitespace
+    - uppercase/lowercase
     """
     if not text:
         return ""
@@ -39,10 +43,7 @@ def normalize_eval_text(text: str) -> str:
 
 def tokenize_words(text: str) -> set[str]:
     """
-    Convert text into a set of meaningful words.
-
-    Used for Word Capture.
-    Stopwords are removed so the score focuses on meaningful content words.
+    Convert text into meaningful words for Word Capture.
     """
     text = normalize_eval_text(text)
     words = re.findall(r"\b[a-zA-Z]+\b", text)
@@ -56,8 +57,6 @@ def tokenize_words(text: str) -> set[str]:
 def rouge_l_score(extracted: str, reference: str) -> float:
     """
     Approximate ROUGE-L using longest matching text blocks.
-
-    This measures how similar the extracted text sequence is to the reference.
     """
     extracted = normalize_eval_text(extracted)
     reference = normalize_eval_text(reference)
@@ -73,10 +72,7 @@ def rouge_l_score(extracted: str, reference: str) -> float:
 
 def word_capture(extracted: str, reference: str) -> float:
     """
-    Measure how much reference vocabulary appears in the extracted output.
-
-    Formula:
-    captured reference words / all reference words
+    Measure how much reference vocabulary appears in extracted text.
     """
     extracted_words = tokenize_words(extracted)
     reference_words = tokenize_words(reference)
@@ -87,15 +83,25 @@ def word_capture(extracted: str, reference: str) -> float:
     return len(extracted_words & reference_words) / len(reference_words)
 
 
+def count_match_score(extracted_count: int, reference_count: int) -> float | None:
+    """
+    Compare extracted count to reference count.
+
+    Returns None if the reference has no items.
+    """
+    if reference_count == 0:
+        return None
+
+    return min(extracted_count, reference_count) / reference_count
+
+
+# ---------------------------------------------------------
+# JSON access helpers
+# ---------------------------------------------------------
+
 def get_narrative_template(dmp_json: Dict[str, Any]) -> Dict[str, Any]:
     """
     Return narrative.template from either supported JSON shape.
-
-    Current project shape:
-    root["narrative"]["template"]
-
-    Future official-style shape:
-    root["dmp"]["narrative"]["template"]
     """
     if "narrative" in dmp_json:
         return dmp_json["narrative"]["template"]
@@ -106,29 +112,114 @@ def get_narrative_template(dmp_json: Dict[str, Any]) -> Dict[str, Any]:
     return {"title": None, "section": []}
 
 
-def flatten_narrative_text(dmp_json: Dict[str, Any]) -> str:
+def get_sections(dmp_json: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
-    Combine all narrative text into one string.
-
-    Includes:
-    - template title
-    - section titles
-    - question text
-    - answer text
-
-    Used for global text metrics:
-    - Word Capture
-    - ROUGE-L
-    - Answer Match
+    Return narrative sections.
     """
     template = get_narrative_template(dmp_json)
+    return template.get("section", [])
 
+
+def get_narrative_title(dmp_json: Dict[str, Any]) -> str:
+    """
+    Return normalized narrative template title.
+    """
+    template = get_narrative_template(dmp_json)
+    return normalize_eval_text(template.get("title", ""))
+
+
+def get_section_titles(dmp_json: Dict[str, Any]) -> List[str]:
+    """
+    Extract normalized section titles.
+    """
+    return [
+        normalize_eval_text(section.get("title", ""))
+        for section in get_sections(dmp_json)
+        if section.get("title")
+    ]
+
+
+def get_question_texts(dmp_json: Dict[str, Any]) -> List[str]:
+    """
+    Extract all question.text values.
+    """
+    question_texts = []
+
+    for section in get_sections(dmp_json):
+        for question in section.get("question", []):
+            text = question.get("text", "")
+            if text:
+                question_texts.append(normalize_eval_text(text))
+
+    return question_texts
+
+
+def get_question_titles(dmp_json: Dict[str, Any]) -> List[str]:
+    """
+    Extract short question/subsection titles.
+
+    Short question titles are usually things like:
+    - A. Types of data
+    - Roles & Responsibilities
+    """
+    titles = []
+
+    for section in get_sections(dmp_json):
+        for question in section.get("question", []):
+            text = question.get("text", "")
+
+            if text and len(text.split()) <= 12:
+                titles.append(normalize_eval_text(text))
+
+    return titles
+
+
+def get_question_keys(dmp_json: Dict[str, Any]) -> List[str]:
+    """
+    Get question identifiers for order comparison.
+
+    Prefer question titles. If unavailable, use full question text.
+    """
+    question_titles = get_question_titles(dmp_json)
+
+    if question_titles:
+        return question_titles
+
+    return get_question_texts(dmp_json)
+
+
+def get_answer_texts(dmp_json: Dict[str, Any]) -> List[str]:
+    """
+    Extract all answer text values in narrative order.
+    """
+    answers = []
+
+    for section in get_sections(dmp_json):
+        for question in section.get("question", []):
+            answer = (
+                question
+                .get("answer", {})
+                .get("json", {})
+                .get("answer", "")
+            )
+
+            if isinstance(answer, str) and answer.strip():
+                answers.append(normalize_eval_text(answer))
+
+    return answers
+
+
+def flatten_narrative_text(dmp_json: Dict[str, Any]) -> str:
+    """
+    Combine narrative title, section titles, question text, and answer text.
+    """
     parts = []
 
-    if template.get("title"):
-        parts.append(template["title"])
+    title = get_narrative_title(dmp_json)
+    if title:
+        parts.append(title)
 
-    for section in template.get("section", []):
+    for section in get_sections(dmp_json):
         if section.get("title"):
             parts.append(section["title"])
 
@@ -149,33 +240,38 @@ def flatten_narrative_text(dmp_json: Dict[str, Any]) -> str:
     return "\n".join(parts)
 
 
-def get_section_titles(dmp_json: Dict[str, Any]) -> List[str]:
-    """
-    Extract normalized section titles from narrative.template.section.
-    """
-    template = get_narrative_template(dmp_json)
+# ---------------------------------------------------------
+# Title, section, question, and answer metric functions
+# ---------------------------------------------------------
 
-    return [
-        normalize_eval_text(section.get("title", ""))
-        for section in template.get("section", [])
-        if section.get("title")
-    ]
-
-
-def section_match_score(
+def narrative_title_match_score(
     extracted_json: Dict[str, Any],
     reference_json: Dict[str, Any]
-) -> float:
+) -> float | None:
     """
-    Measure whether extracted section titles match reference section titles.
+    Compare narrative template titles.
+    """
+    extracted_title = get_narrative_title(extracted_json)
+    reference_title = get_narrative_title(reference_json)
 
-    This ignores order.
+    if not reference_title:
+        return None
+
+    return rouge_l_score(extracted_title, reference_title)
+
+
+def section_title_match_score(
+    extracted_json: Dict[str, Any],
+    reference_json: Dict[str, Any]
+) -> float | None:
+    """
+    Compare section titles without considering order.
     """
     extracted_titles = set(get_section_titles(extracted_json))
     reference_titles = set(get_section_titles(reference_json))
 
     if not reference_titles:
-        return 1.0
+        return None
 
     return len(extracted_titles & reference_titles) / len(reference_titles)
 
@@ -183,15 +279,15 @@ def section_match_score(
 def section_order_match_score(
     extracted_json: Dict[str, Any],
     reference_json: Dict[str, Any]
-) -> float:
+) -> float | None:
     """
-    Measure whether section titles appear in the same order as the reference.
+    Compare section title order.
     """
     extracted_titles = get_section_titles(extracted_json)
     reference_titles = get_section_titles(reference_json)
 
     if not reference_titles:
-        return 1.0
+        return None
 
     matches = 0
 
@@ -202,73 +298,28 @@ def section_order_match_score(
     return matches / len(reference_titles)
 
 
-def get_question_texts(dmp_json: Dict[str, Any]) -> List[str]:
-    """
-    Extract all question.text values.
-
-    This catches cases where text is captured but placed in the wrong field.
-    """
-    template = get_narrative_template(dmp_json)
-
-    question_texts = []
-
-    for section in template.get("section", []):
-        for question in section.get("question", []):
-            text = question.get("text", "")
-            if text:
-                question_texts.append(normalize_eval_text(text))
-
-    return question_texts
-
-def get_question_titles(dmp_json: Dict[str, Any]) -> List[str]:
-    """
-    Extract short question/subsection titles.
-
-    This is different from question_texts.
-
-    Example question title:
-    "Roles & Responsibilities"
-
-    Example question text:
-    "Data management plans should describe whether and how data..."
-    """
-    template = get_narrative_template(dmp_json)
-
-    titles = []
-
-    for section in template.get("section", []):
-        for question in section.get("question", []):
-            text = question.get("text", "")
-
-            if text and len(text.split()) <= 12:
-                titles.append(normalize_eval_text(text))
-
-    return titles
-
-
 def question_title_match_score(
     extracted_json: Dict[str, Any],
     reference_json: Dict[str, Any]
-) -> float:
+) -> float | None:
     """
-    Compare short question/subsection titles only.
+    Compare short question/subsection titles.
     """
     extracted_titles = set(get_question_titles(extracted_json))
     reference_titles = set(get_question_titles(reference_json))
 
     if not reference_titles:
-        return 1.0
+        return None
 
     return len(extracted_titles & reference_titles) / len(reference_titles)
+
 
 def question_text_match_score(
     extracted_json: Dict[str, Any],
     reference_json: Dict[str, Any]
-) -> float:
+) -> float | None:
     """
-    Compare extracted question text to reference question text.
-
-    Uses best-match ROUGE-L for each reference question.
+    Compare full question text using best-match ROUGE-L.
     """
     extracted_questions = get_question_texts(extracted_json)
     reference_questions = get_question_texts(reference_json)
@@ -293,22 +344,75 @@ def question_text_match_score(
     return sum(scores) / len(scores)
 
 
+def question_order_match_score(
+    extracted_json: Dict[str, Any],
+    reference_json: Dict[str, Any]
+) -> float | None:
+    """
+    Compare question order using question titles or question text.
+    """
+    extracted_questions = get_question_keys(extracted_json)
+    reference_questions = get_question_keys(reference_json)
+
+    if not reference_questions:
+        return None
+
+    matches = 0
+
+    for index, ref_question in enumerate(reference_questions):
+        if index < len(extracted_questions) and extracted_questions[index] == ref_question:
+            matches += 1
+
+    return matches / len(reference_questions)
+
+
 def answer_match_score(
     extracted_json: Dict[str, Any],
     reference_json: Dict[str, Any]
 ) -> float:
     """
-    Compare overall narrative answer quality using ROUGE-L.
-
-    This is broad and forgiving, so interpret it with:
-    - Section Match
-    - Section Order Match
-    - Question Text Match
+    Compare all answer text using ROUGE-L.
     """
-    extracted_text = flatten_narrative_text(extracted_json)
-    reference_text = flatten_narrative_text(reference_json)
+    extracted_text = "\n".join(get_answer_texts(extracted_json))
+    reference_text = "\n".join(get_answer_texts(reference_json))
 
     return rouge_l_score(extracted_text, reference_text)
+
+
+def answer_order_match_score(
+    extracted_json: Dict[str, Any],
+    reference_json: Dict[str, Any]
+) -> float | None:
+    """
+    Compare answer order using answer text similarity.
+    """
+    extracted_answers = get_answer_texts(extracted_json)
+    reference_answers = get_answer_texts(reference_json)
+
+    if not reference_answers:
+        return None
+
+    matches = 0
+
+    for index, ref_answer in enumerate(reference_answers):
+        if index < len(extracted_answers):
+            score = rouge_l_score(extracted_answers[index], ref_answer)
+
+            if score >= 0.70:
+                matches += 1
+
+    return matches / len(reference_answers)
+
+
+# ---------------------------------------------------------
+# Main evaluation functions
+# ---------------------------------------------------------
+
+def format_score(score: float | None) -> float | str:
+    """
+    Format scores for output table.
+    """
+    return round(score, 3) if score is not None else "N/A"
 
 
 def evaluate_one_dmp(
@@ -316,15 +420,8 @@ def evaluate_one_dmp(
     reference_json_path: str | Path
 ) -> Dict[str, Any]:
     """
-    Evaluate one extracted DMP JSON against one reference JSON.
-
-    This returns metric values only.
-    It does not assign Passed/Failed.
-
-    If the reference JSON has no question text,
-    question_text_match is set to "N/A".
+    Evaluate one extracted JSON against one reference JSON.
     """
-
     extracted_json = load_json(extracted_json_path)
     reference_json = load_json(reference_json_path)
 
@@ -333,35 +430,73 @@ def evaluate_one_dmp(
 
     validation_errors = validate_narrative_json(extracted_json)
 
-    question_text_score = question_text_match_score(
-        extracted_json,
-        reference_json
+    narrative_title_score = narrative_title_match_score(extracted_json, reference_json)
+
+    section_title_score = section_title_match_score(extracted_json, reference_json)
+    section_order_score = section_order_match_score(extracted_json, reference_json)
+
+    question_title_score = question_title_match_score(extracted_json, reference_json)
+    question_text_score = question_text_match_score(extracted_json, reference_json)
+    question_order_score = question_order_match_score(extracted_json, reference_json)
+
+    answer_score = answer_match_score(extracted_json, reference_json)
+    answer_order_score = answer_order_match_score(extracted_json, reference_json)
+
+    section_count_score = count_match_score(
+        len(get_sections(extracted_json)),
+        len(get_sections(reference_json))
     )
 
-    notes = (
-        "Reference has no question text."
-        if question_text_score is None
-        else ""
+    question_count_score = count_match_score(
+        len(get_question_texts(extracted_json)),
+        len(get_question_texts(reference_json))
     )
+
+    answer_count_score = count_match_score(
+        len(get_answer_texts(extracted_json)),
+        len(get_answer_texts(reference_json))
+    )
+
+    notes = []
+
+    if narrative_title_score is None:
+        notes.append("No reference narrative title.")
+
+    if section_title_score is None:
+        notes.append("No reference section title.")
+
+    if question_title_score is None:
+        notes.append("No reference question title.")
+
+    if question_text_score is None:
+        notes.append("No reference question text.")
+
+    if answer_order_score is None:
+        notes.append("No reference answer text.")
 
     return {
         "sample_id": Path(extracted_json_path).stem,
         "word_capture": round(word_capture(extracted_text, reference_text), 3),
         "rouge_l": round(rouge_l_score(extracted_text, reference_text), 3),
-        "section_match": round(section_match_score(extracted_json, reference_json), 3),
-        "section_order_match": round(section_order_match_score(extracted_json, reference_json), 3),
-        "question_title_match": round(
-            question_title_match_score(extracted_json, reference_json), 3
-        ),
-        "question_text_match": (
-            round(question_text_score, 3)
-            if question_text_score is not None
-            else "N/A"
-        ),
-        "answer_match": round(answer_match_score(extracted_json, reference_json), 3),
+
+        "narrative_title_match": format_score(narrative_title_score),
+
+        "section_title_match": format_score(section_title_score),
+        "section_order_match": format_score(section_order_score),
+        "section_count_match": format_score(section_count_score),
+
+        "question_title_match": format_score(question_title_score),
+        "question_text_match": format_score(question_text_score),
+        "question_order_match": format_score(question_order_score),
+        "question_count_match": format_score(question_count_score),
+
+        "answer_match": round(answer_score, 3),
+        "answer_order_match": format_score(answer_order_score),
+        "answer_count_match": format_score(answer_count_score),
+
         "json_valid": len(validation_errors) == 0,
         "validation_errors": validation_errors,
-        "notes": notes,
+        "notes": " ".join(notes),
     }
 
 
@@ -391,11 +526,22 @@ def evaluate_folder(
                 "sample_id": extracted_file.stem,
                 "word_capture": None,
                 "rouge_l": None,
-                "section_match": None,
+
+                "narrative_title_match": None,
+
+                "section_title_match": None,
                 "section_order_match": None,
+                "section_count_match": None,
+
                 "question_title_match": None,
                 "question_text_match": None,
+                "question_order_match": None,
+                "question_count_match": None,
+
                 "answer_match": None,
+                "answer_order_match": None,
+                "answer_count_match": None,
+
                 "json_valid": False,
                 "validation_errors": [],
                 "notes": f"Missing reference file: {reference_file}"
@@ -407,7 +553,6 @@ def evaluate_folder(
             reference_json_path=reference_file
         )
 
-        
         results.append(result)
 
     if output_path:
@@ -420,30 +565,36 @@ def print_evaluation_table(results: List[Dict[str, Any]]) -> None:
     """
     Print evaluation results as a clean aligned table.
     """
-
     headers = [
         "sample_id",
         "word_capture",
         "rouge_l",
-        "section_match",
+        "narrative_title_match",
+        "section_title_match",
         "section_order_match",
+        "section_count_match",
         "question_title_match",
         "question_text_match",
+        "question_order_match",
+        "question_count_match",
         "answer_match",
+        "answer_order_match",
+        "answer_count_match",
         "json_valid",
         "notes"
     ]
 
-    # Convert all values to strings
     rows = []
+
     for result in results:
         row = []
+
         for header in headers:
             value = result.get(header, "")
             row.append(str(value))
+
         rows.append(row)
 
-    # Calculate column widths
     col_widths = []
 
     for col_index, header in enumerate(headers):
@@ -454,7 +605,6 @@ def print_evaluation_table(results: List[Dict[str, Any]]) -> None:
 
         col_widths.append(max_width)
 
-    # Print header
     header_line = " | ".join(
         header.ljust(col_widths[i])
         for i, header in enumerate(headers)
@@ -462,7 +612,6 @@ def print_evaluation_table(results: List[Dict[str, Any]]) -> None:
 
     print(header_line)
 
-    # Print divider
     divider_line = "-+-".join(
         "-" * col_widths[i]
         for i in range(len(headers))
@@ -470,7 +619,6 @@ def print_evaluation_table(results: List[Dict[str, Any]]) -> None:
 
     print(divider_line)
 
-    # Print rows
     for row in rows:
         row_line = " | ".join(
             row[i].ljust(col_widths[i])
