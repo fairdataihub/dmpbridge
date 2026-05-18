@@ -15,7 +15,6 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "validation_errors": [],
     "alignment_issue": "",
     "notes": "No reference question title. No reference question text."
   },
@@ -35,7 +34,6 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "validation_errors": [],
     "alignment_issue": "",
     "notes": ""
   },
@@ -55,7 +53,6 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "validation_errors": [],
     "alignment_issue": "",
     "notes": "No reference question title."
   },
@@ -75,7 +72,6 @@
     "answer_order_match": 0.5,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "validation_errors": [],
     "alignment_issue": "",
     "notes": "No reference question title."
   },
@@ -95,7 +91,6 @@
     "answer_order_match": 0.6,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "validation_errors": [],
     "alignment_issue": "",
     "notes": "No reference question title. No reference question text."
   },
@@ -115,7 +110,6 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "validation_errors": [],
     "alignment_issue": "",
     "notes": "No reference question title. No reference question text."
   },
@@ -135,7 +129,6 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "validation_errors": [],
     "alignment_issue": "",
     "notes": "No reference question title. No reference question text."
   },
@@ -155,7 +148,6 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "validation_errors": [],
     "alignment_issue": "",
     "notes": "No reference section title. No reference question title. No reference question text."
   },
@@ -175,7 +167,6 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "validation_errors": [],
     "alignment_issue": "",
     "notes": "No reference question title. No reference question text."
   },
@@ -195,7 +186,6 @@
     "answer_order_match": 0.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "validation_errors": [],
     "alignment_issue": "Section titles detected but order shifted. Answer text captured but attached to wrong section/order. Section count correct but alignment/order incorrect.",
     "notes": "No reference question title. No reference question text."
   }
