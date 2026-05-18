@@ -321,7 +321,8 @@ def evaluate_one_dmp(
     This returns metric values only.
     It does not assign Passed/Failed.
 
-    If the reference JSON has no question text, question_text_match is set to "N/A".
+    If the reference JSON has no question text,
+    question_text_match is set to "N/A".
     """
 
     extracted_json = load_json(extracted_json_path)
@@ -337,6 +338,12 @@ def evaluate_one_dmp(
         reference_json
     )
 
+    notes = (
+        "Reference has no question text."
+        if question_text_score is None
+        else ""
+    )
+
     return {
         "sample_id": Path(extracted_json_path).stem,
         "word_capture": round(word_capture(extracted_text, reference_text), 3),
@@ -348,12 +355,13 @@ def evaluate_one_dmp(
         ),
         "question_text_match": (
             round(question_text_score, 3)
-            if question_text_score is not None                                             
+            if question_text_score is not None
             else "N/A"
         ),
         "answer_match": round(answer_match_score(extracted_json, reference_json), 3),
         "json_valid": len(validation_errors) == 0,
         "validation_errors": validation_errors,
+        "notes": notes,
     }
 
 
@@ -399,7 +407,7 @@ def evaluate_folder(
             reference_json_path=reference_file
         )
 
-        result["notes"] = ""
+        
         results.append(result)
 
     if output_path:

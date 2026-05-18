@@ -62,7 +62,7 @@
     "answer_match": 0.728,
     "json_valid": true,
     "validation_errors": [],
-    "notes": ""
+    "notes": "Reference has no question text."
   },
   {
     "sample_id": "sample5_pdfplumber",
@@ -75,7 +75,7 @@
     "answer_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
-    "notes": ""
+    "notes": "Reference has no question text."
   },
   {
     "sample_id": "sample6_pdfplumber",
