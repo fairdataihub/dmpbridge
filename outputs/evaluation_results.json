@@ -8,13 +8,13 @@
     "section_order_match": 1.0,
     "section_count_match": 1.0,
     "question_text_match": 0.0,
-    "question_order_match": 0.0,
-    "question_count_match": 0.0,
+    "question_order_match": 1.0,
+    "question_count_match": 1.0,
     "answer_match": 1.0,
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
-    "notes": "Question text not available or not matched.",
-    "alignment_issue": "Failed: question_order_match, question_count_match"
+    "alignment_issue": "Passed",
+    "notes": "Question text unavailable or not matched."
   },
   {
     "sample_id": "sample1_pdfplumber",
@@ -30,8 +30,8 @@
     "answer_match": 0.996,
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
-    "notes": "",
-    "alignment_issue": "Passed"
+    "alignment_issue": "Passed",
+    "notes": ""
   },
   {
     "sample_id": "sample2_pdfplumber",
@@ -42,13 +42,13 @@
     "section_order_match": 1.0,
     "section_count_match": 1.0,
     "question_text_match": 0.031,
-    "question_order_match": 0.0,
+    "question_order_match": 1.0,
     "question_count_match": 1.0,
     "answer_match": 0.939,
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
-    "notes": "",
-    "alignment_issue": "Failed: question_order_match"
+    "alignment_issue": "Passed",
+    "notes": ""
   },
   {
     "sample_id": "sample3_pdfplumber",
@@ -59,13 +59,13 @@
     "section_order_match": 1.0,
     "section_count_match": 1.0,
     "question_text_match": 0.017,
-    "question_order_match": 0.0,
+    "question_order_match": 1.0,
     "question_count_match": 1.0,
     "answer_match": 0.299,
     "answer_order_match": 0.5,
     "answer_count_match": 1.0,
-    "notes": "",
-    "alignment_issue": "Failed: question_order_match, answer_order_match"
+    "alignment_issue": "Failed: answer_order_match",
+    "notes": ""
   },
   {
     "sample_id": "sample4_pdfplumber",
@@ -76,13 +76,13 @@
     "section_order_match": 1.0,
     "section_count_match": 1.0,
     "question_text_match": 0.0,
-    "question_order_match": 0.0,
-    "question_count_match": 0.0,
+    "question_order_match": 1.0,
+    "question_count_match": 1.0,
     "answer_match": 0.712,
     "answer_order_match": 0.6,
     "answer_count_match": 1.0,
-    "notes": "Question text not available or not matched.",
-    "alignment_issue": "Failed: question_order_match, question_count_match, answer_order_match"
+    "alignment_issue": "Failed: answer_order_match",
+    "notes": "Question text unavailable or not matched."
   },
   {
     "sample_id": "sample5_pdfplumber",
@@ -93,13 +93,13 @@
     "section_order_match": 1.0,
     "section_count_match": 1.0,
     "question_text_match": 0.0,
-    "question_order_match": 0.0,
-    "question_count_match": 0.0,
+    "question_order_match": 1.0,
+    "question_count_match": 1.0,
     "answer_match": 1.0,
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
-    "notes": "Question text not available or not matched.",
-    "alignment_issue": "Failed: question_order_match, question_count_match"
+    "alignment_issue": "Passed",
+    "notes": "Question text unavailable or not matched."
   },
   {
     "sample_id": "sample6_pdfplumber",
@@ -110,13 +110,13 @@
     "section_order_match": 1.0,
     "section_count_match": 1.0,
     "question_text_match": 0.0,
-    "question_order_match": 0.0,
-    "question_count_match": 0.0,
+    "question_order_match": 1.0,
+    "question_count_match": 1.0,
     "answer_match": 1.0,
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
-    "notes": "Question text not available or not matched.",
-    "alignment_issue": "Failed: question_order_match, question_count_match"
+    "alignment_issue": "Passed",
+    "notes": "Question text unavailable or not matched."
   },
   {
     "sample_id": "sample7_pdfplumber",
@@ -128,12 +128,12 @@
     "section_count_match": 1.0,
     "question_text_match": 0.0,
     "question_order_match": 0.0,
-    "question_count_match": 0.0,
+    "question_count_match": 1.0,
     "answer_match": 1.0,
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
-    "notes": "Question text not available or not matched.",
-    "alignment_issue": "Failed: section_title_match, section_order_match, question_order_match, question_count_match"
+    "alignment_issue": "Failed: section_title_match, section_order_match, question_order_match",
+    "notes": "Question text unavailable or not matched."
   },
   {
     "sample_id": "sample8_pdfplumber",
@@ -144,13 +144,13 @@
     "section_order_match": 1.0,
     "section_count_match": 1.0,
     "question_text_match": 0.0,
-    "question_order_match": 0.0,
-    "question_count_match": 0.0,
+    "question_order_match": 1.0,
+    "question_count_match": 1.0,
     "answer_match": 1.0,
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
-    "notes": "Question text not available or not matched.",
-    "alignment_issue": "Failed: question_order_match, question_count_match"
+    "alignment_issue": "Passed",
+    "notes": "Question text unavailable or not matched."
   },
   {
     "sample_id": "sample9_pdfplumber",
@@ -162,11 +162,11 @@
     "section_count_match": 1.0,
     "question_text_match": 0.0,
     "question_order_match": 0.0,
-    "question_count_match": 0.0,
+    "question_count_match": 1.0,
     "answer_match": 0.999,
     "answer_order_match": 0.0,
     "answer_count_match": 1.0,
-    "notes": "Section titles captured but order/alignment is wrong. Answer text captured but attached to wrong order. Question text not available or not matched.",
-    "alignment_issue": "Failed: section_order_match, question_order_match, question_count_match, answer_order_match"
+    "alignment_issue": "Failed: section_order_match, question_order_match, answer_order_match",
+    "notes": "Section titles captured but section order/alignment is wrong. Answer text captured but answer order/alignment is wrong. Question text unavailable or not matched."
   }
 ]
