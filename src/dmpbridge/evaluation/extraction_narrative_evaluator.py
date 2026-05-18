@@ -660,3 +660,74 @@ def print_evaluation_table(results: List[Dict[str, Any]]) -> None:
         )
 
         print(row_line)
+        
+def print_evaluation_matrix(results: List[Dict[str, Any]]) -> None:
+    """
+    Print samples as columns and metrics as rows.
+    Easier to compare many samples side by side.
+    """
+
+    sample_ids = [result.get("sample_id", "") for result in results]
+
+    metrics = [
+        "word_capture",
+        "rouge_l",
+        "narrative_title_match",
+        "section_title_match",
+        "section_order_match",
+        "section_count_match",
+        "question_title_match",
+        "question_text_match",
+        "question_order_match",
+        "question_count_match",
+        "answer_match",
+        "answer_order_match",
+        "answer_count_match",
+        "json_valid",
+        "alignment_issue",
+        "notes"
+    ]
+
+    headers = ["metric"] + sample_ids
+
+    rows = []
+
+    for metric in metrics:
+        row = [metric]
+
+        for result in results:
+            row.append(str(result.get(metric, "")))
+
+        rows.append(row)
+
+    col_widths = []
+
+    for col_index, header in enumerate(headers):
+        max_width = len(header)
+
+        for row in rows:
+            max_width = max(max_width, len(row[col_index]))
+
+        col_widths.append(max_width)
+
+    header_line = " | ".join(
+        headers[i].ljust(col_widths[i])
+        for i in range(len(headers))
+    )
+
+    print(header_line)
+
+    divider_line = "-+-".join(
+        "-" * col_widths[i]
+        for i in range(len(headers))
+    )
+
+    print(divider_line)
+
+    for row in rows:
+        row_line = " | ".join(
+            row[i].ljust(col_widths[i])
+            for i in range(len(row))
+        )
+
+        print(row_line)
