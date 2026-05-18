@@ -421,6 +421,9 @@ def evaluate_one_dmp(
 ) -> Dict[str, Any]:
     """
     Evaluate one extracted JSON against one reference JSON.
+
+    Adds alignment_issue to explain cases where content is captured,
+    but sections/answers are shifted because of incorrect structure detection.
     """
     extracted_json = load_json(extracted_json_path)
     reference_json = load_json(reference_json_path)
@@ -458,6 +461,7 @@ def evaluate_one_dmp(
     )
 
     notes = []
+    alignment_issues = []
 
     if narrative_title_score is None:
         notes.append("No reference narrative title.")
@@ -473,6 +477,33 @@ def evaluate_one_dmp(
 
     if answer_order_score is None:
         notes.append("No reference answer text.")
+
+    # Diagnostic: correct section titles exist, but the order is wrong.
+    if (
+        isinstance(section_title_score, float)
+        and isinstance(section_order_score, float)
+        and section_title_score >= 0.95
+        and section_order_score < 0.50
+    ):
+        alignment_issues.append("Section titles detected but order shifted.")
+
+    # Diagnostic: answer text is mostly captured, but attached in wrong order.
+    if (
+        isinstance(answer_score, float)
+        and isinstance(answer_order_score, float)
+        and answer_score >= 0.95
+        and answer_order_score < 0.50
+    ):
+        alignment_issues.append("Answer text captured but attached to wrong section/order.")
+
+    # Diagnostic: number of sections is correct, but order is wrong.
+    if (
+        isinstance(section_count_score, float)
+        and isinstance(section_order_score, float)
+        and section_count_score == 1.0
+        and section_order_score < 0.50
+    ):
+        alignment_issues.append("Section count correct but alignment/order incorrect.")
 
     return {
         "sample_id": Path(extracted_json_path).stem,
@@ -496,6 +527,7 @@ def evaluate_one_dmp(
 
         "json_valid": len(validation_errors) == 0,
         "validation_errors": validation_errors,
+        "alignment_issue": " ".join(alignment_issues),
         "notes": " ".join(notes),
     }
 
@@ -544,6 +576,7 @@ def evaluate_folder(
 
                 "json_valid": False,
                 "validation_errors": [],
+                "alignment_issue": "",
                 "notes": f"Missing reference file: {reference_file}"
             })
             continue
@@ -581,7 +614,8 @@ def print_evaluation_table(results: List[Dict[str, Any]]) -> None:
         "answer_order_match",
         "answer_count_match",
         "json_valid",
-        "notes"
+        "notes",
+        "alignment_issue",
     ]
 
     rows = []

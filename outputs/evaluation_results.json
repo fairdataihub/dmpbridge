@@ -16,6 +16,7 @@
     "answer_count_match": null,
     "json_valid": false,
     "validation_errors": [],
+    "alignment_issue": "",
     "notes": "Missing reference file: ..\\data\\reference_json\\sample10_reference.json"
   },
   {
@@ -35,6 +36,7 @@
     "answer_count_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
+    "alignment_issue": "",
     "notes": ""
   },
   {
@@ -54,6 +56,7 @@
     "answer_count_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
+    "alignment_issue": "",
     "notes": "No reference question title."
   },
   {
@@ -73,6 +76,7 @@
     "answer_count_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
+    "alignment_issue": "",
     "notes": "No reference question title."
   },
   {
@@ -92,6 +96,7 @@
     "answer_count_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
+    "alignment_issue": "",
     "notes": "No reference question title. No reference question text."
   },
   {
@@ -111,6 +116,7 @@
     "answer_count_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
+    "alignment_issue": "",
     "notes": "No reference question title. No reference question text."
   },
   {
@@ -130,6 +136,7 @@
     "answer_count_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
+    "alignment_issue": "",
     "notes": "No reference question title. No reference question text."
   },
   {
@@ -149,6 +156,7 @@
     "answer_count_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
+    "alignment_issue": "",
     "notes": "No reference section title. No reference question title. No reference question text."
   },
   {
@@ -168,6 +176,7 @@
     "answer_count_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
+    "alignment_issue": "",
     "notes": "No reference question title. No reference question text."
   },
   {
@@ -187,6 +196,7 @@
     "answer_count_match": 1.0,
     "json_valid": true,
     "validation_errors": [],
+    "alignment_issue": "Section titles detected but order shifted. Answer text captured but attached to wrong section/order. Section count correct but alignment/order incorrect.",
     "notes": "No reference question title. No reference question text."
   }
 ]
