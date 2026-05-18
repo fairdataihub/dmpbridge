@@ -79,16 +79,16 @@
   },
   {
     "sample_id": "sample6_pdfplumber",
-    "word_capture": null,
-    "rouge_l": null,
-    "section_match": null,
-    "section_order_match": null,
-    "question_title_match": null,
-    "question_text_match": null,
-    "answer_match": null,
-    "json_valid": false,
+    "word_capture": 1.0,
+    "rouge_l": 0.796,
+    "section_match": 1.0,
+    "section_order_match": 1.0,
+    "question_title_match": 1.0,
+    "question_text_match": "N/A",
+    "answer_match": 0.796,
+    "json_valid": true,
     "validation_errors": [],
-    "notes": "Missing reference file: ..\\data\\reference_json\\sample6_reference.json"
+    "notes": "Reference has no question text."
   },
   {
     "sample_id": "sample7_pdfplumber",
