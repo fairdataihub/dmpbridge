@@ -15,7 +15,7 @@ STOPWORDS = {
 
 # ---------------------------------------------------------
 # Text normalization and similarity
-# ---------------------------------------------------------
+
 
 def normalize_eval_text(text: str) -> str:
     if not text:
@@ -82,7 +82,7 @@ def count_match_score(extracted_count: int, reference_count: int) -> float:
 
 # ---------------------------------------------------------
 # JSON access helpers
-# ---------------------------------------------------------
+
 
 def get_narrative_template(dmp_json: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -204,7 +204,7 @@ def flatten_narrative_text(dmp_json: Dict[str, Any]) -> str:
 
 # ---------------------------------------------------------
 # Metric functions
-# ---------------------------------------------------------
+
 
 def narrative_title_match_score(
     extracted_json: Dict[str, Any],
@@ -374,7 +374,7 @@ def build_alignment_issue(metrics: Dict[str, float]) -> str:
 
 # ---------------------------------------------------------
 # Main evaluation
-# ---------------------------------------------------------
+
 
 def evaluate_one_dmp(
     extracted_json_path: str | Path,
