@@ -130,10 +130,10 @@
     "question_order_match": 0.0,
     "question_count_match": 1.0,
     "answer_match": 1.0,
-    "answer_order_match": 1.0,
+    "answer_order_match": 0.0,
     "answer_count_match": 1.0,
-    "alignment_issue": "Failed: section_title_match, section_order_match, question_order_match",
-    "notes": "Question text unavailable or not matched."
+    "alignment_issue": "Failed: section_title_match, section_order_match, question_order_match, answer_order_match",
+    "notes": "Answer text captured but answer order/alignment is wrong. Question text unavailable or not matched."
   },
   {
     "sample_id": "sample8_pdfplumber",
@@ -164,9 +164,9 @@
     "question_order_match": 0.0,
     "question_count_match": 1.0,
     "answer_match": 0.999,
-    "answer_order_match": 0.0,
+    "answer_order_match": 1.0,
     "answer_count_match": 1.0,
-    "alignment_issue": "Failed: section_order_match, question_order_match, answer_order_match",
-    "notes": "Section titles captured but section order/alignment is wrong. Answer text captured but answer order/alignment is wrong. Question text unavailable or not matched."
+    "alignment_issue": "Failed: section_order_match, question_order_match",
+    "notes": "Section titles captured but section order/alignment is wrong. Question text unavailable or not matched."
   }
 ]

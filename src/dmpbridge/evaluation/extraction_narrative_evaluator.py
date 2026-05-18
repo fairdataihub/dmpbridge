@@ -308,26 +308,67 @@ def answer_match_score(
     return rouge_l_score(extracted_text, reference_text)
 
 
+def get_section_answer_map(dmp_json: Dict[str, Any]) -> Dict[str, List[str]]:
+    """
+    Map each section title to its answer texts in question order.
+    """
+    section_answer_map = {}
+
+    for section in get_sections(dmp_json):
+        section_title = normalize_eval_text(section.get("title", ""))
+        answers = []
+
+        for question in section.get("question", []):
+            answer = (
+                question
+                .get("answer", {})
+                .get("json", {})
+                .get("answer", "")
+            )
+
+            if isinstance(answer, str) and answer.strip():
+                answers.append(normalize_eval_text(answer))
+
+        if section_title:
+            section_answer_map[section_title] = answers
+
+    return section_answer_map
+
+
 def answer_order_match_score(
     extracted_json: Dict[str, Any],
     reference_json: Dict[str, Any]
 ) -> float | None:
-    extracted_answers = get_answer_texts(extracted_json)
-    reference_answers = get_answer_texts(reference_json)
+    """
+    Compare answer order inside matched sections.
 
-    if not reference_answers:
+    This avoids unfairly failing all answers when one extra section is inserted.
+    """
+    extracted_map = get_section_answer_map(extracted_json)
+    reference_map = get_section_answer_map(reference_json)
+
+    if not reference_map:
         return None
 
+    total = 0
     matches = 0
 
-    for i, ref_answer in enumerate(reference_answers):
-        if i < len(extracted_answers):
-            score = rouge_l_score(extracted_answers[i], ref_answer)
+    for section_title, reference_answers in reference_map.items():
+        extracted_answers = extracted_map.get(section_title, [])
 
-            if score >= 0.70:
-                matches += 1
+        for index, ref_answer in enumerate(reference_answers):
+            total += 1
 
-    return matches / len(reference_answers)
+            if index < len(extracted_answers):
+                score = rouge_l_score(extracted_answers[index], ref_answer)
+
+                if score >= 0.70:
+                    matches += 1
+
+    if total == 0:
+        return None
+
+    return matches / total
 
 
 def build_alignment_issue(metrics: Dict[str, float]) -> str:
