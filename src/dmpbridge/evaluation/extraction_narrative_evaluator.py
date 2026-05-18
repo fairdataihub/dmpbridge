@@ -526,8 +526,8 @@ def evaluate_one_dmp(
         "answer_count_match": format_score(answer_count_score),
 
         "json_valid": len(validation_errors) == 0,
-        "alignment_issue": " ".join(alignment_issues),
         "notes": " ".join(notes),
+        "alignment_issue": " ".join(alignment_issues)
     }
 
 

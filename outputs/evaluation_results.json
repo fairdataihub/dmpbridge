@@ -15,8 +15,8 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "alignment_issue": "",
-    "notes": "No reference question title. No reference question text."
+    "notes": "No reference question title. No reference question text.",
+    "alignment_issue": ""
   },
   {
     "sample_id": "sample1_pdfplumber",
@@ -34,8 +34,8 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "alignment_issue": "",
-    "notes": ""
+    "notes": "",
+    "alignment_issue": ""
   },
   {
     "sample_id": "sample2_pdfplumber",
@@ -53,8 +53,8 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "alignment_issue": "",
-    "notes": "No reference question title."
+    "notes": "No reference question title.",
+    "alignment_issue": ""
   },
   {
     "sample_id": "sample3_pdfplumber",
@@ -72,8 +72,8 @@
     "answer_order_match": 0.5,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "alignment_issue": "",
-    "notes": "No reference question title."
+    "notes": "No reference question title.",
+    "alignment_issue": ""
   },
   {
     "sample_id": "sample4_pdfplumber",
@@ -91,8 +91,8 @@
     "answer_order_match": 0.6,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "alignment_issue": "",
-    "notes": "No reference question title. No reference question text."
+    "notes": "No reference question title. No reference question text.",
+    "alignment_issue": ""
   },
   {
     "sample_id": "sample5_pdfplumber",
@@ -110,8 +110,8 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "alignment_issue": "",
-    "notes": "No reference question title. No reference question text."
+    "notes": "No reference question title. No reference question text.",
+    "alignment_issue": ""
   },
   {
     "sample_id": "sample6_pdfplumber",
@@ -129,8 +129,8 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "alignment_issue": "",
-    "notes": "No reference question title. No reference question text."
+    "notes": "No reference question title. No reference question text.",
+    "alignment_issue": ""
   },
   {
     "sample_id": "sample7_pdfplumber",
@@ -148,8 +148,8 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "alignment_issue": "",
-    "notes": "No reference section title. No reference question title. No reference question text."
+    "notes": "No reference section title. No reference question title. No reference question text.",
+    "alignment_issue": ""
   },
   {
     "sample_id": "sample8_pdfplumber",
@@ -167,8 +167,8 @@
     "answer_order_match": 1.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "alignment_issue": "",
-    "notes": "No reference question title. No reference question text."
+    "notes": "No reference question title. No reference question text.",
+    "alignment_issue": ""
   },
   {
     "sample_id": "sample9_pdfplumber",
@@ -186,7 +186,7 @@
     "answer_order_match": 0.0,
     "answer_count_match": 1.0,
     "json_valid": true,
-    "alignment_issue": "Section titles detected but order shifted. Answer text captured but attached to wrong section/order. Section count correct but alignment/order incorrect.",
-    "notes": "No reference question title. No reference question text."
+    "notes": "No reference question title. No reference question text.",
+    "alignment_issue": "Section titles detected but order shifted. Answer text captured but attached to wrong section/order. Section count correct but alignment/order incorrect."
   }
 ]
