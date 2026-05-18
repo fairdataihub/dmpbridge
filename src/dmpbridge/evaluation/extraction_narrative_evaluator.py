@@ -298,22 +298,6 @@ def section_order_match_score(
     return matches / len(reference_titles)
 
 
-def question_title_match_score(
-    extracted_json: Dict[str, Any],
-    reference_json: Dict[str, Any]
-) -> float | None:
-    """
-    Compare short question/subsection titles.
-    """
-    extracted_titles = set(get_question_titles(extracted_json))
-    reference_titles = set(get_question_titles(reference_json))
-
-    if not reference_titles:
-        return None
-
-    return len(extracted_titles & reference_titles) / len(reference_titles)
-
-
 def question_text_match_score(
     extracted_json: Dict[str, Any],
     reference_json: Dict[str, Any]
@@ -438,7 +422,7 @@ def evaluate_one_dmp(
     section_title_score = section_title_match_score(extracted_json, reference_json)
     section_order_score = section_order_match_score(extracted_json, reference_json)
 
-    question_title_score = question_title_match_score(extracted_json, reference_json)
+
     question_text_score = question_text_match_score(extracted_json, reference_json)
     question_order_score = question_order_match_score(extracted_json, reference_json)
 
@@ -468,9 +452,6 @@ def evaluate_one_dmp(
 
     if section_title_score is None:
         notes.append("No reference section title.")
-
-    if question_title_score is None:
-        notes.append("No reference question title.")
 
     if question_text_score is None:
         notes.append("No reference question text.")
@@ -516,8 +497,6 @@ def evaluate_one_dmp(
         "section_order_match": format_score(section_order_score),
         "section_count_match": format_score(section_count_score),
 
-        "question_title_match": format_score(question_title_score),
-        "question_text_match": format_score(question_text_score),
         "question_order_match": format_score(question_order_score),
         "question_count_match": format_score(question_count_score),
 
@@ -564,7 +543,6 @@ def evaluate_folder(
                 "section_order_match": None,
                 "section_count_match": None,
 
-                "question_title_match": None,
                 "question_text_match": None,
                 "question_order_match": None,
                 "question_count_match": None,
