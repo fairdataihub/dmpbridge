@@ -36,7 +36,7 @@ dmpbridge/
 │       │
 │       ├── processing/
 │       │   ├── __init__.py
-│       │   ├── block_fusion.py                     # later, for rule + Qwen fusion
+│       │   ├── block_fusion.py                     # later
 │       │   ├── structure_detector.py
 │       │   ├── markdown_builder.py               
 │       │   └── structure_json_builder.py
@@ -44,7 +44,7 @@ dmpbridge/
 │       │
 │       ├── evaluation/
 │       │   ├── __init__.py
-│       │   ├── extraction_evaluator.py                     # later
+│       │   ├── extraction_narrative_evaluator.py                    
 │       │   └── header_evaluator.py                         # later
 │       │
 │       └── utils/
