@@ -2,7 +2,6 @@ from pathlib import Path
 import re
 import unicodedata
 from difflib import SequenceMatcher
-import pandas as pd
 
 
 STOPWORDS = {
