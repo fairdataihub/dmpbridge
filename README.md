@@ -6,19 +6,25 @@ DMP Bridge is an open-source, MIT-licensed, Python-based pipeline that extracts 
 dmpbridge/
 │
 ├── data/
-│   ├── raw_pdfs/                  # input PDFs 
+│   ├── reference_pdfs/
+│   │   ├── sample1.pdf
+│   │   └── sample6.pdf
 │   │
-│   ├── page_images/              # PDF → images (for Qwen2-VL)
-│   │   └── {pdf_name}/page_1.png
+│   ├── pdfplumber_extracted_blocks/
+│   │   ├── sample1.json
+│   │   └── sample6.json
 │   │
-│   ├── pdfplumber_blocks/        # raw extracted text + layout
-│   │   └── {pdf_name}.json
+│   ├── pdfplumber_extracted_text/
+│   │   ├── sample1.txt
+│   │   └── sample6.txt
 │   │
-│   ├── qwen_outputs/             # detected headers/structure
-│   │   └── {pdf_name}.json
+│   ├── pdfplumber_extracted_markdown/
+│   │   ├── sample1.md
+│   │   └── sample6.md
 │   │
-│   └── structure_json/           # FINAL output of phase 1
-│       └── {pdf_name}.json
+│   └── reference_text/
+│       ├── sample1_reference.txt
+│       └── sample6_reference.txt
 │
 ├── src/
 │   └── dmpbridge/
@@ -26,37 +32,27 @@ dmpbridge/
 │       │
 │       ├── pdf/
 │       │   ├── __init__.py
-│       │   ├── pdfplumber_extractor.py
-│       │   └── page_image_converter.py
+│       │   └── pdfplumber_extractor.py
+│       │   
 │       │
 │       ├── vision/
 │       │   ├── __init__.py
-│       │   └── qwen_structure_detector.py 
-│       │   └── qwen_postprocessor.py
 │       │
 │       ├── processing/
 │       │   ├── __init__.py
-│       │   ├── block_fusion.py                     # later
-│       │   ├── structure_detector.py
-│       │   ├── markdown_builder.py               
-│       │   └── structure_json_builder.py
-│       │   └── text_cleaner.py
 │       │
 │       ├── evaluation/
 │       │   ├── __init__.py
-│       │   ├── extraction_narrative_evaluator.py                    
-│       │   └── header_evaluator.py                         # later
+│       │   ├── pdfplumber_text_evaluator.py                   
 │       │
 │       └── utils/
-│       │   ├── __init__.py
+│           ├── __init__.py
 │           ├── logger.py
 │           └── file_io.py
 │
 ├── notebooks/
-│   ├── 01_pdfplumber_test.ipynb
-│   ├── 02_page_image_test.ipynb
-│   ├── 03_qwen_structure_test.ipynb
-│   └── 04_fusion_test.ipynb
+│   ├── 01_pdfplumber_batch_test.ipynb
+│  
 │
 ├── outputs/
 │   ├── debug/
