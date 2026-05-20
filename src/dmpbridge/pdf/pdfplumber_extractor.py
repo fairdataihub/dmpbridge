@@ -154,6 +154,7 @@ def save_pdfplumber_outputs(pdf_path: str | Path) -> list[dict]:
 
     output_json = project_root / "data" / "pdfplumber_blocks" / f"{pdf_path.stem}.json"
     output_txt = project_root / "data" / "extracted_text" / f"{pdf_path.stem}.txt"
+    output_md = project_root / "data" / "markdown" / f"{pdf_path.stem}.md"
 
     save_json(line_blocks, output_json)
 
@@ -169,8 +170,10 @@ def save_pdfplumber_outputs(pdf_path: str | Path) -> list[dict]:
         text_lines.append(block["text"])
 
     save_text("\n".join(text_lines), output_txt)
+    save_text("\n".join(text_lines), output_md)
 
     log(f"Saved line-level JSON: {output_json}")
     log(f"Saved extracted text: {output_txt}")
+    log(f"Saved Markdown text: {output_md}")
 
     return line_blocks
