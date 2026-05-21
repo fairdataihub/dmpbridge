@@ -52,7 +52,8 @@ dmpbridge/
 │
 ├── notebooks/
 │   ├── 01_pdfplumber_batch_test.ipynb
-│  
+│   ├── 02_evaluation_pdfplumber_test.ipynb
+│    
 │
 ├── outputs/
 │   ├── debug/
