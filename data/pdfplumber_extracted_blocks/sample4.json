@@ -3,30 +3,30 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 1,
-    "text": "Data and Computing Resource Management Plan",
-    "x0": 73.4812,
-    "top": 76.1686962,
-    "x1": 426.66455931999997,
-    "bottom": 90.51489619999995,
-    "avg_font_size": 14.346199999999953,
+    "text": "DATA MANAGEMENT PLAN",
+    "x0": 72.0001,
+    "top": 73.03210000000001,
+    "x1": 232.13649999999993,
+    "bottom": 85.03210000000001,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNM+CMBX12"
+      "HEIEGI+Arial-BoldMT"
     ],
-    "is_bold": false,
+    "is_bold": true,
     "extractor": "pdfplumber"
   },
   {
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 2,
-    "text": "1. Introduction",
-    "x0": 72.0,
-    "top": 102.842175,
-    "x1": 155.09461470000005,
-    "bottom": 113.75127499999996,
-    "avg_font_size": 10.909099999999967,
+    "text": "The P.I. has completed human subjects training. The research assistants will be required to",
+    "x0": 72.0001,
+    "top": 100.84809999999993,
+    "x1": 510.07330000000024,
+    "bottom": 112.84809999999993,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJPO+CMBX10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -35,14 +35,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 3,
-    "text": "The goal of this Data and Computing Resources Management Plan is to provide a systematic,",
-    "x0": 88.93637775,
-    "top": 115.71382209000001,
-    "x1": 539.9742081599996,
-    "bottom": 126.62292208999997,
-    "avg_font_size": 10.909099999999967,
+    "text": "complete human subjects training through the UCR Office of Research and Economic",
+    "x0": 72.0001,
+    "top": 114.34809999999993,
+    "x1": 481.6381000000001,
+    "bottom": 126.34809999999993,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -51,14 +51,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 4,
-    "text": "centralized,andexpertlysupportedapproachtomeetingthedatamanagementandcyberinfrastruc-",
-    "x0": 72.0,
-    "top": 128.58546918000002,
-    "x1": 540.0276627499993,
-    "bottom": 139.49456917999998,
-    "avg_font_size": 10.909099999999967,
+    "text": "Development.",
+    "x0": 72.0001,
+    "top": 128.6040999999999,
+    "x1": 135.7621,
+    "bottom": 140.6040999999999,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -67,14 +67,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 5,
-    "text": "tureneedsoftheOdor2Actionnetwork.Foraprojectofthissize,complexity,andinterdisciplinarity,",
-    "x0": 72.0,
-    "top": 141.45711627000003,
-    "x1": 539.9818445299993,
-    "bottom": 152.36621627,
-    "avg_font_size": 10.909099999999967,
+    "text": "The project will be submitted to the campus Institutional Review Board and requested revisions",
+    "x0": 72.0001,
+    "top": 155.6040999999999,
+    "x1": 528.2509000000001,
+    "bottom": 167.6040999999999,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -83,15 +83,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 6,
-    "text": "signi fi cant infrastructure and expertise are required to enable robust large-scale centralized data",
-    "x0": 72.0,
-    "top": 154.32876336000004,
-    "x1": 540.0036627300001,
-    "bottom": 165.23786336,
-    "avg_font_size": 10.909099999999967,
+    "text": "to the project based on feedback from the IRB will be incorporated prior to data collection.",
+    "x0": 72.0001,
+    "top": 169.86009999999987,
+    "x1": 504.8341000000006,
+    "bottom": 181.86009999999987,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -100,14 +99,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 7,
-    "text": "storage,seamlessaccesstodataandcomputationalresources,andopensciencepracticeslikepublic",
-    "x0": 72.0,
-    "top": 167.20041045000005,
-    "x1": 539.9992990900001,
-    "bottom": 178.10951045000002,
-    "avg_font_size": 10.909099999999967,
+    "text": "The researchers will ask all respondents to sign informed consent forms prior to interviews, as",
+    "x0": 72.0001,
+    "top": 197.61609999999985,
+    "x1": 524.4709000000004,
+    "bottom": 209.61609999999985,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -116,14 +115,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 8,
-    "text": "access to well-curated data, code, and software in established open repositories. This proposed plan",
-    "x0": 71.99999999999994,
-    "top": 180.07205754000006,
-    "x1": 539.98293544,
-    "bottom": 190.98115754000003,
-    "avg_font_size": 10.909099999999967,
+    "text": "well as in connection with the collection of survey data. These consent forms will include",
+    "x0": 72.0001,
+    "top": 211.11609999999985,
+    "x1": 501.9037000000001,
+    "bottom": 223.11609999999985,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -132,15 +131,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 9,
-    "text": "adds value by providing a means for secure and e ffi cient transfer of large datasets between theo-",
-    "x0": 71.99890908999993,
-    "top": 192.94261372000005,
-    "x1": 539.99602636,
-    "bottom": 203.85171372000002,
-    "avg_font_size": 10.909099999999967,
+    "text": "information about how confidentiality of responses will be protected.",
+    "x0": 72.0001,
+    "top": 224.61609999999985,
+    "x1": 403.55290000000014,
+    "bottom": 236.61609999999985,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -149,14 +147,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 10,
-    "text": "166",
-    "x0": 466.437,
-    "top": 204.06142499999999,
-    "x1": 479.13655734,
-    "bottom": 212.031525,
-    "avg_font_size": 7.970100000000002,
+    "text": "The longevity analysis will collect data on the length of time clusters have operated (including",
+    "x0": 72.0001,
+    "top": 252.37209999999982,
+    "x1": 522.8437000000004,
+    "bottom": 264.3720999999998,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIKDA+CMR8"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -165,14 +163,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 11,
-    "text": "reticians and experimentalists. As noted in the recent NSF Dear Colleague Letter NSF 19-069",
-    "x0": 71.99890908999993,
-    "top": 205.81426081000006,
-    "x1": 539.99686511,
-    "bottom": 216.725275,
-    "avg_font_size": 10.909099999999967,
+    "text": "the length of time between first hires and closures for those that have disbanded). We will",
+    "x0": 72.0001,
+    "top": 266.6280999999998,
+    "x1": 503.6461000000003,
+    "bottom": 278.6280999999998,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -181,16 +179,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 12,
-    "text": "“E ff ective Practices for Data,” open science practices have myriad bene fi ts for the scienti fi c and",
-    "x0": 71.99974784,
-    "top": 218.68782209000005,
-    "x1": 539.99250147,
-    "bottom": 229.59692209000002,
-    "avg_font_size": 10.909099999999967,
+    "text": "collect data from a minimum of 36 institutions, attempting to find dates of operation for all",
+    "x0": 72.0001,
+    "top": 280.1280999999998,
+    "x1": 507.4188999999998,
+    "bottom": 292.1280999999998,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -199,14 +195,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 13,
-    "text": "broadercommunity;however,makingdataopenlyaccessibleandactuallyusefulviaexpertcuration",
-    "x0": 71.99974783999994,
-    "top": 231.55837827000005,
-    "x1": 539.98159237,
-    "bottom": 242.46747827000002,
-    "avg_font_size": 10.909099999999967,
+    "text": "clusters authorized at those institutions. The total number of clusters cannot be estimated at this",
+    "x0": 72.0001,
+    "top": 293.6280999999998,
+    "x1": 531.2556999999999,
+    "bottom": 305.6280999999998,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -215,15 +211,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 14,
-    "text": "requires personnel e ff ort and technical resources. This plan leverages existing and past NSF invest-",
-    "x0": 71.99974783999997,
-    "top": 244.43002536000006,
-    "x1": 539.9903196499998,
-    "bottom": 255.33912536000003,
-    "avg_font_size": 10.909099999999967,
+    "text": "time but is likely to encompass as many as 150-200.",
+    "x0": 72.0001,
+    "top": 307.88409999999976,
+    "x1": 323.28970000000004,
+    "bottom": 319.88409999999976,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -232,14 +227,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 15,
-    "text": "ments to ensure that data are easily and safely stored in centralized infrastructure with simple and",
-    "x0": 71.99974783999996,
-    "top": 257.30167245000007,
-    "x1": 539.9957741999999,
-    "bottom": 268.21077245000004,
-    "avg_font_size": 10.909099999999967,
+    "text": "The comparative analysis will collect data on performance and attitudes from cluster",
+    "x0": 72.0001,
+    "top": 335.64009999999973,
+    "x1": 475.83130000000017,
+    "bottom": 347.64009999999973,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -248,14 +243,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 16,
-    "text": "fast access to data and analysis tools by the large and geographically distributed project team. In",
-    "x0": 71.99974783999997,
-    "top": 270.17222863000006,
-    "x1": 539.9957741999999,
-    "bottom": 281.0813286300001,
-    "avg_font_size": 10.909100000000024,
+    "text": "participants. The performance data will include publications, citations, research grants, patents,",
+    "x0": 72.0001,
+    "top": 349.14009999999973,
+    "x1": 530.3629000000003,
+    "bottom": 361.14009999999973,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -264,14 +259,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 17,
-    "text": "addition, the plan enables openly available and reusable data in a sustainable way over the long",
-    "x0": 71.99974783999997,
-    "top": 283.0438757200001,
-    "x1": 540.01322876,
-    "bottom": 293.9529757200001,
-    "avg_font_size": 10.909100000000024,
+    "text": "licenses, and start-ups founded by members of interdisciplinary cluster hires, as well as those of",
+    "x0": 72.0121,
+    "top": 362.64009999999973,
+    "x1": 532.0668999999996,
+    "bottom": 374.64009999999973,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -280,15 +275,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 18,
-    "text": "term, according to emerging best practices. These practices include the use of persistent identi fi ers",
-    "x0": 71.99974783999997,
-    "top": 295.9155228100001,
-    "x1": 539.9957741999999,
-    "bottom": 306.8246228100001,
-    "avg_font_size": 10.909100000000024,
+    "text": "a matched sample of faculty hired through normal departmental mechanisms. The survey data",
+    "x0": 72.0121,
+    "top": 376.8960999999997,
+    "x1": 525.9277,
+    "bottom": 388.8960999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -297,15 +291,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 19,
-    "text": "such as DataCite Digital Object Identi fi ers (DOIs), a machine-readable data management plan as",
-    "x0": 71.99974783999983,
-    "top": 308.7860789900001,
-    "x1": 539.9935923799998,
-    "bottom": 319.6951789900001,
-    "avg_font_size": 10.909100000000024,
+    "text": "will include responses to five-page surveys from members of the interdisciplinary clusters. The",
+    "x0": 72.0121,
+    "top": 390.3960999999997,
+    "x1": 528.1549000000002,
+    "bottom": 402.3960999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -314,14 +307,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 20,
-    "text": "described in NSF document 19-069 referenced above, and adherence to the broader FAIR data",
-    "x0": 71.99974783999983,
-    "top": 321.6577260800001,
-    "x1": 540.0252287699999,
-    "bottom": 332.5668260800001,
-    "avg_font_size": 10.909100000000024,
+    "text": "P.I. will also collect interview data from cluster leads and university administrators.",
+    "x0": 72.0121,
+    "top": 404.6520999999997,
+    "x1": 470.33170000000007,
+    "bottom": 416.6520999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -330,14 +323,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 21,
-    "text": "215,258",
-    "x0": 318.681,
-    "top": 332.77842499999997,
-    "x1": 347.53834107,
-    "bottom": 340.748525,
-    "avg_font_size": 7.970100000000002,
+    "text": "Performance and survey responses will be collected from a minimum of 72 individuals affiliated",
+    "x0": 72.0121,
+    "top": 418.1520999999997,
+    "x1": 531.8401000000003,
+    "bottom": 430.1520999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIKDA+CMR8"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -346,14 +339,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 22,
-    "text": "principles and emerging software citation principles. This plan describes how the variety and",
-    "x0": 71.99974783999983,
-    "top": 334.5293731700001,
-    "x1": 539.9987026900001,
-    "bottom": 345.442275,
-    "avg_font_size": 10.909100000000024,
+    "text": "with interdisciplinary clusters (at least three individuals from four institutions each in six fields),",
+    "x0": 72.0121,
+    "top": 431.6520999999997,
+    "x1": 531.8869000000002,
+    "bottom": 443.6520999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -362,14 +355,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 23,
-    "text": "volume of data produced will be supported with appropriate expertise and resources for the entire",
-    "x0": 71.9994036,
-    "top": 347.40373117999997,
-    "x1": 539.9845208599994,
-    "bottom": 358.31283118,
-    "avg_font_size": 10.909100000000024,
+    "text": "and a matched sample of at least 72 individuals hired through normal departmental channels.",
+    "x0": 72.0241,
+    "top": 445.90809999999965,
+    "x1": 514.6237000000001,
+    "bottom": 457.90809999999965,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -378,14 +371,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 24,
-    "text": "lifecycle from data storage and analysis to open data sharing and long-term preservation.",
-    "x0": 71.9994036,
-    "top": 360.27428735999996,
-    "x1": 498.5190317599995,
-    "bottom": 371.18338736,
-    "avg_font_size": 10.909100000000024,
+    "text": "Interview data will be collected from a minimum of 24 cluster leads and four administrators. If",
+    "x0": 72.0361,
+    "top": 459.40809999999965,
+    "x1": 530.6089000000002,
+    "bottom": 471.40809999999965,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -394,14 +387,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 25,
-    "text": "2. Cyberinfrastructure Team",
-    "x0": 71.9994036,
-    "top": 374.14193528,
-    "x1": 229.87808062000005,
-    "bottom": 385.05103528,
-    "avg_font_size": 10.909100000000024,
+    "text": "fields are drawn from multiple institutions, the number of interviews with cluster leads will",
+    "x0": 72.0361,
+    "top": 473.6640999999996,
+    "x1": 507.4381000000003,
+    "bottom": 485.6640999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJPO+CMBX10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -410,14 +403,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 26,
-    "text": "Digital data and computing resources will be managed by the Center for Research Data and",
-    "x0": 88.93578135,
-    "top": 387.01358237,
-    "x1": 539.99542996,
-    "bottom": 397.92268237,
-    "avg_font_size": 10.909100000000024,
+    "text": "reflect the number of institutions and the number of fields included in the sample. The number",
+    "x0": 72.0361,
+    "top": 487.1640999999996,
+    "x1": 526.1089,
+    "bottom": 499.1640999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -426,14 +419,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 27,
-    "text": "Digital Scholarship (CRDDS) at the University of Colorado Boulder. CRDDS brings together na-",
-    "x0": 71.9994036,
-    "top": 399.88413855,
-    "x1": 539.9987026900001,
-    "bottom": 410.79323855,
-    "avg_font_size": 10.909100000000024,
+    "text": "of interviews with university administrators will reflect the number of institutions included in the",
+    "x0": 72.0361,
+    "top": 500.6640999999996,
+    "x1": 537.1933000000002,
+    "bottom": 512.6640999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -442,14 +435,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 28,
-    "text": "tional experts in cyberinfrastructure and data management to support research data, computation,",
-    "x0": 71.99940359999994,
-    "top": 412.75578564,
-    "x1": 539.9976117800005,
-    "bottom": 423.66488564,
-    "avg_font_size": 10.909100000000024,
+    "text": "sample.",
+    "x0": 72.0361,
+    "top": 514.9200999999996,
+    "x1": 106.5433,
+    "bottom": 526.9200999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -458,14 +451,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 29,
-    "text": "and analysis across disciplines in accordance with open science principles.",
-    "x0": 71.99940359999994,
-    "top": 425.62743273,
-    "x1": 423.4796964999995,
-    "bottom": 436.53653273000003,
-    "avg_font_size": 10.909100000000024,
+    "text": "The members of the project team will spot check coding on a 10 percent sample of individuals",
+    "x0": 72.0361,
+    "top": 542.6760999999997,
+    "x1": 522.2857000000001,
+    "bottom": 554.6760999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -474,15 +467,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 30,
-    "text": "Senior Personnel Thomas Hauser: Hauser is CRDDS executive director and director of re-",
-    "x0": 71.99940359999994,
-    "top": 440.49108148,
-    "x1": 539.9976117799998,
-    "bottom": 451.40018148,
-    "avg_font_size": 10.909100000000024,
+    "text": "hired through cluster programs and a 10 percent sample of individual hired through normal",
+    "x0": 72.0361,
+    "top": 556.1760999999997,
+    "x1": 506.6821,
+    "bottom": 568.1760999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIJPO+CMBX10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -491,14 +483,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 31,
-    "text": "search computing at CU Boulder. He will oversee cyberinfrastructure and guide the use of the",
-    "x0": 71.99940359999994,
-    "top": 453.36272857,
-    "x1": 540.0052481499999,
-    "bottom": 464.27182857,
-    "avg_font_size": 10.909100000000024,
+    "text": "departmental procedures. If problems arise in the validation of coding, more extensive checks",
+    "x0": 72.0361,
+    "top": 569.6760999999997,
+    "x1": 524.5356999999998,
+    "bottom": 581.6760999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -507,14 +499,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 32,
-    "text": "computing resources for the project. Hauser is PI on the NSF Hybrid Cloud award, the NSF Cy-",
-    "x0": 71.99940359999997,
-    "top": 466.23328475,
-    "x1": 539.9997935999996,
-    "bottom": 477.14238475,
-    "avg_font_size": 10.909100000000024,
+    "text": "will be conducted. Coders will be instructed on the requirements for producing high quality",
+    "x0": 72.0361,
+    "top": 583.9320999999995,
+    "x1": 511.6021000000003,
+    "bottom": 595.9320999999997,
+    "avg_font_size": 12.000000000000028,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -523,14 +515,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 33,
-    "text": "berteam award and is overseeing the operations and support of the central computing and data",
-    "x0": 71.99940359999997,
-    "top": 479.10384093,
-    "x1": 539.9965208699992,
-    "bottom": 490.01294093,
-    "avg_font_size": 10.909100000000024,
+    "text": "data, including meticulousness, conscientiousness, asking questions where uncertainties exist,",
+    "x0": 72.0361,
+    "top": 597.4320999999995,
+    "x1": 520.5876999999995,
+    "bottom": 609.4320999999997,
+    "avg_font_size": 12.000000000000028,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -539,14 +531,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 34,
-    "text": "resources for the university. His group operates an advanced computational and data-intensive",
-    "x0": 71.99940359999997,
-    "top": 491.97439711,
-    "x1": 539.9834299499996,
-    "bottom": 502.88349711,
-    "avg_font_size": 10.909100000000024,
+    "text": "and double checking work.",
+    "x0": 72.0361,
+    "top": 611.6880999999996,
+    "x1": 201.05649999999997,
+    "bottom": 623.6880999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -555,14 +547,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 35,
-    "text": "infrastructure consisting of supercomputers, high-throughput computing and data resources con-",
-    "x0": 71.99940359999997,
-    "top": 504.84495329,
-    "x1": 539.9997935999997,
-    "bottom": 515.75405329,
-    "avg_font_size": 10.909100000000024,
+    "text": "Data will be backed up on a weekly basis on a hard drive kept in a locked cabinet in the project",
+    "x0": 72.0361,
+    "top": 638.6880999999996,
+    "x1": 528.4381000000005,
+    "bottom": 650.6880999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -571,15 +563,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 36,
-    "text": "nected through a Science DMZ to other regional and national resources. CRDDS o ff ers a large",
-    "x0": 71.99940359999997,
-    "top": 517.71660038,
-    "x1": 539.99324814,
-    "bottom": 528.62570038,
-    "avg_font_size": 10.909100000000024,
+    "text": "office. The data will be preserved exclusively on the two project computers and the back-up",
+    "x0": 72.0361,
+    "top": 652.9440999999996,
+    "x1": 516.0997000000006,
+    "bottom": 664.9440999999996,
+    "avg_font_size": 12.00000000000001,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -588,14 +579,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 37,
-    "text": "number of training programs for researchers and support for data-intensive research, and Research",
-    "x0": 71.9994036,
-    "top": 530.5882474699999,
-    "x1": 539.9736117600003,
-    "bottom": 541.49734747,
-    "avg_font_size": 10.909099999999995,
+    "text": "hard drive.",
+    "x0": 72.0361,
+    "top": 666.4440999999996,
+    "x1": 121.5433,
+    "bottom": 678.4440999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -604,223 +595,14 @@
     "source_pdf": "sample4.pdf",
     "page": 1,
     "line_order": 38,
-    "text": "Computing provides user support for the compute and storage systems.",
-    "x0": 71.9994036,
-    "top": 543.4598945600001,
-    "x1": 414.0924159499997,
-    "bottom": 554.36899456,
-    "avg_font_size": 10.909099999999995,
+    "text": "Performance and survey data will be coded into STATA data files, including numeric",
+    "x0": 72.0361,
+    "top": 694.2000999999996,
+    "x1": 479.4349000000001,
+    "bottom": 706.2000999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 39,
-    "text": "SeniorPersonnelAndrewJohnson: JohnsonisCRDDSdirectorofresearchdatamanagement",
-    "x0": 71.9994036,
-    "top": 558.32463422,
-    "x1": 539.99106632,
-    "bottom": 569.23373422,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIJPO+CMBX10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 40,
-    "text": "and associate professor at CU Boulder. He will oversee data management, data archiving, and",
-    "x0": 71.9994036,
-    "top": 571.1951904,
-    "x1": 539.9921572300001,
-    "bottom": 582.1042904,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 41,
-    "text": "data sharing/publishing for the project. Johnson’s team supports data management best practices",
-    "x0": 71.9994036,
-    "top": 584.06683749,
-    "x1": 539.9747026699994,
-    "bottom": 594.97593749,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 42,
-    "text": "accordingtonationalandinternationalstandardsandrunstheCUBoulderrepository,CUScholar,",
-    "x0": 71.9994036,
-    "top": 596.93848458,
-    "x1": 539.9768844899994,
-    "bottom": 607.84758458,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 43,
-    "text": "which provides infrastructure for data publishing and archiving in accordance with open science",
-    "x0": 71.9994036,
-    "top": 609.81013167,
-    "x1": 539.9779753999998,
-    "bottom": 620.71923167,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 44,
-    "text": "principles. Johnson has a strong record of publications and grants, including from the Institute of",
-    "x0": 71.9994036,
-    "top": 622.68177876,
-    "x1": 539.9877935899995,
-    "bottom": 633.59087876,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 45,
-    "text": "Museum and Library Services, in the area of data management support.",
-    "x0": 71.9994036,
-    "top": 635.55342585,
-    "x1": 417.3324186499997,
-    "bottom": 646.46252585,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 46,
-    "text": "3. Cyberinfrastructure System Description",
-    "x0": 71.9994036,
-    "top": 653.4650771400001,
-    "x1": 306.81123563999984,
-    "bottom": 664.37417714,
-    "avg_font_size": 10.90910000000001,
-    "font_names": [
-      "MNIJPO+CMBX10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 47,
-    "text": "Hauser and Johnson will develop and support a system of interconnected resources to ensure",
-    "x0": 88.93578135,
-    "top": 666.3367242300001,
-    "x1": 539.9856117700001,
-    "bottom": 677.24582423,
-    "avg_font_size": 10.909100000000011,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 48,
-    "text": "that data move as easy as possible from instruments and other data collection sources to a cen-",
-    "x0": 71.9994036,
-    "top": 679.2072804100001,
-    "x1": 539.9921572300002,
-    "bottom": 690.11638041,
-    "avg_font_size": 10.909100000000013,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 49,
-    "text": "tralized storage system (PetaLibrary), where it can be accessed by the project team for analysis",
-    "x0": 71.99940360000002,
-    "top": 692.0789275000001,
-    "x1": 540.0117936099997,
-    "bottom": 702.9880275,
-    "avg_font_size": 10.909100000000013,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 50,
-    "text": "and computation (Fig. 19). The data on the PetaLibrary can be accessed by researchers through",
-    "x0": 71.99940360000002,
-    "top": 704.9505745900001,
-    "x1": 539.9987026900001,
-    "bottom": 715.85967459,
-    "avg_font_size": 10.909100000000013,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 1,
-    "line_order": 51,
-    "text": "49",
-    "x0": 300.5461395100001,
-    "top": 744.0716981,
-    "x1": 311.45523951000007,
-    "bottom": 754.9807981,
-    "avg_font_size": 10.909100000000002,
-    "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -829,14 +611,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 1,
-    "text": "130 106",
-    "x0": 278.715,
-    "top": 73.02252499999997,
-    "x1": 453.26955734,
-    "bottom": 80.99262499999998,
-    "avg_font_size": 7.970100000000002,
+    "text": "institutional and cluster identifiers, for subsequent data analysis. Data collected from individual",
+    "x0": 72.0001,
+    "top": 73.09209999999996,
+    "x1": 527.6880999999995,
+    "bottom": 85.09209999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIKDA+CMR8"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -845,14 +627,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 2,
-    "text": "web-basedinterfaceslikeJupyternotebooks ortheOpenOnDemandportal. Thedataanalysis",
-    "x0": 72.0,
-    "top": 74.77707499999997,
-    "x1": 539.98934212,
-    "bottom": 85.68617499999993,
-    "avg_font_size": 10.909099999999967,
+    "text": "and institutions will be stripped of institutional identifications and given a letter title",
+    "x0": 72.0121,
+    "top": 86.59209999999996,
+    "x1": 473.4277000000001,
+    "bottom": 98.59209999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -861,15 +643,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 3,
-    "text": "will be performed on several computing resources. The project has access to the fi ve compute nodes",
-    "x0": 71.99986122000001,
-    "top": 87.64872208999998,
-    "x1": 539.99043303,
-    "bottom": 98.55782208999995,
-    "avg_font_size": 10.909099999999967,
+    "text": "corresponding to the institution’s name. The University of California, Riverside, for example,",
+    "x0": 72.0121,
+    "top": 100.84809999999993,
+    "x1": 521.3269000000001,
+    "bottom": 112.84809999999993,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -878,14 +659,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 4,
-    "text": "budgetedforpurchaseintheBlancacluster.Theseresourcesarededicatedtotheproject,butother",
-    "x0": 71.99986122000001,
-    "top": 100.52036917999999,
-    "x1": 540.0046148599994,
-    "bottom": 111.42946917999996,
-    "avg_font_size": 10.909099999999967,
+    "text": "might be labelled “Institution A.” Interviews will be tape recorded for consultation during the",
+    "x0": 72.0121,
+    "top": 114.34809999999993,
+    "x1": 520.6717,
+    "bottom": 126.34809999999993,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -894,14 +675,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 5,
-    "text": "idle compute cycles of the system can also be utilized by this project through preemptible queues.",
-    "x0": 71.99986122000001,
-    "top": 113.39201627,
-    "x1": 539.9718875600001,
-    "bottom": 124.30111626999997,
-    "avg_font_size": 10.909099999999967,
+    "text": "writing of papers and reports. To our knowledge, there will be little overlap between the data",
+    "x0": 72.0121,
+    "top": 128.6040999999999,
+    "x1": 521.4205000000002,
+    "bottom": 140.6040999999999,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -910,14 +691,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 6,
-    "text": "Additionally, the project will have access to the RMACC Summit supercomputer (funded by an",
-    "x0": 71.99986122000001,
-    "top": 126.26366336000001,
-    "x1": 540.0024330399995,
-    "bottom": 137.17276335999998,
-    "avg_font_size": 10.909099999999967,
+    "text": "collected for this project and data collected by other researchers. The only project that may",
+    "x0": 72.0241,
+    "top": 142.1040999999999,
+    "x1": 507.1176999999997,
+    "bottom": 154.1040999999999,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -926,14 +707,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 7,
-    "text": "NSF MRI award) for computing needs that go beyond the nodes of the Blanca cluster. Hybrid",
-    "x0": 71.99986122000001,
-    "top": 139.13531045000002,
-    "x1": 539.9827966599996,
-    "bottom": 150.04441045,
-    "avg_font_size": 10.909099999999967,
+    "text": "include overlapping data is that of Erin Leahey at the University of Arizona (SciSIP award",
+    "x0": 72.0241,
+    "top": 155.6040999999999,
+    "x1": 506.3544999999997,
+    "bottom": 167.6040999999999,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -942,14 +723,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 8,
-    "text": "cloud computing resources will also be available to the project through the NSF CC*-funded hy-",
-    "x0": 71.99986122000001,
-    "top": 152.00695754000003,
-    "x1": 540.0133421399995,
-    "bottom": 162.91605754,
-    "avg_font_size": 10.909099999999967,
+    "text": "#1461989). However, consultation with Prof. Leahey has led us to conclude that the amount of",
+    "x0": 72.0361,
+    "top": 169.86009999999987,
+    "x1": 530.6017,
+    "bottom": 181.86009999999987,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -958,14 +739,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 9,
-    "text": "brid cloud infrastructure that will be operational in the spring of 2020. In addition, data stored in",
-    "x0": 71.99986122000001,
-    "top": 164.87860463000004,
-    "x1": 539.9958875799997,
-    "bottom": 175.78770463,
-    "avg_font_size": 10.909099999999967,
+    "text": "overlap is quite limited to the extent that it exists at all.",
+    "x0": 72.0481,
+    "top": 183.36009999999987,
+    "x1": 333.8701000000001,
+    "bottom": 195.36009999999987,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -974,14 +755,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 10,
-    "text": "the PetaLibrary can be shared easily with collaborators or with anyone who requests access, even",
-    "x0": 71.99986122000001,
-    "top": 177.75025172000005,
-    "x1": 539.9795239299998,
-    "bottom": 188.65935172000002,
-    "avg_font_size": 10.909099999999967,
+    "text": "Prof. Leahey’s work is focused on support for interdisciplinary activities on university campuses",
+    "x0": 72.0481,
+    "top": 211.11609999999985,
+    "x1": 534.2676999999999,
+    "bottom": 223.11609999999985,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -990,14 +771,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 11,
-    "text": "to large data sets, using the Globus data transfer service. Data sets stored in the PetaLibrary that",
-    "x0": 71.99986122000001,
-    "top": 190.62189881000006,
-    "x1": 539.9544330000001,
-    "bottom": 201.53099881000003,
-    "avg_font_size": 10.909099999999967,
+    "text": "and includes evidence on university investments in interdisciplinary activities. In previous work,",
+    "x0": 72.0481,
+    "top": 224.61609999999985,
+    "x1": 537.8760999999997,
+    "bottom": 236.61609999999985,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1006,14 +787,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 12,
-    "text": "are associated with publications or of potential reuse by the community can be more easily curated",
-    "x0": 71.99986122000001,
-    "top": 203.49354590000007,
-    "x1": 539.9773421099999,
-    "bottom": 214.40264590000004,
-    "avg_font_size": 10.909099999999967,
+    "text": "Prof. Leahey has collected data on publication rates and publication prominence of scholars",
+    "x0": 72.0481,
+    "top": 238.87209999999982,
+    "x1": 510.29769999999974,
+    "bottom": 250.87209999999982,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1022,14 +803,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 13,
-    "text": "for open science publication and long-term archiving in repositories supported by the team (CU",
-    "x0": 71.99986122000001,
-    "top": 216.36519299000008,
-    "x1": 540.0013421299999,
-    "bottom": 227.27429299000005,
-    "avg_font_size": 10.909099999999967,
+    "text": "working in interdisciplinary teams relative to scholars who are not working in such teams. We",
+    "x0": 72.0481,
+    "top": 252.37209999999982,
+    "x1": 527.4373000000002,
+    "bottom": 264.3720999999998,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1038,14 +819,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 14,
-    "text": "Scholar) as well as external repositories (Zenodo, OdorMapDB).",
-    "x0": 71.99986121999999,
-    "top": 229.2368400800001,
-    "x1": 378.74084410999984,
-    "bottom": 240.14594008000006,
-    "avg_font_size": 10.909099999999967,
+    "text": "see little overlap in these data and the data the research team intends to collect. A robust study of",
+    "x0": 72.0481,
+    "top": 266.6280999999998,
+    "x1": 540.3996999999997,
+    "bottom": 278.6280999999998,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1054,15 +835,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 15,
-    "text": "Figure19: SchematicoftheOdor2Actioncyberinfrastructuresystemfordatasharing,computing,andopenscience.",
-    "x0": 72.0,
-    "top": 446.3222,
-    "x1": 539.9913849599999,
-    "bottom": 455.28860000000003,
-    "avg_font_size": 8.966400000000021,
+    "text": "interdisciplinary activity has been conducted at Stanford University by Prof. Daniel MacFarland.",
+    "x0": 72.0601,
+    "top": 280.1280999999998,
+    "x1": 534.8784999999997,
+    "bottom": 292.1280999999998,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJOO+CMR9",
-      "MNIKOD+CMBX9"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1071,14 +851,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 16,
-    "text": "NSF Logos denote leveraging of previous NSF cyberinfrastructure investments.",
-    "x0": 72.00089664000001,
-    "top": 456.73308704,
-    "x1": 390.98864640000056,
-    "bottom": 465.69948704,
-    "avg_font_size": 8.966400000000021,
+    "text": "Although these data are relevant to our work, they are not exclusively or primarily focused on",
+    "x0": 72.0601,
+    "top": 293.6280999999998,
+    "x1": 522.8928999999998,
+    "bottom": 305.6280999999998,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJOO+CMR9"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1087,16 +867,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 17,
-    "text": "Types of data: Allbehavioral,imaging,and in vivo neurophysiologicaldatawillbeorganizedby",
-    "x0": 72.0,
-    "top": 477.069175,
-    "x1": 539.99275363,
-    "bottom": 487.978275,
-    "avg_font_size": 10.909100000000024,
+    "text": "cluster hires. We do not intend to integrate either of these databases with the data we collect.",
+    "x0": 72.0721,
+    "top": 307.88409999999976,
+    "x1": 516.9096999999997,
+    "bottom": 319.88409999999976,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIJPO+CMBX10",
-      "MNILFD+CMTI10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1105,14 +883,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 18,
-    "text": "trial/session/animal. Behavioral data includes video data and automated measurements character-",
-    "x0": 72.0,
-    "top": 489.94082209,
-    "x1": 540.00366273,
-    "bottom": 500.84992209,
-    "avg_font_size": 10.909100000000024,
+    "text": "All data will be coded and saved on password-protected computers in the project office. No data",
+    "x0": 72.0721,
+    "top": 335.64009999999973,
+    "x1": 537.2221000000002,
+    "bottom": 347.64009999999973,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1121,14 +899,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 19,
-    "text": "izing the behavior such as velocity, position, and sensor/head motion. Imaging data trials consist of",
-    "x0": 72.0,
-    "top": 502.81246918,
-    "x1": 539.9905718099996,
-    "bottom": 513.72156918,
-    "avg_font_size": 10.909100000000024,
+    "text": "will be removed from the project office during the period of the project. The only individuals",
+    "x0": 72.0721,
+    "top": 349.14009999999973,
+    "x1": 519.3289000000001,
+    "bottom": 361.14009999999973,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1137,14 +915,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 20,
-    "text": "image stacks collected at 30 frames per second and digitized at 16-bit precision. Trials also include",
-    "x0": 72.0,
-    "top": 515.68411627,
-    "x1": 539.9927536300005,
-    "bottom": 526.5932162700001,
-    "avg_font_size": 10.909100000000024,
+    "text": "with access to the collected data will be the P.I. and research assistants. New research assistants",
+    "x0": 72.0721,
+    "top": 362.64009999999973,
+    "x1": 528.2809000000002,
+    "bottom": 374.64009999999973,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1153,15 +931,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 21,
-    "text": "time series (50 samples/s) of miniPID olfactometer odor concentrations, licking and sni ffi ng be-",
-    "x0": 72.0,
-    "top": 528.55576336,
-    "x1": 539.9960263600001,
-    "bottom": 539.46486336,
-    "avg_font_size": 10.909099999999995,
+    "text": "will be advised of the essential care that must be taken with data collected for this project. Any",
+    "x0": 72.0721,
+    "top": 376.8960999999997,
+    "x1": 529.6717000000003,
+    "bottom": 388.8960999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1170,14 +947,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 22,
-    "text": "havior (for mice), and metadata (odor, concentration, plume ID, other experimental information).",
-    "x0": 71.99890908999998,
-    "top": 541.42741045,
-    "x1": 539.9709354299995,
-    "bottom": 552.33651045,
-    "avg_font_size": 10.909099999999995,
+    "text": "research assistants found to be handling data in a careless way will be immediately removed",
+    "x0": 72.0841,
+    "top": 390.3960999999997,
+    "x1": 512.4109000000002,
+    "bottom": 402.3960999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1186,15 +963,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 23,
-    "text": "In vitro and other physiological data will include time series of voltage and/or current as well as",
-    "x0": 71.99890908999998,
-    "top": 554.29905754,
-    "x1": 539.9763899799993,
-    "bottom": 565.20815754,
-    "avg_font_size": 10.909099999999995,
+    "text": "from the project staff.",
+    "x0": 72.0841,
+    "top": 404.6520999999997,
+    "x1": 174.1033,
+    "bottom": 416.6520999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNILFD+CMTI10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1203,14 +979,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 24,
-    "text": "metadataoncelllocationandmorphology.Otherdatasetswillconsistofodorplumemeasurements,",
-    "x0": 71.99890908999998,
-    "top": 567.17070463,
-    "x1": 540.0003899999995,
-    "bottom": 578.07980463,
-    "avg_font_size": 10.909099999999995,
+    "text": "No names of individuals or institutions will be used in papers prepared by the project team",
+    "x0": 72.0841,
+    "top": 431.6520999999997,
+    "x1": 506.7313000000005,
+    "bottom": 443.6520999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1219,14 +995,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 25,
-    "text": "robot trajectory data, simulation results, Illumina sequence data, and video data. Code for simu-",
-    "x0": 71.99890908999998,
-    "top": 580.04235172,
-    "x1": 539.9785717999996,
-    "bottom": 590.95145172,
-    "avg_font_size": 10.909099999999995,
+    "text": "without the explicit consent of the individuals and institutions.",
+    "x0": 72.0841,
+    "top": 445.90809999999965,
+    "x1": 368.39530000000013,
+    "bottom": 457.90809999999965,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1235,14 +1011,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 26,
-    "text": "lation and analysis of the experimental data will be in Python, R, or MatLab. Data is expected to",
-    "x0": 71.99890908999998,
-    "top": 592.9139988100001,
-    "x1": 539.9916627199999,
-    "bottom": 603.82309881,
-    "avg_font_size": 10.909099999999995,
+    "text": "Data from the project will be preserved in data files stripped of individual and institutional",
+    "x0": 72.0841,
+    "top": 473.6640999999996,
+    "x1": 503.7457000000003,
+    "bottom": 485.6640999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1251,14 +1027,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 27,
-    "text": "total approximately 150 terabytes in size, necessitating the use of a large-scale storage solution and",
-    "x0": 71.99890908999998,
-    "top": 605.7856459000001,
-    "x1": 539.99929909,
-    "bottom": 616.6947459,
-    "avg_font_size": 10.909099999999995,
+    "text": "names. These data files will include a small number of variables that will allow researchers to",
+    "x0": 72.0841,
+    "top": 487.1640999999996,
+    "x1": 525.1681000000005,
+    "bottom": 499.1640999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1267,15 +1043,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 28,
-    "text": "specialized tools and work fl ows for data sharing, publishing, and archiving as described below.",
-    "x0": 71.99999999999994,
-    "top": 618.6572929900001,
-    "x1": 523.1676486999996,
-    "bottom": 629.56639299,
-    "avg_font_size": 10.909099999999995,
+    "text": "categorize the institutions. These variables include institutional size, Carnegie category, control",
+    "x0": 72.0841,
+    "top": 500.6640999999996,
+    "x1": 532.2696999999997,
+    "bottom": 512.6640999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1284,15 +1059,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 29,
-    "text": "Data standards: Voltagedata,images,andotherlargedatasetswillbekeptinrawformatalong",
-    "x0": 71.99999999999991,
-    "top": 633.5209417400001,
-    "x1": 540.0014809099998,
-    "bottom": 644.4300417400001,
-    "avg_font_size": 10.909099999999995,
+    "text": "(private, non-profit or public), and regional location. Following the completion of the project,",
+    "x0": 72.0841,
+    "top": 514.9200999999996,
+    "x1": 523.6621,
+    "bottom": 526.9200999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIJPO+CMBX10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1301,15 +1075,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 30,
-    "text": "withaneasilyreadable fi lethatcontainsinformationaboutthetypeofdata,thestimuli,andrelated",
-    "x0": 71.99999999999993,
-    "top": 646.3925888300001,
-    "x1": 539.9752990699997,
-    "bottom": 657.3016888300001,
-    "avg_font_size": 10.909099999999995,
+    "text": "the data archive will be made available on the project website to researchers who are interested",
+    "x0": 72.0841,
+    "top": 528.4200999999996,
+    "x1": 525.1765000000006,
+    "bottom": 540.4200999999996,
+    "avg_font_size": 12.000000000000028,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1318,14 +1091,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 31,
-    "text": "information about the experiment. The project will maintain a common format for each kind of",
-    "x0": 71.99999999999991,
-    "top": 659.2631450100001,
-    "x1": 539.9971172699993,
-    "bottom": 670.1722450100001,
-    "avg_font_size": 10.909100000000013,
+    "text": "in pursuing questions related to cluster hiring. The preservation format will be platform-",
+    "x0": 72.0841,
+    "top": 542.6760999999997,
+    "x1": 495.41650000000027,
+    "bottom": 554.6760999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1334,14 +1107,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 32,
-    "text": "experimental data, and establish a data processing pipeline that, when possible, is shared across",
-    "x0": 71.99999999999991,
-    "top": 672.1337011900001,
-    "x1": 539.9862081699998,
-    "bottom": 683.0428011900001,
-    "avg_font_size": 10.909100000000011,
+    "text": "independent. Following the end of the project, we will contact the Inter-University Consortium",
+    "x0": 72.0961,
+    "top": 556.1760999999997,
+    "x1": 528.5197000000001,
+    "bottom": 568.1760999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1350,16 +1123,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 33,
-    "text": "labsinthedi ff erentIRGs.Thepipelinewillyielddatathatisstoredinanopen-source fi lestructure",
-    "x0": 71.99999999999991,
-    "top": 685.0053482800001,
-    "x1": 540.00039,
-    "bottom": 695.9144482800001,
-    "avg_font_size": 10.90910000000001,
+    "text": "for Political and Social Research (ICPSR) at the University of Michigan about archiving the data",
+    "x0": 72.10810000000001,
+    "top": 569.6760999999997,
+    "x1": 537.2676999999996,
+    "bottom": 581.6760999999997,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1368,15 +1139,14 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 34,
-    "text": "to facilitate sharing (e.g., HDF5). Documentation for each kind of fi le will include example scripts",
-    "x0": 72.00109090999996,
-    "top": 697.8759044600001,
-    "x1": 540.0058445499999,
-    "bottom": 708.7850044600001,
-    "avg_font_size": 10.909100000000013,
+    "text": "on a permanent basis. We do not anticipate additional costs for preparing data and",
+    "x0": 72.10810000000001,
+    "top": 583.9320999999995,
+    "x1": 468.18489999999997,
+    "bottom": 595.9320999999997,
+    "avg_font_size": 12.000000000000028,
     "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
@@ -1385,1624 +1155,94 @@
     "source_pdf": "sample4.pdf",
     "page": 2,
     "line_order": 35,
-    "text": "50",
-    "x0": 300.54673590999994,
-    "top": 744.0792156900001,
-    "x1": 311.4558359099999,
-    "bottom": 754.98831569,
-    "avg_font_size": 10.909100000000002,
+    "text": "documentation for archiving. Potential secondary users of the data include institutional",
+    "x0": 72.10810000000001,
+    "top": 597.4320999999995,
+    "x1": 489.5173000000001,
+    "bottom": 609.4320999999997,
+    "avg_font_size": 12.000000000000028,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
   },
   {
     "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 1,
-    "text": "(in Python or MatLab) that access the data. Johnson will assist with metadata creation consistent",
-    "x0": 72.0,
-    "top": 74.77707499999997,
-    "x1": 539.9785717999999,
-    "bottom": 85.68617499999993,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 2,
-    "text": "with international standards (e.g., DataCite metadata schema) to promote discovery, sharing, and",
-    "x0": 72.00000000000003,
-    "top": 87.64872208999998,
-    "x1": 539.9054808299995,
-    "bottom": 98.55782208999995,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 3,
-    "text": "reuse of data. DataCite DOIs will be registered by the CU Boulder CRDDS for all data that is",
-    "x0": 72.00000000000003,
-    "top": 100.52036917999999,
-    "x1": 539.9152990199993,
-    "bottom": 111.42946917999996,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 4,
-    "text": "published via the CU Scholar repository in order to provide persistent and citable links to the data",
-    "x0": 72.00000000000003,
-    "top": 113.39201627,
-    "x1": 540.0123900099994,
-    "bottom": 124.30111626999997,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 5,
-    "text": "and metadata. Publishing data with DataCite DOIs supports key open science practices, including",
-    "x0": 72.00000000000003,
-    "top": 126.26366336000001,
-    "x1": 539.9872990800001,
-    "bottom": 137.17276335999998,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 6,
-    "text": "the FAIR data principles.",
-    "x0": 72.00000000000003,
-    "top": 139.13421954,
-    "x1": 193.90264704,
-    "bottom": 150.04331953999997,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 7,
-    "text": "Plans for data storage: The CU Boulder “PetaLibrary” service provides a stable, scalable, and",
-    "x0": 72.00000000000003,
-    "top": 153.99895920000006,
-    "x1": 539.9960263600001,
-    "bottom": 164.90805920000003,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIJPO+CMBX10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 8,
-    "text": "cost-e ff ective solution for the storage and archiving of research data. The PetaLibrary enables re-",
-    "x0": 72.0,
-    "top": 166.86951538000005,
-    "x1": 539.99929909,
-    "bottom": 177.77861538000002,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 9,
-    "text": "searchers to build, store, share, and merge large and growing data collections, and is available at a",
-    "x0": 72.00109091000002,
-    "top": 179.74116247000006,
-    "x1": 539.9851172599994,
-    "bottom": 190.65026247000003,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 10,
-    "text": "subsidizedcosttoresearchersa ffi liatedwiththeUniversityofColoradoBoulder.Storageisprovided",
-    "x0": 72.00109091000002,
-    "top": 192.61280956000007,
-    "x1": 540.0014809099996,
-    "bottom": 203.52190956000004,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 11,
-    "text": "in two primary classes: “active” storage for data that is accessed frequently or is still undergoing",
-    "x0": 72.00109091000002,
-    "top": 205.48336574000007,
-    "x1": 539.9949354500001,
-    "bottom": 216.39246574000003,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 12,
-    "text": "analysis, and “archive” storage for data that is more static but needs to be stored securely for a",
-    "x0": 72.00109091000004,
-    "top": 218.35501283000008,
-    "x1": 539.9883899899997,
-    "bottom": 229.26411283000004,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 13,
-    "text": "longer-term. Active storage is accessible from all Research Computing compute resources through",
-    "x0": 72.00109091000004,
-    "top": 231.2266599200001,
-    "x1": 540.0047536400002,
-    "bottom": 242.13575992000005,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 14,
-    "text": "the BeeGFS parallel fi le system. Archive storage resides on a cost- and energy-e ffi cient hierarchical",
-    "x0": 72.00109091000007,
-    "top": 244.09721610000008,
-    "x1": 539.9927536300002,
-    "bottom": 255.00631610000005,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 15,
-    "text": "system backed by LTO tape. Both classes of storage can be accessed by any authorized user from",
-    "x0": 72.00109091000007,
-    "top": 256.9688631900001,
-    "x1": 539.99929909,
-    "bottom": 267.87796319000006,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 16,
-    "text": "any Internet-connected computer using several common data-transfer protocols. The PetaLibrary",
-    "x0": 72.00109091000004,
-    "top": 269.8405102800001,
-    "x1": 539.98620817,
-    "bottom": 280.7496102800001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 17,
-    "text": "infrastructure is housed in a controlled-environment data center protected by an uninterruptible",
-    "x0": 72.00109091000007,
-    "top": 282.7110664600001,
-    "x1": 540.00257182,
-    "bottom": 293.6201664600001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 18,
-    "text": "power supply (UPS) system. The PetaLibrary is supported by a high-speed local network and ded-",
-    "x0": 72.00109091000004,
-    "top": 295.5827135500001,
-    "x1": 540.0058445499994,
-    "bottom": 306.49181355000013,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 19,
-    "text": "icated large-bandwidth connections to national research networks through an initially NSF-funded",
-    "x0": 72.00109091000004,
-    "top": 308.4543606400001,
-    "x1": 539.9851172599995,
-    "bottom": 319.36346064000014,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 20,
-    "text": "ScienceDMZ. By using the PetaLibrary as a centralized storage solution, the project team will be",
-    "x0": 72.00109091000004,
-    "top": 321.32600773000013,
-    "x1": 540.0058445500002,
-    "bottom": 332.23510773000015,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 21,
-    "text": "able to collaboratively analyze the data of the project, share it with other collaborators outside of",
-    "x0": 72.00109091000004,
-    "top": 334.19765482000014,
-    "x1": 539.9578445100001,
-    "bottom": 345.10675482000016,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 22,
-    "text": "the core team, and publish and archive data more easily via the Globus connection between the",
-    "x0": 72.00109091000004,
-    "top": 347.06930191000015,
-    "x1": 539.9752990700005,
-    "bottom": 357.9784019100002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 23,
-    "text": "PetaLibrary and the CU Scholar repository. Non-digital data and other physical resources will be",
-    "x0": 72.00109091000004,
-    "top": 359.94094900000016,
-    "x1": 539.9938445399998,
-    "bottom": 370.8500490000002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 24,
-    "text": "stored and managed by the individual IRGs.",
-    "x0": 72.00109091000004,
-    "top": 372.81259609000017,
-    "x1": 284.7918136899999,
-    "bottom": 383.7216960900002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 25,
-    "text": "Active access to the data and compute environment: All Odor2Action collaborators will",
-    "x0": 72.00109091000004,
-    "top": 387.67624484000015,
-    "x1": 539.98184453,
-    "bottom": 398.5853448400002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIJPO+CMBX10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 26,
-    "text": "have direct access to all compute and data resources funded through this project as well as general",
-    "x0": 72.00109091000002,
-    "top": 400.54789193000016,
-    "x1": 540.0102081899995,
-    "bottom": 411.4569919300002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 27,
-    "text": "available NSF-funded infrastructure via a ffi liate accounts. The project team has funded compute",
-    "x0": 72.00109091000002,
-    "top": 413.4195390200002,
-    "x1": 539.99166272,
-    "bottom": 424.3286390200002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 28,
-    "text": "nodes in the Blanca cluster for exclusive access as well as a node in the hybrid cloud. All the data",
-    "x0": 72.00000000000006,
-    "top": 426.29009520000017,
-    "x1": 539.9992990899995,
-    "bottom": 437.1991952000002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 29,
-    "text": "on the PetaLibrary can be shared using Globus. The project team can share the data with anyone",
-    "x0": 72.00000000000006,
-    "top": 439.1617422900002,
-    "x1": 539.9982081800001,
-    "bottom": 450.0708422900002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 30,
-    "text": "without providing accounts on the CU Boulder system. Globus even allows the project team to",
-    "x0": 72.00000000000006,
-    "top": 452.0333893800002,
-    "x1": 539.99275363,
-    "bottom": 462.9424893800002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 31,
-    "text": "create and manage Globus groups for access to the shared data. Globus also provides a mechanism",
-    "x0": 72.00000000000006,
-    "top": 464.9050364700002,
-    "x1": 540.00911728,
-    "bottom": 475.8141364700002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 32,
-    "text": "for public access to large published data sets on the PetaLibrary via landing pages in the CU",
-    "x0": 72.00000000000006,
-    "top": 477.7755926500002,
-    "x1": 539.9883899899995,
-    "bottom": 488.6846926500002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 33,
-    "text": "Scholar repository. The project team will have Linux command line access to the compute nodes",
-    "x0": 72.00000000000006,
-    "top": 490.6461488300002,
-    "x1": 540.0047536399993,
-    "bottom": 501.5552488300002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 34,
-    "text": "purchasedfor thisproject. Thesecomputenodeswill beintegratedintoResearchComputingcondo",
-    "x0": 72.00000000000006,
-    "top": 503.5167050100002,
-    "x1": 540.0102081899994,
-    "bottom": 514.4258050100002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 35,
-    "text": "computing service “Blanca”. The project team has immediate access to its nodes when needed.",
-    "x0": 72.00000000000006,
-    "top": 516.3872611900001,
-    "x1": 539.9883899900001,
-    "bottom": 527.2963611900002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
+    "page": 2,
     "line_order": 36,
-    "text": "Additionally,theycanutilizefreenodesoftheaggregateBlancacluster.EveryResearchComputing",
-    "x0": 72.00000000000009,
-    "top": 529.2589082800002,
-    "x1": 539.9872990799996,
-    "bottom": 540.1680082800002,
-    "avg_font_size": 10.909099999999995,
+    "text": "researchers, policy analysts, and higher education scholars.",
+    "x0": 72.10810000000001,
+    "top": 611.6880999999996,
+    "x1": 353.4013000000001,
+    "bottom": 623.6880999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
   },
   {
     "source_pdf": "sample4.pdf",
-    "page": 3,
+    "page": 2,
     "line_order": 37,
-    "text": "user has access to the NSF funded RMACC Summit supercomputer for parallel computation in",
-    "x0": 72.00000000000009,
-    "top": 542.1305553700001,
-    "x1": 539.9992990900002,
-    "bottom": 553.0396553700002,
-    "avg_font_size": 10.909099999999995,
+    "text": "We do not intend to generate metadata from this project. We do not anticipate holding",
+    "x0": 72.10810000000001,
+    "top": 638.6880999999996,
+    "x1": 486.1969,
+    "bottom": 650.6880999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
   },
   {
     "source_pdf": "sample4.pdf",
-    "page": 3,
+    "page": 2,
     "line_order": 38,
-    "text": "a shared environment. Home, project, and the PetaLibrary storage is accessible on all computing",
-    "x0": 72.00000000000011,
-    "top": 555.0011115500001,
-    "x1": 539.9971172699998,
-    "bottom": 565.9102115500002,
-    "avg_font_size": 10.909099999999995,
+    "text": "intellectual property rights to these data.",
+    "x0": 72.10810000000001,
+    "top": 652.9440999999996,
+    "x1": 264.9037000000002,
+    "bottom": 664.9440999999996,
+    "avg_font_size": 12.000000000000014,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
   },
   {
     "source_pdf": "sample4.pdf",
-    "page": 3,
+    "page": 2,
     "line_order": 39,
-    "text": "resources. Research Computing is providing a JupyterHub and OpenOnDemand environment to",
-    "x0": 72.00000000000011,
-    "top": 567.8716677300001,
-    "x1": 539.9883899899995,
-    "bottom": 578.7807677300002,
-    "avg_font_size": 10.909099999999995,
+    "text": "The P.I., Professor Steven Brint, will be responsible for all data collection and precautions for",
+    "x0": 72.10810000000001,
+    "top": 680.7000999999996,
+    "x1": 521.6101000000001,
+    "bottom": 692.7000999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
   },
   {
     "source_pdf": "sample4.pdf",
-    "page": 3,
+    "page": 2,
     "line_order": 40,
-    "text": "support access to the computing and data resources through Jupyter notebooks and an Rstudio",
-    "x0": 72.00000000000011,
-    "top": 580.7422239100001,
-    "x1": 539.9982081799996,
-    "bottom": 591.6513239100002,
-    "avg_font_size": 10.909099999999995,
+    "text": "the security and confidentiality of the data.",
+    "x0": 72.10810000000004,
+    "top": 694.2000999999996,
+    "x1": 277.6609000000002,
+    "bottom": 706.2000999999996,
+    "avg_font_size": 12.0,
     "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 41,
-    "text": "environment, along with MATLAB. CRDDS and Research Computing will provide training in all",
-    "x0": 72.00000000000011,
-    "top": 593.6127800900001,
-    "x1": 539.9829354399997,
-    "bottom": 604.5218800900002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 42,
-    "text": "aspects of cyberinfrastructure use, and will support development of data and analytics work fl ows.",
-    "x0": 72.00000000000011,
-    "top": 606.4833362700001,
-    "x1": 538.6585707000002,
-    "bottom": 617.3924362700002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 43,
-    "text": "Plans for archiving and preservation of access in accordance with open science best",
-    "x0": 72.00000000000006,
-    "top": 621.3469850200001,
-    "x1": 539.9894809,
-    "bottom": 632.2560850200002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJPO+CMBX10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 44,
-    "text": "practices: Software and simulation code will be shared and maintained through GitHub, Source-",
-    "x0": 72.00000000000006,
-    "top": 634.2186321100002,
-    "x1": 539.9840263499998,
-    "bottom": 645.1277321100001,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIJPO+CMBX10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 45,
-    "text": "forge, and ModelDB with persistent and citable versions of software and code archived in Zenodo",
-    "x0": 72.00000000000006,
-    "top": 647.0902792000002,
-    "x1": 539.9949354499996,
-    "bottom": 657.9993792000002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 46,
-    "text": "(using the GitHub to Zenodo work fl ow). Olfactory bulb imaging data will be hosted at Senselab’s",
-    "x0": 72.00000000000006,
-    "top": 659.9619262900002,
-    "x1": 539.9894808999998,
-    "bottom": 670.8710262900001,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 47,
-    "text": "OdorMapDB. All data generated from experiments and simulations will be archived for up to seven",
-    "x0": 72.00000000000006,
-    "top": 672.8335733800002,
-    "x1": 539.9916627199999,
-    "bottom": 683.7426733800002,
-    "avg_font_size": 10.909100000000013,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 48,
-    "text": "years (or according to local regulations for non-US based teams). In the interest of conducting",
-    "x0": 72.00000000000003,
-    "top": 685.7052204700002,
-    "x1": 539.9851172599997,
-    "bottom": 696.6143204700002,
-    "avg_font_size": 10.909100000000013,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 49,
-    "text": "research according to open science best practices, all data supporting publications and of poten-",
-    "x0": 72.00000000000003,
-    "top": 698.5768675600002,
-    "x1": 540.0036627300001,
-    "bottom": 709.4859675600002,
-    "avg_font_size": 10.909100000000011,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 3,
-    "line_order": 50,
-    "text": "51",
-    "x0": 300.54564500000004,
-    "top": 744.0645418300002,
-    "x1": 311.454745,
-    "bottom": 754.9736418300001,
-    "avg_font_size": 10.909100000000002,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 1,
-    "text": "tial reuse by the community will be made publicly accessible and archived inde fi nitely in the CU",
-    "x0": 72.0,
-    "top": 74.77707499999997,
-    "x1": 539.99711727,
-    "bottom": 85.68617499999993,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 2,
-    "text": "Scholar repository at the University of Colorado Boulder. CU Scholar is built on the open-source",
-    "x0": 71.99999999999994,
-    "top": 87.64872208999998,
-    "x1": 540.08548098,
-    "bottom": 98.55782208999995,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 3,
-    "text": "Samvera software, and it has a robust preservation plan that guarantees access to and preservation",
-    "x0": 71.99999999999994,
-    "top": 100.52036917999999,
-    "x1": 539.9829354400001,
-    "bottom": 111.42946917999996,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 4,
-    "text": "of data for the lifespan of the repository with post-lifespan contingency plans in place as well.",
-    "x0": 71.99999999999997,
-    "top": 113.39201627,
-    "x1": 539.96875361,
-    "bottom": 124.30111626999997,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 5,
-    "text": "The repository is in the process of obtaining CoreTrustSeal certi fi cation, a leading certi fi cation for",
-    "x0": 71.99999999999994,
-    "top": 126.26366336000001,
-    "x1": 539.99166272,
-    "bottom": 137.17276335999998,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 6,
-    "text": "data repository trustworthiness, and is listed in the Re3data registry of research data repositories.",
-    "x0": 71.99999999999994,
-    "top": 139.13421954,
-    "x1": 539.9982081799999,
-    "bottom": 150.04331953999997,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 7,
-    "text": "The repository provides DataCite DOIs for all data sets, which allow data to be discovered via",
-    "x0": 71.99999999999994,
-    "top": 152.00586663,
-    "x1": 539.9807536199995,
-    "bottom": 162.91496662999998,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 8,
-    "text": "DataCite’s data set search and API, persistently identi fi ed, and cited. CU Scholar provides public",
-    "x0": 71.99999999999994,
-    "top": 164.87751372000002,
-    "x1": 539.9818445300001,
-    "bottom": 175.78661372,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 9,
-    "text": "access via Globus data transfer to data archived on the PetaLibrary for data sets that are too large",
-    "x0": 71.99999999999994,
-    "top": 177.74806990000002,
-    "x1": 539.9894809000001,
-    "bottom": 188.65716989999999,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 10,
-    "text": "to access via direct download. Johnson will assist with preparing data for publication and deposit",
-    "x0": 72.0,
-    "top": 190.61971699000003,
-    "x1": 540.0811173399997,
-    "bottom": 201.52881699,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 11,
-    "text": "in CU Scholar and other repositories in accordance with FAIR data principles, and his team will",
-    "x0": 72.0,
-    "top": 203.49136408000004,
-    "x1": 539.9883899899996,
-    "bottom": 214.40046408,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 12,
-    "text": "provide ongoing data curation for the data published in the CU Scholar repository. Data published",
-    "x0": 72.0,
-    "top": 216.36301117000005,
-    "x1": 539.9731172499994,
-    "bottom": 227.27211117000002,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 13,
-    "text": "in CU Scholar will provide links to associated publications and archived software and code.",
-    "x0": 72.0,
-    "top": 229.23465826000006,
-    "x1": 507.8556359399996,
-    "bottom": 240.14375826000003,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 14,
-    "text": "3. Policies",
-    "x0": 72.0,
-    "top": 247.14630955000007,
-    "x1": 127.15859142000001,
-    "bottom": 258.05540955000004,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJPO+CMBX10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 15,
-    "text": "Policies for access and sharing in accordance with open science best practices: All",
-    "x0": 72.0,
-    "top": 260.0179566400001,
-    "x1": 539.9916627200001,
-    "bottom": 270.92705664000005,
-    "avg_font_size": 10.909099999999967,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIJPO+CMBX10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 16,
-    "text": "data will be shared upon publication or one year after funding has ended, whichever comes fi rst.",
-    "x0": 72.00000000000006,
-    "top": 272.8896037300001,
-    "x1": 539.9927536300002,
-    "bottom": 283.7987037300001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 17,
-    "text": "Data associated with publications and of potential value for reuse by the community will be made",
-    "x0": 72.00109091000007,
-    "top": 285.7601599100001,
-    "x1": 539.9851172599998,
-    "bottom": 296.6692599100001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 18,
-    "text": "publicly available via the CU Scholar repository, which is openly accessible via HTTP. Large data",
-    "x0": 72.00109091000007,
-    "top": 298.6307160900001,
-    "x1": 539.9829354400001,
-    "bottom": 309.5398160900001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 19,
-    "text": "sets will be publicly discoverable via CU Scholar and openly accessible via Globus data transfer",
-    "x0": 72.0010909100001,
-    "top": 311.5023631800001,
-    "x1": 539.9872990800001,
-    "bottom": 322.4114631800001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 20,
-    "text": "from the PetaLibrary. Data sets in CU Scholar are discoverable via the repository’s search/browse",
-    "x0": 72.0010909100001,
-    "top": 324.3729193600001,
-    "x1": 539.9872990799998,
-    "bottom": 335.2820193600001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 21,
-    "text": "capabilities, indexing in major search engines (e.g., Google), and registries that list CU Scholar",
-    "x0": 72.0010909100001,
-    "top": 337.2434755400001,
-    "x1": 540.00148091,
-    "bottom": 348.1525755400001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 22,
-    "text": "and/or its individual data sets (e.g., Re3data registry of research data repositories and DataCite",
-    "x0": 72.00109091000007,
-    "top": 350.1151226300001,
-    "x1": 540.0069354599999,
-    "bottom": 361.0242226300001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 23,
-    "text": "data set search). A directory of the non-digital data and other physical resources generated by",
-    "x0": 72.00109091000007,
-    "top": 362.9867697200001,
-    "x1": 539.9840263500001,
-    "bottom": 373.8958697200001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 24,
-    "text": "the project, including protocols for sharing with team members and external users, will be made",
-    "x0": 72.00109091000007,
-    "top": 375.8573259000001,
-    "x1": 539.99929909,
-    "bottom": 386.7664259000001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 25,
-    "text": "available online via the CU Scholar repository.",
-    "x0": 72.00109091000007,
-    "top": 388.7289729900001,
-    "x1": 293.96091223999986,
-    "bottom": 399.6380729900001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 26,
-    "text": "Policies and provisions for re-use or re-distribution: No restrictions will be placed on the",
-    "x0": 72.00109091000007,
-    "top": 403.5926217400001,
-    "x1": 539.9894809000002,
-    "bottom": 414.5017217400001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIJPO+CMBX10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 27,
-    "text": "data for re-use or re-distribution other than attribution of the data to the original source. This",
-    "x0": 72.00109091000013,
-    "top": 416.4642688300001,
-    "x1": 539.9698445199997,
-    "bottom": 427.3733688300001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 28,
-    "text": "policy for re-use and redistribution will be included in the human- and machine-readable metadata",
-    "x0": 72.00109091000013,
-    "top": 429.3359159200001,
-    "x1": 539.9960263599995,
-    "bottom": 440.2450159200001,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 29,
-    "text": "that accompanies all published data.",
-    "x0": 72.00109091000013,
-    "top": 442.2075630100001,
-    "x1": 247.2623278700001,
-    "bottom": 453.11666301000014,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 30,
-    "text": "4. Use of Vertebrate Animals: Vertebrateanimals(mice, M. musculus ) will beused ineachof",
-    "x0": 72.00109091000013,
-    "top": 460.1192143000001,
-    "x1": 539.9960263600002,
-    "bottom": 471.02831430000015,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIJPO+CMBX10",
-      "MNILFD+CMTI10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 31,
-    "text": "theIRGs.Miceareanidealmammalianmodelsystembecausetheyarehighlyolfactoryanimalsand",
-    "x0": 72.00218182000009,
-    "top": 472.99086139000013,
-    "x1": 539.9818445299995,
-    "bottom": 483.89996139000016,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 32,
-    "text": "have olfactory circuits that are highly homologous to other vertebrates—including humans—and",
-    "x0": 72.00218182000009,
-    "top": 485.86250848000014,
-    "x1": 539.9894808999996,
-    "bottom": 496.77160848000017,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 33,
-    "text": "because genetic-based tools are available and essential to the proposed experiments. Procedures to",
-    "x0": 72.00218182000009,
-    "top": 498.73415557000015,
-    "x1": 539.9949354500003,
-    "bottom": 509.6432555700002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 34,
-    "text": "beperformedareprovidedinthedescriptionforeachIRG,andinvolveodorantexposurefollowedby",
-    "x0": 72.00218182000009,
-    "top": 511.60580266000017,
-    "x1": 539.9720263399997,
-    "bottom": 522.5149026600002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 35,
-    "text": "euthanasia (IRG1); imaging in anesthetized or awake, head- fi xed mice (IRGs1 & 3); measurements",
-    "x0": 72.00218182000009,
-    "top": 524.4774497500002,
-    "x1": 539.9938445400002,
-    "bottom": 535.3865497500002,
-    "avg_font_size": 10.909100000000024,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 36,
-    "text": "using chronically-implanted probes in freely-moving mice (IRGs 2 & 3); and conditioning of odor-",
-    "x0": 72.00218182000009,
-    "top": 537.3480059300002,
-    "x1": 539.9862081699995,
-    "bottom": 548.2571059300002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 37,
-    "text": "driven navigation behavior in head- fi xed mice (IRG3). The number of animals to be used in each",
-    "x0": 72.00218182000009,
-    "top": 550.2185621100002,
-    "x1": 539.9916627199998,
-    "bottom": 561.1276621100002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 38,
-    "text": "study will be determined based on estimates of the success rates of the various experiments and on",
-    "x0": 72.00218182000009,
-    "top": 563.0902092000001,
-    "x1": 539.99384454,
-    "bottom": 573.9993092000002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 39,
-    "text": "statistical power analysis using assumptions of e ff ect sizes, measurement variability and number of",
-    "x0": 72.00218182000009,
-    "top": 575.9607653800001,
-    "x1": 539.9916627199999,
-    "bottom": 586.8698653800002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 40,
-    "text": "data points that can be collected per experiment. This analysis will be done in consultation with",
-    "x0": 72.0032727300001,
-    "top": 588.8324124700002,
-    "x1": 540.01239001,
-    "bottom": 599.7415124700002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 41,
-    "text": "biostatisticians at each institution; a typical goal will be achieving a statistical power of 0.8 for",
-    "x0": 72.0032727300001,
-    "top": 601.7040595600001,
-    "x1": 539.9960263600003,
-    "bottom": 612.6131595600002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 42,
-    "text": "comparison of two di ff erent populations with an anticipated medium e ff ect size (Cohen’s d = 0.6),",
-    "x0": 72.0032727300001,
-    "top": 614.5757066500003,
-    "x1": 539.9949354500001,
-    "bottom": 625.4848066500002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIIBF+CMR10",
-      "MNIJNN+CMR10",
-      "MNJCJO+CMMI10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 43,
-    "text": "atacon fi dencelevelof p =0.05.Inallcases,appropriateprotocolswillbeusedtominimizeexposure",
-    "x0": 72.00436364000007,
-    "top": 627.4473537400002,
-    "x1": 540.0047536399996,
-    "bottom": 638.3564537400002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10",
-      "MNJCJO+CMMI10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 44,
-    "text": "to discomfort, pain or injury, including general anesthetics (iso fl urane, ketamine/xylazine), local",
-    "x0": 72.00436364000007,
-    "top": 640.3190008300003,
-    "x1": 539.9862081700002,
-    "bottom": 651.2281008300002,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10",
-      "MNIKAP+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 45,
-    "text": "anesthetics around incision sites (bupivicaine); administration of post-operative analgesics; and",
-    "x0": 72.00436364000001,
-    "top": 653.1906479200002,
-    "x1": 539.9992990900001,
-    "bottom": 664.0997479200003,
-    "avg_font_size": 10.90910000000001,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 46,
-    "text": "monitoring of body weight and signs of stress in conditioned animals. Animals will be euthanized",
-    "x0": 72.00436364000007,
-    "top": 666.0612041000002,
-    "x1": 539.9905718099999,
-    "bottom": 676.9703041000002,
-    "avg_font_size": 10.909100000000013,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 47,
-    "text": "with an overdose of pentobarbital (200 mg/kg), consistent with AVMA Guidelines on Euthanasia",
-    "x0": 72.00436364000007,
-    "top": 678.9317602800002,
-    "x1": 540.0003899999998,
-    "bottom": 689.8408602800002,
-    "avg_font_size": 10.909100000000011,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 48,
-    "text": "of Animals. All procedures will be approved by Institutional Animal Care and Use Committees.",
-    "x0": 72.00436364000007,
-    "top": 691.8023164600002,
-    "x1": 530.2749273499999,
-    "bottom": 702.7114164600002,
-    "avg_font_size": 10.909100000000011,
-    "font_names": [
-      "MNIJNN+CMR10"
-    ],
-    "is_bold": false,
-    "extractor": "pdfplumber"
-  },
-  {
-    "source_pdf": "sample4.pdf",
-    "page": 4,
-    "line_order": 49,
-    "text": "52",
-    "x0": 300.5500086400001,
-    "top": 744.0656327400002,
-    "x1": 311.45910864000007,
-    "bottom": 754.9747327400003,
-    "avg_font_size": 10.909099999999995,
-    "font_names": [
-      "MNIJNN+CMR10"
+      "HEIEHK+TimesNewRomanPSMT"
     ],
     "is_bold": false,
     "extractor": "pdfplumber"
