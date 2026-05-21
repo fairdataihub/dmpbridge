@@ -6,15 +6,6 @@ from collections import Counter
 
 
 def clean_repeated_words(text):
-    """
-    Remove consecutive duplicate words caused by pdfplumber extraction.
-
-    Example:
-    'Roles Roles and and responsibilities responsibilities'
-    becomes:
-    'Roles and responsibilities'
-    """
-
     if not text:
         return ""
 
@@ -23,7 +14,6 @@ def clean_repeated_words(text):
     for line in text.splitlines():
         words = line.split()
         cleaned_words = []
-
         previous_word = None
 
         for word in words:
@@ -37,7 +27,6 @@ def clean_repeated_words(text):
         cleaned_lines.append(" ".join(cleaned_words))
 
     cleaned_text = "\n".join(cleaned_lines)
-
     cleaned_text = re.sub(r"[ \t]+", " ", cleaned_text)
     cleaned_text = re.sub(r"\n{3,}", "\n\n", cleaned_text)
 
@@ -58,20 +47,11 @@ def normalize_eval_text(text):
 
 
 def tokenize_words(text):
-    """
-    Total word tokenizer.
-    Keeps all words, including stopwords.
-    Keeps duplicate words.
-    """
     text = normalize_eval_text(text)
     return re.findall(r"\b[a-zA-Z]+\b", text)
 
 
 def word_capture_score(extracted_text, reference_text):
-    """
-    Measures how many reference words were captured in extracted text.
-    Uses word counts, not unique word sets.
-    """
     extracted_words = Counter(tokenize_words(extracted_text))
     reference_words = Counter(tokenize_words(reference_text))
 
@@ -83,6 +63,28 @@ def word_capture_score(extracted_text, reference_text):
     matched_words = extracted_words & reference_words
 
     return sum(matched_words.values()) / total_reference_words
+
+
+def word_precision_recall_f1(extracted_words, reference_words):
+    extracted_counter = Counter(extracted_words)
+    reference_counter = Counter(reference_words)
+
+    matched_counter = extracted_counter & reference_counter
+
+    correct_word_count = sum(matched_counter.values())
+    extracted_word_count = len(extracted_words)
+    reference_word_count = len(reference_words)
+
+    precision = correct_word_count / extracted_word_count if extracted_word_count > 0 else 0.0
+    recall = correct_word_count / reference_word_count if reference_word_count > 0 else 0.0
+
+    f1 = (
+        2 * precision * recall / (precision + recall)
+        if (precision + recall) > 0
+        else 0.0
+    )
+
+    return precision, recall, f1
 
 
 def rouge_l_score(extracted_text, reference_text):
@@ -120,10 +122,18 @@ def evaluate_pdfplumber_text(extracted_txt_path, reference_txt_path, clean_text=
     missing_word_count = sum(missing_words_counter.values())
     extra_word_count = sum(extra_words_counter.values())
 
+    precision, recall, f1 = word_precision_recall_f1(
+        extracted_words,
+        reference_words
+    )
+
     return {
         "sample_id": extracted_txt_path.stem,
         "word_capture": round(word_capture_score(extracted_text, reference_text), 3),
         "rouge_l": round(rouge_l_score(extracted_text, reference_text), 3),
+        "word_precision": round(precision, 3),
+        "word_recall": round(recall, 3),
+        "word_f1": round(f1, 3),
         "extracted_word_count": len(extracted_words),
         "reference_word_count": len(reference_words),
         "missing_word_count": missing_word_count,
