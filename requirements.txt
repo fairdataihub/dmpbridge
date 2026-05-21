@@ -14,3 +14,5 @@ pillow
 qwen-vl-utils
 ipywidgets
 docling
+pymupdf 
+python-docx
