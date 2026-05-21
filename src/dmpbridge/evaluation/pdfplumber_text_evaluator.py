@@ -5,6 +5,45 @@ from difflib import SequenceMatcher
 from collections import Counter
 
 
+def clean_repeated_words(text):
+    """
+    Remove consecutive duplicate words caused by pdfplumber extraction.
+
+    Example:
+    'Roles Roles and and responsibilities responsibilities'
+    becomes:
+    'Roles and responsibilities'
+    """
+
+    if not text:
+        return ""
+
+    cleaned_lines = []
+
+    for line in text.splitlines():
+        words = line.split()
+        cleaned_words = []
+
+        previous_word = None
+
+        for word in words:
+            normalized_word = re.sub(r"[^\w]", "", word).lower()
+
+            if normalized_word != previous_word:
+                cleaned_words.append(word)
+
+            previous_word = normalized_word
+
+        cleaned_lines.append(" ".join(cleaned_words))
+
+    cleaned_text = "\n".join(cleaned_lines)
+
+    cleaned_text = re.sub(r"[ \t]+", " ", cleaned_text)
+    cleaned_text = re.sub(r"\n{3,}", "\n\n", cleaned_text)
+
+    return cleaned_text.strip()
+
+
 def normalize_eval_text(text):
     if not text:
         return ""
@@ -59,12 +98,15 @@ def rouge_l_score(extracted_text, reference_text):
     return lcs / max(len(reference_text), 1)
 
 
-def evaluate_pdfplumber_text(extracted_txt_path, reference_txt_path):
+def evaluate_pdfplumber_text(extracted_txt_path, reference_txt_path, clean_text=True):
     extracted_txt_path = Path(extracted_txt_path)
     reference_txt_path = Path(reference_txt_path)
 
     extracted_text = extracted_txt_path.read_text(encoding="utf-8", errors="ignore")
     reference_text = reference_txt_path.read_text(encoding="utf-8", errors="ignore")
+
+    if clean_text:
+        extracted_text = clean_repeated_words(extracted_text)
 
     extracted_words = tokenize_words(extracted_text)
     reference_words = tokenize_words(reference_text)
