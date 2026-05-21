@@ -1,7 +1,7 @@
 from pathlib import Path
 import pdfplumber
 
-from dmpbridge.processing.text_cleaner import normalize_text
+
 from dmpbridge.utils.file_io import save_json, save_text
 from dmpbridge.utils.logger import log
 
@@ -78,7 +78,7 @@ def extract_lines_with_pdfplumber(pdf_path: str | Path) -> list[dict]:
 
                 # Join words into one line of text and normalize minor issues.
                 text = " ".join(w["text"] for w in line_words).strip()
-                text = normalize_text(text)
+            
 
                 if not text:
                     continue

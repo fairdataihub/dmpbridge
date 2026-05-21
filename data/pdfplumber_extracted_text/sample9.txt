@@ -2,9 +2,9 @@
 
 <!-- Page 1 -->
 
-CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM
-ELECTRODES
-Products of Research
+CAREER: CAREER: HIGH-RESOLUTION HIGH-RESOLUTION NMR NMR FOR FOR PARAMAGNETIC PARAMAGNETIC SODIUM SODIUM
+ELECTRODES ELECTRODES
+Products Products of of Research Research
 Battery material samples will be synthesized in powder form and identified through a consistent and
 systematic labeling procedure, which will include sample composition, name of researcher and date.
 Experimental data generated over the course of the research will include synthesis procedures and
@@ -18,7 +18,7 @@ generate physical data. The Van der Ven group’s CASM software will be extended
 simulation of finite temperature NMR spectra of paramagnetic materials. First principles and Monte
 Carlo simulations will produce text files, density of states plots and two-dimensional charge density
 maps. Educational and outreach materials, and assessment results, will be digitized.
-Data Format Standards
+Data Data Format Format Standards Standards
 In order to allow for interoperability, reproducibility, and reuse, all data will be stored and saved in
 standard and open formats. Experimental characterization data will be stored and saved as, e.g.,
 ASCII, CSV, Word, Matlab and Python files. Microscope images will be stored as portable graphic
@@ -44,7 +44,7 @@ necessary to construct, e.g., temperature composition phase diagrams, will be ex
 Fermi contact shifts and electric field gradient tensors. This will ensure that results from calculations
 performed by different users are in a format that is readily accessible, either by CASM or directly by
 different people.
-Access and sharing
+Access Access and and sharing sharing
 The Program Toolkit and Activity Plans developed for the educational and outreach activities in
 partnership with Jamboree Housing (JH) will be uploaded to JH’s filesharing system for broad and
 free dissemination to their different centers and partners in California. All of the research results will
@@ -81,7 +81,7 @@ source under a similar LGPL license. Demonstrations on how to access and use CAS
 
 extensions (and conditions under which they can use and modify the code) will be uploaded to the
 CASM software website: https://prisms-center.github.io/CASMcode_docs/.
-Policies and provisions for re-use, re-distribution, and production of derivatives
+Policies Policies and and provisions provisions for for re-use, re-use, re-distribution, re-distribution, and and production production of of derivatives derivatives
 All data will be stored in Dryad and will be available under a public domain, creative commons
 license (CC0). Note that while a personal ORCID is needed to deposit data in Dryad, no ORCID is
 required to search, find and download datasets.
@@ -90,7 +90,7 @@ project, is already licensed by the Regents of the University of California unde
 source license, and distributed via the prisms-center conda channel, permitting non-exclusive use of
 the software. Additions to CASM will be released as LGPL to follow the current licensing of
 CASM.
-Archiving of Data, Samples, and Other Relevant Research Products
+Archiving Archiving of of Data, Data, Samples, Samples, and and Other Other Relevant Relevant Research Research Products Products
 Laboratory notebooks and samples will be retained for a minimum of 5 years following the
 conclusion of the program and will remain the property of UC Santa Barbara and kept on campus
 after students graduate. All digital data produced over the course of the project and stored on Box
