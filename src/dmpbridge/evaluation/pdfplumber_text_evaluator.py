@@ -22,7 +22,7 @@ def tokenize_words(text):
     """
     Total word tokenizer.
     Keeps all words, including stopwords.
-    Keeps duplicates.
+    Keeps duplicate words.
     """
     text = normalize_eval_text(text)
     return re.findall(r"\b[a-zA-Z]+\b", text)
@@ -75,24 +75,15 @@ def evaluate_pdfplumber_text(extracted_txt_path, reference_txt_path):
     missing_words_counter = reference_counter - extracted_counter
     extra_words_counter = extracted_counter - reference_counter
 
-    missing_words = list(missing_words_counter.elements())
-    extra_words = list(extra_words_counter.elements())
+    missing_word_count = sum(missing_words_counter.values())
+    extra_word_count = sum(extra_words_counter.values())
 
     return {
         "sample_id": extracted_txt_path.stem,
-
         "word_capture": round(word_capture_score(extracted_text, reference_text), 3),
         "rouge_l": round(rouge_l_score(extracted_text, reference_text), 3),
-
         "extracted_word_count": len(extracted_words),
         "reference_word_count": len(reference_words),
-
-        "missing_word_count": len(missing_words),
-        "extra_word_count": len(extra_words),
-
-        "missing_words_preview": ", ".join(missing_words[:30]),
-        "extra_words_preview": ", ".join(extra_words[:30]),
-
-        "extracted_line_count": len(extracted_text.splitlines()),
-        "reference_line_count": len(reference_text.splitlines()),
+        "missing_word_count": missing_word_count,
+        "extra_word_count": extra_word_count,
     }
