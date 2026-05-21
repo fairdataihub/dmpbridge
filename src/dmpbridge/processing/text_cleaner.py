@@ -5,12 +5,6 @@ import re
 def remove_repeated_adjacent_words(text: str) -> str:
     """
     Remove duplicated adjacent words caused by PDF extraction.
-
-    Example:
-    'CPS CPS 2015 2015' -> 'CPS 2015'
-
-    This is safe because it only removes repeated full words,
-    not repeated characters.
     """
     words = text.split()
 
@@ -35,10 +29,6 @@ def normalize_text(text: str) -> str:
     - trims leading/trailing spaces
     - removes duplicated adjacent words
     - normalizes multiple spaces into one space
-
-    Important:
-    Do NOT remove repeated characters because valid words like
-    'will', 'access', and 'collection' need double letters.
     """
     if not text:
         return ""
@@ -56,26 +46,7 @@ def normalize_text(text: str) -> str:
 
 
 def clean_blocks(blocks: List[Dict]) -> List[Dict]:
-    """
-    Clean a list of pdfplumber line blocks.
 
-    Input:
-    [
-        {"text": "CPS CPS 2015 2015", ...}
-    ]
-
-    Output:
-    [
-        {
-            "raw_text": "CPS CPS 2015 2015",
-            "text": "CPS 2015",
-            ...
-        }
-    ]
-
-    raw_text keeps the original extracted text for debugging.
-    text stores the cleaned version used by structure detection.
-    """
     cleaned_blocks = []
 
     for block in blocks:
