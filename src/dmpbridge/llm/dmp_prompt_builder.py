@@ -1,37 +1,38 @@
 # src/dmpbridge/llm/dmp_prompt_builder.py
 
 import json
-from pathlib import Path
 
 
-def load_text(path):
-    return Path(path).read_text(encoding="utf-8")
-
-
-def load_json(path):
-    return json.loads(Path(path).read_text(encoding="utf-8"))
-
-
-def build_dmp_json_prompt(dmp_markdown, skeleton_json):
-    skeleton_text = json.dumps(skeleton_json, indent=2)
-
+def build_narrative_prompt(dmp_text):
     prompt = f"""
-You are an expert data management plan extraction assistant.
+You are an expert Data Management Plan extraction assistant.
 
-Your task is to convert the extracted DMP text into valid JSON.
+Your task is to extract the narrative structure from the DMP text.
+
+Return ONLY valid JSON using this structure:
+
+{{
+  "sections": [
+    {{
+      "section_title": "",
+      "question_text": "",
+      "answer_text": ""
+    }}
+  ]
+}}
 
 Rules:
-1. Use the provided JSON skeleton.
-2. Fill only fields supported by the DMP text.
-3. Do not invent information.
-4. If information is missing, use null, empty string, or empty list depending on the skeleton.
-5. Return ONLY valid JSON.
-6. Do not include explanation, markdown, or comments.
-
-JSON skeleton:
-{skeleton_text}
+1. Extract only narrative DMP content.
+2. Do not extract names, dates, IDs, funder metadata, contributors, or administrative metadata unless they are part of the narrative answer.
+3. Keep the original wording as much as possible.
+4. Use the detected section heading as section_title.
+5. If there is no separate question, use the section title as question_text.
+6. Put the full paragraph/body text under answer_text.
+7. Do not invent missing information.
+8. Return ONLY valid JSON.
+9. Do not include markdown or explanation.
 
 DMP text:
-{dmp_markdown}
+{dmp_text}
 """
     return prompt

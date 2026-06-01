@@ -21,3 +21,5 @@ accelerate
 bitsandbytes 
 json-repair 
 jsonschema
+ollama
+langchain-ollama
