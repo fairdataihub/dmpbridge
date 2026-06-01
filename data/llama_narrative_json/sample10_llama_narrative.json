@@ -363,13 +363,13 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar.\nAs noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property."
+                  "answer": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar."
                 }
               }
             },
             {
               "id": 9,
-              "text": "Data Protection",
+              "text": "Data Access",
               "order": 2,
               "answer": {
                 "id": 9,
@@ -378,7 +378,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "Confidential material will be handled according to policies and protocols for human subjects, FERPA, and any other applicable regulations and restrictions."
+                  "answer": "As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property."
                 }
               }
             }
@@ -424,7 +424,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "It is understood that the NSF Engineering Directorate requires data to be made available for a minimum of three years after conclusion of the award or public release, whichever is later.\nIf the PI leaves his institution, the products will remain stored in relevant databases."
+                  "answer": "It is understood that the NSF Engineering Directorate requires data to be made available for a minimum of three years after conclusion of the award or public release, whichever is later."
                 }
               }
             }

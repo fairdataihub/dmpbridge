@@ -16,27 +16,75 @@
     "text": "All principal investigators in BCOE are responsible for complying with sponsor policies regarding data management and accessibility. All have sufficient computing resources to store and process the data generated in their research."
   },
   {
+    "label": "content",
+    "text": "Every principal investigator has the ability to create his or her personal web site, and to make data sets available through that web site. Additionally, the eScholarship series (http://escholarship.org/uc/bcoe) provides a ready-made resource for dissemination."
+  },
+  {
+    "label": "content",
+    "text": "Researchers can submit materials to the eScholarship series site, where it is automatically given an EZID persistent identifier. All material on the site is indexed on Google, Google Scholar, and Melvyl/WorldCat."
+  },
+  {
     "label": "section",
     "text": "2. Scope"
+  },
+  {
+    "label": "content",
+    "text": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific community as necessary to validate research findings” be made available at little or no cost to the PI or project."
   },
   {
     "label": "subsection",
     "text": "Data that must be withheld long enough to enable peer review and publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken place."
   },
   {
+    "label": "content",
+    "text": "Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after its acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF guidelines."
+  },
+  {
     "label": "section",
     "text": "3. Data and Metadata Format and Content"
+  },
+  {
+    "label": "content",
+    "text": "The software will be made available in source code form and so will the applications developed. This will allow other researchers to not only use it but also modify it for their use."
+  },
+  {
+    "label": "subsection",
+    "text": "All materials uploaded to the eScholarship site from UCR will be tagged uniformly with metadata about the source and nature of the data."
+  },
+  {
+    "label": "content",
+    "text": "Any electronic file format (e.g., text, spreadsheets, images) can be accepted. As a service to assure that materials are formatted correctly, a curator from the College reviews all submissions before they are accepted."
   },
   {
     "label": "section",
     "text": "4. Accessibility and Data Protection"
   },
   {
+    "label": "content",
+    "text": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar."
+  },
+  {
+    "label": "subsection",
+    "text": "Confidential material will be handled according to policies and protocols for human subjects, FERPA, and any other applicable regulations and restrictions."
+  },
+  {
     "label": "section",
     "text": "5. Derivative Products"
   },
   {
+    "label": "content",
+    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “ This material is based upon work supported by the National Science Foundation under Grant No. (NSF grant number). ”"
+  },
+  {
+    "label": "subsection",
+    "text": "Additionally, materials will contain a disclaimer that “ any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation .”"
+  },
+  {
     "label": "section",
     "text": "6. Archiving and Access"
+  },
+  {
+    "label": "content",
+    "text": "If the PI leaves UCR, the products in the eScholarship series will remain stored there."
   }
 ]

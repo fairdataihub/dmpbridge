@@ -96,16 +96,12 @@
     "text": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar."
   },
   {
+    "label": "subsection",
+    "text": "Data Access"
+  },
+  {
     "label": "content",
     "text": "As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property."
-  },
-  {
-    "label": "subsection",
-    "text": "Data Protection"
-  },
-  {
-    "label": "content",
-    "text": "Confidential material will be handled according to policies and protocols for human subjects, FERPA, and any other applicable regulations and restrictions."
   },
   {
     "label": "section",
@@ -126,9 +122,5 @@
   {
     "label": "content",
     "text": "It is understood that the NSF Engineering Directorate requires data to be made available for a minimum of three years after conclusion of the award or public release, whichever is later."
-  },
-  {
-    "label": "content",
-    "text": "If the PI leaves his institution, the products will remain stored in relevant databases."
   }
 ]
