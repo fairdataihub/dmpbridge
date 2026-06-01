@@ -110,10 +110,6 @@ Narrative JSON Builder
 ↓
 DMPTool-Compatible Narrative JSON
 ```
-
-
-
-```
 ## Setup (Local Development)
 
 ### Step 1 — Clone the repository
