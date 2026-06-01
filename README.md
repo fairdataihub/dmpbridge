@@ -3,6 +3,9 @@ DMP Bridge is an open-source, MIT-licensed, Python-based pipeline that extracts 
 
 ## Repository Structure
 ```text
+## Repository Structure
+
+```text
 dmpbridge/
 │
 ├── data/
@@ -22,6 +25,14 @@ dmpbridge/
 │   │   ├── sample1.md
 │   │   └── sample6.md
 │   │
+│   ├── llama_structured_blocks/
+│   │   ├── sample1_llama_blocks.json
+│   │   └── sample6_llama_blocks.json
+│   │
+│   ├── llama_narrative_json/
+│   │   ├── sample1_llama_narrative.json
+│   │   └── sample6_llama_narrative.json
+│   │
 │   └── reference_text/
 │       ├── sample1_reference.txt
 │       └── sample6_reference.txt
@@ -33,17 +44,26 @@ dmpbridge/
 │       ├── pdf/
 │       │   ├── __init__.py
 │       │   └── pdfplumber_extractor.py
-│       │   
+│       │
+│       ├── llm/
+│       │   ├── __init__.py
+│       │   ├── llama_client.py
+│       │   ├── llm_narrative_blocks.py
+│       │   ├── dmp_prompt_builder.py
+│       │   └── generate_json.py
 │       │
 │       ├── vision/
 │       │   ├── __init__.py
 │       │
 │       ├── processing/
 │       │   ├── __init__.py
+│       │   ├── text_cleaner.py
+│       │   └── structure_json_builder.py
 │       │
 │       ├── evaluation/
 │       │   ├── __init__.py
-│       │   ├── pdfplumber_text_evaluator.py                   
+│       │   ├── pdfplumber_text_evaluator.py
+│       │   └── narrative_json_evaluator.py
 │       │
 │       └── utils/
 │           ├── __init__.py
@@ -53,7 +73,8 @@ dmpbridge/
 ├── notebooks/
 │   ├── 01_pdfplumber_batch_test.ipynb
 │   ├── 02_evaluation_pdfplumber_test.ipynb
-│    
+│   ├── 03_llama_narrative_structure_test.ipynb
+│   └── 04_narrative_json_evaluation.ipynb
 │
 ├── outputs/
 │   ├── debug/
@@ -61,13 +82,35 @@ dmpbridge/
 │   └── reports/
 │
 ├── schemas/
-│   └── rda_dmp_dmptool_extension_skeleton.json     # your intermediate JSON schema
+│   └── rda_dmp_dmptool_extension_skeleton.json
 │
 ├── tests/
 │
 ├── requirements.txt
 ├── pyproject.toml
 └── README.md
+```
+
+### Current Pipeline
+
+```text
+PDF
+↓
+PDFPlumber Extraction
+↓
+Text Cleaning
+↓
+Markdown
+↓
+Llama 3.1 8B (Ollama)
+↓
+Structured Blocks
+↓
+Narrative JSON Builder
+↓
+DMPTool-Compatible Narrative JSON
+```
+
 
 
 ```
