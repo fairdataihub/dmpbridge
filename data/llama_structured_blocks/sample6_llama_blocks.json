@@ -9,7 +9,7 @@
   },
   {
     "label": "content",
-    "text": "The bulk of the data generated in this project will be 1, 2, 3, and 4 dimensional arrays of numbers and bytes representing fluid state variables generated via computer simulations of fluid flow. Images and video files will be created from the fluid data using both commercial packages, such as Matlab and free visualization packages such as VAPOR (developed at NCAR)."
+    "text": "The bulk of the data generated in this project will be 1, 2, 3, and 4 dimensional arrays of numbers and bytes representing fluid state variables generated via computer simulations of fluid flow. Images and video files will be created from the fluid data using both commercial packages, such as Matlab and free visualization packages, such as VAPOR (developed at NCAR)."
   },
   {
     "label": "section",

@@ -4,6 +4,7 @@ import json
 import re
 from pathlib import Path
 from json_repair import repair_json
+from dmpbridge.processing.text_cleaner import clean_repeated_words
 
 
 ALLOWED_LABELS = {
@@ -13,7 +14,8 @@ ALLOWED_LABELS = {
     "content",
 }
 
-def build_llm_blocks_prompt(dmp_text: str) -> str:
+
+def build_llm_blocks_prompt(blocks_text: str) -> str:
     return f"""
 You are helping extract the existing narrative structure from a Data Management Plan.
 
@@ -39,19 +41,24 @@ Core extraction rules:
 5. Do not rename headings.
 6. Do not use your own wording.
 7. Preserve original wording as much as possible.
-8. A section or subsection must appear explicitly in the DMP text.
+8. A section or subsection must appear explicitly in the input blocks.
 9. If unsure, label the text as "content".
 10. Do not include page numbers.
 11. Do not include markdown or explanation.
 12. Return only the block array.
 
+You are given PDFPlumber extracted blocks.
+Each block may include:
+- block_id
+- text
+- page
+- font_size
+- is_bold
+
+Use both the text and available formatting information to decide the label.
+
 How to detect document_title:
 Use "document_title" only for the main DMP title, usually near the beginning of the document.
-Examples:
-- "DATA MANAGEMENT AND SHARING PLAN"
-- "Data Management Plan:"
-- "CPS 2015"
-- "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES"
 
 How to detect sections:
 Use "section" only for existing major DMP headings.
@@ -62,19 +69,7 @@ A section is usually:
 - a short standalone heading line
 - a heading followed by multiple paragraphs of related content
 - a heading that introduces a major DMP topic
-
-General section examples:
-- "1. Policy and Practice"
-- "2. Scope"
-- "Element 1: Data Type:"
-- "Roles and responsibilities"
-- "Types of data"
-- "Products of Research"
-- "Data Format Standards"
-- "Access and sharing"
-- "Policies for access and sharing and appropriate protection and privacy"
-- "Data storage and preservation of access"
-- "Archiving of Data, Samples, and Other Relevant Research Products"
+- a block that appears visually like a heading, for example larger font or bold, if that information is available
 
 A section must be a heading, not a normal sentence.
 
@@ -85,18 +80,7 @@ A subsection is usually:
 - a lettered prompt, such as "A. Types and amount of scientific data expected to be generated in the project:"
 - a short prompt ending with a colon or period inside a larger numbered section
 - a repeated internal prompt under a major heading
-
-General subsection examples:
-- "A. Types and amount of scientific data expected to be generated in the project:"
-- "B. Scientific data that will be preserved and shared, and the rationale for doing so:"
-- "C. Metadata, other relevant data, and associated documentation:"
-- "Roles & Responsibilities."
-- "Data Types and Sources."
-- "Content and Format."
-- "Data Sharing and Data Preservation."
-- "Rationale."
-- "Data Repositories."
-- "Data Volume."
+- a block that appears visually like a smaller heading or prompt under a section
 
 How to detect content:
 Use "content" for:
@@ -108,36 +92,17 @@ Use "content" for:
 - body text after a heading
 - body text after a prompt
 
-Content often begins with:
-- "The Data Management Plan should..."
-- "Data management plans should..."
-- "DMPs should..."
-- "The proposed..."
-- "We will..."
-- "Data will..."
-- "All data..."
-- "Materials will..."
-- "Software generated..."
-- "The servers..."
-- "Upon request..."
-- "Select videos..."
-- "Research records..."
-- "Our products..."
-- "First,"
-- "Second,"
-- "Specifically,"
-
 Do NOT label normal sentences as sections or subsections.
 
 Important negative rules:
-- Do not create headings like "Data Backup", "Data Protection", "Data Exclusions", "Data Management System", or "Software generated under the project" unless that exact heading appears as a heading in the original text.
+- Do not create headings like "Data Backup", "Data Protection", "Data Exclusions", "Data Management System", or "Software generated under the project" unless that exact heading appears as a heading in the input blocks.
 - Do not turn a sentence into a heading just because it introduces a topic.
 - Do not turn "Data will...", "We will...", "Software generated...", or "The proposed..." sentences into sections.
 - A paragraph should never become a section.
 - A paragraph should never become a subsection.
 
 Inline heading rule:
-If a real heading and its content appear on the same line, split them into two blocks:
+If a real heading and its content appear in the same block, split them into two blocks:
 1. section or subsection
 2. content
 
@@ -189,8 +154,8 @@ Return format:
   }}
 ]
 
-DMP text:
-{dmp_text}
+PDFPlumber blocks:
+{blocks_text}
 """
 
 
@@ -273,14 +238,6 @@ def split_inline_numbered_section(text: str) -> list[dict]:
 
 
 def split_inline_dot_subsection(text: str) -> list[dict]:
-    """
-    Handles Sample 2 style:
-
-    Roles & Responsibilities. For the proposed research...
-    ->
-    subsection: Roles & Responsibilities.
-    content: For the proposed research...
-    """
     text = text.strip()
 
     pattern = r"^([A-Z][A-Za-z/&,\-\s]+?\.)\s+(.+)$"
@@ -340,10 +297,33 @@ def is_sentence_or_paragraph(text: str) -> bool:
         "Upon ",
         "Our ",
         "First,",
-        "Specifically,"
+        "Specifically,",
     )
 
     return text.startswith(starters)
+
+
+def compact_pdfplumber_blocks(pdf_blocks):
+    compact_blocks = []
+
+    for i, block in enumerate(pdf_blocks, start=1):
+        text = str(block.get("text", "")).strip()
+
+        if not text:
+            continue
+
+        compact_blocks.append(
+            {
+                "block_id": i,
+                "text": text,
+                "page": block.get("page"),
+                "font_size": block.get("font_size"),
+                "is_bold": block.get("is_bold"),
+            }
+        )
+
+    return compact_blocks
+
 
 def postprocess_blocks(blocks):
     clean_blocks = []
@@ -407,8 +387,16 @@ def postprocess_blocks(blocks):
     return clean_blocks
 
 
-def generate_structured_blocks_with_llm(llm, dmp_text: str):
-    prompt = build_llm_blocks_prompt(dmp_text)
+def generate_structured_blocks_with_llm(llm, pdf_blocks):
+    compact_blocks = compact_pdfplumber_blocks(pdf_blocks)
+
+    blocks_text = json.dumps(
+        compact_blocks,
+        indent=2,
+        ensure_ascii=False,
+    )
+
+    prompt = build_llm_blocks_prompt(blocks_text)
 
     response = llm.invoke(prompt)
     model_text = response.content

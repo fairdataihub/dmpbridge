@@ -9,19 +9,31 @@
   },
   {
     "label": "content",
-    "text": "The Bourns College of Engineering (BCOE) at the University of California, Riverside , in partnership with the UCR Libraries and the California Digital Library, has established a new, custom data management system designed to make results of our research readily and reliably accessible. This system combines two services of the California Digital Library for the first time: an eScholarship series, a curated site where all BCOE investigators can store and disseminate their data, and EZID permanent identifiers for long-term identification and management of data resources."
+    "text": "Roles & Responsibilities."
   },
   {
     "label": "content",
-    "text": "All principal investigators in BCOE are responsible for complying with sponsor policies regarding data management and accessibility. All have sufficient computing resources to store and process the data generated in their research. Every principal investigator has the ability to create his or her personal web site, and to make data sets available through that web site."
+    "text": "For the proposed research..."
   },
   {
     "label": "content",
-    "text": "Additionally, the eScholarship series (http://escholarship.org/uc/bcoe) provides a ready-made resource for dissemination. Researchers can submit materials to the eScholarship series site, where it is automatically given an EZID persistent identifier."
+    "text": "Libraries and the California Digital Library, has established a new, custom data management system designed to"
   },
   {
     "label": "content",
-    "text": "All material on the site is indexed on Google, Google Scholar, and Melvyl/WorldCat. The California Digital Library also provides data backup services to avoid accidental loss of data."
+    "text": "make results of our research readily and reliably accessible. This system combines two services of the California"
+  },
+  {
+    "label": "content",
+    "text": "Digital Library for the first time: an eScholarship series, a curated site where all BCOE investigators can store and"
+  },
+  {
+    "label": "content",
+    "text": "disseminate their data, and EZID permanent identifiers for long-term identification and management of data"
+  },
+  {
+    "label": "content",
+    "text": "resources."
   },
   {
     "label": "section",
@@ -29,23 +41,35 @@
   },
   {
     "label": "content",
-    "text": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific community as necessary to validate research findings” be made available at little or no cost to the PI or project."
+    "text": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific"
   },
   {
     "label": "content",
-    "text": "In accordance with this policy and guidance from the Office of Management and Budget, this plan does not include preliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or communications with colleagues."
+    "text": "community as necessary to validate research findings” be made available at little or no cost to the PI or project. In"
   },
   {
     "label": "content",
-    "text": "Data that must be withheld long enough to enable peer review and publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken place."
+    "text": "accordance with this policy and guidance from the Office of Management and Budget, this plan does not include"
   },
   {
     "label": "content",
-    "text": "Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after its acquisition."
+    "text": "preliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or"
   },
   {
     "label": "content",
-    "text": "The data will be preserved for at least three years beyond the award period, as required by NSF guidelines."
+    "text": "communications with colleagues. Data that must be withheld long enough to enable peer review and"
+  },
+  {
+    "label": "content",
+    "text": "publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken"
+  },
+  {
+    "label": "content",
+    "text": "place. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after"
+  },
+  {
+    "label": "content",
+    "text": "its acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF"
   },
   {
     "label": "section",
@@ -53,15 +77,15 @@
   },
   {
     "label": "content",
-    "text": "The software will be made available in source code form and so will the applications developed."
+    "text": "The software will be made available in source code form and so will the applications developed. This will allow other"
   },
   {
     "label": "content",
-    "text": "This will allow other researchers to not only use it but also modify it for their use."
+    "text": "researchers to so not only use it but also modify it for their use. All materials uploaded to the eScholarship site from"
   },
   {
     "label": "content",
-    "text": "All materials uploaded to the eScholarship site from UCR will be tagged uniformly with metadata about the source and nature of the data."
+    "text": "UCR will be tagged uniformly with metadata about the source and nature of the data. Any electronic file format (e.g.,"
   },
   {
     "label": "section",
@@ -69,11 +93,19 @@
   },
   {
     "label": "content",
-    "text": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar."
+    "text": "Materials will be searchable through a number of databases and search engines, including Google and Google"
+  },
+  {
+    "label": "subsection",
+    "text": "Scholar."
   },
   {
     "label": "content",
-    "text": "As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property."
+    "text": "As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to"
+  },
+  {
+    "label": "content",
+    "text": "protect intellectual property. Confidential material will be handled according to policies and protocols for human"
   },
   {
     "label": "section",
@@ -81,11 +113,15 @@
   },
   {
     "label": "content",
-    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “ This material is based upon work supported by the National Science Foundation under Grant No. (NSF grant number). ”"
+    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “ This material is based upon work"
   },
   {
     "label": "content",
-    "text": "Additionally, materials will contain a disclaimer that “ any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation .”"
+    "text": "supported by the National Science Foundation under Grant No. (NSF grant number). ” Additionally, materials will"
+  },
+  {
+    "label": "content",
+    "text": "contain a disclaimer that “ any opinions, findings, and conclusions or recommendations expressed in this material are"
   },
   {
     "label": "section",
@@ -93,10 +129,6 @@
   },
   {
     "label": "content",
-    "text": "If the PI leaves UCR, the products in the eScholarship series will remain stored there."
-  },
-  {
-    "label": "content",
-    "text": "PI is free to reproduce and repost these materials at his/her new institution."
+    "text": "If the PI leaves UCR, the products in the eScholarship series will remain stored there. PI is free to reproduce and"
   }
 ]
