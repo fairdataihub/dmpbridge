@@ -1,0 +1,86 @@
+[
+  {
+    "label": "document_title",
+    "text": "DATA MANAGEMENT PLAN"
+  },
+  {
+    "label": "section",
+    "text": "REVIEW OF PROPOSAL COMPONENTS"
+  },
+  {
+    "label": "content",
+    "text": "The proposal is separated into three sections. Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls."
+  },
+  {
+    "label": "subsection",
+    "text": "Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale."
+  },
+  {
+    "label": "content",
+    "text": "Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops."
+  },
+  {
+    "label": "section",
+    "text": "TYPES OF DATA"
+  },
+  {
+    "label": "content",
+    "text": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing."
+  },
+  {
+    "label": "subsection",
+    "text": "Input data:"
+  },
+  {
+    "label": "content",
+    "text": "Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files."
+  },
+  {
+    "label": "subsection",
+    "text": "Produced Data:"
+  },
+  {
+    "label": "content",
+    "text": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections)."
+  },
+  {
+    "label": "section",
+    "text": "DATA AND METADATA STANDARDS"
+  },
+  {
+    "label": "content",
+    "text": "The data will be shared along with a README.txt, which will describe all files, their relationships, naming conventions, etc. Data elements and attributes will be described following ISO 19115 specifications and metadata schema and standards in Hydrology (e.g., following any establish standards of the Water Information Coordination Program’s Open Water Data Initiative (Larsen et al., 2016)) to allow for better interpretability and interoperability."
+  },
+  {
+    "label": "section",
+    "text": "POLICIES FOR ACCESS AND SHARING"
+  },
+  {
+    "label": "content",
+    "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors."
+  },
+  {
+    "label": "subsection",
+    "text": "Scripts and code for analyses:"
+  },
+  {
+    "label": "content",
+    "text": "All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes."
+  },
+  {
+    "label": "section",
+    "text": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION"
+  },
+  {
+    "label": "content",
+    "text": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may freely build upon, enhance and reuse the works for any purposes without restriction under copyright or database law."
+  },
+  {
+    "label": "section",
+    "text": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS"
+  },
+  {
+    "label": "content",
+    "text": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing."
+  }
+]

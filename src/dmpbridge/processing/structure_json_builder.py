@@ -229,7 +229,7 @@ def build_narrative_json_from_blocks(
                 current_section["question"].append(current_question)
 
         # Start a new question inside the current section.
-        elif label == "subsection":
+        elif label in {"subsection", "question"}:
             if current_section is None:
                 section_id += 1
                 current_section = {

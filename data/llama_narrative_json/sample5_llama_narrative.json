@@ -213,19 +213,19 @@
     "download_url": null,
     "template": {
       "id": 1,
-      "title": "DATA MANAGEMENT AND SHARING PLAN",
+      "title": "DATA MANAGEMENT PLAN",
       "description": null,
       "version": null,
       "section": [
         {
           "id": 1,
-          "title": "Element 1: Data Type:",
+          "title": "REVIEW OF PROPOSAL COMPONENTS",
           "description": null,
           "order": 1,
           "question": [
             {
               "id": 1,
-              "text": "A. Types and amount of scientific data expected to be generated in the project:",
+              "text": "REVIEW OF PROPOSAL COMPONENTS",
               "order": 1,
               "answer": {
                 "id": 1,
@@ -234,13 +234,13 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts (wrist NHANES 2011-2014; hip/counts-NHANES 2003-2006). The studies include (i) the RISE Study, (ii) the SOL-VIDA Study, (iii) the iWATCH Study, (iv) the MOCA Study, (v) the PHASE Study, (vi) the AusDiab Study, (vii) the ACT Study, and (viii) the WHISH accelerometer sub-study."
+                  "answer": "The proposal is separated into three sections. Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls."
                 }
               }
             },
             {
               "id": 2,
-              "text": "B. Scientific data that will be preserved and shared, and the rationale for doing so:",
+              "text": "Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale.",
               "order": 2,
               "answer": {
                 "id": 2,
@@ -249,22 +249,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library Repository sitting behavior metrics or analysis that were created in this project from the following UCSD-based study datasets: (i) The RISE study (ii) The iWATCH study (iii) NHANES cohorts Sufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only."
-                }
-              }
-            },
-            {
-              "id": 3,
-              "text": "C. Metadata, other relevant data, and associated documentation:",
-              "order": 3,
-              "answer": {
-                "id": 3,
-                "json": {
-                  "type": "textArea",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  },
-                  "answer": "In addition to the data described above, code and models will be included in the repository and in on our project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep Postures”."
+                  "answer": "Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops."
                 }
               }
             }
@@ -272,14 +257,29 @@
         },
         {
           "id": 2,
-          "title": "Element 2: Related Tools, Software and/or Code:",
+          "title": "TYPES OF DATA",
           "description": null,
           "order": 2,
           "question": [
             {
-              "id": 4,
-              "text": "Element 2: Related Tools, Software and/or Code:",
+              "id": 3,
+              "text": "TYPES OF DATA",
               "order": 1,
+              "answer": {
+                "id": 3,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing."
+                }
+              }
+            },
+            {
+              "id": 4,
+              "text": "Input data:",
+              "order": 2,
               "answer": {
                 "id": 4,
                 "json": {
@@ -287,22 +287,14 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "Data will be analyzed with custom code by our statistical and computer science team. ActiGraph data will be processed and analyzed using ActiLife software which requires a paid license. All custom code and models will also be shared in the data repository and on our project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep Postures”."
+                  "answer": "Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files."
                 }
               }
-            }
-          ]
-        },
-        {
-          "id": 3,
-          "title": "Element 3: Standards:",
-          "description": null,
-          "order": 3,
-          "question": [
+            },
             {
               "id": 5,
-              "text": "Element 3: Standards:",
-              "order": 1,
+              "text": "Produced Data:",
+              "order": 3,
               "answer": {
                 "id": 5,
                 "json": {
@@ -310,21 +302,21 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "The following data will be created as a result of this project: Objective sedentary behavior metrics – no existing standards"
+                  "answer": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections)."
                 }
               }
             }
           ]
         },
         {
-          "id": 4,
-          "title": "Element 4: Data Preservation, Access, and Associated Timelines:",
+          "id": 3,
+          "title": "DATA AND METADATA STANDARDS",
           "description": null,
-          "order": 4,
+          "order": 3,
           "question": [
             {
               "id": 6,
-              "text": "A. Repository where scientific data and metadata will be archived:",
+              "text": "DATA AND METADATA STANDARDS",
               "order": 1,
               "answer": {
                 "id": 6,
@@ -333,14 +325,22 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "De-identified data will be uploaded to the University of California San Diego Library repository."
+                  "answer": "The data will be shared along with a README.txt, which will describe all files, their relationships, naming conventions, etc. Data elements and attributes will be described following ISO 19115 specifications and metadata schema and standards in Hydrology (e.g., following any establish standards of the Water Information Coordination Program’s Open Water Data Initiative (Larsen et al., 2016)) to allow for better interpretability and interoperability."
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "POLICIES FOR ACCESS AND SHARING",
+          "description": null,
+          "order": 4,
+          "question": [
             {
               "id": 7,
-              "text": "B. How scientific data will be findable and identifiable:",
-              "order": 2,
+              "text": "POLICIES FOR ACCESS AND SHARING",
+              "order": 1,
               "answer": {
                 "id": 7,
                 "json": {
@@ -348,14 +348,14 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "Data will be findable via publications and on our project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep Postures”."
+                  "answer": "Raw data: Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors."
                 }
               }
             },
             {
               "id": 8,
-              "text": "C. When and how long the scientific data will be made available:",
-              "order": 3,
+              "text": "Scripts and code for analyses:",
+              "order": 2,
               "answer": {
                 "id": 8,
                 "json": {
@@ -363,7 +363,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "The research community will have access to data when the main outcome manuscript has been published. $2,500 in years 2-5 of the project has been budgeted for preparing the data that is able to be stored in the repository (the RISE study, the iWATCH study, and NHANES) and for data storage on the University of California San Diego Library repository."
+                  "answer": "All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes."
                 }
               }
             }
@@ -371,13 +371,13 @@
         },
         {
           "id": 5,
-          "title": "Element 5: Access, Distribution, or Reuse Considerations:",
+          "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
           "description": null,
           "order": 5,
           "question": [
             {
               "id": 9,
-              "text": "A. Factors affecting subsequent access, distribution, or reuse of scientific data:",
+              "text": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
               "order": 1,
               "answer": {
                 "id": 9,
@@ -386,22 +386,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "The following studies have independent data use agreement & approved paper proposal processes for use of their data that are specific to each institution that collected the data: (i) the SOL-VIDA Study, (ii) the MOCA Study, (iii) the PHASE Study, (iv) the AusDiab Study, (v) the ACT Study, and (vi) the WHISH accelerometer sub-study such as data use agreements or approved publication proposals."
-                }
-              }
-            },
-            {
-              "id": 10,
-              "text": "B. Whether access to scientific data will be controlled:",
-              "order": 2,
-              "answer": {
-                "id": 10,
-                "json": {
-                  "type": "textArea",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  },
-                  "answer": "The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It will be deposited into the UC San Diego Library Data repository along with study protocols, code, and models for public use."
+                  "answer": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may freely build upon, enhance and reuse the works for any purposes without restriction under copyright or database law."
                 }
               }
             }
@@ -409,22 +394,22 @@
         },
         {
           "id": 6,
-          "title": "Element 6: Oversight of Data Management and Sharing:",
+          "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
           "description": null,
           "order": 6,
           "question": [
             {
-              "id": 11,
-              "text": "Element 6: Oversight of Data Management and Sharing:",
+              "id": 10,
+              "text": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
               "order": 1,
               "answer": {
-                "id": 11,
+                "id": 10,
                 "json": {
                   "type": "textArea",
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The PI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to ensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once the main outcome manuscript has been published."
+                  "answer": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing."
                 }
               }
             }

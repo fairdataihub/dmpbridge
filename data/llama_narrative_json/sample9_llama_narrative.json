@@ -1,0 +1,353 @@
+{
+  "dmp": {
+    "title": null,
+    "description": null,
+    "dmp_id": {
+      "identifier": null,
+      "type": null
+    },
+    "created": null,
+    "modified": null,
+    "ethical_issues_exist": null,
+    "ethical_issues_description": null,
+    "ethical_issues_report": null,
+    "language": null,
+    "contact": {
+      "name": null,
+      "mbox": null,
+      "affiliation": [
+        {
+          "name": null,
+          "affiliation_id": {
+            "identifier": null,
+            "type": null
+          }
+        }
+      ],
+      "contact_id": [
+        {
+          "identifier": null,
+          "type": null
+        }
+      ]
+    },
+    "contributor": [
+      {
+        "name": null,
+        "contributor_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "affiliation": [
+          {
+            "name": null,
+            "affiliation_id": {
+              "identifier": null,
+              "type": null
+            }
+          }
+        ],
+        "role": []
+      }
+    ],
+    "dataset": [
+      {
+        "title": null,
+        "type": null,
+        "description": null,
+        "dataset_id": {
+          "identifier": null,
+          "type": null
+        },
+        "personal_data": null,
+        "sensitive_data": null,
+        "issued": null,
+        "metadata": [
+          {
+            "description": null,
+            "language": null,
+            "metadata_standard_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ],
+        "distribution": [
+          {
+            "title": null,
+            "byte_size": null,
+            "issued": null,
+            "data_access": null,
+            "license": [
+              {
+                "license_ref": null,
+                "start_date": null
+              }
+            ],
+            "host": {
+              "title": null,
+              "url": null,
+              "host_id": [
+                {
+                  "identifier": null,
+                  "type": null
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": null,
+        "relation_type": null,
+        "resource_type": null,
+        "type": null
+      }
+    ],
+    "alternate_identifier": [
+      {
+        "identifier": null,
+        "type": null
+      }
+    ],
+    "project": [
+      {
+        "title": null,
+        "description": null,
+        "project_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "start": null,
+        "end": null,
+        "funding": [
+          {
+            "name": null,
+            "funding_status": null,
+            "funder_id": {
+              "identifier": null,
+              "type": null
+            },
+            "grant_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rda_schema_version": "1.2",
+  "provenance": "dmp-bridge",
+  "status": "draft",
+  "privacy": "private",
+  "featured": "no",
+  "registered": null,
+  "tombstoned": null,
+  "research_domain": {
+    "name": null,
+    "research_domain_identifier": {
+      "identifier": null,
+      "type": null
+    }
+  },
+  "research_facility": [
+    {
+      "name": null,
+      "type": null,
+      "research_facility_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_opportunity": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "opportunity_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_project": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "project_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "version": [
+    {
+      "access_url": null,
+      "version": null
+    }
+  ],
+  "narrative": {
+    "download_url": null,
+    "template": {
+      "id": 1,
+      "title": "CAREER: CAREER: HIGH-RESOLUTION HIGH-RESOLUTION NMR NMR FOR FOR PARAMAGNETIC PARAMAGNETIC SODIUM SODIUM ELECTRODES ELECTRODES",
+      "description": null,
+      "version": null,
+      "section": [
+        {
+          "id": 1,
+          "title": "Products Products of of Research Research",
+          "description": null,
+          "order": 1,
+          "question": [
+            {
+              "id": 1,
+              "text": "Products Products of of Research Research",
+              "order": 1,
+              "answer": {
+                "id": 1,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Battery material samples will be synthesized in powder form and identified through a consistent and systematic labeling procedure, which will include sample composition, name of researcher and date. Experimental data generated over the course of the research will include synthesis procedures and results from characterization of battery electrode samples."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Data Data Format Format Standards Standards",
+          "description": null,
+          "order": 2,
+          "question": [
+            {
+              "id": 2,
+              "text": "Data Data Format Format Standards Standards",
+              "order": 1,
+              "answer": {
+                "id": 2,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "In order to allow for interoperability, reproducibility, and reuse, all data will be stored and saved in standard and open formats. Experimental characterization data will be stored and saved as, e.g., ASCII, CSV, Word, Matlab and Python files."
+                }
+              }
+            },
+            {
+              "id": 3,
+              "text": "Crystallographic data",
+              "order": 2,
+              "answer": {
+                "id": 3,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Crystallographic data will be reported in standard crystallographic information framework (*.cif) format to facilitate visualization and further analysis through widely available software tools (VESTA, cif2file, etc.). Crystallographic data for previously-unreported compounds/structures will be uploaded to the ICSD database."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Access Access and and sharing sharing",
+          "description": null,
+          "order": 3,
+          "question": [
+            {
+              "id": 4,
+              "text": "Access Access and and sharing sharing",
+              "order": 1,
+              "answer": {
+                "id": 4,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in partnership with Jamboree Housing (JH) will be uploaded to JH’s filesharing system for broad and free dissemination to their different centers and partners in California."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Policies Policies and and provisions provisions for for re-use, re-use, re-distribution, re-distribution, and and production production of of derivatives derivatives",
+          "description": null,
+          "order": 4,
+          "question": [
+            {
+              "id": 5,
+              "text": "Policies Policies and and provisions provisions for for re-use, re-use, re-distribution, re-distribution, and and production production of of derivatives derivatives",
+              "order": 1,
+              "answer": {
+                "id": 5,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "All data will be stored in Dryad and will be available under a public domain, creative commons license (CC0). Note that while a personal ORCID is needed to deposit data in Dryad, no ORCID is required to search, find and download datasets."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "title": "Archiving Archiving of of Data, Data, Samples, Samples, and and Other Other Relevant Relevant Research Research Products Products",
+          "description": null,
+          "order": 5,
+          "question": [
+            {
+              "id": 6,
+              "text": "Archiving Archiving of of Data, Data, Samples, Samples, and and Other Other Relevant Relevant Research Research Products Products",
+              "order": 1,
+              "answer": {
+                "id": 6,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Laboratory notebooks and samples will be retained for a minimum of 5 years following the conclusion of the program and will remain the property of UC Santa Barbara and kept on campus after students graduate."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

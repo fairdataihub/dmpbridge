@@ -1,0 +1,50 @@
+[
+  {
+    "label": "document_title",
+    "text": "Data Management Plan"
+  },
+  {
+    "label": "section",
+    "text": "1. Data sharing and preservation"
+  },
+  {
+    "label": "subsection",
+    "text": "Data management plans should describe whether and how data generated in the course of the proposed research will be shared and preserved."
+  },
+  {
+    "label": "content",
+    "text": "If the plan is not to share and/or preserve certain data, then the plan must explain the basis of the decision (for example, cost/benefit considerations, other parameters of feasibility, scientific appropriateness, or limitations discussed in #4). At a minimum, DMPs must describe how data sharing and preservation will enable validation of results, or how results could be validated if data are not shared or preserved."
+  },
+  {
+    "label": "section",
+    "text": "Roles & Responsibilities"
+  },
+  {
+    "label": "content",
+    "text": "Director Samuel Stupp with help from the Executive Director of Research will take the lead and responsibility for coordinating and ensuring data storage and access and communicating expectations to all investigators. However, all senior investigators will also be involved in managing, storing, and disseminating the results of the project and will be responsible for checking that the plan is being followed."
+  },
+  {
+    "label": "section",
+    "text": "2. Data used in publications"
+  },
+  {
+    "label": "content",
+    "text": "Data management plans should provide a plan for making all research data displayed in publications resulting from the proposed research open, machine-readable, and digitally accessible to the public at the time of publication."
+  },
+  {
+    "label": "section",
+    "text": "3. Data management resources"
+  },
+  {
+    "label": "content",
+    "text": "Data management plans should consult and reference available information about data management resources to be used in the course of the proposed research."
+  },
+  {
+    "label": "section",
+    "text": "4. Confidentiality, security and rights"
+  },
+  {
+    "label": "content",
+    "text": "Data management plans must protect confidentiality, personal privacy, Personally Identifiable Information and U.S. national, homeland, and economic security; recognize proprietary interests, business confidential information, and intellectual property rights;"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "label": "document_title",
+    "text": "Univ. of California, Riverside Data Management Plan"
+  },
+  {
+    "label": "section",
+    "text": "1. Policy and Practice"
+  },
+  {
+    "label": "content",
+    "text": "The Bourns College of Engineering (BCOE) at the University of California, Riverside , in partnership with the UCR Libraries and the California Digital Library, has established a new, custom data management system designed to make results of our research readily and reliably accessible. This system combines two services of the California Digital Library for the first time: an eScholarship series, a curated site where all BCOE investigators can store and disseminate their data, and EZID permanent identifiers for long-term identification and management of data resources."
+  },
+  {
+    "label": "subsection",
+    "text": "All principal investigators in BCOE are responsible for complying with sponsor policies regarding data management and accessibility. All have sufficient computing resources to store and process the data generated in their research."
+  },
+  {
+    "label": "section",
+    "text": "2. Scope"
+  },
+  {
+    "label": "subsection",
+    "text": "Data that must be withheld long enough to enable peer review and publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken place."
+  },
+  {
+    "label": "section",
+    "text": "3. Data and Metadata Format and Content"
+  },
+  {
+    "label": "section",
+    "text": "4. Accessibility and Data Protection"
+  },
+  {
+    "label": "section",
+    "text": "5. Derivative Products"
+  },
+  {
+    "label": "section",
+    "text": "6. Archiving and Access"
+  }
+]
