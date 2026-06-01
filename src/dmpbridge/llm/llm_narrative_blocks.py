@@ -13,14 +13,11 @@ ALLOWED_LABELS = {
     "content",
 }
 
-
 def build_llm_blocks_prompt(dmp_text: str) -> str:
     return f"""
-You are helping structure a Data Management Plan.
+You are helping extract the existing narrative structure from a Data Management Plan.
 
-Convert the DMP text into a JSON list of structured blocks.
-
-Return ONLY valid JSON.
+Your task is extraction only.
 
 Allowed labels:
 - document_title
@@ -30,132 +27,147 @@ Allowed labels:
 
 Definitions:
 - document_title: the main title of the DMP.
-- section: a major DMP heading.
-- subsection: an explicit sub-question or prompt that appears in the original text.
-- content: body text, explanation, answer text, or paragraph text.
+- section: an existing major heading copied exactly from the DMP.
+- subsection: an existing sub-question or prompt copied exactly from the DMP.
+- content: body text, instruction text, guidance text, answer text, explanation, or paragraph text.
 
-Rules:
+Core extraction rules:
 1. Do not invent text.
-2. Preserve original wording.
-3. Do not summarize text.
-4. Do not create new subsection titles.
-5. Do not use your own wording.
-6. Use "document_title" only for the main DMP title.
-7. Use "section" for major numbered headings and Element headings.
-8. Use "subsection" only when the exact text appears as a sub-question or prompt.
-9. Use "content" for answer/body paragraphs.
-10. If a paragraph is a full sentence, label it as "content", not "subsection".
-11. Do not include page numbers.
-12. Do not include markdown or explanation.
-13. Return only valid JSON.
+2. Do not infer hidden headings.
+3. Do not create new headings.
+4. Do not summarize text into headings.
+5. Do not rename headings.
+6. Do not use your own wording.
+7. Preserve original wording as much as possible.
+8. A section or subsection must appear explicitly in the DMP text.
+9. If unsure, label the text as "content".
+10. Do not include page numbers.
+11. Do not include markdown or explanation.
+12. Return only the block array.
 
-Important examples from the target PDFs:
+How to detect document_title:
+Use "document_title" only for the main DMP title, usually near the beginning of the document.
+Examples:
+- "DATA MANAGEMENT AND SHARING PLAN"
+- "Data Management Plan:"
+- "CPS 2015"
+- "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES"
 
-Example A: NIH Element format
-Input:
-DATA MANAGEMENT AND SHARING PLAN
-Element 1: Data Type:
-A. Types and amount of scientific data expected to be generated in the project:
-This secondary data analysis project will analyze deidentified data...
-Element 2: Related Tools, Software and/or Code:
-Data will be analyzed with custom code...
+How to detect sections:
+Use "section" only for existing major DMP headings.
 
-Expected labels:
+A section is usually:
+- a numbered heading, such as "1. Policy and Practice"
+- an element heading, such as "Element 1: Data Type:"
+- a short standalone heading line
+- a heading followed by multiple paragraphs of related content
+- a heading that introduces a major DMP topic
+
+General section examples:
+- "1. Policy and Practice"
+- "2. Scope"
+- "Element 1: Data Type:"
+- "Roles and responsibilities"
+- "Types of data"
+- "Products of Research"
+- "Data Format Standards"
+- "Access and sharing"
+- "Policies for access and sharing and appropriate protection and privacy"
+- "Data storage and preservation of access"
+- "Archiving of Data, Samples, and Other Relevant Research Products"
+
+A section must be a heading, not a normal sentence.
+
+How to detect subsections:
+Use "subsection" only for existing prompts inside a section.
+
+A subsection is usually:
+- a lettered prompt, such as "A. Types and amount of scientific data expected to be generated in the project:"
+- a short prompt ending with a colon or period inside a larger numbered section
+- a repeated internal prompt under a major heading
+
+General subsection examples:
+- "A. Types and amount of scientific data expected to be generated in the project:"
+- "B. Scientific data that will be preserved and shared, and the rationale for doing so:"
+- "C. Metadata, other relevant data, and associated documentation:"
+- "Roles & Responsibilities."
+- "Data Types and Sources."
+- "Content and Format."
+- "Data Sharing and Data Preservation."
+- "Rationale."
+- "Data Repositories."
+- "Data Volume."
+
+How to detect content:
+Use "content" for:
+- full sentences
+- paragraphs
+- guidance or instruction text
+- answer text
+- explanatory text
+- body text after a heading
+- body text after a prompt
+
+Content often begins with:
+- "The Data Management Plan should..."
+- "Data management plans should..."
+- "DMPs should..."
+- "The proposed..."
+- "We will..."
+- "Data will..."
+- "All data..."
+- "Materials will..."
+- "Software generated..."
+- "The servers..."
+- "Upon request..."
+- "Select videos..."
+- "Research records..."
+- "Our products..."
+- "First,"
+- "Second,"
+- "Specifically,"
+
+Do NOT label normal sentences as sections or subsections.
+
+Important negative rules:
+- Do not create headings like "Data Backup", "Data Protection", "Data Exclusions", "Data Management System", or "Software generated under the project" unless that exact heading appears as a heading in the original text.
+- Do not turn a sentence into a heading just because it introduces a topic.
+- Do not turn "Data will...", "We will...", "Software generated...", or "The proposed..." sentences into sections.
+- A paragraph should never become a section.
+- A paragraph should never become a subsection.
+
+Inline heading rule:
+If a real heading and its content appear on the same line, split them into two blocks:
+1. section or subsection
+2. content
+
+Example:
+"1. Types of data. The bulk of the data generated in this project will be..."
+should become:
 [
-  {{
-    "label": "document_title",
-    "text": "DATA MANAGEMENT AND SHARING PLAN"
-  }},
-  {{
-    "label": "section",
-    "text": "Element 1: Data Type:"
-  }},
-  {{
-    "label": "subsection",
-    "text": "A. Types and amount of scientific data expected to be generated in the project:"
-  }},
-  {{
-    "label": "content",
-    "text": "This secondary data analysis project will analyze deidentified data..."
-  }},
-  {{
-    "label": "section",
-    "text": "Element 2: Related Tools, Software and/or Code:"
-  }},
-  {{
-    "label": "content",
-    "text": "Data will be analyzed with custom code..."
-  }}
-]
-
-Example B: NSF numbered section format
-Input:
-Univ. of California, Riverside Data Management Plan
-1. Policy and Practice
-The Bourns College of Engineering...
-2. Scope
-This Data Management Plan addresses the NSF policy...
-
-Expected labels:
-[
-  {{
-    "label": "document_title",
-    "text": "Univ. of California, Riverside Data Management Plan"
-  }},
-  {{
-    "label": "section",
-    "text": "1. Policy and Practice"
-  }},
-  {{
-    "label": "content",
-    "text": "The Bourns College of Engineering..."
-  }},
-  {{
-    "label": "section",
-    "text": "2. Scope"
-  }},
-  {{
-    "label": "content",
-    "text": "This Data Management Plan addresses the NSF policy..."
-  }}
-]
-
-Example C: inline numbered heading format
-Input:
-Data Management Plan:
-1. Types of data. The bulk of the data generated in this project will be 1, 2, 3, and 4 dimensional arrays...
-2. Data and metadata standards. The PI’s research group will adopt...
-
-Expected labels:
-[
-  {{
-    "label": "document_title",
-    "text": "Data Management Plan:"
-  }},
   {{
     "label": "section",
     "text": "1. Types of data."
   }},
   {{
     "label": "content",
-    "text": "The bulk of the data generated in this project will be 1, 2, 3, and 4 dimensional arrays..."
-  }},
-  {{
-    "label": "section",
-    "text": "2. Data and metadata standards."
-  }},
-  {{
-    "label": "content",
-    "text": "The PI’s research group will adopt..."
+    "text": "The bulk of the data generated in this project will be..."
   }}
 ]
 
-Very important:
-- For PDFs like Sample 8 and Sample 10, do NOT create subsections such as "Data Management System", "Data Backup", "Data Exclusions", or "Data Protection" unless those exact headings appear in the source text.
-- If text is a paragraph, label it as "content".
-- A sentence like "All principal investigators in BCOE are responsible..." is content, not subsection.
-- A sentence like "Data that must be withheld long enough..." is content, not subsection.
-- A sentence like "Confidential material will be handled..." is content, not subsection.
+Example:
+"Roles & Responsibilities. For the proposed research, Director Samuel Stupp..."
+should become:
+[
+  {{
+    "label": "subsection",
+    "text": "Roles & Responsibilities."
+  }},
+  {{
+    "label": "content",
+    "text": "For the proposed research, Director Samuel Stupp..."
+  }}
+]
 
 Return format:
 [
@@ -234,14 +246,6 @@ def is_lettered_subsection(text: str) -> bool:
 
 
 def split_inline_numbered_section(text: str) -> list[dict]:
-    """
-    Handles Sample 6 style:
-
-    1. Types of data. The bulk of the data generated...
-    ->
-    section: 1. Types of data.
-    content: The bulk of the data generated...
-    """
     text = text.strip()
 
     pattern = r"^(\d+\.\s+[^.]+\.)\s+(.+)$"
@@ -260,6 +264,44 @@ def split_inline_numbered_section(text: str) -> list[dict]:
         {
             "label": "section",
             "text": section_text,
+        },
+        {
+            "label": "content",
+            "text": content_text,
+        },
+    ]
+
+
+def split_inline_dot_subsection(text: str) -> list[dict]:
+    """
+    Handles Sample 2 style:
+
+    Roles & Responsibilities. For the proposed research...
+    ->
+    subsection: Roles & Responsibilities.
+    content: For the proposed research...
+    """
+    text = text.strip()
+
+    pattern = r"^([A-Z][A-Za-z/&,\-\s]+?\.)\s+(.+)$"
+    match = re.match(pattern, text)
+
+    if not match:
+        return []
+
+    subsection_text = match.group(1).strip()
+    content_text = match.group(2).strip()
+
+    if len(subsection_text.split()) > 8:
+        return []
+
+    if not subsection_text or not content_text:
+        return []
+
+    return [
+        {
+            "label": "subsection",
+            "text": subsection_text,
         },
         {
             "label": "content",
@@ -292,10 +334,16 @@ def is_sentence_or_paragraph(text: str) -> bool:
         "Additionally,",
         "Researchers ",
         "Confidential ",
+        "Software ",
+        "Select ",
+        "Research ",
+        "Upon ",
+        "Our ",
+        "First,",
+        "Specifically,"
     )
 
     return text.startswith(starters)
-
 
 def postprocess_blocks(blocks):
     clean_blocks = []
@@ -320,11 +368,15 @@ def postprocess_blocks(blocks):
             else:
                 document_title_used = True
 
-        # Sample 6 safety:
-        # If the LLM keeps "1. Types of data. The bulk..." together,
-        # split it into section + content.
         if label in {"section", "content"}:
             split_blocks = split_inline_numbered_section(text)
+
+            if split_blocks:
+                clean_blocks.extend(split_blocks)
+                continue
+
+        if label in {"subsection", "content"}:
+            split_blocks = split_inline_dot_subsection(text)
 
             if split_blocks:
                 clean_blocks.extend(split_blocks)
@@ -340,6 +392,9 @@ def postprocess_blocks(blocks):
             label = "subsection"
 
         elif label == "subsection" and is_sentence_or_paragraph(text):
+            label = "content"
+
+        if label == "section" and is_sentence_or_paragraph(text):
             label = "content"
 
         clean_blocks.append(

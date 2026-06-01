@@ -13,11 +13,15 @@
   },
   {
     "label": "content",
-    "text": "All principal investigators in BCOE are responsible for complying with sponsor policies regarding data management and accessibility. All have sufficient computing resources to store and process the data generated in their research. Every principal investigator has the ability to create his or her personal web site, and to make data sets available through that web site. Additionally, the eScholarship series (http://escholarship.org/uc/bcoe) provides a ready-made resource for dissemination. Researchers can submit materials to the eScholarship series site, where it is automatically given an EZID persistent identifier. All material on the site is indexed on Google, Google Scholar, and Melvyl/WorldCat."
+    "text": "All principal investigators in BCOE are responsible for complying with sponsor policies regarding data management and accessibility. All have sufficient computing resources to store and process the data generated in their research. Every principal investigator has the ability to create his or her personal web site, and to make data sets available through that web site."
   },
   {
     "label": "content",
-    "text": "The California Digital Library also provides data backup services to avoid accidental loss of data. This partnership, which has resulted in the development of a new service that CDL can provide to other research organizations, makes our data widely available and searchable under the taxonomies, identifiers, and standards of universal data sharing systems envisioned for the near future (see Changing the Conduct of Science in the Information Age , NSF, June 2011)."
+    "text": "Additionally, the eScholarship series (http://escholarship.org/uc/bcoe) provides a ready-made resource for dissemination. Researchers can submit materials to the eScholarship series site, where it is automatically given an EZID persistent identifier."
+  },
+  {
+    "label": "content",
+    "text": "All material on the site is indexed on Google, Google Scholar, and Melvyl/WorldCat. The California Digital Library also provides data backup services to avoid accidental loss of data."
   },
   {
     "label": "section",
@@ -37,11 +41,11 @@
   },
   {
     "label": "content",
-    "text": "Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after its acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF guidelines."
+    "text": "Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after its acquisition."
   },
   {
     "label": "content",
-    "text": "The release of data about students or any other human subjects is subject to policies and restrictions in protocols adopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act (FERPA) regulations."
+    "text": "The data will be preserved for at least three years beyond the award period, as required by NSF guidelines."
   },
   {
     "label": "section",
@@ -49,15 +53,15 @@
   },
   {
     "label": "content",
-    "text": "The software will be made available in source code form and so will the applications developed. This will allow other researchers to so not only use it but also modify it for their use."
+    "text": "The software will be made available in source code form and so will the applications developed."
+  },
+  {
+    "label": "content",
+    "text": "This will allow other researchers to not only use it but also modify it for their use."
   },
   {
     "label": "content",
     "text": "All materials uploaded to the eScholarship site from UCR will be tagged uniformly with metadata about the source and nature of the data."
-  },
-  {
-    "label": "content",
-    "text": "Any electronic file format (e.g., text, spreadsheets, images) can be accepted. As a service to assure that materials are formatted correctly, a curator from the College reviews all submissions before they are accepted."
   },
   {
     "label": "section",
@@ -72,10 +76,6 @@
     "text": "As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property."
   },
   {
-    "label": "content",
-    "text": "Confidential material will be handled according to policies and protocols for human subjects, FERPA, and any other applicable regulations and restrictions."
-  },
-  {
     "label": "section",
     "text": "5. Derivative Products"
   },
@@ -86,10 +86,6 @@
   {
     "label": "content",
     "text": "Additionally, materials will contain a disclaimer that “ any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation .”"
-  },
-  {
-    "label": "content",
-    "text": "In keeping with standard ethical practices, it is expected that subsequent users of the data will acknowledge the source."
   },
   {
     "label": "section",
