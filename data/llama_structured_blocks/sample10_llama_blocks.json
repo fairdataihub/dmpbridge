@@ -13,11 +13,27 @@
   },
   {
     "label": "content",
-    "text": "Roles & Responsibilities."
+    "text": "The Bourns College of Engineering (BCOE) at UCR, in partnership with the UCR Libraries and the"
   },
   {
     "label": "content",
-    "text": "For the proposed research..."
+    "text": "California Digital Library, has established a new, custom data management system designed to make"
+  },
+  {
+    "label": "content",
+    "text": "results of our research readily and reliably accessible. This system combines two services of the"
+  },
+  {
+    "label": "content",
+    "text": "California Digital Library (CDL) for the first time: an eScholarship series, a curated site where all BCOE"
+  },
+  {
+    "label": "content",
+    "text": "investigators can store and disseminate their data, and EZID permanent identifiers for long-term"
+  },
+  {
+    "label": "content",
+    "text": "identification and management of data resources."
   },
   {
     "label": "section",
@@ -25,7 +41,27 @@
   },
   {
     "label": "content",
-    "text": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific community as necessary to validate research findings” be made available at little or no cost to the PI or project."
+    "text": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the"
+  },
+  {
+    "label": "content",
+    "text": "scientific community as necessary to validate research findings” be made available at little or no cost to"
+  },
+  {
+    "label": "content",
+    "text": "the PI or project. In accordance with this policy and guidance from the Office of Management and"
+  },
+  {
+    "label": "content",
+    "text": "Budget, this plan does not include preliminary analyses (including raw data), drafts of scientific papers,"
+  },
+  {
+    "label": "content",
+    "text": "plans for future research, peer reviews, or communications with colleagues. Data that must be withheld"
+  },
+  {
+    "label": "content",
+    "text": "long enough to enable peer review and publication/dissemination or protection of intellectual property is"
   },
   {
     "label": "section",
@@ -33,7 +69,23 @@
   },
   {
     "label": "content",
-    "text": "We will make the proposed nano-vesicles (NETs) available to interested investigators who would like to use them in their scientific research."
+    "text": "We will make the proposed nano-vesicles (NETs) available to interested investigators who would like to"
+  },
+  {
+    "label": "content",
+    "text": "use them in their scientific research. We will publish our results, and present them results in relevant"
+  },
+  {
+    "label": "content",
+    "text": "conferences, workshops, seminars, and teaching forums. Additionally, we will provide our results to any"
+  },
+  {
+    "label": "content",
+    "text": "national resources and or databases on nanoparticles that compile and maintain such information. As an"
+  },
+  {
+    "label": "content",
+    "text": "example, we will contribute to the nanotechnology information library (NIL)"
   },
   {
     "label": "section",
@@ -41,7 +93,23 @@
   },
   {
     "label": "content",
-    "text": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar."
+    "text": "Materials will be searchable through a number of databases and search engines, including Google and"
+  },
+  {
+    "label": "subsection",
+    "text": "Google Scholar."
+  },
+  {
+    "label": "content",
+    "text": "As noted in Section 2 (Scope), data will be made available only after appropriate steps"
+  },
+  {
+    "label": "content",
+    "text": "have been taken to protect intellectual property. Confidential material will be handled according to"
+  },
+  {
+    "label": "content",
+    "text": "policies and protocols for human subjects, FERPA, and any other applicable regulations and restrictions."
   },
   {
     "label": "section",
@@ -49,7 +117,11 @@
   },
   {
     "label": "content",
-    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “ This material is based upon work supported by the National Science Foundation under Grant No. (NSF grant number). ”"
+    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “ This material is based"
+  },
+  {
+    "label": "content",
+    "text": "upon work supported by the National Science Foundation under Grant No. (NSF grant number). ”"
   },
   {
     "label": "section",
@@ -57,6 +129,18 @@
   },
   {
     "label": "content",
-    "text": "It is understood that the NSF Engineering Directorate requires data to be made available for a minimum of three years after conclusion of the award or public release, whichever is later."
+    "text": "It is understood that the NSF Engineering Directorate requires data to be made available for a minimum"
+  },
+  {
+    "label": "content",
+    "text": "of three years after conclusion of the award or public release, whichever is later. If the PI leaves his"
+  },
+  {
+    "label": "content",
+    "text": "institution, the products will remain stored in relevant databases. PI is free to reproduce and repost these"
+  },
+  {
+    "label": "content",
+    "text": "materials at new institution."
   }
 ]

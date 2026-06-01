@@ -19,7 +19,7 @@ def build_llm_blocks_prompt(blocks_text: str) -> str:
     return f"""
 You are helping extract the existing narrative structure from a Data Management Plan.
 
-Your task is extraction only.
+Your task is EXTRACTION ONLY.
 
 Allowed labels:
 - document_title
@@ -34,18 +34,22 @@ Definitions:
 - content: body text, instruction text, guidance text, answer text, explanation, or paragraph text.
 
 Core extraction rules:
-1. Do not invent text.
-2. Do not infer hidden headings.
-3. Do not create new headings.
-4. Do not summarize text into headings.
-5. Do not rename headings.
-6. Do not use your own wording.
-7. Preserve original wording as much as possible.
-8. A section or subsection must appear explicitly in the input blocks.
-9. If unsure, label the text as "content".
+1. Do not omit content blocks. 
+2. Do not invent text.
+3. Do not infer hidden headings.
+4. Do not create new headings.
+5. Do not summarize text into headings.
+6. Do not rename headings.
+7. Do not use your own wording.
+8. Preserve original wording as much as possible.
+9. A section or subsection must appear explicitly in the input blocks.
 10. Do not include page numbers.
-11. Do not include markdown or explanation.
-12. Return only the block array.
+11. Return only the block array.
+
+Every input block with meaningful text must appear in the output either as document_title, section, subsection, or content.
+Do not skip body text.
+Do not compress multiple paragraphs into one short content block.
+Examples are illustrative only. Never copy example text unless it appears in the current input blocks.
 
 You are given PDFPlumber extracted blocks.
 Each block may include:
@@ -92,12 +96,7 @@ Use "content" for:
 - body text after a heading
 - body text after a prompt
 
-Do NOT label normal sentences as sections or subsections.
-
 Important negative rules:
-- Do not create headings like "Data Backup", "Data Protection", "Data Exclusions", "Data Management System", or "Software generated under the project" unless that exact heading appears as a heading in the input blocks.
-- Do not turn a sentence into a heading just because it introduces a topic.
-- Do not turn "Data will...", "We will...", "Software generated...", or "The proposed..." sentences into sections.
 - A paragraph should never become a section.
 - A paragraph should never become a subsection.
 

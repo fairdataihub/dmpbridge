@@ -53,11 +53,11 @@
   },
   {
     "label": "content",
-    "text": "Sufficient data from those datasets will be preserved to enable sharing to validate and replicate research"
+    "text": "(ii) The iWATCH study"
   },
   {
     "label": "content",
-    "text": "findings described in the Aims with those datasets only. Please see Element 5 for data access information"
+    "text": "(iii) NHANES cohorts"
   },
   {
     "label": "subsection",
@@ -69,7 +69,7 @@
   },
   {
     "label": "content",
-    "text": "project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep"
+    "text": "project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep,"
   },
   {
     "label": "content",
@@ -156,6 +156,14 @@
     "text": "We anticipate data being available for the foreseeable future"
   },
   {
+    "label": "content",
+    "text": "(minimum of at least 5 years) after the study has been completed. The University of California San Diego"
+  },
+  {
+    "label": "content",
+    "text": "Library repository does not currently have a limit on how long data can be stored."
+  },
+  {
     "label": "section",
     "text": "Element 5: Access, Distribution, or Reuse Considerations:"
   },
@@ -177,7 +185,23 @@
   },
   {
     "label": "content",
-    "text": "accelerometer sub-study such as data use agreements or approved publication proposals."
+    "text": "accelerometer sub-study such as data use agreements or approved publication proposals. We will be"
+  },
+  {
+    "label": "content",
+    "text": "securing the appropriate approvals from each institution to use their data for purposes of this study"
+  },
+  {
+    "label": "content",
+    "text": "including publications, but are unable to publicly share their data in our study data repository Researchers"
+  },
+  {
+    "label": "content",
+    "text": "who wish to use data from those studies will need to follow those studies data use protocols to inquire"
+  },
+  {
+    "label": "content",
+    "text": ": about using their data"
   },
   {
     "label": "subsection",
@@ -185,7 +209,15 @@
   },
   {
     "label": "content",
-    "text": "The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified."
+    "text": "The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It"
+  },
+  {
+    "label": "content",
+    "text": "will be deposited into the UC San Diego Library Data repository along with study protocols, code, and models"
+  },
+  {
+    "label": "content",
+    "text": "for public use. De-identified data will be available after the main outcome papers are published."
   },
   {
     "label": "section",
@@ -201,6 +233,26 @@
   },
   {
     "label": "content",
-    "text": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR."
+    "text": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The"
+  },
+  {
+    "label": "content",
+    "text": "PI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to"
+  },
+  {
+    "label": "content",
+    "text": "ensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once"
+  },
+  {
+    "label": "content",
+    "text": "the main outcome manuscript has been published. The Statistician/Data Manager will work closely with the"
+  },
+  {
+    "label": "content",
+    "text": "University of California San Diego Library repository manager to ensure that the datasets, protocols, and"
+  },
+  {
+    "label": "content",
+    "text": "code are correctly stored and available for sharing."
   }
 ]
