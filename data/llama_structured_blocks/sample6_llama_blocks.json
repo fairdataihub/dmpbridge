@@ -1,11 +1,11 @@
 [
   {
     "label": "document_title",
-    "text": "Data Management Plan"
+    "text": "Data Management Plan:"
   },
   {
     "label": "section",
-    "text": "Types of data."
+    "text": "1. Types of data."
   },
   {
     "label": "content",
@@ -13,7 +13,7 @@
   },
   {
     "label": "section",
-    "text": "Data and metadata standards."
+    "text": "2. Data and metadata standards."
   },
   {
     "label": "content",
@@ -21,7 +21,7 @@
   },
   {
     "label": "section",
-    "text": "Policies for access and sharing."
+    "text": "3. Policies for access and sharing."
   },
   {
     "label": "content",
@@ -29,7 +29,7 @@
   },
   {
     "label": "section",
-    "text": "Policies and provisions for re-use, re-distribution."
+    "text": "4. Policies and provisions for re-use, re-distribution."
   },
   {
     "label": "content",
@@ -37,7 +37,7 @@
   },
   {
     "label": "section",
-    "text": "Plans for archiving and preservation of access."
+    "text": "5. Plans for archiving and preservation of access."
   },
   {
     "label": "content",

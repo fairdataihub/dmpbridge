@@ -8,31 +8,59 @@
     "text": "The study investigators are committed to the open and timely dissemination of study data."
   },
   {
-    "label": "subsection",
+    "label": "content",
     "text": "The final datasets will include demographic and clinical assessment data obtained from interviews, questionnaires, and behavioral tasks collected from human subjects."
   },
   {
-    "label": "content",
-    "text": "The investigators will be fully compliant to the NIMH Data Archive (NDA) Data Sharing Terms and Conditions, including submitting and harmonizing all descriptive/raw data and analyzed data at the item and subject-level to the National Database for Clinical Trials (NDCT) according to the expected timeline (semi-annually, at the end of the grant or at the time of publication, whichever occurs first)."
-  },
-  {
-    "label": "subsection",
-    "text": "The investigators will include appropriate language in participant consent documents to allow for the data sharing through NDA, and complete all required paperwork related to the submission and sharing."
+    "label": "section",
+    "text": "The investigators will be fully compliant to the NIMH Data Archive (NDA) Data Sharing Terms and Conditions,"
   },
   {
     "label": "content",
-    "text": "The investigators will certify the quality of all data prior to submission and review the data for accuracy after submission. The investigators will also associate the submitted data in NDA with the findings/publications (both positive and negative) using NDA-provided features."
+    "text": "including submitting and harmonizing all descriptive/raw data and analyzed data at the item and subject-level to the National Database for Clinical Trials (NDCT) according to the expected timeline (semi-annually, at the end of the grant or at the time of publication, whichever occurs first)."
   },
   {
     "label": "content",
-    "text": "All submitted data will include an NDA Global Unique Identifier (GUID) and will not include personally identifiable information (PII)."
+    "text": "The investigators will include appropriate language in participant consent documents to allow for the data sharing through NDA,"
   },
   {
-    "label": "subsection",
+    "label": "content",
+    "text": "and complete all required paperwork related to the submission and sharing."
+  },
+  {
+    "label": "section",
+    "text": "The investigators will certify the quality of all data prior to submission"
+  },
+  {
+    "label": "content",
+    "text": "and review the data for accuracy after submission."
+  },
+  {
+    "label": "section",
+    "text": "The investigators will also associate the submitted data in NDA with the findings/publications (both positive and negative) using NDA-provided features."
+  },
+  {
+    "label": "content",
+    "text": "All submitted data will include an NDA Global Unique Identifier (GUID)"
+  },
+  {
+    "label": "content",
+    "text": "and will not include personally identifiable information (PII)."
+  },
+  {
+    "label": "section",
     "text": "The exception to the above is the audio recordings of the treatment sessions."
   },
   {
     "label": "content",
-    "text": "Even with the removal of all identifiers, we believe that it would be difficult if not impossible to protect the identities of participants given the voice characteristics of participants will be readily available and the relatively restricted area from which we are recruiting participants. Therefore, we are not planning to share this part of the data."
+    "text": "Even with the removal of all identifiers,"
+  },
+  {
+    "label": "content",
+    "text": "we believe that it would be difficult if not impossible to protect the identities of participants given the voice characteristics of participants will be readily available and the relatively restricted area from which we are recruiting participants."
+  },
+  {
+    "label": "content",
+    "text": "Therefore, we are not planning to share this part of the data."
   }
 ]

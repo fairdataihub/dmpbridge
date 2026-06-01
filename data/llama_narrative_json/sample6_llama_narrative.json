@@ -213,19 +213,19 @@
     "download_url": null,
     "template": {
       "id": 1,
-      "title": "Data Management Plan",
+      "title": "Data Management Plan:",
       "description": null,
       "version": null,
       "section": [
         {
           "id": 1,
-          "title": "Types of data.",
+          "title": "1. Types of data.",
           "description": null,
           "order": 1,
           "question": [
             {
               "id": 1,
-              "text": "Types of data.",
+              "text": "1. Types of data.",
               "order": 1,
               "answer": {
                 "id": 1,
@@ -242,13 +242,13 @@
         },
         {
           "id": 2,
-          "title": "Data and metadata standards.",
+          "title": "2. Data and metadata standards.",
           "description": null,
           "order": 2,
           "question": [
             {
               "id": 2,
-              "text": "Data and metadata standards.",
+              "text": "2. Data and metadata standards.",
               "order": 1,
               "answer": {
                 "id": 2,
@@ -265,13 +265,13 @@
         },
         {
           "id": 3,
-          "title": "Policies for access and sharing.",
+          "title": "3. Policies for access and sharing.",
           "description": null,
           "order": 3,
           "question": [
             {
               "id": 3,
-              "text": "Policies for access and sharing.",
+              "text": "3. Policies for access and sharing.",
               "order": 1,
               "answer": {
                 "id": 3,
@@ -288,13 +288,13 @@
         },
         {
           "id": 4,
-          "title": "Policies and provisions for re-use, re-distribution.",
+          "title": "4. Policies and provisions for re-use, re-distribution.",
           "description": null,
           "order": 4,
           "question": [
             {
               "id": 4,
-              "text": "Policies and provisions for re-use, re-distribution.",
+              "text": "4. Policies and provisions for re-use, re-distribution.",
               "order": 1,
               "answer": {
                 "id": 4,
@@ -311,13 +311,13 @@
         },
         {
           "id": 5,
-          "title": "Plans for archiving and preservation of access.",
+          "title": "5. Plans for archiving and preservation of access.",
           "description": null,
           "order": 5,
           "question": [
             {
               "id": 5,
-              "text": "Plans for archiving and preservation of access.",
+              "text": "5. Plans for archiving and preservation of access.",
               "order": 1,
               "answer": {
                 "id": 5,

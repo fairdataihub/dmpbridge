@@ -213,7 +213,7 @@
     "download_url": null,
     "template": {
       "id": 1,
-      "title": "CAREER: CAREER: HIGH-RESOLUTION HIGH-RESOLUTION NMR NMR FOR FOR PARAMAGNETIC PARAMAGNETIC SODIUM SODIUM ELECTRODES ELECTRODES",
+      "title": "CAREER: CAREER: HIGH-RESOLUTION HIGH-RESOLUTION NMR NMR FOR FOR PARAMAGNETIC PARAMAGNETIC SODIUM SODIUM",
       "description": null,
       "version": null,
       "section": [
@@ -234,7 +234,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "Battery material samples will be synthesized in powder form and identified through a consistent and systematic labeling procedure, which will include sample composition, name of researcher and date. Experimental data generated over the course of the research will include synthesis procedures and results from characterization of battery electrode samples."
+                  "answer": "Battery material samples will be synthesized in powder form and identified through a consistent and systematic labeling procedure, which will include sample composition, name of researcher and date.\nExperimental data generated over the course of the research will include synthesis procedures and results from characterization of battery electrode samples. Digital characterization data in tabular form will be produced by electrochemical testing, X-ray diffraction, solid-state NMR spectroscopy, EPR spectroscopy, magnetometry, impedance spectroscopy, X-ray photoelectron and absorption spectroscopy, and Mössbauer spectroscopy measurements.\nRietveld refinements of scattering data will generate crystallographic data. Scanning electron microscopy will generate images. Synthetic work and optimization of NMR experimental procedures will be documented in lab notebooks and generate physical data.\nThe Van der Ven group’s CASM software will be extended to enable the simulation of finite temperature NMR spectra of paramagnetic materials. First principles and Monte Carlo simulations will produce text files, density of states plots and two-dimensional charge density maps.\nEducational and outreach materials, and assessment results, will be digitized."
                 }
               }
             }
@@ -257,22 +257,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "In order to allow for interoperability, reproducibility, and reuse, all data will be stored and saved in standard and open formats. Experimental characterization data will be stored and saved as, e.g., ASCII, CSV, Word, Matlab and Python files."
-                }
-              }
-            },
-            {
-              "id": 3,
-              "text": "Crystallographic data",
-              "order": 2,
-              "answer": {
-                "id": 3,
-                "json": {
-                  "type": "textArea",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  },
-                  "answer": "Crystallographic data will be reported in standard crystallographic information framework (*.cif) format to facilitate visualization and further analysis through widely available software tools (VESTA, cif2file, etc.). Crystallographic data for previously-unreported compounds/structures will be uploaded to the ICSD database."
+                  "answer": "In order to allow for interoperability, reproducibility, and reuse, all data will be stored and saved in standard and open formats.\nExperimental characterization data will be stored and saved as, e.g., ASCII, CSV, Word, Matlab and Python files.\nMicroscope images will be stored as portable graphic files (.tif, .jpg or .png format).\nCrystallographic data will be reported in standard crystallographic information framework (*.cif) format to facilitate visualization and further analysis through widely available software tools (VESTA, cif2file, etc.).\nCrystallographic data for previously-unreported compounds/structures will be uploaded to the ICSD database.\nFirst principles simulation input and output files (generated with the VASP and CRYSTAL codes) will be stored as rich text format (*.rtf) files for readability across many programs and platforms.\nThe CRYSTAL code manual will be provided along CRYSTAL input/output data to allow for interpretation of variables. Both CRYSTAL and VASP manuals are also available online.\nThe Van der Ven group's CASM software currently interfaces with VASP, automates the construction of effective Hamiltonians and subjects them to Monte Carlo simulations.\nCASM organizes all the files associated with VASP calculations into a standard structure that can be accessed by subsequent runs of CASM, either by the same user or by a new user."
                 }
               }
             }
@@ -285,8 +270,31 @@
           "order": 3,
           "question": [
             {
-              "id": 4,
+              "id": 3,
               "text": "Access Access and and sharing sharing",
+              "order": 1,
+              "answer": {
+                "id": 3,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in partnership with Jamboree Housing (JH) will be uploaded to JH’s filesharing system for broad and free dissemination to their different centers and partners in California.\nAll of the research results will be disseminated through peer-reviewed publications, conference presentations, and annual reports.\nThe supporting information accompanying publications will include detailed experimental/simulation/synthetic procedures, as well as detailed information on models used for data analysis.\nAll of the journals of interest to the group make supporting information files publicly-available online free of charge. In addition, all publication pre-prints will be made freely available, along with supplementary information, on the UC eScholarship website."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Over the course of the project, digital data will be internally stored and shared for collaborative work",
+          "description": null,
+          "order": 4,
+          "question": [
+            {
+              "id": 4,
+              "text": "Over the course of the project, digital data will be internally stored and shared for collaborative work",
               "order": 1,
               "answer": {
                 "id": 4,
@@ -295,21 +303,21 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in partnership with Jamboree Housing (JH) will be uploaded to JH’s filesharing system for broad and free dissemination to their different centers and partners in California."
+                  "answer": "on the UCSB-administered, Box platform with unlimited cloud storage. The privacy, security and intellectual property protection of data stored in this manner are guaranteed by the privacy policy and terms of service contract between University of California and Box."
                 }
               }
             }
           ]
         },
         {
-          "id": 4,
-          "title": "Policies Policies and and provisions provisions for for re-use, re-use, re-distribution, re-distribution, and and production production of of derivatives derivatives",
+          "id": 5,
+          "title": "The supporting information accompanying publications will include detailed experimental/simulation/synthetic procedures, as well as detailed information on models used for data analysis.",
           "description": null,
-          "order": 4,
+          "order": 5,
           "question": [
             {
               "id": 5,
-              "text": "Policies Policies and and provisions provisions for for re-use, re-use, re-distribution, re-distribution, and and production production of of derivatives derivatives",
+              "text": "The supporting information accompanying publications will include detailed experimental/simulation/synthetic procedures, as well as detailed information on models used for data analysis.",
               "order": 1,
               "answer": {
                 "id": 5,
@@ -318,21 +326,21 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "All data will be stored in Dryad and will be available under a public domain, creative commons license (CC0). Note that while a personal ORCID is needed to deposit data in Dryad, no ORCID is required to search, find and download datasets."
+                  "answer": "All of the journals of interest to the group make supporting information files publicly-available online free of charge. In addition, all publication pre-prints will be made freely available, along with supplementary information, on the UC eScholarship website."
                 }
               }
             }
           ]
         },
         {
-          "id": 5,
-          "title": "Archiving Archiving of of Data, Data, Samples, Samples, and and Other Other Relevant Relevant Research Research Products Products",
+          "id": 6,
+          "title": "Access Access and and sharing sharing",
           "description": null,
-          "order": 5,
+          "order": 6,
           "question": [
             {
               "id": 6,
-              "text": "Archiving Archiving of of Data, Data, Samples, Samples, and and Other Other Relevant Relevant Research Research Products Products",
+              "text": "Access Access and and sharing sharing",
               "order": 1,
               "answer": {
                 "id": 6,
@@ -341,7 +349,122 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "Laboratory notebooks and samples will be retained for a minimum of 5 years following the conclusion of the program and will remain the property of UC Santa Barbara and kept on campus after students graduate."
+                  "answer": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in partnership with Jamboree Housing (JH) will be uploaded to JH’s filesharing system for broad and free dissemination to their different centers and partners in California.\nAll of the research results will be disseminated through peer-reviewed publications, conference presentations, and annual reports."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Over the course of the project, digital data will be internally stored and shared for collaborative work",
+          "description": null,
+          "order": 7,
+          "question": [
+            {
+              "id": 7,
+              "text": "Over the course of the project, digital data will be internally stored and shared for collaborative work",
+              "order": 1,
+              "answer": {
+                "id": 7,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "on the UCSB-administered, Box platform with unlimited cloud storage. The privacy, security and intellectual property protection of data stored in this manner are guaranteed by the privacy policy and terms of service contract between University of California and Box."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Access Access and and sharing sharing",
+          "description": null,
+          "order": 8,
+          "question": [
+            {
+              "id": 8,
+              "text": "Access Access and and sharing sharing",
+              "order": 1,
+              "answer": {
+                "id": 8,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in partnership with Jamboree Housing (JH) will be uploaded to JH’s filesharing system for broad and free dissemination to their different centers and partners in California.\nAll of the research results will be disseminated through peer-reviewed publications, conference presentations, and annual reports."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "title": "Over the course of the project, digital data will be internally stored and shared for collaborative work",
+          "description": null,
+          "order": 9,
+          "question": [
+            {
+              "id": 9,
+              "text": "Over the course of the project, digital data will be internally stored and shared for collaborative work",
+              "order": 1,
+              "answer": {
+                "id": 9,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "on the UCSB-administered, Box platform with unlimited cloud storage. The privacy, security and intellectual property protection of data stored in this manner are guaranteed by the privacy policy and terms of service contract between University of California and Box."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "title": "Policies Policies and and provisions provisions for for re-use, re-use, re-distribution, re-distribution, and and production production of of derivatives derivatives",
+          "description": null,
+          "order": 10,
+          "question": [
+            {
+              "id": 10,
+              "text": "Policies Policies and and provisions provisions for for re-use, re-use, re-distribution, re-distribution, and and production production of of derivatives derivatives",
+              "order": 1,
+              "answer": {
+                "id": 10,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "All data will be stored in Dryad and will be available under a public domain, creative commons license (CC0). Note that while a personal ORCID is needed to deposit data in Dryad, no ORCID is required to search, find and download datasets.\nThe existing open source software infrastructure within CASM that serves as a foundation to this project, is already licensed by the Regents of the University of California under the ``LGPL'' open source license, and distributed via the prisms-center conda channel, permitting non-exclusive use of the software.\nAdditions to CASM will be released as LGPL to follow the current licensing of CASM."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "title": "Archiving Archiving of of Data, Data, Samples, Samples, and and Other Other Relevant Relevant Research Research Products Products",
+          "description": null,
+          "order": 11,
+          "question": [
+            {
+              "id": 11,
+              "text": "Archiving Archiving of of Data, Data, Samples, Samples, and and Other Other Relevant Relevant Research Research Products Products",
+              "order": 1,
+              "answer": {
+                "id": 11,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Laboratory notebooks and samples will be retained for a minimum of 5 years following the conclusion of the program and will remain the property of UC Santa Barbara and kept on campus after students graduate.\nAll digital data produced over the course of the project and stored on Box will be moved to Dryad after completion of the project for indefinite storage (>5 years)."
                 }
               }
             }

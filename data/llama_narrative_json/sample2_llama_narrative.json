@@ -213,7 +213,7 @@
     "download_url": null,
     "template": {
       "id": 1,
-      "title": "Data Management Plan",
+      "title": "Center for Bio-Inspired Energy Science",
       "description": null,
       "version": null,
       "section": [
@@ -225,7 +225,7 @@
           "question": [
             {
               "id": 1,
-              "text": "Data management plans should describe whether and how data generated in the course of the proposed research will be shared and preserved.",
+              "text": "1. Data sharing and preservation",
               "order": 1,
               "answer": {
                 "id": 1,
@@ -234,7 +234,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "If the plan is not to share and/or preserve certain data, then the plan must explain the basis of the decision (for example, cost/benefit considerations, other parameters of feasibility, scientific appropriateness, or limitations discussed in #4). At a minimum, DMPs must describe how data sharing and preservation will enable validation of results, or how results could be validated if data are not shared or preserved."
+                  "answer": "Data management plans should describe whether and how data generated in the course of the proposed research will be shared and preserved. If the plan is not to share and/or preserve certain data, then the plan must explain the basis of the decision (for example, cost/benefit considerations, other parameters of feasibility, scientific appropriateness, or limitations discussed in #4). At a minimum, DMPs must describe how data sharing and preservation will enable validation of results, or how results could be validated if data are not shared or preserved."
                 }
               }
             }
@@ -257,7 +257,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "Director Samuel Stupp with help from the Executive Director of Research will take the lead and responsibility for coordinating and ensuring data storage and access and communicating expectations to all investigators. However, all senior investigators will also be involved in managing, storing, and disseminating the results of the project and will be responsible for checking that the plan is being followed."
+                  "answer": "For the proposed research, Director Samuel Stupp with help from the Executive Director of Research will take the lead and responsibility for coordinating and ensuring data storage and access and communicating expectations to all investigators. However, all senior investigators will also be involved in managing, storing, and disseminating the results of the project and will be responsible for checking that the plan is being followed."
                 }
               }
             }
@@ -265,16 +265,276 @@
         },
         {
           "id": 3,
-          "title": "2. Data used in publications",
+          "title": "Data Types and Sources",
           "description": null,
           "order": 3,
           "question": [
             {
               "id": 3,
-              "text": "2. Data used in publications",
+              "text": "Data Types and Sources",
               "order": 1,
               "answer": {
                 "id": 3,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "A brief, high-level description of the data to be generated or used through the course of the proposed research and which of these are considered Digital Research Data necessary to Validate the research findings."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "The proposed research in this proposal includes both computational and experimental data that will be generated at Northwestern University and its five partner institutions (Columbia University, Harvard University, University of Michigan, and University of Pittsburgh).",
+          "description": null,
+          "order": 4,
+          "question": [
+            {
+              "id": 4,
+              "text": "The proposed research in this proposal includes both computational and experimental data that will be generated at Northwestern University and its five partner institutions (Columbia University, Harvard University, University of Michigan, and University of Pittsburgh).",
+              "order": 1,
+              "answer": {
+                "id": 4,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "The computational data includes coarse-grained and atomistic simulations, finite element analysis, etc., which yield trajectories or ensembles of configurations. The experimental data is generated by a variety of different sources include spectroscopy, microscopy, crystallography, magnetic measurements, and X-ray scattering (from the Advanced Photon Source at Argonne National Lab)."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "title": "In most cases, the raw data will be converted to some other format (graph, table, schematic, video, etc.) prior to use in publications, conference talks, etc.",
+          "description": null,
+          "order": 5,
+          "question": [
+            {
+              "id": 5,
+              "text": "In most cases, the raw data will be converted to some other format (graph, table, schematic, video, etc.) prior to use in publications, conference talks, etc.",
+              "order": 1,
+              "answer": {
+                "id": 5,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Content and Format. A statement of plans for data and metadata content and format including, where applicable, a description of documentation plans, annotation of relevant software, and the rationale for the selection of appropriate standards. (Existing, accepted community standards should be used where possible. Where community standards are missing or inadequate, the DMP could propose alternate strategies that facilitate data sharing, and should advise the sponsoring program of any need to develop or generalize standards.)"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "title": "Data are output from the various instruments in lab in formats, which are occasionally proprietary.",
+          "description": null,
+          "order": 6,
+          "question": [
+            {
+              "id": 6,
+              "text": "Data are output from the various instruments in lab in formats, which are occasionally proprietary.",
+              "order": 1,
+              "answer": {
+                "id": 6,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "When possible, the data are converted to comma delimited or other universally accessible formats. If the format is not comma delimited, all instruments can export into a format compatible with common software such as Microsoft Excel, OriginPro, Shelx, etc. Files are typically stored electronically on group servers with file names that are related to lab notebook pages."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Data sharing and preservation will enable validation of results by enabling students to repeat synthetic preps and data analysis.",
+          "description": null,
+          "order": 7,
+          "question": [
+            {
+              "id": 7,
+              "text": "Data sharing and preservation will enable validation of results by enabling students to repeat synthetic preps and data analysis.",
+              "order": 1,
+              "answer": {
+                "id": 7,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Every piece of data fitting including the equations used to fit the data are backed up on local group servers or to secure cloud services. This enables validation through equation checking, reproducing data and analyses."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Binary data files will be accompanied by a text file describing their content and by source code for reading the binary format.",
+          "description": null,
+          "order": 8,
+          "question": [
+            {
+              "id": 8,
+              "text": "Binary data files will be accompanied by a text file describing their content and by source code for reading the binary format.",
+              "order": 1,
+              "answer": {
+                "id": 8,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "The video will be encoded following standard conventions readable by the majority of widely and freely available video decoding programs. Lossless compression of the data files may be performed on large data sets."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "title": "Public talks and outreach activities will generate audio and video files (.mpeg, .avi etc) and is expected to be less than XX GB.",
+          "description": null,
+          "order": 9,
+          "question": [
+            {
+              "id": 9,
+              "text": "Public talks and outreach activities will generate audio and video files (.mpeg, .avi etc) and is expected to be less than XX GB.",
+              "order": 1,
+              "answer": {
+                "id": 9,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Experimental techniques will generate text and Microsoft Office files and videos that are expected to be less than XX GB."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "title": "Data Sharing and Data Preservation",
+          "description": null,
+          "order": 10,
+          "question": [
+            {
+              "id": 10,
+              "text": "Data Sharing and Data Preservation",
+              "order": 1,
+              "answer": {
+                "id": 10,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "A description of the plans for data sharing and preservation. This should include, where appropriate: the anticipated means for sharing and rationale for any restrictions on who may access the data and under what conditions; a timeline for sharing and preservation that addresses both the minimum length of time the data will be available and any anticipated delay to data access after research findings are published; any special requirements for data sharing, for example, proprietary software needed to access or interpret data, applicable policies, provisions, and licenses for re-use and re-distribution, and for the production of derivatives, including guidance for how data and data products should be cited; any resources and capabilities (equipment, connections, systems, software, expertise, etc.) requested in the research proposal that are needed to meet the stated goals for sharing and preservation. (This could reference the relevant section of the associated research proposal and budget request); cost/benefit considerations to support whether/where the data will be preserved after direct project funding ends and any plans for the transfer of responsibilities for sharing and preservation; whether, when, or under what conditions the management responsibility for the research data will be transferred to a third party (e.g. institutional, or community repository); any future decision points regarding the management of the research data including plans to reevaluate the costs and benefits of data sharing and preservation.\nAll data pertaining to any published work will be made available to any person on request. Numerical published data as well as the original raw data files will be freely accessible either as supplementary data files included with published papers, or as files posted on the web sites of the laboratories in the Center.\nAdditional data or programs required by third parties will be provided on request. Data that may support intellectual property claims will be published only after we seek advice from the Northwestern Innovation and New Ventures Office (INVO). Such advice will be sought in a timely manner.\nOtherwise, there are no restrictions on who will be allowed to use the data generated after publishing is complete, provided that the requester acknowledges the original work. A requester can use data output of our work, provided guidelines by the publisher for use of published data are followed."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "title": "Electronic files are stored on secure servers hosted by the individual research groups and safeguarded by automated backup systems and/or backups to off-site servers maintained by their institution.",
+          "description": null,
+          "order": 11,
+          "question": [
+            {
+              "id": 11,
+              "text": "Electronic files are stored on secure servers hosted by the individual research groups and safeguarded by automated backup systems and/or backups to off-site servers maintained by their institution.",
+              "order": 1,
+              "answer": {
+                "id": 11,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "We project that all of these systems will be in place for at least 10 years. All non-electronic data including detailed experimental procedures and observations are recorded in laboratory notebooks that do not leave the senior investigator's lab."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Data will also be deposited into Northwestern Libraries’ institutional repository, Arch, upon publication.",
+          "description": null,
+          "order": 12,
+          "question": [
+            {
+              "id": 12,
+              "text": "Data will also be deposited into Northwestern Libraries’ institutional repository, Arch, upon publication.",
+              "order": 1,
+              "answer": {
+                "id": 12,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "https://arch.library.northwestern.edu/ Arch assigns DOIs, making it easy to find the data. Necessary metadata and other resources to make the data accessible to future users will be submitted. Arch will preserve the data for future use."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "title": "External investigators may choose to instead archive their data with similar repositories provided by the partner institution (such as Academic Commons at Columbia University, D-Scholarship@Pitt at the University of Pittsburgh, and Harvard University Archives).",
+          "description": null,
+          "order": 13,
+          "question": []
+        },
+        {
+          "id": 14,
+          "title": "Rationale",
+          "description": null,
+          "order": 14,
+          "question": [
+            {
+              "id": 13,
+              "text": "Rationale",
+              "order": 1,
+              "answer": {
+                "id": 13,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "A discussion of the rationale or justification for the proposed data management plan including, for example, the potential impact of the data within the immediate field and in other fields, and any broader societal impact.\nThe Department of Energy stipulates in their 'Statement on Digital Data Management' that 'To the greatest extent and with the fewest constraints possible, and consistent with the requirements and other principles of this Statement, data sharing should make digital research data available to and useful for the scientific community, industry, and the public.' The Center will make every effort to comply with these guidelines."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "title": "2. Data used in publications",
+          "description": null,
+          "order": 15,
+          "question": [
+            {
+              "id": 14,
+              "text": "2. Data used in publications",
+              "order": 1,
+              "answer": {
+                "id": 14,
                 "json": {
                   "type": "textArea",
                   "meta": {
@@ -287,46 +547,329 @@
           ]
         },
         {
-          "id": 4,
-          "title": "3. Data management resources",
+          "id": 16,
+          "title": "This includes data that are displayed in charts, figures, images, etc. In addition, the underlying digital research data used to generate the displayed data should be made as accessible as possible to the public in accordance with the Principles published in the DOE Policy for Digital Research Data Management.",
           "description": null,
-          "order": 4,
+          "order": 16,
           "question": [
             {
-              "id": 4,
-              "text": "3. Data management resources",
+              "id": 15,
+              "text": "This includes data that are displayed in charts, figures, images, etc. In addition, the underlying digital research data used to generate the displayed data should be made as accessible as possible to the public in accordance with the Principles published in the DOE Policy for Digital Research Data Management.",
               "order": 1,
               "answer": {
-                "id": 4,
+                "id": 15,
                 "json": {
                   "type": "textArea",
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "DMPs should consult and reference available information about data management resources to be used in the course of the proposed research."
+                  "answer": "The published article should indicate how these data can be accessed. Research conducted within the Center will be published in appropriate scientific journals.\nThe publisher may restrict the redistribution of that data. When not prohibitively expensive, open access will be selected."
                 }
               }
             }
           ]
         },
         {
-          "id": 5,
-          "title": "4. Confidentiality, security and rights",
+          "id": 17,
+          "title": "This will be supplemented by publishing the data in a preprint repository such as the arXiv subsequent to peer-reviewed publication if possible.",
           "description": null,
-          "order": 5,
+          "order": 17,
           "question": [
             {
-              "id": 5,
-              "text": "4. Confidentiality, security and rights",
+              "id": 16,
+              "text": "This will be supplemented by publishing the data in a preprint repository such as the arXiv subsequent to peer-reviewed publication if possible.",
               "order": 1,
               "answer": {
-                "id": 5,
+                "id": 16,
                 "json": {
                   "type": "textArea",
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "Data management plans must protect confidentiality, personal privacy, Personally Identifiable Information and U.S. national, homeland, and economic security; recognize proprietary interests, business confidential information, and intellectual property rights;"
+                  "answer": "All publishers we previously worked with allow arXiv publication or open access, so we do not anticipate a problem. Crystallographic data will be deposited into the ICSD or the CCDC databases for broad access.\nData will also be disseminated through seminars at conferences and at other academic institutions."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "title": "Raw data files can be provided to others upon request, but will be limited to their personal use only and cannot be redistributed without written consent from the PI.",
+          "description": null,
+          "order": 18,
+          "question": [
+            {
+              "id": 17,
+              "text": "Raw data files can be provided to others upon request, but will be limited to their personal use only and cannot be redistributed without written consent from the PI.",
+              "order": 1,
+              "answer": {
+                "id": 17,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Access to data and results prior to publication or file for intellectual property is provided to all personnel involved in the project, after publication or filing for provisional patents, the data will be in the public domain and any further data will be provided to the community upon request or through appropriate websites (i.e. lab web sites)."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "title": "All of the fabrication methods, characterization results, and data acquired through the proposed research towards the development of the bioactive platforms will be shared with others through publication in conferences and journals.",
+          "description": null,
+          "order": 19,
+          "question": []
+        },
+        {
+          "id": 20,
+          "title": "3. Data management resources",
+          "description": null,
+          "order": 20,
+          "question": [
+            {
+              "id": 18,
+              "text": "3. Data management resources",
+              "order": 1,
+              "answer": {
+                "id": 18,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Data management plans should consult and reference available information about data management resources to be used in the course of the proposed research.\nIn particular, DMPs that explicitly or implicitly commit data management resources at a facility beyond what is conventionally made available to approved users should be accompanied by written approval from that facility."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "title": "In determining the resources available for data management at DOE Scientific User Facilities, researchers should consult the published description of data management resources and practices at that facility and reference it in the DMP.",
+          "description": null,
+          "order": 21,
+          "question": [
+            {
+              "id": 19,
+              "text": "In determining the resources available for data management at DOE Scientific User Facilities, researchers should consult the published description of data management resources and practices at that facility and reference it in the DMP.",
+              "order": 1,
+              "answer": {
+                "id": 19,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Information about other Office of Science facilities can be found in the additional guidance from the sponsoring program."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "title": "DMPs should consult and reference available information about data management resources to be used in the course of the proposed research.",
+          "description": null,
+          "order": 22,
+          "question": [
+            {
+              "id": 20,
+              "text": "DMPs should consult and reference available information about data management resources to be used in the course of the proposed research.",
+              "order": 1,
+              "answer": {
+                "id": 20,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "In particular, DMPs that explicitly or implicitly commit data management resources at a facility beyond what is conventionally made available to approved users should be accompanied by written approval from that facility."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "title": "In determining the resources available for data management at Office of Science User Facilities, researchers should consult the published description of data management resources and practices at that facility and reference it in the DMP.",
+          "description": null,
+          "order": 23,
+          "question": [
+            {
+              "id": 21,
+              "text": "In determining the resources available for data management at Office of Science User Facilities, researchers should consult the published description of data management resources and practices at that facility and reference it in the DMP.",
+              "order": 1,
+              "answer": {
+                "id": 21,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Information about other Office of Science facilities can be found in the additional guidance from the sponsoring program."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "title": "Data Repositories",
+          "description": null,
+          "order": 24,
+          "question": [
+            {
+              "id": 22,
+              "text": "Data Repositories",
+              "order": 1,
+              "answer": {
+                "id": 22,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Senior investigators typically archive relevant data using their own group servers. Whenever possible, investigators will be encouraged to also copy data to a centralized data server for CBES investigators.\nAdditionally, researchers can archive data on repositories at their home institutions."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "title": "For example, researchers at Northwestern are encouraged to deposit data into Northwestern Libraries’ institutional repository, Arch, upon publication",
+          "description": null,
+          "order": 25,
+          "question": [
+            {
+              "id": 23,
+              "text": "For example, researchers at Northwestern are encouraged to deposit data into Northwestern Libraries’ institutional repository, Arch, upon publication",
+              "order": 1,
+              "answer": {
+                "id": 23,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "https://arch.library.northwestern.edu/ Arch assigns DOIs, making it easy to find the data. Necessary metadata and other resources to make the data accessible to future users will be submitted."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "title": "Arch will preserve the data for future use.",
+          "description": null,
+          "order": 26,
+          "question": [
+            {
+              "id": 24,
+              "text": "Arch will preserve the data for future use.",
+              "order": 1,
+              "answer": {
+                "id": 24,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "External investigators may choose to instead archive their data with similar repositories provided by the partner institution (such as Academic Commons at Columbia University, D-Scholarship@Pitt at the University of Pittsburgh, and Harvard University Archives)."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "title": "Data Volume",
+          "description": null,
+          "order": 27,
+          "question": [
+            {
+              "id": 25,
+              "text": "Data Volume",
+              "order": 1,
+              "answer": {
+                "id": 25,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Generally, the volume of data generated by CBES researchers should not prohibit their deposition in available repositories.\nHowever, in cases where large volumes of data are generated (e.g., temperature/time dependent microscopy or X-ray studies), the data may need to be averaged, condensed, or minimally processed prior to deposition."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "title": "4. Confidentiality, security and rights",
+          "description": null,
+          "order": 28,
+          "question": [
+            {
+              "id": 26,
+              "text": "4. Confidentiality, security and rights",
+              "order": 1,
+              "answer": {
+                "id": 26,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Data management plans must protect confidentiality, personal privacy, Personally Identifiable Information and U.S. national, homeland, and economic security; recognize proprietary interests, business confidential information, and intellectual property rights;\navoid significant negative impact on innovation and U.S. competitiveness; and otherwise be consistent with all applicable laws, regulations, agreement terms and conditions, and DOE orders and policies."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "title": "There is no requirement to share proprietary data.",
+          "description": null,
+          "order": 29,
+          "question": [
+            {
+              "id": 27,
+              "text": "There is no requirement to share proprietary data.",
+              "order": 1,
+              "answer": {
+                "id": 27,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Data that may support intellectual property claims will be published only after we seek advice from the Northwestern Innovation and New Ventures Office (INVO). Such advice will be sought in a timely manner."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "title": "The proposed research does not include the collection of any confidential personal information.",
+          "description": null,
+          "order": 30,
+          "question": [
+            {
+              "id": 28,
+              "text": "The proposed research does not include the collection of any confidential personal information.",
+              "order": 1,
+              "answer": {
+                "id": 28,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "The Director, the Executive Director for Research, and the Executive Committee will regularly review polices for data storage to ensure accessibility and security of CBES research data."
                 }
               }
             }

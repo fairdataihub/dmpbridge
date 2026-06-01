@@ -234,22 +234,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "The proposal is separated into three sections. Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls."
-                }
-              }
-            },
-            {
-              "id": 2,
-              "text": "Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale.",
-              "order": 2,
-              "answer": {
-                "id": 2,
-                "json": {
-                  "type": "textArea",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  },
-                  "answer": "Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops."
+                  "answer": "The proposal is separated into three sections.\nSection 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls.\nSection 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale.\nSection 2.3 integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops."
                 }
               }
             }
@@ -262,41 +247,34 @@
           "order": 2,
           "question": [
             {
-              "id": 3,
+              "id": 2,
               "text": "TYPES OF DATA",
               "order": 1,
               "answer": {
+                "id": 2,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing.\nThe project will result in new sets of data, code, and tools. These outputs include: (a) source code to quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and (c) sharable instructional materials (Scientist Spotlight activities and workshop materials).\nInput data: Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files.\nA multi-tier storage and quality assurance methodology will be adopted and will likely evolve as new datasets provide for challenging formats and organization."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "PRODUCED DATA",
+          "description": null,
+          "order": 3,
+          "question": [
+            {
+              "id": 3,
+              "text": "PRODUCED DATA",
+              "order": 1,
+              "answer": {
                 "id": 3,
-                "json": {
-                  "type": "textArea",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  },
-                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing."
-                }
-              }
-            },
-            {
-              "id": 4,
-              "text": "Input data:",
-              "order": 2,
-              "answer": {
-                "id": 4,
-                "json": {
-                  "type": "textArea",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  },
-                  "answer": "Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files."
-                }
-              }
-            },
-            {
-              "id": 5,
-              "text": "Produced Data:",
-              "order": 3,
-              "answer": {
-                "id": 5,
                 "json": {
                   "type": "textArea",
                   "meta": {
@@ -309,61 +287,23 @@
           ]
         },
         {
-          "id": 3,
-          "title": "DATA AND METADATA STANDARDS",
-          "description": null,
-          "order": 3,
-          "question": [
-            {
-              "id": 6,
-              "text": "DATA AND METADATA STANDARDS",
-              "order": 1,
-              "answer": {
-                "id": 6,
-                "json": {
-                  "type": "textArea",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  },
-                  "answer": "The data will be shared along with a README.txt, which will describe all files, their relationships, naming conventions, etc. Data elements and attributes will be described following ISO 19115 specifications and metadata schema and standards in Hydrology (e.g., following any establish standards of the Water Information Coordination Program’s Open Water Data Initiative (Larsen et al., 2016)) to allow for better interpretability and interoperability."
-                }
-              }
-            }
-          ]
-        },
-        {
           "id": 4,
-          "title": "POLICIES FOR ACCESS AND SHARING",
+          "title": "DATA AND METADATA STANDARDS",
           "description": null,
           "order": 4,
           "question": [
             {
-              "id": 7,
-              "text": "POLICIES FOR ACCESS AND SHARING",
+              "id": 4,
+              "text": "DATA AND METADATA STANDARDS",
               "order": 1,
               "answer": {
-                "id": 7,
+                "id": 4,
                 "json": {
                   "type": "textArea",
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "Raw data: Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors."
-                }
-              }
-            },
-            {
-              "id": 8,
-              "text": "Scripts and code for analyses:",
-              "order": 2,
-              "answer": {
-                "id": 8,
-                "json": {
-                  "type": "textArea",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  },
-                  "answer": "All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes."
+                  "answer": "The data will be shared along with a README.txt, which will describe all files, their relationships, naming conventions, etc.\nData elements and attributes will be described following ISO 19115 specifications and metadata schema and standards in Hydrology (e.g., following any establish standards of the Water Information Coordination Program’s Open Water Data Initiative (Larsen et al., 2016)) to allow for better interpretability and interoperability.\nCode and scripts produced in R and/or python will be documented for reproducibility purposes."
                 }
               }
             }
@@ -371,16 +311,39 @@
         },
         {
           "id": 5,
-          "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+          "title": "POLICIES FOR ACCESS AND SHARING",
           "description": null,
           "order": 5,
           "question": [
             {
-              "id": 9,
+              "id": 5,
+              "text": "POLICIES FOR ACCESS AND SHARING",
+              "order": 1,
+              "answer": {
+                "id": 5,
+                "json": {
+                  "type": "textArea",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  },
+                  "answer": "Raw data: Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors.\nAll methodological procedures for data quality control and aggregation will be described in the data documentation."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+          "description": null,
+          "order": 6,
+          "question": [
+            {
+              "id": 6,
               "text": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
               "order": 1,
               "answer": {
-                "id": 9,
+                "id": 6,
                 "json": {
                   "type": "textArea",
                   "meta": {
@@ -393,23 +356,23 @@
           ]
         },
         {
-          "id": 6,
+          "id": 7,
           "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
           "description": null,
-          "order": 6,
+          "order": 7,
           "question": [
             {
-              "id": 10,
+              "id": 7,
               "text": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
               "order": 1,
               "answer": {
-                "id": 10,
+                "id": 7,
                 "json": {
                   "type": "textArea",
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing."
+                  "answer": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing.\nBox provides encryption of data at rest and in-transit, detailed logging of file actions, two-factor authentication, and access review of collaborators."
                 }
               }
             }

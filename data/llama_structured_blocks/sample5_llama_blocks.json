@@ -9,10 +9,14 @@
   },
   {
     "label": "content",
-    "text": "The proposal is separated into three sections. Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls."
+    "text": "The proposal is separated into three sections."
   },
   {
-    "label": "subsection",
+    "label": "content",
+    "text": "Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls."
+  },
+  {
+    "label": "content",
     "text": "Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale."
   },
   {
@@ -28,16 +32,20 @@
     "text": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing."
   },
   {
-    "label": "subsection",
-    "text": "Input data:"
+    "label": "content",
+    "text": "The project will result in new sets of data, code, and tools. These outputs include: (a) source code to quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and (c) sharable instructional materials (Scientist Spotlight activities and workshop materials)."
   },
   {
     "label": "content",
-    "text": "Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files."
+    "text": "Input data: Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files."
   },
   {
-    "label": "subsection",
-    "text": "Produced Data:"
+    "label": "content",
+    "text": "A multi-tier storage and quality assurance methodology will be adopted and will likely evolve as new datasets provide for challenging formats and organization."
+  },
+  {
+    "label": "section",
+    "text": "PRODUCED DATA"
   },
   {
     "label": "content",
@@ -49,7 +57,15 @@
   },
   {
     "label": "content",
-    "text": "The data will be shared along with a README.txt, which will describe all files, their relationships, naming conventions, etc. Data elements and attributes will be described following ISO 19115 specifications and metadata schema and standards in Hydrology (e.g., following any establish standards of the Water Information Coordination Program’s Open Water Data Initiative (Larsen et al., 2016)) to allow for better interpretability and interoperability."
+    "text": "The data will be shared along with a README.txt, which will describe all files, their relationships, naming conventions, etc."
+  },
+  {
+    "label": "content",
+    "text": "Data elements and attributes will be described following ISO 19115 specifications and metadata schema and standards in Hydrology (e.g., following any establish standards of the Water Information Coordination Program’s Open Water Data Initiative (Larsen et al., 2016)) to allow for better interpretability and interoperability."
+  },
+  {
+    "label": "content",
+    "text": "Code and scripts produced in R and/or python will be documented for reproducibility purposes."
   },
   {
     "label": "section",
@@ -60,12 +76,8 @@
     "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors."
   },
   {
-    "label": "subsection",
-    "text": "Scripts and code for analyses:"
-  },
-  {
     "label": "content",
-    "text": "All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes."
+    "text": "All methodological procedures for data quality control and aggregation will be described in the data documentation."
   },
   {
     "label": "section",
@@ -82,5 +94,9 @@
   {
     "label": "content",
     "text": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing."
+  },
+  {
+    "label": "content",
+    "text": "Box provides encryption of data at rest and in-transit, detailed logging of file actions, two-factor authentication, and access review of collaborators."
   }
 ]

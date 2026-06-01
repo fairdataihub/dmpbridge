@@ -12,16 +12,12 @@
     "text": "The Bourns College of Engineering (BCOE) at the University of California, Riverside , in partnership with the UCR Libraries and the California Digital Library, has established a new, custom data management system designed to make results of our research readily and reliably accessible. This system combines two services of the California Digital Library for the first time: an eScholarship series, a curated site where all BCOE investigators can store and disseminate their data, and EZID permanent identifiers for long-term identification and management of data resources."
   },
   {
-    "label": "subsection",
-    "text": "All principal investigators in BCOE are responsible for complying with sponsor policies regarding data management and accessibility. All have sufficient computing resources to store and process the data generated in their research."
+    "label": "content",
+    "text": "All principal investigators in BCOE are responsible for complying with sponsor policies regarding data management and accessibility. All have sufficient computing resources to store and process the data generated in their research. Every principal investigator has the ability to create his or her personal web site, and to make data sets available through that web site. Additionally, the eScholarship series (http://escholarship.org/uc/bcoe) provides a ready-made resource for dissemination. Researchers can submit materials to the eScholarship series site, where it is automatically given an EZID persistent identifier. All material on the site is indexed on Google, Google Scholar, and Melvyl/WorldCat."
   },
   {
     "label": "content",
-    "text": "Every principal investigator has the ability to create his or her personal web site, and to make data sets available through that web site. Additionally, the eScholarship series (http://escholarship.org/uc/bcoe) provides a ready-made resource for dissemination."
-  },
-  {
-    "label": "content",
-    "text": "Researchers can submit materials to the eScholarship series site, where it is automatically given an EZID persistent identifier. All material on the site is indexed on Google, Google Scholar, and Melvyl/WorldCat."
+    "text": "The California Digital Library also provides data backup services to avoid accidental loss of data. This partnership, which has resulted in the development of a new service that CDL can provide to other research organizations, makes our data widely available and searchable under the taxonomies, identifiers, and standards of universal data sharing systems envisioned for the near future (see Changing the Conduct of Science in the Information Age , NSF, June 2011)."
   },
   {
     "label": "section",
@@ -32,7 +28,11 @@
     "text": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific community as necessary to validate research findings” be made available at little or no cost to the PI or project."
   },
   {
-    "label": "subsection",
+    "label": "content",
+    "text": "In accordance with this policy and guidance from the Office of Management and Budget, this plan does not include preliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or communications with colleagues."
+  },
+  {
+    "label": "content",
     "text": "Data that must be withheld long enough to enable peer review and publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken place."
   },
   {
@@ -40,15 +40,19 @@
     "text": "Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after its acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF guidelines."
   },
   {
+    "label": "content",
+    "text": "The release of data about students or any other human subjects is subject to policies and restrictions in protocols adopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act (FERPA) regulations."
+  },
+  {
     "label": "section",
     "text": "3. Data and Metadata Format and Content"
   },
   {
     "label": "content",
-    "text": "The software will be made available in source code form and so will the applications developed. This will allow other researchers to not only use it but also modify it for their use."
+    "text": "The software will be made available in source code form and so will the applications developed. This will allow other researchers to so not only use it but also modify it for their use."
   },
   {
-    "label": "subsection",
+    "label": "content",
     "text": "All materials uploaded to the eScholarship site from UCR will be tagged uniformly with metadata about the source and nature of the data."
   },
   {
@@ -64,7 +68,11 @@
     "text": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar."
   },
   {
-    "label": "subsection",
+    "label": "content",
+    "text": "As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property."
+  },
+  {
+    "label": "content",
     "text": "Confidential material will be handled according to policies and protocols for human subjects, FERPA, and any other applicable regulations and restrictions."
   },
   {
@@ -76,8 +84,12 @@
     "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “ This material is based upon work supported by the National Science Foundation under Grant No. (NSF grant number). ”"
   },
   {
-    "label": "subsection",
+    "label": "content",
     "text": "Additionally, materials will contain a disclaimer that “ any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation .”"
+  },
+  {
+    "label": "content",
+    "text": "In keeping with standard ethical practices, it is expected that subsequent users of the data will acknowledge the source."
   },
   {
     "label": "section",
@@ -86,5 +98,9 @@
   {
     "label": "content",
     "text": "If the PI leaves UCR, the products in the eScholarship series will remain stored there."
+  },
+  {
+    "label": "content",
+    "text": "PI is free to reproduce and repost these materials at his/her new institution."
   }
 ]
