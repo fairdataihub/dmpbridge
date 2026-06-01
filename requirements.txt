@@ -16,3 +16,8 @@ ipywidgets
 docling
 pymupdf 
 python-docx
+transformers 
+accelerate 
+bitsandbytes 
+json-repair 
+jsonschema
