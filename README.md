@@ -49,8 +49,6 @@ dmpbridge/
 │       │   ├── __init__.py
 │       │   ├── llama_client.py
 │       │   ├── llm_narrative_blocks.py
-│       │   ├── dmp_prompt_builder.py
-│       │   └── generate_json.py
 │       │
 │       ├── vision/
 │       │   ├── __init__.py
