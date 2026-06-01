@@ -363,13 +363,13 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar."
+                  "answer": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar.\nAs noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property."
                 }
               }
             },
             {
               "id": 9,
-              "text": "Data Access",
+              "text": "Data Protection",
               "order": 2,
               "answer": {
                 "id": 9,
@@ -378,7 +378,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property."
+                  "answer": "Confidential material will be handled according to policies and protocols for human subjects, FERPA, and any other applicable regulations and restrictions."
                 }
               }
             }
@@ -401,22 +401,7 @@
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: “ This material is based upon work supported by the National Science Foundation under Grant No. (NSF grant number). ”"
-                }
-              }
-            },
-            {
-              "id": 11,
-              "text": "Acknowledgement",
-              "order": 2,
-              "answer": {
-                "id": 11,
-                "json": {
-                  "type": "textArea",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  },
-                  "answer": "Additionally, materials will contain a disclaimer that “ any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation .”"
+                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: “ This material is based upon work supported by the National Science Foundation under Grant No. (NSF grant number). ”\nAdditionally, materials will contain a disclaimer that “ any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation .”"
                 }
               }
             }
@@ -429,17 +414,17 @@
           "order": 6,
           "question": [
             {
-              "id": 12,
+              "id": 11,
               "text": "6. Archiving and Access",
               "order": 1,
               "answer": {
-                "id": 12,
+                "id": 11,
                 "json": {
                   "type": "textArea",
                   "meta": {
                     "schemaVersion": "1.0"
                   },
-                  "answer": "It is understood that the NSF Engineering Directorate requires data to be made available for a minimum of three years after conclusion of the award or public release, whichever is later."
+                  "answer": "It is understood that the NSF Engineering Directorate requires data to be made available for a minimum of three years after conclusion of the award or public release, whichever is later.\nIf the PI leaves his institution, the products will remain stored in relevant databases."
                 }
               }
             }
