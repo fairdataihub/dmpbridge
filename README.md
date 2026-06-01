@@ -11,31 +11,31 @@ dmpbridge/
 ├── data/
 │   ├── reference_pdfs/
 │   │   ├── sample1.pdf
-│   │   └── sample6.pdf
+│   │   └── sample10.pdf
 │   │
 │   ├── pdfplumber_extracted_blocks/
 │   │   ├── sample1.json
-│   │   └── sample6.json
+│   │   └── sample10.json
 │   │
 │   ├── pdfplumber_extracted_text/
 │   │   ├── sample1.txt
-│   │   └── sample6.txt
+│   │   └── sample10.txt
 │   │
 │   ├── pdfplumber_extracted_markdown/
 │   │   ├── sample1.md
-│   │   └── sample6.md
+│   │   └── sample10.md
 │   │
 │   ├── llama_structured_blocks/
 │   │   ├── sample1_llama_blocks.json
-│   │   └── sample6_llama_blocks.json
+│   │   └── sample10_llama_blocks.json
 │   │
 │   ├── llama_narrative_json/
 │   │   ├── sample1_llama_narrative.json
-│   │   └── sample6_llama_narrative.json
+│   │   └── sample10_llama_narrative.json
 │   │
 │   └── reference_text/
 │       ├── sample1_reference.txt
-│       └── sample6_reference.txt
+│       └── sample10_reference.txt
 │
 ├── src/
 │   └── dmpbridge/
