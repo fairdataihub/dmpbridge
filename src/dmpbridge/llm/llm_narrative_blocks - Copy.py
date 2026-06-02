@@ -1,14 +1,14 @@
+# src/dmpbridge/llm/llm_narrative_blocks.py
+
 import json
 import re
 from pathlib import Path
 from statistics import median
 from json_repair import repair_json
-
 from dmpbridge.processing.text_cleaner import (
     clean_blocks,
     clean_repeated_words,
 )
-
 
 ALLOWED_LABELS = {
     "document_title",
@@ -19,25 +19,8 @@ ALLOWED_LABELS = {
 
 
 # ============================================================
-# Basic utilities
+# Rule-based structure detection
 # ============================================================
-
-def normalize_text_simple(text: str) -> str:
-    return re.sub(r"\s+", " ", str(text).strip())
-
-
-def is_page_number(text: str) -> bool:
-    return bool(re.match(r"^\d+$", text.strip()))
-
-
-def is_punctuation_only(text: str) -> bool:
-    return bool(re.match(r"^[^\w]+$", text.strip()))
-
-
-def normalize_label(label: str) -> str:
-    label = str(label).strip().lower()
-    return label if label in ALLOWED_LABELS else ""
-
 
 def get_font_size(block: dict) -> float:
     return (
@@ -55,25 +38,38 @@ def get_body_font_size(blocks: list[dict]) -> float:
         if get_font_size(block) > 0 and block.get("text", "").strip()
     ]
 
-    return median(sizes) if sizes else 11.0
+    if not sizes:
+        return 11.0
+
+    return median(sizes)
 
 
 def is_bold_block(block: dict) -> bool:
     if block.get("is_bold") is True:
         return True
 
-    font_names = block.get("font_names") or []
     font_name = str(block.get("font_name", "")).lower()
-    all_fonts = " ".join(font_names).lower() + " " + font_name
 
-    bold_markers = ["bold", "black", "heavy", "semibold", "demibold"]
+    bold_markers = [
+        "bold",
+        "black",
+        "heavy",
+        "semibold",
+        "demibold",
+    ]
 
-    return any(marker in all_fonts for marker in bold_markers)
+    return any(marker in font_name for marker in bold_markers)
 
 
-# ============================================================
-# Rule-based detection
-# ============================================================
+def normalize_text_simple(text: str) -> str:
+    return re.sub(r"\s+", " ", text.strip())
+
+
+def is_page_number(text: str) -> bool:
+    return bool(re.match(r"^\d+$", text.strip()))
+
+def is_punctuation_only(text: str) -> bool:
+    return bool(re.match(r"^[^\w]+$", text.strip()))
 
 def is_document_title_text(text: str) -> bool:
     text = normalize_text_simple(text)
@@ -124,6 +120,8 @@ def is_numbered_section(text: str) -> bool:
     if not text:
         return False
 
+    # Example:
+    # 1. Policy and Practice. For the proposed research...
     inline_match = re.match(r"^\d+\.\s+(.+?)\.\s+.+", text)
 
     if inline_match:
@@ -151,6 +149,7 @@ def is_all_caps_heading(text: str) -> bool:
     text = normalize_text_simple(text)
     words = text.split()
 
+    # Avoid single-word uppercase subtitles like ELECTRODES
     if not (2 <= len(words) <= 12):
         return False
 
@@ -262,6 +261,26 @@ def classify_line(block: dict, body_font_size: float) -> str:
 
 
 def detect_structure(blocks: list[dict]) -> list[dict]:
+    """
+    Rule-based PDFPlumber structure detector.
+
+    Labels:
+    - document_title
+    - section
+    - subsection
+    - content
+    - subtitle
+    - empty
+
+    This function uses:
+    - text patterns
+    - numbering
+    - NIH Element headings
+    - all-caps headings
+    - relative font size
+    - bold formatting
+    """
+
     blocks = clean_blocks(blocks)
     body_font_size = get_body_font_size(blocks)
 
@@ -305,20 +324,13 @@ def detect_structure(blocks: list[dict]) -> list[dict]:
 
 
 # ============================================================
-# LLM label-only prompt
+# LLM prompt
 # ============================================================
-
-def build_llm_label_only_prompt(blocks_text: str) -> str:
+def build_llm_blocks_prompt(blocks_text: str) -> str:
     return f"""
-You are labeling PDF-extracted Data Management Plan blocks.
+You are helping extract the existing narrative structure from a Data Management Plan.
 
-IMPORTANT:
-Return ONLY labels for existing block_ids.
-Do NOT return text.
-Do NOT rewrite text.
-Do NOT summarize text.
-Do NOT omit any block_id.
-Every input block_id must appear exactly once.
+Your task is EXTRACTION ONLY.
 
 Allowed labels:
 - document_title
@@ -326,30 +338,143 @@ Allowed labels:
 - subsection
 - content
 
-Rules:
-1. document_title = main DMP title, usually first block.
-2. section = major heading, numbered heading, Element heading, or major visual heading.
-3. subsection = smaller prompt under a section, lettered prompt, decimal prompt, or short colon-ended prompt.
-4. content = body text, paragraph text, explanations, instructions, guidance, or answers.
-5. If unsure, use content.
-6. Do not label repository names as subsection.
-7. Do not label institution names as subsection.
-8. Do not label continuation lines as subsection.
-9. Do not label short fragments like "California San Diego Library repository." as subsection.
-10. Do not label short fragments like "Coordinating Center." as subsection.
-11. Do not return page numbers.
+Definitions:
+- document_title: the main title of the DMP.
+- section: an existing major heading copied exactly from the DMP.
+- subsection: an existing sub-question or prompt copied exactly from the DMP.
+- content: body text, instruction text, guidance text, answer text, explanation, or paragraph text.
+
+Core extraction rules:
+1. Do not omit content blocks. 
+2. Do not invent text.
+3. Do not infer hidden headings.
+4. Do not create new headings.
+5. Do not summarize text into headings.
+6. Do not rename headings.
+7. Do not use your own wording.
+8. A section or subsection must appear explicitly in the input blocks.
+9. Do not include page numbers.
+10. Return only the block array.
+11. Examples are illustrative only. Never copy example text unless it appears in the current input blocks.
+
+You are given PDFPlumber extracted blocks.
+Each block may include:
+- block_id
+- text
+- page
+- font_size
+- is_bold
+
+Use both the text and available formatting information to decide the label.
+
+How to detect document_title:
+Use "document_title" only for the main DMP title, usually near the beginning of the document.
+
+How to detect sections:
+Use "section" only for existing major DMP headings.
+
+A section is usually:
+- a numbered heading, such as "1. Policy and Practice"
+- an element heading, such as "Element 1: Data Type:"
+- a short standalone heading line
+- a heading followed by multiple paragraphs of related content
+- a heading that introduces a major DMP topic
+- a block that appears visually like a heading, for example larger font or bold, if that information is available
+
+
+How to detect subsections:
+Use "subsection" only for existing prompts inside a section.
+
+A subsection is usually:
+- a lettered prompt, such as "A. Types and amount of scientific data expected to be generated in the project:"
+- a short prompt ending with a colon or period inside a larger numbered section
+- a repeated internal prompt under a major heading
+- a block that appears visually like a smaller heading or prompt under a section
+
+How to detect content:
+Use "content" for:
+- full sentences
+- paragraphs
+- guidance or instruction text
+- answer text
+- explanatory text
+- body text after a heading
+- body text after a prompt
+
+Important negative rules:
+- A paragraph should never become a section.
+- A paragraph should never become a subsection.
+
+Inline heading rule:
+A short phrase at the beginning of a block followed by a period may be a subsection if it is heading-like and followed by substantial explanatory content.
+Inline heading rule:
+If a real heading and its content appear in the same block, split them into two blocks:
+1. section or subsection
+2. content
+
+
+Examples:
+"Roles & Responsibilities. For the proposed research..."
+"Data Types and Sources. The proposed research..."
+"Content and Format. A statement of plans..."
+
+
+Example:
+"1. Types of data. The bulk of the data generated in this project will be..."
+should become:
+[
+  {{
+    "label": "section",
+    "text": "1. Types of data."
+  }},
+  {{
+    "label": "content",
+    "text": "The bulk of the data generated in this project will be..."
+  }}
+]
+
+Example:
+"Roles & Responsibilities. For the proposed research, Director Samuel Stupp..."
+should become:
+[
+  {{
+    "label": "subsection",
+    "text": "Roles & Responsibilities."
+  }},
+  {{
+    "label": "content",
+    "text": "For the proposed research, Director Samuel Stupp..."
+  }}
+]
 
 Return format:
 [
-  {{"block_id": 1, "label": "document_title"}},
-  {{"block_id": 2, "label": "section"}},
-  {{"block_id": 3, "label": "content"}}
+  {{
+    "label": "document_title",
+    "text": "..."
+  }},
+  {{
+    "label": "section",
+    "text": "..."
+  }},
+  {{
+    "label": "subsection",
+    "text": "..."
+  }},
+  {{
+    "label": "content",
+    "text": "..."
+  }}
 ]
 
-Input blocks:
+PDFPlumber blocks:
 {blocks_text}
 """
 
+
+# ============================================================
+# JSON extraction and post-processing
+# ============================================================
 
 def extract_json_array(model_output: str) -> str:
     start = model_output.find("[")
@@ -361,33 +486,14 @@ def extract_json_array(model_output: str) -> str:
     return model_output[start:end + 1]
 
 
-def compact_blocks_for_labeling(pdf_blocks: list[dict]) -> list[dict]:
-    compact_blocks = []
+def normalize_label(label: str) -> str:
+    label = str(label).strip().lower()
 
-    for i, block in enumerate(pdf_blocks, start=1):
-        text = normalize_text_simple(block.get("text", ""))
+    if label in ALLOWED_LABELS:
+        return label
 
-        if not text or is_page_number(text):
-            continue
+    return ""
 
-        compact_blocks.append(
-            {
-                "block_id": i,
-                "text": text,
-                "page": block.get("page"),
-                "avg_font_size": block.get("avg_font_size"),
-                "font_size": block.get("font_size"),
-                "is_bold": block.get("is_bold"),
-                "rule_label": block.get("label"),
-            }
-        )
-
-    return compact_blocks
-
-
-# ============================================================
-# Post-processing
-# ============================================================
 
 def split_inline_numbered_section(text: str) -> list[dict]:
     text = normalize_text_simple(text)
@@ -405,8 +511,14 @@ def split_inline_numbered_section(text: str) -> list[dict]:
         return []
 
     return [
-        {"label": "section", "text": section_text},
-        {"label": "content", "text": content_text},
+        {
+            "label": "section",
+            "text": section_text,
+        },
+        {
+            "label": "content",
+            "text": content_text,
+        },
     ]
 
 
@@ -437,7 +549,6 @@ def split_inline_dot_subsection(text: str) -> list[dict]:
         {"label": "subsection", "text": subsection_text},
         {"label": "content", "text": content_text},
     ]
-
 
 def is_sentence_or_paragraph(text: str) -> bool:
     text = normalize_text_simple(text)
@@ -475,6 +586,30 @@ def is_sentence_or_paragraph(text: str) -> bool:
     return text.startswith(starters)
 
 
+def compact_pdfplumber_blocks(pdf_blocks: list[dict]) -> list[dict]:
+    compact_blocks = []
+
+    for i, block in enumerate(pdf_blocks, start=1):
+        text = normalize_text_simple(block.get("text", ""))
+
+        if not text:
+            continue
+
+        compact_blocks.append(
+            {
+                "block_id": i,
+                "text": text,
+                "page": block.get("page"),
+                "font_size": block.get("font_size"),
+                "avg_font_size": block.get("avg_font_size"),
+                "is_bold": block.get("is_bold"),
+                "label": block.get("label"),
+            }
+        )
+
+    return compact_blocks
+
+
 def postprocess_blocks(blocks: list[dict]) -> list[dict]:
     clean_output = []
     document_title_used = False
@@ -493,7 +628,7 @@ def postprocess_blocks(blocks: list[dict]) -> list[dict]:
 
         if is_page_number(text):
             continue
-
+        
         if is_punctuation_only(text):
             continue
 
@@ -510,6 +645,9 @@ def postprocess_blocks(blocks: list[dict]) -> list[dict]:
                 clean_output.extend(split_blocks)
                 continue
 
+        # IMPORTANT FIX:
+        # Only split dot-style subsections when the block is already subsection.
+        # Do NOT run this on content, because normal content sentences may end with a period.
         if label == "subsection":
             split_blocks = split_inline_dot_subsection(text)
 
@@ -532,12 +670,6 @@ def postprocess_blocks(blocks: list[dict]) -> list[dict]:
         elif label == "section" and is_sentence_or_paragraph(text):
             label = "content"
 
-        if label == "subsection":
-            words = text.rstrip(".:").split()
-
-            if len(words) < 3 and not is_lettered_subsection(text):
-                label = "content"
-
         clean_output.append(
             {
                 "label": label,
@@ -547,39 +679,39 @@ def postprocess_blocks(blocks: list[dict]) -> list[dict]:
 
     return clean_output
 
-
-def merge_consecutive_content_blocks(blocks: list[dict]) -> list[dict]:
+def merge_consecutive_content_blocks(blocks):
     merged = []
 
     for block in blocks:
+
         if (
             merged
             and block["label"] == "content"
             and merged[-1]["label"] == "content"
         ):
+
             prev = merged[-1]["text"]
-            current = block["text"]
 
-            if prev.endswith("-"):
-                merged[-1]["text"] = prev[:-1] + current
-
-            elif prev.endswith((".", ":", ";", "?", "!")):
-                merged[-1]["text"] += "\n\n" + current
-
+            if prev.endswith((".", ":", ";", "?", "!")):
+                merged[-1]["text"] += "\n\n" + block["text"]
             else:
-                merged[-1]["text"] += " " + current
+                merged[-1]["text"] += " " + block["text"]
 
         else:
             merged.append(dict(block))
 
     return merged
 
-
 # ============================================================
 # Main functions
 # ============================================================
 
 def generate_structured_blocks_with_rules(pdf_blocks: list[dict]) -> list[dict]:
+    """
+    Use only rule-based detection.
+    Good for debugging PDFPlumber extraction.
+    """
+
     structured = detect_structure(pdf_blocks)
 
     simplified = [
@@ -588,7 +720,7 @@ def generate_structured_blocks_with_rules(pdf_blocks: list[dict]) -> list[dict]:
             "text": block["text"],
         }
         for block in structured
-        if block.get("label") not in {"empty"}
+        if block.get("label") not in {"empty", "subtitle"}
     ]
 
     blocks = postprocess_blocks(simplified)
@@ -597,24 +729,17 @@ def generate_structured_blocks_with_rules(pdf_blocks: list[dict]) -> list[dict]:
     return blocks
 
 
-def generate_structured_blocks_with_llm_labels_only(
-    llm,
-    pdf_blocks: list[dict],
-) -> list[dict]:
+def generate_structured_blocks_with_llm(llm, pdf_blocks: list[dict]) -> list[dict]:
     """
-    Safer LLM method:
-    - LLM returns ONLY block_id + label.
-    - Final text always comes from original PDFPlumber blocks.
-    - This prevents LLM from omitting, rewriting, or summarizing content.
+    Hybrid method:
+    1. Run rule-based detection first.
+    2. Send labeled blocks to LLM.
+    3. Post-process LLM output safely.
+    4. Merge consecutive content blocks.
     """
 
     rule_labeled_blocks = detect_structure(pdf_blocks)
-    compact_blocks = compact_blocks_for_labeling(rule_labeled_blocks)
-
-    block_lookup = {
-        block["block_id"]: block
-        for block in compact_blocks
-    }
+    compact_blocks = compact_pdfplumber_blocks(rule_labeled_blocks)
 
     blocks_text = json.dumps(
         compact_blocks,
@@ -622,7 +747,7 @@ def generate_structured_blocks_with_llm_labels_only(
         ensure_ascii=False,
     )
 
-    prompt = build_llm_label_only_prompt(blocks_text)
+    prompt = build_llm_blocks_prompt(blocks_text)
 
     response = llm.invoke(prompt)
     model_text = response.content
@@ -630,66 +755,15 @@ def generate_structured_blocks_with_llm_labels_only(
     json_text = extract_json_array(model_text)
 
     try:
-        llm_labels = json.loads(json_text)
+        blocks = json.loads(json_text)
     except json.JSONDecodeError:
         repaired = repair_json(json_text)
-        llm_labels = json.loads(repaired)
+        blocks = json.loads(repaired)
 
-    label_lookup = {}
-
-    for item in llm_labels:
-        if not isinstance(item, dict):
-            continue
-
-        block_id = item.get("block_id")
-        label = normalize_label(item.get("label", ""))
-
-        if block_id in block_lookup and label:
-            label_lookup[block_id] = label
-
-    rebuilt_blocks = []
-
-    for block_id, original_block in block_lookup.items():
-        text = normalize_text_simple(original_block.get("text", ""))
-
-        if not text or is_page_number(text) or is_punctuation_only(text):
-            continue
-
-        rule_label = normalize_label(original_block.get("rule_label", ""))
-
-        label = label_lookup.get(
-            block_id,
-            rule_label or "content",
-        )
-
-        text = clean_repeated_words(text)
-
-        rebuilt_blocks.append(
-            {
-                "label": label,
-                "text": text,
-            }
-        )
-
-    blocks = postprocess_blocks(rebuilt_blocks)
+    blocks = postprocess_blocks(blocks)
     blocks = merge_consecutive_content_blocks(blocks)
 
     return blocks
-
-
-def generate_structured_blocks_with_llm(
-    llm,
-    pdf_blocks: list[dict],
-) -> list[dict]:
-    """
-    Backward-compatible name.
-    Uses safer label-only LLM method.
-    """
-
-    return generate_structured_blocks_with_llm_labels_only(
-        llm=llm,
-        pdf_blocks=pdf_blocks,
-    )
 
 
 def save_blocks(blocks: list[dict], output_path):
