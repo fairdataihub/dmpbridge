@@ -40,3 +40,30 @@ def clean_repeated_words(text: str) -> str:
     cleaned_text = re.sub(r"\n{3,}", "\n\n", cleaned_text)
 
     return cleaned_text.strip()
+
+
+def clean_blocks(blocks):
+    """
+    Clean PDFPlumber blocks before structure detection.
+    """
+
+    cleaned = []
+
+    for block in blocks:
+        text = str(block.get("text", "")).strip()
+
+        if not text:
+            continue
+
+        new_block = dict(block)
+
+        text = clean_repeated_words(text)
+
+        text = re.sub(r"[ \t]+", " ", text)
+        text = re.sub(r"\n{3,}", "\n\n", text)
+
+        new_block["text"] = text.strip()
+
+        cleaned.append(new_block)
+
+    return cleaned

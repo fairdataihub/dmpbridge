@@ -3,9 +3,12 @@
 import json
 import re
 from pathlib import Path
+from statistics import median
 from json_repair import repair_json
-from dmpbridge.processing.text_cleaner import clean_repeated_words
-
+from dmpbridge.processing.text_cleaner import (
+    clean_blocks,
+    clean_repeated_words,
+)
 
 ALLOWED_LABELS = {
     "document_title",
@@ -15,6 +18,314 @@ ALLOWED_LABELS = {
 }
 
 
+# ============================================================
+# Rule-based structure detection
+# ============================================================
+
+def get_font_size(block: dict) -> float:
+    return (
+        block.get("avg_font_size")
+        or block.get("font_size")
+        or block.get("size")
+        or 0
+    )
+
+
+def get_body_font_size(blocks: list[dict]) -> float:
+    sizes = [
+        get_font_size(block)
+        for block in blocks
+        if get_font_size(block) > 0 and block.get("text", "").strip()
+    ]
+
+    if not sizes:
+        return 11.0
+
+    return median(sizes)
+
+
+def is_bold_block(block: dict) -> bool:
+    if block.get("is_bold") is True:
+        return True
+
+    font_name = str(block.get("font_name", "")).lower()
+
+    bold_markers = [
+        "bold",
+        "black",
+        "heavy",
+        "semibold",
+        "demibold",
+    ]
+
+    return any(marker in font_name for marker in bold_markers)
+
+
+def normalize_text_simple(text: str) -> str:
+    return re.sub(r"\s+", " ", text.strip())
+
+
+def is_page_number(text: str) -> bool:
+    return bool(re.match(r"^\d+$", text.strip()))
+
+def is_punctuation_only(text: str) -> bool:
+    return bool(re.match(r"^[^\w]+$", text.strip()))
+
+def is_document_title_text(text: str) -> bool:
+    text = normalize_text_simple(text)
+
+    known_titles = [
+        r"^DATA MANAGEMENT AND SHARING PLAN$",
+        r"^DATA MANAGEMENT PLAN$",
+        r"^DATA MANAGEMENT$",
+        r"^DMP$",
+        r"^RESOURCE/DATA SHARING PLAN$",
+    ]
+
+    return any(
+        re.match(pattern, text, flags=re.IGNORECASE)
+        for pattern in known_titles
+    )
+
+
+def is_nih_element_heading(text: str) -> bool:
+    return bool(
+        re.match(
+            r"^Element\s+\d+\s*:",
+            text.strip(),
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def looks_like_sentence(text: str) -> bool:
+    words = [
+        word.strip(".,;:()[]{}").lower()
+        for word in text.split()
+    ]
+
+    sentence_markers = {
+        "we", "our", "this", "these", "those",
+        "is", "are", "was", "were", "will", "would",
+        "should", "could", "can", "may", "must",
+        "be", "been", "being", "have", "has", "had",
+    }
+
+    return len(words) >= 7 and any(word in sentence_markers for word in words)
+
+
+def is_numbered_section(text: str) -> bool:
+    text = normalize_text_simple(text)
+
+    if not text:
+        return False
+
+    # Example:
+    # 1. Policy and Practice. For the proposed research...
+    inline_match = re.match(r"^\d+\.\s+(.+?)\.\s+.+", text)
+
+    if inline_match:
+        heading_part = inline_match.group(1).strip()
+        words = heading_part.split()
+        return 2 <= len(words) <= 12
+
+    words = text.split()
+
+    if len(words) > 14:
+        return False
+
+    return bool(re.match(r"^\d+\.\s+[A-Z][A-Za-z]", text))
+
+
+def is_decimal_subsection(text: str) -> bool:
+    return bool(re.match(r"^\d+\.\d+\s+", text.strip()))
+
+
+def is_lettered_subsection(text: str) -> bool:
+    return bool(re.match(r"^[A-Z]\.\s+.+", text.strip()))
+
+
+def is_all_caps_heading(text: str) -> bool:
+    text = normalize_text_simple(text)
+    words = text.split()
+
+    # Avoid single-word uppercase subtitles like ELECTRODES
+    if not (2 <= len(words) <= 12):
+        return False
+
+    if looks_like_sentence(text):
+        return False
+
+    return text.isupper()
+
+
+def is_short_uppercase_subtitle(text: str) -> bool:
+    text = normalize_text_simple(text)
+    words = text.split()
+
+    if not (1 <= len(words) <= 5):
+        return False
+
+    return text.isupper()
+
+
+def is_prompt_style_subsection(text: str) -> bool:
+    text = normalize_text_simple(text)
+
+    if not text.endswith(":"):
+        return False
+
+    words = text.split()
+
+    if len(words) > 12:
+        return False
+
+    if looks_like_sentence(text):
+        return False
+
+    return True
+
+
+def is_title_style_section(block: dict, body_font_size: float) -> bool:
+    text = normalize_text_simple(block.get("text", ""))
+    font_size = get_font_size(block)
+    is_bold = is_bold_block(block)
+
+    if not text:
+        return False
+
+    words = text.split()
+
+    if not (2 <= len(words) <= 12):
+        return False
+
+    if text.endswith("?"):
+        return False
+
+    if looks_like_sentence(text):
+        return False
+
+    visually_heading = (
+        font_size >= body_font_size + 1
+        or font_size >= body_font_size * 1.12
+        or is_bold
+    )
+
+    return visually_heading
+
+
+def is_same_as_document_title(text: str, document_title: str | None) -> bool:
+    if not document_title:
+        return False
+
+    return (
+        normalize_text_simple(text).lower()
+        == normalize_text_simple(document_title).lower()
+    )
+
+
+def classify_line(block: dict, body_font_size: float) -> str:
+    text = normalize_text_simple(block.get("text", ""))
+
+    if not text:
+        return "empty"
+
+    if is_page_number(text):
+        return "empty"
+
+    if is_document_title_text(text):
+        return "document_title"
+
+    if is_nih_element_heading(text):
+        return "section"
+
+    if is_numbered_section(text):
+        return "section"
+
+    if is_all_caps_heading(text):
+        return "section"
+
+    if is_title_style_section(block, body_font_size):
+        return "section"
+
+    if is_lettered_subsection(text):
+        return "subsection"
+
+    if is_decimal_subsection(text):
+        return "subsection"
+
+    if is_prompt_style_subsection(text):
+        return "subsection"
+
+    return "content"
+
+
+def detect_structure(blocks: list[dict]) -> list[dict]:
+    """
+    Rule-based PDFPlumber structure detector.
+
+    Labels:
+    - document_title
+    - section
+    - subsection
+    - content
+    - subtitle
+    - empty
+
+    This function uses:
+    - text patterns
+    - numbering
+    - NIH Element headings
+    - all-caps headings
+    - relative font size
+    - bold formatting
+    """
+
+    blocks = clean_blocks(blocks)
+    body_font_size = get_body_font_size(blocks)
+
+    structured_blocks = []
+    seen_document_title = False
+    seen_first_section = False
+    document_title = None
+
+    for block in blocks:
+        text = normalize_text_simple(block.get("text", ""))
+
+        if not text or is_page_number(text):
+            label = "empty"
+
+        elif not seen_document_title:
+            label = "document_title"
+            document_title = text
+            seen_document_title = True
+
+        elif not seen_first_section and is_short_uppercase_subtitle(text):
+            label = "subtitle"
+
+        elif is_same_as_document_title(text, document_title):
+            label = "subtitle"
+
+        else:
+            label = classify_line(block, body_font_size)
+
+            if label == "section":
+                seen_first_section = True
+
+        structured_blocks.append(
+            {
+                **block,
+                "text": text,
+                "label": label,
+            }
+        )
+
+    return structured_blocks
+
+
+# ============================================================
+# LLM prompt
+# ============================================================
 def build_llm_blocks_prompt(blocks_text: str) -> str:
     return f"""
 You are helping extract the existing narrative structure from a Data Management Plan.
@@ -41,15 +352,10 @@ Core extraction rules:
 5. Do not summarize text into headings.
 6. Do not rename headings.
 7. Do not use your own wording.
-8. Preserve original wording as much as possible.
-9. A section or subsection must appear explicitly in the input blocks.
-10. Do not include page numbers.
-11. Return only the block array.
-
-Every input block with meaningful text must appear in the output either as document_title, section, subsection, or content.
-Do not skip body text.
-Do not compress multiple paragraphs into one short content block.
-Examples are illustrative only. Never copy example text unless it appears in the current input blocks.
+8. A section or subsection must appear explicitly in the input blocks.
+9. Do not include page numbers.
+10. Return only the block array.
+11. Examples are illustrative only. Never copy example text unless it appears in the current input blocks.
 
 You are given PDFPlumber extracted blocks.
 Each block may include:
@@ -75,7 +381,6 @@ A section is usually:
 - a heading that introduces a major DMP topic
 - a block that appears visually like a heading, for example larger font or bold, if that information is available
 
-A section must be a heading, not a normal sentence.
 
 How to detect subsections:
 Use "subsection" only for existing prompts inside a section.
@@ -101,9 +406,18 @@ Important negative rules:
 - A paragraph should never become a subsection.
 
 Inline heading rule:
+A short phrase at the beginning of a block followed by a period may be a subsection if it is heading-like and followed by substantial explanatory content.
+Inline heading rule:
 If a real heading and its content appear in the same block, split them into two blocks:
 1. section or subsection
 2. content
+
+
+Examples:
+"Roles & Responsibilities. For the proposed research..."
+"Data Types and Sources. The proposed research..."
+"Content and Format. A statement of plans..."
+
 
 Example:
 "1. Types of data. The bulk of the data generated in this project will be..."
@@ -158,6 +472,10 @@ PDFPlumber blocks:
 """
 
 
+# ============================================================
+# JSON extraction and post-processing
+# ============================================================
+
 def extract_json_array(model_output: str) -> str:
     start = model_output.find("[")
     end = model_output.rfind("]")
@@ -177,40 +495,8 @@ def normalize_label(label: str) -> str:
     return ""
 
 
-def is_page_number(text: str) -> bool:
-    return bool(re.match(r"^\d+$", text.strip()))
-
-
-def is_element_section(text: str) -> bool:
-    return bool(
-        re.match(
-            r"^Element\s+\d+\s*:",
-            text.strip(),
-            flags=re.IGNORECASE,
-        )
-    )
-
-
-def is_numbered_section(text: str) -> bool:
-    return bool(
-        re.match(
-            r"^\d+\.\s+[A-Z]",
-            text.strip(),
-        )
-    )
-
-
-def is_lettered_subsection(text: str) -> bool:
-    return bool(
-        re.match(
-            r"^[A-Z]\.\s+.+",
-            text.strip(),
-        )
-    )
-
-
 def split_inline_numbered_section(text: str) -> list[dict]:
-    text = text.strip()
+    text = normalize_text_simple(text)
 
     pattern = r"^(\d+\.\s+[^.]+\.)\s+(.+)$"
     match = re.match(pattern, text)
@@ -237,9 +523,9 @@ def split_inline_numbered_section(text: str) -> list[dict]:
 
 
 def split_inline_dot_subsection(text: str) -> list[dict]:
-    text = text.strip()
+    text = normalize_text_simple(text)
 
-    pattern = r"^([A-Z][A-Za-z/&,\-\s]+?\.)\s+(.+)$"
+    pattern = r"^([A-Z][A-Za-z0-9/&,\-\(\),\s]{2,80}\.)\s+(.+)$"
     match = re.match(pattern, text)
 
     if not match:
@@ -248,29 +534,27 @@ def split_inline_dot_subsection(text: str) -> list[dict]:
     subsection_text = match.group(1).strip()
     content_text = match.group(2).strip()
 
-    if len(subsection_text.split()) > 8:
+    heading_words = subsection_text.rstrip(".").split()
+
+    if not (2 <= len(heading_words) <= 8):
         return []
 
-    if not subsection_text or not content_text:
+    if len(content_text.split()) < 5:
+        return []
+
+    if looks_like_sentence(subsection_text):
         return []
 
     return [
-        {
-            "label": "subsection",
-            "text": subsection_text,
-        },
-        {
-            "label": "content",
-            "text": content_text,
-        },
+        {"label": "subsection", "text": subsection_text},
+        {"label": "content", "text": content_text},
     ]
 
-
 def is_sentence_or_paragraph(text: str) -> bool:
-    text = text.strip()
+    text = normalize_text_simple(text)
     words = text.split()
 
-    if len(words) > 12:
+    if len(words) > 14:
         return True
 
     starters = (
@@ -302,11 +586,11 @@ def is_sentence_or_paragraph(text: str) -> bool:
     return text.startswith(starters)
 
 
-def compact_pdfplumber_blocks(pdf_blocks):
+def compact_pdfplumber_blocks(pdf_blocks: list[dict]) -> list[dict]:
     compact_blocks = []
 
     for i, block in enumerate(pdf_blocks, start=1):
-        text = str(block.get("text", "")).strip()
+        text = normalize_text_simple(block.get("text", ""))
 
         if not text:
             continue
@@ -317,15 +601,17 @@ def compact_pdfplumber_blocks(pdf_blocks):
                 "text": text,
                 "page": block.get("page"),
                 "font_size": block.get("font_size"),
+                "avg_font_size": block.get("avg_font_size"),
                 "is_bold": block.get("is_bold"),
+                "label": block.get("label"),
             }
         )
 
     return compact_blocks
 
 
-def postprocess_blocks(blocks):
-    clean_blocks = []
+def postprocess_blocks(blocks: list[dict]) -> list[dict]:
+    clean_output = []
     document_title_used = False
 
     for block in blocks:
@@ -333,12 +619,17 @@ def postprocess_blocks(blocks):
             continue
 
         label = normalize_label(block.get("label", ""))
-        text = str(block.get("text", "")).strip()
+        text = normalize_text_simple(block.get("text", ""))
 
         if not label or not text:
             continue
 
+        text = clean_repeated_words(text)
+
         if is_page_number(text):
+            continue
+        
+        if is_punctuation_only(text):
             continue
 
         if label == "document_title":
@@ -351,17 +642,20 @@ def postprocess_blocks(blocks):
             split_blocks = split_inline_numbered_section(text)
 
             if split_blocks:
-                clean_blocks.extend(split_blocks)
+                clean_output.extend(split_blocks)
                 continue
 
-        if label in {"subsection", "content"}:
+        # IMPORTANT FIX:
+        # Only split dot-style subsections when the block is already subsection.
+        # Do NOT run this on content, because normal content sentences may end with a period.
+        if label == "subsection":
             split_blocks = split_inline_dot_subsection(text)
 
             if split_blocks:
-                clean_blocks.extend(split_blocks)
+                clean_output.extend(split_blocks)
                 continue
 
-        if is_element_section(text):
+        if is_nih_element_heading(text):
             label = "section"
 
         elif is_numbered_section(text):
@@ -373,21 +667,79 @@ def postprocess_blocks(blocks):
         elif label == "subsection" and is_sentence_or_paragraph(text):
             label = "content"
 
-        if label == "section" and is_sentence_or_paragraph(text):
+        elif label == "section" and is_sentence_or_paragraph(text):
             label = "content"
 
-        clean_blocks.append(
+        clean_output.append(
             {
                 "label": label,
                 "text": text,
             }
         )
 
-    return clean_blocks
+    return clean_output
+
+def merge_consecutive_content_blocks(blocks):
+    merged = []
+
+    for block in blocks:
+
+        if (
+            merged
+            and block["label"] == "content"
+            and merged[-1]["label"] == "content"
+        ):
+
+            prev = merged[-1]["text"]
+
+            if prev.endswith((".", ":", ";", "?", "!")):
+                merged[-1]["text"] += "\n\n" + block["text"]
+            else:
+                merged[-1]["text"] += " " + block["text"]
+
+        else:
+            merged.append(dict(block))
+
+    return merged
+
+# ============================================================
+# Main functions
+# ============================================================
+
+def generate_structured_blocks_with_rules(pdf_blocks: list[dict]) -> list[dict]:
+    """
+    Use only rule-based detection.
+    Good for debugging PDFPlumber extraction.
+    """
+
+    structured = detect_structure(pdf_blocks)
+
+    simplified = [
+        {
+            "label": block["label"],
+            "text": block["text"],
+        }
+        for block in structured
+        if block.get("label") not in {"empty", "subtitle"}
+    ]
+
+    blocks = postprocess_blocks(simplified)
+    blocks = merge_consecutive_content_blocks(blocks)
+
+    return blocks
 
 
-def generate_structured_blocks_with_llm(llm, pdf_blocks):
-    compact_blocks = compact_pdfplumber_blocks(pdf_blocks)
+def generate_structured_blocks_with_llm(llm, pdf_blocks: list[dict]) -> list[dict]:
+    """
+    Hybrid method:
+    1. Run rule-based detection first.
+    2. Send labeled blocks to LLM.
+    3. Post-process LLM output safely.
+    4. Merge consecutive content blocks.
+    """
+
+    rule_labeled_blocks = detect_structure(pdf_blocks)
+    compact_blocks = compact_pdfplumber_blocks(rule_labeled_blocks)
 
     blocks_text = json.dumps(
         compact_blocks,
@@ -408,10 +760,13 @@ def generate_structured_blocks_with_llm(llm, pdf_blocks):
         repaired = repair_json(json_text)
         blocks = json.loads(repaired)
 
-    return postprocess_blocks(blocks)
+    blocks = postprocess_blocks(blocks)
+    blocks = merge_consecutive_content_blocks(blocks)
+
+    return blocks
 
 
-def save_blocks(blocks, output_path):
+def save_blocks(blocks: list[dict], output_path):
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
