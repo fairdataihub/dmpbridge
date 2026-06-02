@@ -215,6 +215,50 @@ def is_title_style_section(block: dict, body_font_size: float) -> bool:
     return visually_heading
 
 
+def is_false_section_fragment(text: str) -> bool:
+    """
+    Demote wrapped sentence fragments incorrectly labeled as section.
+    Useful for sample2/sample3 where bold guidance text wraps across lines.
+    """
+
+    text = normalize_text_simple(text)
+    words = text.split()
+
+    if not text:
+        return False
+
+    # Keep strong real headings
+    if is_nih_element_heading(text):
+        return False
+
+    if re.match(r"^\d+\.\s+[A-Z]", text):
+        return False
+
+    if is_all_caps_heading(text):
+        return False
+
+    if is_lettered_subsection(text):
+        return False
+
+    # Wrapped fragments usually start lowercase
+    if text[0].islower():
+        return True
+
+    # Long sentence-like text should not be a section
+    if looks_like_sentence(text):
+        return True
+
+    # Guidance fragments with comma/semicolon are usually content
+    if any(p in text for p in [";", ","]) and len(words) >= 5:
+        return True
+
+    # Short ending fragments like "maintained during the project."
+    if text.endswith(".") and len(words) <= 6:
+        return True
+
+    return False
+
+
 def is_same_as_document_title(text: str, document_title: str | None) -> bool:
     if not document_title:
         return False
@@ -337,7 +381,9 @@ Rules:
 8. Do not label continuation lines as subsection.
 9. Do not label short fragments like "California San Diego Library repository." as subsection.
 10. Do not label short fragments like "Coordinating Center." as subsection.
-11. Do not return page numbers.
+11. Do not label wrapped sentence fragments as section.
+12. Do not return page numbers.
+
 
 Return format:
 [
@@ -538,6 +584,9 @@ def postprocess_blocks(blocks: list[dict]) -> list[dict]:
             if len(words) < 3 and not is_lettered_subsection(text):
                 label = "content"
 
+        if label == "section" and is_false_section_fragment(text):
+            label = "content"
+
         clean_output.append(
             {
                 "label": label,
@@ -601,13 +650,6 @@ def generate_structured_blocks_with_llm_labels_only(
     llm,
     pdf_blocks: list[dict],
 ) -> list[dict]:
-    """
-    Safer LLM method:
-    - LLM returns ONLY block_id + label.
-    - Final text always comes from original PDFPlumber blocks.
-    - This prevents LLM from omitting, rewriting, or summarizing content.
-    """
-
     rule_labeled_blocks = detect_structure(pdf_blocks)
     compact_blocks = compact_blocks_for_labeling(rule_labeled_blocks)
 
@@ -681,11 +723,6 @@ def generate_structured_blocks_with_llm(
     llm,
     pdf_blocks: list[dict],
 ) -> list[dict]:
-    """
-    Backward-compatible name.
-    Uses safer label-only LLM method.
-    """
-
     return generate_structured_blocks_with_llm_labels_only(
         llm=llm,
         pdf_blocks=pdf_blocks,

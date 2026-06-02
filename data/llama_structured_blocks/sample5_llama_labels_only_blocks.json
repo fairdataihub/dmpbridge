@@ -33,23 +33,7 @@
   },
   {
     "label": "content",
-    "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors. All methodological procedures for data quality control and aggregation will be described in the data documentation. This information will be provided in the form of supplementary documentation for publications, in the README.txt file, and at the repository (recordlevel). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the agnostic open access repository backed by UCSB and the California Digital Library (CDL), which implements the latest best practices in data curation, publication, citation, and archival. Dryad assigns Digital Object Identifiers (DOIs) to deposited datasets and makes data discoverable through such services as the Thomson-Reuters Data Citation Index, Scopus, and Google Dataset Search. All data in Dryad is publicly accessible and released under a CC0 license. Data will be linked to publications and vice versa through DOIs.\n\nScripts and code for analyses: All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes."
-  },
-  {
-    "label": "section",
-    "text": "Scientist spotlight: All scientist spotlight biographies, assignments, and open-access readings will be"
-  },
-  {
-    "label": "content",
-    "text": "posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly."
-  },
-  {
-    "label": "section",
-    "text": "Workshop frameworks: Workshop material will be shared with UCSB’s Diversity Committee through"
-  },
-  {
-    "label": "content",
-    "text": "Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.\n\nThe PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist faculty in paying for open access journals."
+    "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors. All methodological procedures for data quality control and aggregation will be described in the data documentation. This information will be provided in the form of supplementary documentation for publications, in the README.txt file, and at the repository (recordlevel). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the agnostic open access repository backed by UCSB and the California Digital Library (CDL), which implements the latest best practices in data curation, publication, citation, and archival. Dryad assigns Digital Object Identifiers (DOIs) to deposited datasets and makes data discoverable through such services as the Thomson-Reuters Data Citation Index, Scopus, and Google Dataset Search. All data in Dryad is publicly accessible and released under a CC0 license. Data will be linked to publications and vice versa through DOIs.\n\nScripts and code for analyses: All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes.\n\nScientist spotlight: All scientist spotlight biographies, assignments, and open-access readings will be posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.\n\nWorkshop frameworks: Workshop material will be shared with UCSB’s Diversity Committee through Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.\n\nThe PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist faculty in paying for open access journals."
   },
   {
     "label": "section",
