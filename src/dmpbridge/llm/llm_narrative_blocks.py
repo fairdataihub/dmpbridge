@@ -18,9 +18,9 @@ ALLOWED_LABELS = {
 }
 
 
-# ============================================================
+
 # Basic utilities
-# ============================================================
+
 
 def normalize_text_simple(text: str) -> str:
     return re.sub(r"\s+", " ", str(text).strip())
@@ -71,9 +71,8 @@ def is_bold_block(block: dict) -> bool:
     return any(marker in all_fonts for marker in bold_markers)
 
 
-# ============================================================
+
 # Rule-based detection
-# ============================================================
 
 def is_document_title_text(text: str) -> bool:
     text = normalize_text_simple(text)
@@ -348,9 +347,9 @@ def detect_structure(blocks: list[dict]) -> list[dict]:
     return structured_blocks
 
 
-# ============================================================
+
 # LLM label-only prompt
-# ============================================================
+
 
 def build_llm_label_only_prompt(blocks_text: str) -> str:
     return f"""
@@ -431,9 +430,9 @@ def compact_blocks_for_labeling(pdf_blocks: list[dict]) -> list[dict]:
     return compact_blocks
 
 
-# ============================================================
+
 # Post-processing
-# ============================================================
+
 
 def split_inline_numbered_section(text: str) -> list[dict]:
     text = normalize_text_simple(text)
