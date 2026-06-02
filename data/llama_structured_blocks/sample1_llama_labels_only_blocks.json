@@ -21,15 +21,7 @@
   },
   {
     "label": "content",
-    "text": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library Repository sitting behavior metrics or analysis that were created in this project from the following UCSD-"
-  },
-  {
-    "label": "subsection",
-    "text": "based study datasets:"
-  },
-  {
-    "label": "content",
-    "text": "(i) The RISE study (ii) The iWATCH study (iii) NHANES cohorts Sufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only. Please see Element 5 for data access information about other studies."
+    "text": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library Repository sitting behavior metrics or analysis that were created in this project from the following UCSDbased study datasets:\n\n(i) The RISE study (ii) The iWATCH study (iii) NHANES cohorts Sufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only. Please see Element 5 for data access information about other studies."
   },
   {
     "label": "subsection",
