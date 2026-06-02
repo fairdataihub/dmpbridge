@@ -353,13 +353,18 @@ def detect_structure(blocks: list[dict]) -> list[dict]:
 
 def build_llm_label_only_prompt(blocks_text: str) -> str:
     return f"""
-You are labeling PDF-extracted Data Management Plan blocks.
+You are labeling PDFPlumber-extracted blocks from a Data Management Plan.
 
-IMPORTANT:
-Return ONLY labels for existing block_ids.
+Your task is LABELING ONLY.
+
+You must return ONLY:
+- block_id
+- label
+
 Do NOT return text.
 Do NOT rewrite text.
 Do NOT summarize text.
+Do NOT invent headings.
 Do NOT omit any block_id.
 Every input block_id must appear exactly once.
 
@@ -369,27 +374,115 @@ Allowed labels:
 - subsection
 - content
 
-Rules:
-1. document_title = main DMP title, usually first block.
-2. section = major heading, numbered heading, Element heading, or major visual heading.
-3. subsection = smaller prompt under a section, lettered prompt, decimal prompt, or short colon-ended prompt.
-4. content = body text, paragraph text, explanations, instructions, guidance, or answers.
-5. If unsure, use content.
-6. Do not label repository names as subsection.
-7. Do not label institution names as subsection.
-8. Do not label continuation lines as subsection.
-9. Do not label short fragments like "California San Diego Library repository." as subsection.
-10. Do not label short fragments like "Coordinating Center." as subsection.
-11. Do not label wrapped sentence fragments as section.
-12. Do not return page numbers.
+Definitions:
+- document_title: the main title of the DMP. It may span more than one consecutive block at the beginning.
+- section: an existing major heading copied from the DMP.
+- subsection: an existing smaller prompt, question, or internal heading under a section.
+- content: body text, instruction text, guidance text, answer text, explanation, or paragraph text.
 
+Input block features may include:
+- block_id
+- text
+- page
+- line_order
+- avg_font_size
+- body_font_size
+- is_bold
+- font_names
+- visual_hint
+- rule_label
+
+Use both text and formatting information to decide the label.
+
+How to detect document_title:
+- Use document_title for the main DMP title near the beginning.
+- If the title spans multiple consecutive blocks, label all title blocks as document_title.
+- A short uppercase block immediately after the first title block may be title continuation.
+- Example:
+  block 1: CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM
+  block 2: ELECTRODES
+  label both as document_title.
+
+How to detect sections:
+Use section only for existing major DMP headings.
+
+A section is usually:
+- a numbered heading, such as "1. Data sharing and preservation"
+- an Element heading, such as "Element 1: Data Type:"
+- a short standalone heading line
+- a heading followed by multiple paragraphs of related content
+- a heading that introduces a major DMP topic
+- a block that appears visually like a heading, such as larger font or bold
+- a block with visual_hint = larger_than_body and short/title-like text
+
+Examples of section-like headings:
+- Products of Research
+- Data Format Standards
+- Access and sharing
+- Policies and provisions for re-use, re-distribution, and production of derivatives
+- Archiving of Data, Samples, and Other Relevant Research Products
+- Roles and responsibilities
+- Types of data
+- Data storage and preservation of access
+
+How to detect subsections:
+Use subsection only for existing smaller prompts inside a section.
+
+A subsection is usually:
+- a lettered prompt, such as "A. Types and amount of scientific data expected to be generated in the project:"
+- a decimal prompt, such as "1.1 Data Types"
+- a short prompt ending with a colon inside a larger section
+- a repeated internal prompt under a major heading
+- a block that appears visually like a smaller heading or prompt under a section
+
+How to detect content:
+Use content for:
+- full sentences
+- paragraphs
+- guidance or instruction text
+- answer text
+- explanatory text
+- body text after a heading
+- body text after a prompt
+- sentence fragments that continue the previous block
+
+Important negative rules:
+- A paragraph should never become a section.
+- A paragraph should never become a subsection.
+- Do not label repository names as subsection.
+- Do not label institution names as subsection.
+- Do not label continuation lines as subsection.
+- Do not label wrapped sentence fragments as section.
+- Do not label short fragments like "California San Diego Library repository." as subsection.
+- Do not label short fragments like "Coordinating Center."as subsection.
+- Do not label lines like "maintained during the project." as section.
+- Do not label lines like "cost/benefit considerations, other parameters of feasibility..." as section.
+- Do not label lines like "beyond what is conventionally made available..." as section.
+
+Visual hint rules:
+- visual_hint = larger_than_body usually means section or document_title.
+- visual_hint = uppercase_heading_like may mean document_title or section.
+- visual_hint = bold may mean section or subsection.
+- visual_hint = body usually means content.
+- If a block has larger font than nearby body text and is short/title-like, label it section.
+- If the first two blocks are uppercase/title-like and same font size, they may both be document_title.
+- If a block has the same font size as known headings and is followed by body text, label it section.
+
+Very important:
+Because this is label-only mode, do NOT split blocks.
+If a heading and content are inside the same block, label the whole block based on the dominant role.
+If the block is mostly paragraph text, label it content.
+If the block is a standalone heading, label it section or subsection.
 
 Return format:
 [
   {{"block_id": 1, "label": "document_title"}},
-  {{"block_id": 2, "label": "section"}},
-  {{"block_id": 3, "label": "content"}}
+  {{"block_id": 2, "label": "document_title"}},
+  {{"block_id": 3, "label": "section"}},
+  {{"block_id": 4, "label": "content"}}
 ]
+
+Return ONLY valid JSON array.
 
 Input blocks:
 {blocks_text}
