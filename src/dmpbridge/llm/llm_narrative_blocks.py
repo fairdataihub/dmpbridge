@@ -394,14 +394,9 @@ Input block features may include:
 
 Use both text and formatting information to decide the label.
 
-How to detect document_title:
-- Use document_title for the main DMP title near the beginning.
-- If the title spans multiple consecutive blocks, label all title blocks as document_title.
-- A short uppercase block immediately after the first title block may be title continuation.
-- Example:
-  block 1: CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM
-  block 2: ELECTRODES
-  label both as document_title.
+Critical rules for title:
+- If the first two blocks are both title-like, same font size, and near the top of page 1, label BOTH as document_title.
+
 
 How to detect sections:
 Use section only for existing major DMP headings.
