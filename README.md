@@ -170,13 +170,9 @@ Then open any of the provided notebooks to explore:
 - **02_evaluation_pdfplumber_test.ipynb** — Evaluate extraction quality
 - **03_llama_dmp_narrative_labeling_batch_test.ipynb** — LLM-based labeling
 - **04_evaluation_llama_dmp_narrative_batch_test.ipynb** — Evaluate LLM output
-## Configuration
- 
-Key configuration parameters can be adjusted in `pyproject.toml`:
- 
-```toml
-[tool.dmpbridge]
-# Add your configuration settings here
+
+
+We are still working on it...
 ```
  
 
