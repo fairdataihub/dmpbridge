@@ -1,0 +1,58 @@
+[
+  {
+    "label": "document_title",
+    "text": "Data Management Plan:"
+  },
+  {
+    "label": "content",
+    "text": "1. Types of data. The bulk of the data generated in this project will be 1, 2, 3, and 4 dimensional arrays of numbers and bytes representing fluid state variables generated via computer simulations of fluid flow. Images and video files will be created from the fluid data using both commercial packages, such as Matlab and free visualization packages"
+  },
+  {
+    "label": "section",
+    "text": "such as VAPOR (developed at NCAR)."
+  },
+  {
+    "label": "content",
+    "text": "2. Data and metadata standards. The PI’s research group will adopt the longstanding practice that all generated data should be straightforwardly reproducible. Thus, codes are stored within the same directory on a mass storage system along with the data they"
+  },
+  {
+    "label": "section",
+    "text": "generate. “Readme” files will also be provided for explanation of the directory content."
+  },
+  {
+    "label": "content",
+    "text": "3. Policies for access and sharing. Interested parties will be able to request data and codes at the end of the project. Such parties will be responsible for their own version control and"
+  },
+  {
+    "label": "section",
+    "text": "execution."
+  },
+  {
+    "label": "content",
+    "text": "4. Policies and provisions for re-use, re-distribution. Simulation data will in essence grow to several terrabytes with an associated cost of storage. Data will be made publicly"
+  },
+  {
+    "label": "subsection",
+    "text": "available upon request at the end of the project. Although open-source, we envisage that"
+  },
+  {
+    "label": "content",
+    "text": "intellectual rights to the code will be retained by the CU group. Dissemination of open-"
+  },
+  {
+    "label": "section",
+    "text": "source software will be released once fully tested and published."
+  },
+  {
+    "label": "content",
+    "text": "5. Plans for archiving and preservation of access. Local data will be archived on the group’s mass storage system. As mentioned above, all data generated is archived with the entire code that generated it. Additionally, further backups of the data will be provided by CU’s"
+  },
+  {
+    "label": "subsection",
+    "text": "NSF-funded research computing. We imagine the data being of relevance and stored for"
+  },
+  {
+    "label": "content",
+    "text": "> 10 years."
+  }
+]
