@@ -9,21 +9,8 @@ Final labels:
 - section
 - subsection
 - content
-
-Pipeline:
-1. Clean PDFPlumber blocks
-2. Apply couples of rule-based structure detection
-3. Send compact blocks to LLM for label refinement
-4. Post-process labels and text
-5. Merge consecutive content blocks
-6. Save final structured JSON
-
-Important:
-The rule-based detector helps identify possible titles, sections,
-subsections, and content. The LLM then uses these labels as guidance.
 """
-# Imports
-# ============================================================
+
 import json
 import re
 from pathlib import Path
@@ -35,9 +22,6 @@ from dmpbridge.processing.text_cleaner import (
     clean_repeated_words,
 )
 
-# Allowed output labels
-# ============================================================
-# These are the only valid labels used in the final structured output.
 
 ALLOWED_LABELS = {
     "document_title",
@@ -47,33 +31,24 @@ ALLOWED_LABELS = {
 }
 
 
-# Basic utilities
-# ============================================================
-# These helper functions normalize text, detect noise blocks,
-# and extract formatting information from PDFPlumber blocks.
 def normalize_text_simple(text: str) -> str:
-    """Convert text to string, strip leading/trailing spaces, and normalize whitespace."""
     return re.sub(r"\s+", " ", str(text).strip())
 
 
 def is_page_number(text: str) -> bool:
-    """Return True if a block is only a page number."""
     return bool(re.match(r"^\d+$", text.strip()))
 
 
 def is_punctuation_only(text: str) -> bool:
-    """Return True if a block contains only punctuation or symbols."""
     return bool(re.match(r"^[^\w]+$", text.strip()))
 
 
 def normalize_label(label: str) -> str:
-    """Normalize a label and keep it only if it is allowed."""
     label = str(label).strip().lower()
     return label if label in ALLOWED_LABELS else ""
 
 
 def get_font_size(block: dict) -> float:
-    """Get font size from different possible PDFPlumber metadata fields."""
     return (
         block.get("avg_font_size")
         or block.get("font_size")
@@ -83,29 +58,15 @@ def get_font_size(block: dict) -> float:
 
 
 def get_body_font_size(blocks: list[dict]) -> float:
-    """
-    Estimate the body-text font size.
-
-    The median font size is used as the normal body font.
-    This helps detect headings that are larger than normal text.
-    """
     sizes = [
         get_font_size(block)
         for block in blocks
         if get_font_size(block) > 0 and block.get("text", "").strip()
     ]
-
     return median(sizes) if sizes else 11.0
 
 
 def is_bold_block(block: dict) -> bool:
-    """
-    Detect whether a block is bold.
-
-    Uses either:
-    - explicit is_bold metadata
-    - font names containing bold-like markers
-    """
     if block.get("is_bold") is True:
         return True
 
@@ -113,19 +74,13 @@ def is_bold_block(block: dict) -> bool:
     font_name = str(block.get("font_name", "")).lower()
     all_fonts = " ".join(font_names).lower() + " " + font_name
 
-    bold_markers = ["bold", "black", "heavy", "semibold", "demibold"]
+    return any(
+        marker in all_fonts
+        for marker in ["bold", "black", "heavy", "semibold", "demibold"]
+    )
 
-    return any(marker in all_fonts for marker in bold_markers)
-
-
-
-# Rule-based structure detection
-# ============================================================
-# These functions identify likely titles, sections, subsections,
-# and content before LLM refinement.
 
 def is_document_title_text(text: str) -> bool:
-    """Detect common DMP title patterns."""
     text = normalize_text_simple(text)
 
     known_titles = [
@@ -141,18 +96,15 @@ def is_document_title_text(text: str) -> bool:
         for pattern in known_titles
     )
 
+
 def is_nih_element_heading(text: str) -> bool:
-    """Detect NIH-style headings such as 'Element 1: Data Type:'."""
+    text = normalize_text_simple(text)
     return re.match(r"^Element\s+\d+\s*:", text, flags=re.IGNORECASE) is not None
 
 
 def looks_like_sentence(text: str) -> bool:
-    """
-    Detect paragraph-like text.
+    text = normalize_text_simple(text)
 
-    This helps prevent body paragraphs from being incorrectly labeled
-    as sections or subsections.
-    """
     words = [
         word.strip(".,;:()[]{}").lower()
         for word in text.split()
@@ -168,67 +120,158 @@ def looks_like_sentence(text: str) -> bool:
     return len(words) >= 7 and any(word in sentence_markers for word in words)
 
 
+def starts_like_sentence(text: str) -> bool:
+    text = normalize_text_simple(text)
+
+    starters = (
+        "The ", "This ", "These ", "Those ", "We ", "Our ",
+        "All ", "Data ", "Materials ", "Researchers ",
+        "In ", "As ", "If ", "When ", "Because ",
+        "Additionally,", "Furthermore,", "However,"
+    )
+
+    return text.startswith(starters)
+
+
+def is_probable_paragraph(text: str) -> bool:
+    text = normalize_text_simple(text)
+    words = text.split()
+
+    if not text:
+        return False
+
+    if len(words) >= 15:
+        return True
+
+    if text.endswith(".") and len(words) >= 8:
+        return True
+
+    if starts_like_sentence(text) and len(words) >= 7:
+        return True
+
+    if looks_like_sentence(text):
+        return True
+
+    return False
+
+
+def is_list_item(text: str) -> bool:
+    text = normalize_text_simple(text)
+
+    return bool(
+        re.match(r"^\([ivxlcdm]+\)\s+", text, flags=re.IGNORECASE)
+        or re.match(r"^\([a-z]\)\s+", text, flags=re.IGNORECASE)
+        or re.match(r"^\d+[\).]\s+", text)
+        or re.match(r"^[-•]\s+", text)
+    )
+
+
+def is_metric_or_example_line(text: str) -> bool:
+    text = normalize_text_simple(text)
+
+    if "–" in text or " - " in text:
+        if not text.endswith(":"):
+            return True
+
+    return False
+
+
+def is_wrapped_continuation_line(text: str, prev_text: str = "") -> bool:
+    text = normalize_text_simple(text)
+    prev_text = normalize_text_simple(prev_text)
+
+    if not text:
+        return False
+
+    if prev_text.endswith((",", "and", "or", "of", "to", "in", "at")):
+        return True
+
+    words = text.split()
+
+    if len(words) >= 8 and not text.endswith(":"):
+        sentence_words = {
+            "that", "which", "will", "should", "must",
+            "are", "is", "be", "been", "being",
+            "to", "of", "at", "with", "for", "from",
+        }
+
+        lower_words = {
+            word.strip(".,;:").lower()
+            for word in words
+        }
+
+        if lower_words & sentence_words:
+            return True
+
+    return False
+
+
+def is_inline_prompt_heading(text: str) -> bool:
+    text = normalize_text_simple(text)
+
+    pattern = r"^([A-Z][A-Za-z&/\-,\s]{2,60})\.\s+(.+)$"
+    match = re.match(pattern, text)
+
+    if not match:
+        return False
+
+    heading_part = match.group(1).strip()
+    rest = match.group(2).strip()
+
+    if len(heading_part.split()) > 6:
+        return False
+
+    if len(rest.split()) < 4:
+        return False
+
+    return True
+
+
 def is_numbered_section(text: str) -> bool:
-    """Detect numbered major sections such as '1. Data Types'."""
     text = normalize_text_simple(text)
 
     if not text:
         return False
 
-    # Handles inline format:
-    # "1. Data Types. The project will generate..."
     inline_match = re.match(r"^\d+\.\s+(.+?)\.\s+.+", text)
 
     if inline_match:
         heading_part = inline_match.group(1).strip()
         words = heading_part.split()
-        return 2 <= len(words) <= 12
+        return 2 <= len(words) <= 14
 
     words = text.split()
 
-    if len(words) > 14:
+    if len(words) > 16:
         return False
 
     return bool(re.match(r"^\d+\.\s+[A-Z][A-Za-z]", text))
 
 
 def is_decimal_subsection(text: str) -> bool:
-    """Detect decimal subsections such as '1.1 Data Types'."""
-    return bool(re.match(r"^\d+\.\d+\s+", text.strip()))
+    text = normalize_text_simple(text)
+    return bool(re.match(r"^\d+\.\d+\s+", text))
 
 
 def is_lettered_subsection(text: str) -> bool:
-    """Detect lettered subsections such as 'A. Types of data:'."""
-    return bool(re.match(r"^[A-Z]\.\s+.+", text.strip()))
+    text = normalize_text_simple(text)
+    return bool(re.match(r"^[A-Z]\.\s+.+", text))
 
 
 def is_all_caps_heading(text: str) -> bool:
-    """Detect short all-uppercase heading-like blocks."""
     text = normalize_text_simple(text)
     words = text.split()
 
-    if not (2 <= len(words) <= 12):
+    if not (2 <= len(words) <= 16):
         return False
 
-    if looks_like_sentence(text):
-        return False
-
-    return text.isupper()
-
-
-def is_short_uppercase_subtitle(text: str) -> bool:
-    """Detect short uppercase subtitle-like blocks near the document title."""
-    text = normalize_text_simple(text)
-    words = text.split()
-
-    if not (1 <= len(words) <= 5):
+    if is_probable_paragraph(text):
         return False
 
     return text.isupper()
 
 
 def is_prompt_style_subsection(text: str) -> bool:
-    """Detect short prompt-style subsections ending with a colon."""
     text = normalize_text_simple(text)
 
     if not text.endswith(":"):
@@ -236,67 +279,168 @@ def is_prompt_style_subsection(text: str) -> bool:
 
     words = text.split()
 
-    if len(words) > 12:
+    if len(words) > 16:
         return False
 
-    if looks_like_sentence(text):
+    if is_probable_paragraph(text):
         return False
 
     return True
 
 
 def is_title_style_section(block: dict, body_font_size: float) -> bool:
-    """
-    Detect visually prominent heading-like blocks.
-
-    A block may be a section if it is:
-    - larger than body text
-    - bold
-    - short and title-like
-    """
     text = normalize_text_simple(block.get("text", ""))
     font_size = get_font_size(block)
-    is_bold = is_bold_block(block)
 
     if not text:
         return False
 
     words = text.split()
 
-    if not (2 <= len(words) <= 12):
+    if not (2 <= len(words) <= 16):
         return False
 
     if text.endswith("?"):
         return False
 
-    if looks_like_sentence(text):
+    if is_list_item(text):
         return False
 
-    visually_heading = (
+    if is_metric_or_example_line(text):
+        return False
+
+    if is_probable_paragraph(text):
+        return False
+
+    return (
         font_size >= body_font_size + 1
         or font_size >= body_font_size * 1.12
-        or is_bold
+        or is_bold_block(block)
     )
 
-    return visually_heading
 
-
-def is_false_section_fragment(text: str) -> bool:
-    """
-    Detect fragments that should not be sections.
-
-    Example false sections:
-    - lowercase continuation fragments
-    - wrapped sentence endings
-    - short paragraph fragments
-    """
+def is_standalone_heading_candidate(text: str) -> bool:
     text = normalize_text_simple(text)
     words = text.split()
 
     if not text:
         return False
 
-    # Keep strong real headings.
+    if is_list_item(text):
+        return False
+
+    if is_metric_or_example_line(text):
+        return False
+
+    if len(words) < 2:
+        return False
+
+    if len(words) > 18:
+        return False
+
+    if text.endswith((".", ";")):
+        return False
+
+    if is_probable_paragraph(text):
+        return False
+
+    if text[0].islower():
+        return False
+
+    return True
+
+
+def is_context_section(
+    blocks: list[dict],
+    index: int,
+    body_font_size: float,
+) -> bool:
+    block = blocks[index]
+    text = normalize_text_simple(block.get("text", ""))
+
+    if not is_standalone_heading_candidate(text):
+        return False
+
+    font_size = get_font_size(block)
+
+    next_text = ""
+    if index + 1 < len(blocks):
+        next_text = normalize_text_simple(blocks[index + 1].get("text", ""))
+
+    prev_text = ""
+    if index > 0:
+        prev_text = normalize_text_simple(blocks[index - 1].get("text", ""))
+
+    next_is_paragraph = is_probable_paragraph(next_text)
+    prev_is_paragraph = is_probable_paragraph(prev_text)
+
+    visual_heading = (
+        is_bold_block(block)
+        or font_size >= body_font_size + 1
+        or font_size >= body_font_size * 1.12
+    )
+
+    if next_is_paragraph:
+        return True
+
+    if visual_heading:
+        return True
+
+    if prev_is_paragraph and is_standalone_heading_candidate(text):
+        return True
+
+    return False
+
+
+def is_top_title_candidate(blocks: list[dict], index: int) -> bool:
+    block = blocks[index]
+    text = normalize_text_simple(block.get("text", ""))
+    words = text.split()
+
+    if not text:
+        return False
+
+    page = block.get("page", 1)
+
+    if page not in {1, "1", None}:
+        return False
+
+    if index > 2:
+        return False
+
+    if len(words) > 18:
+        return False
+
+    if is_probable_paragraph(text):
+        return False
+
+    if text.isupper():
+        return True
+
+    if is_document_title_text(text):
+        return True
+
+    uppercase_words = sum(1 for word in words if word[:1].isupper())
+
+    return uppercase_words >= max(1, len(words) // 2)
+
+
+def is_false_section_fragment(text: str, prev_text: str = "") -> bool:
+    text = normalize_text_simple(text)
+    words = text.split()
+
+    if not text:
+        return False
+
+    if is_wrapped_continuation_line(text, prev_text):
+        return True
+
+    if is_list_item(text):
+        return True
+
+    if is_metric_or_example_line(text):
+        return True
+
     if is_nih_element_heading(text):
         return False
 
@@ -309,42 +453,27 @@ def is_false_section_fragment(text: str) -> bool:
     if is_lettered_subsection(text):
         return False
 
-    # Wrapped fragments often start lowercase.
     if text[0].islower():
         return True
 
-    # Long sentence-like text is usually content.
-    if looks_like_sentence(text):
+    if is_probable_paragraph(text):
         return True
 
-    # Comma/semicolon fragments are often body text.
-    if any(p in text for p in [";", ","]) and len(words) >= 5:
+    if any(p in text for p in [";", ","]) and len(words) >= 6:
         return True
 
-    # Short sentence endings are usually continuation content.
     if text.endswith(".") and len(words) <= 6:
         return True
 
     return False
 
 
-def is_same_as_document_title(text: str, document_title: str | None) -> bool:
-    """Check whether a later block repeats the document title."""
-    if not document_title:
-        return False
-
-    return (
-        normalize_text_simple(text).lower()
-        == normalize_text_simple(document_title).lower()
-    )
-
-
-def classify_line(block: dict, body_font_size: float) -> str:
-    """
-    Assign an initial rule-based label to one block.
-
-    This is the first-pass classification before LLM refinement.
-    """
+def classify_line(
+    block: dict,
+    body_font_size: float,
+    blocks: list[dict] | None = None,
+    index: int | None = None,
+) -> str:
     text = normalize_text_simple(block.get("text", ""))
 
     if not text:
@@ -362,63 +491,51 @@ def classify_line(block: dict, body_font_size: float) -> str:
     if is_numbered_section(text):
         return "section"
 
+    if is_decimal_subsection(text):
+        return "subsection"
+
+    if is_lettered_subsection(text):
+        return "subsection"
+
+    if is_prompt_style_subsection(text):
+        return "subsection"
+
     if is_all_caps_heading(text):
         return "section"
 
     if is_title_style_section(block, body_font_size):
         return "section"
 
-    if is_lettered_subsection(text):
-        return "subsection"
-
-    if is_decimal_subsection(text):
-        return "subsection"
-
-    if is_prompt_style_subsection(text):
-        return "subsection"
+    if blocks is not None and index is not None:
+        if is_context_section(blocks, index, body_font_size):
+            return "section"
 
     return "content"
 
 
 def detect_structure(blocks: list[dict]) -> list[dict]:
-    """
-    Apply rule-based structure detection to PDF blocks.
-
-    Adds a preliminary label to each block:
-    - document_title
-    - section
-    - subsection
-    - content
-    - empty
-    - subtitle
-    """
     blocks = clean_blocks(blocks)
     body_font_size = get_body_font_size(blocks)
 
     structured_blocks = []
-    seen_document_title = False
     seen_first_section = False
-    document_title = None
 
-    for block in blocks:
+    for i, block in enumerate(blocks):
         text = normalize_text_simple(block.get("text", ""))
 
         if not text or is_page_number(text):
             label = "empty"
 
-        elif not seen_document_title:
+        elif is_top_title_candidate(blocks, i) and not seen_first_section:
             label = "document_title"
-            document_title = text
-            seen_document_title = True
-
-        elif not seen_first_section and is_short_uppercase_subtitle(text):
-            label = "subtitle"
-
-        elif is_same_as_document_title(text, document_title):
-            label = "subtitle"
 
         else:
-            label = classify_line(block, body_font_size)
+            label = classify_line(
+                block=block,
+                body_font_size=body_font_size,
+                blocks=blocks,
+                index=i,
+            )
 
             if label == "section":
                 seen_first_section = True
@@ -434,28 +551,22 @@ def detect_structure(blocks: list[dict]) -> list[dict]:
     return structured_blocks
 
 
-
-# LLM label-only prompt
-# ============================================================
-# This prompt asks the LLM to return only block_id and label.
-# It does not allow rewriting or summarizing text.
-
 def build_llm_label_only_prompt(blocks_text: str) -> str:
     return f"""
-You are labeling PDFPlumber-extracted blocks from a Data Management Plan.
+You are an expert at reading Data Management Plans.
 
-Your task is LABELING ONLY.
+Your task is to classify each CURRENT block using:
+- previous_text
+- current_text
+- next_text
+- visual_hint
+- rule_label
 
-You must return ONLY:
-- block_id
-- label
-
-Do NOT return text.
+Return ONLY valid JSON.
 Do NOT rewrite text.
 Do NOT summarize text.
 Do NOT invent headings.
 Do NOT omit any block_id.
-Every input block_id must appear exactly once.
 
 Allowed labels:
 - document_title
@@ -464,113 +575,73 @@ Allowed labels:
 - content
 
 Definitions:
-- document_title: the main title of the DMP. It may span more than one consecutive block at the beginning.
-- section: an existing major heading copied from the DMP.
-- subsection: an existing smaller prompt, question, or internal heading under a section.
-- content: body text, instruction text, guidance text, answer text, explanation, or paragraph text.
 
-Input block features may include:
-- block_id
-- text
-- page
-- line_order
-- avg_font_size
-- body_font_size
-- is_bold
-- font_names
-- visual_hint
-- rule_label
+document_title:
+The main title of the DMP. Usually appears at the beginning of page 1.
+It may span multiple consecutive beginning blocks.
 
-Use both text and formatting information to decide the label.
+section:
+A major heading that starts a new DMP topic.
+It may be numbered, uppercase, bold, larger font, or a short standalone heading followed by paragraph content.
 
-Critical rules for title:
-- If the first two blocks are both title-like, same font size, and near the top of page 1, label BOTH as document_title.
+subsection:
+A smaller prompt/question/internal heading inside a section.
+Often lettered, decimal-numbered, or a short prompt ending with a colon.
 
+content:
+Paragraphs, guidance text, answer text, explanation, list items, examples, repository names, and wrapped continuation lines.
 
-How to detect sections:
-Use section only for existing major DMP headings.
+Reason like this:
 
-A section is usually:
-- a numbered heading, such as "1. Data sharing and preservation"
-- an Element heading, such as "Element 1: Data Type:"
-- a short standalone heading line
-- a heading followed by multiple paragraphs of related content
-- a heading that introduces a major DMP topic
-- a block that appears visually like a heading, such as larger font or bold
-- a block with visual_hint = larger_than_body and short/title-like text
+1. Ask: Does current_text start a new idea?
+If yes, it may be section or subsection.
 
-Examples of section-like headings:
-- Products of Research
-- Data Format Standards
-- Access and sharing
-- Policies and provisions for re-use, re-distribution, and production of derivatives
-- Archiving of Data, Samples, and Other Relevant Research Products
-- Roles and responsibilities
-- Types of data
-- Data storage and preservation of access
+2. Ask: Does current_text continue previous_text?
+If yes, it is content.
 
-How to detect subsections:
-Use subsection only for existing smaller prompts inside a section.
+3. If previous_text ends with comma, "and", "or", "of", "to", or "in",
+then current_text is usually content.
 
-A subsection is usually:
-- a lettered prompt, such as "A. Types and amount of scientific data expected to be generated in the project:"
-- a decimal prompt, such as "1.1 Data Types"
-- a short prompt ending with a colon inside a larger section
-- a repeated internal prompt under a major heading
-- a block that appears visually like a smaller heading or prompt under a section
+4. If current_text is short and standalone, and next_text is a long paragraph,
+then current_text is probably section.
 
-How to detect content:
-Use content for:
-- full sentences
-- paragraphs
-- guidance or instruction text
-- answer text
-- explanatory text
-- body text after a heading
-- body text after a prompt
-- sentence fragments that continue the previous block
+5. If current_text starts with:
+(i), (ii), (iii), -, •
+then it is content.
 
-Important negative rules:
-- A paragraph should never become a section.
-- A paragraph should never become a subsection.
-- Do not label repository names as subsection.
-- Do not label institution names as subsection.
-- Do not label continuation lines as subsection.
-- Do not label wrapped sentence fragments as section.
+6. If current_text is a data/example line such as:
+"Objective sedentary behavior metrics – no existing standards"
+then it is content.
 
-Visual hint rules:
-- visual_hint = larger_than_body usually means section or document_title.
-- visual_hint = uppercase_heading_like may mean document_title or section.
-- visual_hint = bold may mean section or subsection.
-- visual_hint = body usually means content.
-- If a block has larger font than nearby body text and is short/title-like, label it section.
-- If the first two blocks are uppercase/title-like and same font size, they may both be document_title.
-- If a block has the same font size as known headings and is followed by body text, label it section.
+7. If current_text is paragraph-like, it is content.
 
-Very important:
-Because this is label-only mode, do NOT split blocks.
-If a heading and content are inside the same block, label the whole block based on the dominant role.
-If the block is mostly paragraph text, label it content.
-If the block is a standalone heading, label it section or subsection.
+8. Do not classify wrapped sentence fragments as section.
+
+9. Do not classify repository names or institution names alone as subsection.
+
+10. Use rule_label as a hint, not as truth.
+
+Examples:
+- "DATA MANAGEMENT AND SHARING PLAN" -> document_title
+- "Element 1: Data Type:" -> section
+- "1. Data sharing and preservation" -> section
+- "Products of Research" followed by a paragraph -> section
+- "A. Types and amount of scientific data expected to be generated in the project:" -> subsection
+- "(iii) NHANES cohorts" -> content
+- "DMPs that explicitly or implicitly commit data management resources..." after "In particular," -> content
 
 Return format:
 [
   {{"block_id": 1, "label": "document_title"}},
-  {{"block_id": 2, "label": "document_title"}},
-  {{"block_id": 3, "label": "section"}},
-  {{"block_id": 4, "label": "content"}}
+  {{"block_id": 2, "label": "section"}},
+  {{"block_id": 3, "label": "content"}}
 ]
-
-Return ONLY valid JSON array.
 
 Input blocks:
 {blocks_text}
 """
 
-# JSON extraction from LLM response
-# ============================================================
-# The LLM may return extra text around JSON.
-# This function extracts only the JSON array.
+
 def extract_json_array(model_output: str) -> str:
     start = model_output.find("[")
     end = model_output.rfind("]")
@@ -581,28 +652,64 @@ def extract_json_array(model_output: str) -> str:
     return model_output[start:end + 1]
 
 
+def get_visual_hint(block: dict, body_font_size: float) -> str:
+    text = normalize_text_simple(block.get("text", ""))
+    font_size = get_font_size(block)
 
-# Compact block preparation for LLM
-# ============================================================
-# Reduces full PDFPlumber blocks to only the fields needed by the LLM:
-# block_id, text, page, font size, bold flag, and rule-based label.
+    if is_bold_block(block):
+        return "bold"
+
+    if font_size >= body_font_size + 1 or font_size >= body_font_size * 1.12:
+        return "larger_than_body"
+
+    if text.isupper() and len(text.split()) <= 18:
+        return "uppercase_heading_like"
+
+    return "body"
+
+
 def compact_blocks_for_labeling(pdf_blocks: list[dict]) -> list[dict]:
     compact_blocks = []
+    body_font_size = get_body_font_size(pdf_blocks)
 
-    for i, block in enumerate(pdf_blocks, start=1):
+    clean_pdf_blocks = []
+
+    for block in pdf_blocks:
         text = normalize_text_simple(block.get("text", ""))
 
         if not text or is_page_number(text):
             continue
 
+        clean_pdf_blocks.append(block)
+
+    for i, block in enumerate(clean_pdf_blocks):
+        current_text = normalize_text_simple(block.get("text", ""))
+
+        previous_text = ""
+        next_text = ""
+
+        if i > 0:
+            previous_text = normalize_text_simple(
+                clean_pdf_blocks[i - 1].get("text", "")
+            )
+
+        if i + 1 < len(clean_pdf_blocks):
+            next_text = normalize_text_simple(
+                clean_pdf_blocks[i + 1].get("text", "")
+            )
+
         compact_blocks.append(
             {
-                "block_id": i,
-                "text": text,
+                "block_id": i + 1,
+                "previous_text": previous_text,
+                "current_text": current_text,
+                "next_text": next_text,
                 "page": block.get("page"),
-                "avg_font_size": block.get("avg_font_size"),
-                "font_size": block.get("font_size"),
-                "is_bold": block.get("is_bold"),
+                "line_order": block.get("line_order"),
+                "font_size": get_font_size(block),
+                "body_font_size": body_font_size,
+                "is_bold": is_bold_block(block),
+                "visual_hint": get_visual_hint(block, body_font_size),
                 "rule_label": block.get("label"),
             }
         )
@@ -610,12 +717,6 @@ def compact_blocks_for_labeling(pdf_blocks: list[dict]) -> list[dict]:
     return compact_blocks
 
 
-
-# Post-processing
-# ============================================================
-# Cleans and corrects final labels after rule/LLM classification.
-# Handles inline headings, repeated titles, false headings,
-# lowercase continuation fragments, and merged content.
 def split_inline_numbered_section(text: str) -> list[dict]:
     text = normalize_text_simple(text)
 
@@ -625,22 +726,16 @@ def split_inline_numbered_section(text: str) -> list[dict]:
     if not match:
         return []
 
-    section_text = match.group(1).strip()
-    content_text = match.group(2).strip()
-
-    if not section_text or not content_text:
-        return []
-
     return [
-        {"label": "section", "text": section_text},
-        {"label": "content", "text": content_text},
+        {"label": "section", "text": match.group(1).strip()},
+        {"label": "content", "text": match.group(2).strip()},
     ]
 
 
 def split_inline_dot_subsection(text: str) -> list[dict]:
     text = normalize_text_simple(text)
 
-    pattern = r"^([A-Z][A-Za-z0-9/&,\-\(\),\s]{2,80}\.)\s+(.+)$"
+    pattern = r"^([A-Z][A-Za-z0-9/&,\-\(\),\s]{2,90}\.)\s+(.+)$"
     match = re.match(pattern, text)
 
     if not match:
@@ -651,55 +746,19 @@ def split_inline_dot_subsection(text: str) -> list[dict]:
 
     heading_words = subsection_text.rstrip(".").split()
 
-    if not (2 <= len(heading_words) <= 8):
+    if not (2 <= len(heading_words) <= 10):
         return []
 
     if len(content_text.split()) < 5:
         return []
 
-    if looks_like_sentence(subsection_text):
+    if is_probable_paragraph(subsection_text):
         return []
 
     return [
         {"label": "subsection", "text": subsection_text},
         {"label": "content", "text": content_text},
     ]
-
-
-def is_sentence_or_paragraph(text: str) -> bool:
-    text = normalize_text_simple(text)
-    words = text.split()
-
-    if len(words) > 14:
-        return True
-
-    starters = (
-        "The ",
-        "This ",
-        "These ",
-        "All ",
-        "We ",
-        "Data ",
-        "Materials ",
-        "Interested ",
-        "Local ",
-        "Stored ",
-        "If ",
-        "As ",
-        "In ",
-        "Additionally,",
-        "Researchers ",
-        "Confidential ",
-        "Software ",
-        "Select ",
-        "Research ",
-        "Upon ",
-        "Our ",
-        "First,",
-        "Specifically,",
-    )
-
-    return text.startswith(starters)
 
 
 def postprocess_blocks(blocks: list[dict]) -> list[dict]:
@@ -718,15 +777,17 @@ def postprocess_blocks(blocks: list[dict]) -> list[dict]:
 
         text = clean_repeated_words(text)
 
-        if is_page_number(text):
+        if is_page_number(text) or is_punctuation_only(text):
             continue
 
-        if is_punctuation_only(text):
-            continue
+        prev_text = clean_output[-1]["text"] if clean_output else ""
 
         if label == "document_title":
             if document_title_used:
-                label = "content"
+                if clean_output and clean_output[-1]["label"] == "document_title":
+                    label = "document_title"
+                else:
+                    label = "content"
             else:
                 document_title_used = True
 
@@ -750,13 +811,19 @@ def postprocess_blocks(blocks: list[dict]) -> list[dict]:
         elif is_numbered_section(text):
             label = "section"
 
+        elif is_decimal_subsection(text):
+            label = "subsection"
+
         elif is_lettered_subsection(text):
             label = "subsection"
 
-        elif label == "subsection" and is_sentence_or_paragraph(text):
+        elif label == "subsection" and is_probable_paragraph(text):
             label = "content"
 
-        elif label == "section" and is_sentence_or_paragraph(text):
+        elif label == "section" and is_false_section_fragment(text, prev_text):
+            label = "content"
+
+        if label == "section" and is_inline_prompt_heading(text):
             label = "content"
 
         if label == "subsection":
@@ -765,13 +832,8 @@ def postprocess_blocks(blocks: list[dict]) -> list[dict]:
             if len(words) < 3 and not is_lettered_subsection(text):
                 label = "content"
 
-            # Fix wrapped continuation fragments such as:
-            # "based study datasets:"
             if text and text[0].islower():
                 label = "content"
-
-        if label == "section" and is_false_section_fragment(text):
-            label = "content"
 
         clean_output.append(
             {
@@ -781,6 +843,22 @@ def postprocess_blocks(blocks: list[dict]) -> list[dict]:
         )
 
     return clean_output
+
+
+def merge_consecutive_document_title_blocks(blocks: list[dict]) -> list[dict]:
+    merged = []
+
+    for block in blocks:
+        if (
+            merged
+            and block["label"] == "document_title"
+            and merged[-1]["label"] == "document_title"
+        ):
+            merged[-1]["text"] += " " + block["text"]
+        else:
+            merged.append(dict(block))
+
+    return merged
 
 
 def merge_consecutive_content_blocks(blocks: list[dict]) -> list[dict]:
@@ -810,13 +888,6 @@ def merge_consecutive_content_blocks(blocks: list[dict]) -> list[dict]:
     return merged
 
 
-# Main functions
-# ============================================================
-# These are the public functions called from notebooks:
-# - generate_structured_blocks_with_rules()
-# - generate_structured_blocks_with_llm()
-# - save_blocks()
-
 def generate_structured_blocks_with_rules(pdf_blocks: list[dict]) -> list[dict]:
     structured = detect_structure(pdf_blocks)
 
@@ -830,6 +901,7 @@ def generate_structured_blocks_with_rules(pdf_blocks: list[dict]) -> list[dict]:
     ]
 
     blocks = postprocess_blocks(simplified)
+    blocks = merge_consecutive_document_title_blocks(blocks)
     blocks = merge_consecutive_content_blocks(blocks)
 
     return blocks
@@ -881,7 +953,7 @@ def generate_structured_blocks_with_llm_labels_only(
     rebuilt_blocks = []
 
     for block_id, original_block in block_lookup.items():
-        text = normalize_text_simple(original_block.get("text", ""))
+        text = normalize_text_simple(original_block.get("current_text", ""))
 
         if not text or is_page_number(text) or is_punctuation_only(text):
             continue
@@ -893,16 +965,15 @@ def generate_structured_blocks_with_llm_labels_only(
             rule_label or "content",
         )
 
-        text = clean_repeated_words(text)
-
         rebuilt_blocks.append(
             {
                 "label": label,
-                "text": text,
+                "text": clean_repeated_words(text),
             }
         )
 
     blocks = postprocess_blocks(rebuilt_blocks)
+    blocks = merge_consecutive_document_title_blocks(blocks)
     blocks = merge_consecutive_content_blocks(blocks)
 
     return blocks

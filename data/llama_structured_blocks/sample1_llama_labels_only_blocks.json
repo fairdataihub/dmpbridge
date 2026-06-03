@@ -93,7 +93,15 @@
   },
   {
     "label": "content",
-    "text": "The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It will be deposited into the UC San Diego Library Data repository along with study protocols, code, and models for public use. De-identified data will be available after the main outcome papers are published.\n\nProtections for privacy, rights, and confidentiality of human research participants:\n\nAll data used in this study was de-identified prior to use."
+    "text": "The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It will be deposited into the UC San Diego Library Data repository along with study protocols, code, and models for public use. De-identified data will be available after the main outcome papers are published."
+  },
+  {
+    "label": "subsection",
+    "text": "Protections for privacy, rights, and confidentiality of human research participants:"
+  },
+  {
+    "label": "content",
+    "text": "All data used in this study was de-identified prior to use."
   },
   {
     "label": "section",
