@@ -40,6 +40,8 @@ ALLOWED_LABELS = {
     "content",
 }
 
+# Basic normalization helpers
+# ------------------------------------------------------------
 
 def normalize_text_simple(text: str) -> str:
     return re.sub(r"\s+", " ", str(text).strip())
@@ -263,7 +265,8 @@ def compact_blocks_for_labeling(pdf_blocks: list[dict]) -> list[dict]:
 
     return compact_blocks
 
-
+# Chunking
+# ------------------------------------------------------------
 def make_overlapping_chunks(
     blocks: list[dict],
     chunk_size: int = 45,
@@ -309,7 +312,8 @@ def make_overlapping_chunks(
 
     return chunks
 
-
+# Prompt
+# ------------------------------------------------------------
 def build_chunk_labeling_prompt(
     chunk: dict,
     total_blocks: int,
@@ -378,9 +382,20 @@ Only use this for the overall document title, not regular headings.
 
 section:
 A major heading that opens a new DMP topic, requirement area, or major document part.
+Examples may include numbered headings such as:
+"Element 1: Data Type:"
+"2. Data used in publications"
+"3. "TYPES OF DATA"
+"3. Policies for access and sharing."
+"5. Plans for archiving and preservation of access."
 
 subsection:
 A smaller prompt, question, or internal heading that belongs under a major section.
+Examples may include numbered headings such as:
+"A. Types and amount of scientific data expected to be generated in the project:"
+"B. Scientific data that will be preserved and shared, and the rationale for doing so:"
+"C. Metadata, other relevant data, and associated documentation:"
+"Data management plans should describe whether and how data generated in the course of the proposed research will be shared and preserved. If the plan is not to share and/or preserve certain data, then the plan must explain the basis of the decision (for example, cost/benefit considerations, other parameters of feasibility, scientific appropriateness, or limitations discussed in #4). At a minimum, DMPs must describe how data sharing and preservation will enable validation of results, or how results could be validated if data are not shared or preserved."
 
 content:
 Narrative body text, answers, explanations, guidance, examples, list items,
@@ -389,8 +404,6 @@ and anything that is not clearly a title, section, or subsection.
 
 Important instructions:
 - Return ONLY valid JSON.
-- Do NOT use markdown.
-- Do NOT explain your reasoning.
 - Do NOT rewrite text.
 - Do NOT summarize text.
 - Do NOT invent headings.
@@ -399,9 +412,7 @@ Important instructions:
 - Do NOT omit any target_block_id.
 - Do NOT add new block_ids.
 - Do NOT change block order.
-- Use layout metadata as supporting evidence, not as an automatic rule.
 - If uncertain, label the block as content.
-- Prefer content over over-detecting headings.
 
 Return format:
 [

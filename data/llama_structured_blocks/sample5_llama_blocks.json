@@ -12,20 +12,12 @@
     "text": "The proposal is separated into three sections.\n\nSection 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls."
   },
   {
-    "label": "subsection",
+    "label": "section",
     "text": "• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)"
   },
   {
     "label": "content",
-    "text": "yearly (2016-2021) at the field scale."
-  },
-  {
-    "label": "subsection",
-    "text": "• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic"
-  },
-  {
-    "label": "content",
-    "text": "Sciences Workshops."
+    "text": "yearly (2016-2021) at the field scale.\n\n• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops."
   },
   {
     "label": "section",
@@ -44,7 +36,7 @@
     "text": "available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files;\n\nor text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be adopted and will likely evolve as new datasets provide for challenging formats and organization."
   },
   {
-    "label": "subsection",
+    "label": "section",
     "text": "Produced Data: Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be"
   },
   {
@@ -64,12 +56,8 @@
     "text": "POLICIES FOR ACCESS AND SHARING"
   },
   {
-    "label": "subsection",
-    "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information"
-  },
-  {
     "label": "content",
-    "text": "or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors. All methodological procedures for data quality control and aggregation will be described in the data documentation. This information will be provided in the form of supplementary documentation for publications, in the README.txt file, and at the repository (recordlevel). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the agnostic open access repository backed by UCSB and the California Digital Library (CDL), which implements the latest best practices in data curation, publication, citation, and archival. Dryad assigns Digital Object Identifiers (DOIs) to deposited datasets and makes data discoverable through such services as the Thomson-Reuters Data Citation Index, Scopus, and Google Dataset Search. All data in Dryad is publicly accessible and released under a CC0 license. Data will be linked to publications and vice versa through DOIs."
+    "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors. All methodological procedures for data quality control and aggregation will be described in the data documentation. This information will be provided in the form of supplementary documentation for publications, in the README.txt file, and at the repository (recordlevel). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the agnostic open access repository backed by UCSB and the California Digital Library (CDL), which implements the latest best practices in data curation, publication, citation, and archival. Dryad assigns Digital Object Identifiers (DOIs) to deposited datasets and makes data discoverable through such services as the Thomson-Reuters Data Citation Index, Scopus, and Google Dataset Search. All data in Dryad is publicly accessible and released under a CC0 license. Data will be linked to publications and vice versa through DOIs."
   },
   {
     "label": "section",
