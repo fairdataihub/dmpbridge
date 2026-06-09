@@ -426,6 +426,7 @@ Chunk blocks:
 """
 
 
+
 def extract_json_array(model_output: str) -> str:
     if not model_output or not str(model_output).strip():
         raise ValueError("LLM returned empty output.")
