@@ -373,34 +373,65 @@ Allowed labels:
 - subsection
 - content
 
-Label meanings:
+Labeling strategy:
+First identify the hierarchy of the document before assigning labels.
 
 document_title:
 The main title of the whole DMP or proposal-related DMP document.
 Usually appears near the beginning of the document.
-Only use this for the overall document title, not regular headings.
+Use this only for the overall document title, not regular headings.
+There should normally be only one document_title.
 
 section:
-A major heading that opens a new DMP topic, requirement area, or major document part.
-Examples may include numbered headings such as:
-"Element 1: Data Type:"
-"2. Data used in publications"
-"3. "TYPES OF DATA"
-"3. Policies for access and sharing."
-"5. Plans for archiving and preservation of access."
+A top-level heading that opens a new major DMP topic, requirement area, or major document part.
+
+Use section for highest-level DMP headings, such as:
+- Element 1: Data Type:
+- Element 2: Related Tools, Software and/or Code:
+- Element 3: Standards:
+- Element 4: Data Preservation, Access, and Associated Timelines:
+- Element 5: Access, Distribution, or Reuse Considerations:
+- Element 6: Oversight of Data Management and Sharing:
+- 2. Data used in publications
+- 3. TYPES OF DATA
+- 3. Policies for access and sharing
+- 5. Plans for archiving and preservation of access
+
+Do NOT label a block as section only because it is bold, short, uppercase, or ends with a colon.
+A section should start a new top-level document topic.
 
 subsection:
-A smaller prompt, question, or internal heading that belongs under a major section.
-Examples may include numbered headings such as:
-"A. Types and amount of scientific data expected to be generated in the project:"
-"B. Scientific data that will be preserved and shared, and the rationale for doing so:"
-"C. Metadata, other relevant data, and associated documentation:"
-"Data management plans should describe whether and how data generated in the course of the proposed research will be shared and preserved. If the plan is not to share and/or preserve certain data, then the plan must explain the basis of the decision (for example, cost/benefit considerations, other parameters of feasibility, scientific appropriateness, or limitations discussed in #4). At a minimum, DMPs must describe how data sharing and preservation will enable validation of results, or how results could be validated if data are not shared or preserved."
+A smaller prompt, question, or internal heading that belongs under the most recent section.
+A subsection explains part of a section; it does not start a new top-level DMP topic.
+
+Use subsection for smaller headings such as:
+- A. Types and amount of scientific data expected to be generated in the project:
+- B. Scientific data that will be preserved and shared, and the rationale for doing so:
+- C. Metadata, other relevant data, and associated documentation:
+- A. Repository where scientific data and metadata will be archived:
+- B. How scientific data will be findable and identifiable:
+- C. When and how long the scientific data will be made available:
+- Protections for privacy, rights, and confidentiality of human research participants:
+
+Important hierarchy rule:
+If a heading appears under an Element heading or another major section and introduces a smaller question, prompt, or requirement, label it as subsection.
+Lettered headings such as A., B., C., etc. are usually subsections when they appear inside an Element section.
+Do not promote lettered prompts to section unless they clearly start a completely new major document part.
 
 content:
 Narrative body text, answers, explanations, guidance, examples, list items,
 data descriptions, repository names, institution names, continuation lines,
 and anything that is not clearly a title, section, or subsection.
+
+Decision checklist:
+Before assigning section, ask:
+1. Does this block start a new top-level DMP Element or major document part?
+2. Is it at the same hierarchy level as Element 1, Element 2, Element 3, etc.?
+
+If yes, label it section.
+If no, and it is a smaller heading, question, or prompt inside the current section, label it subsection.
+If it is narrative explanation or answer text, label it content.
+If uncertain, label the block as content.
 
 Important instructions:
 - Return ONLY valid JSON.
@@ -424,6 +455,7 @@ Return format:
 Chunk blocks:
 {blocks_text}
 """
+
 
 def extract_json_array(model_output: str) -> str:
     if not model_output or not str(model_output).strip():

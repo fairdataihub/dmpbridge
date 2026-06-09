@@ -13,23 +13,7 @@
   },
   {
     "label": "content",
-    "text": "participants. The performance data will include publications, citations, research grants, patents, licenses, and start-ups founded by members of interdisciplinary cluster hires, as well as those of a matched sample of faculty hired through normal departmental mechanisms. The survey data will include responses to five-page surveys from members of the interdisciplinary clusters. The P.I. will also collect interview data from cluster leads and university administrators."
-  },
-  {
-    "label": "section",
-    "text": "Performance and survey responses will be collected from a minimum of 72 individuals affiliated"
-  },
-  {
-    "label": "content",
-    "text": "with interdisciplinary clusters (at least three individuals from four institutions each in six fields), and a matched sample of at least 72 individuals hired through normal departmental channels.\n\nInterview data will be collected from a minimum of 24 cluster leads and four administrators. If fields are drawn from multiple institutions, the number of interviews with cluster leads will reflect the number of institutions and the number of fields included in the sample. The number of interviews with university administrators will reflect the number of institutions included in the sample."
-  },
-  {
-    "label": "section",
-    "text": "The members of the project team will spot check coding on a 10 percent sample of individuals"
-  },
-  {
-    "label": "content",
-    "text": "hired through cluster programs and a 10 percent sample of individual hired through normal departmental procedures. If problems arise in the validation of coding, more extensive checks will be conducted. Coders will be instructed on the requirements for producing high quality data, including meticulousness, conscientiousness, asking questions where uncertainties exist, and double checking work."
+    "text": "participants. The performance data will include publications, citations, research grants, patents, licenses, and start-ups founded by members of interdisciplinary cluster hires, as well as those of a matched sample of faculty hired through normal departmental mechanisms. The survey data will include responses to five-page surveys from members of the interdisciplinary clusters. The P.I. will also collect interview data from cluster leads and university administrators.\n\nPerformance and survey responses will be collected from a minimum of 72 individuals affiliated with interdisciplinary clusters (at least three individuals from four institutions each in six fields), and a matched sample of at least 72 individuals hired through normal departmental channels.\n\nInterview data will be collected from a minimum of 24 cluster leads and four administrators. If fields are drawn from multiple institutions, the number of interviews with cluster leads will reflect the number of institutions and the number of fields included in the sample. The number of interviews with university administrators will reflect the number of institutions included in the sample.\n\nThe members of the project team will spot check coding on a 10 percent sample of individuals hired through cluster programs and a 10 percent sample of individual hired through normal departmental procedures. If problems arise in the validation of coding, more extensive checks will be conducted. Coders will be instructed on the requirements for producing high quality data, including meticulousness, conscientiousness, asking questions where uncertainties exist, and double checking work."
   },
   {
     "label": "section",
@@ -37,15 +21,7 @@
   },
   {
     "label": "content",
-    "text": "office. The data will be preserved exclusively on the two project computers and the back-up hard drive.\n\nPerformance and survey data will be coded into STATA data files, including numeric institutional and cluster identifiers, for subsequent data analysis. Data collected from individual"
-  },
-  {
-    "label": "section",
-    "text": "and institutions will be stripped of institutional identifications and given a letter title"
-  },
-  {
-    "label": "content",
-    "text": "corresponding to the institution’s name. The University of California, Riverside, for example, might be labelled “Institution A.” Interviews will be tape recorded for consultation during the writing of papers and reports. To our knowledge, there will be little overlap between the data collected for this project and data collected by other researchers. The only project that may include overlapping data is that of Erin Leahey at the University of Arizona (SciSIP award"
+    "text": "office. The data will be preserved exclusively on the two project computers and the back-up hard drive.\n\nPerformance and survey data will be coded into STATA data files, including numeric institutional and cluster identifiers, for subsequent data analysis. Data collected from individual and institutions will be stripped of institutional identifications and given a letter title corresponding to the institution’s name. The University of California, Riverside, for example, might be labelled “Institution A.” Interviews will be tape recorded for consultation during the writing of papers and reports. To our knowledge, there will be little overlap between the data collected for this project and data collected by other researchers. The only project that may include overlapping data is that of Erin Leahey at the University of Arizona (SciSIP award"
   },
   {
     "label": "section",
@@ -61,7 +37,15 @@
   },
   {
     "label": "content",
-    "text": "and includes evidence on university investments in interdisciplinary activities. In previous work, Prof. Leahey has collected data on publication rates and publication prominence of scholars working in interdisciplinary teams relative to scholars who are not working in such teams. We see little overlap in these data and the data the research team intends to collect. A robust study of interdisciplinary activity has been conducted at Stanford University by Prof. Daniel MacFarland.\n\nAlthough these data are relevant to our work, they are not exclusively or primarily focused on cluster hires. We do not intend to integrate either of these databases with the data we collect."
+    "text": "and includes evidence on university investments in interdisciplinary activities. In previous work, Prof. Leahey has collected data on publication rates and publication prominence of scholars working in interdisciplinary teams relative to scholars who are not working in such teams. We see little overlap in these data and the data the research team intends to collect. A robust study of interdisciplinary activity has been conducted at Stanford University by Prof. Daniel MacFarland."
+  },
+  {
+    "label": "subsection",
+    "text": "Although these data are relevant to our work, they are not exclusively or primarily focused on"
+  },
+  {
+    "label": "content",
+    "text": "cluster hires. We do not intend to integrate either of these databases with the data we collect."
   },
   {
     "label": "section",
@@ -69,7 +53,15 @@
   },
   {
     "label": "content",
-    "text": "will be removed from the project office during the period of the project. The only individuals with access to the collected data will be the P.I. and research assistants. New research assistants will be advised of the essential care that must be taken with data collected for this project. Any research assistants found to be handling data in a careless way will be immediately removed from the project staff."
+    "text": "will be removed from the project office during the period of the project. The only individuals with access to the collected data will be the P.I. and research assistants. New research assistants"
+  },
+  {
+    "label": "subsection",
+    "text": "will be advised of the essential care that must be taken with data collected for this project. Any"
+  },
+  {
+    "label": "content",
+    "text": "research assistants found to be handling data in a careless way will be immediately removed from the project staff."
   },
   {
     "label": "section",
@@ -77,7 +69,15 @@
   },
   {
     "label": "content",
-    "text": "without the explicit consent of the individuals and institutions.\n\nData from the project will be preserved in data files stripped of individual and institutional names. These data files will include a small number of variables that will allow researchers to categorize the institutions. These variables include institutional size, Carnegie category, control (private, non-profit or public), and regional location. Following the completion of the project,"
+    "text": "without the explicit consent of the individuals and institutions."
+  },
+  {
+    "label": "subsection",
+    "text": "Data from the project will be preserved in data files stripped of individual and institutional"
+  },
+  {
+    "label": "content",
+    "text": "names. These data files will include a small number of variables that will allow researchers to categorize the institutions. These variables include institutional size, Carnegie category, control (private, non-profit or public), and regional location. Following the completion of the project,"
   },
   {
     "label": "section",
@@ -85,7 +85,15 @@
   },
   {
     "label": "content",
-    "text": "in pursuing questions related to cluster hiring. The preservation format will be platformindependent. Following the end of the project, we will contact the Inter-University Consortium for Political and Social Research (ICPSR) at the University of Michigan about archiving the data on a permanent basis. We do not anticipate additional costs for preparing data and"
+    "text": "in pursuing questions related to cluster hiring. The preservation format will be platform-"
+  },
+  {
+    "label": "subsection",
+    "text": "independent. Following the end of the project, we will contact the Inter-University Consortium"
+  },
+  {
+    "label": "content",
+    "text": "for Political and Social Research (ICPSR) at the University of Michigan about archiving the data on a permanent basis. We do not anticipate additional costs for preparing data and"
   },
   {
     "label": "section",
@@ -93,14 +101,18 @@
   },
   {
     "label": "content",
-    "text": "researchers, policy analysts, and higher education scholars.\n\nWe do not intend to generate metadata from this project. We do not anticipate holding intellectual property rights to these data."
+    "text": "researchers, policy analysts, and higher education scholars."
   },
   {
-    "label": "section",
-    "text": "The P.I., Professor Steven Brint, will be responsible for all data collection and precautions for"
+    "label": "subsection",
+    "text": "We do not intend to generate metadata from this project. We do not anticipate holding"
   },
   {
     "label": "content",
+    "text": "intellectual property rights to these data.\n\nThe P.I., Professor Steven Brint, will be responsible for all data collection and precautions for"
+  },
+  {
+    "label": "section",
     "text": "the security and confidentiality of the data."
   }
 ]
