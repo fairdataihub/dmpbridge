@@ -1,128 +1,237 @@
-# DMP Bridge
- 
-An open-source Python pipeline for extracting Data Management Plan (DMP) fields from PDF documents and converting them into **RDA Common Standard JSON** with DMPTool extensions.
- 
-## Features
- 
-- **PDF Extraction**: Extract structured content from DMP PDFs using pdfplumber
-- **LLM-Powered Processing**: Leverage Llama models for intelligent narrative block labeling
-- **Text Cleaning**: Automated text normalization and preprocessing
-- **RDA Compliance**: Convert extracted data to RDA Common Standard JSON format
-- **DMPTool Extensions**: Support for DMPTool-specific extensions and custom fields
-- **Evaluation Framework**: Built-in tools for validating extraction accuracy
-- **Modular Architecture**: Clean separation of concerns with dedicated modules for each processing stage
-## Repository Structure
- 
+# dmpbridge
+
+A two-part tool for analyzing PDF structure:
+
+1. **Pipeline** — extract text from a PDF with pdfplumber, classify each block as `document_title`, `section`, `subsection`, or `content` using a local LLM (via Ollama), and output a labeled JSON file.
+2. **Viewer** — a side-by-side PDF + JSON browser UI that overlays bounding boxes on the PDF, synchronized with the JSON table.
+
+---
+
+## Project structure
+
 ```
 dmpbridge/
-├── data/                                    # Sample data and extraction outputs
-│
-├── src/dmpbridge/                           # Main package source code
-│   ├── __init__.py
-│   │
-│   ├── pdf/                                 # PDF extraction module
-│   │   ├── __init__.py
-│   │   └── pdfplumber_extractor.py          # pdfplumber-based PDF parser
-│   │
-│   ├── llm/                                 # LLM integration module
-│   │   ├── __init__.py
-│   │   ├── llama_client.py                  # Llama model client
-│   │   └── llm_narrative_blocks_plumberjson.py          # Narrative block labeling
-│   │
-│   │
-│   ├── processing/                          # Data processing module
-│   │   ├── __init__.py
-│   │   ├── text_cleaner.py                  # Text normalization and cleanup
-│   │   └── structure_json_builder.py        # JSON structure conversion
-│   │
-│   ├── evaluation/                          # Evaluation framework
-│   │   ├── __init__.py
-│   │   ├── pdfplumber_text_evaluator.py     # Text extraction validation
-│   │   └── narrative_json_evaluator.py      # LLM output validation
-│   │
-│   └── utils/                               # Utility functions
-│       ├── __init__.py
-│       ├── logger.py                        # Logging configuration
-│       └── file_io.py                       # File I/O operations
-│
-├── notebooks/                               # Jupyter notebooks for testing
-│   ├── 01_pdfplumber_batch_test.ipynb       # PDF extraction batch processing
-│   ├── 02_evaluation_pdfplumber_test.ipynb  # Text extraction evaluation
-│   ├── 03_llama_narrative_labeling_plumberjson_batch_test.ipynb
-│   └── 04_evaluation_llama_dmp_narrative_batch_test.ipynb
-│
-├── outputs/                                 # Generated outputs
-│   ├── debug/                               # Debug information
-│   ├── logs/                                # Application logs
-│   └── reports/                             # Evaluation reports
-│
-├── schemas/                                 # JSON schemas
-│   └── rda_dmp_dmptool_extension_skeleton.json
-│
-├── tests/                                   # Unit and integration tests
-│
-├── requirements.txt                         # Python dependencies
-├── pyproject.toml                           # Package configuration
-└── README.md
+├── __init__.py        # exports process_pdf
+├── extractor.py       # pdfplumber text extraction
+├── classifier.py      # Ollama LLM classifier + heuristic fallback
+├── pipeline.py        # combines extraction + classification
+├── cli.py             # dmpbridge command-line tool
+└── config.py          # ← edit here to change model / host / batch size
+
+templates/
+└── index.html         # Viewer UI served by FastAPI
+
+main.py                # FastAPI server
+dmpbridge.html          # Standalone viewer (no server needed)
+pyproject.toml         # package install config
+requirements.txt       # FastAPI dependencies
+venv/                  # virtual environment (not in git)
+pdfsamples/            # sample PDFs for testing
 ```
- 
-## Quick Start
- 
-### Prerequisites
- 
-- Python 3.8 or higher
-- pip package manager
-- Git
-### Setup (Local Development)
- 
-#### Step 1: Clone the Repository
- 
-```bash
-git clone https://github.com/fairdataihub/dmpbridge.git
-cd dmpbridge
-```
- 
-#### Step 2: Create and Activate Virtual Environment
- 
-**Windows (cmd):**
-```bash
-python -m venv venv
-venv\Scripts\activate.bat
-```
- 
-**Windows (PowerShell):**
+
+---
+
+## Setup
+
+### 1. Create and activate the virtual environment
+
 ```powershell
+# Create (one time)
 python -m venv venv
+
+# Activate (every session)
 .\venv\Scripts\Activate.ps1
 ```
- 
-**macOS/Linux:**
-```bash
-python -m venv venv
-source venv/bin/activate
-```
- 
-#### Step 3: Install Dependencies
- 
-```bash
-# Standard installation
+
+### 2. Install everything
+
+```powershell
 pip install -r requirements.txt
- 
-# Recommended for local development (editable mode)
 pip install -e .
 ```
- 
-## Usage
- 
-### Basic PDF Extraction
- 
-```python
-from dmpbridge.pdf import pdfplumber_extractor
- 
-# Extract text from a PDF
-extractor = pdfplumber_extractor.PDFExtractor()
-text = extractor.extract_text("path/to/dmp.pdf")
+
+### 3. Install Ollama (for LLM labeling)
+
+Download from **https://ollama.com** and install.
+
+Pull a model — any of these work:
+
+```powershell
+ollama pull llama3.2:latest      # 2 GB — fast, good for testing
+ollama pull llama3.1:8b          # 4.7 GB — more accurate
+ollama pull llama3.3:8b          # newest llama3 variant
+ollama pull deepseek-r1:latest   # reasoning model, thorough but slower
 ```
 
+---
 
- 
+## Part 1 — Pipeline (PDF → labeled JSON)
+
+### Configure the model
+
+Open **[dmpbridge/config.py](dmpbridge/config.py)** and set your preferred model:
+
+```python
+# Change this line to switch models — no other code needs to change
+MODEL = "llama3.2:latest"
+
+HOST       = "http://localhost:11434"   # Ollama server URL
+BATCH_SIZE = 20                         # blocks per LLM request
+```
+
+### CLI usage
+
+```powershell
+# Basic — output saved as <name>_labeled.json next to the PDF
+dmpbridge document.pdf
+
+# Specify output path
+dmpbridge document.pdf -o output/labeled.json
+
+# Override model for this run (ignores config.py)
+dmpbridge document.pdf --model llama3.1:8b
+
+# Show detailed progress per batch
+dmpbridge document.pdf -v
+```
+
+### Python API
+
+```python
+from dmpbridge import process_pdf
+
+# Uses model set in config.py
+blocks = process_pdf("document.pdf", output="labeled.json")
+
+# Override model in code
+blocks = process_pdf("document.pdf", model="llama3.1:8b", output="labeled.json")
+
+# Inspect results
+from collections import Counter
+print(Counter(b["label"] for b in blocks))
+# Counter({'content': 130, 'section': 28, 'subsection': 12, 'document_title': 1})
+```
+
+### Testing different models
+
+```powershell
+# Test with llama3.1:8b (default, best accuracy)
+dmpbridge pdfsamples/sample2.pdf -o pdfsamples/sample2_llama31.json
+
+# Test with llama3.2 (smaller, faster)
+dmpbridge pdfsamples/sample2.pdf --model llama3.2:latest -o pdfsamples/sample2_llama32.json
+
+# Test with deepseek (reasoning model)
+dmpbridge pdfsamples/sample2.pdf --model deepseek-r1:latest -o pdfsamples/sample2_deepseek.json
+```
+
+### Output JSON format
+
+Each block in the output has:
+
+| Field | Type | Description |
+|---|---|---|
+| `page` | int | Page number (1-based) |
+| `line_order` | int | Line index on the page |
+| `text` | string | Extracted text content |
+| `x0` | float | Left edge in points |
+| `top` | float | Top edge in points (from top of page) |
+| `x1` | float | Right edge in points |
+| `bottom` | float | Bottom edge in points |
+| `avg_font_size` | float | Average font size |
+| `font_names` | list[str] | Font names used in the line |
+| `is_bold` | bool | Whether text is bold |
+| `label` | string | `document_title` · `section` · `subsection` · `content` |
+
+Example:
+
+```json
+[
+  {
+    "page": 1, "line_order": 1,
+    "text": "Annual Report 2024",
+    "x0": 72.0, "top": 80.0, "x1": 400.0, "bottom": 102.0,
+    "avg_font_size": 24.0,
+    "font_names": ["ABCDEF+TimesNewRoman,Bold"],
+    "is_bold": true,
+    "label": "document_title"
+  },
+  {
+    "page": 1, "line_order": 3,
+    "text": "1. Introduction",
+    "x0": 72.0, "top": 130.0, "x1": 200.0, "bottom": 148.0,
+    "avg_font_size": 14.0,
+    "font_names": ["ABCDEF+TimesNewRoman,Bold"],
+    "is_bold": true,
+    "label": "section"
+  }
+]
+```
+
+---
+
+## Part 2 — Viewer (PDF + JSON side by side)
+
+### Option A — Standalone HTML (no server)
+
+Open `dmpbridge.html` directly in any modern browser. Drag and drop a PDF and JSON file onto the page, or use the Load buttons.
+
+No installation required.
+
+### Option B — FastAPI server
+
+```powershell
+# Activate venv first
+.\venv\Scripts\Activate.ps1
+
+uvicorn main:app --reload
+```
+
+Open **http://localhost:8000**
+
+Files are uploaded to the server and served back over HTTP.
+
+### Viewer controls
+
+| Control | Action |
+|---|---|
+| **Load PDF / Load JSON** | File picker or drag & drop |
+| **‹ / ›** | Previous / next PDF page |
+| **Zoom** | 75 % – 250 % |
+| **Selected / All on page / None** | Bounding box overlay mode |
+| **Search box** | Filter by text content |
+| **Page / Style / Font / Label dropdowns** | Filter the table |
+| Click table header | Sort by that column |
+| Click a table row | Jump to that location in the PDF |
+| Click on the PDF | Select the nearest JSON entry |
+| **↑ / ↓ arrow keys** | Move selection up / down |
+| **← / → arrow keys** | Navigate PDF pages |
+
+### Label colors
+
+| Label | Color |
+|---|---|
+| `document_title` | Purple |
+| `section` | Gold |
+| `subsection` | Teal |
+| `content` | Dim gray |
+
+---
+
+## Workflow end to end
+
+```
+1. Run pipeline
+   dmpbridge mydoc.pdf -v
+   → mydoc_labeled.json
+
+2. Start viewer
+   uvicorn main:app --reload
+   → http://localhost:8000
+
+3. Load files in viewer
+   Load mydoc.pdf + mydoc_labeled.json
+
+4. Inspect & verify
+   Click rows ↔ PDF highlights sync automatically
+```

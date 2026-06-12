@@ -1,0 +1,79 @@
+"""Main pipeline: PDF → pdfplumber extraction → LLM labeling → JSON."""
+
+import json
+import logging
+from pathlib import Path
+from typing import Optional, Union
+
+from .extractor import extract_blocks
+from .classifier import OllamaClassifier
+from . import config
+
+# Silence noisy pdfminer internal loggers
+for _noisy in ("pdfminer", "pdfminer.pdfpage", "pdfminer.pdfdocument",
+               "pdfminer.pdfinterp", "pdfminer.converter", "pdfminer.cmapdb"):
+    logging.getLogger(_noisy).setLevel(logging.ERROR)
+
+logger = logging.getLogger(__name__)
+
+DEFAULT_MODEL = config.MODEL
+DEFAULT_HOST  = config.HOST
+
+
+def process_pdf(
+    pdf_path: Union[str, Path],
+    *,
+    model: str = DEFAULT_MODEL,
+    host: str = DEFAULT_HOST,
+    output: Optional[Union[str, Path]] = None,
+) -> list[dict]:
+    """
+    Extract and label all text blocks from a PDF file using an LLM.
+
+    Parameters
+    ----------
+    pdf_path : Path to the input PDF.
+    model    : Ollama model name (default from config.py).
+    host     : Ollama server base URL (default from config.py).
+    output   : If given, write the result JSON to this path.
+
+    Returns
+    -------
+    List of block dicts, each with a 'label' field set to one of:
+    document_title | section | subsection | content
+    """
+    pdf_path = Path(pdf_path)
+    if not pdf_path.exists():
+        raise FileNotFoundError(f"PDF not found: {pdf_path}")
+
+    # ── Step 1: extract ──────────────────────────────────────────────────────
+    logger.info(f"Extracting text from {pdf_path.name} …")
+    blocks = extract_blocks(pdf_path)
+    if not blocks:
+        logger.warning("No text blocks found in the PDF.")
+        return []
+
+    pages = len({b["page"] for b in blocks})
+    logger.info(f"  → {len(blocks)} blocks across {pages} page(s)")
+
+    # ── Step 2: classify with LLM ────────────────────────────────────────────
+    logger.info(f"Classifying with model '{model}' at {host} …")
+    clf = OllamaClassifier(model=model, host=host)
+    blocks = clf.classify_blocks(blocks)
+
+    # ── Step 3: fill any blocks the LLM did not return a label for ───────────
+    for b in blocks:
+        if not b.get("label"):
+            b["label"] = "content"
+
+    # ── Step 4: optional file output ─────────────────────────────────────────
+    if output:
+        out_path = Path(output)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(
+            json.dumps(blocks, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        logger.info(f"Saved → {out_path}")
+
+    return blocks
