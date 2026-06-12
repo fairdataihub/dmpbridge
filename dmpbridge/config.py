@@ -14,7 +14,7 @@ Edit this file to change the default model without touching any other code.
 #   "llama3.3:8b"       — newer, pull with: ollama pull llama3.3:8b
 #   "deepseek-r1:latest"— reasoning model, slower but thorough
 #   "mistral:latest"    — alternative, 4 GB
-MODEL = "llama3.2:latest"
+MODEL = "llama3.1:8b"
 
 # Ollama server URL. Change if running Ollama on another machine.
 HOST = "http://localhost:11434"
