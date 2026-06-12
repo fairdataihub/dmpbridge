@@ -31,6 +31,14 @@ def main() -> None:
         help=f"Ollama server URL (default: {DEFAULT_HOST}).",
     )
     parser.add_argument(
+        "--save-images",
+        nargs="?",
+        const="pdfplumber",
+        default=None,
+        metavar="DIR",
+        help='Save per-page PNG images with bounding boxes to DIR (default: "pdfplumber").',
+    )
+    parser.add_argument(
         "-v", "--verbose",
         action="store_true",
         help="Show detailed progress logs.",
@@ -56,6 +64,7 @@ def main() -> None:
             model=args.model,
             host=args.host,
             output=output,
+            images_dir=args.save_images,
         )
     except Exception as exc:
         print(f"Error: {exc}", file=sys.stderr)

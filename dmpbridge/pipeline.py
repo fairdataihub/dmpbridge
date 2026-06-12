@@ -5,7 +5,7 @@ import logging
 from pathlib import Path
 from typing import Optional, Union
 
-from .extractor import extract_blocks
+from .extractor import extract_blocks, save_page_images
 from .classifier import OllamaClassifier
 from . import config
 
@@ -26,6 +26,7 @@ def process_pdf(
     model: str = DEFAULT_MODEL,
     host: str = DEFAULT_HOST,
     output: Optional[Union[str, Path]] = None,
+    images_dir: Optional[Union[str, Path]] = None,
 ) -> list[dict]:
     """
     Extract and label all text blocks from a PDF file using an LLM.
@@ -75,5 +76,14 @@ def process_pdf(
             encoding="utf-8",
         )
         logger.info(f"Saved → {out_path}")
+
+    # ── Step 5: optional pdfplumber page images ───────────────────────────────
+    if images_dir is not None:
+        logger.info(f"Saving page images → {images_dir} …")
+        try:
+            saved = save_page_images(pdf_path, blocks, output_dir=images_dir)
+            logger.info(f"  → {len(saved)} image(s) saved")
+        except Exception as exc:
+            logger.warning(f"Image export skipped: {exc}")
 
     return blocks

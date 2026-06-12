@@ -21,7 +21,8 @@ dmpbridge/
 data/
 ├── pdfsamples/        # sample PDFs for testing
 ├── llmlabeled/        # LLM-generated labeled JSON output
-└── manuallabeled/     # manually corrected labeled JSON
+├── manuallabeled/     # manually corrected labeled JSON
+└── pdfplumber/        # (generated) per-page PNG images with block overlays
 
 templates/
 └── index.html         # Viewer UI served by FastAPI
