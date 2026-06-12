@@ -119,10 +119,8 @@ print(Counter(b["label"] for b in blocks))
 dmpbridge pdfsamples/sample2.pdf -o pdfsamples/sample2_llama31.json
 
 # Test with llama3.2 (smaller, faster)
-dmpbridge pdfsamples/sample2.pdf --model llama3.2:latest -o pdfsamples/sample2_llama32.json
+dmpbridge pdfsamples/sample2.pdf --model llama3.1:8b -o pdfsamples/sample2_llama3.1.json
 
-# Test with deepseek (reasoning model)
-dmpbridge pdfsamples/sample2.pdf --model deepseek-r1:latest -o pdfsamples/sample2_deepseek.json
 ```
 
 ### Output JSON format
