@@ -78,7 +78,7 @@ Open **[dmpbridge/config.py](dmpbridge/config.py)** and set your preferred model
 
 ```python
 # Change this line to switch models — no other code needs to change
-MODEL = "llama3.2:latest"
+MODEL = "llama3.1:8b"
 
 HOST       = "http://localhost:11434"   # Ollama server URL
 BATCH_SIZE = 10                         # blocks per LLM request
@@ -105,8 +105,6 @@ dmpbridge document.pdf --raw-dir my/raw/folder
 # Skip saving the raw pdfplumber JSON
 dmpbridge document.pdf --no-raw
 
-# Also save per-page PNG images with bounding boxes
-dmpbridge document.pdf --save-images data/pdfplumber_images
 ```
 
 ### Python API
