@@ -12,7 +12,7 @@ A two-part tool for analyzing PDF structure:
 ```
 dmpbridge/
 ├── __init__.py        # exports process_pdf
-├── extractor.py       # pdfplumber text extraction
+├── extractor.py       # pdfplumber text extraction + page image export
 ├── classifier.py      # Ollama LLM classifier
 ├── pipeline.py        # combines extraction + classification
 ├── cli.py             # dmpbridge command-line tool
@@ -65,6 +65,7 @@ Pull a model — any of these work:
 ollama pull llama3.2:latest      # 2 GB — fast, good for testing
 ollama pull llama3.1:8b          # 4.7 GB — more accurate
 ollama pull llama3.3:8b          # newest llama3 variant
+ollama pull deepseek-r1:latest   # reasoning model, thorough but slower
 ```
 
 ---
@@ -77,7 +78,7 @@ Open **[dmpbridge/config.py](dmpbridge/config.py)** and set your preferred model
 
 ```python
 # Change this line to switch models — no other code needs to change
-MODEL = "llama3.3:8b"
+MODEL = "llama3.2:latest"
 
 HOST       = "http://localhost:11434"   # Ollama server URL
 BATCH_SIZE = 10                         # blocks per LLM request
@@ -97,6 +98,12 @@ dmpbridge document.pdf --model llama3.1:8b
 
 # Show detailed progress per batch
 dmpbridge document.pdf -v
+
+# Save per-page PNG images to the default "pdfplumber/" folder
+dmpbridge document.pdf --save-images
+
+# Save images to a custom folder
+dmpbridge document.pdf --save-images data/pdfplumber
 ```
 
 ### Python API
@@ -110,19 +117,40 @@ blocks = process_pdf("document.pdf", output="labeled.json")
 # Override model in code
 blocks = process_pdf("document.pdf", model="llama3.1:8b", output="labeled.json")
 
+# Also save pdfplumber page images with bounding box overlays
+blocks = process_pdf("document.pdf", output="labeled.json", images_dir="pdfplumber")
+
 # Inspect results
 from collections import Counter
 print(Counter(b["label"] for b in blocks))
 # Counter({'content': 130, 'section': 28, 'subsection': 12, 'document_title': 1})
 ```
 
+### Image export (pdfplumber page images)
+
+Passing `--save-images` renders every page as a PNG with color-coded bounding boxes saved to the `pdfplumber/` folder (one file per page: `page_001.png`, `page_002.png`, …).
+
+**Color coding matches the viewer:**
+
+| Label | Box color |
+|---|---|
+| `document_title` | Purple |
+| `section` | Gold |
+| `subsection` | Teal |
+| `content` | Blue |
+
+**Dependencies** — image export requires only `Pillow`, which is already pulled in by `pdfplumber>=0.10` (via `pypdfium2`). No extra system installs needed.
+
+---
+
 ### Testing different models
 
 ```powershell
-# Test with llama3.1:8b (default, best accuracy)
-dmpbridge pdfsamples/sample2.pdf --model llama3.1:8b -o pdfsamples/sample2_llama3.1.json
+# Test with llama3.2 (default, fast)
+dmpbridge data/pdfsamples/sample2.pdf -o data/llmlabeled/sample2_llama32.json
 
-dmpbridge pdfsamples/sample2.pdf --model llama3.3:70b -o pdfsamples/sample2_llama3.3.json
+# Test with llama3.1:8b (more accurate)
+dmpbridge data/pdfsamples/sample2.pdf --model llama3.1:8b -o data/llmlabeled/sample2_llama31.json
 
 ```
 
@@ -223,15 +251,14 @@ Files are uploaded to the server and served back over HTTP.
 
 ```
 1. Run pipeline
-   dmpbridge mydoc.pdf -v
-   → mydoc_labeled.json
+   dmpbridge data/pdfsamples/sample1.pdf -v -o data/llmlabeled/sample1_labeled.json
 
 2. Start viewer
    uvicorn main:app --reload
    → http://localhost:8000
 
 3. Load files in viewer
-   Load mydoc.pdf + mydoc_labeled.json
+   Load data/pdfsamples/sample1.pdf + data/llmlabeled/sample1_labeled.json
 
 4. Inspect & verify
    Click rows ↔ PDF highlights sync automatically
