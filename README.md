@@ -13,20 +13,24 @@ A two-part tool for analyzing PDF structure:
 dmpbridge/
 ├── __init__.py        # exports process_pdf
 ├── extractor.py       # pdfplumber text extraction
-├── classifier.py      # Ollama LLM classifier + heuristic fallback
+├── classifier.py      # Ollama LLM classifier
 ├── pipeline.py        # combines extraction + classification
 ├── cli.py             # dmpbridge command-line tool
 └── config.py          # ← edit here to change model / host / batch size
+
+data/
+├── pdfsamples/        # sample PDFs for testing
+├── llmlabeled/        # LLM-generated labeled JSON output
+└── manuallabeled/     # manually corrected labeled JSON
 
 templates/
 └── index.html         # Viewer UI served by FastAPI
 
 main.py                # FastAPI server
-dmpbridge.html          # Standalone viewer (no server needed)
+dmpbridge.html         # Standalone viewer (no server needed)
 pyproject.toml         # package install config
 requirements.txt       # FastAPI dependencies
 venv/                  # virtual environment (not in git)
-pdfsamples/            # sample PDFs for testing
 ```
 
 ---
@@ -60,7 +64,6 @@ Pull a model — any of these work:
 ollama pull llama3.2:latest      # 2 GB — fast, good for testing
 ollama pull llama3.1:8b          # 4.7 GB — more accurate
 ollama pull llama3.3:8b          # newest llama3 variant
-ollama pull deepseek-r1:latest   # reasoning model, thorough but slower
 ```
 
 ---
@@ -73,10 +76,10 @@ Open **[dmpbridge/config.py](dmpbridge/config.py)** and set your preferred model
 
 ```python
 # Change this line to switch models — no other code needs to change
-MODEL = "llama3.2:latest"
+MODEL = "llama3.3:8b"
 
 HOST       = "http://localhost:11434"   # Ollama server URL
-BATCH_SIZE = 20                         # blocks per LLM request
+BATCH_SIZE = 10                         # blocks per LLM request
 ```
 
 ### CLI usage
