@@ -2012,7 +2012,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
-    "label": "section"
+    "label": "content"
   },
   {
     "page": 4,
@@ -2072,7 +2072,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
-    "label": "subsection"
+    "label": "section"
   },
   {
     "page": 4,
