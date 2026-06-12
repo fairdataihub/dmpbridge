@@ -116,10 +116,9 @@ print(Counter(b["label"] for b in blocks))
 
 ```powershell
 # Test with llama3.1:8b (default, best accuracy)
-dmpbridge pdfsamples/sample2.pdf -o pdfsamples/sample2_llama31.json
-
-# Test with llama3.2 (smaller, faster)
 dmpbridge pdfsamples/sample2.pdf --model llama3.1:8b -o pdfsamples/sample2_llama3.1.json
+
+dmpbridge pdfsamples/sample2.pdf --model llama3.3:70b -o pdfsamples/sample2_llama3.3.json
 
 ```
 
