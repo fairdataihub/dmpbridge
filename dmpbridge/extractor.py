@@ -91,8 +91,7 @@ def save_page_images(
             except Exception as exc:
                 raise RuntimeError(
                     f"pdfplumber could not render page {page_num} as an image.\n"
-                    "Install the required backend:  pip install Pillow wand\n"
-                    "wand also needs ImageMagick:   https://imagemagick.org/script/download.php\n"
+                    "Ensure Pillow is installed: pip install Pillow\n"
                     f"Details: {exc}"
                 ) from exc
 
