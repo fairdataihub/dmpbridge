@@ -22,7 +22,7 @@ data/
 ├── pdfsamples/        # sample PDFs for testing
 ├── llmlabeled/        # LLM-generated labeled JSON output
 ├── manuallabeled/     # manually corrected labeled JSON
-└── pdfplumber/        # (generated) per-page PNG images with block overlays
+└── pdfplumber/        # (auto-generated) raw pdfplumber extraction JSON, one file per PDF
 
 templates/
 └── index.html         # Viewer UI served by FastAPI
@@ -65,7 +65,7 @@ Pull a model — any of these work:
 ollama pull llama3.2:latest      # 2 GB — fast, good for testing
 ollama pull llama3.1:8b          # 4.7 GB — more accurate
 ollama pull llama3.3:8b          # newest llama3 variant
-ollama pull deepseek-r1:latest   # reasoning model, thorough but slower
+
 ```
 
 ---
@@ -87,11 +87,11 @@ BATCH_SIZE = 10                         # blocks per LLM request
 ### CLI usage
 
 ```powershell
-# Basic — output saved as <name>_labeled.json next to the PDF
+# Basic — raw pdfplumber JSON auto-saved to data/pdfplumber/, labeled JSON next to the PDF
 dmpbridge document.pdf
 
-# Specify output path
-dmpbridge document.pdf -o output/labeled.json
+# Specify labeled output path
+dmpbridge document.pdf -o data/llmlabeled/output.json
 
 # Override model for this run (ignores config.py)
 dmpbridge document.pdf --model llama3.1:8b
@@ -99,11 +99,14 @@ dmpbridge document.pdf --model llama3.1:8b
 # Show detailed progress per batch
 dmpbridge document.pdf -v
 
-# Save per-page PNG images to the default "pdfplumber/" folder
-dmpbridge document.pdf --save-images
+# Save raw pdfplumber JSON to a custom folder instead of the default
+dmpbridge document.pdf --raw-dir my/raw/folder
 
-# Save images to a custom folder
-dmpbridge document.pdf --save-images data/pdfplumber
+# Skip saving the raw pdfplumber JSON
+dmpbridge document.pdf --no-raw
+
+# Also save per-page PNG images with bounding boxes
+dmpbridge document.pdf --save-images data/pdfplumber_images
 ```
 
 ### Python API
@@ -126,9 +129,13 @@ print(Counter(b["label"] for b in blocks))
 # Counter({'content': 130, 'section': 28, 'subsection': 12, 'document_title': 1})
 ```
 
-### Image export (pdfplumber page images)
+### Raw pdfplumber extraction JSON
 
-Passing `--save-images` renders every page as a PNG with color-coded bounding boxes saved to the `pdfplumber/` folder (one file per page: `page_001.png`, `page_002.png`, …).
+Every run automatically saves the raw pdfplumber extraction to `data/pdfplumber/<name>.json` **before** LLM labeling. This file contains all blocks with `label: null` — the exact input the LLM receives. Use it to inspect what pdfplumber detected independently of the labeling step.
+
+### Page image export (optional)
+
+Pass `--save-images <dir>` to also render per-page PNGs with bounding box overlays.
 
 **Color coding matches the viewer:**
 
@@ -252,6 +259,8 @@ Files are uploaded to the server and served back over HTTP.
 ```
 1. Run pipeline
    dmpbridge data/pdfsamples/sample1.pdf -v -o data/llmlabeled/sample1_labeled.json
+   → data/pdfplumber/sample1.json   (raw pdfplumber extraction, saved before LLM)
+   → data/llmlabeled/sample1_labeled.json  (LLM-labeled output)
 
 2. Start viewer
    uvicorn main:app --reload
@@ -259,7 +268,9 @@ Files are uploaded to the server and served back over HTTP.
 
 3. Load files in viewer
    Load data/pdfsamples/sample1.pdf + data/llmlabeled/sample1_labeled.json
+   (or load data/pdfplumber/sample1.json to inspect raw extraction)
 
 4. Inspect & verify
    Click rows ↔ PDF highlights sync automatically
 ```
+

@@ -1,4 +1,4 @@
-"""Main pipeline: PDF → pdfplumber extraction → LLM labeling → JSON."""
+"""Main pipeline: PDF → pdfplumber extraction → raw JSON → LLM labeling → labeled JSON."""
 
 import json
 import logging
@@ -16,8 +16,9 @@ for _noisy in ("pdfminer", "pdfminer.pdfpage", "pdfminer.pdfdocument",
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_MODEL = config.MODEL
-DEFAULT_HOST  = config.HOST
+DEFAULT_MODEL   = config.MODEL
+DEFAULT_HOST    = config.HOST
+DEFAULT_RAW_DIR = "data/pdfplumber"
 
 
 def process_pdf(
@@ -26,6 +27,7 @@ def process_pdf(
     model: str = DEFAULT_MODEL,
     host: str = DEFAULT_HOST,
     output: Optional[Union[str, Path]] = None,
+    raw_dir: Optional[Union[str, Path]] = DEFAULT_RAW_DIR,
     images_dir: Optional[Union[str, Path]] = None,
 ) -> list[dict]:
     """
@@ -33,10 +35,13 @@ def process_pdf(
 
     Parameters
     ----------
-    pdf_path : Path to the input PDF.
-    model    : Ollama model name (default from config.py).
-    host     : Ollama server base URL (default from config.py).
-    output   : If given, write the result JSON to this path.
+    pdf_path  : Path to the input PDF.
+    model     : Ollama model name (default from config.py).
+    host      : Ollama server base URL (default from config.py).
+    output    : If given, write the labeled JSON to this path.
+    raw_dir   : Folder to save raw pdfplumber extraction JSON before LLM labeling.
+                Defaults to "data/pdfplumber". Pass None to skip.
+    images_dir: If given, also save per-page PNG images to this folder.
 
     Returns
     -------
@@ -57,27 +62,17 @@ def process_pdf(
     pages = len({b["page"] for b in blocks})
     logger.info(f"  → {len(blocks)} blocks across {pages} page(s)")
 
-    # ── Step 2: classify with LLM ────────────────────────────────────────────
-    logger.info(f"Classifying with model '{model}' at {host} …")
-    clf = OllamaClassifier(model=model, host=host)
-    blocks = clf.classify_blocks(blocks)
-
-    # ── Step 3: fill any blocks the LLM did not return a label for ───────────
-    for b in blocks:
-        if not b.get("label"):
-            b["label"] = "content"
-
-    # ── Step 4: optional file output ─────────────────────────────────────────
-    if output:
-        out_path = Path(output)
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-        out_path.write_text(
+    # ── Step 2: save raw pdfplumber JSON (before labeling) ───────────────────
+    if raw_dir is not None:
+        raw_path = Path(raw_dir) / f"{pdf_path.stem}.json"
+        raw_path.parent.mkdir(parents=True, exist_ok=True)
+        raw_path.write_text(
             json.dumps(blocks, indent=2, ensure_ascii=False),
             encoding="utf-8",
         )
-        logger.info(f"Saved → {out_path}")
+        logger.info(f"Raw extraction saved → {raw_path}")
 
-    # ── Step 5: optional pdfplumber page images ───────────────────────────────
+    # ── Step 3: optional page images ─────────────────────────────────────────
     if images_dir is not None:
         logger.info(f"Saving page images → {images_dir} …")
         try:
@@ -85,5 +80,25 @@ def process_pdf(
             logger.info(f"  → {len(saved)} image(s) saved")
         except Exception as exc:
             logger.warning(f"Image export skipped: {exc}")
+
+    # ── Step 4: classify with LLM ────────────────────────────────────────────
+    logger.info(f"Classifying with model '{model}' at {host} …")
+    clf = OllamaClassifier(model=model, host=host)
+    blocks = clf.classify_blocks(blocks)
+
+    # ── Step 5: fill any blocks the LLM did not return a label for ───────────
+    for b in blocks:
+        if not b.get("label"):
+            b["label"] = "content"
+
+    # ── Step 6: save labeled JSON ─────────────────────────────────────────────
+    if output:
+        out_path = Path(output)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(
+            json.dumps(blocks, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        logger.info(f"Labeled JSON saved → {out_path}")
 
     return blocks
