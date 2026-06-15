@@ -169,31 +169,6 @@ Open **http://localhost:8000**
 
 Files are uploaded to the server and served back over HTTP.
 
-### Viewer controls
-
-| Control | Action |
-|---|---|
-| **Load PDF / Load JSON** | File picker or drag & drop |
-| **‹ / ›** | Previous / next PDF page |
-| **Zoom** | 75 % – 250 % |
-| **Selected / All on page / None** | Bounding box overlay mode |
-| **Search box** | Filter by text content |
-| **Page / Style / Font / Label dropdowns** | Filter the table |
-| Click table header | Sort by that column |
-| Click a table row | Jump to that location in the PDF |
-| Click on the PDF | Select the nearest JSON entry |
-| **↑ / ↓ arrow keys** | Move selection up / down |
-| **← / → arrow keys** | Navigate PDF pages |
-
-### Label colors
-
-| Label | Color |
-|---|---|
-| `document_title` | Purple |
-| `section` | Gold |
-| `subsection` | Teal |
-| `content` | Dim gray |
-
 ---
 
 ## Workflow end to end
