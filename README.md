@@ -131,20 +131,6 @@ print(Counter(b["label"] for b in blocks))
 
 Every run automatically saves the raw pdfplumber extraction to `data/pdfplumber/<name>.json` **before** LLM labeling. This file contains all blocks with `label: null` — the exact input the LLM receives. Use it to inspect what pdfplumber detected independently of the labeling step.
 
-### Page image export (optional)
-
-Pass `--save-images <dir>` to also render per-page PNGs with bounding box overlays.
-
-**Color coding matches the viewer:**
-
-| Label | Box color |
-|---|---|
-| `document_title` | Purple |
-| `section` | Gold |
-| `subsection` | Teal |
-| `content` | Blue |
-
-**Dependencies** — image export requires only `Pillow`, which is already pulled in by `pdfplumber>=0.10` (via `pypdfium2`). No extra system installs needed.
 
 ---
 
@@ -157,49 +143,7 @@ dmpbridge data/pdfsamples/sample2.pdf -o data/llmlabeled/sample2_llama32.json
 # Test with llama3.1:8b (more accurate)
 dmpbridge data/pdfsamples/sample2.pdf --model llama3.1:8b -o data/llmlabeled/sample2_llama31.json
 
-```
 
-### Output JSON format
-
-Each block in the output has:
-
-| Field | Type | Description |
-|---|---|---|
-| `page` | int | Page number (1-based) |
-| `line_order` | int | Line index on the page |
-| `text` | string | Extracted text content |
-| `x0` | float | Left edge in points |
-| `top` | float | Top edge in points (from top of page) |
-| `x1` | float | Right edge in points |
-| `bottom` | float | Bottom edge in points |
-| `avg_font_size` | float | Average font size |
-| `font_names` | list[str] | Font names used in the line |
-| `is_bold` | bool | Whether text is bold |
-| `label` | string | `document_title` · `section` · `subsection` · `content` |
-
-Example:
-
-```json
-[
-  {
-    "page": 1, "line_order": 1,
-    "text": "Annual Report 2024",
-    "x0": 72.0, "top": 80.0, "x1": 400.0, "bottom": 102.0,
-    "avg_font_size": 24.0,
-    "font_names": ["ABCDEF+TimesNewRoman,Bold"],
-    "is_bold": true,
-    "label": "document_title"
-  },
-  {
-    "page": 1, "line_order": 3,
-    "text": "1. Introduction",
-    "x0": 72.0, "top": 130.0, "x1": 200.0, "bottom": 148.0,
-    "avg_font_size": 14.0,
-    "font_names": ["ABCDEF+TimesNewRoman,Bold"],
-    "is_bold": true,
-    "label": "section"
-  }
-]
 ```
 
 ---
