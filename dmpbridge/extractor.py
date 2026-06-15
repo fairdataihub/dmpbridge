@@ -1,5 +1,6 @@
 """Extract text blocks from a PDF using pdfplumber."""
 
+import re
 import pdfplumber
 from collections import defaultdict
 from pathlib import Path
@@ -31,7 +32,7 @@ def extract_blocks(pdf_path: Union[str, Path]) -> list[dict]:
             ) or []
 
             for line_order, line in enumerate(lines, start=1):
-                text = line.get("text", "").strip()
+                text = _deduplicate_chars(line.get("text", "").strip())
                 if not text:
                     continue
 
@@ -117,3 +118,23 @@ def save_page_images(
 def _font_is_bold(name: str) -> bool:
     n = name.lower()
     return "bold" in n or n.endswith(",b") or "-bold" in n or ",bold" in n
+
+
+def _deduplicate_chars(text: str) -> str:
+    """Collapse doubled characters caused by layered PDF text rendering.
+
+    Some PDFs render text twice (bold shadow over regular), causing pdfplumber
+    to return "HHeelllloo" instead of "Hello". Detects this by checking whether
+    most consecutive character pairs in the non-space content are identical,
+    then applies (.)\1 -> \1 substitution.
+    """
+    stripped = text.replace(" ", "")
+    if len(stripped) < 4:
+        return text
+    pairs = sum(
+        1 for i in range(0, len(stripped) - 1, 2)
+        if stripped[i] == stripped[i + 1]
+    )
+    if pairs / (len(stripped) / 2) > 0.7:
+        return re.sub(r"(.)\1", r"\1", text)
+    return text
