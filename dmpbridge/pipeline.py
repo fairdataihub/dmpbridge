@@ -5,9 +5,9 @@ import logging
 from pathlib import Path
 from typing import Optional, Union
 
-from .extractor import extract_blocks, save_page_images
-from .classifier import OllamaClassifier
 from . import config
+from .classifier import OllamaClassifier
+from .extractor import extract_blocks, save_page_images
 
 # Silence noisy pdfminer internal loggers
 for _noisy in ("pdfminer", "pdfminer.pdfpage", "pdfminer.pdfdocument",

@@ -6,7 +6,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from .pipeline import process_pdf, DEFAULT_MODEL, DEFAULT_HOST, DEFAULT_RAW_DIR
+from .pipeline import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_RAW_DIR, process_pdf
 
 
 def main() -> None:

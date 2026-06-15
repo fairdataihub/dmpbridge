@@ -1,10 +1,11 @@
 """Extract text blocks from a PDF using pdfplumber."""
 
 import re
-import pdfplumber
 from collections import defaultdict
 from pathlib import Path
 from typing import Union
+
+import pdfplumber
 
 # RGBA colors per label — (stroke, fill)
 _LABEL_STYLE: dict[str, tuple[tuple, tuple]] = {
