@@ -28,7 +28,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   background: var(--bg);
   color: var(--text);
   height: 100vh;
@@ -84,9 +84,9 @@ body {
 
 .chip {
   display: inline-flex; align-items: center; gap: 3px;
-  padding: 2px 8px; background: var(--s3);
+  padding: 3px 9px; background: var(--s3);
   border: 1px solid var(--border); border-radius: 20px;
-  font-size: 10px; color: var(--dim);
+  font-size: 11px; color: var(--dim);
 }
 .chip b { color: var(--text); font-weight: 600; }
 .chip.blue  { border-color: rgba(88,166,255,0.3); } .chip.blue  b { color: var(--accent); }
@@ -213,15 +213,15 @@ th.sa::after { content: ' ↑'; color: var(--accent); }
 th.sd::after { content: ' ↓'; color: var(--accent); }
 
 td {
-  padding: 3px 5px;
+  padding: 5px 6px;
   border-bottom: 1px solid rgba(48,54,61,0.4);
   vertical-align: middle; overflow: hidden;
 }
 
 .ta-pg  { text-align: center; }
-.ta-ln  { text-align: center; color: var(--dim); font-size: 10px; }
-.ta-cd  { text-align: right; font-family: 'Cascadia Code', monospace; font-size: 10px; color: var(--dim); }
-.ta-sz  { text-align: right; font-family: monospace; font-size: 10px; }
+.ta-ln  { text-align: center; color: var(--dim); font-size: 11px; }
+.ta-cd  { text-align: right; font-family: 'Cascadia Code', monospace; font-size: 11px; color: var(--dim); }
+.ta-sz  { text-align: right; font-family: monospace; font-size: 11px; }
 .ta-st  { text-align: center; }
 
 tbody tr { cursor: pointer; }
@@ -232,7 +232,7 @@ tbody tr.sel td:first-child { border-left: 2px solid var(--accent); }
 
 .txt-clip {
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  font-size: 11px; color: var(--text);
+  font-size: 12px; color: var(--text);
 }
 
 .pg-dot {
@@ -244,17 +244,17 @@ tbody tr.sel td:first-child { border-left: 2px solid var(--accent); }
 .pg-dot.cur { background: var(--a-dim); color: var(--accent); }
 
 .badge {
-  display: inline-block; padding: 1px 5px;
-  border-radius: 3px; font-size: 9px; font-weight: 700;
+  display: inline-block; padding: 2px 6px;
+  border-radius: 3px; font-size: 10px; font-weight: 700;
 }
 .b-bold { background: rgba(227,179,65,0.12); color: var(--gold); border: 1px solid rgba(227,179,65,0.3); }
 .b-reg  { background: transparent; color: var(--dim); border: 1px solid var(--border); }
 
 .ftag {
-  display: inline-block; padding: 0 3px; border-radius: 2px;
-  font-size: 9px; background: var(--s3); border: 1px solid var(--border);
+  display: inline-block; padding: 1px 4px; border-radius: 2px;
+  font-size: 10px; background: var(--s3); border: 1px solid var(--border);
   color: var(--dim); overflow: hidden; text-overflow: ellipsis;
-  white-space: nowrap; max-width: 82px; vertical-align: middle;
+  white-space: nowrap; max-width: 90px; vertical-align: middle;
 }
 .ftag.fb { color: var(--gold);  border-color: rgba(227,179,65,0.35); }
 .ftag.fi { color: var(--green); border-color: rgba(63,185,80,0.35); }
@@ -262,16 +262,16 @@ tbody tr.sel td:first-child { border-left: 2px solid var(--accent); }
 /* ── Detail Panel ────────────────────────────────────────────────── */
 .detail-panel {
   background: var(--s1); border-top: 1px solid var(--border);
-  padding: 7px 12px; flex-shrink: 0;
-  min-height: 52px; max-height: 80px;
+  padding: 8px 14px; flex-shrink: 0;
+  min-height: 60px; max-height: 110px;
 }
-.d-label { font-size: 9px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
+.d-label { font-size: 10px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
 .d-text  {
-  font-size: 12px; color: var(--bright); line-height: 1.45;
+  font-size: 13px; color: var(--bright); line-height: 1.5;
   overflow: hidden; display: -webkit-box;
-  -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; -webkit-box-orient: vertical;
 }
-.d-meta  { font-size: 10px; color: var(--dim); margin-top: 3px; font-family: monospace; }
+.d-meta  { font-size: 11px; color: var(--dim); margin-top: 4px; font-family: monospace; }
 
 /* ── Scrollbars ──────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -283,12 +283,19 @@ tbody tr.sel td:first-child { border-left: 2px solid var(--accent); }
 .no-data { text-align: center; color: var(--dim); padding: 40px 0; }
 
 /* ── Label badges ── */
-colgroup col.c-lb { width: 76px; }
-.lbl { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 9px; font-weight: 700; white-space: nowrap; }
-.lbl-document_title { background: rgba(139,92,246,0.12); color: #a78bfa; border: 1px solid rgba(139,92,246,0.35); }
-.lbl-section        { background: rgba(245,158,11,0.12);  color: #fbbf24; border: 1px solid rgba(245,158,11,0.35); }
-.lbl-subsection     { background: rgba(20,184,166,0.12);  color: #2dd4bf; border: 1px solid rgba(20,184,166,0.35); }
+colgroup col.c-lb { width: 86px; }
+.lbl { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; white-space: nowrap; }
+.lbl-document_title { background: rgba(139,92,246,0.15); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.45); }
+.lbl-section        { background: rgba(245,158,11,0.15);  color: #fcd34d; border: 1px solid rgba(245,158,11,0.45); }
+.lbl-subsection     { background: rgba(20,184,166,0.15);  color: #5eead4; border: 1px solid rgba(20,184,166,0.45); }
 .lbl-content, .lbl-none { background: transparent; color: var(--dim); border: 1px solid var(--border); }
+
+/* ── Label stripe on every row ── */
+tbody tr[data-label="document_title"] td:first-child { border-left: 3px solid rgba(139,92,246,0.7); }
+tbody tr[data-label="section"]        td:first-child { border-left: 3px solid rgba(245,158,11,0.7); }
+tbody tr[data-label="subsection"]     td:first-child { border-left: 3px solid rgba(20,184,166,0.7); }
+tbody tr[data-label="content"]        td:first-child { border-left: 3px solid rgba(88,166,255,0.25); }
+tbody tr.sel td:first-child { border-left: 3px solid var(--accent) !important; }
 </style>
 </head>
 <body>
@@ -431,10 +438,10 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
 
 // ── Label colors ────────────────────────────────────────────────────────────
 const LABEL_CLR = {
-  document_title: { fill: 'rgba(139,92,246,0.14)', stroke: 'rgba(139,92,246,0.85)', lw: 1.5 },
-  section:        { fill: 'rgba(245,158,11,0.13)',  stroke: 'rgba(245,158,11,0.85)',  lw: 1.4 },
-  subsection:     { fill: 'rgba(20,184,166,0.11)',  stroke: 'rgba(20,184,166,0.80)',  lw: 1.1 },
-  content:        { fill: 'rgba(88,166,255,0.04)',  stroke: 'rgba(88,166,255,0.28)',  lw: 0.7 },
+  document_title: { fill: 'rgba(139,92,246,0.18)', stroke: 'rgba(139,92,246,0.90)', lw: 1.8 },
+  section:        { fill: 'rgba(245,158,11,0.16)',  stroke: 'rgba(245,158,11,0.90)',  lw: 1.6 },
+  subsection:     { fill: 'rgba(20,184,166,0.14)',  stroke: 'rgba(20,184,166,0.85)',  lw: 1.3 },
+  content:        { fill: 'rgba(88,166,255,0.10)',  stroke: 'rgba(88,166,255,0.50)',  lw: 1.0 },
 };
 function labelClr(label) { return LABEL_CLR[label] || LABEL_CLR.content; }
 
@@ -739,6 +746,7 @@ function renderTable() {
   filtered.forEach((item, idx) => {
     const tr = document.createElement('tr');
     tr.dataset.i = idx;
+    tr.dataset.label = item.label || 'none';
     if (idx === selIdx)             tr.classList.add('sel');
     else if (item.page === curPage) tr.classList.add('onpage');
 
