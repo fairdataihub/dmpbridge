@@ -397,26 +397,21 @@ colgroup col.c-lb { width: 76px; }
       <table id="tbl">
         <colgroup>
           <col class="c-pg"><col class="c-ln"><col class="c-txt">
-          <col class="c-cd"><col class="c-cd"><col class="c-cd"><col class="c-cd">
           <col class="c-sz"><col class="c-fn"><col class="c-st"><col class="c-lb">
         </colgroup>
         <thead>
           <tr>
-            <th data-col="page"         class="ta-pg">Pg</th>
-            <th data-col="line_order"   class="ta-ln">#</th>
+            <th data-col="page"          class="ta-pg">Pg</th>
+            <th data-col="line_order"    class="ta-ln">#</th>
             <th data-col="text">Text</th>
-            <th data-col="x0"           class="ta-cd">x0</th>
-            <th data-col="top"          class="ta-cd">top</th>
-            <th data-col="x1"           class="ta-cd">x1</th>
-            <th data-col="bottom"       class="ta-cd">bot</th>
-            <th data-col="avg_font_size" class="ta-sz">pt</th>
+            <th data-col="avg_font_size" class="ta-sz">PT</th>
             <th data-col="font_names">Fonts</th>
-            <th data-col="is_bold"      class="ta-st">Style</th>
-            <th data-col="label"        class="ta-st">Label</th>
+            <th data-col="is_bold"       class="ta-st">Style</th>
+            <th data-col="label"         class="ta-st">Label</th>
           </tr>
         </thead>
         <tbody id="tbody">
-          <tr><td colspan="11" class="no-data">Load a JSON file to see data</td></tr>
+          <tr><td colspan="7" class="no-data">Load a JSON file to see data</td></tr>
         </tbody>
       </table>
     </div>
@@ -736,7 +731,7 @@ document.querySelectorAll('th[data-col]').forEach(th => {
 // ── Table Render ─────────────────────────────────────────────────────────────
 function renderTable() {
   if (filtered.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="11" class="no-data">No matching entries</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" class="no-data">No matching entries</td></tr>';
     return;
   }
 
@@ -763,10 +758,6 @@ function renderTable() {
       </td>
       <td class="ta-ln">${item.line_order}</td>
       <td><div class="txt-clip" title="${esc(item.text)}">${esc(item.text)}</div></td>
-      <td class="ta-cd">${f1(item.x0)}</td>
-      <td class="ta-cd">${f1(item.top)}</td>
-      <td class="ta-cd">${f1(item.x1)}</td>
-      <td class="ta-cd">${f1(item.bottom)}</td>
       <td class="ta-sz" style="color:${szc}">${sz.toFixed(1)}</td>
       <td>${fonts}</td>
       <td class="ta-st">
