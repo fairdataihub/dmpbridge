@@ -194,7 +194,7 @@ colgroup col.c-pg  { width: 34px; }
 colgroup col.c-ln  { width: 28px; }
 colgroup col.c-txt { width: auto; }
 colgroup col.c-cd  { width: 44px; }
-colgroup col.c-sz  { width: 38px; }
+
 colgroup col.c-fn  { width: 90px; }
 colgroup col.c-st  { width: 48px; }
 
@@ -221,7 +221,7 @@ td {
 .ta-pg  { text-align: center; }
 .ta-ln  { text-align: center; color: var(--dim); font-size: 11px; }
 .ta-cd  { text-align: right; font-family: 'Cascadia Code', monospace; font-size: 11px; color: var(--dim); }
-.ta-sz  { text-align: right; font-family: monospace; font-size: 11px; }
+
 .ta-st  { text-align: center; }
 
 tbody tr { cursor: pointer; }
@@ -404,21 +404,21 @@ tbody tr.sel td:first-child { border-left: 3px solid var(--accent) !important; }
       <table id="tbl">
         <colgroup>
           <col class="c-pg"><col class="c-ln"><col class="c-txt">
-          <col class="c-sz"><col class="c-fn"><col class="c-st"><col class="c-lb">
+          <col class="c-fn"><col class="c-st"><col class="c-lb">
         </colgroup>
         <thead>
           <tr>
             <th data-col="page"          class="ta-pg">Pg</th>
             <th data-col="line_order"    class="ta-ln">#</th>
             <th data-col="text">Text</th>
-            <th data-col="avg_font_size" class="ta-sz">PT</th>
+
             <th data-col="font_names">Fonts</th>
             <th data-col="is_bold"       class="ta-st">Style</th>
             <th data-col="label"         class="ta-st">Label</th>
           </tr>
         </thead>
         <tbody id="tbody">
-          <tr><td colspan="7" class="no-data">Load a JSON file to see data</td></tr>
+          <tr><td colspan="6" class="no-data">Load a JSON file to see data</td></tr>
         </tbody>
       </table>
     </div>
@@ -738,7 +738,7 @@ document.querySelectorAll('th[data-col]').forEach(th => {
 // ── Table Render ─────────────────────────────────────────────────────────────
 function renderTable() {
   if (filtered.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" class="no-data">No matching entries</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="6" class="no-data">No matching entries</td></tr>';
     return;
   }
 
@@ -757,16 +757,12 @@ function renderTable() {
       return `<span class="ftag ${cls}" title="${esc(cn)}">${esc(cn)}</span>`;
     }).join(' ');
 
-    const sz  = item.avg_font_size;
-    const szc = sz >= 13 ? 'var(--orange)' : sz >= 11 ? 'var(--text)' : 'var(--dim)';
-
     tr.innerHTML = `
       <td class="ta-pg">
         <span class="pg-dot ${item.page === curPage ? 'cur' : ''}">${item.page}</span>
       </td>
       <td class="ta-ln">${item.line_order}</td>
       <td><div class="txt-clip" title="${esc(item.text)}">${esc(item.text)}</div></td>
-      <td class="ta-sz" style="color:${szc}">${sz.toFixed(1)}</td>
       <td>${fonts}</td>
       <td class="ta-st">
         <span class="badge ${item.is_bold ? 'b-bold' : 'b-reg'}">${item.is_bold ? 'Bold' : 'Reg'}</span>
