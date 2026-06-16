@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   lint:
     name: Lint (ruff)
@@ -36,7 +39,11 @@ jobs:
 
     steps:
       - name: Trigger Render deploy hook
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
-          curl -fsSL \
-            -X POST \
-            "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+          if [ -z "$RENDER_DEPLOY_HOOK_URL" ]; then
+            echo "::warning::RENDER_DEPLOY_HOOK_URL secret is not set — skipping deploy."
+            exit 0
+          fi
+          curl -fsSL -X POST "$RENDER_DEPLOY_HOOK_URL"
