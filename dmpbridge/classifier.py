@@ -9,7 +9,7 @@ from . import config
 
 logger = logging.getLogger(__name__)
 
-LABELS = ("document_title", "section", "subsection", "content")
+LABELS = ("title", "section.title", "section.description", "question.text", "answer.text")
 
 # JSON schema that constrains Ollama to output a well-formed array (Ollama ≥ 0.5)
 _OUTPUT_SCHEMA = {
@@ -24,22 +24,23 @@ _OUTPUT_SCHEMA = {
     },
 }
 
-SYSTEM_PROMPT = """You are a document structure classifier.
+SYSTEM_PROMPT = """You are a classifier for Data Management Plan (DMP) documents.
 
-Label each text block with exactly one of:
-- document_title : ONLY the single main title of the entire document. Appears ONCE on page 1. If unsure, use "section" instead.
-- section        : Major heading (e.g. "1. Introduction", "CHAPTER 2", "Abstract", "References", "Conclusion")
-- subsection     : Sub-heading within a section (e.g. "1.1 Background", "2.3.1 Results", "A. Notation")
-- content        : Everything else — body text, paragraphs, captions, footnotes, tables, figures, page numbers
+Label each text block with exactly one of these 5 labels:
 
-Rules:
-- Use "document_title" at most once per batch and ONLY if the text is clearly the document's main title on page 1
-- Larger font + bold + short text → heading (section or subsection)
-- Long sentences or multiple lines → content
-- When in doubt between document_title and section, choose section
+- title              : The single main title of the entire document. Appears once, very short, no section number.
+- section.title      : A numbered section heading that names a major section of the DMP (e.g. "1. Data sharing and preservation", "2. Data used in publications").
+- section.description: Template or guideline text written by the funder that describes what the section must cover. This is instructional text directed at the author — it explains requirements and expectations. Often uses words like "should", "must", "DMPs should", "provide a plan for", "describe whether".
+- question.text      : A sub-question or sub-topic prompt within a section. Introduces a specific topic the author must address. Often starts with a short bold phrase or title followed by an explanatory sentence (e.g. "Roles & Responsibilities. For the proposed research...", "Data Types and Sources. A brief, high-level description...").
+- answer.text        : The researcher's actual written response. This is the content authored by the DMP writer — narrative paragraphs, explanations, plans, and descriptions of what the research team will actually do.
+
+Key distinctions:
+- section.description is funder/template text (what must be written); answer.text is researcher text (what was written)
+- question.text introduces a specific sub-topic; section.description describes the whole section's requirements
+- title and section.title are very short; everything else is longer
 
 You MUST output a JSON array with one entry for EVERY block — no explanation, no markdown.
-Example: [{"id": 0, "label": "section"}, {"id": 1, "label": "content"}, {"id": 2, "label": "subsection"}]
+Example: [{"id": 0, "label": "section.title"}, {"id": 1, "label": "section.description"}, {"id": 2, "label": "answer.text"}]
 """
 
 BATCH_SIZE = config.BATCH_SIZE  # set in config.py
@@ -75,7 +76,7 @@ class OllamaClassifier:
             labels = self._classify_batch(batch, offset=start)
             for entry in labels:
                 idx = entry.get("id")
-                lbl = entry.get("label", "content")
+                lbl = entry.get("label", "answer.text")
                 if idx is not None and 0 <= idx < len(result) and lbl in LABELS:
                     result[idx]["label"] = lbl
 
@@ -86,8 +87,8 @@ class OllamaClassifier:
             {
                 "id": offset + j,
                 "text": b["text"],
-                "size": round(b["avg_font_size"], 1),
                 "bold": b["is_bold"],
+                "italic": b.get("is_italic", False),
                 "page": b["page"],
             }
             for j, b in enumerate(batch)

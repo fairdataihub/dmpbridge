@@ -283,18 +283,21 @@ tbody tr.sel td:first-child { border-left: 2px solid var(--accent); }
 .no-data { text-align: center; color: var(--dim); padding: 40px 0; }
 
 /* ── Label badges ── */
-colgroup col.c-lb { width: 86px; }
+colgroup col.c-lb { width: 110px; }
 .lbl { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; white-space: nowrap; }
-.lbl-document_title { background: rgba(139,92,246,0.15); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.45); }
-.lbl-section        { background: rgba(245,158,11,0.15);  color: #fcd34d; border: 1px solid rgba(245,158,11,0.45); }
-.lbl-subsection     { background: rgba(20,184,166,0.15);  color: #5eead4; border: 1px solid rgba(20,184,166,0.45); }
-.lbl-content, .lbl-none { background: transparent; color: var(--dim); border: 1px solid var(--border); }
+.lbl-title               { background: rgba(220,38,38,0.15);   color: #fca5a5; border: 1px solid rgba(220,38,38,0.45); }
+.lbl-section\.title      { background: rgba(34,197,94,0.15);   color: #86efac; border: 1px solid rgba(34,197,94,0.45); }
+.lbl-section\.description{ background: rgba(59,130,246,0.15);  color: #93c5fd; border: 1px solid rgba(59,130,246,0.45); }
+.lbl-question\.text      { background: rgba(245,158,11,0.15);  color: #fcd34d; border: 1px solid rgba(245,158,11,0.45); }
+.lbl-answer\.text        { background: rgba(168,85,247,0.15);  color: #d8b4fe; border: 1px solid rgba(168,85,247,0.45); }
+.lbl-none { background: transparent; color: var(--dim); border: 1px solid var(--border); }
 
 /* ── Label stripe on every row ── */
-tbody tr[data-label="document_title"] td:first-child { border-left: 3px solid rgba(139,92,246,0.7); }
-tbody tr[data-label="section"]        td:first-child { border-left: 3px solid rgba(245,158,11,0.7); }
-tbody tr[data-label="subsection"]     td:first-child { border-left: 3px solid rgba(20,184,166,0.7); }
-tbody tr[data-label="content"]        td:first-child { border-left: 3px solid rgba(88,166,255,0.25); }
+tbody tr[data-label="title"]               td:first-child { border-left: 3px solid rgba(220,38,38,0.8); }
+tbody tr[data-label="section.title"]       td:first-child { border-left: 3px solid rgba(34,197,94,0.8); }
+tbody tr[data-label="section.description"] td:first-child { border-left: 3px solid rgba(59,130,246,0.8); }
+tbody tr[data-label="question.text"]       td:first-child { border-left: 3px solid rgba(245,158,11,0.8); }
+tbody tr[data-label="answer.text"]         td:first-child { border-left: 3px solid rgba(168,85,247,0.5); }
 tbody tr.sel td:first-child { border-left: 3px solid var(--accent) !important; }
 </style>
 </head>
@@ -322,10 +325,11 @@ tbody tr.sel td:first-child { border-left: 3px solid var(--accent) !important; }
     <div class="chip green">Regular <b id="st-reg">0</b></div>
     <div class="chip">Sizes <b id="st-sizes">—</b></div>
     <div class="chip" id="st-label-chip" style="display:none">
-      <span style="color:#a78bfa" id="st-lbl-dt">0</span> title ·
-      <span style="color:#fbbf24" id="st-lbl-sec">0</span> sec ·
-      <span style="color:#2dd4bf" id="st-lbl-sub">0</span> sub ·
-      <span style="color:var(--dim)" id="st-lbl-cnt">0</span> content
+      <span style="color:#fca5a5" id="st-lbl-title">0</span> title ·
+      <span style="color:#86efac" id="st-lbl-sec">0</span> sec ·
+      <span style="color:#93c5fd" id="st-lbl-desc">0</span> desc ·
+      <span style="color:#fcd34d" id="st-lbl-q">0</span> q ·
+      <span style="color:#d8b4fe" id="st-lbl-ans">0</span> ans
     </div>
   </div>
 </header>
@@ -391,10 +395,11 @@ tbody tr.sel td:first-child { border-left: 3px solid var(--accent) !important; }
       <span class="fl">Label:</span>
       <select class="sel" id="label-filter">
         <option value="">All</option>
-        <option value="document_title">Title</option>
-        <option value="section">Section</option>
-        <option value="subsection">Subsection</option>
-        <option value="content">Content</option>
+        <option value="title">Title</option>
+        <option value="section.title">Section Title</option>
+        <option value="section.description">Section Desc</option>
+        <option value="question.text">Question</option>
+        <option value="answer.text">Answer</option>
       </select>
       <div class="spacer"></div>
       <span class="rc-badge" id="rc">0 rows</span>
@@ -438,12 +443,13 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
 
 // ── Label colors ────────────────────────────────────────────────────────────
 const LABEL_CLR = {
-  document_title: { fill: 'rgba(139,92,246,0.18)', stroke: 'rgba(139,92,246,0.90)', lw: 1.8 },
-  section:        { fill: 'rgba(245,158,11,0.16)',  stroke: 'rgba(245,158,11,0.90)',  lw: 1.6 },
-  subsection:     { fill: 'rgba(20,184,166,0.14)',  stroke: 'rgba(20,184,166,0.85)',  lw: 1.3 },
-  content:        { fill: 'rgba(88,166,255,0.10)',  stroke: 'rgba(88,166,255,0.50)',  lw: 1.0 },
+  'title':               { fill: 'rgba(220,38,38,0.18)',  stroke: 'rgba(220,38,38,0.90)',  lw: 2.0 },
+  'section.title':       { fill: 'rgba(34,197,94,0.16)',  stroke: 'rgba(34,197,94,0.90)',  lw: 1.8 },
+  'section.description': { fill: 'rgba(59,130,246,0.14)', stroke: 'rgba(59,130,246,0.85)', lw: 1.5 },
+  'question.text':       { fill: 'rgba(245,158,11,0.14)', stroke: 'rgba(245,158,11,0.85)', lw: 1.4 },
+  'answer.text':         { fill: 'rgba(168,85,247,0.10)', stroke: 'rgba(168,85,247,0.55)', lw: 1.0 },
 };
-function labelClr(label) { return LABEL_CLR[label] || LABEL_CLR.content; }
+function labelClr(label) { return LABEL_CLR[label] || LABEL_CLR['answer.text']; }
 
 // ── State ───────────────────────────────────────────────────────────────────
 let pdfDoc     = null;
@@ -845,10 +851,11 @@ function updateStats() {
   const chip = document.getElementById('st-label-chip');
   chip.style.display = hasLabels ? '' : 'none';
   if (hasLabels) {
-    document.getElementById('st-lbl-dt').textContent  = rawData.filter(d => d.label === 'document_title').length;
-    document.getElementById('st-lbl-sec').textContent = rawData.filter(d => d.label === 'section').length;
-    document.getElementById('st-lbl-sub').textContent = rawData.filter(d => d.label === 'subsection').length;
-    document.getElementById('st-lbl-cnt').textContent = rawData.filter(d => d.label === 'content').length;
+    document.getElementById('st-lbl-title').textContent = rawData.filter(d => d.label === 'title').length;
+    document.getElementById('st-lbl-sec').textContent   = rawData.filter(d => d.label === 'section.title').length;
+    document.getElementById('st-lbl-desc').textContent  = rawData.filter(d => d.label === 'section.description').length;
+    document.getElementById('st-lbl-q').textContent     = rawData.filter(d => d.label === 'question.text').length;
+    document.getElementById('st-lbl-ans').textContent   = rawData.filter(d => d.label === 'answer.text').length;
   }
 }
 
@@ -952,7 +959,7 @@ function cleanFont(name) {
   const i = name.indexOf('+');
   return i !== -1 ? name.slice(i + 1) : name;
 }
-const LABEL_SHORT = { document_title: 'Title', section: 'Section', subsection: 'Sub', content: 'Content' };
+const LABEL_SHORT = { 'title': 'Title', 'section.title': 'Sec Title', 'section.description': 'Sec Desc', 'question.text': 'Question', 'answer.text': 'Answer' };
 const fmtLabel = (l) => LABEL_SHORT[l] || (l || '—');
 </script>
 </body>

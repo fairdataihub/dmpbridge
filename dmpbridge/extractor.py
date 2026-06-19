@@ -9,10 +9,11 @@ import pdfplumber
 
 # RGBA colors per label — (stroke, fill)
 _LABEL_STYLE: dict[str, tuple[tuple, tuple]] = {
-    "document_title": ((139, 92, 246, 220), (139, 92, 246, 30)),
-    "section":        ((245, 158, 11,  220), (245, 158, 11,  25)),
-    "subsection":     ((20,  184, 166, 200), (20,  184, 166, 20)),
-    "content":        ((88,  166, 255, 120), (88,  166, 255, 15)),
+    "title":               ((220,  38,  38, 220), (220,  38,  38, 30)),
+    "section.title":       ((34,  197,  94, 220), (34,  197,  94, 25)),
+    "section.description": ((59,  130, 246, 200), (59,  130, 246, 20)),
+    "question.text":       ((245, 158,  11, 220), (245, 158,  11, 25)),
+    "answer.text":         ((168,  85, 247, 180), (168,  85, 247, 15)),
 }
 
 
@@ -51,6 +52,7 @@ def extract_blocks(pdf_path: Union[str, Path]) -> list[dict]:
                 sizes = [c["size"] for c in chars if c.get("size")]
                 avg_font_size = sum(sizes) / len(sizes) if sizes else 0.0
                 is_bold = any(_font_is_bold(fn) for fn in font_names)
+                is_italic = any(_font_is_italic(fn) for fn in font_names)
 
                 blocks.append({
                     "page": page_num,
@@ -63,6 +65,7 @@ def extract_blocks(pdf_path: Union[str, Path]) -> list[dict]:
                     "avg_font_size": round(avg_font_size, 2),
                     "font_names": font_names,
                     "is_bold": is_bold,
+                    "is_italic": is_italic,
                     "label": None,
                 })
 
@@ -119,6 +122,11 @@ def save_page_images(
 def _font_is_bold(name: str) -> bool:
     n = name.lower()
     return "bold" in n or n.endswith(",b") or "-bold" in n or ",bold" in n
+
+
+def _font_is_italic(name: str) -> bool:
+    n = name.lower()
+    return "italic" in n or "oblique" in n or n.endswith(",i") or "-italic" in n
 
 
 def _deduplicate_chars(text: str) -> str:

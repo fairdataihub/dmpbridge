@@ -89,7 +89,7 @@ def process_pdf(
     # ── Step 5: fill any blocks the LLM did not return a label for ───────────
     for b in blocks:
         if not b.get("label"):
-            b["label"] = "content"
+            b["label"] = "answer.text"
 
     # ── Step 6: save labeled JSON ─────────────────────────────────────────────
     if output:
