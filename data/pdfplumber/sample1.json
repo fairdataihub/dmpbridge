@@ -12,6 +12,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -27,6 +28,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -42,6 +44,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -57,6 +60,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -72,6 +76,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -87,6 +92,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -102,6 +108,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -117,6 +124,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -132,6 +140,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -147,6 +156,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -162,6 +172,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -177,6 +188,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -192,6 +204,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -207,6 +220,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -222,6 +236,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -237,6 +252,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -253,6 +269,7 @@
       "JERCKF+Arial-ItalicMT"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -268,6 +285,7 @@
       "JERCKF+Arial-ItalicMT"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -283,6 +301,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -298,6 +317,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -313,6 +333,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -328,6 +349,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -343,6 +365,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -358,6 +381,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -373,6 +397,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -388,6 +413,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -403,6 +429,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -418,6 +445,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -433,6 +461,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -449,6 +478,7 @@
       "JERCKF+Arial-ItalicMT"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -464,6 +494,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -479,6 +510,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -494,6 +526,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -509,6 +542,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -524,6 +558,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -539,6 +574,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -554,6 +590,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -569,6 +606,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -584,6 +622,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -599,6 +638,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -614,6 +654,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -629,6 +670,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -644,6 +686,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -659,6 +702,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -674,6 +718,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -689,6 +734,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -704,6 +750,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -719,6 +766,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -734,6 +782,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -749,6 +798,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -764,6 +814,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -779,6 +830,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -795,6 +847,7 @@
       "QUBSER+Calibri"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -810,6 +863,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -825,6 +879,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -840,6 +895,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -855,6 +911,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -870,6 +927,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -885,6 +943,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -900,6 +959,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -915,6 +975,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -930,6 +991,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -945,6 +1007,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -960,6 +1023,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -975,6 +1039,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -990,6 +1055,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1005,6 +1071,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1020,6 +1087,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1035,6 +1103,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1050,6 +1119,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1065,6 +1135,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1080,6 +1151,7 @@
       "SHEJGN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1095,6 +1167,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1110,6 +1183,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1125,6 +1199,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1140,6 +1215,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1155,6 +1231,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1170,6 +1247,7 @@
       "COGWQT+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   }
 ]
