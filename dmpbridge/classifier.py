@@ -31,12 +31,13 @@ Label each text block with exactly one of these 5 labels:
 - title              : The single main title of the entire document. Appears once, very short, no section number.
 - section.title      : A numbered section heading that names a major section of the DMP (e.g. "1. Data sharing and preservation", "2. Data used in publications").
 - section.description: Template or guideline text written by the funder that describes what the section must cover. This is instructional text directed at the author — it explains requirements and expectations. Often uses words like "should", "must", "DMPs should", "provide a plan for", "describe whether".
-- question.text      : A sub-question or sub-topic prompt within a section. Introduces a specific topic the author must address. Often starts with a short bold phrase or title followed by an explanatory sentence (e.g. "Roles & Responsibilities. For the proposed research...", "Data Types and Sources. A brief, high-level description...").
+- question.text      : A sub-question or sub-topic prompt that always appears INSIDE a section — never before the first section.title. Introduces a specific topic the author must address within that section. Often starts with a short bold phrase followed by an explanatory sentence (e.g. "Roles & Responsibilities. For the proposed research...", "Data Types and Sources. A brief, high-level description..."). Every question.text belongs to the most recent section.title above it.
 - answer.text        : The researcher's actual written response. This is the content authored by the DMP writer — narrative paragraphs, explanations, plans, and descriptions of what the research team will actually do.
 
 Key distinctions:
 - section.description is funder/template text (what must be written); answer.text is researcher text (what was written)
-- question.text introduces a specific sub-topic; section.description describes the whole section's requirements
+- question.text introduces a specific sub-topic inside a section; section.description describes the whole section's requirements
+- question.text always follows a section.title or section.description — it never appears before the first section
 - title and section.title are very short; everything else is longer
 
 You MUST output a JSON array with one entry for EVERY block — no explanation, no markdown.
