@@ -29,7 +29,7 @@
     ],
     "is_bold": true,
     "is_italic": false,
-    "label": "question.text"
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -462,7 +462,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "question.text"
+    "label": "answer.text"
   },
   {
     "page": 1,

@@ -12,6 +12,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -27,6 +28,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -42,6 +44,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -57,6 +60,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -72,6 +76,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -87,6 +92,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -102,6 +108,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -117,6 +124,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -132,6 +140,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -148,6 +157,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -163,6 +173,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -178,6 +189,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -193,6 +205,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -208,6 +221,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -224,6 +238,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": true,
+    "is_italic": true,
     "label": null
   },
   {
@@ -239,6 +254,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -254,6 +270,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -269,6 +286,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -284,6 +302,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -299,6 +318,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -314,6 +334,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -329,6 +350,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -344,6 +366,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -359,6 +382,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -374,6 +398,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -389,6 +414,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -405,6 +431,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": true,
+    "is_italic": true,
     "label": null
   },
   {
@@ -420,6 +447,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -435,6 +463,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -450,6 +479,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -465,6 +495,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -480,6 +511,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -495,6 +527,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -510,6 +543,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -525,6 +559,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -540,6 +575,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -555,6 +591,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -570,6 +607,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -585,6 +623,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -600,6 +639,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -615,6 +655,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -630,6 +671,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -645,6 +687,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -660,6 +703,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -675,6 +719,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -690,6 +735,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -705,6 +751,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -721,6 +768,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": true,
+    "is_italic": true,
     "label": null
   },
   {
@@ -736,6 +784,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -751,6 +800,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -766,6 +816,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -781,6 +832,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -796,6 +848,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -811,6 +864,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -826,6 +880,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -841,6 +896,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -856,6 +912,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -871,6 +928,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -886,6 +944,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -901,6 +960,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -916,6 +976,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -931,6 +992,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -946,6 +1008,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -961,6 +1024,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -976,6 +1040,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -991,6 +1056,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -1006,6 +1072,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -1021,6 +1088,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -1036,6 +1104,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1051,6 +1120,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1066,6 +1136,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1081,6 +1152,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1096,6 +1168,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1111,6 +1184,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1126,6 +1200,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1141,6 +1216,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1156,6 +1232,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1171,6 +1248,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1186,6 +1264,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1201,6 +1280,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1216,6 +1296,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1231,6 +1312,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1246,6 +1328,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1261,6 +1344,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1276,6 +1360,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1291,6 +1376,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1306,6 +1392,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1321,6 +1408,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1336,6 +1424,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1351,6 +1440,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1366,6 +1456,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1382,6 +1473,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": true,
+    "is_italic": true,
     "label": null
   },
   {
@@ -1397,6 +1489,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -1412,6 +1505,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -1427,6 +1521,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1442,6 +1537,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1457,6 +1553,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1472,6 +1569,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1487,6 +1585,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1502,6 +1601,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1517,6 +1617,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1532,6 +1633,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1547,6 +1649,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1562,6 +1665,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1577,6 +1681,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1592,6 +1697,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1607,6 +1713,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1622,6 +1729,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1637,6 +1745,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1652,6 +1761,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1667,6 +1777,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1682,6 +1793,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1697,6 +1809,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1712,6 +1825,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1727,6 +1841,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1742,6 +1857,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1757,6 +1873,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1772,6 +1889,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1787,6 +1905,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1802,6 +1921,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1817,6 +1937,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1832,6 +1953,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1847,6 +1969,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1862,6 +1985,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1877,6 +2001,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1892,6 +2017,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1907,6 +2033,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1922,6 +2049,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1937,6 +2065,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1952,6 +2081,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1967,6 +2097,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1982,6 +2113,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -1997,6 +2129,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2012,6 +2145,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2027,6 +2161,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2042,6 +2177,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2057,6 +2193,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2072,6 +2209,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -2087,6 +2225,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -2102,6 +2241,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -2117,6 +2257,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -2132,6 +2273,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -2147,6 +2289,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -2162,6 +2305,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -2177,6 +2321,7 @@
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -2193,6 +2338,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2208,6 +2354,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2223,6 +2370,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2238,6 +2386,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2253,6 +2402,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2268,6 +2418,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2283,6 +2434,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2298,6 +2450,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2314,6 +2467,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2329,6 +2483,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2344,6 +2499,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2359,6 +2515,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2374,6 +2531,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2389,6 +2547,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2404,6 +2563,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2419,6 +2579,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2434,6 +2595,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2449,6 +2611,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2464,6 +2627,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2479,6 +2643,7 @@
       "AAAAAA+Tinos-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2494,6 +2659,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2509,6 +2675,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2524,6 +2691,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2539,6 +2707,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2554,6 +2723,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -2569,6 +2739,7 @@
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   }
 ]

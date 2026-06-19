@@ -2,7 +2,7 @@
   {
     "page": 1,
     "line_order": 1,
-    "text": "CCAARREEEERR:: HHIIGGHH--RREESSOOLLUUTTIIOONN NNMMRR FFOORR PPAARRAAMMAAGGNNEETTIICC SSOODDIIUUMM",
+    "text": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM",
     "x0": 74.97,
     "top": 72.28,
     "x1": 480.14,
@@ -12,12 +12,13 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "document_title"
+    "is_italic": false,
+    "label": "title"
   },
   {
     "page": 1,
     "line_order": 2,
-    "text": "EELLEECCTTRROODDEESS",
+    "text": "ELECTRODES",
     "x0": 74.97,
     "top": 89.08,
     "x1": 159.56,
@@ -27,12 +28,13 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "section"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
     "line_order": 3,
-    "text": "PPrroodduuccttss ooff RReesseeaarrcchh",
+    "text": "Products of Research",
     "x0": 74.97,
     "top": 116.68,
     "x1": 187.36,
@@ -42,7 +44,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "subsection"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -57,7 +60,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -72,7 +76,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -87,7 +92,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 1,
@@ -102,7 +108,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -117,7 +124,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -132,7 +140,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -147,7 +156,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -162,7 +172,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -177,7 +188,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -192,7 +204,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -207,7 +220,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -222,7 +236,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -237,12 +252,13 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
     "line_order": 17,
-    "text": "DDaattaa FFoorrmmaatt SSttaannddaarrddss",
+    "text": "Data Format Standards",
     "x0": 74.97,
     "top": 395.68,
     "x1": 196.92,
@@ -252,7 +268,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "document_title"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -267,7 +284,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "section.description"
   },
   {
     "page": 1,
@@ -282,7 +300,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 1,
@@ -297,7 +316,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -312,7 +332,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "document_title"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -327,7 +348,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -342,7 +364,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -357,7 +380,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -372,7 +396,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -387,7 +412,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -402,7 +428,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -417,7 +444,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -432,7 +460,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -447,7 +476,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -462,7 +492,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -477,7 +508,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -492,7 +524,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -507,7 +540,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -522,7 +556,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -537,7 +572,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -552,7 +588,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -567,12 +604,13 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
     "line_order": 5,
-    "text": "AAcccceessss aanndd sshhaarriinngg",
+    "text": "Access and sharing",
     "x0": 74.97,
     "top": 158.08,
     "x1": 177.11,
@@ -582,7 +620,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 2,
@@ -597,7 +636,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "section"
+    "is_italic": false,
+    "label": "section.description"
   },
   {
     "page": 2,
@@ -612,7 +652,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -627,7 +668,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -642,7 +684,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -657,7 +700,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -672,7 +716,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -687,7 +732,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -702,7 +748,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -717,7 +764,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -732,7 +780,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -747,7 +796,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -762,7 +812,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -777,7 +828,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -792,7 +844,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -807,7 +860,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -822,7 +876,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -837,7 +892,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -852,7 +908,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -867,7 +924,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -882,7 +940,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -897,7 +956,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -912,7 +972,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 2,
@@ -927,7 +988,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -942,7 +1004,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -957,7 +1020,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -972,7 +1036,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "section.description"
   },
   {
     "page": 2,
@@ -987,7 +1052,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1002,7 +1068,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1017,7 +1084,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1032,7 +1100,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 3,
@@ -1047,7 +1116,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "section"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1062,12 +1132,13 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
     "line_order": 3,
-    "text": "PPoolliicciieess aanndd pprroovviissiioonnss ffoorr rree--uussee,, rree--ddiissttrriibbuuttiioonn,, aanndd pprroodduuccttiioonn ooff ddeerriivvaattiivveess",
+    "text": "Policies and provisions for re-use, re-distribution, and production of derivatives",
     "x0": 74.97,
     "top": 126.88,
     "x1": 495.57,
@@ -1077,7 +1148,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 3,
@@ -1092,7 +1164,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1107,7 +1180,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1122,7 +1196,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1137,7 +1212,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1152,7 +1228,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1167,7 +1244,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1182,7 +1260,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1197,12 +1276,13 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "section"
+    "is_italic": false,
+    "label": "title"
   },
   {
     "page": 3,
     "line_order": 12,
-    "text": "AArrcchhiivviinngg ooff DDaattaa,, SSaammpplleess,, aanndd OOtthheerr RReelleevvaanntt RReesseeaarrcchh PPrroodduuccttss",
+    "text": "Archiving of Data, Samples, and Other Relevant Research Products",
     "x0": 74.97,
     "top": 360.28,
     "x1": 432.91,
@@ -1212,7 +1292,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "document_title"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 3,
@@ -1227,7 +1308,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1242,7 +1324,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1257,7 +1340,8 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 3,
@@ -1272,6 +1356,7 @@
       "QMBAAA+TimesLTPro-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   }
 ]

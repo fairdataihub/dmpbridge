@@ -12,7 +12,8 @@
       "CKFMEN+Arial-BoldMT"
     ],
     "is_bold": true,
-    "label": "document_title"
+    "is_italic": false,
+    "label": "title"
   },
   {
     "page": 1,
@@ -27,7 +28,8 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": true,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -43,7 +45,8 @@
       "CKFMGD+Times-Bold"
     ],
     "is_bold": true,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -58,7 +61,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -73,7 +77,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -88,7 +93,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -103,7 +109,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -118,7 +125,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -133,7 +141,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -148,7 +157,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -163,7 +173,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -178,7 +189,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -193,7 +205,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -208,7 +221,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -223,7 +237,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -238,7 +253,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -253,7 +269,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -269,7 +286,8 @@
       "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": true,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -285,7 +303,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": true,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -300,7 +319,8 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": true,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -315,7 +335,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -330,7 +351,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -345,7 +367,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -360,7 +383,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -375,7 +399,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -390,7 +415,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -405,7 +431,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -420,7 +447,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -435,7 +463,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -450,7 +479,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -465,7 +495,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -480,7 +511,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -495,7 +527,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -510,7 +543,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -525,7 +559,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -540,7 +575,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -555,7 +591,8 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": true,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -570,7 +607,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -585,7 +623,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -600,7 +639,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -615,7 +655,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -630,7 +671,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -645,7 +687,8 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": true,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -660,7 +703,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -675,7 +719,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -690,7 +735,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -705,7 +751,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -720,7 +767,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -735,7 +783,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -750,7 +799,8 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": true,
+    "label": "section.title"
   },
   {
     "page": 2,
@@ -766,7 +816,8 @@
       "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": true,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -782,7 +833,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": true,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -798,7 +850,8 @@
       "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": true,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -814,7 +867,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": true,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -829,7 +883,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "section.description"
   },
   {
     "page": 2,
@@ -844,7 +899,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "section.description"
   },
   {
     "page": 2,
@@ -859,7 +915,8 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": true,
+    "label": "section.title"
   },
   {
     "page": 2,
@@ -874,7 +931,8 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -889,6 +947,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   }
 ]

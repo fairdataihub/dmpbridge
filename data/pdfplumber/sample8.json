@@ -12,6 +12,7 @@
       "CKFMEN+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -27,6 +28,7 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
+    "is_italic": true,
     "label": null
   },
   {
@@ -43,6 +45,7 @@
       "CKFMGD+Times-Bold"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -58,6 +61,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -73,6 +77,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -88,6 +93,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -103,6 +109,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -118,6 +125,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -133,6 +141,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -148,6 +157,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -163,6 +173,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -178,6 +189,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -193,6 +205,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -208,6 +221,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -223,6 +237,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -238,6 +253,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -253,6 +269,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -269,6 +286,7 @@
       "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -285,6 +303,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -300,6 +319,7 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
+    "is_italic": true,
     "label": null
   },
   {
@@ -315,6 +335,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -330,6 +351,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -345,6 +367,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -360,6 +383,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -375,6 +399,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -390,6 +415,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -405,6 +431,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -420,6 +447,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -435,6 +463,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -450,6 +479,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -465,6 +495,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -480,6 +511,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -495,6 +527,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -510,6 +543,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -525,6 +559,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -540,6 +575,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -555,6 +591,7 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
+    "is_italic": true,
     "label": null
   },
   {
@@ -570,6 +607,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -585,6 +623,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -600,6 +639,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -615,6 +655,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -630,6 +671,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -645,6 +687,7 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
+    "is_italic": true,
     "label": null
   },
   {
@@ -660,6 +703,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -675,6 +719,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -690,6 +735,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -705,6 +751,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -720,6 +767,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -735,6 +783,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -750,6 +799,7 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
+    "is_italic": true,
     "label": null
   },
   {
@@ -766,6 +816,7 @@
       "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -782,6 +833,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -798,6 +850,7 @@
       "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -814,6 +867,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": true,
     "label": null
   },
   {
@@ -829,6 +883,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -844,6 +899,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -859,6 +915,7 @@
       "CKFMGB+Times-BoldItalic"
     ],
     "is_bold": true,
+    "is_italic": true,
     "label": null
   },
   {
@@ -874,6 +931,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -889,6 +947,7 @@
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   }
 ]

@@ -12,7 +12,8 @@
       "PNIDFH+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": false,
+    "label": "title"
   },
   {
     "page": 1,
@@ -27,7 +28,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -42,7 +44,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -57,7 +60,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -72,7 +76,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -87,7 +92,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -103,7 +109,8 @@
       "ICODPB+TimesNewRoman"
     ],
     "is_bold": false,
-    "label": "subsection"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -118,7 +125,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -133,7 +141,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -148,7 +157,8 @@
       "ICODPB+TimesNewRoman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -163,7 +173,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "section"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -178,7 +189,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -193,7 +205,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -208,7 +221,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "section"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -223,7 +237,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -238,7 +253,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -253,7 +269,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -268,7 +285,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -284,7 +302,8 @@
       "ICODPB+TimesNewRoman"
     ],
     "is_bold": false,
-    "label": "section"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -299,7 +318,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -315,7 +335,8 @@
       "ICODPB+TimesNewRoman"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -330,7 +351,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -345,7 +367,8 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -360,6 +383,7 @@
       "PNIDII+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "section.title"
   }
 ]

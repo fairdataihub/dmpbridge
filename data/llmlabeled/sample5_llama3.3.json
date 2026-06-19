@@ -12,7 +12,8 @@
       "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
-    "label": "document_title"
+    "is_italic": false,
+    "label": "title"
   },
   {
     "page": 1,
@@ -27,7 +28,8 @@
       "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -42,7 +44,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -59,7 +62,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": true,
-    "label": "subsection"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 1,
@@ -74,7 +78,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -91,7 +96,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": true,
-    "label": "subsection"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 1,
@@ -106,7 +112,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -124,7 +131,8 @@
       "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": true,
-    "label": "subsection"
+    "is_italic": true,
+    "label": "question.text"
   },
   {
     "page": 1,
@@ -139,7 +147,8 @@
       "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": true,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -154,7 +163,8 @@
       "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -169,7 +179,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -184,7 +195,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -199,7 +211,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -214,7 +227,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -230,7 +244,8 @@
       "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": true,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -246,7 +261,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": true,
-    "label": "subsection"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 1,
@@ -261,7 +277,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -276,7 +293,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -291,7 +309,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -307,7 +326,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": true,
-    "label": "subsection"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 1,
@@ -322,7 +342,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -337,7 +358,8 @@
       "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -352,7 +374,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -367,7 +390,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -382,7 +406,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -397,7 +422,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -412,7 +438,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -427,7 +454,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -442,7 +470,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -457,7 +486,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -472,7 +502,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -487,7 +518,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -502,7 +534,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -517,7 +550,8 @@
       "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -533,7 +567,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": true,
-    "label": "subsection"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 1,
@@ -548,7 +583,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -563,7 +599,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -578,7 +615,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -593,7 +631,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -608,7 +647,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -623,7 +663,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -638,7 +679,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -653,7 +695,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -668,7 +711,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -683,7 +727,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -698,7 +743,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -714,7 +760,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": true,
-    "label": "subsection"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 2,
@@ -729,7 +776,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -744,7 +792,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -759,7 +808,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -775,7 +825,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 2,
@@ -790,7 +841,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -806,7 +858,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": false,
+    "label": "question.text"
   },
   {
     "page": 2,
@@ -821,7 +874,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -836,7 +890,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -851,7 +906,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -866,7 +922,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -881,7 +938,8 @@
       "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
-    "label": "section"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 2,
@@ -896,7 +954,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -911,7 +970,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -926,7 +986,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -941,7 +1002,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -956,7 +1018,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -971,7 +1034,8 @@
       "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
-    "label": "subsection"
+    "is_italic": false,
+    "label": "section.title"
   },
   {
     "page": 2,
@@ -986,7 +1050,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1001,7 +1066,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1016,7 +1082,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1031,7 +1098,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1046,7 +1114,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1061,7 +1130,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1076,7 +1146,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1091,7 +1162,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1106,7 +1178,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1121,7 +1194,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1136,7 +1210,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1151,7 +1226,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1166,7 +1242,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1181,7 +1258,8 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1197,7 +1275,8 @@
       "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": true,
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1212,6 +1291,7 @@
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "label": "content"
+    "is_italic": false,
+    "label": "answer.text"
   }
 ]

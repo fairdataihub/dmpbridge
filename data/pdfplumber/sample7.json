@@ -12,6 +12,7 @@
       "PPZODK+Arial-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -27,6 +28,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -42,6 +44,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -57,6 +60,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -72,6 +76,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -87,6 +92,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -102,6 +108,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -117,6 +124,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -132,6 +140,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -147,6 +156,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -162,6 +172,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -177,6 +188,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -192,6 +204,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -207,6 +220,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -222,6 +236,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -237,6 +252,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   },
   {
@@ -252,6 +268,7 @@
       "FLHITM+ArialMT"
     ],
     "is_bold": false,
+    "is_italic": false,
     "label": null
   }
 ]
