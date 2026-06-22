@@ -46,7 +46,7 @@ def process_pdf(
     Returns
     -------
     List of block dicts, each with a 'label' field set to one of:
-    document_title | section | subsection | content
+    title | section.title | section.description | question.text | answer.text
     """
     pdf_path = Path(pdf_path)
     if not pdf_path.exists():

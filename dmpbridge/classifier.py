@@ -24,26 +24,59 @@ _OUTPUT_SCHEMA = {
     },
 }
 
-SYSTEM_PROMPT = """You are a classifier for Data Management Plan (DMP) documents.
+# ── Improvement 1: few-shot examples drawn from manually labeled DMPs ────────
+_FEW_SHOT_EXAMPLES = """
+EXAMPLES FROM REAL DMP DOCUMENTS:
+
+title:
+  "Center for Bio-Inspired Energy Science"
+  "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES"
+
+section.title:
+  "1. Data sharing and preservation"
+  "Element 1: Data Type:"
+  "2. Data used in publications"
+  "Products of Research"
+
+section.description (funder template text — instructs the author what to write):
+  "Data management plans should describe whether and how data generated in the course of the proposed research will be shared and preserved."
+  "Data management plans should provide a plan for making all research data displayed in publications resulting from the proposed research open, machine-readable, and digitally accessible to the public at the time of publication."
+  "Data management plans must protect confidentiality, personal privacy, Personally Identifiable Information and U.S. national, homeland, and economic security."
+
+question.text (sub-question prompt inside a section — asks the author to address a specific topic):
+  "A. Types and amount of scientific data expected to be generated in the project:"
+  "A. Repository where scientific data and metadata will be archived:"
+  "B. Whether access to scientific data will be controlled:"
+  "Roles & Responsibilities. For the proposed research, describe who will be responsible for coordinating and ensuring data storage and access."
+  "Data Types and Sources. A brief, high-level description of the data to be generated."
+
+answer.text (researcher's actual written response — narrative, first-person, describes what the team will do):
+  "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts."
+  "All data pertaining to any published work will be made available to any person on request. Numerical published data as well as the original raw data files will be freely accessible."
+  "Data will be analyzed with custom code by our statistical and computer science team."
+"""
+
+SYSTEM_PROMPT = f"""You are a classifier for Data Management Plan (DMP) documents.
 
 Label each text block with exactly one of these 5 labels:
 
-- title              : The single main title of the entire document. Appears once, very short, no section number.
-- section.title      : A numbered section heading that names a major section of the DMP (e.g. "1. Data sharing and preservation", "Element 1: Data Type:", "Roles and responsibilities","REVIEW OF PROPOSAL COMPONENTS","TYPES OF DATA", "1. Types of data", "1. Policy and Practice", "Products of Research").
-- section.description: Template or guideline text written by the funder that describes what the section must cover. This is instructional text directed at the author — it explains requirements and expectations. Often uses words like "should", "must", "DMPs should", "provide a plan for", "describe whether".
-- question.text      : A sub-question or sub-topic prompt within a section. Introduces a specific topic the author must address. Often starts with a short bold phrase or title followed by an explanatory sentence (e.g. "A. Types and amount of scientific data expected to be generated in the project:","Roles & Responsibilities.","Data Types and Sources. A brief, high-level description of the data to be generated or used through the course of the proposed research and which of these are considered Digital Research Datanecessary to Validate the research findings.").
-- answer.text        : The researcher's actual written response. This is the content authored by the DMP writer — narrative paragraphs, explanations, plans, and descriptions of what the research team will actually do.
+- title              : The single main title of the entire document. Appears once, very short.
+- section.title      : A numbered or named section heading (e.g. "1. Data sharing", "Element 1: Data Type:", "Products of Research").
+- section.description: Funder template text that instructs the author what to write in this section. Uses words like "should", "must", "DMPs should", "provide a plan for". This is NOT written by the researcher.
+- question.text      : A sub-question or sub-topic prompt inside a section. Asks the author to address a specific topic. Often starts with a letter prefix (A., B.) or a bold phrase. Always appears after a section.title.
+- answer.text        : The researcher's actual written response — narrative paragraphs describing what the team will do, has done, or plans to do.
 
 Key distinctions:
-- section.description is funder/template text (what must be written); answer.text is researcher text (what was written)
-- question.text introduces a specific sub-topic; section.description describes the whole section's requirements
-- title and section.title are very short; everything else is longer
-
-You MUST output a JSON array with one entry for EVERY block — no explanation, no markdown.
-Example: [{"id": 0, "label": "section.title"}, {"id": 1, "label": "section.description"}, {"id": 2, "label": "answer.text"}]
+- section.description = funder wrote it (requirements/instructions); answer.text = researcher wrote it (actual plans/responses)
+- question.text = specific sub-topic prompt inside a section; section.description = overall section requirements
+- If a block uses "should" or "must" and sounds like instructions → section.description
+- If a block describes what the research team will actually do → answer.text
+{_FEW_SHOT_EXAMPLES}
+You MUST output a JSON array with one entry for EVERY block in the TO CLASSIFY list — no explanation, no markdown.
 """
 
-BATCH_SIZE = config.BATCH_SIZE  # set in config.py
+BATCH_SIZE = config.BATCH_SIZE
+CONTEXT_SIZE = 3  # number of preceding labeled blocks sent as context
 
 
 class OllamaClassifier:
@@ -72,8 +105,10 @@ class OllamaClassifier:
 
         for start in range(0, len(result), BATCH_SIZE):
             batch = result[start : start + BATCH_SIZE]
+            # Improvement 2: pass last CONTEXT_SIZE labeled blocks as context
+            context = result[max(0, start - CONTEXT_SIZE) : start]
             logger.info(f"  Classifying blocks {start}–{start + len(batch) - 1} …")
-            labels = self._classify_batch(batch, offset=start)
+            labels = self._classify_batch(batch, offset=start, context=context)
             for entry in labels:
                 idx = entry.get("id")
                 lbl = entry.get("label", "answer.text")
@@ -82,7 +117,28 @@ class OllamaClassifier:
 
         return result
 
-    def _classify_batch(self, batch: list[dict], offset: int) -> list[dict]:
+    def _classify_batch(
+        self, batch: list[dict], offset: int, context: list[dict] | None = None
+    ) -> list[dict]:
+        # Build context prefix (already-labeled blocks — read only)
+        ctx_section = ""
+        if context:
+            ctx_blocks = [
+                {
+                    "text": b["text"],
+                    "bold": b["is_bold"],
+                    "italic": b.get("is_italic", False),
+                    "label": b.get("label", "?"),
+                }
+                for b in context
+            ]
+            ctx_section = (
+                "PRECEDING BLOCKS (already labeled — use for context only, do not output labels for these):\n"
+                + json.dumps(ctx_blocks, ensure_ascii=False)
+                + "\n\n"
+            )
+
+        # Blocks to classify
         payload = [
             {
                 "id": offset + j,
@@ -95,9 +151,9 @@ class OllamaClassifier:
         ]
 
         prompt = (
-            f"Classify ALL {len(batch)} blocks below and return a JSON array "
-            f"with exactly {len(batch)} entries, one per block:\n"
-            f"{json.dumps(payload, ensure_ascii=False)}"
+            ctx_section
+            + f"TO CLASSIFY — return a JSON array with exactly {len(batch)} entries, one per block:\n"
+            + json.dumps(payload, ensure_ascii=False)
         )
 
         resp = requests.post(

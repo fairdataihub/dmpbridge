@@ -102,10 +102,10 @@ def save_page_images(
 
             by_label: dict[str, list[dict]] = defaultdict(list)
             for b in page_blocks:
-                by_label[b.get("label") or "content"].append(b)
+                by_label[b.get("label") or "answer.text"].append(b)
 
             for label, group in by_label.items():
-                stroke, fill = _LABEL_STYLE.get(label, _LABEL_STYLE["content"])
+                stroke, fill = _LABEL_STYLE.get(label, _LABEL_STYLE["answer.text"])
                 rects = [
                     {"x0": b["x0"], "top": b["top"], "x1": b["x1"], "bottom": b["bottom"]}
                     for b in group

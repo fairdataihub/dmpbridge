@@ -25,30 +25,28 @@ Each text block is classified as one of:
 
 ```
 dmpbridge/
-├── __init__.py        # exports process_pdf
-├── extractor.py       # pdfplumber text extraction + page image export
-├── classifier.py      # Ollama LLM classifier
-├── pipeline.py        # combines extraction + classification
-├── cli.py             # dmpbridge command-line tool
-├── config.py          # ← edit here to change model / host / batch size
-└── evaluation/
-    └── pdfplumber_text_evaluator.py  # text extraction quality metrics
-
-notebooks/
-├── 01_pdfplumber_batch_test.ipynb            # batch extraction across all sample PDFs
-└── 02_evaluation_pdfplumber_batch_test.ipynb # extraction quality evaluation
+├── __init__.py     # exports process_pdf
+├── extractor.py    # pdfplumber text extraction + page image export
+├── classifier.py   # Ollama LLM classifier (few-shot + context window)
+├── pipeline.py     # combines extraction + classification
+├── cli.py          # dmpbridge command-line tool
+└── config.py       # ← edit here to change model / host / batch size
 
 data/
-├── pdfsamples/      # sample DMP PDFs
-├── reference_text/  # reference text files for evaluation
-├── llmlabeled/      # LLM-labeled JSON output
-└── pdfplumber/      # (auto-generated) raw pdfplumber JSON before labeling
+├── pdfsamples/     # sample DMP PDFs
+├── manuallabeled/  # hand-labeled ground truth JSON
+├── llmlabeled/     # LLM-labeled JSON output
+└── pdfplumber/     # (auto-generated) raw pdfplumber JSON before labeling
+
+notebooks/
+├── 01_pdfplumber_batch_test.ipynb
+└── 02_evaluation_pdfplumber_batch_test.ipynb
 
 templates/
-└── index.html       # Viewer UI served by FastAPI
+└── index.html      # Viewer UI served by FastAPI
 
-main.py              # FastAPI server
-dmpbridge.html       # Standalone viewer (no server needed)
+main.py             # FastAPI server
+dmpbridge.html      # Standalone viewer (no server needed)
 pyproject.toml
 requirements.txt
 ```
@@ -76,9 +74,11 @@ pip install -e .
 Download from **https://ollama.com** and install, then pull a model:
 
 ```powershell
-ollama pull llama3.1:8b       # recommended — good accuracy
-ollama pull llama3.2:latest   # smaller, faster, good for testing
+ollama pull llama3.3:70b     # best accuracy (requires ~42 GB)
+ollama pull llama3.1:8b      # faster, less memory (~5 GB)
 ```
+
+Set your chosen model in `dmpbridge/config.py`.
 
 ---
 
@@ -89,9 +89,11 @@ ollama pull llama3.2:latest   # smaller, faster, good for testing
 ```
 PDF
  ↓ pdfplumber
-Line-level text blocks (page, coordinates, font, bold, italic)
+Line-level text blocks  (page, coordinates, font size, bold, italic)
  ↓ saved to data/pdfplumber/<name>.json  (raw, before labeling)
- ↓ Ollama LLM — batched classification
+ ↓ Ollama LLM — batched in groups of 10
+   · Few-shot examples from manually labeled DMPs guide each label
+   · Last 3 labeled blocks are sent as context for each new batch
 Labeled blocks: title | section.title | section.description | question.text | answer.text
  ↓ saved to labeled JSON
 ```
@@ -101,7 +103,7 @@ Labeled blocks: title | section.title | section.description | question.text | an
 Edit **[dmpbridge/config.py](dmpbridge/config.py)**:
 
 ```python
-MODEL      = "llama3.1:8b"
+MODEL      = "llama3.3:70b"   # any model installed in Ollama
 HOST       = "http://localhost:11434"
 BATCH_SIZE = 10
 ```
@@ -116,7 +118,7 @@ dmpbridge document.pdf
 dmpbridge document.pdf -o data/llmlabeled/output.json
 
 # Override model for this run
-dmpbridge document.pdf --model llama3.2:latest
+dmpbridge document.pdf --model llama3.1:8b
 
 # Show detailed progress
 dmpbridge document.pdf -v
@@ -168,7 +170,7 @@ Open **http://localhost:8000** — upload files through the browser UI.
    dmpbridge data/pdfsamples/sample1.pdf -o data/llmlabeled/sample1_labeled.json
 
 2. Open the viewer
-   Open dmpbridge.html in a browser  (or run uvicorn main:app --reload)
+   Open dmpbridge.html in a browser  (or run: uvicorn main:app --reload)
 
 3. Load files
    Load data/pdfsamples/sample1.pdf + data/llmlabeled/sample1_labeled.json

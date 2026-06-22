@@ -29,7 +29,7 @@
     ],
     "is_bold": true,
     "is_italic": true,
-    "label": "answer.text"
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -45,7 +45,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "question.text"
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -93,7 +93,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "section.description"
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -125,7 +125,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "question.text"
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -157,7 +157,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "section.title"
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -318,7 +318,7 @@
     ],
     "is_bold": false,
     "is_italic": true,
-    "label": "section.description"
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -478,7 +478,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "title"
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -510,7 +510,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "section.description"
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -526,7 +526,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "section.description"
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -542,7 +542,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "section.description"
+    "label": "answer.text"
   },
   {
     "page": 1,
@@ -798,7 +798,7 @@
     ],
     "is_bold": true,
     "is_italic": true,
-    "label": "answer.text"
+    "label": "section.title"
   },
   {
     "page": 2,
@@ -994,7 +994,7 @@
     ],
     "is_bold": false,
     "is_italic": true,
-    "label": "section.description"
+    "label": "answer.text"
   },
   {
     "page": 2,
@@ -1058,7 +1058,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text"
+    "label": "section.description"
   },
   {
     "page": 2,

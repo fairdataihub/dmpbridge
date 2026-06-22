@@ -81,12 +81,12 @@ def main() -> None:
         print(f"Error: {exc}", file=sys.stderr)
         sys.exit(1)
 
-    counts = Counter(b.get("label", "content") for b in blocks)
+    counts = Counter(b.get("label", "answer.text") for b in blocks)
     print(f"\nDone — {len(blocks)} blocks labeled:")
-    for lbl in ("document_title", "section", "subsection", "content"):
+    for lbl in ("title", "section.title", "section.description", "question.text", "answer.text"):
         n = counts.get(lbl, 0)
         if n:
-            print(f"  {lbl:<20} {n}")
+            print(f"  {lbl:<22} {n}")
     if raw_dir:
         print(f"\nRaw extraction: {raw_dir}/{pdf_path.stem}.json")
     print(f"Labeled output: {output}")
