@@ -4,6 +4,7 @@ Extract and label the structure of Data Management Plan (DMP) PDF documents.
 
 1. **Pipeline** — extract text from a PDF with pdfplumber, classify each block using a local LLM (via Ollama), and output a labeled JSON file.
 2. **Viewer** — a side-by-side PDF + JSON browser UI that overlays bounding boxes on the PDF, synchronized with the JSON table.
+3. **Evaluation** — compare LLM predictions against manually labeled ground truth with a confusion matrix and per-label F1 scores.
 
 ---
 
@@ -39,12 +40,14 @@ data/
 └── pdfplumber/     # (auto-generated) raw pdfplumber JSON before labeling
 
 notebooks/
-├── 01_pdfplumber_batch_test.ipynb
-└── 02_evaluation_pdfplumber_batch_test.ipynb
+├── 01_pdfplumber_batch_test.ipynb          # batch extraction across all sample PDFs
+├── 02_evaluation_pdfplumber_batch_test.ipynb
+└── 03_label_evaluation.ipynb               # visual evaluation: confusion matrix + F1 charts
 
 templates/
 └── index.html      # Viewer UI served by FastAPI
 
+evaluate.py         # CLI evaluation script (confusion matrix + per-label F1)
 main.py             # FastAPI server
 dmpbridge.html      # Standalone viewer (no server needed)
 pyproject.toml
@@ -146,6 +149,54 @@ print(Counter(b["label"] for b in blocks))
 
 ---
 
+## Evaluation
+
+Compare LLM output against manually labeled ground truth in `data/manuallabeled/`.
+
+### CLI script
+
+```powershell
+# Evaluate all samples — prints per-sample accuracy + confusion matrix + F1
+python evaluate.py
+
+# Evaluate a single file
+python evaluate.py data/llmlabeled/sample1_improved.json
+```
+
+Example output:
+
+```
+sample1       matched= 72  accuracy= 97.2%
+sample2       matched=163  accuracy= 92.0%
+...
+Overall accuracy  96.4%
+
+Label                    Precision    Recall        F1
+------------------------------------------------------
+title                       100.0%     80.0%     88.9%
+section.title                80.6%     92.6%     86.2%
+section.description          80.0%    100.0%     88.9%
+question.text                87.1%     69.2%     77.1%
+answer.text                 100.0%     98.4%     99.2%
+```
+
+### Notebook (visual)
+
+Open `notebooks/03_label_evaluation.ipynb` for interactive charts:
+
+```powershell
+jupyter lab notebooks/03_label_evaluation.ipynb
+```
+
+The notebook shows:
+- Per-sample accuracy bar chart
+- Confusion matrix heatmaps (raw counts + row-normalised recall)
+- Precision / Recall / F1 grouped bar chart per label
+- Full table of mislabeled blocks with their text
+- Drill-down cell to inspect any specific confusion pair
+
+---
+
 ## Viewer (PDF + JSON side by side)
 
 ### Option A — Standalone HTML (no server needed)
@@ -169,13 +220,16 @@ Open **http://localhost:8000** — upload files through the browser UI.
 1. Run the pipeline
    dmpbridge data/pdfsamples/sample1.pdf -o data/llmlabeled/sample1_labeled.json
 
-2. Open the viewer
+2. Evaluate against ground truth
+   python evaluate.py data/llmlabeled/sample1_labeled.json
+
+3. Open the viewer
    Open dmpbridge.html in a browser  (or run: uvicorn main:app --reload)
 
-3. Load files
+4. Load files
    Load data/pdfsamples/sample1.pdf + data/llmlabeled/sample1_labeled.json
 
-4. Inspect
+5. Inspect
    Click any row in the table → the corresponding block highlights in the PDF
    Use the Label filter to show only sections, questions, or answers
 ```
