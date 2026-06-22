@@ -1,0 +1,128 @@
+{
+  "narrative": {
+    "download_url": "https://example.com/dmps/123/narrative",
+    "template": {
+      "id": "",
+      "title": "Data Management Plan",
+      "description": "",
+      "version": "V1",
+      "section": [
+        {
+          "id": "",
+          "title": "Types of data",
+          "description": "",
+          "order": 1,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "The bulk of the data generated in this project will be 1, 2, 3, and 4 dimensional arrays of numbers and bytes representing fluid state variables generated via computer simulations of fluid flow. Images and video files will be created from the fluid data using both commercial packages, such as Matlab and free visualization packages such as VAPOR (developed at NCAR).",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Data and metadata standards",
+          "description": "",
+          "order": 2,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "The PI's research group will adopt the longstanding practice that all generated data should be straightforwardly reproducible. Thus, codes are stored within the same directory on a mass storage system along with the data they generate. \"Readme\" files will also be provided for explanation of the directory content.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Policies for access and sharing",
+          "description": "",
+          "order": 3,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "Interested parties will be able to request data and codes at the end of the project. Such parties will be responsible for their own version control and execution.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Policies and provisions for re-use, re-distribution",
+          "description": "",
+          "order": 4,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "Simulation data will in essence grow to several terrabytes with an associated cost of storage. Data will be made publicly available upon request at the end of the project. Although open-source, we envisage that intellectual rights to the code will be retained by the CU group. Dissemination of open-source software will be released once fully tested and published.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Plans for archiving and preservation of access",
+          "description": "",
+          "order": 5,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "Local data will be archived on the group's mass storage system. As mentioned above, all data generated is archived with the entire code that generated it. Additionally, further backups of the data will be provided by CU's NSF-funded research computing. We imagine the data being of relevance and stored for > 10 years.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
