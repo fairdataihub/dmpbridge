@@ -184,7 +184,7 @@ def run_all():
         add_confusion(total_confusion, confusion)
 
         # Per-sample accuracy
-        tp = sum(confusion.get(l, {}).get(l, 0) for l in LABELS)
+        tp = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
         n  = sum(sum(v.values()) for v in confusion.values())
         print(f"{stem:<12}  matched={n:>3}  accuracy={tp/n*100:>5.1f}%" if n else f"{stem:<12}  no matches")
 
