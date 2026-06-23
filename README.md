@@ -170,20 +170,29 @@ from dmpbridge import convert_file
 # Writes sample1_llama3.3-70b_structured.json next to the input
 convert_file("data/llmlabeled/sample1_llama3.3-70b.json")
 
-# Or specify the output path explicitly
+# With a URL pointing to the source PDF (stored in download_url)
+convert_file(
+    "data/llmlabeled/sample1_llama3.3-70b.json",
+    pdf_url="https://example.com/dmps/123/narrative",
+)
+
+# Explicit output path
 convert_file(
     "data/llmlabeled/sample1_llama3.3-70b.json",
     "data/llmlabeled/sample1_structured.json",
 )
 ```
 
-The structured JSON follows the same schema as the manual annotations in `data/manuallabeled/`:
+The structured JSON follows the DMP Tool narrative schema. `id` fields are omitted throughout because they cannot be determined from a PDF:
 
 ```json
 {
   "narrative": {
+    "download_url": "",
     "template": {
       "title": "DATA MANAGEMENT AND SHARING PLAN",
+      "description": "",
+      "version": "v1",
       "section": [
         {
           "title": "Element 1: Data Type:",
@@ -196,7 +205,10 @@ The structured JSON follows the same schema as the manual annotations in `data/m
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "This secondary data analysis project..."
+                  "answer": "This secondary data analysis project...",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
                 }
               }
             }
@@ -207,6 +219,10 @@ The structured JSON follows the same schema as the manual annotations in `data/m
   }
 }
 ```
+
+> `id` fields (`template.id`, `section.id`, `question.id`, `answer.id`) are omitted because they
+> cannot be determined by reading a PDF. They can be added downstream once the record is stored
+> in the DMP Tool database.
 
 ---
 
