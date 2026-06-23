@@ -2,6 +2,7 @@
 
 import json
 import logging
+import re
 from pathlib import Path
 from typing import Optional, Union
 
@@ -21,28 +22,35 @@ DEFAULT_HOST    = config.HOST
 DEFAULT_RAW_DIR = "data/pdfplumber"
 
 
+_NUMBERED_HEADING = re.compile(r"^\d+[\.\)]")
+
+
 def _smooth_labels(blocks: list[dict]) -> list[dict]:
     """
     Fix two systematic LLM errors caused by line-by-line font-style classification:
 
-    1. italic-only lines inside a question are mislabeled section.description —
-       if the previous block is question.text and this block is italic (not bold),
-       it is a continuation of that question.
+    1. bold+italic section.title that is NOT a numbered heading is a question opener —
+       e.g. "Data Sharing and Data Preservation. A description..." is question.text,
+       while "1. Policy and Practice" is a genuine section.title.
 
-    2. bold+italic lines that open a question are mislabeled section.title —
-       true section titles in DMP PDFs are never italic; any italic section.title
-       should be question.text.
+    2. italic-only continuation lines following a question.text are mislabeled
+       section.description — propagate question.text forward.
     """
     for i, block in enumerate(blocks):
-        label = block.get("label", "")
+        label     = block.get("label", "")
+        is_bold   = block.get("is_bold", False)
         is_italic = block.get("is_italic", False)
-        is_bold = block.get("is_bold", False)
+        text      = block.get("text", "")
 
-        # italic-only continuation lines inside a question are mislabeled section.description —
-        # propagate question.text forward as long as lines stay italic-only
+        # Rule 1: bold+italic section.title with no leading number → question.text
+        if label == "section.title" and is_bold and is_italic:
+            if not _NUMBERED_HEADING.match(text):
+                block["label"] = "question.text"
+                label = "question.text"
+
+        # Rule 2: italic-only line following question.text mislabeled as section.description
         if label == "section.description" and is_italic and not is_bold and i > 0:
-            prev_label = blocks[i - 1].get("label", "")
-            if prev_label == "question.text":
+            if blocks[i - 1].get("label") == "question.text":
                 block["label"] = "question.text"
 
     return blocks

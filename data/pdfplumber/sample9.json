@@ -2,7 +2,7 @@
   {
     "page": 1,
     "line_order": 1,
-    "text": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM",
+    "text": "CAREER:HIGH-RESOLUTIONNMRFORPARAMAGNETICSODIUM",
     "x0": 74.97,
     "top": 72.28,
     "x1": 480.14,
@@ -34,7 +34,7 @@
   {
     "page": 1,
     "line_order": 3,
-    "text": "Products of Research",
+    "text": "ProductsofResearch",
     "x0": 74.97,
     "top": 116.68,
     "x1": 187.36,
@@ -50,7 +50,7 @@
   {
     "page": 1,
     "line_order": 4,
-    "text": "Battery material samples will be synthesized in powder form and identified through a consistent and",
+    "text": "Batterymaterialsampleswillbesynthesizedinpowderformandidentifiedthroughaconsistentand",
     "x0": 75.3,
     "top": 156.91,
     "x1": 532.21,
@@ -66,7 +66,7 @@
   {
     "page": 1,
     "line_order": 5,
-    "text": "systematic labeling procedure, which will include sample composition, name of researcher and date.",
+    "text": "systematiclabelingprocedure,whichwillincludesamplecomposition,nameofresearcheranddate.",
     "x0": 75.3,
     "top": 173.71,
     "x1": 532.49,
@@ -82,7 +82,7 @@
   {
     "page": 1,
     "line_order": 6,
-    "text": "Experimental data generated over the course of the research will include synthesis procedures and",
+    "text": "Experimentaldatageneratedoverthecourseoftheresearchwillincludesynthesisproceduresand",
     "x0": 75.3,
     "top": 190.51,
     "x1": 521.64,
@@ -98,7 +98,7 @@
   {
     "page": 1,
     "line_order": 7,
-    "text": "results from characterization of battery electrode samples. Digital characterization data in tabular",
+    "text": "resultsfromcharacterizationofbatteryelectrodesamples.Digitalcharacterizationdataintabular",
     "x0": 75.3,
     "top": 207.31,
     "x1": 517.5,
@@ -114,7 +114,7 @@
   {
     "page": 1,
     "line_order": 8,
-    "text": "form will be produced by electrochemical testing, X-ray diffraction, solid-state NMR spectroscopy,",
+    "text": "formwillbeproducedbyelectrochemicaltesting,X-raydiffraction,solid-stateNMRspectroscopy,",
     "x0": 75.3,
     "top": 224.11,
     "x1": 529.0,
@@ -130,7 +130,7 @@
   {
     "page": 1,
     "line_order": 9,
-    "text": "EPR spectroscopy, magnetometry, impedance spectroscopy, X-ray photoelectron and absorption",
+    "text": "EPRspectroscopy,magnetometry,impedancespectroscopy,X-rayphotoelectronandabsorption",
     "x0": 75.3,
     "top": 240.91,
     "x1": 515.41,
@@ -146,7 +146,7 @@
   {
     "page": 1,
     "line_order": 10,
-    "text": "spectroscopy, and Mössbauer spectroscopy measurements. Rietveld refinements of scattering data",
+    "text": "spectroscopy,andMössbauerspectroscopymeasurements.Rietveldrefinementsofscatteringdata",
     "x0": 75.3,
     "top": 257.71,
     "x1": 522.35,
@@ -162,7 +162,7 @@
   {
     "page": 1,
     "line_order": 11,
-    "text": "will generate crystallographic data. Scanning electron microscopy will generate images. Synthetic",
+    "text": "willgeneratecrystallographicdata.Scanningelectronmicroscopywillgenerateimages.Synthetic",
     "x0": 75.3,
     "top": 274.51,
     "x1": 522.02,
@@ -178,7 +178,7 @@
   {
     "page": 1,
     "line_order": 12,
-    "text": "work and optimization of NMR experimental procedures will be documented in lab notebooks and",
+    "text": "workandoptimizationofNMRexperimentalprocedureswillbedocumentedinlabnotebooksand",
     "x0": 75.3,
     "top": 291.31,
     "x1": 524.95,
@@ -194,7 +194,7 @@
   {
     "page": 1,
     "line_order": 13,
-    "text": "generate physical data. The Van der Ven group’s CASM software will be extended to enable the",
+    "text": "generatephysicaldata.TheVanderVengroup’sCASMsoftwarewillbeextendedtoenablethe",
     "x0": 75.3,
     "top": 308.11,
     "x1": 515.03,
@@ -210,7 +210,7 @@
   {
     "page": 1,
     "line_order": 14,
-    "text": "simulation of finite temperature NMR spectra of paramagnetic materials. First principles and Monte",
+    "text": "simulationoffinitetemperatureNMRspectraofparamagneticmaterials.FirstprinciplesandMonte",
     "x0": 75.3,
     "top": 324.91,
     "x1": 531.23,
@@ -226,7 +226,7 @@
   {
     "page": 1,
     "line_order": 15,
-    "text": "Carlo simulations will produce text files, density of states plots and two-dimensional charge density",
+    "text": "Carlosimulationswillproducetextfiles,densityofstatesplotsandtwo-dimensionalchargedensity",
     "x0": 75.3,
     "top": 341.71,
     "x1": 530.37,
@@ -242,7 +242,7 @@
   {
     "page": 1,
     "line_order": 16,
-    "text": "maps. Educational and outreach materials, and assessment results, will be digitized.",
+    "text": "maps.Educationalandoutreachmaterials,andassessmentresults,willbedigitized.",
     "x0": 75.3,
     "top": 358.51,
     "x1": 456.28,
@@ -258,7 +258,7 @@
   {
     "page": 1,
     "line_order": 17,
-    "text": "Data Format Standards",
+    "text": "DataFormatStandards",
     "x0": 74.97,
     "top": 395.68,
     "x1": 196.92,
@@ -274,7 +274,7 @@
   {
     "page": 1,
     "line_order": 18,
-    "text": "In order to allow for interoperability, reproducibility, and reuse, all data will be stored and saved in",
+    "text": "Inordertoallowforinteroperability,reproducibility,andreuse,alldatawillbestoredandsavedin",
     "x0": 75.3,
     "top": 435.91,
     "x1": 526.78,
@@ -290,7 +290,7 @@
   {
     "page": 1,
     "line_order": 19,
-    "text": "standard and open formats. Experimental characterization data will be stored and saved as, e.g.,",
+    "text": "standardandopenformats.Experimentalcharacterizationdatawillbestoredandsavedas,e.g.,",
     "x0": 75.3,
     "top": 452.71,
     "x1": 510.58,
@@ -306,7 +306,7 @@
   {
     "page": 1,
     "line_order": 20,
-    "text": "ASCII, CSV, Word, Matlab and Python files. Microscope images will be stored as portable graphic",
+    "text": "ASCII,CSV,Word,MatlabandPythonfiles.Microscopeimageswillbestoredasportablegraphic",
     "x0": 75.3,
     "top": 469.51,
     "x1": 531.27,
@@ -322,7 +322,7 @@
   {
     "page": 1,
     "line_order": 21,
-    "text": "files (.tif, .jpg or .png format). Crystallographic data will be reported in standard crystallographic",
+    "text": "files(.tif,.jpgor.pngformat).Crystallographicdatawillbereportedinstandardcrystallographic",
     "x0": 75.3,
     "top": 486.31,
     "x1": 517.61,
@@ -338,7 +338,7 @@
   {
     "page": 1,
     "line_order": 22,
-    "text": "information framework (*.cif) format to facilitate visualization and further analysis through widely",
+    "text": "informationframework(*.cif)formattofacilitatevisualizationandfurtheranalysisthroughwidely",
     "x0": 75.3,
     "top": 503.11,
     "x1": 526.44,
@@ -354,7 +354,7 @@
   {
     "page": 1,
     "line_order": 23,
-    "text": "available software tools (VESTA, cif2file, etc.). Crystallographic data for previously-unreported",
+    "text": "availablesoftwaretools(VESTA,cif2file,etc.).Crystallographicdataforpreviously-unreported",
     "x0": 75.3,
     "top": 519.91,
     "x1": 514.68,
@@ -370,7 +370,7 @@
   {
     "page": 1,
     "line_order": 24,
-    "text": "compounds/structures will be uploaded to the ICSD database. First principles simulation input and",
+    "text": "compounds/structureswillbeuploadedtotheICSDdatabase.Firstprinciplessimulationinputand",
     "x0": 75.3,
     "top": 536.71,
     "x1": 524.38,
@@ -386,7 +386,7 @@
   {
     "page": 1,
     "line_order": 25,
-    "text": "output files (generated with the VASP and CRYSTAL codes) will be stored as rich text format (*.rtf)",
+    "text": "outputfiles(generatedwiththeVASPandCRYSTALcodes)willbestoredasrichtextformat(*.rtf)",
     "x0": 75.3,
     "top": 553.51,
     "x1": 536.88,
@@ -402,7 +402,7 @@
   {
     "page": 1,
     "line_order": 26,
-    "text": "files for readability across many programs and platforms. The CRYSTAL code manual will be",
+    "text": "filesforreadabilityacrossmanyprogramsandplatforms.TheCRYSTALcodemanualwillbe",
     "x0": 75.3,
     "top": 570.31,
     "x1": 506.82,
@@ -418,7 +418,7 @@
   {
     "page": 1,
     "line_order": 27,
-    "text": "provided along CRYSTAL input/output data to allow for interpretation of variables. Both",
+    "text": "providedalongCRYSTALinput/outputdatatoallowforinterpretationofvariables.Both",
     "x0": 75.3,
     "top": 587.11,
     "x1": 483.49,
@@ -434,7 +434,7 @@
   {
     "page": 1,
     "line_order": 28,
-    "text": "CRYSTAL and VASP manuals are also available online. The Van der Ven group's CASM software",
+    "text": "CRYSTALandVASPmanualsarealsoavailableonline.TheVanderVengroup'sCASMsoftware",
     "x0": 75.3,
     "top": 603.91,
     "x1": 530.06,
@@ -450,7 +450,7 @@
   {
     "page": 1,
     "line_order": 29,
-    "text": "currently interfaces with VASP, automates the construction of effective Hamiltonians and subjects",
+    "text": "currentlyinterfaceswithVASP,automatestheconstructionofeffectiveHamiltoniansandsubjects",
     "x0": 75.3,
     "top": 620.71,
     "x1": 524.56,
@@ -466,7 +466,7 @@
   {
     "page": 1,
     "line_order": 30,
-    "text": "them to Monte Carlo simulations. CASM organizes all the files associated with VASP calculations",
+    "text": "themtoMonteCarlosimulations.CASMorganizesallthefilesassociatedwithVASPcalculations",
     "x0": 75.3,
     "top": 637.51,
     "x1": 525.95,
@@ -482,7 +482,7 @@
   {
     "page": 1,
     "line_order": 31,
-    "text": "into a standard structure that can be accessed by subsequent runs of CASM, either by the same user",
+    "text": "intoastandardstructurethatcanbeaccessedbysubsequentrunsofCASM,eitherbythesameuser",
     "x0": 75.3,
     "top": 654.31,
     "x1": 528.39,
@@ -498,7 +498,7 @@
   {
     "page": 1,
     "line_order": 32,
-    "text": "or by a new user. A similar CASM interface and infrastructure will be developed here for",
+    "text": "orbyanewuser.AsimilarCASMinterfaceandinfrastructurewillbedevelopedherefor",
     "x0": 75.3,
     "top": 671.11,
     "x1": 482.74,
@@ -514,7 +514,7 @@
   {
     "page": 1,
     "line_order": 33,
-    "text": "CRYSTAL calculations of NMR properties. The uniform file structure enforced by CASM for the",
+    "text": "CRYSTALcalculationsofNMRproperties.TheuniformfilestructureenforcedbyCASMforthe",
     "x0": 75.3,
     "top": 687.91,
     "x1": 522.64,
@@ -530,7 +530,7 @@
   {
     "page": 1,
     "line_order": 34,
-    "text": "effective Hamiltonian construction and the large number of Monte Carlo simulations that are",
+    "text": "effectiveHamiltonianconstructionandthelargenumberofMonteCarlosimulationsthatare",
     "x0": 75.3,
     "top": 704.71,
     "x1": 498.65,
@@ -546,7 +546,7 @@
   {
     "page": 2,
     "line_order": 1,
-    "text": "necessary to construct, e.g., temperature composition phase diagrams, will be extended to include",
+    "text": "necessarytoconstruct,e.g.,temperaturecompositionphasediagrams,willbeextendedtoinclude",
     "x0": 75.3,
     "top": 70.51,
     "x1": 519.95,
@@ -562,7 +562,7 @@
   {
     "page": 2,
     "line_order": 2,
-    "text": "Fermi contact shifts and electric field gradient tensors. This will ensure that results from calculations",
+    "text": "Fermicontactshiftsandelectricfieldgradienttensors.Thiswillensurethatresultsfromcalculations",
     "x0": 75.3,
     "top": 87.31,
     "x1": 534.39,
@@ -578,7 +578,7 @@
   {
     "page": 2,
     "line_order": 3,
-    "text": "performed by different users are in a format that is readily accessible, either by CASM or directly by",
+    "text": "performedbydifferentusersareinaformatthatisreadilyaccessible,eitherbyCASMordirectlyby",
     "x0": 75.3,
     "top": 104.11,
     "x1": 534.0,
@@ -594,7 +594,7 @@
   {
     "page": 2,
     "line_order": 4,
-    "text": "different people.",
+    "text": "differentpeople.",
     "x0": 75.3,
     "top": 120.91,
     "x1": 150.56,
@@ -610,7 +610,7 @@
   {
     "page": 2,
     "line_order": 5,
-    "text": "Access and sharing",
+    "text": "Accessandsharing",
     "x0": 74.97,
     "top": 158.08,
     "x1": 177.11,
@@ -626,7 +626,7 @@
   {
     "page": 2,
     "line_order": 6,
-    "text": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in",
+    "text": "TheProgramToolkitandActivityPlansdevelopedfortheeducationalandoutreachactivitiesin",
     "x0": 75.3,
     "top": 198.31,
     "x1": 513.53,
@@ -642,7 +642,7 @@
   {
     "page": 2,
     "line_order": 7,
-    "text": "partnership with Jamboree Housing (JH) will be uploaded to JH’s filesharing system for broad and",
+    "text": "partnershipwithJamboreeHousing(JH)willbeuploadedtoJH’sfilesharingsystemforbroadand",
     "x0": 75.3,
     "top": 215.11,
     "x1": 525.23,
@@ -658,7 +658,7 @@
   {
     "page": 2,
     "line_order": 8,
-    "text": "free dissemination to their different centers and partners in California. All of the research results will",
+    "text": "freedisseminationtotheirdifferentcentersandpartnersinCalifornia.Alloftheresearchresultswill",
     "x0": 75.3,
     "top": 231.91,
     "x1": 534.64,
@@ -674,7 +674,7 @@
   {
     "page": 2,
     "line_order": 9,
-    "text": "be disseminated through peer-reviewed publications, conference presentations, and annual reports.",
+    "text": "bedisseminatedthroughpeer-reviewedpublications,conferencepresentations,andannualreports.",
     "x0": 75.3,
     "top": 248.71,
     "x1": 524.55,
@@ -690,7 +690,7 @@
   {
     "page": 2,
     "line_order": 10,
-    "text": "The supporting information accompanying publications will include detailed",
+    "text": "Thesupportinginformationaccompanyingpublicationswillincludedetailed",
     "x0": 75.3,
     "top": 265.51,
     "x1": 424.98,
@@ -706,7 +706,7 @@
   {
     "page": 2,
     "line_order": 11,
-    "text": "experimental/simulation/synthetic procedures, as well as detailed information on models used for",
+    "text": "experimental/simulation/syntheticprocedures,aswellasdetailedinformationonmodelsusedfor",
     "x0": 75.3,
     "top": 282.31,
     "x1": 518.63,
@@ -722,7 +722,7 @@
   {
     "page": 2,
     "line_order": 12,
-    "text": "data analysis. All of the journals of interest to the group make supporting information files publicly-",
+    "text": "dataanalysis.Allofthejournalsofinteresttothegroupmakesupportinginformationfilespublicly-",
     "x0": 75.3,
     "top": 299.11,
     "x1": 531.64,
@@ -738,7 +738,7 @@
   {
     "page": 2,
     "line_order": 13,
-    "text": "available online free of charge. In addition, all publication pre-prints will be made freely available,",
+    "text": "availableonlinefreeofcharge.Inaddition,allpublicationpre-printswillbemadefreelyavailable,",
     "x0": 75.3,
     "top": 315.91,
     "x1": 525.48,
@@ -754,7 +754,7 @@
   {
     "page": 2,
     "line_order": 14,
-    "text": "along with supplementary information, on the UC eScholarship website.",
+    "text": "alongwithsupplementaryinformation,ontheUCeScholarshipwebsite.",
     "x0": 75.3,
     "top": 332.71,
     "x1": 405.05,
@@ -770,7 +770,7 @@
   {
     "page": 2,
     "line_order": 15,
-    "text": "Over the course of the project, digital data will be internally stored and shared for collaborative work",
+    "text": "Overthecourseoftheproject,digitaldatawillbeinternallystoredandsharedforcollaborativework",
     "x0": 75.3,
     "top": 360.31,
     "x1": 535.6,
@@ -786,7 +786,7 @@
   {
     "page": 2,
     "line_order": 16,
-    "text": "on the UCSB-administered, Box platform with unlimited cloud storage. The privacy, security and",
+    "text": "ontheUCSB-administered,Boxplatformwithunlimitedcloudstorage.Theprivacy,securityand",
     "x0": 75.3,
     "top": 377.11,
     "x1": 520.54,
@@ -802,7 +802,7 @@
   {
     "page": 2,
     "line_order": 17,
-    "text": "intellectual property protection of data stored in this manner are guaranteed by the privacy policy",
+    "text": "intellectualpropertyprotectionofdatastoredinthismannerareguaranteedbytheprivacypolicy",
     "x0": 75.3,
     "top": 393.91,
     "x1": 518.22,
@@ -818,7 +818,7 @@
   {
     "page": 2,
     "line_order": 18,
-    "text": "and terms of service contract between University of California and Box. As a means of making data",
+    "text": "andtermsofservicecontractbetweenUniversityofCaliforniaandBox.Asameansofmakingdata",
     "x0": 75.3,
     "top": 410.71,
     "x1": 530.56,
@@ -834,7 +834,7 @@
   {
     "page": 2,
     "line_order": 19,
-    "text": "accessible and searchable, data collected over the course of this project will be stored in the data",
+    "text": "accessibleandsearchable,datacollectedoverthecourseofthisprojectwillbestoredinthedata",
     "x0": 75.3,
     "top": 427.51,
     "x1": 514.06,
@@ -850,7 +850,7 @@
   {
     "page": 2,
     "line_order": 20,
-    "text": "repository Dryad. Dryad enables easy data upload and description, and creates digital object",
+    "text": "repositoryDryad.Dryadenableseasydatauploadanddescription,andcreatesdigitalobject",
     "x0": 75.3,
     "top": 444.31,
     "x1": 494.82,
@@ -866,7 +866,7 @@
   {
     "page": 2,
     "line_order": 21,
-    "text": "identifiers (DOIs) for each dataset to help manage long-term data sharing through digital",
+    "text": "identifiers(DOIs)foreachdatasettohelpmanagelong-termdatasharingthroughdigital",
     "x0": 75.3,
     "top": 461.11,
     "x1": 479.63,
@@ -882,7 +882,7 @@
   {
     "page": 2,
     "line_order": 22,
-    "text": "organization. We note that CASM systematically organizes all first-principles calculations that have",
+    "text": "organization.WenotethatCASMsystematicallyorganizesallfirst-principlescalculationsthathave",
     "x0": 75.3,
     "top": 477.91,
     "x1": 531.55,
@@ -898,7 +898,7 @@
   {
     "page": 2,
     "line_order": 23,
-    "text": "been performed on a given system and has tools to query a wide range of properties for each",
+    "text": "beenperformedonagivensystemandhastoolstoqueryawiderangeofpropertiesforeach",
     "x0": 75.3,
     "top": 494.71,
     "x1": 496.37,
@@ -914,7 +914,7 @@
   {
     "page": 2,
     "line_order": 24,
-    "text": "calculation. Furthermore, any structure with a chemical ordering, magnetic ordering or a structural",
+    "text": "calculation.Furthermore,anystructurewithachemicalordering,magneticorderingorastructural",
     "x0": 75.3,
     "top": 511.51,
     "x1": 527.07,
@@ -930,7 +930,7 @@
   {
     "page": 2,
     "line_order": 25,
-    "text": "distortion that has been made \"by hand\" can be imported in a CASM project and made to be",
+    "text": "distortionthathasbeenmade\"byhand\"canbeimportedinaCASMprojectandmadetobe",
     "x0": 75.3,
     "top": 528.31,
     "x1": 495.03,
@@ -946,7 +946,7 @@
   {
     "page": 2,
     "line_order": 26,
-    "text": "consistent with the automatically enumerated configurations. Hence, for each system of interest to",
+    "text": "consistentwiththeautomaticallyenumeratedconfigurations.Hence,foreachsystemofinterestto",
     "x0": 75.3,
     "top": 545.11,
     "x1": 522.67,
@@ -962,7 +962,7 @@
   {
     "page": 2,
     "line_order": 27,
-    "text": "this work, a structured CASM results packet that can easily be queried will be created (consisting of",
+    "text": "thiswork,astructuredCASMresultspacketthatcaneasilybequeriedwillbecreated(consistingof",
     "x0": 75.3,
     "top": 561.91,
     "x1": 531.23,
@@ -978,7 +978,7 @@
   {
     "page": 2,
     "line_order": 28,
-    "text": "the results of electronic structure calculations, effective Hamiltonian interaction parameters and basis",
+    "text": "theresultsofelectronicstructurecalculations,effectiveHamiltonianinteractionparametersandbasis",
     "x0": 75.3,
     "top": 578.71,
     "x1": 536.53,
@@ -994,7 +994,7 @@
   {
     "page": 2,
     "line_order": 29,
-    "text": "functions and Monte Carlo results) and uploaded to Dryad. Dryad is free of charge for UCSB",
+    "text": "functionsandMonteCarloresults)anduploadedtoDryad.DryadisfreeofchargeforUCSB",
     "x0": 75.3,
     "top": 595.51,
     "x1": 500.49,
@@ -1010,7 +1010,7 @@
   {
     "page": 2,
     "line_order": 30,
-    "text": "researchers and can be accessed using a personal ORCID.",
+    "text": "researchersandcanbeaccessedusingapersonalORCID.",
     "x0": 75.3,
     "top": 612.31,
     "x1": 338.76,
@@ -1026,7 +1026,7 @@
   {
     "page": 2,
     "line_order": 31,
-    "text": "CASM is an open source software package released under the GNU Lesser General Public License",
+    "text": "CASMisanopensourcesoftwarepackagereleasedundertheGNULesserGeneralPublicLicense",
     "x0": 75.3,
     "top": 639.91,
     "x1": 526.35,
@@ -1042,7 +1042,7 @@
   {
     "page": 2,
     "line_order": 32,
-    "text": "(LGPL) and available free of charge via the prisms-center conda channel at",
+    "text": "(LGPL)andavailablefreeofchargeviatheprisms-centercondachannelat",
     "x0": 75.3,
     "top": 656.71,
     "x1": 418.46,
@@ -1058,7 +1058,7 @@
   {
     "page": 2,
     "line_order": 33,
-    "text": "https://anaconda.org/prisms-center. All additions of the CASM software developed during this",
+    "text": "https://anaconda.org/prisms-center.AlladditionsoftheCASMsoftwaredevelopedduringthis",
     "x0": 75.3,
     "top": 673.51,
     "x1": 508.74,
@@ -1074,7 +1074,7 @@
   {
     "page": 2,
     "line_order": 34,
-    "text": "project will be incorporated into the CASM software and made accessible free of charge and open",
+    "text": "projectwillbeincorporatedintotheCASMsoftwareandmadeaccessiblefreeofchargeandopen",
     "x0": 75.3,
     "top": 690.31,
     "x1": 522.27,
@@ -1090,7 +1090,7 @@
   {
     "page": 2,
     "line_order": 35,
-    "text": "source under a similar LGPL license. Demonstrations on how to access and use CASM’s NMR",
+    "text": "sourceunderasimilarLGPLlicense.DemonstrationsonhowtoaccessanduseCASM’sNMR",
     "x0": 75.3,
     "top": 707.11,
     "x1": 509.72,
@@ -1106,7 +1106,7 @@
   {
     "page": 3,
     "line_order": 1,
-    "text": "extensions (and conditions under which they can use and modify the code) will be uploaded to the",
+    "text": "extensions(andconditionsunderwhichtheycanuseandmodifythecode)willbeuploadedtothe",
     "x0": 75.3,
     "top": 72.91,
     "x1": 522.75,
@@ -1122,7 +1122,7 @@
   {
     "page": 3,
     "line_order": 2,
-    "text": "CASM software website: https://prisms-center.github.io/CASMcode_docs/.",
+    "text": "CASMsoftwarewebsite:https://prisms-center.github.io/CASMcode_docs/.",
     "x0": 75.3,
     "top": 89.71,
     "x1": 420.73,
@@ -1138,7 +1138,7 @@
   {
     "page": 3,
     "line_order": 3,
-    "text": "Policies and provisions for re-use, re-distribution, and production of derivatives",
+    "text": "Policiesandprovisionsforre-use,re-distribution,andproductionofderivatives",
     "x0": 74.97,
     "top": 126.88,
     "x1": 495.57,
@@ -1154,7 +1154,7 @@
   {
     "page": 3,
     "line_order": 4,
-    "text": "All data will be stored in Dryad and will be available under a public domain, creative commons",
+    "text": "AlldatawillbestoredinDryadandwillbeavailableunderapublicdomain,creativecommons",
     "x0": 75.3,
     "top": 167.11,
     "x1": 511.0,
@@ -1170,7 +1170,7 @@
   {
     "page": 3,
     "line_order": 5,
-    "text": "license (CC0). Note that while a personal ORCID is needed to deposit data in Dryad, no ORCID is",
+    "text": "license(CC0).NotethatwhileapersonalORCIDisneededtodepositdatainDryad,noORCIDis",
     "x0": 75.3,
     "top": 183.91,
     "x1": 525.57,
@@ -1186,7 +1186,7 @@
   {
     "page": 3,
     "line_order": 6,
-    "text": "required to search, find and download datasets.",
+    "text": "requiredtosearch,findanddownloaddatasets.",
     "x0": 75.3,
     "top": 200.71,
     "x1": 289.8,
@@ -1202,7 +1202,7 @@
   {
     "page": 3,
     "line_order": 7,
-    "text": "The existing open source software infrastructure within CASM that serves as a foundation to this",
+    "text": "TheexistingopensourcesoftwareinfrastructurewithinCASMthatservesasafoundationtothis",
     "x0": 75.3,
     "top": 255.91,
     "x1": 517.64,
@@ -1218,7 +1218,7 @@
   {
     "page": 3,
     "line_order": 8,
-    "text": "project, is already licensed by the Regents of the University of California under the ``LGPL'' open",
+    "text": "project,isalreadylicensedbytheRegentsoftheUniversityofCaliforniaunderthe``LGPL''open",
     "x0": 75.3,
     "top": 272.71,
     "x1": 522.31,
@@ -1234,7 +1234,7 @@
   {
     "page": 3,
     "line_order": 9,
-    "text": "source license, and distributed via the prisms-center conda channel, permitting non-exclusive use of",
+    "text": "sourcelicense,anddistributedviatheprisms-centercondachannel,permittingnon-exclusiveuseof",
     "x0": 75.3,
     "top": 289.51,
     "x1": 530.29,
@@ -1250,7 +1250,7 @@
   {
     "page": 3,
     "line_order": 10,
-    "text": "the software. Additions to CASM will be released as LGPL to follow the current licensing of",
+    "text": "thesoftware.AdditionstoCASMwillbereleasedasLGPLtofollowthecurrentlicensingof",
     "x0": 75.3,
     "top": 306.31,
     "x1": 499.3,
@@ -1282,7 +1282,7 @@
   {
     "page": 3,
     "line_order": 12,
-    "text": "Archiving of Data, Samples, and Other Relevant Research Products",
+    "text": "ArchivingofData,Samples,andOtherRelevantResearchProducts",
     "x0": 74.97,
     "top": 360.28,
     "x1": 432.91,
@@ -1298,7 +1298,7 @@
   {
     "page": 3,
     "line_order": 13,
-    "text": "Laboratory notebooks and samples will be retained for a minimum of 5 years following the",
+    "text": "Laboratorynotebooksandsampleswillberetainedforaminimumof5yearsfollowingthe",
     "x0": 75.3,
     "top": 400.51,
     "x1": 491.08,
@@ -1314,7 +1314,7 @@
   {
     "page": 3,
     "line_order": 14,
-    "text": "conclusion of the program and will remain the property of UC Santa Barbara and kept on campus",
+    "text": "conclusionoftheprogramandwillremainthepropertyofUCSantaBarbaraandkeptoncampus",
     "x0": 75.3,
     "top": 417.31,
     "x1": 519.53,
@@ -1330,7 +1330,7 @@
   {
     "page": 3,
     "line_order": 15,
-    "text": "after students graduate. All digital data produced over the course of the project and stored on Box",
+    "text": "afterstudentsgraduate.AlldigitaldataproducedoverthecourseoftheprojectandstoredonBox",
     "x0": 75.3,
     "top": 434.11,
     "x1": 519.82,
@@ -1346,7 +1346,7 @@
   {
     "page": 3,
     "line_order": 16,
-    "text": "will be moved to Dryad after completion of the project for indefinite storage (>5 years).",
+    "text": "willbemovedtoDryadaftercompletionoftheprojectforindefinitestorage(>5years).",
     "x0": 75.3,
     "top": 450.91,
     "x1": 475.6,

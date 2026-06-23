@@ -2,7 +2,7 @@
   {
     "page": 1,
     "line_order": 1,
-    "text": "DATA MANAGEMENT PLAN",
+    "text": "DATAMANAGEMENTPLAN",
     "x0": 231.14,
     "top": 73.66,
     "x1": 380.9,
@@ -18,7 +18,7 @@
   {
     "page": 1,
     "line_order": 2,
-    "text": "REVIEW OF PROPOSAL COMPONENTS",
+    "text": "REVIEWOFPROPOSALCOMPONENTS",
     "x0": 72.0,
     "top": 98.86,
     "x1": 280.12,
@@ -34,7 +34,7 @@
   {
     "page": 1,
     "line_order": 3,
-    "text": "The proposal is separated into three sections.",
+    "text": "Theproposalisseparatedintothreesections.",
     "x0": 72.0,
     "top": 111.58,
     "x1": 269.64,
@@ -45,30 +45,60 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text"
+    "label": "section.description"
   },
   {
     "page": 1,
     "line_order": 4,
-    "text": "•  Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and",
+    "text": "•",
     "x0": 90.0,
-    "top": 125.02,
-    "x1": 540.14,
+    "top": 125.07,
+    "x1": 95.08,
     "bottom": 136.11,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAH+SymbolMT",
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAH+SymbolMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text"
+  },
+  {
+    "page": 1,
+    "line_order": 4,
+    "text": "Section2.1",
+    "x0": 108.0,
+    "top": 125.02,
+    "x1": 159.51,
+    "bottom": 136.06,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 1,
+    "line_order": 4,
+    "text": "characterizestheaquiferformationthateachgroundwaterwellintheWesttapsand",
+    "x0": 163.01,
+    "top": 125.02,
+    "x1": 540.14,
+    "bottom": 136.06,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
     "is_italic": false,
     "label": "answer.text"
   },
   {
     "page": 1,
     "line_order": 5,
-    "text": "compares well construction patterns before and after the establishment of regulatory controls.",
+    "text": "compareswellconstructionpatternsbeforeandaftertheestablishmentofregulatorycontrols.",
     "x0": 108.0,
     "top": 137.74,
     "x1": 519.3,
@@ -84,25 +114,55 @@
   {
     "page": 1,
     "line_order": 6,
-    "text": "•  Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)",
+    "text": "•",
     "x0": 90.0,
-    "top": 151.18,
-    "x1": 540.09,
+    "top": 151.23,
+    "x1": 95.08,
     "bottom": 162.27,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAH+SymbolMT",
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAH+SymbolMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text"
+  },
+  {
+    "page": 1,
+    "line_order": 6,
+    "text": "Section2.2",
+    "x0": 108.0,
+    "top": 151.18,
+    "x1": 158.13,
+    "bottom": 162.22,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 1,
+    "line_order": 6,
+    "text": "estimatesgroundwatercomponentsofthewaterbudget(withdrawalsandconsumption)",
+    "x0": 160.26,
+    "top": 151.18,
+    "x1": 540.09,
+    "bottom": 162.22,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
     "is_italic": false,
     "label": "answer.text"
   },
   {
     "page": 1,
     "line_order": 7,
-    "text": "yearly (2016-2021) at the field scale.",
+    "text": "yearly(2016-2021)atthefieldscale.",
     "x0": 108.0,
     "top": 163.66,
     "x1": 270.46,
@@ -118,26 +178,103 @@
   {
     "page": 1,
     "line_order": 8,
-    "text": "•  Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic",
+    "text": "•",
     "x0": 90.0,
-    "top": 177.1,
-    "x1": 540.03,
+    "top": 177.15,
+    "x1": 95.08,
     "bottom": 188.19,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAH+SymbolMT",
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT",
-      "AAAAAL+TimesNewRomanPS-ItalicMT"
+      "AAAAAH+SymbolMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text"
+  },
+  {
+    "page": 1,
+    "line_order": 8,
+    "text": "Section2.3",
+    "x0": 108.0,
+    "top": 177.1,
+    "x1": 161.03,
+    "bottom": 188.14,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 1,
+    "line_order": 8,
+    "text": "integratesresearchandeducationthroughthe",
+    "x0": 166.03,
+    "top": 177.1,
+    "x1": 376.79,
+    "bottom": 188.14,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 8,
+    "text": "ScientistSpotlight",
+    "x0": 381.92,
+    "top": 177.1,
+    "x1": 464.0,
+    "bottom": 188.14,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
+    ],
+    "is_bold": false,
+    "is_italic": true,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 8,
+    "text": "and",
+    "x0": 468.98,
+    "top": 177.1,
+    "x1": 484.89,
+    "bottom": 188.14,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 8,
+    "text": "Hydrologic",
+    "x0": 489.9,
+    "top": 177.1,
+    "x1": 540.03,
+    "bottom": 188.14,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
+    ],
+    "is_bold": false,
     "is_italic": true,
     "label": "answer.text"
   },
   {
     "page": 1,
     "line_order": 9,
-    "text": "Sciences Workshops.",
+    "text": "SciencesWorkshops.",
     "x0": 108.0,
     "top": 189.82,
     "x1": 200.26,
@@ -153,7 +290,7 @@
   {
     "page": 1,
     "line_order": 10,
-    "text": "TYPES OF DATA",
+    "text": "TYPESOFDATA",
     "x0": 72.0,
     "top": 215.02,
     "x1": 159.44,
@@ -169,7 +306,7 @@
   {
     "page": 1,
     "line_order": 11,
-    "text": "The PI and PhD student will be responsible for all data-related activities including: collection,",
+    "text": "ThePIandPhDstudentwillberesponsibleforalldata-relatedactivitiesincluding:collection,",
     "x0": 72.0,
     "top": 227.74,
     "x1": 485.52,
@@ -185,7 +322,7 @@
   {
     "page": 1,
     "line_order": 12,
-    "text": "documentation and metadata description, quality control, storage and backup, archiving, and sharing.",
+    "text": "documentationandmetadatadescription,qualitycontrol,storageandbackup,archiving,andsharing.",
     "x0": 72.0,
     "top": 240.46,
     "x1": 516.89,
@@ -201,7 +338,7 @@
   {
     "page": 1,
     "line_order": 13,
-    "text": "The project will result in new sets of data, code, and tools. These outputs include: (a) source code to",
+    "text": "Theprojectwillresultinnewsetsofdata,code,andtools.Theseoutputsinclude:(a)sourcecodeto",
     "x0": 72.0,
     "top": 252.94,
     "x1": 512.44,
@@ -217,7 +354,7 @@
   {
     "page": 1,
     "line_order": 14,
-    "text": "quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and",
+    "text": "qualitycontrol,collate,andmergedatasets,(b)opensourcemodelsandbudgetsinRand/orpython,and",
     "x0": 72.0,
     "top": 265.66,
     "x1": 531.46,
@@ -233,14 +370,29 @@
   {
     "page": 1,
     "line_order": 15,
-    "text": "(c) sharable instructional materials (Scientist Spotlight activities and workshop materials).",
+    "text": "(c)sharableinstructionalmaterials(",
     "x0": 72.0,
     "top": 278.38,
-    "x1": 467.32,
+    "x1": 230.75,
     "bottom": 289.42,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 15,
+    "text": "ScientistSpotlight",
+    "x0": 230.82,
+    "top": 278.38,
+    "x1": 310.62,
+    "bottom": 289.42,
+    "avg_font_size": 11.04,
+    "font_names": [
       "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
@@ -249,25 +401,56 @@
   },
   {
     "page": 1,
+    "line_order": 15,
+    "text": "activitiesandworkshopmaterials).",
+    "x0": 313.32,
+    "top": 278.38,
+    "x1": 467.32,
+    "bottom": 289.42,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
     "line_order": 16,
-    "text": "Input data: Available data will be systematically reviewed and downloaded. These data are likely",
+    "text": "Inputdata:",
     "x0": 72.0,
+    "top": 303.58,
+    "x1": 125.5,
+    "bottom": 314.62,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 1,
+    "line_order": 16,
+    "text": "Availabledatawillbesystematicallyreviewedanddownloaded.Thesedataarelikely",
+    "x0": 128.24,
     "top": 303.58,
     "x1": 505.81,
     "bottom": 314.62,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": true,
+    "is_bold": false,
     "is_italic": false,
     "label": "answer.text"
   },
   {
     "page": 1,
     "line_order": 17,
-    "text": "available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files;",
+    "text": "availableintheformofMicrosoftAccessfilesorMicrosoftExcelspreadsheets;shapefilesorrasterfiles;",
     "x0": 72.0,
     "top": 316.3,
     "x1": 534.82,
@@ -283,7 +466,7 @@
   {
     "page": 1,
     "line_order": 18,
-    "text": "or text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be",
+    "text": "ortextfilesorcomma-delimitedfiles.Amulti-tierstorageandqualityassurancemethodologywillbe",
     "x0": 72.0,
     "top": 329.02,
     "x1": 519.39,
@@ -299,7 +482,7 @@
   {
     "page": 1,
     "line_order": 19,
-    "text": "adopted and will likely evolve as new datasets provide for challenging formats and organization.",
+    "text": "adoptedandwilllikelyevolveasnewdatasetsprovideforchallengingformatsandorganization.",
     "x0": 72.0,
     "top": 341.5,
     "x1": 497.34,
@@ -315,24 +498,39 @@
   {
     "page": 1,
     "line_order": 20,
-    "text": "Produced Data: Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be",
+    "text": "ProducedData:",
     "x0": 72.0,
+    "top": 366.94,
+    "x1": 146.3,
+    "bottom": 377.98,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 1,
+    "line_order": 20,
+    "text": "DatasetswillbeproducedinSections2.1-2.3oftheproposal.Thesedatasetswillbe",
+    "x0": 148.99,
     "top": 366.94,
     "x1": 519.29,
     "bottom": 377.98,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": true,
+    "is_bold": false,
     "is_italic": false,
     "label": "answer.text"
   },
   {
     "page": 1,
     "line_order": 21,
-    "text": "formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+    "text": "formattedandsharedinanopenformat(e.g.,CSV)orinillustratorfiles(i.e.,crosssections).",
     "x0": 72.0,
     "top": 379.42,
     "x1": 481.46,
@@ -348,7 +546,7 @@
   {
     "page": 1,
     "line_order": 22,
-    "text": "DATA AND METADATA STANDARDS",
+    "text": "DATAANDMETADATASTANDARDS",
     "x0": 72.0,
     "top": 404.86,
     "x1": 266.71,
@@ -364,7 +562,7 @@
   {
     "page": 1,
     "line_order": 23,
-    "text": "The data will be shared along with a README.txt, which will describe all files, their relationships,",
+    "text": "ThedatawillbesharedalongwithaREADME.txt,whichwilldescribeallfiles,theirrelationships,",
     "x0": 72.0,
     "top": 417.58,
     "x1": 509.94,
@@ -380,7 +578,7 @@
   {
     "page": 1,
     "line_order": 24,
-    "text": "naming conventions, etc. Data elements and attributes will be described following ISO 19115",
+    "text": "namingconventions,etc.DataelementsandattributeswillbedescribedfollowingISO19115",
     "x0": 72.0,
     "top": 430.06,
     "x1": 483.94,
@@ -396,7 +594,7 @@
   {
     "page": 1,
     "line_order": 25,
-    "text": "specifications and metadata schema and standards in Hydrology (e.g., following any establish standards",
+    "text": "specificationsandmetadataschemaandstandardsinHydrology(e.g.,followinganyestablishstandards",
     "x0": 72.0,
     "top": 442.78,
     "x1": 528.67,
@@ -412,7 +610,7 @@
   {
     "page": 1,
     "line_order": 26,
-    "text": "of the Water Information Coordination Program’s Open Water Data Initiative (Larsen et al., 2016)) to",
+    "text": "oftheWaterInformationCoordinationProgram’sOpenWaterDataInitiative(Larsenetal.,2016))to",
     "x0": 72.0,
     "top": 455.5,
     "x1": 520.42,
@@ -428,7 +626,7 @@
   {
     "page": 1,
     "line_order": 27,
-    "text": "allow for better interpretability and interoperability. Code and scripts produced in R and/or python will be",
+    "text": "allowforbetterinterpretabilityandinteroperability.CodeandscriptsproducedinRand/orpythonwillbe",
     "x0": 72.0,
     "top": 467.98,
     "x1": 538.18,
@@ -444,7 +642,7 @@
   {
     "page": 1,
     "line_order": 28,
-    "text": "documented for reproducibility purposes. The metadata for the codes will include: (1) description of the",
+    "text": "documentedforreproducibilitypurposes.Themetadataforthecodeswillinclude:(1)descriptionofthe",
     "x0": 72.0,
     "top": 480.7,
     "x1": 529.32,
@@ -460,7 +658,7 @@
   {
     "page": 1,
     "line_order": 29,
-    "text": "functions required to operate the analyses; (2) description of input parameters and outputs; and (3) test",
+    "text": "functionsrequiredtooperatetheanalyses;(2)descriptionofinputparametersandoutputs;and(3)test",
     "x0": 72.0,
     "top": 493.42,
     "x1": 522.58,
@@ -476,7 +674,7 @@
   {
     "page": 1,
     "line_order": 30,
-    "text": "case, files and plots documenting the expected response of the model (Section 2.1) to a standard set of",
+    "text": "case,filesandplotsdocumentingtheexpectedresponseofthemodel(Section2.1)toastandardsetof",
     "x0": 72.0,
     "top": 506.14,
     "x1": 521.3,
@@ -492,7 +690,7 @@
   {
     "page": 1,
     "line_order": 31,
-    "text": "input parameters. Documentation will focus on the description of the functions, input parameters, outputs,",
+    "text": "inputparameters.Documentationwillfocusonthedescriptionofthefunctions,inputparameters,outputs,",
     "x0": 72.0,
     "top": 518.62,
     "x1": 538.52,
@@ -508,7 +706,7 @@
   {
     "page": 1,
     "line_order": 32,
-    "text": "the format of input data, instructions to run the model, and instructions to export the results. The outputs",
+    "text": "theformatofinputdata,instructionstorunthemodel,andinstructionstoexporttheresults.Theoutputs",
     "x0": 72.0,
     "top": 531.34,
     "x1": 530.92,
@@ -524,7 +722,7 @@
   {
     "page": 1,
     "line_order": 33,
-    "text": "will be stored in CSV format with a metadata document describing the data structure of the output data.",
+    "text": "willbestoredinCSVformatwithametadatadocumentdescribingthedatastructureoftheoutputdata.",
     "x0": 72.0,
     "top": 544.06,
     "x1": 527.55,
@@ -540,7 +738,7 @@
   {
     "page": 1,
     "line_order": 34,
-    "text": "POLICIES FOR ACCESS AND SHARING",
+    "text": "POLICIESFORACCESSANDSHARING",
     "x0": 72.0,
     "top": 569.26,
     "x1": 277.43,
@@ -556,15 +754,14 @@
   {
     "page": 1,
     "line_order": 35,
-    "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information",
+    "text": "Rawdata:",
     "x0": 72.0,
     "top": 581.98,
-    "x1": 540.19,
+    "x1": 120.62,
     "bottom": 593.02,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAE+TimesNewRomanPS-BoldMT"
     ],
     "is_bold": true,
     "is_italic": false,
@@ -572,8 +769,24 @@
   },
   {
     "page": 1,
+    "line_order": 35,
+    "text": "Detailedinformationabouthowthedatawereobtained,includingdetailedcontactinformation",
+    "x0": 123.33,
+    "top": 581.98,
+    "x1": 540.19,
+    "bottom": 593.02,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
     "line_order": 36,
-    "text": "or websites for direct download and citations to all datasets will be provided to allow for accessibility and",
+    "text": "orwebsitesfordirectdownloadandcitationstoalldatasetswillbeprovidedtoallowforaccessibilityand",
     "x0": 72.0,
     "top": 594.46,
     "x1": 537.19,
@@ -589,7 +802,7 @@
   {
     "page": 1,
     "line_order": 37,
-    "text": "correct attribution to original collectors. All methodological procedures for data quality control and",
+    "text": "correctattributiontooriginalcollectors.Allmethodologicalproceduresfordataqualitycontroland",
     "x0": 72.0,
     "top": 607.18,
     "x1": 509.25,
@@ -605,7 +818,7 @@
   {
     "page": 1,
     "line_order": 38,
-    "text": "aggregation will be described in the data documentation. This information will be provided in the form of",
+    "text": "aggregationwillbedescribedinthedatadocumentation.Thisinformationwillbeprovidedintheformof",
     "x0": 72.0,
     "top": 619.9,
     "x1": 536.61,
@@ -621,7 +834,7 @@
   {
     "page": 1,
     "line_order": 39,
-    "text": "supplementary documentation for publications, in the README.txt file, and at the repository (record-",
+    "text": "supplementarydocumentationforpublications,intheREADME.txtfile,andattherepository(record-",
     "x0": 72.0,
     "top": 632.62,
     "x1": 521.98,
@@ -637,7 +850,7 @@
   {
     "page": 1,
     "line_order": 40,
-    "text": "level). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the",
+    "text": "level).AllsharablerawdataandtheprocesseddatawillbearchivedinDryad,https://datadryad.org,the",
     "x0": 72.0,
     "top": 645.1,
     "x1": 529.27,
@@ -653,7 +866,7 @@
   {
     "page": 1,
     "line_order": 41,
-    "text": "agnostic open access repository backed by UCSB and the California Digital Library (CDL), which",
+    "text": "agnosticopenaccessrepositorybackedbyUCSBandtheCaliforniaDigitalLibrary(CDL),which",
     "x0": 72.0,
     "top": 657.82,
     "x1": 505.79,
@@ -669,7 +882,7 @@
   {
     "page": 1,
     "line_order": 42,
-    "text": "implements the latest best practices in data curation, publication, citation, and archival. Dryad assigns",
+    "text": "implementsthelatestbestpracticesindatacuration,publication,citation,andarchival.Dryadassigns",
     "x0": 72.0,
     "top": 670.54,
     "x1": 519.52,
@@ -685,7 +898,7 @@
   {
     "page": 1,
     "line_order": 43,
-    "text": "Digital Object Identifiers (DOIs) to deposited datasets and makes data discoverable through such services",
+    "text": "DigitalObjectIdentifiers(DOIs)todepositeddatasetsandmakesdatadiscoverablethroughsuchservices",
     "x0": 72.0,
     "top": 683.02,
     "x1": 537.28,
@@ -701,7 +914,7 @@
   {
     "page": 1,
     "line_order": 44,
-    "text": "as the Thomson-Reuters Data Citation Index, Scopus, and Google Dataset Search. All data in Dryad is",
+    "text": "astheThomson-ReutersDataCitationIndex,Scopus,andGoogleDatasetSearch.AlldatainDryadis",
     "x0": 72.0,
     "top": 695.74,
     "x1": 522.89,
@@ -717,7 +930,7 @@
   {
     "page": 2,
     "line_order": 1,
-    "text": "publicly accessible and released under a CC0 license. Data will be linked to publications and vice versa",
+    "text": "publiclyaccessibleandreleasedunderaCC0license.Datawillbelinkedtopublicationsandviceversa",
     "x0": 72.0,
     "top": 73.66,
     "x1": 527.53,
@@ -733,7 +946,7 @@
   {
     "page": 2,
     "line_order": 2,
-    "text": "through DOIs.",
+    "text": "throughDOIs.",
     "x0": 72.0,
     "top": 86.14,
     "x1": 135.56,
@@ -749,24 +962,39 @@
   {
     "page": 2,
     "line_order": 3,
-    "text": "Scripts and code for analyses: All scripts and code will be archived in supplementary information",
+    "text": "Scriptsandcodeforanalyses:",
     "x0": 72.0,
+    "top": 111.58,
+    "x1": 212.0,
+    "bottom": 122.62,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text"
+  },
+  {
+    "page": 2,
+    "line_order": 3,
+    "text": "Allscriptsandcodewillbearchivedinsupplementaryinformation",
+    "x0": 214.69,
     "top": 111.58,
     "x1": 509.43,
     "bottom": 122.62,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": true,
+    "is_bold": false,
     "is_italic": false,
     "label": "answer.text"
   },
   {
     "page": 2,
     "line_order": 4,
-    "text": "appendices in publications as well as uploaded to Zenodo through the Dryad repository submission",
+    "text": "appendicesinpublicationsaswellasuploadedtoZenodothroughtheDryadrepositorysubmission",
     "x0": 72.0,
     "top": 124.3,
     "x1": 507.91,
@@ -782,7 +1010,7 @@
   {
     "page": 2,
     "line_order": 5,
-    "text": "process along with the sharable raw and processed data in order to allow citations and a better connection",
+    "text": "processalongwiththesharablerawandprocesseddatainordertoallowcitationsandabetterconnection",
     "x0": 72.0,
     "top": 136.78,
     "x1": 536.02,
@@ -798,7 +1026,7 @@
   {
     "page": 2,
     "line_order": 6,
-    "text": "to the research data curation and publication processes.",
+    "text": "totheresearchdatacurationandpublicationprocesses.",
     "x0": 72.0,
     "top": 149.5,
     "x1": 314.48,
@@ -814,24 +1042,39 @@
   {
     "page": 2,
     "line_order": 7,
-    "text": "Scientist spotlight: All scientist spotlight biographies, assignments, and open-access readings will be",
+    "text": "Scientistspotlight:",
     "x0": 72.0,
+    "top": 174.7,
+    "x1": 159.13,
+    "bottom": 185.74,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 2,
+    "line_order": 7,
+    "text": "Allscientistspotlightbiographies,assignments,andopen-accessreadingswillbe",
+    "x0": 161.84,
     "top": 174.7,
     "x1": 519.56,
     "bottom": 185.74,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": true,
+    "is_bold": false,
     "is_italic": false,
     "label": "answer.text"
   },
   {
     "page": 2,
     "line_order": 8,
-    "text": "posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
+    "text": "postedtoanonlineDashboardassociatedwiththePI’swebsite,whichisupdatedbi-monthly.",
     "x0": 72.0,
     "top": 187.42,
     "x1": 483.52,
@@ -847,24 +1090,39 @@
   {
     "page": 2,
     "line_order": 9,
-    "text": "Workshop frameworks: Workshop material will be shared with UCSB’s Diversity Committee through",
+    "text": "Workshopframeworks:",
     "x0": 72.0,
+    "top": 212.62,
+    "x1": 184.76,
+    "bottom": 223.66,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text"
+  },
+  {
+    "page": 2,
+    "line_order": 9,
+    "text": "WorkshopmaterialwillbesharedwithUCSB’sDiversityCommitteethrough",
+    "x0": 187.49,
     "top": 212.62,
     "x1": 530.63,
     "bottom": 223.66,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": true,
+    "is_bold": false,
     "is_italic": false,
     "label": "answer.text"
   },
   {
     "page": 2,
     "line_order": 10,
-    "text": "Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will",
+    "text": "GoogleDrive;ifworkshopmaterialsarefullysupportedbytheDiversityCommittee,thesematerialswill",
     "x0": 72.0,
     "top": 225.34,
     "x1": 535.84,
@@ -880,7 +1138,7 @@
   {
     "page": 2,
     "line_order": 11,
-    "text": "also be shared through eSholarship for broader dissemination.",
+    "text": "alsobesharedthrougheSholarshipforbroaderdissemination.",
     "x0": 72.0,
     "top": 238.06,
     "x1": 344.5,
@@ -896,7 +1154,7 @@
   {
     "page": 2,
     "line_order": 12,
-    "text": "The PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist",
+    "text": "ThePIiscommittedtopublishinginopenaccessjournals.TheUCiscurrentlyleadinginitiativestoassist",
     "x0": 72.0,
     "top": 263.26,
     "x1": 538.62,
@@ -912,7 +1170,7 @@
   {
     "page": 2,
     "line_order": 13,
-    "text": "faculty in paying for open access journals.",
+    "text": "facultyinpayingforopenaccessjournals.",
     "x0": 72.0,
     "top": 275.98,
     "x1": 257.91,
@@ -928,7 +1186,7 @@
   {
     "page": 2,
     "line_order": 14,
-    "text": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+    "text": "POLICIESANDPROVISIONSFORRE-USE,RE-DISTRIBUTION",
     "x0": 72.0,
     "top": 301.18,
     "x1": 397.2,
@@ -944,7 +1202,7 @@
   {
     "page": 2,
     "line_order": 15,
-    "text": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may",
+    "text": "AlldatadepositedatDryadwillbepubliclyavailableunderaCC0license,meaningthatothersmay",
     "x0": 72.0,
     "top": 313.9,
     "x1": 512.72,
@@ -960,7 +1218,7 @@
   {
     "page": 2,
     "line_order": 16,
-    "text": "freely build upon, enhance and reuse the works for any purposes without restriction under copyright or",
+    "text": "freelybuildupon,enhanceandreusetheworksforanypurposeswithoutrestrictionundercopyrightor",
     "x0": 72.0,
     "top": 326.62,
     "x1": 523.82,
@@ -976,7 +1234,7 @@
   {
     "page": 2,
     "line_order": 17,
-    "text": "database law. CC0 does not exempt those who reuse the data from following community norms for",
+    "text": "databaselaw.CC0doesnotexemptthosewhoreusethedatafromfollowingcommunitynormsfor",
     "x0": 72.0,
     "top": 339.1,
     "x1": 508.36,
@@ -992,7 +1250,7 @@
   {
     "page": 2,
     "line_order": 18,
-    "text": "scholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the",
+    "text": "scholarlycommunication,i.e.,reusingthedatainawaythatismindfulofitslimitationsandcitingthe",
     "x0": 72.0,
     "top": 351.82,
     "x1": 522.03,
@@ -1008,7 +1266,7 @@
   {
     "page": 2,
     "line_order": 19,
-    "text": "original data authors.",
+    "text": "originaldataauthors.",
     "x0": 72.0,
     "top": 364.54,
     "x1": 165.21,
@@ -1024,7 +1282,7 @@
   {
     "page": 2,
     "line_order": 20,
-    "text": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
+    "text": "PLANSFORARCHIVINGANDPRESERVATIONOFACCESS",
     "x0": 72.0,
     "top": 389.74,
     "x1": 383.14,
@@ -1040,7 +1298,7 @@
   {
     "page": 2,
     "line_order": 21,
-    "text": "UCSB Box will be used as the primary means to store and back up all collected input, generated output",
+    "text": "UCSBBoxwillbeusedastheprimarymeanstostoreandbackupallcollectedinput,generatedoutput",
     "x0": 72.0,
     "top": 402.46,
     "x1": 526.28,
@@ -1056,7 +1314,7 @@
   {
     "page": 2,
     "line_order": 22,
-    "text": "data sets and code, and educational materials over the course of the project and prior to data sharing. Box",
+    "text": "datasetsandcode,andeducationalmaterialsoverthecourseoftheprojectandpriortodatasharing.Box",
     "x0": 72.0,
     "top": 415.18,
     "x1": 535.07,
@@ -1072,7 +1330,7 @@
   {
     "page": 2,
     "line_order": 23,
-    "text": "provides encryption of data at rest and in-transit, detailed logging of file actions, two-factor",
+    "text": "providesencryptionofdataatrestandin-transit,detailedloggingoffileactions,two-factor",
     "x0": 72.0,
     "top": 427.66,
     "x1": 474.29,
@@ -1088,7 +1346,7 @@
   {
     "page": 2,
     "line_order": 24,
-    "text": "authentication, and access review of collaborators. Data will be accessed using Box Drive, which requires",
+    "text": "authentication,andaccessreviewofcollaborators.DatawillbeaccessedusingBoxDrive,whichrequires",
     "x0": 72.0,
     "top": 440.38,
     "x1": 537.94,
@@ -1104,7 +1362,7 @@
   {
     "page": 2,
     "line_order": 25,
-    "text": "full disk encryption, firewall, and an antivirus software in order to install on a local computer.",
+    "text": "fulldiskencryption,firewall,andanantivirussoftwareinordertoinstallonalocalcomputer.",
     "x0": 72.0,
     "top": 453.1,
     "x1": 484.88,
@@ -1120,7 +1378,7 @@
   {
     "page": 2,
     "line_order": 26,
-    "text": "At the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and",
+    "text": "Attheendoftheproject,allshareabledataaccompaniedbytheappropriatedocumentation,metadata,and",
     "x0": 72.0,
     "top": 478.3,
     "x1": 539.33,
@@ -1136,7 +1394,7 @@
   {
     "page": 2,
     "line_order": 27,
-    "text": "code will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits",
+    "text": "codewillbedepositedintoDryadforlong-termstorage,preservationandaccessibility.Deposits",
     "x0": 72.0,
     "top": 491.02,
     "x1": 496.49,
@@ -1152,7 +1410,7 @@
   {
     "page": 2,
     "line_order": 28,
-    "text": "submitted to Dryad are curated prior to public release to conform with quality standards and enable future",
+    "text": "submittedtoDryadarecuratedpriortopublicreleasetoconformwithqualitystandardsandenablefuture",
     "x0": 72.0,
     "top": 503.74,
     "x1": 537.74,
@@ -1184,7 +1442,7 @@
   {
     "page": 2,
     "line_order": 30,
-    "text": "The source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved,",
+    "text": "Thesourcecodefortheresearchandeducationcomponents(Sections2.1,2.2.,and2.3)willbesaved,",
     "x0": 72.0,
     "top": 541.66,
     "x1": 522.59,
@@ -1200,7 +1458,7 @@
   {
     "page": 2,
     "line_order": 31,
-    "text": "stored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three",
+    "text": "stored,andbackedupontheUCSBBox.Acopyofthecodewillalsobesubmittedwitheachofthethree",
     "x0": 72.0,
     "top": 554.14,
     "x1": 537.34,
@@ -1216,7 +1474,7 @@
   {
     "page": 2,
     "line_order": 32,
-    "text": "planned publications. After the evaluation and refinement of the developed datasets and tools and once",
+    "text": "plannedpublications.Aftertheevaluationandrefinementofthedevelopeddatasetsandtoolsandonce",
     "x0": 72.0,
     "top": 566.86,
     "x1": 524.52,
@@ -1232,7 +1490,7 @@
   {
     "page": 2,
     "line_order": 33,
-    "text": "the research is completed and published, the final version of the tools and the documentation will be",
+    "text": "theresearchiscompletedandpublished,thefinalversionofthetoolsandthedocumentationwillbe",
     "x0": 72.0,
     "top": 579.58,
     "x1": 512.73,
@@ -1248,7 +1506,7 @@
   {
     "page": 2,
     "line_order": 34,
-    "text": "shared on the UCSB’s Dryad Data Repository. The final shareable instructional and teaching materials",
+    "text": "sharedontheUCSB’sDryadDataRepository.Thefinalshareableinstructionalandteachingmaterials",
     "x0": 72.0,
     "top": 592.3,
     "x1": 524.17,
@@ -1264,14 +1522,29 @@
   {
     "page": 2,
     "line_order": 35,
-    "text": "will also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive",
+    "text": "willalsobesharedviaonapubliclyaccessiblewebpage(",
     "x0": 72.0,
     "top": 604.78,
-    "x1": 522.57,
+    "x1": 326.3,
     "bottom": 615.82,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 2,
+    "line_order": 35,
+    "text": "ScientistSpotlight",
+    "x0": 326.13,
+    "top": 604.78,
+    "x1": 405.93,
+    "bottom": 615.82,
+    "avg_font_size": 11.04,
+    "font_names": [
       "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
@@ -1280,8 +1553,24 @@
   },
   {
     "page": 2,
+    "line_order": 35,
+    "text": ")andUCSBGoogleDrive",
+    "x0": 405.88,
+    "top": 604.78,
+    "x1": 522.57,
+    "bottom": 615.82,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 2,
     "line_order": 36,
-    "text": "(workshop materials) and Dryad in pdf format.",
+    "text": "(workshopmaterials)andDryadinpdfformat.",
     "x0": 72.0,
     "top": 617.5,
     "x1": 278.27,

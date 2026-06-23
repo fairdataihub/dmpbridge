@@ -306,18 +306,49 @@
   {
     "page": 1,
     "line_order": 20,
-    "text": "systems envisioned for the near future (see Changing the Conduct of Science in the Information Age,",
+    "text": "systems envisioned for the near future (see",
     "x0": 72.0,
+    "top": 328.36,
+    "x1": 269.9,
+    "bottom": 339.34,
+    "avg_font_size": 10.98,
+    "font_names": [
+      "LHHACL+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": null
+  },
+  {
+    "page": 1,
+    "line_order": 20,
+    "text": "Changing the Conduct of Science in the Information Age",
+    "x0": 274.3,
+    "top": 328.36,
+    "x1": 537.42,
+    "bottom": 339.34,
+    "avg_font_size": 10.98,
+    "font_names": [
+      "LHHADN+TimesNewRomanPS-ItalicMT"
+    ],
+    "is_bold": false,
+    "is_italic": true,
+    "label": null
+  },
+  {
+    "page": 1,
+    "line_order": 20,
+    "text": ",",
+    "x0": 537.3,
     "top": 328.36,
     "x1": 540.04,
     "bottom": 339.34,
     "avg_font_size": 10.98,
     "font_names": [
-      "LHHACL+TimesNewRomanPSMT",
-      "LHHADN+TimesNewRomanPS-ItalicMT"
+      "LHHACL+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "is_italic": true,
+    "is_italic": false,
     "label": null
   },
   {
@@ -915,14 +946,29 @@
   {
     "page": 2,
     "line_order": 11,
-    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based",
+    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “",
     "x0": 72.0,
+    "top": 230.01,
+    "x1": 440.2,
+    "bottom": 240.99,
+    "avg_font_size": 10.98,
+    "font_names": [
+      "LHHACL+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": null
+  },
+  {
+    "page": 2,
+    "line_order": 11,
+    "text": "This material is based",
+    "x0": 440.1,
     "top": 230.01,
     "x1": 540.07,
     "bottom": 240.99,
     "avg_font_size": 10.98,
     "font_names": [
-      "LHHACL+TimesNewRomanPSMT",
       "LHHADN+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
@@ -932,15 +978,14 @@
   {
     "page": 2,
     "line_order": 12,
-    "text": "upon work supported by the National Science Foundation under Grant No. (NSF grant number).”",
+    "text": "upon work supported by the National Science Foundation under Grant No. (NSF grant number).",
     "x0": 72.0,
     "top": 242.67,
-    "x1": 540.08,
+    "x1": 535.21,
     "bottom": 253.65,
     "avg_font_size": 10.98,
     "font_names": [
-      "LHHADN+TimesNewRomanPS-ItalicMT",
-      "LHHACL+TimesNewRomanPSMT"
+      "LHHADN+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
     "is_italic": true,
@@ -948,15 +993,46 @@
   },
   {
     "page": 2,
+    "line_order": 12,
+    "text": "”",
+    "x0": 535.2,
+    "top": 242.67,
+    "x1": 540.08,
+    "bottom": 253.65,
+    "avg_font_size": 10.98,
+    "font_names": [
+      "LHHACL+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": null
+  },
+  {
+    "page": 2,
     "line_order": 13,
-    "text": "Additionally, materials will contain a disclaimer that “any opinions, findings, and conclusions or",
+    "text": "Additionally, materials will contain a disclaimer that “",
     "x0": 72.0,
+    "top": 255.33,
+    "x1": 335.96,
+    "bottom": 266.31,
+    "avg_font_size": 10.98,
+    "font_names": [
+      "LHHACL+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": null
+  },
+  {
+    "page": 2,
+    "line_order": 13,
+    "text": "any opinions, findings, and conclusions or",
+    "x0": 335.91,
     "top": 255.33,
     "x1": 540.05,
     "bottom": 266.31,
     "avg_font_size": 10.98,
     "font_names": [
-      "LHHACL+TimesNewRomanPSMT",
       "LHHADN+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
@@ -982,18 +1058,33 @@
   {
     "page": 2,
     "line_order": 15,
-    "text": "views of the National Science Foundation.” In keeping with standard ethical practices, it is expected that",
+    "text": "views of the National Science Foundation",
     "x0": 72.0,
+    "top": 280.58,
+    "x1": 258.41,
+    "bottom": 291.56,
+    "avg_font_size": 10.98,
+    "font_names": [
+      "LHHADN+TimesNewRomanPS-ItalicMT"
+    ],
+    "is_bold": false,
+    "is_italic": true,
+    "label": null
+  },
+  {
+    "page": 2,
+    "line_order": 15,
+    "text": ".” In keeping with standard ethical practices, it is expected that",
+    "x0": 258.46,
     "top": 280.58,
     "x1": 540.08,
     "bottom": 291.56,
     "avg_font_size": 10.98,
     "font_names": [
-      "LHHADN+TimesNewRomanPS-ItalicMT",
       "LHHACL+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "is_italic": true,
+    "is_italic": false,
     "label": null
   },
   {
