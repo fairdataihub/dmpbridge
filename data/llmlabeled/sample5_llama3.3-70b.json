@@ -260,7 +260,7 @@
       "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": false,
+    "is_bold": true,
     "is_italic": false,
     "label": "answer.text"
   },
@@ -325,7 +325,7 @@
       "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": false,
+    "is_bold": true,
     "is_italic": false,
     "label": "answer.text"
   },
@@ -566,9 +566,9 @@
       "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": false,
+    "is_bold": true,
     "is_italic": false,
-    "label": "answer.text"
+    "label": "question.text"
   },
   {
     "page": 1,
@@ -759,7 +759,7 @@
       "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": false,
+    "is_bold": true,
     "is_italic": false,
     "label": "answer.text"
   },
@@ -824,7 +824,7 @@
       "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": false,
+    "is_bold": true,
     "is_italic": false,
     "label": "answer.text"
   },
@@ -857,7 +857,7 @@
       "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
-    "is_bold": false,
+    "is_bold": true,
     "is_italic": false,
     "label": "answer.text"
   },
