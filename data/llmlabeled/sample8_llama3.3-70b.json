@@ -2,7 +2,7 @@
   {
     "page": 1,
     "line_order": 1,
-    "text": "Univ.ofCalifornia,RiversideDataManagementPlan",
+    "text": "Univ. of California, Riverside Data Management Plan",
     "x0": 181.79,
     "top": 73.6,
     "x1": 430.07,
@@ -18,7 +18,7 @@
   {
     "page": 1,
     "line_order": 2,
-    "text": "1.PolicyandPractice",
+    "text": "1. Policy and Practice",
     "x0": 67.5,
     "top": 98.94,
     "x1": 157.41,
@@ -34,7 +34,7 @@
   {
     "page": 1,
     "line_order": 3,
-    "text": "TheBournsCollegeofEngineering(BCOE)atthe",
+    "text": "The Bourns College of Engineering (BCOE) at the",
     "x0": 67.7,
     "top": 114.79,
     "x1": 271.38,
@@ -50,7 +50,7 @@
   {
     "page": 1,
     "line_order": 3,
-    "text": "UniversityofCalifornia,Riverside",
+    "text": "University of California, Riverside",
     "x0": 273.85,
     "top": 114.79,
     "x1": 421.2,
@@ -66,7 +66,7 @@
   {
     "page": 1,
     "line_order": 3,
-    "text": ",inpartnershipwiththeUCR",
+    "text": ", in partnership with the UCR",
     "x0": 421.29,
     "top": 114.79,
     "x1": 540.04,
@@ -82,7 +82,7 @@
   {
     "page": 1,
     "line_order": 4,
-    "text": "LibrariesandtheCaliforniaDigitalLibrary,hasestablishedanew,customdatamanagementsystemdesignedto",
+    "text": "Libraries and the California Digital Library, has established a new, custom data management system designed to",
     "x0": 67.7,
     "top": 126.31,
     "x1": 539.89,
@@ -98,7 +98,7 @@
   {
     "page": 1,
     "line_order": 5,
-    "text": "makeresultsofourresearchreadilyandreliablyaccessible.ThissystemcombinestwoservicesoftheCalifornia",
+    "text": "make results of our research readily and reliably accessible. This system combines two services of the California",
     "x0": 67.7,
     "top": 137.83,
     "x1": 540.44,
@@ -114,7 +114,7 @@
   {
     "page": 1,
     "line_order": 6,
-    "text": "DigitalLibraryforthefirsttime:aneScholarshipseries,acuratedsitewhereallBCOEinvestigatorscanstoreand",
+    "text": "Digital Library for the first time: an eScholarship series, a curated site where all BCOE investigators can store and",
     "x0": 67.7,
     "top": 149.35,
     "x1": 540.11,
@@ -130,7 +130,7 @@
   {
     "page": 1,
     "line_order": 7,
-    "text": "disseminatetheirdata,andEZIDpermanentidentifiersforlong-termidentificationandmanagementofdata",
+    "text": "disseminate their data, and EZID permanent identifiers for long-term identification and management of data",
     "x0": 67.7,
     "top": 160.88,
     "x1": 540.15,
@@ -162,7 +162,7 @@
   {
     "page": 1,
     "line_order": 9,
-    "text": "AllprincipalinvestigatorsinBCOEareresponsibleforcomplyingwithsponsorpoliciesregardingdata",
+    "text": "All principal investigators in BCOE are responsible for complying with sponsor policies regarding data",
     "x0": 80.19,
     "top": 188.0,
     "x1": 539.96,
@@ -178,7 +178,7 @@
   {
     "page": 1,
     "line_order": 10,
-    "text": "managementandaccessibility.Allhavesufficientcomputingresourcestostoreandprocessthedatageneratedin",
+    "text": "management and accessibility. All have sufficient computing resources to store and process the data generated in",
     "x0": 67.7,
     "top": 199.75,
     "x1": 540.35,
@@ -194,7 +194,7 @@
   {
     "page": 1,
     "line_order": 11,
-    "text": "theirresearch.Everyprincipalinvestigatorhastheabilitytocreatehisorherpersonalwebsite,andtomakedatasets",
+    "text": "their research. Every principal investigator has the ability to create his or her personal web site, and to make data sets",
     "x0": 67.7,
     "top": 211.28,
     "x1": 540.06,
@@ -210,7 +210,7 @@
   {
     "page": 1,
     "line_order": 12,
-    "text": "availablethroughthatwebsite.Additionally,theeScholarshipseries(http://escholarship.org/uc/bcoe)providesa",
+    "text": "available through that web site. Additionally, the eScholarship series (http://escholarship.org/uc/bcoe) provides a",
     "x0": 67.7,
     "top": 222.8,
     "x1": 539.94,
@@ -226,7 +226,7 @@
   {
     "page": 1,
     "line_order": 13,
-    "text": "ready-maderesourcefordissemination.ResearcherscansubmitmaterialstotheeScholarshipseriessite,whereitis",
+    "text": "ready-made resource for dissemination. Researchers can submit materials to the eScholarship series site, where it is",
     "x0": 67.7,
     "top": 234.3,
     "x1": 539.89,
@@ -242,7 +242,7 @@
   {
     "page": 1,
     "line_order": 14,
-    "text": "automaticallygivenanEZIDpersistentidentifier.AllmaterialonthesiteisindexedonGoogle,GoogleScholar,and",
+    "text": "automatically given an EZID persistent identifier. All material on the site is indexed on Google, Google Scholar, and",
     "x0": 67.7,
     "top": 245.82,
     "x1": 539.97,
@@ -258,7 +258,7 @@
   {
     "page": 1,
     "line_order": 15,
-    "text": "Melvyl/WorldCat.TheCaliforniaDigitalLibraryalsoprovidesdatabackupservicestoavoidaccidentallossofdata.",
+    "text": "Melvyl/WorldCat. The California Digital Library also provides data backup services to avoid accidental loss of data.",
     "x0": 67.7,
     "top": 257.1,
     "x1": 534.52,
@@ -274,7 +274,7 @@
   {
     "page": 1,
     "line_order": 16,
-    "text": "Thispartnership,whichhasresultedinthedevelopmentofanewservicethatCDLcanprovidetootherresearch",
+    "text": "This partnership, which has resulted in the development of a new service that CDL can provide to other research",
     "x0": 80.2,
     "top": 272.94,
     "x1": 540.08,
@@ -290,7 +290,7 @@
   {
     "page": 1,
     "line_order": 17,
-    "text": "organizations,makesourdatawidelyavailableandsearchableunderthetaxonomies,identifiers,andstandardsof",
+    "text": "organizations, makes our data widely available and searchable under the taxonomies, identifiers, and standards of",
     "x0": 67.7,
     "top": 284.46,
     "x1": 540.24,
@@ -306,7 +306,7 @@
   {
     "page": 1,
     "line_order": 18,
-    "text": "universaldatasharingsystemsenvisionedforthenearfuture(see",
+    "text": "universal data sharing systems envisioned for the near future (see",
     "x0": 67.7,
     "top": 295.99,
     "x1": 358.8,
@@ -322,7 +322,7 @@
   {
     "page": 1,
     "line_order": 18,
-    "text": "ChangingtheConductofScienceinthe",
+    "text": "Changing the Conduct of Science in the",
     "x0": 364.64,
     "top": 295.99,
     "x1": 539.9,
@@ -338,7 +338,7 @@
   {
     "page": 1,
     "line_order": 19,
-    "text": "InformationAge",
+    "text": "Information Age",
     "x0": 67.7,
     "top": 307.26,
     "x1": 133.46,
@@ -354,7 +354,7 @@
   {
     "page": 1,
     "line_order": 19,
-    "text": ",NSF,June2011).",
+    "text": ", NSF, June 2011).",
     "x0": 133.52,
     "top": 307.26,
     "x1": 208.35,
@@ -370,7 +370,7 @@
   {
     "page": 1,
     "line_order": 20,
-    "text": "2.Scope",
+    "text": "2. Scope",
     "x0": 67.7,
     "top": 338.46,
     "x1": 102.05,
@@ -386,7 +386,7 @@
   {
     "page": 1,
     "line_order": 21,
-    "text": "ThisDataManagementPlanaddressestheNSFpolicythatprimarydata“commonlyacceptedinthescientific",
+    "text": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific",
     "x0": 67.7,
     "top": 354.3,
     "x1": 540.24,
@@ -402,7 +402,7 @@
   {
     "page": 1,
     "line_order": 22,
-    "text": "communityasnecessarytovalidateresearchfindings”bemadeavailableatlittleornocosttothePIorproject.In",
+    "text": "community as necessary to validate research findings” be made available at little or no cost to the PI or project. In",
     "x0": 67.7,
     "top": 365.82,
     "x1": 539.9,
@@ -418,7 +418,7 @@
   {
     "page": 1,
     "line_order": 23,
-    "text": "accordancewiththispolicyandguidancefromtheOfficeofManagementandBudget,thisplandoesnotinclude",
+    "text": "accordance with this policy and guidance from the Office of Management and Budget, this plan does not include",
     "x0": 67.7,
     "top": 377.34,
     "x1": 539.9,
@@ -434,7 +434,7 @@
   {
     "page": 1,
     "line_order": 24,
-    "text": "preliminaryanalyses(includingrawdata),draftsofscientificpapers,plansforfutureresearch,peerreviews,or",
+    "text": "preliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or",
     "x0": 67.71,
     "top": 388.87,
     "x1": 539.92,
@@ -450,7 +450,7 @@
   {
     "page": 1,
     "line_order": 25,
-    "text": "communicationswithcolleagues.Datathatmustbewithheldlongenoughtoenablepeerreviewand",
+    "text": "communications with colleagues. Data that must be withheld long enough to enable peer review and",
     "x0": 67.71,
     "top": 400.39,
     "x1": 539.99,
@@ -466,7 +466,7 @@
   {
     "page": 1,
     "line_order": 26,
-    "text": "publication/disseminationorprotectionofintellectualpropertyissubjecttothisplanonlyafterthosestepshavetaken",
+    "text": "publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken",
     "x0": 67.71,
     "top": 411.91,
     "x1": 540.12,
@@ -482,7 +482,7 @@
   {
     "page": 1,
     "line_order": 27,
-    "text": "place.Datawillbeavailableforaccessandsharingassoonasisreasonablypossible,andnolaterthantwoyearsafter",
+    "text": "place. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after",
     "x0": 67.71,
     "top": 423.43,
     "x1": 540.02,
@@ -498,7 +498,7 @@
   {
     "page": 1,
     "line_order": 28,
-    "text": "itsacquisition.Thedatawillbepreservedforatleastthreeyearsbeyondtheawardperiod,asrequiredbyNSF",
+    "text": "its acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF",
     "x0": 67.71,
     "top": 434.95,
     "x1": 540.12,
@@ -530,7 +530,7 @@
   {
     "page": 1,
     "line_order": 30,
-    "text": "Thereleaseofdataaboutstudentsoranyotherhumansubjectsissubjecttopoliciesandrestrictionsinprotocols",
+    "text": "The release of data about students or any other human subjects is subject to policies and restrictions in protocols",
     "x0": 82.71,
     "top": 462.07,
     "x1": 539.97,
@@ -546,7 +546,7 @@
   {
     "page": 1,
     "line_order": 31,
-    "text": "adoptedbytherelevantInstitutionalResearchBoard(IRB)andtheFamilyEducationalRightsandPrivacyAct",
+    "text": "adopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act",
     "x0": 67.71,
     "top": 473.6,
     "x1": 539.99,
@@ -562,7 +562,7 @@
   {
     "page": 1,
     "line_order": 32,
-    "text": "(FERPA)regulations.",
+    "text": "(FERPA) regulations.",
     "x0": 67.71,
     "top": 485.12,
     "x1": 154.8,
@@ -578,7 +578,7 @@
   {
     "page": 1,
     "line_order": 33,
-    "text": "Theproposedprojectwilldevelopprogramming,compiler,andruntimesupportforapplications,asdescribedin",
+    "text": "The proposed project will develop programming, compiler, and runtime support for applications, as described in",
     "x0": 82.71,
     "top": 500.72,
     "x1": 539.96,
@@ -594,7 +594,7 @@
   {
     "page": 1,
     "line_order": 34,
-    "text": "thisproposal.Theimplementationswillbemadeavailabletootherresearchers.Allcodewillbepreservedand",
+    "text": "this proposal. The implementations will be made available to other researchers. All code will be preserved and",
     "x0": 67.72,
     "top": 512.24,
     "x1": 540.0,
@@ -610,7 +610,7 @@
   {
     "page": 1,
     "line_order": 35,
-    "text": "maintainedforaminimumofthreeyearsbeyondtheawardperiodasrequiredbyNSFguidelines.Inaddition,",
+    "text": "maintained for a minimum of three years beyond the award period as required by NSF guidelines. In addition,",
     "x0": 67.72,
     "top": 524.0,
     "x1": 540.11,
@@ -626,7 +626,7 @@
   {
     "page": 1,
     "line_order": 36,
-    "text": "sampleadaptiveversionsofapplicationsthatwillbedevelopedinthisworkwillalsobemadeavailable.",
+    "text": "sample adaptive versions of applications that will be developed in this work will also be made available.",
     "x0": 67.72,
     "top": 535.27,
     "x1": 485.02,
@@ -642,7 +642,7 @@
   {
     "page": 1,
     "line_order": 37,
-    "text": "3.DataandMetadataFormatandContent",
+    "text": "3. Data and Metadata Format and Content",
     "x0": 67.72,
     "top": 566.23,
     "x1": 243.99,
@@ -658,7 +658,7 @@
   {
     "page": 1,
     "line_order": 38,
-    "text": "Thesoftwarewillbemadeavailableinsourcecodeformandsowilltheapplicationsdeveloped.Thiswillallowother",
+    "text": "The software will be made available in source code form and so will the applications developed. This will allow other",
     "x0": 67.72,
     "top": 582.07,
     "x1": 540.06,
@@ -674,7 +674,7 @@
   {
     "page": 1,
     "line_order": 39,
-    "text": "researcherstosonotonlyuseitbutalsomodifyitfortheiruse.AllmaterialsuploadedtotheeScholarshipsitefrom",
+    "text": "researchers to so not only use it but also modify it for their use. All materials uploaded to the eScholarship site from",
     "x0": 67.72,
     "top": 593.6,
     "x1": 539.97,
@@ -690,7 +690,7 @@
   {
     "page": 1,
     "line_order": 40,
-    "text": "UCRwillbetaggeduniformlywithmetadataaboutthesourceandnatureofthedata.Anyelectronicfileformat(e.g.,",
+    "text": "UCR will be tagged uniformly with metadata about the source and nature of the data. Any electronic file format (e.g.,",
     "x0": 67.72,
     "top": 605.12,
     "x1": 540.03,
@@ -706,7 +706,7 @@
   {
     "page": 1,
     "line_order": 41,
-    "text": "text,spreadsheets,images)canbeaccepted.Asaservicetoassurethatmaterialsareformattedcorrectly,acurator",
+    "text": "text, spreadsheets, images) can be accepted. As a service to assure that materials are formatted correctly, a curator",
     "x0": 67.72,
     "top": 616.64,
     "x1": 540.18,
@@ -722,7 +722,7 @@
   {
     "page": 1,
     "line_order": 42,
-    "text": "fromtheCollegereviewsallsubmissionsbeforetheyareaccepted.",
+    "text": "from the College reviews all submissions before they are accepted.",
     "x0": 67.72,
     "top": 627.92,
     "x1": 335.27,
@@ -738,7 +738,7 @@
   {
     "page": 1,
     "line_order": 43,
-    "text": "4.AccessibilityandDataProtection",
+    "text": "4. Accessibility and Data Protection",
     "x0": 67.72,
     "top": 659.11,
     "x1": 214.57,
@@ -754,7 +754,7 @@
   {
     "page": 1,
     "line_order": 44,
-    "text": "Materialswillbesearchablethroughanumberofdatabasesandsearchengines,includingGoogleandGoogle",
+    "text": "Materials will be searchable through a number of databases and search engines, including Google and Google",
     "x0": 67.72,
     "top": 674.95,
     "x1": 540.01,
@@ -770,7 +770,7 @@
   {
     "page": 1,
     "line_order": 45,
-    "text": "Scholar.AsnotedinSection2(Scope),datawillbemadeavailableonlyafterappropriatestepshavebeentakento",
+    "text": "Scholar. As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to",
     "x0": 67.71,
     "top": 686.48,
     "x1": 540.1,
@@ -786,7 +786,7 @@
   {
     "page": 1,
     "line_order": 46,
-    "text": "protectintellectualproperty.Confidentialmaterialwillbehandledaccordingtopoliciesandprotocolsforhuman",
+    "text": "protect intellectual property. Confidential material will be handled according to policies and protocols for human",
     "x0": 67.71,
     "top": 698.0,
     "x1": 540.16,
@@ -802,7 +802,7 @@
   {
     "page": 1,
     "line_order": 47,
-    "text": "subjects,FERPA,andanyotherapplicableregulationsandrestrictions.",
+    "text": "subjects, FERPA, and any other applicable regulations and restrictions.",
     "x0": 67.71,
     "top": 709.27,
     "x1": 352.53,
@@ -818,7 +818,7 @@
   {
     "page": 2,
     "line_order": 1,
-    "text": "Storedmaterialsaredownloadablebutnoteditable,andtheyarebackeduptoassurenolossofdata.Alluploadsare",
+    "text": "Stored materials are downloadable but not editable, and they are backed up to assure no loss of data. All uploads are",
     "x0": 67.7,
     "top": 73.74,
     "x1": 540.14,
@@ -834,7 +834,7 @@
   {
     "page": 2,
     "line_order": 2,
-    "text": "approvedbyacuratorbeforetheyarepublished.",
+    "text": "approved by a curator before they are published.",
     "x0": 67.7,
     "top": 85.02,
     "x1": 261.47,
@@ -850,7 +850,7 @@
   {
     "page": 2,
     "line_order": 3,
-    "text": "5.DerivativeProducts",
+    "text": "5. Derivative Products",
     "x0": 67.7,
     "top": 116.21,
     "x1": 158.99,
@@ -866,7 +866,7 @@
   {
     "page": 2,
     "line_order": 4,
-    "text": "AllmaterialswillcontainacknowledgementofNSFsupportasperNSFpolicy:“",
+    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “",
     "x0": 67.7,
     "top": 131.81,
     "x1": 404.46,
@@ -882,7 +882,7 @@
   {
     "page": 2,
     "line_order": 4,
-    "text": "Thismaterialisbaseduponwork",
+    "text": "This material is based upon work",
     "x0": 404.48,
     "top": 131.81,
     "x1": 539.91,
@@ -898,7 +898,7 @@
   {
     "page": 2,
     "line_order": 5,
-    "text": "supportedbytheNationalScienceFoundationunderGrantNo.(NSFgrantnumber).",
+    "text": "supported by the National Science Foundation under Grant No. (NSF grant number).",
     "x0": 67.7,
     "top": 143.57,
     "x1": 418.74,
@@ -914,7 +914,7 @@
   {
     "page": 2,
     "line_order": 5,
-    "text": "”Additionally,materialswill",
+    "text": "” Additionally, materials will",
     "x0": 418.65,
     "top": 143.57,
     "x1": 540.0,
@@ -930,7 +930,7 @@
   {
     "page": 2,
     "line_order": 6,
-    "text": "containadisclaimerthat“",
+    "text": "contain a disclaimer that “",
     "x0": 67.7,
     "top": 155.09,
     "x1": 174.99,
@@ -946,7 +946,7 @@
   {
     "page": 2,
     "line_order": 6,
-    "text": "anyopinions,findings,andconclusionsorrecommendationsexpressedinthismaterialare",
+    "text": "any opinions, findings, and conclusions or recommendations expressed in this material are",
     "x0": 175.01,
     "top": 155.09,
     "x1": 539.93,
@@ -962,7 +962,7 @@
   {
     "page": 2,
     "line_order": 7,
-    "text": "thoseoftheauthor(s)anddonotnecessarilyreflecttheviewsoftheNationalScienceFoundation",
+    "text": "those of the author(s) and do not necessarily reflect the views of the National Science Foundation",
     "x0": 67.7,
     "top": 166.36,
     "x1": 458.59,
@@ -994,7 +994,7 @@
   {
     "page": 2,
     "line_order": 8,
-    "text": "Inkeepingwithstandardethicalpractices,itisexpectedthatsubsequentusersofthedatawillacknowledgethe",
+    "text": "In keeping with standard ethical practices, it is expected that subsequent users of the data will acknowledge the",
     "x0": 67.7,
     "top": 182.21,
     "x1": 540.01,
@@ -1026,7 +1026,7 @@
   {
     "page": 2,
     "line_order": 10,
-    "text": "6.ArchivingandAccess",
+    "text": "6. Archiving and Access",
     "x0": 67.7,
     "top": 224.44,
     "x1": 167.06,
@@ -1042,7 +1042,7 @@
   {
     "page": 2,
     "line_order": 11,
-    "text": "IfthePIleavesUCR,theproductsintheeScholarshipserieswillremainstoredthere.PIisfreetoreproduceand",
+    "text": "If the PI leaves UCR, the products in the eScholarship series will remain stored there. PI is free to reproduce and",
     "x0": 67.7,
     "top": 240.28,
     "x1": 540.17,
@@ -1058,7 +1058,7 @@
   {
     "page": 2,
     "line_order": 12,
-    "text": "repostthesematerialsathis/hernewinstitution.",
+    "text": "repost these materials at his/her new institution.",
     "x0": 67.7,
     "top": 251.56,
     "x1": 258.42,
