@@ -2,8 +2,8 @@
 Evaluate LLM-labeled JSON against manually labeled ground truth.
 
 Usage:
-    python evaluate.py                       # evaluate all samples, print confusion matrix + F1
-    python evaluate.py data/llmlabeled/sample1_improved.json   # single file
+    python evaluate.py                                          # evaluate all samples
+    python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json  # single file
 """
 import json
 import re
@@ -11,12 +11,18 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
+from dmpbridge import config as _config
+
 LABELS = ["title", "section.title", "section.description", "question.text", "answer.text"]
 SHORT  = ["title", "sec.title", "sec.desc", "q.text", "ans.text"]
 
 _ROOT      = Path(__file__).parent
 MANUAL_DIR = _ROOT / "data/manuallabeled"
 LLM_DIR    = _ROOT / "data/llmlabeled"
+
+# Filename suffix derived from the configured model — e.g. "_llama3.3-70b"
+MODEL_TAG  = _config.MODEL.replace(":", "-").replace("/", "-")
+LLM_SUFFIX = f"_{MODEL_TAG}"
 
 
 # ── Text helpers ─────────────────────────────────────────────────────────────
@@ -175,7 +181,7 @@ def run_all():
 
     for manual_path in samples:
         stem = manual_path.stem.replace("_dmp", "")
-        pred_path = LLM_DIR / f"{stem}_improved.json"
+        pred_path = LLM_DIR / f"{stem}{LLM_SUFFIX}.json"
         if not pred_path.exists():
             print(f"SKIP {stem} — no {pred_path.name}")
             continue

@@ -21,6 +21,33 @@ DEFAULT_HOST    = config.HOST
 DEFAULT_RAW_DIR = "data/pdfplumber"
 
 
+def _smooth_labels(blocks: list[dict]) -> list[dict]:
+    """
+    Fix two systematic LLM errors caused by line-by-line font-style classification:
+
+    1. italic-only lines inside a question are mislabeled section.description —
+       if the previous block is question.text and this block is italic (not bold),
+       it is a continuation of that question.
+
+    2. bold+italic lines that open a question are mislabeled section.title —
+       true section titles in DMP PDFs are never italic; any italic section.title
+       should be question.text.
+    """
+    for i, block in enumerate(blocks):
+        label = block.get("label", "")
+        is_italic = block.get("is_italic", False)
+        is_bold = block.get("is_bold", False)
+
+        # italic-only continuation lines inside a question are mislabeled section.description —
+        # propagate question.text forward as long as lines stay italic-only
+        if label == "section.description" and is_italic and not is_bold and i > 0:
+            prev_label = blocks[i - 1].get("label", "")
+            if prev_label == "question.text":
+                block["label"] = "question.text"
+
+    return blocks
+
+
 def process_pdf(
     pdf_path: Union[str, Path],
     *,
@@ -90,6 +117,9 @@ def process_pdf(
     for b in blocks:
         if not b.get("label"):
             b["label"] = "answer.text"
+
+    # ── Step 5b: smooth context-dependent mislabels ───────────────────────────
+    blocks = _smooth_labels(blocks)
 
     # ── Step 6: save labeled JSON ─────────────────────────────────────────────
     if output:

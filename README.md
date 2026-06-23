@@ -36,7 +36,7 @@ dmpbridge/
 data/
 ├── pdfsamples/     # sample DMP PDFs
 ├── manuallabeled/  # hand-labeled ground truth JSON
-├── llmlabeled/     # LLM-labeled JSON output
+├── llmlabeled/     # LLM-labeled JSON output  (named <sample>_<model>.json)
 └── pdfplumber/     # (auto-generated) raw pdfplumber JSON before labeling
 
 notebooks/
@@ -160,24 +160,26 @@ Compare LLM output against manually labeled ground truth in `data/manuallabeled/
 python evaluate.py
 
 # Evaluate a single file
-python evaluate.py data/llmlabeled/sample1_improved.json
+python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json
 ```
+
+Output files are automatically matched by model name — changing `MODEL` in `dmpbridge/config.py` updates both the pipeline output path and the evaluation target with no other changes needed.
 
 Example output:
 
 ```
-sample1       matched= 72  accuracy= 97.2%
-sample2       matched=163  accuracy= 92.0%
+sample1       matched= 78  accuracy= 97.4%
+sample2       matched=171  accuracy= 96.5%
 ...
-Overall accuracy  96.4%
+Overall accuracy  97.2%
 
 Label                    Precision    Recall        F1
 ------------------------------------------------------
 title                       100.0%     80.0%     88.9%
-section.title                80.6%     92.6%     86.2%
-section.description          80.0%    100.0%     88.9%
-question.text                87.1%     69.2%     77.1%
-answer.text                 100.0%     98.4%     99.2%
+section.title                82.4%     87.5%     84.8%
+section.description          92.3%    100.0%     96.0%
+question.text                95.2%     90.9%     93.0%
+answer.text                  99.1%     99.6%     99.3%
 ```
 
 ### Notebook (visual)
@@ -217,17 +219,17 @@ Open **http://localhost:8000** — upload files through the browser UI.
 ## End-to-end workflow
 
 ```
-1. Run the pipeline
-   dmpbridge data/pdfsamples/sample1.pdf -o data/llmlabeled/sample1_labeled.json
+1. Run the pipeline  (output named after the model automatically)
+   dmpbridge data/pdfsamples/sample1.pdf -o data/llmlabeled/sample1_llama3.3-70b.json
 
 2. Evaluate against ground truth
-   python evaluate.py data/llmlabeled/sample1_labeled.json
+   python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json
 
 3. Open the viewer
    Open dmpbridge.html in a browser  (or run: uvicorn main:app --reload)
 
 4. Load files
-   Load data/pdfsamples/sample1.pdf + data/llmlabeled/sample1_labeled.json
+   Load data/pdfsamples/sample1.pdf + data/llmlabeled/sample1_llama3.3-70b.json
 
 5. Inspect
    Click any row in the table → the corresponding block highlights in the PDF
