@@ -248,16 +248,20 @@ Output files are automatically matched by model name — changing `MODEL` in `dm
 Example output (llama3.3:70b):
 
 ```
-sample1       total= 78  unmatched= 0  accuracy= 97.4%
-sample2       total=171  unmatched= 0  accuracy= 96.5%
-sample3       total= 69  unmatched= 0  accuracy= 98.6%
-sample4       total= 78  unmatched= 0  accuracy=100.0%
-sample5       total= 80  unmatched= 0  accuracy= 98.8%
-sample6       total= 24  unmatched= 3  accuracy= 75.0%
-sample7       total= 17  unmatched= 0  accuracy= 94.1%
-sample8       total= 59  unmatched= 0  accuracy= 96.6%
-sample9       total= 85  unmatched= 0  accuracy= 98.8%
-sample10      total= 68  unmatched= 0  accuracy= 95.6%
+Sample        Total  Correct  Errors  Accuracy  Formula
+----------------------------------------------------------
+sample1          78       76       2     97.4%  76/78
+sample2         171      165       6     96.5%  165/171
+sample3          69       68       1     98.6%  68/69
+sample4          78       78       0    100.0%  78/78
+sample5          80       79       1     98.8%  79/80
+sample6          24       18       6     75.0%  18/24
+sample7          17       16       1     94.1%  16/17
+sample8          59       57       2     96.6%  57/59
+sample9          85       84       1     98.8%  84/85
+sample10         68       65       3     95.6%  65/68
+----------------------------------------------------------
+TOTAL           729      706      23     96.8%  706/729
 
 Label                    Precision    Recall        F1   Support
 --------------------------------------------------------------

@@ -164,6 +164,17 @@ def print_f1(confusion: dict):
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
+def _sample_header():
+    print(f"{'Sample':<12}  {'Total':>5}  {'Correct':>7}  {'Errors':>6}  {'Accuracy':>8}  Formula")
+    print("-" * 58)
+
+
+def _sample_row(stem: str, n: int, tp: int) -> None:
+    errors = n - tp
+    acc    = tp / n * 100 if n else 0.0
+    print(f"{stem:<12}  {n:>5}  {tp:>7}  {errors:>6}  {acc:>7.1f}%  {tp}/{n}")
+
+
 def run_single(pred_path: Path):
     stem = pred_path.stem.split("_")[0]  # e.g. "sample1"
     manual_path = MANUAL_DIR / f"{stem}_dmp.json"
@@ -173,13 +184,14 @@ def run_single(pred_path: Path):
     gold = extract_gold(manual_path)
     confusion = evaluate_sample(pred_path, gold)
 
-    tp       = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
-    n        = sum(sum(v.values()) for v in confusion.values())
-    no_match = sum(confusion.get(NO_MATCH, {}).values())
+    tp = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
+    n  = sum(sum(v.values()) for v in confusion.values())
     print(f"\n{'='*62}")
     print(f"  {pred_path.name}  vs  {manual_path.name}")
-    print(f"  total={n}  unmatched={no_match}  accuracy={tp/n*100:.1f}%" if n else "")
-    print(f"{'='*62}")
+    print(f"{'='*62}\n")
+    _sample_header()
+    _sample_row(stem, n, tp)
+    print()
     print("\nConfusion matrix  (* = correct)\n")
     print_confusion(confusion)
     print_f1(confusion)
@@ -188,6 +200,9 @@ def run_single(pred_path: Path):
 def run_all():
     total_confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     samples = sorted(MANUAL_DIR.glob("*_dmp.json"))
+
+    _sample_header()
+    total_n = total_tp = 0
 
     for manual_path in samples:
         stem = manual_path.stem.replace("_dmp", "")
@@ -199,14 +214,17 @@ def run_all():
         confusion = evaluate_sample(pred_path, gold)
         add_confusion(total_confusion, confusion)
 
-        # Per-sample accuracy (NO_MATCH blocks count as errors)
-        tp       = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
-        n        = sum(sum(v.values()) for v in confusion.values())
-        no_match = sum(confusion.get(NO_MATCH, {}).values())
+        tp = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
+        n  = sum(sum(v.values()) for v in confusion.values())
         if n:
-            print(f"{stem:<12}  total={n:>3}  unmatched={no_match:>2}  accuracy={tp/n*100:>5.1f}%")
+            _sample_row(stem, n, tp)
         else:
             print(f"{stem:<12}  no blocks")
+        total_n  += n
+        total_tp += tp
+
+    print("-" * 58)
+    _sample_row("TOTAL", total_n, total_tp)
 
     print(f"\n{'='*62}")
     print("  AGGREGATE  (all samples pooled)")
