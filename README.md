@@ -173,16 +173,16 @@ Output files are automatically matched by model name — changing `MODEL` in `dm
 Example output:
 
 ```
-sample1       matched= 78  accuracy= 97.4%
-sample2       matched=171  accuracy= 96.5%
-sample3       matched= 69  accuracy= 98.6%
-sample4       matched= 78  accuracy=100.0%
-sample5       matched= 80  accuracy= 98.8%
-sample6       matched= 21  accuracy= 85.7%
-sample7       matched= 17  accuracy= 94.1%
-sample8       matched= 59  accuracy= 96.6%
-sample9       matched= 85  accuracy= 98.8%
-sample10      matched= 68  accuracy= 95.6%
+sample1       total= 78  unmatched= 0  accuracy= 97.4%
+sample2       total=171  unmatched= 0  accuracy= 96.5%
+sample3       total= 69  unmatched= 0  accuracy= 98.6%
+sample4       total= 78  unmatched= 0  accuracy=100.0%
+sample5       total= 80  unmatched= 0  accuracy= 98.8%
+sample6       total= 24  unmatched= 3  accuracy= 75.0%
+sample7       total= 17  unmatched= 0  accuracy= 94.1%
+sample8       total= 59  unmatched= 0  accuracy= 96.6%
+sample9       total= 85  unmatched= 0  accuracy= 98.8%
+sample10      total= 68  unmatched= 0  accuracy= 95.6%
 
 Label                    Precision    Recall        F1   Support
 --------------------------------------------------------------
@@ -194,6 +194,8 @@ answer.text                 100.0%     98.1%     99.0%       577
 --------------------------------------------------------------
 Overall accuracy                                 97.2%       726
 ```
+
+`unmatched` counts blocks where no gold entry reaches ≥ 75% token containment — these are counted as errors in the per-sample accuracy. The confusion matrix and F1 scores cover only the 726 blocks that were successfully matched to a gold label.
 
 ### Notebook (visual)
 
