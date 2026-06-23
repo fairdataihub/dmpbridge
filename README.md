@@ -26,17 +26,19 @@ Each text block is classified as one of:
 
 ```
 dmpbridge/
-├── __init__.py     # exports process_pdf
+├── __init__.py     # exports process_pdf, to_structured, convert_file
 ├── extractor.py    # pdfplumber text extraction + page image export
 ├── classifier.py   # Ollama LLM classifier (few-shot + context window)
-├── pipeline.py     # combines extraction + classification
+├── pipeline.py     # combines extraction + classification + smoothing
+├── converter.py    # converts flat labeled JSON → hierarchical manual schema
 ├── cli.py          # dmpbridge command-line tool
 └── config.py       # ← edit here to change model / host / batch size
 
 data/
 ├── pdfsamples/     # sample DMP PDFs
-├── manuallabeled/  # hand-labeled ground truth JSON
-├── llmlabeled/     # LLM-labeled JSON output  (named <sample>_<model>.json)
+├── manuallabeled/  # hand-labeled ground truth JSON  (<sample>_dmp.json)
+├── llmlabeled/     # LLM output: flat (<sample>_<model>.json)
+│                   #             structured (<sample>_<model>_structured.json)
 └── pdfplumber/     # (auto-generated) raw pdfplumber JSON before labeling
 
 notebooks/
@@ -140,7 +142,15 @@ dmpbridge document.pdf --no-raw
 ```python
 from dmpbridge import process_pdf
 
+# Flat output only (default)
 blocks = process_pdf("document.pdf", output="labeled.json")
+
+# Both flat + structured in one call
+blocks = process_pdf(
+    "document.pdf",
+    output="labeled.json",
+    structured_output="labeled_structured.json",
+)
 
 # Override model
 blocks = process_pdf("document.pdf", model="llama3.1:8b", output="labeled.json")
@@ -150,6 +160,52 @@ from collections import Counter
 print(Counter(b["label"] for b in blocks))
 # Counter({'answer.text': 52, 'question.text': 18, 'section.description': 8,
 #          'section.title': 4, 'title': 1})
+```
+
+### Convert an existing flat file to structured
+
+```python
+from dmpbridge import convert_file
+
+# Writes sample1_llama3.3-70b_structured.json next to the input
+convert_file("data/llmlabeled/sample1_llama3.3-70b.json")
+
+# Or specify the output path explicitly
+convert_file(
+    "data/llmlabeled/sample1_llama3.3-70b.json",
+    "data/llmlabeled/sample1_structured.json",
+)
+```
+
+The structured JSON follows the same schema as the manual annotations in `data/manuallabeled/`:
+
+```json
+{
+  "narrative": {
+    "template": {
+      "title": "DATA MANAGEMENT AND SHARING PLAN",
+      "section": [
+        {
+          "title": "Element 1: Data Type:",
+          "description": "",
+          "order": 1,
+          "question": [
+            {
+              "text": "A. Types and amount of scientific data...",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "This secondary data analysis project..."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
 ```
 
 ---
@@ -237,16 +293,20 @@ Open **http://localhost:8000** — upload files through the browser UI.
 1. Run the pipeline  (output named after the model automatically)
    dmpbridge data/pdfsamples/sample1.pdf -o data/llmlabeled/sample1_llama3.3-70b.json
 
-2. Evaluate against ground truth
+2. Convert to hierarchical structured JSON (same schema as manual annotations)
+   python -c "from dmpbridge import convert_file; convert_file('data/llmlabeled/sample1_llama3.3-70b.json')"
+   → writes data/llmlabeled/sample1_llama3.3-70b_structured.json
+
+3. Evaluate against ground truth
    python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json
 
-3. Open the viewer
+4. Open the viewer
    Open dmpbridge.html in a browser  (or run: uvicorn main:app --reload)
 
-4. Load files
+5. Load files
    Load data/pdfsamples/sample1.pdf + data/llmlabeled/sample1_llama3.3-70b.json
 
-5. Inspect
+6. Inspect
    Click any row in the table → the corresponding block highlights in the PDF
    Use the Label filter to show only sections, questions, or answers
 ```
