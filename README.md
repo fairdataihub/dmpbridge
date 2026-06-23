@@ -245,16 +245,16 @@ Output files are automatically matched by model name — changing `MODEL` in `dm
 Example output:
 
 ```
-sample1       total= 78  unmatched= 0  accuracy= 97.4%
-sample2       total=171  unmatched= 0  accuracy= 96.5%
-sample3       total= 69  unmatched= 0  accuracy= 98.6%
-sample4       total= 78  unmatched= 0  accuracy=100.0%
-sample5       total= 80  unmatched= 0  accuracy= 98.8%
-sample6       total= 24  unmatched= 3  accuracy= 75.0%
-sample7       total= 17  unmatched= 0  accuracy= 94.1%
-sample8       total= 59  unmatched= 0  accuracy= 96.6%
-sample9       total= 85  unmatched= 0  accuracy= 98.8%
-sample10      total= 68  unmatched= 0  accuracy= 95.6%
+sample1       total= 78  correct=76    unmatched= 0  accuracy= 97.4%
+sample2       total=171  correct=165   unmatched= 0  accuracy= 96.5%
+sample3       total= 69  correct=68    unmatched= 0  accuracy= 98.6%
+sample4       total= 78  correct=78    unmatched= 0  accuracy=100.0%
+sample5       total= 80  correct=79    unmatched= 0  accuracy= 98.8%
+sample6       total= 24  correct=18    unmatched= 3  accuracy= 75.0%
+sample7       total= 17  correct=16    unmatched= 0  accuracy= 94.1%
+sample8       total= 59  correct=57    unmatched= 0  accuracy= 96.6%
+sample9       total= 85  correct=84    unmatched= 0  accuracy= 98.8%
+sample10      total= 68  correct=65    unmatched= 0  accuracy= 95.6%
 
 Label                    Precision    Recall        F1   Support
 --------------------------------------------------------------
