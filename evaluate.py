@@ -94,15 +94,21 @@ def match(block_text: str, gold_pairs: list[tuple[str, str]]) -> str | None:
 
 # ── Evaluate one sample ───────────────────────────────────────────────────────
 
+NO_MATCH = "__no_match__"
+
+
 def evaluate_sample(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> dict:
-    """Return confusion dict {true_label: {pred_label: count}}."""
+    """Return confusion dict {true_label: {pred_label: count}}.
+
+    Blocks with no gold match (containment < 0.75 for every gold entry) are
+    counted under the key NO_MATCH so they contribute to the error total
+    instead of being silently skipped.
+    """
     blocks = json.loads(pred_path.read_text(encoding="utf-8"))
     confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
 
     for block in blocks:
-        gold_label = match(block["text"], gold_pairs)
-        if gold_label is None:
-            continue
+        gold_label = match(block["text"], gold_pairs) or NO_MATCH
         pred_label = block.get("label", "answer.text")
         confusion[gold_label][pred_label] += 1
 
@@ -167,8 +173,12 @@ def run_single(pred_path: Path):
     gold = extract_gold(manual_path)
     confusion = evaluate_sample(pred_path, gold)
 
+    tp       = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
+    n        = sum(sum(v.values()) for v in confusion.values())
+    no_match = sum(confusion.get(NO_MATCH, {}).values())
     print(f"\n{'='*62}")
     print(f"  {pred_path.name}  vs  {manual_path.name}")
+    print(f"  total={n}  unmatched={no_match}  accuracy={tp/n*100:.1f}%" if n else "")
     print(f"{'='*62}")
     print("\nConfusion matrix  (* = correct)\n")
     print_confusion(confusion)
@@ -189,10 +199,14 @@ def run_all():
         confusion = evaluate_sample(pred_path, gold)
         add_confusion(total_confusion, confusion)
 
-        # Per-sample accuracy
-        tp = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
-        n  = sum(sum(v.values()) for v in confusion.values())
-        print(f"{stem:<12}  matched={n:>3}  accuracy={tp/n*100:>5.1f}%" if n else f"{stem:<12}  no matches")
+        # Per-sample accuracy (NO_MATCH blocks count as errors)
+        tp       = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
+        n        = sum(sum(v.values()) for v in confusion.values())
+        no_match = sum(confusion.get(NO_MATCH, {}).values())
+        if n:
+            print(f"{stem:<12}  total={n:>3}  unmatched={no_match:>2}  accuracy={tp/n*100:>5.1f}%")
+        else:
+            print(f"{stem:<12}  no blocks")
 
     print(f"\n{'='*62}")
     print("  AGGREGATE  (all samples pooled)")
