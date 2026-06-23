@@ -2,7 +2,7 @@
   {
     "page": 1,
     "line_order": 1,
-    "text": "CenterforBio-InspiredEnergyScience",
+    "text": "Center for Bio-Inspired Energy Science",
     "x0": 78.0,
     "top": 66.16,
     "x1": 300.11,
@@ -18,7 +18,7 @@
   {
     "page": 1,
     "line_order": 2,
-    "text": "1.Datasharingandpreservation",
+    "text": "1. Data sharing and preservation",
     "x0": 78.0,
     "top": 90.16,
     "x1": 262.87,
@@ -34,7 +34,7 @@
   {
     "page": 1,
     "line_order": 3,
-    "text": "Datamanagementplansshoulddescribewhetherandhowdatageneratedinthecourse",
+    "text": "Data management plans should describe whether and how data generated in the course",
     "x0": 78.0,
     "top": 128.52,
     "x1": 527.27,
@@ -50,7 +50,7 @@
   {
     "page": 1,
     "line_order": 4,
-    "text": "oftheproposedresearchwillbesharedandpreserved.Iftheplanisnottoshareand/or",
+    "text": "of the proposed research will be shared and preserved. If the plan is not to share and/or",
     "x0": 78.0,
     "top": 142.02,
     "x1": 527.87,
@@ -66,7 +66,7 @@
   {
     "page": 1,
     "line_order": 5,
-    "text": "preservecertaindata,thentheplanmustexplainthebasisofthedecision(forexample,",
+    "text": "preserve certain data, then the plan must explain the basis of the decision (for example,",
     "x0": 78.0,
     "top": 154.77,
     "x1": 526.34,
@@ -82,7 +82,7 @@
   {
     "page": 1,
     "line_order": 6,
-    "text": "cost/benefitconsiderations,otherparametersoffeasibility,scientificappropriateness,or",
+    "text": "cost/benefit considerations, other parameters of feasibility, scientific appropriateness, or",
     "x0": 78.0,
     "top": 168.27,
     "x1": 531.35,
@@ -98,7 +98,7 @@
   {
     "page": 1,
     "line_order": 7,
-    "text": "limitationsdiscussedin#4).Ataminimum,DMPsmustdescribehowdatasharingand",
+    "text": "limitations discussed in #4). At a minimum, DMPs must describe how data sharing and",
     "x0": 78.0,
     "top": 181.77,
     "x1": 525.18,
@@ -114,7 +114,7 @@
   {
     "page": 1,
     "line_order": 8,
-    "text": "preservationwillenablevalidationofresults,orhowresultscouldbevalidatedifdata",
+    "text": "preservation will enable validation of results, or how results could be validated if data",
     "x0": 78.0,
     "top": 194.52,
     "x1": 518.56,
@@ -130,7 +130,7 @@
   {
     "page": 1,
     "line_order": 9,
-    "text": "arenotsharedorpreserved.",
+    "text": "are not shared or preserved.",
     "x0": 78.0,
     "top": 208.02,
     "x1": 223.23,
@@ -146,7 +146,7 @@
   {
     "page": 1,
     "line_order": 10,
-    "text": "Roles&Responsibilities.",
+    "text": "Roles & Responsibilities.",
     "x0": 78.0,
     "top": 233.63,
     "x1": 194.34,
@@ -162,7 +162,7 @@
   {
     "page": 1,
     "line_order": 10,
-    "text": "Fortheproposedresearch,DirectorSamuelStuppwithhelpfromthe",
+    "text": "For the proposed research, Director Samuel Stupp with help from the",
     "x0": 197.1,
     "top": 233.63,
     "x1": 501.44,
@@ -178,7 +178,7 @@
   {
     "page": 1,
     "line_order": 11,
-    "text": "ExecutiveDirectorofResearchwilltaketheleadandresponsibilityforcoordinatingandensuringdata",
+    "text": "Executive Director of Research will take the lead and responsibility for coordinating and ensuring data",
     "x0": 78.0,
     "top": 246.38,
     "x1": 529.75,
@@ -194,7 +194,7 @@
   {
     "page": 1,
     "line_order": 12,
-    "text": "storageandaccessandcommunicatingexpectationstoallinvestigators.However,allsenior",
+    "text": "storage and access and communicating expectations to all investigators. However, all senior",
     "x0": 78.0,
     "top": 259.88,
     "x1": 482.01,
@@ -210,7 +210,7 @@
   {
     "page": 1,
     "line_order": 13,
-    "text": "investigatorswillalsobeinvolvedinmanaging,storing,anddisseminatingtheresultsoftheproject",
+    "text": "investigators will also be involved in managing, storing, and disseminating the results of the project",
     "x0": 78.0,
     "top": 272.63,
     "x1": 516.39,
@@ -226,7 +226,7 @@
   {
     "page": 1,
     "line_order": 14,
-    "text": "andwillberesponsibleforcheckingthattheplanisbeingfollowed.",
+    "text": "and will be responsible for checking that the plan is being followed.",
     "x0": 78.0,
     "top": 286.13,
     "x1": 376.54,
@@ -242,7 +242,7 @@
   {
     "page": 1,
     "line_order": 15,
-    "text": "DataTypesandSources.",
+    "text": "Data Types and Sources.",
     "x0": 78.0,
     "top": 334.13,
     "x1": 192.83,
@@ -258,7 +258,7 @@
   {
     "page": 1,
     "line_order": 15,
-    "text": "Abrief,high-leveldescriptionofthedatatobegeneratedorusedthrough",
+    "text": "A brief, high-level description of the data to be generated or used through",
     "x0": 195.59,
     "top": 334.13,
     "x1": 520.72,
@@ -274,7 +274,7 @@
   {
     "page": 1,
     "line_order": 16,
-    "text": "thecourseoftheproposedresearchandwhichoftheseareconsideredDigitalResearchData",
+    "text": "the course of the proposed research and which of these are considered Digital Research Data",
     "x0": 78.0,
     "top": 347.63,
     "x1": 488.91,
@@ -290,7 +290,7 @@
   {
     "page": 1,
     "line_order": 17,
-    "text": "necessarytoValidatetheresearchfindings.",
+    "text": "necessary to Validate the research findings.",
     "x0": 78.0,
     "top": 361.13,
     "x1": 268.9,
@@ -306,7 +306,7 @@
   {
     "page": 1,
     "line_order": 18,
-    "text": "Theproposedresearchinthisproposalincludesbothcomputationalandexperimentaldatathatwillbe",
+    "text": "The proposed research in this proposal includes both computational and experimental data that will be",
     "x0": 78.0,
     "top": 385.13,
     "x1": 527.33,
@@ -322,7 +322,7 @@
   {
     "page": 1,
     "line_order": 19,
-    "text": "generatedatNorthwesternUniversityanditsfivepartnerinstitutions(ColumbiaUniversity,Harvard",
+    "text": "generated at Northwestern University and its five partner institutions (Columbia University, Harvard",
     "x0": 78.0,
     "top": 397.88,
     "x1": 519.92,
@@ -338,7 +338,7 @@
   {
     "page": 1,
     "line_order": 20,
-    "text": "University,UniversityofMichigan,andUniversityofPittsburgh).Thecomputationaldataincludes",
+    "text": "University, University of Michigan, and University of Pittsburgh). The computational data includes",
     "x0": 78.0,
     "top": 411.38,
     "x1": 514.66,
@@ -354,7 +354,7 @@
   {
     "page": 1,
     "line_order": 21,
-    "text": "coarse-grainedandatomisticsimulations,finiteelementanalysis,etc.,whichyieldtrajectoriesor",
+    "text": "coarse-grained and atomistic simulations, finite element analysis, etc., which yield trajectories or",
     "x0": 78.0,
     "top": 424.88,
     "x1": 503.81,
@@ -370,7 +370,7 @@
   {
     "page": 1,
     "line_order": 22,
-    "text": "ensemblesofconfigurations.Theexperimentaldataisgeneratedbyavarietyofdifferentsources",
+    "text": "ensembles of configurations. The experimental data is generated by a variety of different sources",
     "x0": 78.0,
     "top": 437.63,
     "x1": 503.69,
@@ -386,7 +386,7 @@
   {
     "page": 1,
     "line_order": 23,
-    "text": "includespectroscopy,microscopy,crystallography,magneticmeasurements,andX-rayscattering(from",
+    "text": "include spectroscopy, microscopy, crystallography, magnetic measurements, and X-ray scattering (from",
     "x0": 78.0,
     "top": 451.13,
     "x1": 533.41,
@@ -402,7 +402,7 @@
   {
     "page": 1,
     "line_order": 24,
-    "text": "theAdvancedPhotonSourceatArgonneNationalLab).",
+    "text": "the Advanced Photon Source at Argonne National Lab).",
     "x0": 78.0,
     "top": 463.88,
     "x1": 323.23,
@@ -418,7 +418,7 @@
   {
     "page": 1,
     "line_order": 25,
-    "text": "Inmostcases,therawdatawillbeconvertedtosomeotherformat(graph,table,schematic,video,etc.)",
+    "text": "In most cases, the raw data will be converted to some other format (graph, table, schematic, video, etc.)",
     "x0": 78.0,
     "top": 488.63,
     "x1": 532.49,
@@ -434,7 +434,7 @@
   {
     "page": 1,
     "line_order": 26,
-    "text": "priortouseinpublications,conferencetalks,etc.",
+    "text": "prior to use in publications, conference talks, etc.",
     "x0": 78.0,
     "top": 501.38,
     "x1": 294.11,
@@ -450,7 +450,7 @@
   {
     "page": 1,
     "line_order": 27,
-    "text": "ContentandFormat.",
+    "text": "Content and Format.",
     "x0": 78.0,
     "top": 550.13,
     "x1": 177.23,
@@ -466,7 +466,7 @@
   {
     "page": 1,
     "line_order": 27,
-    "text": "Astatementofplansfordataandmetadatacontentandformatincluding,where",
+    "text": "A statement of plans for data and metadata content and format including, where",
     "x0": 179.78,
     "top": 550.13,
     "x1": 532.43,
@@ -482,7 +482,7 @@
   {
     "page": 1,
     "line_order": 28,
-    "text": "applicable,adescriptionofdocumentationplans,annotationofrelevantsoftware,andtherationalefor",
+    "text": "applicable, a description of documentation plans, annotation of relevant software, and the rationale for",
     "x0": 78.0,
     "top": 562.88,
     "x1": 533.32,
@@ -498,7 +498,7 @@
   {
     "page": 1,
     "line_order": 29,
-    "text": "theselectionofappropriatestandards.(Existing,acceptedcommunitystandardsshouldbeusedwhere",
+    "text": "the selection of appropriate standards. (Existing, accepted community standards should be used where",
     "x0": 78.0,
     "top": 576.38,
     "x1": 528.82,
@@ -514,7 +514,7 @@
   {
     "page": 1,
     "line_order": 30,
-    "text": "possible.Wherecommunitystandardsaremissingorinadequate,theDMPcouldproposealternate",
+    "text": "possible. Where community standards are missing or inadequate, the DMP could propose alternate",
     "x0": 78.0,
     "top": 589.88,
     "x1": 514.59,
@@ -530,7 +530,7 @@
   {
     "page": 1,
     "line_order": 31,
-    "text": "strategiesthatfacilitatedatasharing,andshouldadvisethesponsoringprogramofanyneedto",
+    "text": "strategies that facilitate data sharing, and should advise the sponsoring program of any need to",
     "x0": 78.0,
     "top": 602.63,
     "x1": 499.25,
@@ -546,7 +546,7 @@
   {
     "page": 1,
     "line_order": 32,
-    "text": "developorgeneralizestandards.)",
+    "text": "develop or generalize standards.)",
     "x0": 78.0,
     "top": 616.13,
     "x1": 225.35,
@@ -562,7 +562,7 @@
   {
     "page": 1,
     "line_order": 33,
-    "text": "Dataareoutputfromthevariousinstrumentsinlabinformats,whichareoccasionallyproprietary.",
+    "text": "Data are output from the various instruments in lab in formats, which are occasionally proprietary.",
     "x0": 78.0,
     "top": 640.13,
     "x1": 510.13,
@@ -578,7 +578,7 @@
   {
     "page": 1,
     "line_order": 34,
-    "text": "Whenpossible,thedataareconvertedtocommadelimitedorotheruniversallyaccessibleformats.If",
+    "text": "When possible, the data are converted to comma delimited or other universally accessible formats. If",
     "x0": 78.0,
     "top": 664.13,
     "x1": 521.19,
@@ -594,7 +594,7 @@
   {
     "page": 1,
     "line_order": 35,
-    "text": "theformatisnotcommadelimited,allinstrumentscanexportintoaformatcompatiblewithcommon",
+    "text": "the format is not comma delimited, all instruments can export into a format compatible with common",
     "x0": 78.0,
     "top": 677.63,
     "x1": 523.69,
@@ -610,7 +610,7 @@
   {
     "page": 1,
     "line_order": 36,
-    "text": "softwaresuchasMicrosoftExcel,OriginPro,Shelx,etc.Filesaretypicallystoredelectronicallyon",
+    "text": "software such as Microsoft Excel, OriginPro, Shelx, etc. Files are typically stored electronically on",
     "x0": 78.0,
     "top": 690.38,
     "x1": 512.99,
@@ -626,7 +626,7 @@
   {
     "page": 1,
     "line_order": 37,
-    "text": "groupserverswithfilenamesthatarerelatedtolabnotebookpages.Datasharingandpreservationwill",
+    "text": "group servers with file names that are related to lab notebook pages. Data sharing and preservation will",
     "x0": 78.0,
     "top": 703.88,
     "x1": 531.89,
@@ -642,7 +642,7 @@
   {
     "page": 1,
     "line_order": 38,
-    "text": "enablevalidationofresultsbyenablingstudentstorepeatsyntheticprepsanddataanalysis.Every",
+    "text": "enable validation of results by enabling students to repeat synthetic preps and data analysis. Every",
     "x0": 78.0,
     "top": 717.38,
     "x1": 509.32,
@@ -658,7 +658,7 @@
   {
     "page": 2,
     "line_order": 1,
-    "text": "pieceofdatafittingincludingtheequationsusedtofitthedataarebackeduponlocalgroupserversor",
+    "text": "piece of data fitting including the equations used to fit the data are backed up on local group servers or",
     "x0": 78.0,
     "top": 58.13,
     "x1": 528.84,
@@ -674,7 +674,7 @@
   {
     "page": 2,
     "line_order": 2,
-    "text": "tosecurecloudservices.Thisenablesvalidationthroughequationchecking,reproducingdataand",
+    "text": "to secure cloud services. This enables validation through equation checking, reproducing data and",
     "x0": 78.0,
     "top": 71.63,
     "x1": 508.19,
@@ -690,7 +690,7 @@
   {
     "page": 2,
     "line_order": 3,
-    "text": "analyses.Binarydatafileswillbeaccompaniedbyatextfiledescribingtheircontentandbysource",
+    "text": "analyses. Binary data files will be accompanied by a text file describing their content and by source",
     "x0": 78.0,
     "top": 84.38,
     "x1": 515.4,
@@ -706,7 +706,7 @@
   {
     "page": 2,
     "line_order": 4,
-    "text": "codeforreadingthebinaryformat.Thevideowillbeencodedfollowingstandardconventionsreadable",
+    "text": "code for reading the binary format. The video will be encoded following standard conventions readable",
     "x0": 78.0,
     "top": 97.88,
     "x1": 532.29,
@@ -722,7 +722,7 @@
   {
     "page": 2,
     "line_order": 5,
-    "text": "bythemajorityofwidelyandfreelyavailablevideodecodingprograms.Losslesscompressionofthe",
+    "text": "by the majority of widely and freely available video decoding programs. Lossless compression of the",
     "x0": 78.0,
     "top": 110.63,
     "x1": 522.76,
@@ -738,7 +738,7 @@
   {
     "page": 2,
     "line_order": 6,
-    "text": "datafilesmaybeperformedonlargedatasets.",
+    "text": "data files may be performed on large data sets.",
     "x0": 78.0,
     "top": 124.13,
     "x1": 282.6,
@@ -754,7 +754,7 @@
   {
     "page": 2,
     "line_order": 7,
-    "text": "Publictalksandoutreachactivitieswillgenerateaudioandvideofiles(.mpeg,.avietc)andisexpected",
+    "text": "Public talks and outreach activities will generate audio and video files (.mpeg, .avi etc) and is expected",
     "x0": 78.0,
     "top": 148.13,
     "x1": 530.66,
@@ -770,7 +770,7 @@
   {
     "page": 2,
     "line_order": 8,
-    "text": "tobelessthanXXGB.ExperimentaltechniqueswillgeneratetextandMicrosoftOfficefilesand",
+    "text": "to be less than XX GB. Experimental techniques will generate text and Microsoft Office files and",
     "x0": 78.0,
     "top": 161.63,
     "x1": 506.37,
@@ -786,7 +786,7 @@
   {
     "page": 2,
     "line_order": 9,
-    "text": "videosthatareexpectedtobelessthanXXGB.",
+    "text": "videos that are expected to be less than XX GB.",
     "x0": 78.0,
     "top": 174.38,
     "x1": 288.62,
@@ -802,7 +802,7 @@
   {
     "page": 2,
     "line_order": 10,
-    "text": "DataSharingandDataPreservation.",
+    "text": "Data Sharing and Data Preservation.",
     "x0": 78.0,
     "top": 199.13,
     "x1": 251.54,
@@ -818,7 +818,7 @@
   {
     "page": 2,
     "line_order": 10,
-    "text": "Adescriptionoftheplansfordatasharingandpreservation.",
+    "text": "A description of the plans for data sharing and preservation.",
     "x0": 254.3,
     "top": 199.13,
     "x1": 521.16,
@@ -834,7 +834,7 @@
   {
     "page": 2,
     "line_order": 11,
-    "text": "Thisshouldinclude,whereappropriate:",
+    "text": "This should include, where appropriate:",
     "x0": 78.0,
     "top": 211.88,
     "x1": 254.58,
@@ -850,7 +850,7 @@
   {
     "page": 2,
     "line_order": 12,
-    "text": "theanticipatedmeansforsharingandrationaleforanyrestrictionsonwhomayaccessthedata",
+    "text": "the anticipated means for sharing and rationale for any restrictions on who may access the data",
     "x0": 108.0,
     "top": 236.63,
     "x1": 531.06,
@@ -866,7 +866,7 @@
   {
     "page": 2,
     "line_order": 13,
-    "text": "andunderwhatconditions;",
+    "text": "and under what conditions;",
     "x0": 108.0,
     "top": 249.38,
     "x1": 229.22,
@@ -882,7 +882,7 @@
   {
     "page": 2,
     "line_order": 14,
-    "text": "atimelineforsharingandpreservationthataddressesboththeminimumlengthoftimethedata",
+    "text": "a timeline for sharing and preservation that addresses both the minimum length of time the data",
     "x0": 108.0,
     "top": 262.88,
     "x1": 530.05,
@@ -898,7 +898,7 @@
   {
     "page": 2,
     "line_order": 15,
-    "text": "willbeavailableandanyanticipateddelaytodataaccessafterresearchfindingsarepublished;",
+    "text": "will be available and any anticipated delay to data access after research findings are published;",
     "x0": 108.0,
     "top": 275.63,
     "x1": 531.12,
@@ -914,7 +914,7 @@
   {
     "page": 2,
     "line_order": 16,
-    "text": "anyspecialrequirementsfordatasharing,forexample,proprietarysoftwareneededtoaccess",
+    "text": "any special requirements for data sharing, for example, proprietary software needed to access",
     "x0": 108.0,
     "top": 289.13,
     "x1": 522.18,
@@ -930,7 +930,7 @@
   {
     "page": 2,
     "line_order": 17,
-    "text": "orinterpretdata,applicablepolicies,provisions,andlicensesforre-useandre-distribution,and",
+    "text": "or interpret data, applicable policies, provisions, and licenses for re-use and re-distribution, and",
     "x0": 108.0,
     "top": 301.88,
     "x1": 533.2,
@@ -946,7 +946,7 @@
   {
     "page": 2,
     "line_order": 18,
-    "text": "fortheproductionofderivatives,includingguidanceforhowdataanddataproductsshouldbe",
+    "text": "for the production of derivatives, including guidance for how data and data products should be",
     "x0": 108.0,
     "top": 315.38,
     "x1": 526.38,
@@ -978,7 +978,7 @@
   {
     "page": 2,
     "line_order": 20,
-    "text": "anyresourcesandcapabilities(equipment,connections,systems,software,expertise,etc.)",
+    "text": "any resources and capabilities (equipment, connections, systems, software, expertise, etc.)",
     "x0": 108.0,
     "top": 341.63,
     "x1": 503.93,
@@ -994,7 +994,7 @@
   {
     "page": 2,
     "line_order": 21,
-    "text": "requestedintheresearchproposalthatareneededtomeetthestatedgoalsforsharingand",
+    "text": "requested in the research proposal that are needed to meet the stated goals for sharing and",
     "x0": 108.0,
     "top": 355.13,
     "x1": 508.04,
@@ -1010,7 +1010,7 @@
   {
     "page": 2,
     "line_order": 22,
-    "text": "preservation.(Thiscouldreferencetherelevantsectionoftheassociatedresearchproposaland",
+    "text": "preservation. (This could reference the relevant section of the associated research proposal and",
     "x0": 108.0,
     "top": 367.88,
     "x1": 527.96,
@@ -1026,7 +1026,7 @@
   {
     "page": 2,
     "line_order": 23,
-    "text": "budgetrequest);",
+    "text": "budget request);",
     "x0": 108.0,
     "top": 381.38,
     "x1": 179.94,
@@ -1042,7 +1042,7 @@
   {
     "page": 2,
     "line_order": 24,
-    "text": "cost/benefitconsiderationstosupportwhether/wherethedatawillbepreservedafterdirect",
+    "text": "cost/benefit considerations to support whether/where the data will be preserved after direct",
     "x0": 108.0,
     "top": 394.88,
     "x1": 509.46,
@@ -1058,7 +1058,7 @@
   {
     "page": 2,
     "line_order": 25,
-    "text": "projectfundingendsandanyplansforthetransferofresponsibilitiesforsharingand",
+    "text": "project funding ends and any plans for the transfer of responsibilities for sharing and",
     "x0": 108.0,
     "top": 407.63,
     "x1": 483.67,
@@ -1090,7 +1090,7 @@
   {
     "page": 2,
     "line_order": 27,
-    "text": "whether,when,orunderwhatconditionsthemanagementresponsibilityfortheresearchdata",
+    "text": "whether, when, or under what conditions the management responsibility for the research data",
     "x0": 108.0,
     "top": 433.88,
     "x1": 518.95,
@@ -1106,7 +1106,7 @@
   {
     "page": 2,
     "line_order": 28,
-    "text": "willbetransferredtoathirdparty(e.g.institutional,orcommunityrepository);",
+    "text": "will be transferred to a third party (e.g. institutional, or community repository);",
     "x0": 108.0,
     "top": 447.38,
     "x1": 457.89,
@@ -1122,7 +1122,7 @@
   {
     "page": 2,
     "line_order": 29,
-    "text": "anyfuturedecisionpointsregardingthemanagementoftheresearchdataincludingplansto",
+    "text": "any future decision points regarding the management of the research data including plans to",
     "x0": 108.0,
     "top": 460.88,
     "x1": 514.76,
@@ -1138,7 +1138,7 @@
   {
     "page": 2,
     "line_order": 30,
-    "text": "reevaluatethecostsandbenefitsofdatasharingandpreservation.",
+    "text": "reevaluate the costs and benefits of data sharing and preservation.",
     "x0": 108.0,
     "top": 473.63,
     "x1": 400.88,
@@ -1154,7 +1154,7 @@
   {
     "page": 2,
     "line_order": 31,
-    "text": "Alldatapertainingtoanypublishedworkwillbemadeavailabletoanypersononrequest.Numerical",
+    "text": "All data pertaining to any published work will be made available to any person on request. Numerical",
     "x0": 78.0,
     "top": 497.63,
     "x1": 525.19,
@@ -1170,7 +1170,7 @@
   {
     "page": 2,
     "line_order": 32,
-    "text": "publisheddataaswellastheoriginalrawdatafileswillbefreelyaccessibleeitherassupplementary",
+    "text": "published data as well as the original raw data files will be freely accessible either as supplementary",
     "x0": 78.0,
     "top": 511.13,
     "x1": 518.14,
@@ -1186,7 +1186,7 @@
   {
     "page": 2,
     "line_order": 33,
-    "text": "datafilesincludedwithpublishedpapers,orasfilespostedonthewebsitesofthelaboratoriesinthe",
+    "text": "data files included with published papers, or as files posted on the web sites of the laboratories in the",
     "x0": 78.0,
     "top": 524.63,
     "x1": 520.94,
@@ -1202,7 +1202,7 @@
   {
     "page": 2,
     "line_order": 34,
-    "text": "Center.Additionaldataorprogramsrequiredbythirdpartieswillbeprovidedonrequest.Datathat",
+    "text": "Center. Additional data or programs required by third parties will be provided on request. Data that",
     "x0": 78.0,
     "top": 537.38,
     "x1": 512.99,
@@ -1218,7 +1218,7 @@
   {
     "page": 2,
     "line_order": 35,
-    "text": "maysupportintellectualpropertyclaimswillbepublishedonlyafterweseekadvicefromthe",
+    "text": "may support intellectual property claims will be published only after we seek advice from the",
     "x0": 78.0,
     "top": 550.88,
     "x1": 488.86,
@@ -1234,7 +1234,7 @@
   {
     "page": 2,
     "line_order": 36,
-    "text": "NorthwesternInnovationandNewVenturesOffice(INVO).Suchadvicewillbesoughtinatimely",
+    "text": "Northwestern Innovation and New Ventures Office (INVO). Such advice will be sought in a timely",
     "x0": 78.0,
     "top": 563.63,
     "x1": 513.21,
@@ -1250,7 +1250,7 @@
   {
     "page": 2,
     "line_order": 37,
-    "text": "manner.Otherwise,therearenorestrictionsonwhowillbeallowedtousethedatageneratedafter",
+    "text": "manner. Otherwise, there are no restrictions on who will be allowed to use the data generated after",
     "x0": 78.0,
     "top": 577.13,
     "x1": 510.2,
@@ -1266,7 +1266,7 @@
   {
     "page": 2,
     "line_order": 38,
-    "text": "publishingiscomplete,providedthattherequesteracknowledgestheoriginalwork.Arequestercan",
+    "text": "publishing is complete, provided that the requester acknowledges the original work. A requester can",
     "x0": 78.0,
     "top": 590.63,
     "x1": 517.26,
@@ -1282,7 +1282,7 @@
   {
     "page": 2,
     "line_order": 39,
-    "text": "usedataoutputofourwork,providedguidelinesbythepublisherforuseofpublisheddataare",
+    "text": "use data output of our work, provided guidelines by the publisher for use of published data are",
     "x0": 78.0,
     "top": 603.38,
     "x1": 492.85,
@@ -1314,7 +1314,7 @@
   {
     "page": 2,
     "line_order": 41,
-    "text": "Electronicfilesarestoredonsecureservershostedbytheindividualresearchgroupsandsafeguarded",
+    "text": "Electronic files are stored on secure servers hosted by the individual research groups and safeguarded",
     "x0": 78.0,
     "top": 640.88,
     "x1": 524.24,
@@ -1330,7 +1330,7 @@
   {
     "page": 2,
     "line_order": 42,
-    "text": "byautomatedbackupsystemsand/orbackupstooff-siteserversmaintainedbytheirinstitution.We",
+    "text": "by automated backup systems and/or backups to off-site servers maintained by their institution. We",
     "x0": 78.0,
     "top": 654.38,
     "x1": 513.86,
@@ -1346,7 +1346,7 @@
   {
     "page": 2,
     "line_order": 43,
-    "text": "projectthatallofthesesystemswillbeinplaceforatleast10years.Allnon-electronicdataincluding",
+    "text": "project that all of these systems will be in place for at least 10 years. All non-electronic data including",
     "x0": 78.0,
     "top": 667.13,
     "x1": 528.54,
@@ -1362,7 +1362,7 @@
   {
     "page": 2,
     "line_order": 44,
-    "text": "detailedexperimentalproceduresandobservationsarerecordedinlaboratorynotebooksthatdonot",
+    "text": "detailed experimental procedures and observations are recorded in laboratory notebooks that do not",
     "x0": 78.0,
     "top": 680.63,
     "x1": 515.09,
@@ -1378,7 +1378,7 @@
   {
     "page": 2,
     "line_order": 45,
-    "text": "leavetheseniorinvestigator'slab.Datashouldbeaccessibletotherestofthelaboratory,butaccessis",
+    "text": "leave the senior investigator's lab. Data should be accessible to the rest of the laboratory, but access is",
     "x0": 78.0,
     "top": 693.38,
     "x1": 524.61,
@@ -1394,7 +1394,7 @@
   {
     "page": 2,
     "line_order": 46,
-    "text": "typicallyrevokedwhenjuniorinvestigatorsleavethelab.",
+    "text": "typically revoked when junior investigators leave the lab.",
     "x0": 78.0,
     "top": 706.88,
     "x1": 330.13,
@@ -1410,7 +1410,7 @@
   {
     "page": 3,
     "line_order": 1,
-    "text": "DatawillalsobedepositedintoNorthwesternLibraries’institutionalrepository,Arch,upon",
+    "text": "Data will also be deposited into Northwestern Libraries’ institutional repository, Arch, upon",
     "x0": 78.0,
     "top": 58.13,
     "x1": 480.96,
@@ -1426,7 +1426,7 @@
   {
     "page": 3,
     "line_order": 2,
-    "text": "publication.https://arch.library.northwestern.edu/ArchassignsDOIs,makingiteasytofindthedata.",
+    "text": "publication. https://arch.library.northwestern.edu/ Arch assigns DOIs, making it easy to find the data.",
     "x0": 78.0,
     "top": 71.63,
     "x1": 527.58,
@@ -1442,7 +1442,7 @@
   {
     "page": 3,
     "line_order": 3,
-    "text": "Necessarymetadataandotherresourcestomakethedataaccessibletofutureuserswillbesubmitted.",
+    "text": "Necessary metadata and other resources to make the data accessible to future users will be submitted.",
     "x0": 78.0,
     "top": 84.38,
     "x1": 523.63,
@@ -1458,7 +1458,7 @@
   {
     "page": 3,
     "line_order": 4,
-    "text": "Archwillpreservethedataforfutureuse.Externalinvestigatorsmaychoosetoinsteadarchivetheir",
+    "text": "Arch will preserve the data for future use. External investigators may choose to instead archive their",
     "x0": 78.0,
     "top": 97.88,
     "x1": 518.75,
@@ -1474,7 +1474,7 @@
   {
     "page": 3,
     "line_order": 5,
-    "text": "datawithsimilarrepositoriesprovidedbythepartnerinstitution(suchasAcademicCommonsat",
+    "text": "data with similar repositories provided by the partner institution (such as Academic Commons at",
     "x0": 78.0,
     "top": 110.63,
     "x1": 502.64,
@@ -1490,7 +1490,7 @@
   {
     "page": 3,
     "line_order": 6,
-    "text": "ColumbiaUniversity,D-Scholarship@PittattheUniversityofPittsburgh,andHarvardUniversity",
+    "text": "Columbia University, D-Scholarship@Pitt at the University of Pittsburgh, and Harvard University",
     "x0": 78.0,
     "top": 124.13,
     "x1": 509.13,
@@ -1538,7 +1538,7 @@
   {
     "page": 3,
     "line_order": 8,
-    "text": "Adiscussionoftherationaleorjustificationfortheproposeddatamanagementplan",
+    "text": "A discussion of the rationale or justification for the proposed data management plan",
     "x0": 128.68,
     "top": 185.63,
     "x1": 500.57,
@@ -1554,7 +1554,7 @@
   {
     "page": 3,
     "line_order": 9,
-    "text": "including,forexample,thepotentialimpactofthedatawithintheimmediatefieldandinotherfields,",
+    "text": "including, for example, the potential impact of the data within the immediate field and in other fields,",
     "x0": 78.0,
     "top": 199.13,
     "x1": 523.43,
@@ -1570,7 +1570,7 @@
   {
     "page": 3,
     "line_order": 10,
-    "text": "andanybroadersocietalimpact.",
+    "text": "and any broader societal impact.",
     "x0": 78.0,
     "top": 211.88,
     "x1": 223.22,
@@ -1586,7 +1586,7 @@
   {
     "page": 3,
     "line_order": 11,
-    "text": "TheDepartmentofEnergystipulatesintheir\"StatementonDigitalDataManagement\"that\"Tothe",
+    "text": "The Department of Energy stipulates in their \"Statement on Digital Data Management\" that \"To the",
     "x0": 78.0,
     "top": 236.63,
     "x1": 514.79,
@@ -1602,7 +1602,7 @@
   {
     "page": 3,
     "line_order": 12,
-    "text": "greatestextentandwiththefewestconstraintspossible,andconsistentwiththerequirementsandother",
+    "text": "greatest extent and with the fewest constraints possible, and consistent with the requirements and other",
     "x0": 78.0,
     "top": 249.38,
     "x1": 530.09,
@@ -1618,7 +1618,7 @@
   {
     "page": 3,
     "line_order": 13,
-    "text": "principlesofthisStatement,datasharingshouldmakedigitalresearchdataavailabletoandusefulfor",
+    "text": "principles of this Statement, data sharing should make digital research data available to and useful for",
     "x0": 78.0,
     "top": 262.88,
     "x1": 524.87,
@@ -1629,12 +1629,12 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text"
+    "label": "section.description"
   },
   {
     "page": 3,
     "line_order": 14,
-    "text": "thescientificcommunity,industry,andthepublic.\"TheCenterwillmakeeveryefforttocomplywith",
+    "text": "the scientific community, industry, and the public.\" The Center will make every effort to comply with",
     "x0": 78.0,
     "top": 275.63,
     "x1": 523.9,
@@ -1650,7 +1650,7 @@
   {
     "page": 3,
     "line_order": 15,
-    "text": "theseguidelines.",
+    "text": "these guidelines.",
     "x0": 78.0,
     "top": 289.13,
     "x1": 151.26,
@@ -1666,7 +1666,7 @@
   {
     "page": 3,
     "line_order": 16,
-    "text": "Datathatisnotdeemedtobeusefulforapublicationmaystillbearchivedatthediscretionofthe",
+    "text": "Data that is not deemed to be useful for a publication may still be archived at the discretion of the",
     "x0": 78.0,
     "top": 313.13,
     "x1": 506.87,
@@ -1682,7 +1682,7 @@
   {
     "page": 3,
     "line_order": 17,
-    "text": "seniorinvestigatoroverseeingthework,takingintothecostsandbenefitsofdoingso.",
+    "text": "senior investigator overseeing the work, taking into the costs and benefits of doing so.",
     "x0": 78.0,
     "top": 326.63,
     "x1": 456.24,
@@ -1698,7 +1698,7 @@
   {
     "page": 3,
     "line_order": 18,
-    "text": "Thedataacquiredandpreservedinthecontextofthisproposalwillbefurthergovernedbypoliciesof",
+    "text": "The data acquired and preserved in the context of this proposal will be further governed by policies of",
     "x0": 78.0,
     "top": 350.63,
     "x1": 529.14,
@@ -1714,7 +1714,7 @@
   {
     "page": 3,
     "line_order": 19,
-    "text": "theNorthwesternUniversityanditspartnerinstitutionspertainingtointellectualproperty,record",
+    "text": "the Northwestern University and its partner institutions pertaining to intellectual property, record",
     "x0": 78.0,
     "top": 364.13,
     "x1": 503.43,
@@ -1730,7 +1730,7 @@
   {
     "page": 3,
     "line_order": 20,
-    "text": "retention,anddatamanagement.",
+    "text": "retention, and data management.",
     "x0": 78.0,
     "top": 376.88,
     "x1": 221.15,
@@ -1746,7 +1746,7 @@
   {
     "page": 3,
     "line_order": 21,
-    "text": "2.Datausedinpublications",
+    "text": "2. Data used in publications",
     "x0": 78.0,
     "top": 415.66,
     "x1": 233.82,
@@ -1762,7 +1762,7 @@
   {
     "page": 3,
     "line_order": 22,
-    "text": "Datamanagementplansshouldprovideaplanformakingallresearchdatadisplayedin",
+    "text": "Data management plans should provide a plan for making all research data displayed in",
     "x0": 78.0,
     "top": 454.02,
     "x1": 531.7,
@@ -1778,7 +1778,7 @@
   {
     "page": 3,
     "line_order": 23,
-    "text": "publicationsresultingfromtheproposedresearchopen,machine-readable,anddigitally",
+    "text": "publications resulting from the proposed research open, machine-readable, and digitally",
     "x0": 78.0,
     "top": 467.52,
     "x1": 531.89,
@@ -1794,7 +1794,7 @@
   {
     "page": 3,
     "line_order": 24,
-    "text": "accessibletothepublicatthetimeofpublication.Thisincludesdatathataredisplayed",
+    "text": "accessible to the public at the time of publication. This includes data that are displayed",
     "x0": 78.0,
     "top": 480.27,
     "x1": 524.05,
@@ -1810,7 +1810,7 @@
   {
     "page": 3,
     "line_order": 25,
-    "text": "incharts,figures,images,etc.Inaddition,theunderlyingdigitalresearchdatausedto",
+    "text": "in charts, figures, images, etc. In addition, the underlying digital research data used to",
     "x0": 78.0,
     "top": 493.77,
     "x1": 520.78,
@@ -1826,7 +1826,7 @@
   {
     "page": 3,
     "line_order": 26,
-    "text": "generatethedisplayeddatashouldbemadeasaccessibleaspossibletothepublicin",
+    "text": "generate the displayed data should be made as accessible as possible to the public in",
     "x0": 78.0,
     "top": 506.52,
     "x1": 508.71,
@@ -1842,7 +1842,7 @@
   {
     "page": 3,
     "line_order": 27,
-    "text": "accordancewiththePrinciplespublishedintheDOEPolicyforDigitalResearchData",
+    "text": "accordance with the Principles published in the DOE Policy for Digital Research Data",
     "x0": 78.0,
     "top": 520.02,
     "x1": 520.31,
@@ -1858,7 +1858,7 @@
   {
     "page": 3,
     "line_order": 28,
-    "text": "Management.Thepublishedarticleshouldindicatehowthesedatacanbeaccessed.",
+    "text": "Management. The published article should indicate how these data can be accessed.",
     "x0": 78.0,
     "top": 533.52,
     "x1": 508.13,
@@ -1874,7 +1874,7 @@
   {
     "page": 3,
     "line_order": 29,
-    "text": "ResearchconductedwithintheCenterwillbepublishedinappropriatescientificjournals.The",
+    "text": "Research conducted within the Center will be published in appropriate scientific journals. The",
     "x0": 78.0,
     "top": 558.38,
     "x1": 491.41,
@@ -1890,7 +1890,7 @@
   {
     "page": 3,
     "line_order": 30,
-    "text": "publishermayrestricttheredistributionofthatdata.Whennotprohibitivelyexpensive,openaccess",
+    "text": "publisher may restrict the redistribution of that data. When not prohibitively expensive, open access",
     "x0": 78.0,
     "top": 571.88,
     "x1": 516.45,
@@ -1906,7 +1906,7 @@
   {
     "page": 3,
     "line_order": 31,
-    "text": "willbeselected.Thiswillbesupplementedbypublishingthedatainapreprintrepositorysuchasthe",
+    "text": "will be selected. This will be supplemented by publishing the data in a preprint repository such as the",
     "x0": 78.0,
     "top": 585.38,
     "x1": 522.88,
@@ -1922,7 +1922,7 @@
   {
     "page": 3,
     "line_order": 32,
-    "text": "arXivsubsequenttopeer-reviewedpublicationifpossible.Allpublisherswepreviouslyworkedwith",
+    "text": "arXiv subsequent to peer-reviewed publication if possible. All publishers we previously worked with",
     "x0": 78.0,
     "top": 598.13,
     "x1": 521.34,
@@ -1938,7 +1938,7 @@
   {
     "page": 3,
     "line_order": 33,
-    "text": "allowarXivpublicationoropenaccess,sowedonotanticipateaproblem.Crystallographicdatawill",
+    "text": "allow arXiv publication or open access, so we do not anticipate a problem. Crystallographic data will",
     "x0": 78.0,
     "top": 611.63,
     "x1": 522.75,
@@ -1954,7 +1954,7 @@
   {
     "page": 3,
     "line_order": 34,
-    "text": "bedepositedintotheICSDortheCCDCdatabasesforbroadaccess.Datawillalsobedisseminated",
+    "text": "be deposited into the ICSD or the CCDC databases for broad access. Data will also be disseminated",
     "x0": 78.0,
     "top": 624.38,
     "x1": 516.67,
@@ -1970,7 +1970,7 @@
   {
     "page": 3,
     "line_order": 35,
-    "text": "throughseminarsatconferencesandatotheracademicinstitutions.Rawdatafilescanbeprovidedto",
+    "text": "through seminars at conferences and at other academic institutions. Raw data files can be provided to",
     "x0": 78.0,
     "top": 637.88,
     "x1": 523.03,
@@ -1986,7 +1986,7 @@
   {
     "page": 3,
     "line_order": 36,
-    "text": "othersuponrequest,butwillbelimitedtotheirpersonaluseonlyandcannotberedistributedwithout",
+    "text": "others upon request, but will be limited to their personal use only and cannot be redistributed without",
     "x0": 78.0,
     "top": 651.38,
     "x1": 522.79,
@@ -2002,7 +2002,7 @@
   {
     "page": 3,
     "line_order": 37,
-    "text": "writtenconsentfromthePI.",
+    "text": "written consent from the PI.",
     "x0": 78.0,
     "top": 664.13,
     "x1": 201.02,
@@ -2018,7 +2018,7 @@
   {
     "page": 3,
     "line_order": 38,
-    "text": "Accesstodataandresultspriortopublicationorfileforintellectualpropertyisprovidedtoall",
+    "text": "Access to data and results prior to publication or file for intellectual property is provided to all",
     "x0": 78.0,
     "top": 688.13,
     "x1": 492.53,
@@ -2034,7 +2034,7 @@
   {
     "page": 3,
     "line_order": 39,
-    "text": "personnelinvolvedintheproject,afterpublicationorfilingforprovisionalpatents,thedatawillbein",
+    "text": "personnel involved in the project, after publication or filing for provisional patents, the data will be in",
     "x0": 78.0,
     "top": 701.63,
     "x1": 524.9,
@@ -2050,7 +2050,7 @@
   {
     "page": 3,
     "line_order": 40,
-    "text": "thepublicdomainandanyfurtherdatawillbeprovidedtothecommunityuponrequestorthrough",
+    "text": "the public domain and any further data will be provided to the community upon request or through",
     "x0": 78.0,
     "top": 715.13,
     "x1": 511.48,
@@ -2066,7 +2066,7 @@
   {
     "page": 4,
     "line_order": 1,
-    "text": "appropriatewebsites(i.e.labwebsites).Allofthefabricationmethods,characterizationresults,and",
+    "text": "appropriate websites (i.e. lab web sites). All of the fabrication methods, characterization results, and",
     "x0": 78.0,
     "top": 58.13,
     "x1": 517.54,
@@ -2082,7 +2082,7 @@
   {
     "page": 4,
     "line_order": 2,
-    "text": "dataacquiredthroughtheproposedresearchtowardsthedevelopmentofthebioactiveplatformswill",
+    "text": "data acquired through the proposed research towards the development of the bioactive platforms will",
     "x0": 78.0,
     "top": 71.63,
     "x1": 521.51,
@@ -2098,7 +2098,7 @@
   {
     "page": 4,
     "line_order": 3,
-    "text": "besharedwithothersthroughpublicationinconferencesandjournals.",
+    "text": "be shared with others through publication in conferences and journals.",
     "x0": 78.0,
     "top": 84.38,
     "x1": 386.91,
@@ -2114,7 +2114,7 @@
   {
     "page": 4,
     "line_order": 4,
-    "text": "3.Datamanagementresources",
+    "text": "3. Data management resources",
     "x0": 78.0,
     "top": 123.16,
     "x1": 250.49,
@@ -2130,7 +2130,7 @@
   {
     "page": 4,
     "line_order": 5,
-    "text": "Datamanagementplansshouldconsultandreferenceavailableinformationaboutdata",
+    "text": "Data management plans should consult and reference available information about data",
     "x0": 78.0,
     "top": 161.52,
     "x1": 526.39,
@@ -2146,7 +2146,7 @@
   {
     "page": 4,
     "line_order": 6,
-    "text": "managementresourcestobeusedinthecourseoftheproposedresearch.Inparticular,",
+    "text": "management resources to be used in the course of the proposed research. In particular,",
     "x0": 78.0,
     "top": 175.02,
     "x1": 524.22,
@@ -2162,7 +2162,7 @@
   {
     "page": 4,
     "line_order": 7,
-    "text": "DMPsthtexplicitlyorimplicitlycommitdatamanagementresourcesatafacility",
+    "text": "DMPs tht explicitly or implicitly commit data management resources at a facility",
     "x0": 78.0,
     "top": 187.77,
     "x1": 494.15,
@@ -2178,7 +2178,7 @@
   {
     "page": 4,
     "line_order": 8,
-    "text": "beyondwhatisconventionallymadeavailabletoapprovedusersshouldbeaccompanied",
+    "text": "beyond what is conventionally made available to approved users should be accompanied",
     "x0": 78.0,
     "top": 201.27,
     "x1": 532.36,
@@ -2194,7 +2194,7 @@
   {
     "page": 4,
     "line_order": 9,
-    "text": "bywrittenapprovalfromthatfacility.Indeterminingtheresourcesavailablefordata",
+    "text": "by written approval from that facility. In determining the resources available for data",
     "x0": 78.0,
     "top": 214.02,
     "x1": 518.61,
@@ -2210,7 +2210,7 @@
   {
     "page": 4,
     "line_order": 10,
-    "text": "managementatDOEScientificUserFacilities,researchersshouldconsultthe",
+    "text": "management at DOE Scientific User Facilities, researchers should consult the",
     "x0": 78.0,
     "top": 227.52,
     "x1": 475.71,
@@ -2226,7 +2226,7 @@
   {
     "page": 4,
     "line_order": 11,
-    "text": "publisheddescriptionofdatamanagementresourcesandpracticesatthatfacilityand",
+    "text": "published description of data management resources and practices at that facility and",
     "x0": 78.0,
     "top": 241.02,
     "x1": 519.32,
@@ -2242,7 +2242,7 @@
   {
     "page": 4,
     "line_order": 12,
-    "text": "referenceitintheDMP.InformationaboutotherOfficeofSciencefacilitiescanbe",
+    "text": "reference it in the DMP. Information about other Office of Science facilities can be",
     "x0": 78.0,
     "top": 253.77,
     "x1": 501.42,
@@ -2258,7 +2258,7 @@
   {
     "page": 4,
     "line_order": 13,
-    "text": "foundintheadditionalguidancefromthesponsporingprogram.",
+    "text": "found in the additional guidance from the sponsporing program.",
     "x0": 78.0,
     "top": 267.27,
     "x1": 410.53,
@@ -2274,7 +2274,7 @@
   {
     "page": 4,
     "line_order": 14,
-    "text": "DMPsshouldconsultandreferenceavailableinformationaboutdatamanagementresourcestobe",
+    "text": "DMPs should consult and reference available information about data management resources to be",
     "x0": 78.0,
     "top": 292.88,
     "x1": 511.72,
@@ -2290,7 +2290,7 @@
   {
     "page": 4,
     "line_order": 15,
-    "text": "usedinthecourseoftheproposedresearch.Inparticular,DMPsthatexplicitlyorimplicitlycommit",
+    "text": "used in the course of the proposed research. In particular, DMPs that explicitly or implicitly commit",
     "x0": 78.0,
     "top": 305.63,
     "x1": 517.92,
@@ -2306,7 +2306,7 @@
   {
     "page": 4,
     "line_order": 16,
-    "text": "datamanagementresourcesatafacilitybeyondwhatisconventionallymadeavailabletoapproved",
+    "text": "data management resources at a facility beyond what is conventionally made available to approved",
     "x0": 78.0,
     "top": 319.13,
     "x1": 515.46,
@@ -2322,7 +2322,7 @@
   {
     "page": 4,
     "line_order": 17,
-    "text": "usersshouldbeaccompaniedbywrittenapprovalfromthatfacility.Indeterminingtheresources",
+    "text": "users should be accompanied by written approval from that facility. In determining the resources",
     "x0": 78.0,
     "top": 331.88,
     "x1": 503.79,
@@ -2338,7 +2338,7 @@
   {
     "page": 4,
     "line_order": 18,
-    "text": "availablefordatamanagementatOfficeofScienceUserFacilities,researchersshouldconsultthe",
+    "text": "available for data management at Office of Science User Facilities, researchers should consult the",
     "x0": 78.0,
     "top": 345.38,
     "x1": 511.9,
@@ -2354,7 +2354,7 @@
   {
     "page": 4,
     "line_order": 19,
-    "text": "publisheddescriptionofdatamanagementresourcesandpracticesatthatfacilityandreferenceitin",
+    "text": "published description of data management resources and practices at that facility and reference it in",
     "x0": 78.0,
     "top": 358.88,
     "x1": 519.67,
@@ -2370,7 +2370,7 @@
   {
     "page": 4,
     "line_order": 20,
-    "text": "theDMP.InformationaboutotherOfficeofSciencefacilitiescanbefoundintheadditionalguidance",
+    "text": "the DMP. Information about other Office of Science facilities can be found in the additional guidance",
     "x0": 78.0,
     "top": 371.63,
     "x1": 524.12,
@@ -2386,7 +2386,7 @@
   {
     "page": 4,
     "line_order": 21,
-    "text": "fromthesponsoringprogram.",
+    "text": "from the sponsoring program.",
     "x0": 78.0,
     "top": 385.13,
     "x1": 209.71,
@@ -2402,7 +2402,7 @@
   {
     "page": 4,
     "line_order": 22,
-    "text": "DataRepositories.",
+    "text": "Data Repositories.",
     "x0": 78.0,
     "top": 433.13,
     "x1": 164.09,
@@ -2413,12 +2413,12 @@
     ],
     "is_bold": true,
     "is_italic": false,
-    "label": "question.text"
+    "label": "section.title"
   },
   {
     "page": 4,
     "line_order": 22,
-    "text": "Seniorinvestigatorstypicallyarchiverelevantdatausingtheirowngroupservers.",
+    "text": "Senior investigators typically archive relevant data using their own group servers.",
     "x0": 166.85,
     "top": 433.13,
     "x1": 526.13,
@@ -2434,7 +2434,7 @@
   {
     "page": 4,
     "line_order": 23,
-    "text": "Wheneverpossible,investigatorswillbeencouragedtoalsocopydatatoacentralizeddataserverfor",
+    "text": "Whenever possible, investigators will be encouraged to also copy data to a centralized data server for",
     "x0": 78.0,
     "top": 446.63,
     "x1": 523.01,
@@ -2450,7 +2450,7 @@
   {
     "page": 4,
     "line_order": 24,
-    "text": "CBESinvestigators.Additionally,researcherscanarchivedataonrepositoriesattheirhome",
+    "text": "CBES investigators. Additionally, researchers can archive data on repositories at their home",
     "x0": 78.0,
     "top": 459.38,
     "x1": 481.74,
@@ -2466,7 +2466,7 @@
   {
     "page": 4,
     "line_order": 25,
-    "text": "institutions.Forexample,researchersatNorthwesternareencouragedtodepositdatainto",
+    "text": "institutions. For example, researchers at Northwestern are encouraged to deposit data into",
     "x0": 78.0,
     "top": 472.88,
     "x1": 472.07,
@@ -2482,7 +2482,7 @@
   {
     "page": 4,
     "line_order": 26,
-    "text": "NorthwesternLibraries’institutionalrepository,Arch,uponpublication",
+    "text": "Northwestern Libraries’ institutional repository, Arch, upon publication",
     "x0": 78.0,
     "top": 486.38,
     "x1": 391.51,
@@ -2498,7 +2498,7 @@
   {
     "page": 4,
     "line_order": 27,
-    "text": "(https://arch.library.northwestern.edu/).ArchassignsDOIs,makingiteasytofindthedata.Necessary",
+    "text": "(https://arch.library.northwestern.edu/). Arch assigns DOIs, making it easy to find the data. Necessary",
     "x0": 78.0,
     "top": 499.13,
     "x1": 527.86,
@@ -2514,7 +2514,7 @@
   {
     "page": 4,
     "line_order": 28,
-    "text": "metadataandotherresourcestomakethedataaccessibletofutureuserswillbesubmitted.Archwill",
+    "text": "metadata and other resources to make the data accessible to future users will be submitted. Arch will",
     "x0": 78.0,
     "top": 512.63,
     "x1": 522.43,
@@ -2530,7 +2530,7 @@
   {
     "page": 4,
     "line_order": 29,
-    "text": "preservethedataforfutureuse.",
+    "text": "preserve the data for future use.",
     "x0": 78.0,
     "top": 525.38,
     "x1": 217.17,
@@ -2546,7 +2546,7 @@
   {
     "page": 4,
     "line_order": 30,
-    "text": "DataVolume.",
+    "text": "Data Volume.",
     "x0": 78.0,
     "top": 550.13,
     "x1": 141.52,
@@ -2557,12 +2557,12 @@
     ],
     "is_bold": true,
     "is_italic": false,
-    "label": "question.text"
+    "label": "section.title"
   },
   {
     "page": 4,
     "line_order": 30,
-    "text": "Generally,thevolumeofdatageneratedbyCBESresearchersshouldnotprohibittheir",
+    "text": "Generally, the volume of data generated by CBES researchers should not prohibit their",
     "x0": 144.28,
     "top": 550.13,
     "x1": 525.43,
@@ -2578,7 +2578,7 @@
   {
     "page": 4,
     "line_order": 31,
-    "text": "depositioninavailablerepositories.However,incaseswherelargevolumesofdataaregenerated(e.g.,",
+    "text": "deposition in available repositories. However, in cases where large volumes of data are generated (e.g.,",
     "x0": 78.0,
     "top": 562.88,
     "x1": 530.61,
@@ -2594,7 +2594,7 @@
   {
     "page": 4,
     "line_order": 32,
-    "text": "temperature/timedependentmicroscopyorX-raystudies),thedatamayneedtobeaveraged,",
+    "text": "temperature/time dependent microscopy or X-ray studies), the data may need to be averaged,",
     "x0": 78.0,
     "top": 576.38,
     "x1": 486.99,
@@ -2610,7 +2610,7 @@
   {
     "page": 4,
     "line_order": 33,
-    "text": "condensed,orminimallyprocessedpriortodeposition.",
+    "text": "condensed, or minimally processed prior to deposition.",
     "x0": 78.0,
     "top": 589.13,
     "x1": 322.53,
@@ -2626,7 +2626,7 @@
   {
     "page": 4,
     "line_order": 34,
-    "text": "4.Confidentiality,securityandrights",
+    "text": "4. Confidentiality, security and rights",
     "x0": 78.0,
     "top": 627.91,
     "x1": 287.67,
@@ -2642,7 +2642,7 @@
   {
     "page": 4,
     "line_order": 35,
-    "text": "Datamanagementplansmustprotectconfidentiality,personalprivacy,Personally",
+    "text": "Data management plans must protect confidentiality, personal privacy, Personally",
     "x0": 78.0,
     "top": 666.27,
     "x1": 500.37,
@@ -2658,7 +2658,7 @@
   {
     "page": 4,
     "line_order": 36,
-    "text": "IdentifiableInformationandU.S.national,homeland,andeconomicsecurity;recognize",
+    "text": "Identifiable Information and U.S. national, homeland, and economic security; recognize",
     "x0": 78.0,
     "top": 679.77,
     "x1": 530.3,
@@ -2674,7 +2674,7 @@
   {
     "page": 4,
     "line_order": 37,
-    "text": "proprietaryinterests,businessconfidentialinformation,andintellectualproperty",
+    "text": "proprietary interests, business confidential information, and intellectual property",
     "x0": 78.0,
     "top": 693.27,
     "x1": 496.91,
@@ -2690,7 +2690,7 @@
   {
     "page": 4,
     "line_order": 38,
-    "text": "rights;avoidsignificantnegativeimpactoninnovationandU.S.competitiveness;and",
+    "text": "rights; avoid significant negative impact on innovation and U.S. competitiveness; and",
     "x0": 78.0,
     "top": 706.02,
     "x1": 516.77,
@@ -2706,7 +2706,7 @@
   {
     "page": 4,
     "line_order": 39,
-    "text": "otherwisebeconsistentwithallapplicablelaws,regulations,agreementtermsand",
+    "text": "otherwise be consistent with all applicable laws, regulations, agreement terms and",
     "x0": 78.0,
     "top": 719.52,
     "x1": 499.47,
@@ -2722,7 +2722,7 @@
   {
     "page": 5,
     "line_order": 1,
-    "text": "conditions,andDOEordersandpolicies.Thereisnorequirementtoshareproprietary",
+    "text": "conditions, and DOE orders and policies. There is no requirement to share proprietary",
     "x0": 78.0,
     "top": 58.02,
     "x1": 524.15,
@@ -2754,7 +2754,7 @@
   {
     "page": 5,
     "line_order": 3,
-    "text": "Datathatmaysupportintellectualpropertyclaimswillbepublishedonlyafterweseekadvicefromthe",
+    "text": "Data that may support intellectual property claims will be published only after we seek advice from the",
     "x0": 78.0,
     "top": 96.38,
     "x1": 531.59,
@@ -2770,7 +2770,7 @@
   {
     "page": 5,
     "line_order": 4,
-    "text": "NorthwesternInnovationandNewVenturesOffice(INVO).Suchadvicewillbesoughtinatimely",
+    "text": "Northwestern Innovation and New Ventures Office (INVO). Such advice will be sought in a timely",
     "x0": 78.0,
     "top": 109.88,
     "x1": 513.21,
@@ -2802,7 +2802,7 @@
   {
     "page": 5,
     "line_order": 6,
-    "text": "Theproposedresearchdoesnotincludethecollectionofanyconfidentialpersonalinformation.",
+    "text": "The proposed research does not include the collection of any confidential personal information.",
     "x0": 78.0,
     "top": 147.38,
     "x1": 497.7,
@@ -2818,7 +2818,7 @@
   {
     "page": 5,
     "line_order": 7,
-    "text": "TheDirector,theExecutiveDirectorforResearch,andtheExecutiveCommitteewillregularlyreview",
+    "text": "The Director, the Executive Director for Research, and the Executive Committee will regularly review",
     "x0": 78.0,
     "top": 171.38,
     "x1": 528.36,
@@ -2834,7 +2834,7 @@
   {
     "page": 5,
     "line_order": 8,
-    "text": "policesfordatastoragetoensureaccessibilityandsecurityofCBESresearchdata.",
+    "text": "polices for data storage to ensure accessibility and security of CBES research data.",
     "x0": 78.0,
     "top": 184.88,
     "x1": 444.28,
