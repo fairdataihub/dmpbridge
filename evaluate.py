@@ -73,7 +73,7 @@ def match(block_text: str, gold_pairs: list[tuple[str, str]]) -> str | None:
     Requires ≥ 75% containment and at least 4 block tokens.
     """
     btok = tokenize(block_text)
-    if len(btok) < 4:
+    if not btok:
         return None
 
     best_score, best_label = 0.0, None
