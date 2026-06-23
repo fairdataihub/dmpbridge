@@ -44,7 +44,7 @@ data/
 notebooks/
 ├── 01_pdfplumber_batch_test.ipynb          # batch extraction across all sample PDFs
 ├── 02_evaluation_pdfplumber_batch_test.ipynb
-└── 03_label_evaluation.ipynb               # visual evaluation: confusion matrix + F1 charts
+└── 03_label_evaluation.ipynb               # visual evaluation: confusion matrix + F1 charts + model comparison
 
 templates/
 └── index.html      # Viewer UI served by FastAPI
@@ -127,8 +127,11 @@ dmpbridge document.pdf
 # Specify output path
 dmpbridge document.pdf -o data/llmlabeled/output.json
 
-# Override model for this run
-dmpbridge document.pdf --model llama3.1:8b
+# Also produce hierarchical structured JSON (DMP Tool narrative schema)
+dmpbridge document.pdf -o data/llmlabeled/sample1_llama3.3-70b.json --structured
+
+# Override model for this run (output is named after the model automatically)
+dmpbridge document.pdf --model llama3.1:8b -o data/llmlabeled/sample1_llama3.1-8b.json
 
 # Show detailed progress
 dmpbridge document.pdf -v
@@ -242,19 +245,19 @@ python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json
 
 Output files are automatically matched by model name — changing `MODEL` in `dmpbridge/config.py` updates both the pipeline output path and the evaluation target with no other changes needed.
 
-Example output:
+Example output (llama3.3:70b):
 
 ```
-sample1       total= 78  correct=76    unmatched= 0  accuracy= 97.4%
-sample2       total=171  correct=165   unmatched= 0  accuracy= 96.5%
-sample3       total= 69  correct=68    unmatched= 0  accuracy= 98.6%
-sample4       total= 78  correct=78    unmatched= 0  accuracy=100.0%
-sample5       total= 80  correct=79    unmatched= 0  accuracy= 98.8%
-sample6       total= 24  correct=18    unmatched= 3  accuracy= 75.0%
-sample7       total= 17  correct=16    unmatched= 0  accuracy= 94.1%
-sample8       total= 59  correct=57    unmatched= 0  accuracy= 96.6%
-sample9       total= 85  correct=84    unmatched= 0  accuracy= 98.8%
-sample10      total= 68  correct=65    unmatched= 0  accuracy= 95.6%
+sample1       total= 78  unmatched= 0  accuracy= 97.4%
+sample2       total=171  unmatched= 0  accuracy= 96.5%
+sample3       total= 69  unmatched= 0  accuracy= 98.6%
+sample4       total= 78  unmatched= 0  accuracy=100.0%
+sample5       total= 80  unmatched= 0  accuracy= 98.8%
+sample6       total= 24  unmatched= 3  accuracy= 75.0%
+sample7       total= 17  unmatched= 0  accuracy= 94.1%
+sample8       total= 59  unmatched= 0  accuracy= 96.6%
+sample9       total= 85  unmatched= 0  accuracy= 98.8%
+sample10      total= 68  unmatched= 0  accuracy= 95.6%
 
 Label                    Precision    Recall        F1   Support
 --------------------------------------------------------------
@@ -267,7 +270,37 @@ answer.text                 100.0%     98.1%     99.0%       577
 Overall accuracy                                 97.2%       726
 ```
 
-`unmatched` counts blocks where no gold entry reaches ≥ 75% token containment — these are counted as errors in the per-sample accuracy. The confusion matrix and F1 scores cover only the 726 blocks that were successfully matched to a gold label.
+`unmatched` counts blocks where no gold entry reaches ≥ 75% token containment — these are counted as errors. The confusion matrix and F1 scores cover only the 726 matched blocks.
+
+### Model comparison
+
+Both models have been evaluated on all 10 samples:
+
+| Sample | llama3.3:70b | llama3.1:8b | Diff |
+|--------|-------------|------------|------|
+| sample1 | 97.4% | 82.1% | -15.4% |
+| sample2 | 96.5% | 62.6% | -33.9% |
+| sample3 | 98.6% | 81.2% | -17.4% |
+| sample4 | 100.0% | 65.4% | -34.6% |
+| sample5 | 98.8% | 67.5% | -31.2% |
+| sample6 | 75.0% | 66.7% | -8.3% |
+| sample7 | 94.1% | 82.4% | -11.8% |
+| sample8 | 96.6% | 69.5% | -27.1% |
+| sample9 | 98.8% | 61.2% | -37.6% |
+| sample10 | 95.6% | 70.6% | -25.0% |
+| **OVERALL** | **96.8%** | **69.0%** | **-27.8%** |
+
+Per-label F1 comparison:
+
+| Label | llama3.3:70b | llama3.1:8b | Diff |
+|-------|-------------|------------|------|
+| title | 90.0% | 66.7% | -23.3% |
+| section.title | 85.7% | 63.9% | -21.8% |
+| section.description | 94.2% | 40.0% | -54.2% |
+| question.text | 90.5% | 33.8% | -56.7% |
+| answer.text | 99.0% | 80.2% | -18.8% |
+
+`llama3.1:8b` collapses on `question.text` (F1 33.8%) and `section.description` (F1 40.0%) — the labels requiring understanding of funder-written instructions vs researcher-written sub-questions. `llama3.3:70b` is required for reliable results.
 
 ### Notebook (visual)
 
@@ -283,6 +316,7 @@ The notebook shows:
 - Precision / Recall / F1 grouped bar chart per label
 - Full table of mislabeled blocks with their text
 - Drill-down cell to inspect any specific confusion pair
+- **Section 7 — Model comparison:** side-by-side grouped bar charts and 2×2 confusion matrix grid comparing llama3.3:70b vs llama3.1:8b across all samples and all labels
 
 ---
 
@@ -307,22 +341,27 @@ Open **http://localhost:8000** — upload files through the browser UI.
 
 ```
 1. Run the pipeline  (output named after the model automatically)
-   dmpbridge data/pdfsamples/sample1.pdf -o data/llmlabeled/sample1_llama3.3-70b.json
+   dmpbridge data/pdfsamples/sample1.pdf -o data/llmlabeled/sample1_llama3.3-70b.json --structured
 
-2. Convert to hierarchical structured JSON (same schema as manual annotations)
-   python -c "from dmpbridge import convert_file; convert_file('data/llmlabeled/sample1_llama3.3-70b.json')"
-   → writes data/llmlabeled/sample1_llama3.3-70b_structured.json
-
-3. Evaluate against ground truth
+2. Evaluate against ground truth
    python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json
 
-4. Open the viewer
+3. Compare models (run with a second model — results saved separately)
+   dmpbridge data/pdfsamples/sample1.pdf --model llama3.1:8b \
+             -o data/llmlabeled/sample1_llama3.1-8b.json --structured
+
+4. Open notebook for visual comparison
+   jupyter lab notebooks/03_label_evaluation.ipynb
+   → Sections 1–6: single-model analysis (whichever model is in config.py)
+   → Section 7:    side-by-side model comparison charts
+
+5. Open the viewer
    Open dmpbridge.html in a browser  (or run: uvicorn main:app --reload)
 
-5. Load files
+6. Load files
    Load data/pdfsamples/sample1.pdf + data/llmlabeled/sample1_llama3.3-70b.json
 
-6. Inspect
+7. Inspect
    Click any row in the table → the corresponding block highlights in the PDF
    Use the Label filter to show only sections, questions, or answers
 ```
