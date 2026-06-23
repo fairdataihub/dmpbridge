@@ -2,7 +2,7 @@
   {
     "page": 1,
     "line_order": 1,
-    "text": "DataManagementPlan:",
+    "text": "Data Management Plan:",
     "x0": 72.02,
     "top": 73.65,
     "x1": 197.27,
@@ -18,7 +18,7 @@
   {
     "page": 1,
     "line_order": 2,
-    "text": "1.Typesofdata.Thebulkofthedatageneratedinthisprojectwillbe1,2,3,and4",
+    "text": "1. Types of data. The bulk of the data generated in this project will be 1, 2, 3, and 4",
     "x0": 90.02,
     "top": 101.01,
     "x1": 540.22,
@@ -34,7 +34,7 @@
   {
     "page": 1,
     "line_order": 3,
-    "text": "dimensionalarraysofnumbersandbytesrepresentingfluidstatevariablesgeneratedvia",
+    "text": "dimensional arrays of numbers and bytes representing fluid state variables generated via",
     "x0": 108.05,
     "top": 114.72,
     "x1": 539.48,
@@ -50,7 +50,7 @@
   {
     "page": 1,
     "line_order": 4,
-    "text": "computersimulationsoffluidflow.Imagesandvideofileswillbecreatedfromthefluid",
+    "text": "computer simulations of fluid flow. Images and video files will be created from the fluid",
     "x0": 108.05,
     "top": 128.64,
     "x1": 539.44,
@@ -66,7 +66,7 @@
   {
     "page": 1,
     "line_order": 5,
-    "text": "datausingbothcommercialpackages,suchasMatlabandfreevisualizationpackages",
+    "text": "data using both commercial packages, such as Matlab and free visualization packages",
     "x0": 108.05,
     "top": 142.32,
     "x1": 540.07,
@@ -82,7 +82,7 @@
   {
     "page": 1,
     "line_order": 6,
-    "text": "suchasVAPOR(developedatNCAR).",
+    "text": "such as VAPOR (developed at NCAR).",
     "x0": 108.05,
     "top": 156.24,
     "x1": 297.72,
@@ -98,7 +98,7 @@
   {
     "page": 1,
     "line_order": 7,
-    "text": "2.Dataandmetadatastandards.ThePI’sresearchgroupwilladoptthelongstanding",
+    "text": "2. Data and metadata standards. The PI’s research group will adopt the longstanding",
     "x0": 90.02,
     "top": 183.86,
     "x1": 539.6,
@@ -115,7 +115,7 @@
   {
     "page": 1,
     "line_order": 8,
-    "text": "practicethatallgenerateddatashouldbestraightforwardlyreproducible.Thus,codesare",
+    "text": "practice that all generated data should be straightforwardly reproducible. Thus, codes are",
     "x0": 108.05,
     "top": 197.54,
     "x1": 539.45,
@@ -131,7 +131,7 @@
   {
     "page": 1,
     "line_order": 9,
-    "text": "storedwithinthesamedirectoryonamassstoragesystemalongwiththedatathey",
+    "text": "stored within the same directory on a mass storage system along with the data they",
     "x0": 108.05,
     "top": 211.46,
     "x1": 540.15,
@@ -147,7 +147,7 @@
   {
     "page": 1,
     "line_order": 10,
-    "text": "generate.“Readme”fileswillalsobeprovidedforexplanationofthedirectorycontent.",
+    "text": "generate. “Readme” files will also be provided for explanation of the directory content.",
     "x0": 108.05,
     "top": 225.14,
     "x1": 526.13,
@@ -163,7 +163,7 @@
   {
     "page": 1,
     "line_order": 11,
-    "text": "3.Policiesforaccessandsharing.Interestedpartieswillbeabletorequestdataandcodesat",
+    "text": "3. Policies for access and sharing. Interested parties will be able to request data and codes at",
     "x0": 90.02,
     "top": 252.74,
     "x1": 539.62,
@@ -179,7 +179,7 @@
   {
     "page": 1,
     "line_order": 12,
-    "text": "theendoftheproject.Suchpartieswillberesponsiblefortheirownversioncontroland",
+    "text": "the end of the project. Such parties will be responsible for their own version control and",
     "x0": 108.05,
     "top": 266.69,
     "x1": 539.46,
@@ -211,7 +211,7 @@
   {
     "page": 1,
     "line_order": 14,
-    "text": "4.Policiesandprovisionsforre-use,re-distribution.Simulationdatawillinessencegrowto",
+    "text": "4. Policies and provisions for re-use, re-distribution. Simulation data will in essence grow to",
     "x0": 90.02,
     "top": 307.97,
     "x1": 539.96,
@@ -227,7 +227,7 @@
   {
     "page": 1,
     "line_order": 15,
-    "text": "severalterrabyteswithanassociatedcostofstorage.Datawillbemadepublicly",
+    "text": "several terrabytes with an associated cost of storage. Data will be made publicly",
     "x0": 108.05,
     "top": 321.89,
     "x1": 540.51,
@@ -243,7 +243,7 @@
   {
     "page": 1,
     "line_order": 16,
-    "text": "availableuponrequestattheendoftheproject.Althoughopen-source,weenvisagethat",
+    "text": "available upon request at the end of the project. Although open-source, we envisage that",
     "x0": 108.05,
     "top": 335.57,
     "x1": 539.87,
@@ -259,7 +259,7 @@
   {
     "page": 1,
     "line_order": 17,
-    "text": "intellectualrightstothecodewillberetainedbytheCUgroup.Disseminationofopen-",
+    "text": "intellectual rights to the code will be retained by the CU group. Dissemination of open-",
     "x0": 108.05,
     "top": 349.51,
     "x1": 539.97,
@@ -275,7 +275,7 @@
   {
     "page": 1,
     "line_order": 18,
-    "text": "sourcesoftwarewillbereleasedoncefullytestedandpublished.",
+    "text": "source software will be released once fully tested and published.",
     "x0": 108.05,
     "top": 363.19,
     "x1": 416.76,
@@ -291,7 +291,7 @@
   {
     "page": 1,
     "line_order": 19,
-    "text": "5.Plansforarchivingandpreservationofaccess.Localdatawillbearchivedonthegroup’s",
+    "text": "5. Plans for archiving and preservation of access. Local data will be archived on the group’s",
     "x0": 90.02,
     "top": 390.79,
     "x1": 539.84,
@@ -308,7 +308,7 @@
   {
     "page": 1,
     "line_order": 20,
-    "text": "massstoragesystem.Asmentionedabove,alldatageneratedisarchivedwiththeentire",
+    "text": "mass storage system. As mentioned above, all data generated is archived with the entire",
     "x0": 108.05,
     "top": 404.71,
     "x1": 539.84,
@@ -324,7 +324,7 @@
   {
     "page": 1,
     "line_order": 21,
-    "text": "codethatgeneratedit.Additionally,furtherbackupsofthedatawillbeprovidedbyCU’s",
+    "text": "code that generated it. Additionally, further backups of the data will be provided by CU’s",
     "x0": 108.05,
     "top": 418.41,
     "x1": 540.03,
@@ -341,7 +341,7 @@
   {
     "page": 1,
     "line_order": 22,
-    "text": "NSF-fundedresearchcomputing.Weimaginethedatabeingofrelevanceandstoredfor",
+    "text": "NSF-funded research computing. We imagine the data being of relevance and stored for",
     "x0": 108.05,
     "top": 432.33,
     "x1": 539.92,
@@ -357,7 +357,7 @@
   {
     "page": 1,
     "line_order": 23,
-    "text": ">10years.",
+    "text": "> 10 years.",
     "x0": 108.05,
     "top": 446.01,
     "x1": 160.92,
