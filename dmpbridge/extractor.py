@@ -55,7 +55,7 @@ def _line_to_blocks(line: dict, page_num: int, line_order: int) -> list[dict]:
 
     seen: set[str] = set()
     font_names: list[str] = []
-    bold_count = italic_count = total = 0
+    first_bold = first_italic = None
     sizes: list[float] = []
     x0 = x1 = top = bottom = None
 
@@ -72,10 +72,10 @@ def _line_to_blocks(line: dict, page_num: int, line_order: int) -> list[dict]:
         if x1 is None or cx1 > x1: x1 = cx1
         if top is None or ct < top: top = ct
         if bottom is None or cb > bottom: bottom = cb
-        if c.get("text", "").strip():
-            total += 1
-            if _font_is_bold(fn):   bold_count   += 1
-            if _font_is_italic(fn): italic_count += 1
+        # use the first non-whitespace char's font to determine line style
+        if first_bold is None and c.get("text", "").strip():
+            first_bold   = _font_is_bold(fn)
+            first_italic = _font_is_italic(fn)
 
     return [{
         "page":          page_num,
@@ -87,8 +87,8 @@ def _line_to_blocks(line: dict, page_num: int, line_order: int) -> list[dict]:
         "bottom":        round(float(bottom or 0), 2),
         "avg_font_size": round(sum(sizes) / len(sizes), 2) if sizes else 0.0,
         "font_names":    font_names,
-        "is_bold":       bold_count   > (total / 2 if total else 1),
-        "is_italic":     italic_count > (total / 2 if total else 1),
+        "is_bold":       bool(first_bold),
+        "is_italic":     bool(first_italic),
         "label":         None,
     }]
 

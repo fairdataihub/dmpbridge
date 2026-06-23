@@ -317,7 +317,7 @@
       "LHHADN+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
-    "is_italic": true,
+    "is_italic": false,
     "label": "answer.text"
   },
   {
@@ -993,7 +993,7 @@
       "LHHACL+TimesNewRomanPSMT"
     ],
     "is_bold": false,
-    "is_italic": false,
+    "is_italic": true,
     "label": "answer.text"
   },
   {

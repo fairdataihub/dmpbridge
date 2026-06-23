@@ -27,14 +27,14 @@ _NUMBERED_HEADING = re.compile(r"^\d+[\.\)]")
 
 def _smooth_labels(blocks: list[dict]) -> list[dict]:
     """
-    Fix two systematic LLM errors caused by line-by-line font-style classification:
+    Fix systematic LLM errors caused by font-style patterns:
 
-    1. bold+italic section.title that is NOT a numbered heading is a question opener —
-       e.g. "Data Sharing and Data Preservation. A description..." is question.text,
-       while "1. Policy and Practice" is a genuine section.title.
+    1. bold+italic block without a leading number mislabeled as section.title or
+       section.description → these are question openers (e.g. "Data Sharing and
+       Data Preservation. A description…"), not section headings or funder text.
 
-    2. italic-only continuation lines following a question.text are mislabeled
-       section.description — propagate question.text forward.
+    2. italic-only continuation lines following a question.text mislabeled as
+       section.description → propagate question.text forward (chain rule).
     """
     for i, block in enumerate(blocks):
         label     = block.get("label", "")
@@ -42,13 +42,14 @@ def _smooth_labels(blocks: list[dict]) -> list[dict]:
         is_italic = block.get("is_italic", False)
         text      = block.get("text", "")
 
-        # Rule 1: bold+italic section.title with no leading number → question.text
-        if label == "section.title" and is_bold and is_italic:
+        # Rule 1: bold+italic unnumbered block mistakenly called section.title or
+        #         section.description → question.text
+        if is_bold and is_italic and label in ("section.title", "section.description"):
             if not _NUMBERED_HEADING.match(text):
                 block["label"] = "question.text"
                 label = "question.text"
 
-        # Rule 2: italic-only line following question.text mislabeled as section.description
+        # Rule 2: italic-only block following question.text mislabeled as section.description
         if label == "section.description" and is_italic and not is_bold and i > 0:
             if blocks[i - 1].get("label") == "question.text":
                 block["label"] = "question.text"

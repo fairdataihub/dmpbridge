@@ -50,45 +50,15 @@
   {
     "page": 1,
     "line_order": 4,
-    "text": "•",
+    "text": "•  Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and",
     "x0": 90.0,
-    "top": 125.07,
-    "x1": 95.08,
+    "top": 125.02,
+    "x1": 540.14,
     "bottom": 136.11,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAH+SymbolMT"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 4,
-    "text": "Section 2.1",
-    "x0": 108.0,
-    "top": 125.02,
-    "x1": 159.51,
-    "bottom": 136.06,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 4,
-    "text": "characterizes the aquifer formation that each groundwater well in the West taps and",
-    "x0": 163.01,
-    "top": 125.02,
-    "x1": 540.14,
-    "bottom": 136.06,
-    "avg_font_size": 11.04,
-    "font_names": [
+      "AAAAAH+SymbolMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
@@ -114,45 +84,15 @@
   {
     "page": 1,
     "line_order": 6,
-    "text": "•",
+    "text": "•  Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)",
     "x0": 90.0,
-    "top": 151.23,
-    "x1": 95.08,
+    "top": 151.18,
+    "x1": 540.09,
     "bottom": 162.27,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAH+SymbolMT"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 6,
-    "text": "Section 2.2",
-    "x0": 108.0,
-    "top": 151.18,
-    "x1": 158.13,
-    "bottom": 162.22,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 6,
-    "text": "estimates groundwater components of the water budget (withdrawals and consumption)",
-    "x0": 160.26,
-    "top": 151.18,
-    "x1": 540.09,
-    "bottom": 162.22,
-    "avg_font_size": 11.04,
-    "font_names": [
+      "AAAAAH+SymbolMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
@@ -178,97 +118,20 @@
   {
     "page": 1,
     "line_order": 8,
-    "text": "•",
+    "text": "•  Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic",
     "x0": 90.0,
-    "top": 177.15,
-    "x1": 95.08,
+    "top": 177.1,
+    "x1": 540.03,
     "bottom": 188.19,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAH+SymbolMT"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 8,
-    "text": "Section 2.3",
-    "x0": 108.0,
-    "top": 177.1,
-    "x1": 161.03,
-    "bottom": 188.14,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 8,
-    "text": "integrates research and education through the",
-    "x0": 166.03,
-    "top": 177.1,
-    "x1": 376.79,
-    "bottom": 188.14,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAG+TimesNewRomanPSMT"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 8,
-    "text": "Scientist Spotlight",
-    "x0": 381.92,
-    "top": 177.1,
-    "x1": 464.0,
-    "bottom": 188.14,
-    "avg_font_size": 11.04,
-    "font_names": [
+      "AAAAAH+SymbolMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT",
       "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
-    "is_italic": true,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 8,
-    "text": "and",
-    "x0": 468.98,
-    "top": 177.1,
-    "x1": 484.89,
-    "bottom": 188.14,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAG+TimesNewRomanPSMT"
-    ],
-    "is_bold": false,
     "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 8,
-    "text": "Hydrologic",
-    "x0": 489.9,
-    "top": 177.1,
-    "x1": 540.03,
-    "bottom": 188.14,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAL+TimesNewRomanPS-ItalicMT"
-    ],
-    "is_bold": false,
-    "is_italic": true,
     "label": null
   },
   {
@@ -370,46 +233,15 @@
   {
     "page": 1,
     "line_order": 15,
-    "text": "(c) sharable instructional materials (",
+    "text": "(c) sharable instructional materials (Scientist Spotlight activities and workshop materials).",
     "x0": 72.0,
-    "top": 278.38,
-    "x1": 230.75,
-    "bottom": 289.42,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAG+TimesNewRomanPSMT"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 15,
-    "text": "Scientist Spotlight",
-    "x0": 230.82,
-    "top": 278.38,
-    "x1": 310.62,
-    "bottom": 289.42,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAL+TimesNewRomanPS-ItalicMT"
-    ],
-    "is_bold": false,
-    "is_italic": true,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 15,
-    "text": "activities and workshop materials).",
-    "x0": 313.32,
     "top": 278.38,
     "x1": 467.32,
     "bottom": 289.42,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
     "is_italic": false,
@@ -418,29 +250,14 @@
   {
     "page": 1,
     "line_order": 16,
-    "text": "Input data:",
+    "text": "Input data: Available data will be systematically reviewed and downloaded. These data are likely",
     "x0": 72.0,
-    "top": 303.58,
-    "x1": 125.5,
-    "bottom": 314.62,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 16,
-    "text": "Available data will be systematically reviewed and downloaded. These data are likely",
-    "x0": 128.24,
     "top": 303.58,
     "x1": 505.81,
     "bottom": 314.62,
     "avg_font_size": 11.04,
     "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
@@ -498,29 +315,14 @@
   {
     "page": 1,
     "line_order": 20,
-    "text": "Produced Data:",
+    "text": "Produced Data: Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be",
     "x0": 72.0,
-    "top": 366.94,
-    "x1": 146.3,
-    "bottom": 377.98,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 20,
-    "text": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be",
-    "x0": 148.99,
     "top": 366.94,
     "x1": 519.29,
     "bottom": 377.98,
     "avg_font_size": 11.04,
     "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
@@ -754,29 +556,14 @@
   {
     "page": 1,
     "line_order": 35,
-    "text": "Raw data:",
+    "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information",
     "x0": 72.0,
-    "top": 581.98,
-    "x1": 120.62,
-    "bottom": 593.02,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 35,
-    "text": "Detailed information about how the data were obtained, including detailed contact information",
-    "x0": 123.33,
     "top": 581.98,
     "x1": 540.19,
     "bottom": 593.02,
     "avg_font_size": 11.04,
     "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
@@ -962,29 +749,14 @@
   {
     "page": 2,
     "line_order": 3,
-    "text": "Scripts and code for analyses:",
+    "text": "Scripts and code for analyses: All scripts and code will be archived in supplementary information",
     "x0": 72.0,
-    "top": 111.58,
-    "x1": 212.0,
-    "bottom": 122.62,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 2,
-    "line_order": 3,
-    "text": "All scripts and code will be archived in supplementary information",
-    "x0": 214.69,
     "top": 111.58,
     "x1": 509.43,
     "bottom": 122.62,
     "avg_font_size": 11.04,
     "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
@@ -1042,29 +814,14 @@
   {
     "page": 2,
     "line_order": 7,
-    "text": "Scientist spotlight:",
+    "text": "Scientist spotlight: All scientist spotlight biographies, assignments, and open-access readings will be",
     "x0": 72.0,
-    "top": 174.7,
-    "x1": 159.13,
-    "bottom": 185.74,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 2,
-    "line_order": 7,
-    "text": "All scientist spotlight biographies, assignments, and open-access readings will be",
-    "x0": 161.84,
     "top": 174.7,
     "x1": 519.56,
     "bottom": 185.74,
     "avg_font_size": 11.04,
     "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
@@ -1090,29 +847,14 @@
   {
     "page": 2,
     "line_order": 9,
-    "text": "Workshop frameworks:",
+    "text": "Workshop frameworks: Workshop material will be shared with UCSB’s Diversity Committee through",
     "x0": 72.0,
-    "top": 212.62,
-    "x1": 184.76,
-    "bottom": 223.66,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAE+TimesNewRomanPS-BoldMT"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 2,
-    "line_order": 9,
-    "text": "Workshop material will be shared with UCSB’s Diversity Committee through",
-    "x0": 187.49,
     "top": 212.62,
     "x1": 530.63,
     "bottom": 223.66,
     "avg_font_size": 11.04,
     "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT",
       "AAAAAG+TimesNewRomanPSMT"
     ],
     "is_bold": false,
@@ -1522,46 +1264,15 @@
   {
     "page": 2,
     "line_order": 35,
-    "text": "will also be shared via on a publicly accessible webpage (",
+    "text": "will also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive",
     "x0": 72.0,
-    "top": 604.78,
-    "x1": 326.3,
-    "bottom": 615.82,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAG+TimesNewRomanPSMT"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 2,
-    "line_order": 35,
-    "text": "Scientist Spotlight",
-    "x0": 326.13,
-    "top": 604.78,
-    "x1": 405.93,
-    "bottom": 615.82,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "AAAAAL+TimesNewRomanPS-ItalicMT"
-    ],
-    "is_bold": false,
-    "is_italic": true,
-    "label": null
-  },
-  {
-    "page": 2,
-    "line_order": 35,
-    "text": ") and UCSB Google Drive",
-    "x0": 405.88,
     "top": 604.78,
     "x1": 522.57,
     "bottom": 615.82,
     "avg_font_size": 11.04,
     "font_names": [
-      "AAAAAG+TimesNewRomanPSMT"
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
     ],
     "is_bold": false,
     "is_italic": false,

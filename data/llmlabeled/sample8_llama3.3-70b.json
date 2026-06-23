@@ -34,46 +34,15 @@
   {
     "page": 1,
     "line_order": 3,
-    "text": "The Bourns College of Engineering (BCOE) at the",
+    "text": "The Bourns College of Engineering (BCOE) at the University of California, Riverside, in partnership with the UCR",
     "x0": 67.7,
-    "top": 114.79,
-    "x1": 271.38,
-    "bottom": 124.63,
-    "avg_font_size": 9.84,
-    "font_names": [
-      "CKFMEP+Times-Roman"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": "answer.text"
-  },
-  {
-    "page": 1,
-    "line_order": 3,
-    "text": "University of California, Riverside",
-    "x0": 273.85,
-    "top": 114.79,
-    "x1": 421.2,
-    "bottom": 124.63,
-    "avg_font_size": 9.84,
-    "font_names": [
-      "CKFMGD+Times-Bold"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": "answer.text"
-  },
-  {
-    "page": 1,
-    "line_order": 3,
-    "text": ", in partnership with the UCR",
-    "x0": 421.29,
     "top": 114.79,
     "x1": 540.04,
     "bottom": 124.63,
     "avg_font_size": 9.84,
     "font_names": [
-      "CKFMEP+Times-Roman"
+      "CKFMEP+Times-Roman",
+      "CKFMGD+Times-Bold"
     ],
     "is_bold": false,
     "is_italic": false,
@@ -306,14 +275,15 @@
   {
     "page": 1,
     "line_order": 18,
-    "text": "universal data sharing systems envisioned for the near future (see",
+    "text": "universal data sharing systems envisioned for the near future (see Changing the Conduct of Science in the",
     "x0": 67.7,
     "top": 295.99,
-    "x1": 358.8,
+    "x1": 539.9,
     "bottom": 305.83,
     "avg_font_size": 9.84,
     "font_names": [
-      "CKFMEP+Times-Roman"
+      "CKFMEP+Times-Roman",
+      "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
     "is_italic": false,
@@ -321,46 +291,15 @@
   },
   {
     "page": 1,
-    "line_order": 18,
-    "text": "Changing the Conduct of Science in the",
-    "x0": 364.64,
-    "top": 295.99,
-    "x1": 539.9,
-    "bottom": 305.83,
-    "avg_font_size": 9.84,
-    "font_names": [
-      "CKFMGF+Times-Italic"
-    ],
-    "is_bold": false,
-    "is_italic": true,
-    "label": "title"
-  },
-  {
-    "page": 1,
     "line_order": 19,
-    "text": "Information Age",
+    "text": "Information Age, NSF, June 2011).",
     "x0": 67.7,
-    "top": 307.26,
-    "x1": 133.46,
-    "bottom": 317.1,
-    "avg_font_size": 9.84,
-    "font_names": [
-      "CKFMGF+Times-Italic"
-    ],
-    "is_bold": false,
-    "is_italic": true,
-    "label": "title"
-  },
-  {
-    "page": 1,
-    "line_order": 19,
-    "text": ", NSF, June 2011).",
-    "x0": 133.52,
     "top": 307.26,
     "x1": 208.35,
     "bottom": 317.1,
     "avg_font_size": 9.84,
     "font_names": [
+      "CKFMGF+Times-Italic",
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
@@ -866,93 +805,48 @@
   {
     "page": 2,
     "line_order": 4,
-    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “",
+    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based upon work",
     "x0": 67.7,
-    "top": 131.81,
-    "x1": 404.46,
-    "bottom": 141.65,
-    "avg_font_size": 9.84,
-    "font_names": [
-      "CKFMEP+Times-Roman"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": "answer.text"
-  },
-  {
-    "page": 2,
-    "line_order": 4,
-    "text": "This material is based upon work",
-    "x0": 404.48,
     "top": 131.81,
     "x1": 539.91,
     "bottom": 141.65,
     "avg_font_size": 9.84,
     "font_names": [
+      "CKFMEP+Times-Roman",
       "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
-    "is_italic": true,
+    "is_italic": false,
     "label": "answer.text"
   },
   {
     "page": 2,
     "line_order": 5,
-    "text": "supported by the National Science Foundation under Grant No. (NSF grant number).",
+    "text": "supported by the National Science Foundation under Grant No. (NSF grant number).” Additionally, materials will",
     "x0": 67.7,
-    "top": 143.57,
-    "x1": 418.74,
-    "bottom": 153.41,
-    "avg_font_size": 9.84,
-    "font_names": [
-      "CKFMGF+Times-Italic"
-    ],
-    "is_bold": false,
-    "is_italic": true,
-    "label": "answer.text"
-  },
-  {
-    "page": 2,
-    "line_order": 5,
-    "text": "” Additionally, materials will",
-    "x0": 418.65,
     "top": 143.57,
     "x1": 540.0,
     "bottom": 153.41,
     "avg_font_size": 9.84,
     "font_names": [
+      "CKFMGF+Times-Italic",
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "is_italic": false,
+    "is_italic": true,
     "label": "answer.text"
   },
   {
     "page": 2,
     "line_order": 6,
-    "text": "contain a disclaimer that “",
+    "text": "contain a disclaimer that “any opinions, findings, and conclusions or recommendations expressed in this material are",
     "x0": 67.7,
-    "top": 155.09,
-    "x1": 174.99,
-    "bottom": 164.93,
-    "avg_font_size": 9.84,
-    "font_names": [
-      "CKFMEP+Times-Roman"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": "answer.text"
-  },
-  {
-    "page": 2,
-    "line_order": 6,
-    "text": "any opinions, findings, and conclusions or recommendations expressed in this material are",
-    "x0": 175.01,
     "top": 155.09,
     "x1": 539.93,
     "bottom": 164.93,
     "avg_font_size": 9.84,
     "font_names": [
+      "CKFMEP+Times-Roman",
       "CKFMGF+Times-Italic"
     ],
     "is_bold": false,
@@ -962,33 +856,18 @@
   {
     "page": 2,
     "line_order": 7,
-    "text": "those of the author(s) and do not necessarily reflect the views of the National Science Foundation",
+    "text": "those of the author(s) and do not necessarily reflect the views of the National Science Foundation.”",
     "x0": 67.7,
-    "top": 166.36,
-    "x1": 458.59,
-    "bottom": 176.2,
-    "avg_font_size": 9.84,
-    "font_names": [
-      "CKFMGF+Times-Italic"
-    ],
-    "is_bold": false,
-    "is_italic": true,
-    "label": "answer.text"
-  },
-  {
-    "page": 2,
-    "line_order": 7,
-    "text": ".”",
-    "x0": 458.47,
     "top": 166.36,
     "x1": 465.34,
     "bottom": 176.2,
     "avg_font_size": 9.84,
     "font_names": [
+      "CKFMGF+Times-Italic",
       "CKFMEP+Times-Roman"
     ],
     "is_bold": false,
-    "is_italic": false,
+    "is_italic": true,
     "label": "answer.text"
   },
   {
@@ -1005,7 +884,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text"
+    "label": "section.description"
   },
   {
     "page": 2,
@@ -1021,7 +900,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text"
+    "label": "section.description"
   },
   {
     "page": 2,
