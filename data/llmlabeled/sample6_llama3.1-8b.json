@@ -1,0 +1,389 @@
+[
+  {
+    "page": 1,
+    "line_order": 1,
+    "text": "Data Management Plan:",
+    "x0": 72.02,
+    "top": 73.65,
+    "x1": 197.27,
+    "bottom": 85.65,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDFH+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "title"
+  },
+  {
+    "page": 1,
+    "line_order": 2,
+    "text": "1. Types of data. The bulk of the data generated in this project will be 1, 2, 3, and 4",
+    "x0": 90.02,
+    "top": 101.01,
+    "x1": 540.22,
+    "bottom": 113.01,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 1,
+    "line_order": 3,
+    "text": "dimensional arrays of numbers and bytes representing fluid state variables generated via",
+    "x0": 108.05,
+    "top": 114.72,
+    "x1": 539.48,
+    "bottom": 126.72,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 4,
+    "text": "computer simulations of fluid flow. Images and video files will be created from the fluid",
+    "x0": 108.05,
+    "top": 128.64,
+    "x1": 539.44,
+    "bottom": 140.64,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 5,
+    "text": "data using both commercial packages, such as Matlab and free visualization packages",
+    "x0": 108.05,
+    "top": 142.32,
+    "x1": 540.07,
+    "bottom": 154.32,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 6,
+    "text": "such as VAPOR (developed at NCAR).",
+    "x0": 108.05,
+    "top": 156.24,
+    "x1": 297.72,
+    "bottom": 168.24,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 7,
+    "text": "2. Data and metadata standards. The PI’s research group will adopt the longstanding",
+    "x0": 90.02,
+    "top": 183.86,
+    "x1": 539.6,
+    "bottom": 195.86,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT",
+      "ICODPB+TimesNewRoman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 1,
+    "line_order": 8,
+    "text": "practice that all generated data should be straightforwardly reproducible. Thus, codes are",
+    "x0": 108.05,
+    "top": 197.54,
+    "x1": 539.45,
+    "bottom": 209.54,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 9,
+    "text": "stored within the same directory on a mass storage system along with the data they",
+    "x0": 108.05,
+    "top": 211.46,
+    "x1": 540.15,
+    "bottom": 223.46,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 10,
+    "text": "generate. “Readme” files will also be provided for explanation of the directory content.",
+    "x0": 108.05,
+    "top": 225.14,
+    "x1": 526.13,
+    "bottom": 237.14,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "ICODPB+TimesNewRoman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 11,
+    "text": "3. Policies for access and sharing. Interested parties will be able to request data and codes at",
+    "x0": 90.02,
+    "top": 252.74,
+    "x1": 539.62,
+    "bottom": 264.74,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 1,
+    "line_order": 12,
+    "text": "the end of the project. Such parties will be responsible for their own version control and",
+    "x0": 108.05,
+    "top": 266.69,
+    "x1": 539.46,
+    "bottom": 278.69,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 13,
+    "text": "execution.",
+    "x0": 108.05,
+    "top": 280.37,
+    "x1": 157.35,
+    "bottom": 292.37,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text"
+  },
+  {
+    "page": 1,
+    "line_order": 14,
+    "text": "4. Policies and provisions for re-use, re-distribution. Simulation data will in essence grow to",
+    "x0": 90.02,
+    "top": 307.97,
+    "x1": 539.96,
+    "bottom": 319.97,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 1,
+    "line_order": 15,
+    "text": "several terrabytes with an associated cost of storage. Data will be made publicly",
+    "x0": 108.05,
+    "top": 321.89,
+    "x1": 540.51,
+    "bottom": 333.89,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 16,
+    "text": "available upon request at the end of the project. Although open-source, we envisage that",
+    "x0": 108.05,
+    "top": 335.57,
+    "x1": 539.87,
+    "bottom": 347.57,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 17,
+    "text": "intellectual rights to the code will be retained by the CU group. Dissemination of open-",
+    "x0": 108.05,
+    "top": 349.51,
+    "x1": 539.97,
+    "bottom": 361.51,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 18,
+    "text": "source software will be released once fully tested and published.",
+    "x0": 108.05,
+    "top": 363.19,
+    "x1": 416.76,
+    "bottom": 375.19,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 19,
+    "text": "5. Plans for archiving and preservation of access. Local data will be archived on the group’s",
+    "x0": 90.02,
+    "top": 390.79,
+    "x1": 539.84,
+    "bottom": 402.79,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT",
+      "ICODPB+TimesNewRoman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "section.title"
+  },
+  {
+    "page": 1,
+    "line_order": 20,
+    "text": "mass storage system. As mentioned above, all data generated is archived with the entire",
+    "x0": 108.05,
+    "top": 404.71,
+    "x1": 539.84,
+    "bottom": 416.71,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 21,
+    "text": "code that generated it. Additionally, further backups of the data will be provided by CU’s",
+    "x0": 108.05,
+    "top": 418.41,
+    "x1": 540.03,
+    "bottom": 430.41,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT",
+      "ICODPB+TimesNewRoman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 22,
+    "text": "NSF-funded research computing. We imagine the data being of relevance and stored for",
+    "x0": 108.05,
+    "top": 432.33,
+    "x1": 539.92,
+    "bottom": 444.33,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text"
+  },
+  {
+    "page": 1,
+    "line_order": 23,
+    "text": "> 10 years.",
+    "x0": 108.05,
+    "top": 446.01,
+    "x1": 160.92,
+    "bottom": 458.01,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text"
+  },
+  {
+    "page": 1,
+    "line_order": 24,
+    "text": "1",
+    "x0": 303.0,
+    "top": 651.29,
+    "x1": 308.4,
+    "bottom": 663.29,
+    "avg_font_size": 12.0,
+    "font_names": [
+      "PNIDII+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "section.title"
+  }
+]
