@@ -1,35 +1,41 @@
-"""Convert flat labeled blocks (LLM output) to the hierarchical manual annotation schema."""
+"""Convert flat labeled blocks (LLM output) to the DMP Tool narrative JSON schema."""
 
 import json
 from pathlib import Path
 from typing import Union
 
 
-def to_structured(blocks: list[dict]) -> dict:
+def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
     """
-    Convert a flat list of labeled blocks into the same hierarchical JSON schema
-    used by the manual annotations in data/manuallabeled/.
+    Convert a flat list of labeled blocks into the DMP Tool narrative JSON schema.
 
     Schema
     ------
-    narrative.template
-      title
-      section[]
-        title
-        description        (section.description blocks joined with \\n)
-        order
-        question[]
-          text             (question.text block)
-          order
-          answer.json.answer  (answer.text blocks joined with space)
+    narrative
+      download_url          URL to access the PDF version (empty if not known)
+      template
+        title               Document title (from 'title' block, or generated)
+        description         Template description (empty — not extractable from PDF)
+        version             "v1"
+        section[]
+          title             section.title block text
+          description       section.description blocks joined with \\n
+          order             1-based section index
+          question[]
+            text            question.text block text
+            order           1-based question index within the section
+            answer
+              json
+                type        "textArea" (default for all free-text answers)
+                answer      answer.text blocks joined with \\n
+                meta
+                  schemaVersion  "1.0"
 
-    Edge cases
-    ----------
-    - answer.text before any question.text  → implicit question with empty text
-    - question.text before any section.title → implicit section with empty title
-    - Multiple consecutive section.description blocks → joined with \\n
-    - Multiple consecutive answer.text blocks → joined with a single space
-      (pdfplumber splits one paragraph into many short lines)
+    Notes
+    -----
+    - id fields are omitted throughout — they cannot be determined from a PDF.
+    - answer.text before any question.text  → implicit question with empty text.
+    - question.text before any section.title → implicit section with empty title.
     """
     title = ""
     sections: list[dict] = []
@@ -43,7 +49,6 @@ def to_structured(blocks: list[dict]) -> dict:
         sec_order += 1
         q_order = 0
         return {
-            "id": "",
             "title": sec_title,
             "description": "",
             "order": sec_order,
@@ -54,16 +59,16 @@ def to_structured(blocks: list[dict]) -> dict:
         nonlocal q_order
         q_order += 1
         return {
-            "id": "",
             "text": q_text,
             "order": q_order,
             "answer": {
-                "id": "",
                 "json": {
                     "type": "textArea",
                     "answer": "",
-                    "meta": {"schemaVersion": "1.0"},
-                },
+                    "meta": {
+                        "schemaVersion": "1.0",
+                    },
+                }
             },
         }
 
@@ -106,15 +111,14 @@ def to_structured(blocks: list[dict]) -> dict:
                 cur_section["question"].append(cur_question)
             existing = cur_question["answer"]["json"]["answer"]
             cur_question["answer"]["json"]["answer"] = (
-                existing + " " + text if existing else text
+                existing + "\n" + text if existing else text
             )
 
     return {
         "narrative": {
-            "download_url": "",
+            "download_url": pdf_url,
             "template": {
-                "id": "",
-                "title": title,
+                "title": title or "DMP Template",
                 "description": "",
                 "version": "v1",
                 "section": sections,
@@ -126,6 +130,7 @@ def to_structured(blocks: list[dict]) -> dict:
 def convert_file(
     flat_path: Union[str, Path],
     structured_path: Union[str, Path, None] = None,
+    pdf_url: str = "",
 ) -> dict:
     """
     Load a flat labeled JSON file and return (and optionally save) the structured version.
@@ -135,10 +140,11 @@ def convert_file(
     flat_path       : path to *_<model>.json produced by the pipeline
     structured_path : if given, write the structured JSON here;
                       defaults to <stem>_structured.json next to the input
+    pdf_url         : optional URL pointing to the source PDF (stored in download_url)
     """
     flat_path = Path(flat_path)
     blocks = json.loads(flat_path.read_text(encoding="utf-8"))
-    structured = to_structured(blocks)
+    structured = to_structured(blocks, pdf_url=pdf_url)
 
     if structured_path is None:
         structured_path = flat_path.with_name(flat_path.stem + "_structured.json")

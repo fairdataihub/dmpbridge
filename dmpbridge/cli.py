@@ -48,6 +48,17 @@ def main() -> None:
         help="Also save per-page PNG images with bounding boxes to this folder.",
     )
     parser.add_argument(
+        "--structured",
+        nargs="?",
+        const="",
+        default=None,
+        metavar="PATH",
+        help=(
+            "Also write a hierarchical structured JSON (dmpchef schema). "
+            "If PATH is omitted, saves as <output_stem>_structured.json alongside the flat output."
+        ),
+    )
+    parser.add_argument(
         "-v", "--verbose",
         action="store_true",
         help="Show detailed progress logs.",
@@ -65,8 +76,16 @@ def main() -> None:
         print(f"Error: file not found — {pdf_path}", file=sys.stderr)
         sys.exit(1)
 
-    output    = args.output or pdf_path.with_name(pdf_path.stem + "_labeled.json")
-    raw_dir   = None if args.no_raw else args.raw_dir
+    output  = Path(args.output) if args.output else pdf_path.with_name(pdf_path.stem + "_labeled.json")
+    raw_dir = None if args.no_raw else args.raw_dir
+
+    structured_output = None
+    if args.structured is not None:
+        structured_output = (
+            Path(args.structured)
+            if args.structured
+            else output.with_name(output.stem + "_structured.json")
+        )
 
     try:
         blocks = process_pdf(
@@ -74,6 +93,7 @@ def main() -> None:
             model=args.model,
             host=args.host,
             output=output,
+            structured_output=structured_output,
             raw_dir=raw_dir,
             images_dir=args.save_images,
         )
@@ -88,8 +108,10 @@ def main() -> None:
         if n:
             print(f"  {lbl:<22} {n}")
     if raw_dir:
-        print(f"\nRaw extraction: {raw_dir}/{pdf_path.stem}.json")
-    print(f"Labeled output: {output}")
+        print(f"\nRaw extraction : {raw_dir}/{pdf_path.stem}.json")
+    print(f"Labeled output : {output}")
+    if structured_output:
+        print(f"Structured JSON: {structured_output}")
 
 
 if __name__ == "__main__":
