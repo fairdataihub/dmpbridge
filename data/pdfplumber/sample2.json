@@ -146,29 +146,14 @@
   {
     "page": 1,
     "line_order": 10,
-    "text": "Roles & Responsibilities.",
+    "text": "Roles & Responsibilities. For the proposed research, Director Samuel Stupp with help from the",
     "x0": 78.0,
-    "top": 233.63,
-    "x1": 194.34,
-    "bottom": 244.63,
-    "avg_font_size": 10.99,
-    "font_names": [
-      "AAAAAA+Tinos-Bold"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 10,
-    "text": "For the proposed research, Director Samuel Stupp with help from the",
-    "x0": 197.1,
     "top": 233.63,
     "x1": 501.44,
     "bottom": 244.63,
     "avg_font_size": 10.99,
     "font_names": [
+      "AAAAAA+Tinos-Bold",
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
@@ -242,29 +227,14 @@
   {
     "page": 1,
     "line_order": 15,
-    "text": "Data Types and Sources.",
+    "text": "Data Types and Sources. A brief, high-level description of the data to be generated or used through",
     "x0": 78.0,
-    "top": 334.13,
-    "x1": 192.83,
-    "bottom": 345.13,
-    "avg_font_size": 10.99,
-    "font_names": [
-      "AAAAAA+Tinos-Bold"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 15,
-    "text": "A brief, high-level description of the data to be generated or used through",
-    "x0": 195.59,
     "top": 334.13,
     "x1": 520.72,
     "bottom": 345.13,
     "avg_font_size": 10.99,
     "font_names": [
+      "AAAAAA+Tinos-Bold",
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
@@ -450,29 +420,14 @@
   {
     "page": 1,
     "line_order": 27,
-    "text": "Content and Format.",
+    "text": "Content and Format. A statement of plans for data and metadata content and format including, where",
     "x0": 78.0,
-    "top": 550.13,
-    "x1": 177.23,
-    "bottom": 561.13,
-    "avg_font_size": 10.99,
-    "font_names": [
-      "AAAAAA+Tinos-Bold"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 1,
-    "line_order": 27,
-    "text": "A statement of plans for data and metadata content and format including, where",
-    "x0": 179.78,
     "top": 550.13,
     "x1": 532.43,
     "bottom": 561.13,
     "avg_font_size": 10.99,
     "font_names": [
+      "AAAAAA+Tinos-Bold",
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
@@ -802,29 +757,14 @@
   {
     "page": 2,
     "line_order": 10,
-    "text": "Data Sharing and Data Preservation.",
+    "text": "Data Sharing and Data Preservation. A description of the plans for data sharing and preservation.",
     "x0": 78.0,
-    "top": 199.13,
-    "x1": 251.54,
-    "bottom": 210.13,
-    "avg_font_size": 10.99,
-    "font_names": [
-      "AAAAAA+Tinos-Bold"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 2,
-    "line_order": 10,
-    "text": "A description of the plans for data sharing and preservation.",
-    "x0": 254.3,
     "top": 199.13,
     "x1": 521.16,
     "bottom": 210.13,
     "avg_font_size": 10.99,
     "font_names": [
+      "AAAAAA+Tinos-Bold",
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
@@ -1522,29 +1462,14 @@
   {
     "page": 3,
     "line_order": 8,
-    "text": "Rationale.",
+    "text": "Rationale. A discussion of the rationale or justification for the proposed data management plan",
     "x0": 78.0,
-    "top": 185.63,
-    "x1": 125.94,
-    "bottom": 196.63,
-    "avg_font_size": 10.99,
-    "font_names": [
-      "AAAAAA+Tinos-Bold"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 3,
-    "line_order": 8,
-    "text": "A discussion of the rationale or justification for the proposed data management plan",
-    "x0": 128.68,
     "top": 185.63,
     "x1": 500.57,
     "bottom": 196.63,
     "avg_font_size": 10.99,
     "font_names": [
+      "AAAAAA+Tinos-Bold",
       "CAAAAA+Tinos-Italic"
     ],
     "is_bold": false,
@@ -2402,29 +2327,14 @@
   {
     "page": 4,
     "line_order": 22,
-    "text": "Data Repositories.",
+    "text": "Data Repositories. Senior investigators typically archive relevant data using their own group servers.",
     "x0": 78.0,
-    "top": 433.13,
-    "x1": 164.09,
-    "bottom": 444.13,
-    "avg_font_size": 10.99,
-    "font_names": [
-      "AAAAAA+Tinos-Bold"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 4,
-    "line_order": 22,
-    "text": "Senior investigators typically archive relevant data using their own group servers.",
-    "x0": 166.85,
     "top": 433.13,
     "x1": 526.13,
     "bottom": 444.13,
     "avg_font_size": 10.99,
     "font_names": [
+      "AAAAAA+Tinos-Bold",
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,
@@ -2546,29 +2456,14 @@
   {
     "page": 4,
     "line_order": 30,
-    "text": "Data Volume.",
+    "text": "Data Volume. Generally, the volume of data generated by CBES researchers should not prohibit their",
     "x0": 78.0,
-    "top": 550.13,
-    "x1": 141.52,
-    "bottom": 561.13,
-    "avg_font_size": 10.99,
-    "font_names": [
-      "AAAAAA+Tinos-Bold"
-    ],
-    "is_bold": true,
-    "is_italic": false,
-    "label": null
-  },
-  {
-    "page": 4,
-    "line_order": 30,
-    "text": "Generally, the volume of data generated by CBES researchers should not prohibit their",
-    "x0": 144.28,
     "top": 550.13,
     "x1": 525.43,
     "bottom": 561.13,
     "avg_font_size": 10.99,
     "font_names": [
+      "AAAAAA+Tinos-Bold",
       "BAAAAA+Tinos-Regular"
     ],
     "is_bold": false,

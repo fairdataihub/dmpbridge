@@ -258,33 +258,18 @@
   {
     "page": 1,
     "line_order": 17,
-    "text": "findings described in the Aims with those datasets only.",
+    "text": "findings described in the Aims with those datasets only. Please see Element 5 for data access information",
     "x0": 51.62,
-    "top": 320.6,
-    "x1": 326.11,
-    "bottom": 331.64,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "COGWQT+ArialMT"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": "answer.text"
-  },
-  {
-    "page": 1,
-    "line_order": 17,
-    "text": "Please see Element 5 for data access information",
-    "x0": 329.91,
     "top": 320.6,
     "x1": 576.14,
     "bottom": 331.64,
     "avg_font_size": 11.04,
     "font_names": [
+      "COGWQT+ArialMT",
       "JERCKF+Arial-ItalicMT"
     ],
     "is_bold": false,
-    "is_italic": true,
+    "is_italic": false,
     "label": "answer.text"
   },
   {
@@ -477,38 +462,23 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text"
+    "label": "question.text"
   },
   {
     "page": 1,
     "line_order": 30,
-    "text": "Objective sedentary behavior metrics –",
+    "text": "Objective sedentary behavior metrics – no existing standards",
     "x0": 51.6,
-    "top": 548.34,
-    "x1": 241.94,
-    "bottom": 559.38,
-    "avg_font_size": 11.04,
-    "font_names": [
-      "COGWQT+ArialMT"
-    ],
-    "is_bold": false,
-    "is_italic": false,
-    "label": "answer.text"
-  },
-  {
-    "page": 1,
-    "line_order": 30,
-    "text": "no existing standards",
-    "x0": 244.92,
     "top": 548.34,
     "x1": 348.94,
     "bottom": 559.38,
     "avg_font_size": 11.04,
     "font_names": [
+      "COGWQT+ArialMT",
       "JERCKF+Arial-ItalicMT"
     ],
     "is_bold": false,
-    "is_italic": true,
+    "is_italic": false,
     "label": "answer.text"
   },
   {
@@ -1150,7 +1120,7 @@
     ],
     "is_bold": true,
     "is_italic": false,
-    "label": "question.text"
+    "label": "section.title"
   },
   {
     "page": 2,
