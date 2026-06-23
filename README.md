@@ -93,12 +93,17 @@ Set your chosen model in `dmpbridge/config.py`.
 PDF
  ↓ pdfplumber
 Line-level text blocks  (page, coordinates, font size, bold, italic)
+   · bold/italic determined from the first non-whitespace character's font
+   · duplicate characters (layered bold shadow) collapsed by deduplication
  ↓ saved to data/pdfplumber/<name>.json  (raw, before labeling)
  ↓ Ollama LLM — batched in groups of 10
    · Few-shot examples from manually labeled DMPs guide each label
    · Last 3 labeled blocks are sent as context for each new batch
 Labeled blocks: title | section.title | section.description | question.text | answer.text
- ↓ saved to labeled JSON
+ ↓ post-processing smoothing rules (pipeline.py)
+   · Rule 1: bold+italic unnumbered block mislabeled section.title/section.description → question.text
+   · Rule 2: italic-only block following question.text mislabeled section.description → question.text
+ ↓ saved to data/llmlabeled/<name>_<model>.json
 ```
 
 ### Configure the model
@@ -170,16 +175,24 @@ Example output:
 ```
 sample1       matched= 78  accuracy= 97.4%
 sample2       matched=171  accuracy= 96.5%
-...
-Overall accuracy  97.2%
+sample3       matched= 69  accuracy= 98.6%
+sample4       matched= 78  accuracy=100.0%
+sample5       matched= 80  accuracy= 98.8%
+sample6       matched= 21  accuracy= 85.7%
+sample7       matched= 17  accuracy= 94.1%
+sample8       matched= 59  accuracy= 96.6%
+sample9       matched= 85  accuracy= 98.8%
+sample10      matched= 68  accuracy= 95.6%
 
-Label                    Precision    Recall        F1
-------------------------------------------------------
-title                       100.0%     80.0%     88.9%
-section.title                82.4%     87.5%     84.8%
-section.description          92.3%    100.0%     96.0%
-question.text                95.2%     90.9%     93.0%
-answer.text                  99.1%     99.6%     99.3%
+Label                    Precision    Recall        F1   Support
+--------------------------------------------------------------
+title                       100.0%     81.8%     90.0%        11
+section.title                81.8%     90.0%     85.7%        40
+section.description          89.1%    100.0%     94.2%        57
+question.text                88.4%     92.7%     90.5%        41
+answer.text                 100.0%     98.1%     99.0%       577
+--------------------------------------------------------------
+Overall accuracy                                 97.2%       726
 ```
 
 ### Notebook (visual)
