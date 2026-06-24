@@ -67,6 +67,7 @@ def process_pdf(
     structured_output: Optional[Union[str, Path]] = None,
     raw_dir: Optional[Union[str, Path]] = DEFAULT_RAW_DIR,
     images_dir: Optional[Union[str, Path]] = None,
+    smooth: bool = True,
 ) -> list[dict]:
     """
     Extract and label all text blocks from a PDF file using an LLM.
@@ -132,7 +133,8 @@ def process_pdf(
             b["label"] = "answer.text"
 
     # ── Step 5b: smooth context-dependent mislabels ───────────────────────────
-    blocks = _smooth_labels(blocks)
+    if smooth:
+        blocks = _smooth_labels(blocks)
 
     # ── Step 6: save flat labeled JSON ───────────────────────────────────────
     if output:

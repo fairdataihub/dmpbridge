@@ -59,6 +59,11 @@ def main() -> None:
         ),
     )
     parser.add_argument(
+        "--no-smooth",
+        action="store_true",
+        help="Skip post-processing smoothing rules (useful for ablation testing).",
+    )
+    parser.add_argument(
         "-v", "--verbose",
         action="store_true",
         help="Show detailed progress logs.",
@@ -96,6 +101,7 @@ def main() -> None:
             structured_output=structured_output,
             raw_dir=raw_dir,
             images_dir=args.save_images,
+            smooth=not args.no_smooth,
         )
     except Exception as exc:
         print(f"Error: {exc}", file=sys.stderr)
