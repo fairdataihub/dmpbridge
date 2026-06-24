@@ -2,8 +2,9 @@
 Evaluate LLM-labeled JSON against manually labeled ground truth.
 
 Usage:
-    python evaluate.py                                          # evaluate all samples
-    python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json  # single file
+    python evaluate.py                                                    # evaluate all samples (smooth)
+    python evaluate.py --no-smooth                                        # evaluate no-smooth variants
+    python evaluate.py data/llmlabeled/sample1_llama3.3-70b-smooth.json  # single file
 """
 import json
 import re
@@ -20,9 +21,11 @@ _ROOT      = Path(__file__).parent
 MANUAL_DIR = _ROOT / "data/manuallabeled"
 LLM_DIR    = _ROOT / "data/llmlabeled"
 
-# Filename suffix derived from the configured model — e.g. "_llama3.3-70b"
+# Filename suffix: <model>-smooth (default) or <model>-nosmooth
+# Override with --no-smooth flag or pass a full path directly.
 MODEL_TAG  = _config.MODEL.replace(":", "-").replace("/", "-")
-LLM_SUFFIX = f"_{MODEL_TAG}"
+_smooth    = "--no-smooth" not in sys.argv
+LLM_SUFFIX = f"_{MODEL_TAG}-{'smooth' if _smooth else 'nosmooth'}"
 
 
 # ── Text helpers ─────────────────────────────────────────────────────────────
@@ -235,7 +238,9 @@ def run_all():
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        run_single(Path(sys.argv[1]))
+    # Strip --no-smooth flag before inspecting positional args
+    pos_args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if pos_args:
+        run_single(Path(pos_args[0]))
     else:
         run_all()
