@@ -9,26 +9,26 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:      #0d1117;
-  --s1:      #161b22;
-  --s2:      #1c2128;
-  --s3:      #21262d;
-  --border:  #30363d;
-  --text:    #c9d1d9;
-  --dim:     #8b949e;
-  --bright:  #f0f6fc;
-  --accent:  #58a6ff;
-  --a-dim:   rgba(88,166,255,0.15);
-  --a-hover: rgba(88,166,255,0.07);
-  --gold:    #e3b341;
-  --green:   #3fb950;
-  --orange:  #f0883e;
-  --red:     #ff7b72;
+  --bg:       #0d1117;
+  --s1:       #161b22;
+  --s2:       #1c2128;
+  --s3:       #21262d;
+  --border:   #30363d;
+  --text:     #c9d1d9;
+  --dim:      #8b949e;
+  --bright:   #f0f6fc;
+  --accent:   #58a6ff;
+  --a-dim:    rgba(88,166,255,0.15);
+  --a-hover:  rgba(88,166,255,0.07);
+  --gold:     #e3b341;
+  --green:    #3fb950;
+  --orange:   #f0883e;
+  --red:      #ff7b72;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   background: var(--bg);
   color: var(--text);
   height: 100vh;
@@ -47,22 +47,27 @@ body {
   gap: 10px;
   flex-shrink: 0;
   flex-wrap: wrap;
-  min-height: 46px;
+  min-height: 44px;
 }
-.app-title { font-size: 13px; font-weight: 700; color: var(--bright); white-space: nowrap; }
+
+.app-title {
+  font-size: 13px; font-weight: 700; color: var(--bright);
+  white-space: nowrap; letter-spacing: -0.3px;
+}
 .app-title em { color: var(--accent); font-style: normal; }
+
 .api-badge {
   font-size: 9px; font-weight: 700; padding: 2px 6px;
   background: rgba(63,185,80,0.15); border: 1px solid rgba(63,185,80,0.4);
   border-radius: 4px; color: var(--green); letter-spacing: 0.05em;
 }
+
 .vdiv { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; }
 
-/* Upload button */
 .upload-btn {
   position: relative;
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 12px;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px;
   border: 1px dashed var(--border); border-radius: 6px;
   cursor: pointer; color: var(--dim); font-size: 11px;
   transition: all 0.15s; white-space: nowrap; user-select: none;
@@ -70,21 +75,20 @@ body {
 }
 .upload-btn:hover { border-color: var(--accent); color: var(--text); background: var(--a-hover); }
 .upload-btn.loaded { border-style: solid; border-color: var(--accent); color: var(--accent); background: var(--a-dim); }
-.upload-btn.uploading { border-color: var(--orange); color: var(--orange); border-style: solid; }
+.upload-btn.uploading { border-style: solid; border-color: var(--orange); color: var(--orange); }
 .upload-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; font-size: 0; }
-
-/* Progress bar on upload button */
 .upload-btn .progress {
   position: absolute; bottom: 0; left: 0; height: 2px;
   background: var(--accent); width: 0; transition: width 0.3s;
 }
 
 .stats-row { display: flex; gap: 5px; align-items: center; margin-left: auto; flex-wrap: wrap; }
+
 .chip {
   display: inline-flex; align-items: center; gap: 3px;
-  padding: 2px 8px; background: var(--s3);
+  padding: 3px 9px; background: var(--s3);
   border: 1px solid var(--border); border-radius: 20px;
-  font-size: 10px; color: var(--dim);
+  font-size: 11px; color: var(--dim);
 }
 .chip b { color: var(--text); font-weight: 600; }
 .chip.blue  { border-color: rgba(88,166,255,0.3); } .chip.blue  b { color: var(--accent); }
@@ -129,8 +133,10 @@ body {
 }
 
 .panel-bar {
-  background: var(--s1); border-bottom: 1px solid var(--border);
-  padding: 4px 10px; display: flex; align-items: center; gap: 5px;
+  background: var(--s1);
+  border-bottom: 1px solid var(--border);
+  padding: 4px 10px;
+  display: flex; align-items: center; gap: 5px;
   flex-shrink: 0; flex-wrap: wrap;
 }
 
@@ -138,7 +144,7 @@ body {
   display: inline-flex; align-items: center; justify-content: center;
   padding: 3px 8px; min-width: 24px;
   background: var(--s3); border: 1px solid var(--border); border-radius: 4px;
-  color: var(--text); cursor: pointer; font-size: 11px;
+  color: var(--text); cursor: pointer; font-size: 11px; line-height: 1.5;
   transition: all 0.1s; user-select: none; white-space: nowrap;
 }
 .btn:hover { background: var(--s2); border-color: var(--accent); }
@@ -172,21 +178,21 @@ body {
 }
 
 .canvas-wrap { position: relative; display: inline-block; line-height: 0; }
-#pdf-canvas { display: block; box-shadow: 0 2px 24px rgba(0,0,0,0.65); }
-#ovr-canvas { position: absolute; top: 0; left: 0; pointer-events: none; }
+#pdf-canvas  { display: block; box-shadow: 0 2px 24px rgba(0,0,0,0.65); }
+#ovr-canvas  { position: absolute; top: 0; left: 0; pointer-events: none; }
 
 .ph {
   display: flex; flex-direction: column; align-items: center;
   justify-content: center; width: 100%; height: 100%;
   gap: 8px; color: var(--dim);
 }
-.ph-icon { font-size: 48px; opacity: 0.2; }
+.ph-icon { font-size: 42px; opacity: 0.25; }
 .ph small { font-size: 10px; }
 
 /* ── Resizer ── */
 .resizer {
   width: 4px; background: var(--border); cursor: col-resize;
-  flex-shrink: 0; transition: background 0.15s;
+  flex-shrink: 0; transition: background 0.15s; z-index: 10;
 }
 .resizer:hover, .resizer.drag { background: var(--accent); }
 
@@ -217,8 +223,6 @@ table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 colgroup col.c-pg  { width: 34px; }
 colgroup col.c-ln  { width: 28px; }
 colgroup col.c-txt { width: auto; }
-colgroup col.c-cd  { width: 44px; }
-colgroup col.c-sz  { width: 38px; }
 colgroup col.c-fn  { width: 90px; }
 colgroup col.c-st  { width: 48px; }
 
@@ -237,26 +241,24 @@ th.sa::after { content: ' ↑'; color: var(--accent); }
 th.sd::after { content: ' ↓'; color: var(--accent); }
 
 td {
-  padding: 3px 5px;
+  padding: 5px 6px;
   border-bottom: 1px solid rgba(48,54,61,0.4);
   vertical-align: middle; overflow: hidden;
 }
 
 .ta-pg { text-align: center; }
-.ta-ln { text-align: center; color: var(--dim); font-size: 10px; }
-.ta-cd { text-align: right; font-family: 'Cascadia Code', monospace; font-size: 10px; color: var(--dim); }
-.ta-sz { text-align: right; font-family: monospace; font-size: 10px; }
+.ta-ln { text-align: center; color: var(--dim); font-size: 11px; }
 .ta-st { text-align: center; }
 
 tbody tr { cursor: pointer; }
-tbody tr:hover td  { background: var(--a-hover); }
-tbody tr.onpage td { background: rgba(88,166,255,0.04); }
-tbody tr.sel td    { background: var(--a-dim); }
+tbody tr:hover td    { background: var(--a-hover); }
+tbody tr.onpage td   { background: rgba(88,166,255,0.04); }
+tbody tr.sel td      { background: var(--a-dim); }
 tbody tr.sel td:first-child { border-left: 2px solid var(--accent); }
 
 .txt-clip {
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  font-size: 11px; color: var(--text);
+  font-size: 12px; color: var(--text);
 }
 
 .pg-dot {
@@ -268,17 +270,17 @@ tbody tr.sel td:first-child { border-left: 2px solid var(--accent); }
 .pg-dot.cur { background: var(--a-dim); color: var(--accent); }
 
 .badge {
-  display: inline-block; padding: 1px 5px;
-  border-radius: 3px; font-size: 9px; font-weight: 700;
+  display: inline-block; padding: 2px 6px;
+  border-radius: 3px; font-size: 10px; font-weight: 700;
 }
 .b-bold { background: rgba(227,179,65,0.12); color: var(--gold); border: 1px solid rgba(227,179,65,0.3); }
 .b-reg  { background: transparent; color: var(--dim); border: 1px solid var(--border); }
 
 .ftag {
-  display: inline-block; padding: 0 3px; border-radius: 2px;
-  font-size: 9px; background: var(--s3); border: 1px solid var(--border);
+  display: inline-block; padding: 1px 4px; border-radius: 2px;
+  font-size: 10px; background: var(--s3); border: 1px solid var(--border);
   color: var(--dim); overflow: hidden; text-overflow: ellipsis;
-  white-space: nowrap; max-width: 82px; vertical-align: middle;
+  white-space: nowrap; max-width: 90px; vertical-align: middle;
 }
 .ftag.fb { color: var(--gold);  border-color: rgba(227,179,65,0.35); }
 .ftag.fi { color: var(--green); border-color: rgba(63,185,80,0.35); }
@@ -286,17 +288,18 @@ tbody tr.sel td:first-child { border-left: 2px solid var(--accent); }
 /* ── Detail Panel ── */
 .detail-panel {
   background: var(--s1); border-top: 1px solid var(--border);
-  padding: 7px 12px; flex-shrink: 0;
-  min-height: 52px; max-height: 80px;
+  padding: 8px 14px; flex-shrink: 0;
+  min-height: 60px; max-height: 110px;
 }
-.d-label { font-size: 9px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
+.d-label { font-size: 10px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
 .d-text  {
-  font-size: 12px; color: var(--bright); line-height: 1.45;
+  font-size: 13px; color: var(--bright); line-height: 1.5;
   overflow: hidden; display: -webkit-box;
-  -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; -webkit-box-orient: vertical;
 }
-.d-meta { font-size: 10px; color: var(--dim); margin-top: 3px; font-family: monospace; }
+.d-meta  { font-size: 11px; color: var(--dim); margin-top: 4px; font-family: monospace; }
 
+/* ── Scrollbars ── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--s3); border-radius: 3px; }
@@ -305,14 +308,24 @@ tbody tr.sel td:first-child { border-left: 2px solid var(--accent); }
 .no-data { text-align: center; color: var(--dim); padding: 40px 0; }
 
 /* ── Label badges ── */
-colgroup col.c-lb { width: 76px; }
-.lbl { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 9px; font-weight: 700; white-space: nowrap; }
-.lbl-document_title { background: rgba(139,92,246,0.12); color: #a78bfa; border: 1px solid rgba(139,92,246,0.35); }
-.lbl-section        { background: rgba(245,158,11,0.12);  color: #fbbf24; border: 1px solid rgba(245,158,11,0.35); }
-.lbl-subsection     { background: rgba(20,184,166,0.12);  color: #2dd4bf; border: 1px solid rgba(20,184,166,0.35); }
-.lbl-content, .lbl-none { background: transparent; color: var(--dim); border: 1px solid var(--border); }
+colgroup col.c-lb { width: 110px; }
+.lbl { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; white-space: nowrap; }
+.lbl-title               { background: rgba(220,38,38,0.15);   color: #fca5a5; border: 1px solid rgba(220,38,38,0.45); }
+.lbl-section\.title      { background: rgba(34,197,94,0.15);   color: #86efac; border: 1px solid rgba(34,197,94,0.45); }
+.lbl-section\.description{ background: rgba(59,130,246,0.15);  color: #93c5fd; border: 1px solid rgba(59,130,246,0.45); }
+.lbl-question\.text      { background: rgba(245,158,11,0.15);  color: #fcd34d; border: 1px solid rgba(245,158,11,0.45); }
+.lbl-answer\.text        { background: rgba(168,85,247,0.15);  color: #d8b4fe; border: 1px solid rgba(168,85,247,0.45); }
+.lbl-none { background: transparent; color: var(--dim); border: 1px solid var(--border); }
 
-/* Spinner */
+/* ── Label stripe on every row ── */
+tbody tr[data-label="title"]               td:first-child { border-left: 3px solid rgba(220,38,38,0.8); }
+tbody tr[data-label="section.title"]       td:first-child { border-left: 3px solid rgba(34,197,94,0.8); }
+tbody tr[data-label="section.description"] td:first-child { border-left: 3px solid rgba(59,130,246,0.8); }
+tbody tr[data-label="question.text"]       td:first-child { border-left: 3px solid rgba(245,158,11,0.8); }
+tbody tr[data-label="answer.text"]         td:first-child { border-left: 3px solid rgba(168,85,247,0.5); }
+tbody tr.sel td:first-child { border-left: 3px solid var(--accent) !important; }
+
+/* ── Spinner ── */
 .spin {
   display: inline-block; width: 12px; height: 12px;
   border: 2px solid rgba(88,166,255,0.3); border-top-color: var(--accent);
@@ -357,10 +370,11 @@ colgroup col.c-lb { width: 76px; }
     <div class="chip green">Regular <b id="st-reg">0</b></div>
     <div class="chip">Sizes <b id="st-sizes">—</b></div>
     <div class="chip" id="st-label-chip" style="display:none">
-      <span style="color:#a78bfa" id="st-lbl-dt">0</span> title ·
-      <span style="color:#fbbf24" id="st-lbl-sec">0</span> sec ·
-      <span style="color:#2dd4bf" id="st-lbl-sub">0</span> sub ·
-      <span style="color:var(--dim)" id="st-lbl-cnt">0</span> content
+      <span style="color:#fca5a5" id="st-lbl-title">0</span> title ·
+      <span style="color:#86efac" id="st-lbl-sec">0</span> sec ·
+      <span style="color:#93c5fd" id="st-lbl-desc">0</span> desc ·
+      <span style="color:#fcd34d" id="st-lbl-q">0</span> q ·
+      <span style="color:#d8b4fe" id="st-lbl-ans">0</span> ans
     </div>
   </div>
 </header>
@@ -371,9 +385,11 @@ colgroup col.c-lb { width: 76px; }
   <!-- PDF Panel -->
   <div class="pdf-panel" id="pdf-panel">
     <div class="panel-bar">
-      <button class="btn" id="b-prev">‹</button>
-      <span class="pg-info">Page <span id="pg-cur">—</span> / <span id="pg-tot">—</span></span>
-      <button class="btn" id="b-next">›</button>
+      <button class="btn" id="b-prev" title="Previous page">‹</button>
+      <span class="pg-info">
+        Page <span id="pg-cur">—</span> / <span id="pg-tot">—</span>
+      </span>
+      <button class="btn" id="b-next" title="Next page">›</button>
       <div class="vdiv"></div>
       <select class="sel" id="zoom">
         <option value="0.75">75%</option>
@@ -384,7 +400,7 @@ colgroup col.c-lb { width: 76px; }
         <option value="2.5">250%</option>
       </select>
       <div class="spacer"></div>
-      <div class="tog-grp" id="omode">
+      <div class="tog-grp" id="overlay-mode">
         <div class="tog-opt on" data-m="selected">Selected</div>
         <div class="tog-opt"   data-m="page">All on page</div>
         <div class="tog-opt"   data-m="none">None</div>
@@ -404,6 +420,7 @@ colgroup col.c-lb { width: 76px; }
     </div>
   </div>
 
+  <!-- Resizer -->
   <div class="resizer" id="resizer"></div>
 
   <!-- JSON Panel -->
@@ -423,39 +440,34 @@ colgroup col.c-lb { width: 76px; }
       <span class="fl">Label:</span>
       <select class="sel" id="label-filter">
         <option value="">All</option>
-        <option value="document_title">Title</option>
-        <option value="section">Section</option>
-        <option value="subsection">Subsection</option>
-        <option value="content">Content</option>
+        <option value="title">Title</option>
+        <option value="section.title">Section Title</option>
+        <option value="section.description">Section Desc</option>
+        <option value="question.text">Question</option>
+        <option value="answer.text">Answer</option>
       </select>
       <div class="spacer"></div>
       <span class="rc-badge" id="rc">0 rows</span>
     </div>
 
-    <div class="table-wrap">
+    <div class="table-wrap" id="twrap">
       <table id="tbl">
         <colgroup>
           <col class="c-pg"><col class="c-ln"><col class="c-txt">
-          <col class="c-cd"><col class="c-cd"><col class="c-cd"><col class="c-cd">
-          <col class="c-sz"><col class="c-fn"><col class="c-st"><col class="c-lb">
+          <col class="c-fn"><col class="c-st"><col class="c-lb">
         </colgroup>
         <thead>
           <tr>
             <th data-col="page"          class="ta-pg">Pg</th>
             <th data-col="line_order"    class="ta-ln">#</th>
             <th data-col="text">Text</th>
-            <th data-col="x0"            class="ta-cd">x0</th>
-            <th data-col="top"           class="ta-cd">top</th>
-            <th data-col="x1"            class="ta-cd">x1</th>
-            <th data-col="bottom"        class="ta-cd">bot</th>
-            <th data-col="avg_font_size" class="ta-sz">pt</th>
             <th data-col="font_names">Fonts</th>
             <th data-col="is_bold"       class="ta-st">Style</th>
             <th data-col="label"         class="ta-st">Label</th>
           </tr>
         </thead>
         <tbody id="tbody">
-          <tr><td colspan="10" class="no-data">Load a JSON file to see data</td></tr>
+          <tr><td colspan="6" class="no-data">Load a JSON file to see data</td></tr>
         </tbody>
       </table>
     </div>
@@ -473,30 +485,31 @@ colgroup col.c-lb { width: 76px; }
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-// ── Label colors (for overlay in "All on page" mode) ────────────────────────
+// ── Label colors ─────────────────────────────────────────────────────────────
 const LABEL_CLR = {
-  document_title: { fill: 'rgba(139,92,246,0.14)', stroke: 'rgba(139,92,246,0.85)', lw: 1.5 },
-  section:        { fill: 'rgba(245,158,11,0.13)',  stroke: 'rgba(245,158,11,0.85)',  lw: 1.4 },
-  subsection:     { fill: 'rgba(20,184,166,0.11)',  stroke: 'rgba(20,184,166,0.80)',  lw: 1.1 },
-  content:        { fill: 'rgba(88,166,255,0.04)',  stroke: 'rgba(88,166,255,0.28)',  lw: 0.7 },
+  'title':               { fill: 'rgba(220,38,38,0.18)',  stroke: 'rgba(220,38,38,0.90)',  lw: 2.0 },
+  'section.title':       { fill: 'rgba(34,197,94,0.16)',  stroke: 'rgba(34,197,94,0.90)',  lw: 1.8 },
+  'section.description': { fill: 'rgba(59,130,246,0.14)', stroke: 'rgba(59,130,246,0.85)', lw: 1.5 },
+  'question.text':       { fill: 'rgba(245,158,11,0.14)', stroke: 'rgba(245,158,11,0.85)', lw: 1.4 },
+  'answer.text':         { fill: 'rgba(168,85,247,0.10)', stroke: 'rgba(168,85,247,0.55)', lw: 1.0 },
 };
-function labelClr(label) { return LABEL_CLR[label] || LABEL_CLR.content; }
+function labelClr(label) { return LABEL_CLR[label] || LABEL_CLR['answer.text']; }
 
-// ── State ───────────────────────────────────────────────────────────────────
-let pdfDoc   = null;
-let rawData  = [];
-let filtered = [];
-let curPage  = 1;
-let totPages = 0;
-let scale    = 1.5;
-let selIdx   = -1;
-let hoverIdx = -1;
-let ovrMode  = 'selected';
-let sortCol  = 'page';
-let sortDir  = 1;
+// ── State ────────────────────────────────────────────────────────────────────
+let pdfDoc     = null;
+let rawData    = [];
+let filtered   = [];
+let curPage    = 1;
+let totPages   = 0;
+let scale      = 1.5;
+let selIdx     = -1;
+let hoverIdx   = -1;
+let ovrMode    = 'selected';
+let sortCol    = 'page';
+let sortDir    = 1;
 let renderTask = null;
 
-// ── DOM ─────────────────────────────────────────────────────────────────────
+// ── DOM ──────────────────────────────────────────────────────────────────────
 const pdfCanvas = document.getElementById('pdf-canvas');
 const ovrCanvas = document.getElementById('ovr-canvas');
 const cwrap     = document.getElementById('cwrap');
@@ -525,7 +538,7 @@ function toast(msg, type = 'ok') {
   toastTimer = setTimeout(() => { el.className = ''; }, 2800);
 }
 
-// ── Upload helpers ───────────────────────────────────────────────────────────
+// ── Upload helper ─────────────────────────────────────────────────────────────
 async function uploadFile(file, endpoint, btnId, lblId, progId) {
   const btn  = document.getElementById(btnId);
   const lbl  = document.getElementById(lblId);
@@ -538,8 +551,7 @@ async function uploadFile(file, endpoint, btnId, lblId, progId) {
 
   const fd = new FormData();
   fd.append('file', file);
-
-  const res  = await fetch(endpoint, { method: 'POST', body: fd });
+  const res = await fetch(endpoint, { method: 'POST', body: fd });
   prog.style.width = '100%';
 
   if (!res.ok) {
@@ -557,7 +569,7 @@ async function uploadFile(file, endpoint, btnId, lblId, progId) {
   return data;
 }
 
-// ── PDF Load ─────────────────────────────────────────────────────────────────
+// ── PDF Load ──────────────────────────────────────────────────────────────────
 document.getElementById('pdf-in').addEventListener('change', async (e) => {
   const f = e.target.files[0]; if (!f) return;
   try {
@@ -609,17 +621,8 @@ document.addEventListener('dragover', e => e.preventDefault());
 document.addEventListener('drop', async (e) => {
   e.preventDefault();
   dropOverlay.classList.remove('show');
-  const files = [...e.dataTransfer.files];
-  for (const f of files) {
+  for (const f of [...e.dataTransfer.files]) {
     if (f.name.endsWith('.pdf')) {
-      const ev = new Event('change');
-      Object.defineProperty(ev, 'target', { value: { files: [f] } });
-      document.getElementById('pdf-in').dispatchEvent(
-        Object.assign(new Event('change'), {
-          target: { files: [f] }
-        })
-      );
-      // Use simulateUpload directly
       try {
         const data = await uploadFile(f, '/upload/pdf', 'pdf-btn', 'pdf-lbl', 'pdf-prog');
         pdfDoc   = await pdfjsLib.getDocument(data.url).promise;
@@ -646,16 +649,34 @@ document.addEventListener('drop', async (e) => {
   }
 });
 
+// ── Build Filters ─────────────────────────────────────────────────────────────
+function buildFilters() {
+  const pages = [...new Set(rawData.map(d => d.page))].sort((a,b) => a-b);
+  pgFilter.innerHTML = '<option value="">All</option>';
+  pages.forEach(p => pgFilter.add(new Option('Page ' + p, p)));
+
+  const fonts = new Set();
+  rawData.forEach(d => d.font_names.forEach(fn => fonts.add(cleanFont(fn))));
+  fnFilter.innerHTML = '<option value="">All</option>';
+  [...fonts].sort().forEach(fn => fnFilter.add(new Option(fn, fn)));
+}
+
 // ── PDF Render ────────────────────────────────────────────────────────────────
 async function renderPage(n) {
   if (!pdfDoc) return;
   curPage = n;
   pgCur.textContent = n;
+
   if (renderTask) { try { renderTask.cancel(); } catch(_){} }
+
   const page = await pdfDoc.getPage(n);
   const vp   = page.getViewport({ scale });
-  pdfCanvas.width  = ovrCanvas.width  = vp.width;
-  pdfCanvas.height = ovrCanvas.height = vp.height;
+
+  pdfCanvas.width  = vp.width;
+  pdfCanvas.height = vp.height;
+  ovrCanvas.width  = vp.width;
+  ovrCanvas.height = vp.height;
+
   const ctx = pdfCanvas.getContext('2d');
   renderTask = page.render({ canvasContext: ctx, viewport: vp });
   await renderTask.promise.catch(e => {
@@ -664,7 +685,7 @@ async function renderPage(n) {
   renderTask = null;
 }
 
-// ── Overlay ───────────────────────────────────────────────────────────────────
+// ── Overlay Drawing ───────────────────────────────────────────────────────────
 function redraw() {
   const ctx = ovrCanvas.getContext('2d');
   ctx.clearRect(0, 0, ovrCanvas.width, ovrCanvas.height);
@@ -673,29 +694,44 @@ function redraw() {
   if (ovrMode === 'page') {
     filtered.forEach((item, idx) => {
       if (item.page !== curPage) return;
-      drawBox(ctx, item, idx === selIdx ? 'sel' : idx === hoverIdx ? 'hover' : 'dim');
+      const type = idx === selIdx   ? 'sel'
+                 : idx === hoverIdx ? 'hover'
+                 : 'dim';
+      drawBox(ctx, item, type);
     });
   } else {
-    if (selIdx >= 0   && filtered[selIdx]?.page   === curPage) drawBox(ctx, filtered[selIdx],   'sel');
+    if (selIdx >= 0 && filtered[selIdx]?.page === curPage)
+      drawBox(ctx, filtered[selIdx], 'sel');
     if (hoverIdx >= 0 && hoverIdx !== selIdx && filtered[hoverIdx]?.page === curPage)
       drawBox(ctx, filtered[hoverIdx], 'hover');
   }
 }
 
 function drawBox(ctx, item, type) {
-  const x = item.x0 * scale, y = item.top * scale;
-  const w = (item.x1 - item.x0) * scale, h = (item.bottom - item.top) * scale;
+  const x = item.x0 * scale;
+  const y = item.top * scale;
+  const w = (item.x1 - item.x0) * scale;
+  const h = (item.bottom - item.top) * scale;
+
   if (type === 'sel') {
-    ctx.fillStyle = 'rgba(88,166,255,0.18)'; ctx.strokeStyle = 'rgba(88,166,255,0.95)'; ctx.lineWidth = 1.8;
+    ctx.fillStyle   = 'rgba(88,166,255,0.18)';
+    ctx.strokeStyle = 'rgba(88,166,255,0.95)';
+    ctx.lineWidth   = 1.8;
   } else if (type === 'hover') {
-    ctx.fillStyle = 'rgba(88,166,255,0.10)'; ctx.strokeStyle = 'rgba(88,166,255,0.65)'; ctx.lineWidth = 1.2;
+    ctx.fillStyle   = 'rgba(88,166,255,0.10)';
+    ctx.strokeStyle = 'rgba(88,166,255,0.65)';
+    ctx.lineWidth   = 1.2;
   } else {
     const lc = labelClr(item.label);
     ctx.fillStyle = lc.fill; ctx.strokeStyle = lc.stroke; ctx.lineWidth = lc.lw;
   }
   ctx.fillRect(x, y, w, h);
   ctx.strokeRect(x, y, w, h);
-  if (type === 'sel') { ctx.fillStyle = 'rgba(88,166,255,0.9)'; ctx.fillRect(x, y, 3, h); }
+
+  if (type === 'sel') {
+    ctx.fillStyle = 'rgba(88,166,255,0.9)';
+    ctx.fillRect(x, y, 3, h);
+  }
 }
 
 // ── Click on PDF canvas ───────────────────────────────────────────────────────
@@ -703,16 +739,23 @@ ovrCanvas.style.pointerEvents = 'auto';
 ovrCanvas.addEventListener('click', (e) => {
   if (!rawData.length) return;
   const rect = ovrCanvas.getBoundingClientRect();
-  const px = (e.clientX - rect.left) / scale;
-  const py = (e.clientY - rect.top)  / scale;
-  const cands = filtered.map((item,idx)=>({item,idx})).filter(c=>c.item.page===curPage);
-  let target = cands.find(c =>
-    px >= c.item.x0 && px <= c.item.x1 && py >= c.item.top && py <= c.item.bottom
+  const px   = (e.clientX - rect.left)  / scale;
+  const py   = (e.clientY - rect.top)   / scale;
+
+  const candidates = filtered.map((item, idx) => ({ item, idx }))
+                              .filter(c => c.item.page === curPage);
+
+  let target = candidates.find(c =>
+    px >= c.item.x0 && px <= c.item.x1 &&
+    py >= c.item.top && py <= c.item.bottom
   );
+
   if (!target) {
     let best = Infinity;
-    cands.forEach(c => {
-      const d = Math.hypot(px - (c.item.x0+c.item.x1)/2, py - (c.item.top+c.item.bottom)/2);
+    candidates.forEach(c => {
+      const cx = (c.item.x0 + c.item.x1) / 2;
+      const cy = (c.item.top + c.item.bottom) / 2;
+      const d  = Math.hypot(px - cx, py - cy);
       if (d < best) { best = d; target = c; }
     });
   }
@@ -722,19 +765,25 @@ ovrCanvas.addEventListener('click', (e) => {
 ovrCanvas.addEventListener('mousemove', (e) => {
   if (ovrMode !== 'page' || !rawData.length) return;
   const rect = ovrCanvas.getBoundingClientRect();
-  const px = (e.clientX - rect.left) / scale;
-  const py = (e.clientY - rect.top)  / scale;
+  const px   = (e.clientX - rect.left)  / scale;
+  const py   = (e.clientY - rect.top)   / scale;
+
   const prev = hoverIdx;
   hoverIdx = -1;
   for (let i = 0; i < filtered.length; i++) {
     const it = filtered[i];
-    if (it.page === curPage && px >= it.x0 && px <= it.x1 && py >= it.top && py <= it.bottom) {
+    if (it.page === curPage &&
+        px >= it.x0 && px <= it.x1 &&
+        py >= it.top && py <= it.bottom) {
       hoverIdx = i; break;
     }
   }
   if (hoverIdx !== prev) redraw();
 });
-ovrCanvas.addEventListener('mouseleave', () => { if (hoverIdx !== -1) { hoverIdx = -1; redraw(); } });
+
+ovrCanvas.addEventListener('mouseleave', () => {
+  if (hoverIdx !== -1) { hoverIdx = -1; redraw(); }
+});
 
 // ── Navigation ────────────────────────────────────────────────────────────────
 document.getElementById('b-prev').addEventListener('click', async () => {
@@ -750,10 +799,14 @@ document.getElementById('zoom').addEventListener('change', async (e) => {
   if (!pdfDoc) return;
   await renderPage(curPage); redraw();
 });
-document.querySelectorAll('#omode .tog-opt').forEach(opt => {
+
+// ── Overlay Mode ──────────────────────────────────────────────────────────────
+document.querySelectorAll('#overlay-mode .tog-opt').forEach(opt => {
   opt.addEventListener('click', () => {
-    document.querySelectorAll('#omode .tog-opt').forEach(o => o.classList.remove('on'));
-    opt.classList.add('on'); ovrMode = opt.dataset.m; redraw();
+    document.querySelectorAll('#overlay-mode .tog-opt').forEach(o => o.classList.remove('on'));
+    opt.classList.add('on');
+    ovrMode = opt.dataset.m;
+    redraw();
   });
 });
 
@@ -786,14 +839,15 @@ function applyFilters() {
     return sortDir * (typeof va === 'string' ? va.localeCompare(vb) : va - vb);
   });
 
-  selIdx = -1; hoverIdx = -1;
+  selIdx   = -1;
+  hoverIdx = -1;
   renderTable();
   rcBadge.textContent = filtered.length + ' row' + (filtered.length !== 1 ? 's' : '');
   redraw();
   updateDetail(null);
 }
 
-// ── Sort ──────────────────────────────────────────────────────────────────────
+// ── Sort Headers ──────────────────────────────────────────────────────────────
 document.querySelectorAll('th[data-col]').forEach(th => {
   th.addEventListener('click', () => {
     const col = th.dataset.col;
@@ -808,36 +862,35 @@ document.querySelectorAll('th[data-col]').forEach(th => {
 // ── Table Render ──────────────────────────────────────────────────────────────
 function renderTable() {
   if (filtered.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="10" class="no-data">No matching entries</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="6" class="no-data">No matching entries</td></tr>';
     return;
   }
+
   const frag = document.createDocumentFragment();
   filtered.forEach((item, idx) => {
     const tr = document.createElement('tr');
     tr.dataset.i = idx;
+    tr.dataset.label = item.label || 'none';
     if (idx === selIdx)             tr.classList.add('sel');
     else if (item.page === curPage) tr.classList.add('onpage');
 
     const fonts = item.font_names.map(fn => {
-      const cn = cleanFont(fn);
-      const cls = cn.toLowerCase().includes('bold') ? 'fb' : cn.toLowerCase().includes('italic') ? 'fi' : '';
+      const cn  = cleanFont(fn);
+      const cls = cn.toLowerCase().includes('bold')   ? 'fb'
+                : cn.toLowerCase().includes('italic') ? 'fi' : '';
       return `<span class="ftag ${cls}" title="${esc(cn)}">${esc(cn)}</span>`;
     }).join(' ');
 
-    const sz = item.avg_font_size;
-    const szc = sz >= 13 ? 'var(--orange)' : sz >= 11 ? 'var(--text)' : 'var(--dim)';
-
     tr.innerHTML = `
-      <td class="ta-pg"><span class="pg-dot ${item.page===curPage?'cur':''}">${item.page}</span></td>
+      <td class="ta-pg">
+        <span class="pg-dot ${item.page === curPage ? 'cur' : ''}">${item.page}</span>
+      </td>
       <td class="ta-ln">${item.line_order}</td>
       <td><div class="txt-clip" title="${esc(item.text)}">${esc(item.text)}</div></td>
-      <td class="ta-cd">${f1(item.x0)}</td>
-      <td class="ta-cd">${f1(item.top)}</td>
-      <td class="ta-cd">${f1(item.x1)}</td>
-      <td class="ta-cd">${f1(item.bottom)}</td>
-      <td class="ta-sz" style="color:${szc}">${sz.toFixed(1)}</td>
       <td>${fonts}</td>
-      <td class="ta-st"><span class="badge ${item.is_bold?'b-bold':'b-reg'}">${item.is_bold?'Bold':'Reg'}</span></td>
+      <td class="ta-st">
+        <span class="badge ${item.is_bold ? 'b-bold' : 'b-reg'}">${item.is_bold ? 'Bold' : 'Reg'}</span>
+      </td>
       <td class="ta-st"><span class="lbl lbl-${item.label||'none'}">${fmtLabel(item.label)}</span></td>`;
 
     tr.addEventListener('click', () => selectRow(idx, true));
@@ -845,6 +898,7 @@ function renderTable() {
     tr.addEventListener('mouseleave', () => { hoverIdx = -1; redraw(); });
     frag.appendChild(tr);
   });
+
   tbody.innerHTML = '';
   tbody.appendChild(frag);
 }
@@ -853,73 +907,72 @@ function renderTable() {
 async function selectRow(idx, scrollPDF) {
   selIdx = idx;
   const item = filtered[idx];
+
   updateDetail(item);
+
   if (pdfDoc && item.page !== curPage) {
-    await renderPage(item.page); refreshPageBadges();
+    await renderPage(item.page);
+    refreshPageBadges();
   }
+
   redraw();
+
   if (scrollPDF && pdfDoc && item.page === curPage) {
-    const t = item.top * scale - pdfVP.clientHeight / 3;
-    pdfVP.scrollTo({ top: Math.max(0, t + 16), behavior: 'smooth' });
+    const targetTop = item.top * scale - pdfVP.clientHeight / 3;
+    pdfVP.scrollTo({ top: Math.max(0, targetTop + 16), behavior: 'smooth' });
   }
+
   renderTable();
-  const row = tbody.querySelector(`tr[data-i="${idx}"]`);
-  if (row) row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+
+  const selRow = tbody.querySelector(`tr[data-i="${idx}"]`);
+  if (selRow) selRow.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
 function updateDetail(item) {
   if (!item) { dText.textContent = '—'; dMeta.textContent = ''; return; }
   dText.textContent = item.text;
   dMeta.textContent =
+    (item.label ? `label=${item.label}  ·  ` : '') +
     `Pg ${item.page}  ·  Line ${item.line_order}  ·  ` +
     `x0=${f1(item.x0)}  top=${f1(item.top)}  x1=${f1(item.x1)}  bot=${f1(item.bottom)}  ` +
     `size=${item.avg_font_size.toFixed(2)}  ·  bold=${item.is_bold}  ·  ` +
-    (item.label ? `label=${item.label}  ·  ` : '') +
     item.font_names.map(cleanFont).join(', ');
 }
 
 // ── Stats ─────────────────────────────────────────────────────────────────────
 function updateStats() {
-  document.getElementById('st-total').textContent = rawData.length;
-  document.getElementById('st-pages').textContent = new Set(rawData.map(d=>d.page)).size;
-  const bold = rawData.filter(d=>d.is_bold).length;
-  document.getElementById('st-bold').textContent = bold;
-  document.getElementById('st-reg').textContent  = rawData.length - bold;
-  const sizes = [...new Set(rawData.map(d=>Math.round(d.avg_font_size*10)/10))].sort((a,b)=>a-b).join(', ');
+  const total = rawData.length;
+  const pages = new Set(rawData.map(d => d.page)).size;
+  const bold  = rawData.filter(d => d.is_bold).length;
+  const sizes = [...new Set(rawData.map(d => Math.round(d.avg_font_size * 10) / 10))]
+    .sort((a,b) => a-b).join(', ');
+
+  document.getElementById('st-total').textContent = total;
+  document.getElementById('st-pages').textContent = pages;
+  document.getElementById('st-bold').textContent  = bold;
+  document.getElementById('st-reg').textContent   = total - bold;
   document.getElementById('st-sizes').textContent = sizes;
 
-  // Label stats (only show if labels exist)
   const hasLabels = rawData.some(d => d.label);
-  const labelChip = document.getElementById('st-label-chip');
+  const chip = document.getElementById('st-label-chip');
+  chip.style.display = hasLabels ? '' : 'none';
   if (hasLabels) {
-    labelChip.style.display = '';
-    const cnt = (lbl) => rawData.filter(d => d.label === lbl).length;
-    document.getElementById('st-lbl-dt').textContent  = cnt('document_title');
-    document.getElementById('st-lbl-sec').textContent = cnt('section');
-    document.getElementById('st-lbl-sub').textContent = cnt('subsection');
-    document.getElementById('st-lbl-cnt').textContent = cnt('content');
-  } else {
-    labelChip.style.display = 'none';
+    document.getElementById('st-lbl-title').textContent = rawData.filter(d => d.label === 'title').length;
+    document.getElementById('st-lbl-sec').textContent   = rawData.filter(d => d.label === 'section.title').length;
+    document.getElementById('st-lbl-desc').textContent  = rawData.filter(d => d.label === 'section.description').length;
+    document.getElementById('st-lbl-q').textContent     = rawData.filter(d => d.label === 'question.text').length;
+    document.getElementById('st-lbl-ans').textContent   = rawData.filter(d => d.label === 'answer.text').length;
   }
-}
-
-function buildFilters() {
-  const pages = [...new Set(rawData.map(d=>d.page))].sort((a,b)=>a-b);
-  pgFilter.innerHTML = '<option value="">All</option>';
-  pages.forEach(p => pgFilter.add(new Option('Page ' + p, p)));
-  const fonts = new Set();
-  rawData.forEach(d => d.font_names.forEach(fn => fonts.add(cleanFont(fn))));
-  fnFilter.innerHTML = '<option value="">All</option>';
-  [...fonts].sort().forEach(fn => fnFilter.add(new Option(fn, fn)));
 }
 
 function refreshPageBadges() {
   tbody.querySelectorAll('tr[data-i]').forEach(tr => {
-    const item = filtered[parseInt(tr.dataset.i)];
+    const idx  = parseInt(tr.dataset.i);
+    const item = filtered[idx];
     if (!item) return;
     const dot = tr.querySelector('.pg-dot');
     if (dot) dot.classList.toggle('cur', item.page === curPage);
-    if (parseInt(tr.dataset.i) !== selIdx)
+    if (idx !== selIdx)
       tr.classList.toggle('onpage', item.page === curPage);
   });
 }
@@ -927,35 +980,59 @@ function refreshPageBadges() {
 // ── Resizer ───────────────────────────────────────────────────────────────────
 const resizer  = document.getElementById('resizer');
 const pdfPanel = document.getElementById('pdf-panel');
+
 resizer.addEventListener('mousedown', (e) => {
-  e.preventDefault(); resizer.classList.add('drag');
-  const startX = e.clientX, startW = pdfPanel.offsetWidth;
+  e.preventDefault();
+  resizer.classList.add('drag');
+  const startX = e.clientX;
+  const startW = pdfPanel.offsetWidth;
   const totalW = pdfPanel.parentElement.offsetWidth;
+
   const onMove = (e) => {
-    pdfPanel.style.width = Math.max(180, Math.min(totalW-180, startW+e.clientX-startX)) + 'px';
+    const w = Math.max(180, Math.min(totalW - 180, startW + e.clientX - startX));
+    pdfPanel.style.width = w + 'px';
   };
-  const onUp = () => { resizer.classList.remove('drag'); document.removeEventListener('mousemove',onMove); document.removeEventListener('mouseup',onUp); };
+  const onUp = () => {
+    resizer.classList.remove('drag');
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onUp);
+  };
   document.addEventListener('mousemove', onMove);
   document.addEventListener('mouseup', onUp);
 });
 
-// ── Keyboard ──────────────────────────────────────────────────────────────────
+// ── Keyboard Navigation ───────────────────────────────────────────────────────
 document.addEventListener('keydown', async (e) => {
   if (!filtered.length) return;
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
-  if (e.key === 'ArrowDown') { e.preventDefault(); await selectRow(Math.min(selIdx+1, filtered.length-1), true); }
-  else if (e.key === 'ArrowUp') { e.preventDefault(); await selectRow(Math.max(selIdx-1, 0), true); }
-  else if (e.key === 'ArrowRight' && pdfDoc && curPage < totPages) { await renderPage(curPage+1); redraw(); refreshPageBadges(); }
-  else if (e.key === 'ArrowLeft'  && pdfDoc && curPage > 1)        { await renderPage(curPage-1); redraw(); refreshPageBadges(); }
+
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    await selectRow(Math.min(selIdx + 1, filtered.length - 1), true);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    await selectRow(Math.max(selIdx - 1, 0), true);
+  } else if (e.key === 'ArrowRight' && pdfDoc) {
+    if (curPage < totPages) { await renderPage(curPage + 1); redraw(); refreshPageBadges(); }
+  } else if (e.key === 'ArrowLeft' && pdfDoc) {
+    if (curPage > 1) { await renderPage(curPage - 1); redraw(); refreshPageBadges(); }
+  }
 });
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-const LABEL_SHORT = { document_title: 'Title', section: 'Section', subsection: 'Sub', content: 'Content' };
-const fmtLabel   = (l) => LABEL_SHORT[l] || (l || '—');
-const clip       = (s, n) => s.length > n ? s.slice(0,n)+'…' : s;
-const f1         = n => (+n).toFixed(1);
-const esc        = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-const cleanFont  = n => { const i = n.indexOf('+'); return i !== -1 ? n.slice(i+1) : n; };
+function clip(s, n) { return s.length > n ? s.slice(0, n) + '…' : s; }
+function f1(n)      { return (+n).toFixed(1); }
+function esc(s)     {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function cleanFont(name) {
+  const i = name.indexOf('+');
+  return i !== -1 ? name.slice(i + 1) : name;
+}
+const LABEL_SHORT = { 'title': 'Title', 'section.title': 'Sec Title', 'section.description': 'Sec Desc', 'question.text': 'Question', 'answer.text': 'Answer' };
+const fmtLabel = (l) => LABEL_SHORT[l] || (l || '—');
 </script>
 </body>
 </html>
