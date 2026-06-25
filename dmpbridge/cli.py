@@ -54,7 +54,7 @@ def main() -> None:
         default=None,
         metavar="PATH",
         help=(
-            "Also write a hierarchical structured JSON (dmpchef schema). "
+            "Also write a hierarchical structured JSON (DMP Tool narrative schema). "
             "If PATH is omitted, saves as <output_stem>_structured.json alongside the flat output."
         ),
     )

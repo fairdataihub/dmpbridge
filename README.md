@@ -29,7 +29,7 @@ dmpbridge/
 ├── __init__.py     # exports process_pdf, to_structured, convert_file
 ├── extractor.py    # pdfplumber text extraction + page image export
 ├── classifier.py   # Ollama LLM classifier (few-shot + context window)
-├── pipeline.py     # combines extraction + classification + smoothing
+├── pipeline.py     # combines extraction + classification
 ├── converter.py    # converts flat labeled JSON → hierarchical manual schema
 ├── cli.py          # dmpbridge command-line tool
 └── config.py       # ← edit here to change model / host / batch size
@@ -42,9 +42,11 @@ data/
 └── pdfplumber/     # (auto-generated) raw pdfplumber JSON before labeling
 
 notebooks/
-├── 01_pdfplumber_batch_test.ipynb          # batch extraction across all sample PDFs
+├── 01_pdfplumber_batch_test.ipynb     # batch extraction across all sample PDFs
 ├── 02_evaluation_pdfplumber_batch_test.ipynb
-└── 03_label_evaluation.ipynb               # visual evaluation: confusion matrix + F1 charts + model comparison
+├── 03_eval_llama3.3-70b.ipynb         # evaluation: confusion matrix + F1 charts (llama3.3:70b)
+├── 03_eval_llama3.1-8b.ipynb          # evaluation: confusion matrix + F1 charts (llama3.1:8b)
+└── 03_comparison_dashboard.ipynb      # side-by-side model comparison + error analysis
 
 templates/
 └── index.html      # Viewer UI served by FastAPI
@@ -163,7 +165,8 @@ python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json
 For interactive charts (confusion matrix, F1 scores, model comparison):
 
 ```powershell
-jupyter lab notebooks/03_label_evaluation.ipynb
+jupyter lab notebooks/03_eval_llama3.3-70b.ipynb   # single-model deep dive
+jupyter lab notebooks/03_comparison_dashboard.ipynb  # cross-model comparison
 ```
 
 ---
