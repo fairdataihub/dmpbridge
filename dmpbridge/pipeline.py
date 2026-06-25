@@ -2,7 +2,6 @@
 
 import json
 import logging
-import re
 from pathlib import Path
 from typing import Optional, Union
 
@@ -23,41 +22,6 @@ DEFAULT_HOST    = config.HOST
 DEFAULT_RAW_DIR = "data/pdfplumber"
 
 
-_NUMBERED_HEADING = re.compile(r"^\d+[\.\)]")
-
-
-def _smooth_labels(blocks: list[dict]) -> list[dict]:
-    """
-    Fix systematic LLM errors caused by font-style patterns:
-
-    1. bold+italic block without a leading number mislabeled as section.title or
-       section.description → these are question openers (e.g. "Data Sharing and
-       Data Preservation. A description…"), not section headings or funder text.
-
-    2. italic-only continuation lines following a question.text mislabeled as
-       section.description → propagate question.text forward (chain rule).
-    """
-    for i, block in enumerate(blocks):
-        label     = block.get("label", "")
-        is_bold   = block.get("is_bold", False)
-        is_italic = block.get("is_italic", False)
-        text      = block.get("text", "")
-
-        # Rule 1: bold+italic unnumbered block mistakenly called section.title or
-        #         section.description → question.text
-        if is_bold and is_italic and label in ("section.title", "section.description"):
-            if not _NUMBERED_HEADING.match(text):
-                block["label"] = "question.text"
-                label = "question.text"
-
-        # Rule 2: italic-only block following question.text mislabeled as section.description
-        if label == "section.description" and is_italic and not is_bold and i > 0:
-            if blocks[i - 1].get("label") == "question.text":
-                block["label"] = "question.text"
-
-    return blocks
-
-
 def process_pdf(
     pdf_path: Union[str, Path],
     *,
@@ -67,7 +31,6 @@ def process_pdf(
     structured_output: Optional[Union[str, Path]] = None,
     raw_dir: Optional[Union[str, Path]] = DEFAULT_RAW_DIR,
     images_dir: Optional[Union[str, Path]] = None,
-    smooth: bool = True,
 ) -> list[dict]:
     """
     Extract and label all text blocks from a PDF file using an LLM.
@@ -131,10 +94,6 @@ def process_pdf(
     for b in blocks:
         if not b.get("label"):
             b["label"] = "answer.text"
-
-    # ── Step 5b: smooth context-dependent mislabels ───────────────────────────
-    if smooth:
-        blocks = _smooth_labels(blocks)
 
     # ── Step 6: save flat labeled JSON ───────────────────────────────────────
     if output:
