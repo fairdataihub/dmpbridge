@@ -51,12 +51,17 @@ def main() -> None:
         "--structured",
         nargs="?",
         const="",
-        default=None,
+        default="",
         metavar="PATH",
         help=(
-            "Also write a hierarchical structured JSON (DMP Tool narrative schema). "
-            "If PATH is omitted, saves as <output_stem>_structured.json alongside the flat output."
+            "Path for the hierarchical structured JSON (DMP Tool narrative schema). "
+            "Produced by default as <output_stem>_structured.json. Pass a path to override location."
         ),
+    )
+    parser.add_argument(
+        "--no-structured",
+        action="store_true",
+        help="Skip writing the structured JSON.",
     )
     parser.add_argument(
         "-v", "--verbose",
@@ -79,8 +84,9 @@ def main() -> None:
     output  = Path(args.output) if args.output else pdf_path.with_name(pdf_path.stem + "_labeled.json")
     raw_dir = None if args.no_raw else args.raw_dir
 
-    structured_output = None
-    if args.structured is not None:
+    if args.no_structured:
+        structured_output = None
+    else:
         structured_output = (
             Path(args.structured)
             if args.structured
