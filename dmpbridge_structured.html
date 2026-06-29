@@ -106,6 +106,23 @@ body {
 
 .col-body { flex: 1; overflow-y: auto; }
 
+/* ── Label count bar ── */
+.col-counts {
+  background: var(--s2); border-bottom: 1px solid var(--border);
+  padding: 5px 12px; display: flex; flex-wrap: wrap; gap: 6px;
+  flex-shrink: 0;
+}
+.cnt-item {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px;
+}
+.cnt-n {
+  font-weight: 700; font-size: 11px; min-width: 14px; text-align: center;
+}
+.cnt-ok  { color: var(--green); }
+.cnt-err { color: var(--red); }
+.cnt-diff { font-size: 9px; color: var(--red); }
+
 .col-sep { width: 1px; background: var(--border); flex-shrink: 0; }
 
 /* ── Label badges — exact same as dmpbridge.html ── */
@@ -248,6 +265,7 @@ body {
       <span class="col-bar-title manual">Manual Label</span>
       <span id="stats-manual" style="font-size:10px;color:var(--dim);margin-left:4px;"></span>
     </div>
+    <div class="col-counts" id="counts-manual"></div>
     <div class="col-body" id="body-manual">
       <div class="empty-state">
         <div class="empty-icon">📋</div>
@@ -265,6 +283,7 @@ body {
       <span class="col-bar-title model" id="model-col-title">LLM Output</span>
       <span id="stats-model" style="font-size:10px;margin-left:4px;"></span>
     </div>
+    <div class="col-counts" id="counts-model"></div>
     <div class="col-body" id="body-model">
       <div class="empty-state">
         <div class="empty-icon">🤖</div>
@@ -384,16 +403,45 @@ function blockStats(blocks) {
   return c;
 }
 
+const LABEL_DEFS = [
+  { key: 'title',               css: 'lbl-title',               short: 'Title' },
+  { key: 'section.title',       css: 'lbl-section-title',       short: 'Sec Title' },
+  { key: 'section.description', css: 'lbl-section-description', short: 'Sec Desc' },
+  { key: 'question.text',       css: 'lbl-question-text',       short: 'Question' },
+  { key: 'answer.text',         css: 'lbl-answer-text',         short: 'Answer' },
+];
+
+function renderCounts(elId, stats, refStats) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  el.innerHTML = LABEL_DEFS.map(d => {
+    const n   = stats[d.key] || 0;
+    const ref = refStats ? (refStats[d.key] || 0) : null;
+    const match = ref === null || n === ref;
+    const nCls  = ref === null ? '' : (match ? 'cnt-ok' : 'cnt-err');
+    const diff  = (ref !== null && !match)
+      ? `<span class="cnt-diff">≠${ref}</span>`
+      : '';
+    return (
+      `<span class="cnt-item">` +
+      `<span class="lbl ${d.css}" style="width:auto;padding:1px 5px;">${d.short}</span>` +
+      `<span class="cnt-n ${nCls}">${n}</span>${diff}` +
+      `</span>`
+    );
+  }).join('');
+}
+
 function render() {
   // Manual column
+  let manualStats = null;
   if (state.manual) {
     const blocks = flatten(state.manual);
     document.getElementById('body-manual').innerHTML = renderBlocks(blocks, false);
-    const s = blockStats(blocks);
-    document.getElementById('stats-manual').innerHTML =
-      `<span class="chip"><b>${s['section.title']}</b> sec</span> ` +
-      `<span class="chip"><b>${s['question.text']}</b> q</span> ` +
-      `<span class="chip"><b>${s['answer.text']}</b> ans</span>`;
+    manualStats = blockStats(blocks);
+    renderCounts('counts-manual', manualStats, null);
+    document.getElementById('stats-manual').innerHTML = '';
+  } else {
+    document.getElementById('counts-manual').innerHTML = '';
   }
 
   // Model column
@@ -402,31 +450,22 @@ function render() {
   modelTitle.textContent = state.active === 'ma' ? 'Model A' : 'Model B';
 
   if (modelData) {
-    const blocks    = flatten(modelData);
-    const issues    = countIssues(blocks);
-    const s         = blockStats(blocks);
+    const blocks  = flatten(modelData);
+    const issues  = countIssues(blocks);
+    const s       = blockStats(blocks);
     document.getElementById('body-model').innerHTML = renderBlocks(blocks, true);
+    renderCounts('counts-model', s, manualStats);
 
-    // Diff vs manual
-    let diffHtml = '';
-    if (state.manual) {
-      const mb = flatten(state.manual);
-      const ms = blockStats(mb);
-      const secOk = s['section.title'] === ms['section.title'];
-      const qOk   = s['question.text'] === ms['question.text'];
-      diffHtml =
-        `<span class="${secOk?'dk':'de'}">${s['section.title']} sec${secOk?' ✓':` ≠ ${ms['section.title']}`}</span> ` +
-        `<span class="${qOk?'dk':'de'}" style="margin-right:8px;">${s['question.text']} q${qOk?' ✓':` ≠ ${ms['question.text']}`}</span>`;
-    }
     const issueChip = issues
       ? `<span class="chip err"><b>${issues}</b> issue${issues!==1?'s':''}</span>`
       : `<span class="chip ok">✓ <b>clean</b></span>`;
-    document.getElementById('stats-model').innerHTML = diffHtml + issueChip;
+    document.getElementById('stats-model').innerHTML = issueChip;
   } else {
     document.getElementById('body-model').innerHTML =
       `<div class="empty-state"><div class="empty-icon">🤖</div>` +
       `<p>Load ${state.active === 'ma' ? 'Model A' : 'Model B'} JSON</p></div>`;
     document.getElementById('stats-model').innerHTML = '';
+    document.getElementById('counts-model').innerHTML = '';
   }
 }
 
