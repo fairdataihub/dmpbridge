@@ -278,19 +278,19 @@ body {
 
 <script>
 // ── Error detection ──────────────────────────────────────────────────────────
-const BODY_RE = /^(\(i+v?\)|about |the |this |data\.|in |it |as |a |an |for |if |to |with |by |at |on )/i;
+// Matches list items like (i), (ii), (iii), (iv) — body text mis-labeled as section
+const ROMAN_RE = /^\(i{1,3}v?i*\)/i;
 
-function suspSec(t)  {
-  if (!t)                      return 'Empty section title';
-  if (/^[a-z]/.test(t))        return 'Starts lowercase';
-  if (BODY_RE.test(t))         return 'Looks like body text';
+function suspSec(t) {
+  if (!t)                       return 'Empty section title';
+  if (/^[a-z]/.test(t))         return 'Starts lowercase';
+  if (ROMAN_RE.test(t))         return 'List item in section title';
   if (t.endsWith('.') && !/\d\.\s/.test(t)) return 'Ends with period';
   return null;
 }
 function suspQ(t) {
   if (!t)               return null;
   if (/^[a-z]/.test(t)) return 'Starts lowercase';
-  if (BODY_RE.test(t))  return 'Looks like answer text';
   return null;
 }
 
