@@ -2,7 +2,7 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "CASM.",
+      "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM",
       "description": "",
       "version": "v1",
       "section": [
@@ -340,7 +340,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "the software. Additions to CASM will be released as LGPL to follow the current licensing of",
+                  "answer": "the software. Additions to CASM will be released as LGPL to follow the current licensing of\nCASM.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

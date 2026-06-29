@@ -2,7 +2,7 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "The servers at the Rehabilitation Institute of Chicago will serve as the central repository for all",
+      "title": "CPS 2015",
       "description": "",
       "version": "v1",
       "section": [
@@ -116,7 +116,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "information required to reproduce experimental results, and other metadata.\ncollected data. Raw data files will be saved in either Matlab or comma-separated value (CSV)\nformat. Code for converting between these formats will also be provided to ensure easy access. The",
+                  "answer": "information required to reproduce experimental results, and other metadata.\nThe servers at the Rehabilitation Institute of Chicago will serve as the central repository for all\ncollected data. Raw data files will be saved in either Matlab or comma-separated value (CSV)\nformat. Code for converting between these formats will also be provided to ensure easy access. The",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

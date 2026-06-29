@@ -2,7 +2,7 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "from the sponsoring program.",
+      "title": "Center for Bio-Inspired Energy Science",
       "description": "",
       "version": "v1",
       "section": [
@@ -305,7 +305,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "data with similar repositories provided by the partner institution (such as Academic Commons at",
+                  "answer": "data with similar repositories provided by the partner institution (such as Academic Commons at\nColumbia University, D-Scholarship@Pitt at the University of Pittsburgh, and Harvard University",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -496,7 +496,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "the DMP. Information about other Office of Science facilities can be found in the additional guidance",
+                  "answer": "the DMP. Information about other Office of Science facilities can be found in the additional guidance\nfrom the sponsoring program.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

@@ -79,7 +79,20 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
             continue
 
         if label == "title":
-            title = text
+            if not title:
+                title = text
+            else:
+                # Second "title" mid-document is a mis-classification — absorb as answer.text
+                if cur_question is None:
+                    if cur_section is None:
+                        cur_section = _new_section("")
+                        sections.append(cur_section)
+                    cur_question = _new_question("")
+                    cur_section["question"].append(cur_question)
+                existing = cur_question["answer"]["json"]["answer"]
+                cur_question["answer"]["json"]["answer"] = (
+                    existing + "\n" + text if existing else text
+                )
 
         elif label == "section.title":
             cur_section = _new_section(text)

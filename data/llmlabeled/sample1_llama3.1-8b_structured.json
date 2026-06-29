@@ -2,7 +2,7 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep",
+      "title": "DATA MANAGEMENT AND SHARING PLAN",
       "description": "",
       "version": "v1",
       "section": [
@@ -63,7 +63,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "In addition to the data described above, code and models will be included in the repository and in on our\nPostures”.",
+                  "answer": "In addition to the data described above, code and models will be included in the repository and in on our\nproject’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep\nPostures”.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

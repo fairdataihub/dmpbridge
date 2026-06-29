@@ -2,7 +2,7 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "effectiveness the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging",
+      "title": "DATA MANAGEMENT",
       "description": "",
       "version": "v1",
       "section": [
@@ -50,7 +50,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "subject to this plan only after those steps have taken place. Under this application, we will determine the\nand photothermal therapies.",
+                  "answer": "subject to this plan only after those steps have taken place. Under this application, we will determine the\neffectiveness the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging\nand photothermal therapies.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

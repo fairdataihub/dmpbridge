@@ -2,7 +2,7 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific",
+      "title": "Univ. of California, Riverside Data Management Plan",
       "description": "",
       "version": "v1",
       "section": [
@@ -37,7 +37,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "community as necessary to validate research findings” be made available at little or no cost to the PI or project. In\npreliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or\npublication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken\nplace. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after\nits acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF\nThe release of data about students or any other human subjects is subject to policies and restrictions in protocols\nadopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act\nThe proposed project will develop programming, compiler, and runtime support for applications, as described in\nthis proposal. The implementations will be made available to other researchers. All code will be preserved and\nsample adaptive versions of applications that will be developed in this work will also be made available.",
+                  "answer": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific\ncommunity as necessary to validate research findings” be made available at little or no cost to the PI or project. In\npreliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or\npublication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken\nplace. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after\nits acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF\nThe release of data about students or any other human subjects is subject to policies and restrictions in protocols\nadopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act\nThe proposed project will develop programming, compiler, and runtime support for applications, as described in\nthis proposal. The implementations will be made available to other researchers. All code will be preserved and\nsample adaptive versions of applications that will be developed in this work will also be made available.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
