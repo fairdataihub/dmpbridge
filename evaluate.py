@@ -111,6 +111,21 @@ def evaluate_sample(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> dict:
         pred_label = block.get("label", "answer.text")
         confusion[gold_label][pred_label] += 1
 
+    # Reverse check: gold items with no matching LLM block → missed detections
+    # These are counted as true_label → "__missed__" so they appear in the report
+    pred_texts = [b["text"] for b in blocks]
+    for gold_text, gold_label in gold_pairs:
+        gtok = tokenize(gold_text)
+        matched = any(
+            containment(tokenize(pt), gtok) >= 0.75
+            for pt in pred_texts
+            if tokenize(pt)
+        )
+        if not matched:
+            confusion[gold_label]["__missed__"] += 1
+
+    return confusion
+
     return confusion
 
 
@@ -127,7 +142,7 @@ def add_confusion(total, new):
 def print_confusion(confusion: dict):
     col_w = 10
     label = "true \\ pred"
-    header = f"{label:<18}" + "".join(f"{s:>{col_w}}" for s in SHORT)
+    header = f"{label:<18}" + "".join(f"{s:>{col_w}}" for s in SHORT) + f"{'missed':>{col_w}}"
     print(header)
     print("-" * len(header))
     for true_lbl, short_true in zip(LABELS, SHORT):
@@ -138,7 +153,9 @@ def print_confusion(confusion: dict):
             n = row.get(pred_lbl, 0)
             marker = f"{n}*" if pred_lbl == true_lbl and n else str(n)
             cells += f"{marker:>{col_w}}"
-        print(f"{short_true:<18}{cells}  (n={total})")
+        missed = row.get("__missed__", 0)
+        missed_str = f"{missed}!" if missed else "0"
+        print(f"{short_true:<18}{cells}{missed_str:>{col_w}}  (n={total})")
 
 
 def print_f1(confusion: dict):
@@ -174,6 +191,28 @@ def _sample_row(stem: str, n: int, tp: int) -> None:
     print(f"{stem:<12}  {n:>5}  {tp:>7}  {errors:>6}  {acc:>7.1f}%  {tp}/{n}")
 
 
+def print_missed(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> None:
+    """Print each gold item that no LLM block matched."""
+    blocks = json.loads(pred_path.read_text(encoding="utf-8"))
+    pred_texts = [b["text"] for b in blocks]
+    missed = []
+    for gold_text, gold_label in gold_pairs:
+        gtok = tokenize(gold_text)
+        matched = any(
+            containment(tokenize(pt), gtok) >= 0.75
+            for pt in pred_texts
+            if tokenize(pt)
+        )
+        if not matched:
+            missed.append((gold_label, gold_text))
+
+    if not missed:
+        print("  (none)")
+        return
+    for lbl, text in missed:
+        print(f"  [{lbl}]  {repr(text[:80])}")
+
+
 def run_single(pred_path: Path):
     stem = pred_path.stem.split("_")[0]  # e.g. "sample1"
     manual_path = MANUAL_DIR / f"{stem}_dmp.json"
@@ -191,9 +230,11 @@ def run_single(pred_path: Path):
     _sample_header()
     _sample_row(stem, n, tp)
     print()
-    print("\nConfusion matrix  (* = correct)\n")
+    print("\nConfusion matrix  (* = correct, ! = missed)\n")
     print_confusion(confusion)
     print_f1(confusion)
+    print(f"\nMissed gold items (LLM produced no matching block):")
+    print_missed(pred_path, gold)
 
 
 def run_all():
