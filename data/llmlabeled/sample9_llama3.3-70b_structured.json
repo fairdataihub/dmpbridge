@@ -2,34 +2,14 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM",
+      "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES",
       "description": "",
       "version": "v1",
       "section": [
         {
-          "title": "",
-          "description": "",
-          "order": 1,
-          "question": [
-            {
-              "text": "",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "ELECTRODES",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
           "title": "Products of Research",
           "description": "",
-          "order": 2,
+          "order": 1,
           "question": [
             {
               "text": "",
@@ -49,7 +29,7 @@
         {
           "title": "Data Format Standards",
           "description": "",
-          "order": 3,
+          "order": 2,
           "question": [
             {
               "text": "",
@@ -69,7 +49,7 @@
         {
           "title": "Access and sharing",
           "description": "",
-          "order": 4,
+          "order": 3,
           "question": [
             {
               "text": "",
@@ -102,7 +82,7 @@
         {
           "title": "Archiving of Data, Samples, and Other Relevant Research Products",
           "description": "",
-          "order": 5,
+          "order": 4,
           "question": [
             {
               "text": "",

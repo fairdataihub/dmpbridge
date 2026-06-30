@@ -81,8 +81,11 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
         if label == "title":
             if not title:
                 title = text
+            elif not sections:
+                # No sections yet — this is a split title (pdfplumber broke it across lines)
+                title = title + " " + text
             else:
-                # Second "title" mid-document is a mis-classification — absorb as answer.text
+                # Title appears mid-document after sections — mis-classification, absorb as answer
                 if cur_question is None:
                     if cur_section is None:
                         cur_section = _new_section("")
