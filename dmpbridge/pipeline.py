@@ -10,7 +10,7 @@ from .classifier import OllamaClassifier
 from .converter import to_structured
 from .extractor import extract_blocks, save_page_images
 
-# Silence noisy pdfminer internal loggers
+# Silence noisy pdfminer internal loggers so the terminal output stays clean.
 for _noisy in ("pdfminer", "pdfminer.pdfpage", "pdfminer.pdfdocument",
                "pdfminer.pdfinterp", "pdfminer.converter", "pdfminer.cmapdb"):
     logging.getLogger(_noisy).setLevel(logging.ERROR)
@@ -32,31 +32,13 @@ def process_pdf(
     raw_dir: Optional[Union[str, Path]] = DEFAULT_RAW_DIR,
     images_dir: Optional[Union[str, Path]] = None,
 ) -> list[dict]:
-    """
-    Extract and label all text blocks from a PDF file using an LLM.
+    """Run the full pipeline for one PDF. 1. Extract text blocks with pdfplumber. 2. Optionally save the raw extraction JSON before labeling. 3. Optionally save per-page PNG images with bounding boxes. 4. Send blocks to the LLM for label classification. 5. Fill any blocks the LLM missed with a default label. 6. Save the flat labeled JSON. 7. Optionally convert and save the structured JSON."""
 
-    Parameters
-    ----------
-    pdf_path          : Path to the input PDF.
-    model             : Ollama model name (default from config.py).
-    host              : Ollama server base URL (default from config.py).
-    output            : If given, write the flat labeled JSON to this path.
-    structured_output : If given, also write a hierarchical JSON (same schema as
-                        manual annotations) to this path.
-    raw_dir           : Folder to save raw pdfplumber extraction JSON before LLM
-                        labeling. Defaults to "data/pdfplumber". Pass None to skip.
-    images_dir        : If given, also save per-page PNG images to this folder.
-
-    Returns
-    -------
-    List of block dicts, each with a 'label' field set to one of:
-    title | section.title | section.description | question.text | answer.text
-    """
     pdf_path = Path(pdf_path)
     if not pdf_path.exists():
         raise FileNotFoundError(f"PDF not found: {pdf_path}")
 
-    # ── Step 1: extract ──────────────────────────────────────────────────────
+    # Step 1 — extract all text lines from the PDF as individual blocks.
     logger.info(f"Extracting text from {pdf_path.name} …")
     blocks = extract_blocks(pdf_path)
     if not blocks:
@@ -66,7 +48,7 @@ def process_pdf(
     pages = len({b["page"] for b in blocks})
     logger.info(f"  → {len(blocks)} blocks across {pages} page(s)")
 
-    # ── Step 2: save raw pdfplumber JSON (before labeling) ───────────────────
+    # Step 2 — save the raw pdfplumber output before any LLM labeling, useful for debugging.
     if raw_dir is not None:
         raw_path = Path(raw_dir) / f"{pdf_path.stem}.json"
         raw_path.parent.mkdir(parents=True, exist_ok=True)
@@ -76,7 +58,7 @@ def process_pdf(
         )
         logger.info(f"Raw extraction saved → {raw_path}")
 
-    # ── Step 3: optional page images ─────────────────────────────────────────
+    # Step 3 — optionally render each page as a PNG with colored bounding boxes per label.
     if images_dir is not None:
         logger.info(f"Saving page images → {images_dir} …")
         try:
@@ -85,17 +67,17 @@ def process_pdf(
         except Exception as exc:
             logger.warning(f"Image export skipped: {exc}")
 
-    # ── Step 4: classify with LLM ────────────────────────────────────────────
+    # Step 4 — send all blocks to the LLM in batches to get label predictions.
     logger.info(f"Classifying with model '{model}' at {host} …")
     clf = OllamaClassifier(model=model, host=host)
     blocks = clf.classify_blocks(blocks)
 
-    # ── Step 5: fill any blocks the LLM did not return a label for ───────────
+    # Step 5 — if the LLM skipped any block, default its label to answer.text.
     for b in blocks:
         if not b.get("label"):
             b["label"] = "answer.text"
 
-    # ── Step 6: save flat labeled JSON ───────────────────────────────────────
+    # Step 6 — save the flat labeled JSON (one block per line, with label field added).
     if output:
         out_path = Path(output)
         out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -105,7 +87,7 @@ def process_pdf(
         )
         logger.info(f"Labeled JSON saved → {out_path}")
 
-    # ── Step 7: optionally save hierarchical structured JSON ─────────────────
+    # Step 7 — convert the flat block list into the nested DMP Tool JSON schema and save it.
     if structured_output:
         struct_path = Path(structured_output)
         struct_path.parent.mkdir(parents=True, exist_ok=True)

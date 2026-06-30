@@ -6,37 +6,8 @@ from typing import Union
 
 
 def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
-    """
-    Convert a flat list of labeled blocks into the DMP Tool narrative JSON schema.
+    """Convert a flat list of labeled blocks into the nested DMP Tool JSON schema. 1. Walk blocks in document order. 2. section.title opens a new section. 3. section.description before any question goes into the section description field. 4. section.description after a question has started stays in sequence (continues the question text or answer). 5. Consecutive question.text blocks with no answer yet are merged into one question. 6. answer.text always appends to the current question's answer."""
 
-    Schema
-    ------
-    narrative
-      download_url          URL to access the PDF version (empty if not known)
-      template
-        title               Document title (from 'title' block, or generated)
-        description         Template description (empty — not extractable from PDF)
-        version             "v1"
-        section[]
-          title             section.title block text
-          description       section.description blocks joined with \\n
-          order             1-based section index
-          question[]
-            text            question.text block text
-            order           1-based question index within the section
-            answer
-              json
-                type        "textArea" (default for all free-text answers)
-                answer      answer.text blocks joined with \\n
-                meta
-                  schemaVersion  "1.0"
-
-    Notes
-    -----
-    - id fields are omitted throughout — they cannot be determined from a PDF.
-    - answer.text before any question.text  → implicit question with empty text.
-    - question.text before any section.title → implicit section with empty title.
-    """
     title = ""
     sections: list[dict] = []
     cur_section: dict | None = None
@@ -45,6 +16,7 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
     q_order = 0
 
     def _new_section(sec_title: str) -> dict:
+        # Create a fresh section dict and reset the question counter.
         nonlocal sec_order, q_order
         sec_order += 1
         q_order = 0
@@ -56,6 +28,7 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
         }
 
     def _new_question(q_text: str) -> dict:
+        # Create a fresh question dict with an empty answer ready to be filled.
         nonlocal q_order
         q_order += 1
         return {
@@ -80,12 +53,13 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
 
         if label == "title":
             if not title:
+                # First title block becomes the document title.
                 title = text
             elif not sections:
-                # No sections yet — this is a split title (pdfplumber broke it across lines)
+                # Another title before any section — pdfplumber split the title across lines, merge it.
                 title = title + " " + text
             else:
-                # Title appears mid-document after sections — mis-classification, absorb as answer
+                # Title appearing after sections have started — treat as answer content.
                 if cur_question is None:
                     if cur_section is None:
                         cur_section = _new_section("")
@@ -98,6 +72,7 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
                 )
 
         elif label == "section.title":
+            # Start a new section and reset the current question pointer.
             cur_section = _new_section(text)
             sections.append(cur_section)
             cur_question = None
@@ -107,16 +82,16 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
                 cur_section = _new_section("")
                 sections.append(cur_section)
             if cur_question is None:
-                # no question open yet — true leading description
+                # No question open yet — this is a true leading description for the section.
                 if cur_section["description"]:
                     cur_section["description"] += "\n" + text
                 else:
                     cur_section["description"] = text
             elif not cur_question["answer"]["json"]["answer"]:
-                # a question is open with no answer yet — stay in sequence, continue its text
+                # A question is open but has no answer yet — stay in sequence, continue its text.
                 cur_question["text"] = (cur_question["text"] + "\n" + text) if cur_question["text"] else text
             else:
-                # a question already has an answer — stay in sequence, continue the answer
+                # A question already has an answer — stay in sequence, continue the answer.
                 cur_question["answer"]["json"]["answer"] += "\n" + text
 
         elif label == "question.text":
@@ -124,19 +99,22 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
                 cur_section = _new_section("")
                 sections.append(cur_section)
             if cur_question is not None and not cur_question["answer"]["json"]["answer"]:
-                # same label continuing — aggregate into current question
+                # Previous block was also a question with no answer yet — merge into one question.
                 cur_question["text"] = (cur_question["text"] + "\n" + text) if cur_question["text"] else text
             else:
+                # New question — create a fresh entry under the current section.
                 cur_question = _new_question(text)
                 cur_section["question"].append(cur_question)
 
         elif label == "answer.text":
             if cur_question is None:
+                # Answer appeared before any question — create an implicit empty question to hold it.
                 if cur_section is None:
                     cur_section = _new_section("")
                     sections.append(cur_section)
                 cur_question = _new_question("")
                 cur_section["question"].append(cur_question)
+            # Append to the current question's answer, joining multiple answer blocks with a newline.
             existing = cur_question["answer"]["json"]["answer"]
             cur_question["answer"]["json"]["answer"] = (
                 existing + "\n" + text if existing else text
@@ -160,20 +138,13 @@ def convert_file(
     structured_path: Union[str, Path, None] = None,
     pdf_url: str = "",
 ) -> dict:
-    """
-    Load a flat labeled JSON file and return (and optionally save) the structured version.
-
-    Parameters
-    ----------
-    flat_path       : path to *_<model>.json produced by the pipeline
-    structured_path : if given, write the structured JSON here;
-                      defaults to <stem>_structured.json next to the input
-    pdf_url         : optional URL pointing to the source PDF (stored in download_url)
-    """
+    """Load a flat labeled JSON file, convert it to structured JSON, and save it. 1. Read the flat block list from disk. 2. Run to_structured to build the nested schema. 3. Save to structured_path (defaults to <stem>_structured.json next to the input)."""
     flat_path = Path(flat_path)
+    # Read the flat labeled JSON produced by the LLM classifier.
     blocks = json.loads(flat_path.read_text(encoding="utf-8"))
     structured = to_structured(blocks, pdf_url=pdf_url)
 
+    # Default output path is the same folder as the input, with _structured appended.
     if structured_path is None:
         structured_path = flat_path.with_name(flat_path.stem + "_structured.json")
     structured_path = Path(structured_path)

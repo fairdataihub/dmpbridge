@@ -10,6 +10,9 @@ from .pipeline import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_RAW_DIR, process_pdf
 
 
 def main() -> None:
+    """Entry point for the dmpbridge command. 1. Parse command-line arguments. 2. Validate the input PDF exists. 3. Resolve output paths. 4. Run the full pipeline. 5. Print a summary of labeled block counts."""
+
+    # Define all the arguments the user can pass from the terminal.
     parser = argparse.ArgumentParser(
         prog="dmpbridge",
         description="Extract and label PDF text blocks using pdfplumber + LLaMA via Ollama.",
@@ -71,19 +74,23 @@ def main() -> None:
 
     args = parser.parse_args()
 
+    # Set log level — verbose mode shows every batch being classified, normal mode just shows steps.
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
         format="%(message)s",
     )
 
+    # Validate that the PDF actually exists before doing any work.
     pdf_path = Path(args.pdf)
     if not pdf_path.exists():
         print(f"Error: file not found — {pdf_path}", file=sys.stderr)
         sys.exit(1)
 
+    # Resolve output paths — default flat JSON goes next to the PDF with _labeled suffix.
     output  = Path(args.output) if args.output else pdf_path.with_name(pdf_path.stem + "_labeled.json")
     raw_dir = None if args.no_raw else args.raw_dir
 
+    # Resolve structured JSON path — skip if --no-structured, otherwise default next to flat JSON.
     if args.no_structured:
         structured_output = None
     else:
@@ -93,6 +100,7 @@ def main() -> None:
             else output.with_name(output.stem + "_structured.json")
         )
 
+    # Run the full pipeline — extract, classify, and save.
     try:
         blocks = process_pdf(
             pdf_path,
@@ -107,6 +115,7 @@ def main() -> None:
         print(f"Error: {exc}", file=sys.stderr)
         sys.exit(1)
 
+    # Print a summary showing how many blocks got each label.
     counts = Counter(b.get("label", "answer.text") for b in blocks)
     print(f"\nDone — {len(blocks)} blocks labeled:")
     for lbl in ("title", "section.title", "section.description", "question.text", "answer.text"):
