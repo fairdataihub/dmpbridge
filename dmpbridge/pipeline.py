@@ -1,5 +1,30 @@
 """Main pipeline: PDF → pdfplumber extraction → raw JSON → LLM labeling → labeled JSON."""
 
+#
+#   PDF file
+#       │
+#       ▼
+#   extract_blocks()          reads every text line from every page
+#       │
+#       ▼
+#   save raw JSON             optional snapshot before LLM touches anything
+#       │
+#       ▼
+#   classify_blocks()         LLM assigns one of 5 labels to each block
+#       │
+#       ▼
+#   fill missing labels       any block the LLM skipped gets "answer.text"
+#       │
+#       ▼
+#   save flat labeled JSON    one block per entry, label field populated
+#       │
+#       ▼
+#   to_structured()           assembles blocks into section/question/answer tree
+#       │
+#       ▼
+#   save structured JSON      nested DMP Tool schema ready for comparison
+#
+
 import json
 import logging
 from pathlib import Path

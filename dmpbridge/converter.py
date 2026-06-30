@@ -1,5 +1,26 @@
 """Convert flat labeled blocks (LLM output) to the DMP Tool narrative JSON schema."""
 
+#
+#   flat list of labeled blocks  (in document reading order)
+#       │
+#       ▼
+#   walk blocks one by one
+#       │
+#       ├── section.title       ──► open a new section
+#       │
+#       ├── section.description ──► before any question → section description field
+#       │                           after a question started → continue in sequence
+#       │
+#       ├── question.text       ──► new question, or merge if previous was also
+#       │                           question.text with no answer yet
+#       │
+#       └── answer.text         ──► append to current question's answer
+#       │
+#       ▼
+#   nested JSON
+#   { narrative → template → section[] → question[] → answer }
+#
+
 import json
 from pathlib import Path
 from typing import Union

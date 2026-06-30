@@ -1,5 +1,24 @@
 """Command-line interface for dmpbridge."""
 
+#
+#   terminal:  dmpbridge  <pdf>  [--model]  [--output]  [--structured]  ...
+#       │
+#       ▼
+#   parse arguments
+#       │
+#       ▼
+#   validate PDF exists
+#       │
+#       ▼
+#   resolve output paths          flat JSON + structured JSON + optional raw/images
+#       │
+#       ▼
+#   process_pdf()                 runs the full pipeline (extract → classify → convert)
+#       │
+#       ▼
+#   print summary                 block counts per label + output file paths
+#
+
 import argparse
 import logging
 import sys

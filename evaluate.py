@@ -5,6 +5,28 @@ Usage:
     python evaluate.py                                      # evaluate all samples
     python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json  # single file
 """
+
+#
+#   manual JSON (gold)              LLM JSON (predicted)
+#         │                               │
+#         ▼                               ▼
+#   extract_gold()              load flat block list
+#   returns (text, label) pairs
+#         │                               │
+#         └───────────────┬───────────────┘
+#                         ▼
+#                 evaluate_sample()
+#                 │
+#                 ├── forward check:  each predicted block → best matching gold label
+#                 └── reverse check:  each gold item → any block covers it? (missed?)
+#                         │
+#                         ▼
+#                 confusion matrix  { true_label: { pred_label: count } }
+#                         │
+#                         ▼
+#         print accuracy / F1 per label / missed items
+#
+
 import json
 import re
 import sys

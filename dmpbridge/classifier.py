@@ -1,5 +1,30 @@
 """LLM-based classifier using Ollama."""
 
+#
+#   list of blocks (label = None)
+#       │
+#       ▼
+#   split into batches of BATCH_SIZE
+#       │
+#       ▼
+#   Batch 1 ──────────────────► _classify_batch()
+#       │                        sends: context + blocks
+#       ▼                        gets back: [{id, label}, ...]
+#   write labels into result
+#       │
+#       ▼
+#   Batch 2 ──────────────────► _classify_batch()
+#       │
+#       ▼
+#   write labels into result
+#       │
+#       ▼
+#       ...
+#       │
+#       ▼
+#   list of blocks (label filled in for every block)
+#
+
 import json
 import logging
 
