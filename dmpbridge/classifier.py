@@ -1,9 +1,18 @@
-"""LLM-based classifier using Ollama."""
+"""LLM-based classifier — supports Ollama (local) and OpenAI GPT."""
 
 import json
 import logging
+import os
+from pathlib import Path
 
 import requests
+
+# Load .env from project root if present
+try:
+    from dotenv import load_dotenv
+    load_dotenv(Path(__file__).parent.parent / ".env")
+except ImportError:
+    pass
 
 from . import config
 
@@ -177,3 +186,95 @@ class OllamaClassifier:
             return []
 
         return parsed
+
+
+class GPTClassifier:
+    """Classifies document blocks using the OpenAI API (gpt-4o, gpt-4-turbo, etc.)."""
+
+    def __init__(self, model: str = "gpt-4o", api_key: str | None = None):
+        try:
+            from openai import OpenAI
+        except ImportError:
+            raise ImportError(
+                "openai package not installed. Run: pip install openai"
+            )
+        self.model = model
+        self.client = OpenAI(api_key=api_key or os.environ.get("OPENAI_API_KEY"))
+
+    def classify_blocks(self, blocks: list[dict]) -> list[dict]:
+        """Return blocks with the 'label' field populated."""
+        result = [dict(b) for b in blocks]
+
+        for start in range(0, len(result), BATCH_SIZE):
+            batch   = result[start : start + BATCH_SIZE]
+            context = result[max(0, start - CONTEXT_SIZE) : start]
+            logger.info(f"  Classifying blocks {start}–{start + len(batch) - 1} …")
+            labels = self._classify_batch(batch, offset=start, context=context)
+            for entry in labels:
+                idx = entry.get("id")
+                lbl = entry.get("label", "answer.text")
+                if idx is not None and 0 <= idx < len(result) and lbl in LABELS:
+                    result[idx]["label"] = lbl
+
+        return result
+
+    def _classify_batch(
+        self, batch: list[dict], offset: int, context: list[dict] | None = None
+    ) -> list[dict]:
+        ctx_section = ""
+        if context:
+            ctx_blocks = [
+                {
+                    "text":   b["text"],
+                    "bold":   b["is_bold"],
+                    "italic": b.get("is_italic", False),
+                    "label":  b.get("label", "?"),
+                }
+                for b in context
+            ]
+            ctx_section = (
+                "PRECEDING BLOCKS (already labeled — use for context only, do not output labels for these):\n"
+                + json.dumps(ctx_blocks, ensure_ascii=False)
+                + "\n\n"
+            )
+
+        payload = [
+            {
+                "id":     offset + j,
+                "text":   b["text"],
+                "bold":   b["is_bold"],
+                "italic": b.get("is_italic", False),
+                "page":   b["page"],
+            }
+            for j, b in enumerate(batch)
+        ]
+
+        prompt = (
+            ctx_section
+            + f'TO CLASSIFY — return JSON object with key "labels" containing exactly {len(batch)} entries:\n'
+            + json.dumps(payload, ensure_ascii=False)
+        )
+
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user",   "content": prompt},
+            ],
+            response_format={"type": "json_object"},
+            temperature=0.0,
+        )
+
+        raw = response.choices[0].message.content or ""
+        try:
+            parsed = json.loads(raw)
+            labels = parsed.get("labels", parsed) if isinstance(parsed, dict) else parsed
+        except json.JSONDecodeError:
+            logger.warning(f"Invalid JSON from GPT for batch at offset {offset}.")
+            return []
+
+        if not isinstance(labels, list) or not labels:
+            logger.warning(f"Empty response from GPT for batch at offset {offset}.")
+            return []
+
+        return labels

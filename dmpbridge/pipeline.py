@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Optional, Union
 
 from . import config
-from .classifier import OllamaClassifier
+from .classifier import GPTClassifier, OllamaClassifier
 from .converter import to_structured
 from .extractor import extract_blocks, save_page_images
 
@@ -86,8 +86,11 @@ def process_pdf(
             logger.warning(f"Image export skipped: {exc}")
 
     # ── Step 4: classify with LLM ────────────────────────────────────────────
-    logger.info(f"Classifying with model '{model}' at {host} …")
-    clf = OllamaClassifier(model=model, host=host)
+    logger.info(f"Classifying with model '{model}' …")
+    if model.startswith("gpt-"):
+        clf = GPTClassifier(model=model)
+    else:
+        clf = OllamaClassifier(model=model, host=host)
     blocks = clf.classify_blocks(blocks)
 
     # ── Step 5: fill any blocks the LLM did not return a label for ───────────
