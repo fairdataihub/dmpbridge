@@ -30,11 +30,7 @@ _OUTPUT_SCHEMA = {
     },
 }
 
-# Real examples taken from our 10 manually labeled DMP documents.
-# Including these in the prompt ("few-shot examples") helps the model
-# understand what each label looks like in practice, not just in theory.
-# Without these, the model relies only on the label definitions, which can
-# be ambiguous when the text is unusual or the DMP format is non-standard.
+
 _FEW_SHOT_EXAMPLES = """
 EXAMPLES FROM REAL DMP DOCUMENTS:
 
@@ -67,11 +63,6 @@ answer.text (researcher's actual written response — narrative, first-person, d
 """
 
 # The system prompt is the main instruction sent to the LLM before any document text.
-# It explains the task, defines the 5 labels, gives the most important decision rules
-# to resolve common confusions, and embeds the few-shot examples above.
-# The key distinctions section is important because the hardest cases are:
-#   - section.description vs answer.text  (both are paragraph-length prose)
-#   - question.text vs section.description (both can sound like instructions)
 SYSTEM_PROMPT = f"""You are a classifier for Data Management Plan (DMP) documents.
 
 Label each text block with exactly one of these 5 labels:
