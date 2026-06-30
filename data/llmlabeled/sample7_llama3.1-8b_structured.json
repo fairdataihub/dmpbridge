@@ -2,13 +2,13 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "Resource/Data Sharing Plan",
+      "title": "",
       "description": "",
       "version": "v1",
       "section": [
         {
-          "title": "",
-          "description": "",
+          "title": "Resource/Data Sharing Plan",
+          "description": "Archive (NDA) Data Sharing Terms and Conditions, including submitting and harmonizing all descriptive/raw",
           "order": 1,
           "question": [
             {
@@ -17,7 +17,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The study investigators are committed to the open and timely dissemination of study data. The final datasets\nwill include demographic and clinical assessment data obtained from interviews, questionnaires, and\nbehavioral tasks collected from human subjects. The investigators will be fully compliant to the NIMH Data\nArchive (NDA) Data Sharing Terms and Conditions, including submitting and harmonizing all descriptive/raw\ndata and analyzed data at the item and subject-level to the National Database for Clinical Trials (NDCT)\naccording to the expected timeline (semi-annually, at the end of the grant or at the time of publication,\nwhichever occurs first). The investigators will include appropriate language in participant consent documents to\nallow for the data sharing through NDA, and complete all required paperwork related to the submission and\nsharing. The investigators will certify the quality of all data prior to submission and review the data for accuracy\nafter submission. The investigators will also associate the submitted data in NDA with the findings/publications\n(both positive and negative) using NDA-provided features. All submitted data will include an NDA Global\nUnique Identifier (GUID) and will not include personally identifiable information (PII). The exception to the",
+                  "answer": "The study investigators are committed to the open and timely dissemination of study data. The final datasets\nwill include demographic and clinical assessment data obtained from interviews, questionnaires, and\nbehavioral tasks collected from human subjects. The investigators will be fully compliant to the NIMH Data\ndata and analyzed data at the item and subject-level to the National Database for Clinical Trials (NDCT)\naccording to the expected timeline (semi-annually, at the end of the grant or at the time of publication,\nwhichever occurs first). The investigators will include appropriate language in participant consent documents to\nallow for the data sharing through NDA, and complete all required paperwork related to the submission and\nsharing. The investigators will certify the quality of all data prior to submission and review the data for accuracy\nafter submission. The investigators will also associate the submitted data in NDA with the findings/publications\n(both positive and negative) using NDA-provided features. All submitted data will include an NDA Global\nUnique Identifier (GUID) and will not include personally identifiable information (PII). The exception to the",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

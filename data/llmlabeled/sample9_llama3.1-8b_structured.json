@@ -2,14 +2,34 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES",
+      "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM",
       "description": "",
       "version": "v1",
       "section": [
         {
-          "title": "Products of Research",
+          "title": "",
           "description": "",
           "order": 1,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "ELECTRODES",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "Products of Research",
+          "description": "",
+          "order": 2,
           "question": [
             {
               "text": "",
@@ -42,7 +62,7 @@
         {
           "title": "Data Format Standards",
           "description": "In order to allow for interoperability, reproducibility, and reuse, all data will be stored and saved in",
-          "order": 2,
+          "order": 3,
           "question": [
             {
               "text": "standard and open formats. Experimental characterization data will be stored and saved as, e.g.,",
@@ -74,8 +94,8 @@
         },
         {
           "title": "available software tools (VESTA, cif2file, etc.). Crystallographic data for previously-unreported",
-          "description": "",
-          "order": 3,
+          "description": "files for readability across many programs and platforms. The CRYSTAL code manual will be",
+          "order": 4,
           "question": [
             {
               "text": "compounds/structures will be uploaded to the ICSD database. First principles simulation input and",
@@ -83,7 +103,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "output files (generated with the VASP and CRYSTAL codes) will be stored as rich text format (*.rtf)\nfiles for readability across many programs and platforms. The CRYSTAL code manual will be",
+                  "answer": "output files (generated with the VASP and CRYSTAL codes) will be stored as rich text format (*.rtf)",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -115,10 +135,17 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "title": "CRYSTAL calculations of NMR properties. The uniform file structure enforced by CASM for the",
+          "description": "",
+          "order": 5,
+          "question": [
             {
-              "text": "CRYSTAL calculations of NMR properties. The uniform file structure enforced by CASM for the\neffective Hamiltonian construction and the large number of Monte Carlo simulations that are",
-              "order": 4,
+              "text": "effective Hamiltonian construction and the large number of Monte Carlo simulations that are",
+              "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -134,13 +161,13 @@
         {
           "title": "different people.",
           "description": "",
-          "order": 4,
+          "order": 6,
           "question": []
         },
         {
           "title": "Access and sharing",
           "description": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in",
-          "order": 5,
+          "order": 7,
           "question": [
             {
               "text": "",
@@ -159,8 +186,8 @@
         },
         {
           "title": "be disseminated through peer-reviewed publications, conference presentations, and annual reports.",
-          "description": "",
-          "order": 6,
+          "description": "along with supplementary information, on the UC eScholarship website.\nintellectual property protection of data stored in this manner are guaranteed by the privacy policy",
+          "order": 8,
           "question": [
             {
               "text": "The supporting information accompanying publications will include detailed\nexperimental/simulation/synthetic procedures, as well as detailed information on models used for",
@@ -168,7 +195,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "data analysis. All of the journals of interest to the group make supporting information files publicly-\navailable online free of charge. In addition, all publication pre-prints will be made freely available,\nalong with supplementary information, on the UC eScholarship website.\nOver the course of the project, digital data will be internally stored and shared for collaborative work\non the UCSB-administered, Box platform with unlimited cloud storage. The privacy, security and\nintellectual property protection of data stored in this manner are guaranteed by the privacy policy\nand terms of service contract between University of California and Box. As a means of making data",
+                  "answer": "data analysis. All of the journals of interest to the group make supporting information files publicly-\navailable online free of charge. In addition, all publication pre-prints will be made freely available,\nOver the course of the project, digital data will be internally stored and shared for collaborative work\non the UCSB-administered, Box platform with unlimited cloud storage. The privacy, security and\nand terms of service contract between University of California and Box. As a means of making data",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -205,8 +232,8 @@
         },
         {
           "title": "been performed on a given system and has tools to query a wide range of properties for each",
-          "description": "",
-          "order": 7,
+          "description": "CASM is an open source software package released under the GNU Lesser General Public License",
+          "order": 9,
           "question": [
             {
               "text": "",
@@ -240,7 +267,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "functions and Monte Carlo results) and uploaded to Dryad. Dryad is free of charge for UCSB\nresearchers and can be accessed using a personal ORCID.\nCASM is an open source software package released under the GNU Lesser General Public License",
+                  "answer": "functions and Monte Carlo results) and uploaded to Dryad. Dryad is free of charge for UCSB\nresearchers and can be accessed using a personal ORCID.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -252,7 +279,7 @@
         {
           "title": "(LGPL) and available free of charge via the prisms-center conda channel at",
           "description": "https://anaconda.org/prisms-center. All additions of the CASM software developed during this",
-          "order": 8,
+          "order": 10,
           "question": [
             {
               "text": "project will be incorporated into the CASM software and made accessible free of charge and open",
@@ -271,8 +298,8 @@
         },
         {
           "title": "Policies and provisions for re-use, re-distribution, and production of derivatives",
-          "description": "",
-          "order": 9,
+          "description": "The existing open source software infrastructure within CASM that serves as a foundation to this",
+          "order": 11,
           "question": [
             {
               "text": "All data will be stored in Dryad and will be available under a public domain, creative commons",
@@ -280,7 +307,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "license (CC0). Note that while a personal ORCID is needed to deposit data in Dryad, no ORCID is\nrequired to search, find and download datasets.\nThe existing open source software infrastructure within CASM that serves as a foundation to this",
+                  "answer": "license (CC0). Note that while a personal ORCID is needed to deposit data in Dryad, no ORCID is\nrequired to search, find and download datasets.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -292,7 +319,7 @@
         {
           "title": "project, is already licensed by the Regents of the University of California under the ``LGPL'' open",
           "description": "",
-          "order": 10,
+          "order": 12,
           "question": [
             {
               "text": "source license, and distributed via the prisms-center conda channel, permitting non-exclusive use of",
@@ -312,7 +339,7 @@
         {
           "title": "Archiving of Data, Samples, and Other Relevant Research Products",
           "description": "",
-          "order": 11,
+          "order": 13,
           "question": [
             {
               "text": "",

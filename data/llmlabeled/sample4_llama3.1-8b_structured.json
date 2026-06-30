@@ -8,7 +8,7 @@
       "section": [
         {
           "title": "",
-          "description": "",
+          "description": "complete human subjects training through the UCR Office of Research and Economic",
           "order": 1,
           "question": [
             {
@@ -17,7 +17,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The P.I. has completed human subjects training. The research assistants will be required to\ncomplete human subjects training through the UCR Office of Research and Economic",
+                  "answer": "The P.I. has completed human subjects training. The research assistants will be required to",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -28,7 +28,7 @@
         },
         {
           "title": "Development.",
-          "description": "",
+          "description": "information about how confidentiality of responses will be protected.\nsample.\ndepartmental procedures. If problems arise in the validation of coding, more extensive checks\noffice. The data will be preserved exclusively on the two project computers and the back-up\nAll data will be coded and saved on password-protected computers in the project office. No data\nwill be removed from the project office during the period of the project. The only individuals",
           "order": 2,
           "question": [
             {
@@ -50,7 +50,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "well as in connection with the collection of survey data. These consent forms will include\ninformation about how confidentiality of responses will be protected.\nThe longevity analysis will collect data on the length of time clusters have operated (including\nthe length of time between first hires and closures for those that have disbanded). We will\ncollect data from a minimum of 36 institutions, attempting to find dates of operation for all\nclusters authorized at those institutions. The total number of clusters cannot be estimated at this\ntime but is likely to encompass as many as 150-200.",
+                  "answer": "well as in connection with the collection of survey data. These consent forms will include\nThe longevity analysis will collect data on the length of time clusters have operated (including\nthe length of time between first hires and closures for those that have disbanded). We will\ncollect data from a minimum of 36 institutions, attempting to find dates of operation for all\nclusters authorized at those institutions. The total number of clusters cannot be estimated at this\ntime but is likely to encompass as many as 150-200.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -89,7 +89,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "reflect the number of institutions and the number of fields included in the sample. The number\nof interviews with university administrators will reflect the number of institutions included in the\nsample.\nThe members of the project team will spot check coding on a 10 percent sample of individuals",
+                  "answer": "reflect the number of institutions and the number of fields included in the sample. The number\nof interviews with university administrators will reflect the number of institutions included in the\nThe members of the project team will spot check coding on a 10 percent sample of individuals",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -97,7 +97,7 @@
               }
             },
             {
-              "text": "hired through cluster programs and a 10 percent sample of individual hired through normal\ndepartmental procedures. If problems arise in the validation of coding, more extensive checks",
+              "text": "hired through cluster programs and a 10 percent sample of individual hired through normal",
               "order": 6,
               "answer": {
                 "json": {
@@ -115,7 +115,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "and double checking work.\nData will be backed up on a weekly basis on a hard drive kept in a locked cabinet in the project\noffice. The data will be preserved exclusively on the two project computers and the back-up\nhard drive.",
+                  "answer": "and double checking work.\nData will be backed up on a weekly basis on a hard drive kept in a locked cabinet in the project\nhard drive.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -128,7 +128,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "institutional and cluster identifiers, for subsequent data analysis. Data collected from individual\nand institutions will be stripped of institutional identifications and given a letter title\ncorresponding to the institution’s name. The University of California, Riverside, for example,\nmight be labelled “Institution A.” Interviews will be tape recorded for consultation during the\nwriting of papers and reports. To our knowledge, there will be little overlap between the data\ncollected for this project and data collected by other researchers. The only project that may\ninclude overlapping data is that of Erin Leahey at the University of Arizona (SciSIP award\n#1461989). However, consultation with Prof. Leahey has led us to conclude that the amount of\noverlap is quite limited to the extent that it exists at all.\nProf. Leahey’s work is focused on support for interdisciplinary activities on university campuses\nand includes evidence on university investments in interdisciplinary activities. In previous work,\nProf. Leahey has collected data on publication rates and publication prominence of scholars\nworking in interdisciplinary teams relative to scholars who are not working in such teams. We\nsee little overlap in these data and the data the research team intends to collect. A robust study of\ninterdisciplinary activity has been conducted at Stanford University by Prof. Daniel MacFarland.\nAlthough these data are relevant to our work, they are not exclusively or primarily focused on\ncluster hires. We do not intend to integrate either of these databases with the data we collect.\nAll data will be coded and saved on password-protected computers in the project office. No data\nwill be removed from the project office during the period of the project. The only individuals",
+                  "answer": "institutional and cluster identifiers, for subsequent data analysis. Data collected from individual\nand institutions will be stripped of institutional identifications and given a letter title\ncorresponding to the institution’s name. The University of California, Riverside, for example,\nmight be labelled “Institution A.” Interviews will be tape recorded for consultation during the\nwriting of papers and reports. To our knowledge, there will be little overlap between the data\ncollected for this project and data collected by other researchers. The only project that may\ninclude overlapping data is that of Erin Leahey at the University of Arizona (SciSIP award\n#1461989). However, consultation with Prof. Leahey has led us to conclude that the amount of\noverlap is quite limited to the extent that it exists at all.\nProf. Leahey’s work is focused on support for interdisciplinary activities on university campuses\nand includes evidence on university investments in interdisciplinary activities. In previous work,\nProf. Leahey has collected data on publication rates and publication prominence of scholars\nworking in interdisciplinary teams relative to scholars who are not working in such teams. We\nsee little overlap in these data and the data the research team intends to collect. A robust study of\ninterdisciplinary activity has been conducted at Stanford University by Prof. Daniel MacFarland.\nAlthough these data are relevant to our work, they are not exclusively or primarily focused on\ncluster hires. We do not intend to integrate either of these databases with the data we collect.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -152,7 +152,7 @@
         },
         {
           "title": "research assistants found to be handling data in a careless way will be immediately removed",
-          "description": "",
+          "description": "No names of individuals or institutions will be used in papers prepared by the project team\nwithout the explicit consent of the individuals and institutions.\nthe data archive will be made available on the project website to researchers who are interested",
           "order": 3,
           "question": [
             {
@@ -161,7 +161,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "from the project staff.\nNo names of individuals or institutions will be used in papers prepared by the project team\nwithout the explicit consent of the individuals and institutions.",
+                  "answer": "from the project staff.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -174,7 +174,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "categorize the institutions. These variables include institutional size, Carnegie category, control\n(private, non-profit or public), and regional location. Following the completion of the project,\nthe data archive will be made available on the project website to researchers who are interested\nin pursuing questions related to cluster hiring. The preservation format will be platform-\nindependent. Following the end of the project, we will contact the Inter-University Consortium",
+                  "answer": "categorize the institutions. These variables include institutional size, Carnegie category, control\n(private, non-profit or public), and regional location. Following the completion of the project,\nin pursuing questions related to cluster hiring. The preservation format will be platform-\nindependent. Following the end of the project, we will contact the Inter-University Consortium",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

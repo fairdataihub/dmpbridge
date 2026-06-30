@@ -1,66 +1,8 @@
 """Convert flat labeled blocks (LLM output) to the DMP Tool narrative JSON schema."""
 
 import json
-import re
 from pathlib import Path
 from typing import Union
-
-_DIGIT_PREFIX  = re.compile(r'^\d')
-_ROMAN_PREFIX  = re.compile(r'^\(i{1,4}v?i*\)', re.IGNORECASE)
-_INLINE_Q      = re.compile(r'^[A-Z][^.\n]{2,40}\.\s+\w')  # "Label. sentence..."
-
-
-def preprocess_blocks(blocks: list[dict]) -> list[dict]:
-    """
-    Fix obvious LLM mis-labels using structural metadata before conversion.
-
-    Rule 1 — Roman numeral list items mis-labeled as section.title → answer.text
-        e.g. "(i) the SOL-VIDA Study..." is body text, not a section heading.
-
-    Rule 2 — No title block exists → promote first unnumbered section.title to title
-        e.g. "DATA MANAGEMENT" or "Resource/Data Sharing Plan" on page 1, bold,
-        with no digit prefix, is almost certainly the document title.
-
-    Rule 3 — Split title: answer.text immediately after a title block, same font,
-        before any section → continuation of the title pdfplumber broke across lines.
-        e.g. title="CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM" followed by
-        answer.text="ELECTRODES" (same font, no sections yet) → both are the title.
-    """
-    # Rule 4: long section.title matching "Label. Description sentence..." → question.text
-    #   e.g. "Data Sharing and Data Preservation. A description of the plans..."
-    #   Real section titles are short headings; this pattern means the LLM saw an inline question.
-    for b in blocks:
-        if b.get('label') == 'section.title':
-            text = b.get('text', '').strip()
-            if len(text) > 40 and _INLINE_Q.match(text) and _DIGIT_PREFIX.match(text) is None:
-                b['label'] = 'question.text'
-
-    # Rule 1: roman numeral section.title → answer.text
-    for b in blocks:
-        if b.get('label') == 'section.title' and _ROMAN_PREFIX.match(b.get('text', '')):
-            b['label'] = 'answer.text'
-
-    # Rule 2: no title block → promote first unnumbered section.title to title
-    if not any(b.get('label') == 'title' for b in blocks):
-        for b in blocks:
-            if b.get('label') == 'section.title':
-                text = b.get('text', '').strip()
-                if not _DIGIT_PREFIX.match(text) and not _ROMAN_PREFIX.match(text):
-                    b['label'] = 'title'
-                    break
-
-    # Rule 3: split title — answer.text right after a title block, same font + bold style, no sections yet
-    for i in range(1, len(blocks)):
-        prev, curr = blocks[i - 1], blocks[i]
-        if (prev.get('label') == 'title'
-                and curr.get('label') == 'answer.text'
-                and abs(curr.get('avg_font_size', 0) - prev.get('avg_font_size', 0)) < 0.5
-                and curr.get('is_bold') == prev.get('is_bold')
-                and not any(b.get('label') in ('section.title', 'section.description', 'question.text')
-                            for b in blocks[:i])):
-            curr['label'] = 'title'
-
-    return blocks
 
 
 def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
@@ -95,7 +37,6 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
     - answer.text before any question.text  → implicit question with empty text.
     - question.text before any section.title → implicit section with empty title.
     """
-    blocks = preprocess_blocks(list(blocks))  # copy so we don't mutate caller's list
     title = ""
     sections: list[dict] = []
     cur_section: dict | None = None
@@ -165,20 +106,10 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
             if cur_section is None:
                 cur_section = _new_section("")
                 sections.append(cur_section)
-            if cur_question is not None:
-                # section.description after questions started = mislabeled continuation
-                if not cur_question["answer"]["json"]["answer"]:
-                    # no answer yet — continuation of current question text
-                    cur_question["text"] = (cur_question["text"] + "\n" + text) if cur_question["text"] else text
-                else:
-                    # answer already written — treat as answer continuation
-                    existing = cur_question["answer"]["json"]["answer"]
-                    cur_question["answer"]["json"]["answer"] = existing + "\n" + text
+            if cur_section["description"]:
+                cur_section["description"] += "\n" + text
             else:
-                if cur_section["description"]:
-                    cur_section["description"] += "\n" + text
-                else:
-                    cur_section["description"] = text
+                cur_section["description"] = text
 
         elif label == "question.text":
             if cur_section is None:

@@ -8,7 +8,7 @@
       "section": [
         {
           "title": "1. Policy and Practice",
-          "description": "",
+          "description": "All principal investigators in BCOE are responsible for complying with sponsor policies regarding data\nmanagement and accessibility. All have sufficient computing resources to store and process the data generated in\nuniversal data sharing systems envisioned for the near future (see Changing the Conduct of Science in the\nInformation Age, NSF, June 2011).",
           "order": 1,
           "question": [
             {
@@ -17,7 +17,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The Bourns College of Engineering (BCOE) at the University of California, Riverside, in partnership with the UCR\nLibraries and the California Digital Library, has established a new, custom data management system designed to\nmake results of our research readily and reliably accessible. This system combines two services of the California\nDigital Library for the first time: an eScholarship series, a curated site where all BCOE investigators can store and\ndisseminate their data, and EZID permanent identifiers for long-term identification and management of data\nresources.\nAll principal investigators in BCOE are responsible for complying with sponsor policies regarding data\nmanagement and accessibility. All have sufficient computing resources to store and process the data generated in\ntheir research. Every principal investigator has the ability to create his or her personal web site, and to make data sets\navailable through that web site. Additionally, the eScholarship series (http://escholarship.org/uc/bcoe) provides a\nready-made resource for dissemination. Researchers can submit materials to the eScholarship series site, where it is\nautomatically given an EZID persistent identifier. All material on the site is indexed on Google, Google Scholar, and\nMelvyl/WorldCat. The California Digital Library also provides data backup services to avoid accidental loss of data.\nThis partnership, which has resulted in the development of a new service that CDL can provide to other research\norganizations, makes our data widely available and searchable under the taxonomies, identifiers, and standards of\nuniversal data sharing systems envisioned for the near future (see Changing the Conduct of Science in the\nInformation Age, NSF, June 2011).",
+                  "answer": "The Bourns College of Engineering (BCOE) at the University of California, Riverside, in partnership with the UCR\nLibraries and the California Digital Library, has established a new, custom data management system designed to\nmake results of our research readily and reliably accessible. This system combines two services of the California\nDigital Library for the first time: an eScholarship series, a curated site where all BCOE investigators can store and\ndisseminate their data, and EZID permanent identifiers for long-term identification and management of data\nresources.\ntheir research. Every principal investigator has the ability to create his or her personal web site, and to make data sets\navailable through that web site. Additionally, the eScholarship series (http://escholarship.org/uc/bcoe) provides a\nready-made resource for dissemination. Researchers can submit materials to the eScholarship series site, where it is\nautomatically given an EZID persistent identifier. All material on the site is indexed on Google, Google Scholar, and\nMelvyl/WorldCat. The California Digital Library also provides data backup services to avoid accidental loss of data.\nThis partnership, which has resulted in the development of a new service that CDL can provide to other research\norganizations, makes our data widely available and searchable under the taxonomies, identifiers, and standards of",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -28,7 +28,7 @@
         },
         {
           "title": "2. Scope",
-          "description": "",
+          "description": "accordance with this policy and guidance from the Office of Management and Budget, this plan does not include\ncommunications with colleagues. Data that must be withheld long enough to enable peer review and\nguidelines.\n(FERPA) regulations.\nmaintained for a minimum of three years beyond the award period as required by NSF guidelines. In addition,",
           "order": 2,
           "question": [
             {
@@ -37,7 +37,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific\ncommunity as necessary to validate research findings” be made available at little or no cost to the PI or project. In\naccordance with this policy and guidance from the Office of Management and Budget, this plan does not include\npreliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or\ncommunications with colleagues. Data that must be withheld long enough to enable peer review and\npublication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken\nplace. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after\nits acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF\nguidelines.\nThe release of data about students or any other human subjects is subject to policies and restrictions in protocols\nadopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act\n(FERPA) regulations.\nThe proposed project will develop programming, compiler, and runtime support for applications, as described in\nthis proposal. The implementations will be made available to other researchers. All code will be preserved and\nmaintained for a minimum of three years beyond the award period as required by NSF guidelines. In addition,\nsample adaptive versions of applications that will be developed in this work will also be made available.",
+                  "answer": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific\ncommunity as necessary to validate research findings” be made available at little or no cost to the PI or project. In\npreliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or\npublication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken\nplace. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after\nits acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF\nThe release of data about students or any other human subjects is subject to policies and restrictions in protocols\nadopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act\nThe proposed project will develop programming, compiler, and runtime support for applications, as described in\nthis proposal. The implementations will be made available to other researchers. All code will be preserved and\nsample adaptive versions of applications that will be developed in this work will also be made available.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -48,7 +48,7 @@
         },
         {
           "title": "3. Data and Metadata Format and Content",
-          "description": "",
+          "description": "from the College reviews all submissions before they are accepted.",
           "order": 3,
           "question": [
             {
@@ -70,7 +70,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "text, spreadsheets, images) can be accepted. As a service to assure that materials are formatted correctly, a curator\nfrom the College reviews all submissions before they are accepted.",
+                  "answer": "text, spreadsheets, images) can be accepted. As a service to assure that materials are formatted correctly, a curator",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -81,7 +81,7 @@
         },
         {
           "title": "4. Accessibility and Data Protection",
-          "description": "",
+          "description": "protect intellectual property. Confidential material will be handled according to policies and protocols for human\napproved by a curator before they are published.",
           "order": 4,
           "question": [
             {
@@ -98,12 +98,12 @@
               }
             },
             {
-              "text": "Scholar. As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to\nprotect intellectual property. Confidential material will be handled according to policies and protocols for human",
+              "text": "Scholar. As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to",
               "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "subjects, FERPA, and any other applicable regulations and restrictions.\nStored materials are downloadable but not editable, and they are backed up to assure no loss of data. All uploads are\napproved by a curator before they are published.",
+                  "answer": "subjects, FERPA, and any other applicable regulations and restrictions.\nStored materials are downloadable but not editable, and they are backed up to assure no loss of data. All uploads are",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -114,7 +114,7 @@
         },
         {
           "title": "5. Derivative Products",
-          "description": "",
+          "description": "supported by the National Science Foundation under Grant No. (NSF grant number).” Additionally, materials will\nthose of the author(s) and do not necessarily reflect the views of the National Science Foundation.”",
           "order": 5,
           "question": [
             {
@@ -123,7 +123,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based upon work\nsupported by the National Science Foundation under Grant No. (NSF grant number).” Additionally, materials will\ncontain a disclaimer that “any opinions, findings, and conclusions or recommendations expressed in this material are\nthose of the author(s) and do not necessarily reflect the views of the National Science Foundation.”",
+                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based upon work\ncontain a disclaimer that “any opinions, findings, and conclusions or recommendations expressed in this material are",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

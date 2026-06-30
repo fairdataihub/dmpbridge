@@ -28,7 +28,7 @@
         },
         {
           "title": "Types of data",
-          "description": "The Data Management Plan should describe the types of data, samples, physical\ncollections, software, curriculum materials, or other materials to be produced in the course\nof the project. It should then describe the expected types of data to be retained and shared,\nand the plans for doing so. The DMP should cover how data are to be managed and\nmaintained during the project.",
+          "description": "The Data Management Plan should describe the types of data, samples, physical\ncollections, software, curriculum materials, or other materials to be produced in the course\nof the project. It should then describe the expected types of data to be retained and shared,\nand the plans for doing so. The DMP should cover how data are to be managed and\nmaintained during the project.\nThe Data Management Plan should describe the period of time the data will be retained\nand shared; factors that limit the ability to manage and share data, e.g., legal and ethical\nrestrictions on access to human subjects data; and provisions for appropriate protection of\nprivacy, confidentiality, security, and intellectual property.",
           "order": 2,
           "question": [
             {
@@ -45,7 +45,7 @@
               }
             },
             {
-              "text": "Policies for access and sharing and appropriate protection and privacy\nThe Data Management Plan should describe the period of time the data will be retained\nand shared; factors that limit the ability to manage and share data, e.g., legal and ethical\nrestrictions on access to human subjects data; and provisions for appropriate protection of\nprivacy, confidentiality, security, and intellectual property.",
+              "text": "Policies for access and sharing and appropriate protection and privacy",
               "order": 2,
               "answer": {
                 "json": {
