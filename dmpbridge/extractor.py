@@ -1,23 +1,11 @@
 """Extract text blocks from a PDF using pdfplumber."""
 
-#
-#   PDF file
-#       │
-#       ▼
-#   pdfplumber opens each page
-#       │
-#       ▼
-#   extract_text_lines()      gets every line with full character-level detail
-#       │
-#       ▼
-#   _line_to_blocks()         converts each line into a block dict
-#       │                     (text, bounding box, font size, bold, italic)
-#       ▼
-#   _deduplicate_chars()      fixes doubled characters from layered PDF rendering
-#       │
-#       ▼
-#   list of block dicts       label = None, ready to be sent to the LLM
-#
+# What this file does — step by step:
+#   Step 1 — open the PDF and loop through every page
+#   Step 2 — extract every text line with full character-level detail (font, size, position)
+#   Step 3 — convert each line into a block dict (text, bounding box, bold, italic, font size)
+#   Step 4 — fix doubled characters that some PDFs produce from layered text rendering
+#   Step 5 — return a flat list of block dicts with label = None, ready for the LLM
 
 import re
 from collections import defaultdict

@@ -1,29 +1,13 @@
 """Main pipeline: PDF → pdfplumber extraction → raw JSON → LLM labeling → labeled JSON."""
 
-#
-#   PDF file
-#       │
-#       ▼
-#   extract_blocks()          reads every text line from every page
-#       │
-#       ▼
-#   save raw JSON             optional snapshot before LLM touches anything
-#       │
-#       ▼
-#   classify_blocks()         LLM assigns one of 5 labels to each block
-#       │
-#       ▼
-#   fill missing labels       any block the LLM skipped gets "answer.text"
-#       │
-#       ▼
-#   save flat labeled JSON    one block per entry, label field populated
-#       │
-#       ▼
-#   to_structured()           assembles blocks into section/question/answer tree
-#       │
-#       ▼
-#   save structured JSON      nested DMP Tool schema ready for comparison
-#
+# What this file does — step by step:
+#   Step 1 — open the PDF and extract every text line as a block (text, position, font info)
+#   Step 2 — save the raw extraction to disk before the LLM touches anything (useful for debugging)
+#   Step 3 — send all blocks to the LLM in batches to get a label for each block
+#   Step 4 — any block the LLM skipped gets a default label of "answer.text"
+#   Step 5 — save the flat labeled JSON  (one block per entry, label field now filled in)
+#   Step 6 — convert the flat list into the nested DMP Tool schema (section → question → answer)
+#   Step 7 — save the structured JSON to disk
 
 import json
 import logging

@@ -1,29 +1,13 @@
 """LLM-based classifier using Ollama."""
 
-#
-#   list of blocks (label = None)
-#       │
-#       ▼
-#   split into batches of BATCH_SIZE
-#       │
-#       ▼
-#   Batch 1 ──────────────────► _classify_batch()
-#       │                        sends: context + blocks
-#       ▼                        gets back: [{id, label}, ...]
-#   write labels into result
-#       │
-#       ▼
-#   Batch 2 ──────────────────► _classify_batch()
-#       │
-#       ▼
-#   write labels into result
-#       │
-#       ▼
-#       ...
-#       │
-#       ▼
-#   list of blocks (label filled in for every block)
-#
+# What this file does — step by step:
+#   Step 1 — define the 5 allowed labels and a JSON schema that forces Ollama to return them
+#   Step 2 — build the system prompt: label definitions, decision rules, and real examples
+#   Step 3 — split all blocks into small batches so each request fits the model's context window
+#   Step 4 — for each batch, attach the last 3 already-labeled blocks as context
+#   Step 5 — send system prompt + context + batch to Ollama at temperature 0 (deterministic)
+#   Step 6 — parse the returned [{id, label}] array and write each label back into the block list
+#   Step 7 — return the complete block list with every label filled in
 
 import json
 import logging
