@@ -67,7 +67,7 @@
         },
         {
           "title": "TYPES OF DATA",
-          "description": "Input data: Available data will be systematically reviewed and downloaded. These data are likely",
+          "description": "",
           "order": 2,
           "question": [
             {
@@ -76,20 +76,47 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection,\ndocumentation and metadata description, quality control, storage and backup, archiving, and sharing.\nThe project will result in new sets of data, code, and tools. These outputs include: (a) source code to",
+                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection,\ndocumentation and metadata description, quality control, storage and backup, archiving, and sharing.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "title": "The project will result in new sets of data, code, and tools. These outputs include: (a) source code to",
+          "description": "Input data: Available data will be systematically reviewed and downloaded. These data are likely",
+          "order": 3,
+          "question": [
             {
               "text": "quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and\n(c) sharable instructional materials (Scientist Spotlight activities and workshop materials).",
-              "order": 2,
+              "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files;\nor text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be\nadopted and will likely evolve as new datasets provide for challenging formats and organization.\nProduced Data: Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be\nformatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+                  "answer": "available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files;\nor text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be\nadopted and will likely evolve as new datasets provide for challenging formats and organization.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "Produced Data: Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be",
+          "description": "",
+          "order": 4,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -101,7 +128,7 @@
         {
           "title": "DATA AND METADATA STANDARDS",
           "description": "allow for better interpretability and interoperability. Code and scripts produced in R and/or python will be",
-          "order": 3,
+          "order": 5,
           "question": [
             {
               "text": "",
@@ -146,8 +173,8 @@
         },
         {
           "title": "POLICIES FOR ACCESS AND SHARING",
-          "description": "supplementary documentation for publications, in the README.txt file, and at the repository (record-\nScripts and code for analyses: All scripts and code will be archived in supplementary information\nThe PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist\nAt the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and",
-          "order": 4,
+          "description": "supplementary documentation for publications, in the README.txt file, and at the repository (record-",
+          "order": 6,
           "question": [
             {
               "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information",
@@ -155,7 +182,27 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "or websites for direct download and citations to all datasets will be provided to allow for accessibility and\ncorrect attribution to original collectors. All methodological procedures for data quality control and\naggregation will be described in the data documentation. This information will be provided in the form of\nlevel). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the\nagnostic open access repository backed by UCSB and the California Digital Library (CDL), which\nimplements the latest best practices in data curation, publication, citation, and archival. Dryad assigns",
+                  "answer": "or websites for direct download and citations to all datasets will be provided to allow for accessibility and\ncorrect attribution to original collectors. All methodological procedures for data quality control and\naggregation will be described in the data documentation. This information will be provided in the form of\nlevel). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "agnostic open access repository backed by UCSB and the California Digital Library (CDL), which",
+          "description": "Scripts and code for analyses: All scripts and code will be archived in supplementary information",
+          "order": 7,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "implements the latest best practices in data curation, publication, citation, and archival. Dryad assigns",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -194,7 +241,33 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "process along with the sharable raw and processed data in order to allow citations and a better connection\nto the research data curation and publication processes.\nScientist spotlight: All scientist spotlight biographies, assignments, and open-access readings will be\nposted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
+                  "answer": "process along with the sharable raw and processed data in order to allow citations and a better connection",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "to the research data curation and publication processes.",
+          "description": "",
+          "order": 8,
+          "question": []
+        },
+        {
+          "title": "Scientist spotlight: All scientist spotlight biographies, assignments, and open-access readings will be",
+          "description": "The PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist",
+          "order": 9,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -203,24 +276,51 @@
             },
             {
               "text": "Workshop frameworks: Workshop material will be shared with UCSB’s Diversity Committee through",
-              "order": 5,
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will\nalso be shared through eSholarship for broader dissemination.\nfaculty in paying for open access journals.\nPOLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+                  "answer": "Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will\nalso be shared through eSholarship for broader dissemination.\nfaculty in paying for open access journals.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+          "description": "",
+          "order": 10,
+          "question": [
             {
               "text": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may",
-              "order": 6,
+              "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "freely build upon, enhance and reuse the works for any purposes without restriction under copyright or\ndatabase law. CC0 does not exempt those who reuse the data from following community norms for\nscholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the\noriginal data authors.\nPLANS FOR ARCHIVING AND PRESERVATION OF ACCESS\nUCSB Box will be used as the primary means to store and back up all collected input, generated output\ndata sets and code, and educational materials over the course of the project and prior to data sharing. Box\nprovides encryption of data at rest and in-transit, detailed logging of file actions, two-factor\nauthentication, and access review of collaborators. Data will be accessed using Box Drive, which requires\nfull disk encryption, firewall, and an antivirus software in order to install on a local computer.\ncode will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits\nsubmitted to Dryad are curated prior to public release to conform with quality standards and enable future\nreuse.\nThe source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved,\nstored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three",
+                  "answer": "freely build upon, enhance and reuse the works for any purposes without restriction under copyright or\ndatabase law. CC0 does not exempt those who reuse the data from following community norms for\nscholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the\noriginal data authors.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
+          "description": "At the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and",
+          "order": 11,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "UCSB Box will be used as the primary means to store and back up all collected input, generated output\ndata sets and code, and educational materials over the course of the project and prior to data sharing. Box\nprovides encryption of data at rest and in-transit, detailed logging of file actions, two-factor\nauthentication, and access review of collaborators. Data will be accessed using Box Drive, which requires\nfull disk encryption, firewall, and an antivirus software in order to install on a local computer.\ncode will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits\nsubmitted to Dryad are curated prior to public release to conform with quality standards and enable future\nreuse.\nThe source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved,\nstored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -229,11 +329,31 @@
             },
             {
               "text": "planned publications. After the evaluation and refinement of the developed datasets and tools and once",
-              "order": 7,
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "the research is completed and published, the final version of the tools and the documentation will be\nshared on the UCSB’s Dryad Data Repository. The final shareable instructional and teaching materials\nwill also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive\n(workshop materials) and Dryad in pdf format.",
+                  "answer": "",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "the research is completed and published, the final version of the tools and the documentation will be",
+          "description": "",
+          "order": 12,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "shared on the UCSB’s Dryad Data Repository. The final shareable instructional and teaching materials\nwill also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive\n(workshop materials) and Dryad in pdf format.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

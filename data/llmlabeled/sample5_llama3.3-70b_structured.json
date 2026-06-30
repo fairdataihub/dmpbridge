@@ -77,7 +77,47 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "or websites for direct download and citations to all datasets will be provided to allow for accessibility and\ncorrect attribution to original collectors. All methodological procedures for data quality control and\naggregation will be described in the data documentation. This information will be provided in the form of\nsupplementary documentation for publications, in the README.txt file, and at the repository (record-\nlevel). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the\nagnostic open access repository backed by UCSB and the California Digital Library (CDL), which\nimplements the latest best practices in data curation, publication, citation, and archival. Dryad assigns\nDigital Object Identifiers (DOIs) to deposited datasets and makes data discoverable through such services\nas the Thomson-Reuters Data Citation Index, Scopus, and Google Dataset Search. All data in Dryad is\npublicly accessible and released under a CC0 license. Data will be linked to publications and vice versa\nthrough DOIs.\nScripts and code for analyses: All scripts and code will be archived in supplementary information\nappendices in publications as well as uploaded to Zenodo through the Dryad repository submission\nprocess along with the sharable raw and processed data in order to allow citations and a better connection\nto the research data curation and publication processes.\nScientist spotlight: All scientist spotlight biographies, assignments, and open-access readings will be\nposted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.\nWorkshop frameworks: Workshop material will be shared with UCSB’s Diversity Committee through\nGoogle Drive; if workshop materials are fully supported by the Diversity Committee, these materials will\nalso be shared through eSholarship for broader dissemination.\nThe PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist\nfaculty in paying for open access journals.\nPOLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION\nAll data deposited at Dryad will be publicly available under a CC0 license, meaning that others may\nfreely build upon, enhance and reuse the works for any purposes without restriction under copyright or\ndatabase law. CC0 does not exempt those who reuse the data from following community norms for\nscholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the\noriginal data authors.\nPLANS FOR ARCHIVING AND PRESERVATION OF ACCESS\nUCSB Box will be used as the primary means to store and back up all collected input, generated output\ndata sets and code, and educational materials over the course of the project and prior to data sharing. Box\nprovides encryption of data at rest and in-transit, detailed logging of file actions, two-factor\nauthentication, and access review of collaborators. Data will be accessed using Box Drive, which requires\nfull disk encryption, firewall, and an antivirus software in order to install on a local computer.\nAt the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and\ncode will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits\nsubmitted to Dryad are curated prior to public release to conform with quality standards and enable future\nreuse.\nThe source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved,\nstored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three\nplanned publications. After the evaluation and refinement of the developed datasets and tools and once\nthe research is completed and published, the final version of the tools and the documentation will be\nshared on the UCSB’s Dryad Data Repository. The final shareable instructional and teaching materials\nwill also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive\n(workshop materials) and Dryad in pdf format.",
+                  "answer": "or websites for direct download and citations to all datasets will be provided to allow for accessibility and\ncorrect attribution to original collectors. All methodological procedures for data quality control and\naggregation will be described in the data documentation. This information will be provided in the form of\nsupplementary documentation for publications, in the README.txt file, and at the repository (record-\nlevel). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the\nagnostic open access repository backed by UCSB and the California Digital Library (CDL), which\nimplements the latest best practices in data curation, publication, citation, and archival. Dryad assigns\nDigital Object Identifiers (DOIs) to deposited datasets and makes data discoverable through such services\nas the Thomson-Reuters Data Citation Index, Scopus, and Google Dataset Search. All data in Dryad is\npublicly accessible and released under a CC0 license. Data will be linked to publications and vice versa\nthrough DOIs.\nScripts and code for analyses: All scripts and code will be archived in supplementary information\nappendices in publications as well as uploaded to Zenodo through the Dryad repository submission\nprocess along with the sharable raw and processed data in order to allow citations and a better connection\nto the research data curation and publication processes.\nScientist spotlight: All scientist spotlight biographies, assignments, and open-access readings will be\nposted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.\nWorkshop frameworks: Workshop material will be shared with UCSB’s Diversity Committee through\nGoogle Drive; if workshop materials are fully supported by the Diversity Committee, these materials will\nalso be shared through eSholarship for broader dissemination.\nThe PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist\nfaculty in paying for open access journals.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+          "description": "",
+          "order": 5,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may\nfreely build upon, enhance and reuse the works for any purposes without restriction under copyright or\ndatabase law. CC0 does not exempt those who reuse the data from following community norms for\nscholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the\noriginal data authors.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
+          "description": "",
+          "order": 6,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "UCSB Box will be used as the primary means to store and back up all collected input, generated output\ndata sets and code, and educational materials over the course of the project and prior to data sharing. Box\nprovides encryption of data at rest and in-transit, detailed logging of file actions, two-factor\nauthentication, and access review of collaborators. Data will be accessed using Box Drive, which requires\nfull disk encryption, firewall, and an antivirus software in order to install on a local computer.\nAt the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and\ncode will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits\nsubmitted to Dryad are curated prior to public release to conform with quality standards and enable future\nreuse.\nThe source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved,\nstored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three\nplanned publications. After the evaluation and refinement of the developed datasets and tools and once\nthe research is completed and published, the final version of the tools and the documentation will be\nshared on the UCSB’s Dryad Data Repository. The final shareable instructional and teaching materials\nwill also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive\n(workshop materials) and Dryad in pdf format.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

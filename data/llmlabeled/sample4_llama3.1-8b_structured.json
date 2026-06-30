@@ -28,7 +28,7 @@
         },
         {
           "title": "Development.",
-          "description": "information about how confidentiality of responses will be protected.\nsample.\ndepartmental procedures. If problems arise in the validation of coding, more extensive checks\noffice. The data will be preserved exclusively on the two project computers and the back-up\nAll data will be coded and saved on password-protected computers in the project office. No data\nwill be removed from the project office during the period of the project. The only individuals\nNo names of individuals or institutions will be used in papers prepared by the project team\nwithout the explicit consent of the individuals and institutions.\nthe data archive will be made available on the project website to researchers who are interested",
+          "description": "information about how confidentiality of responses will be protected.\nsample.\ndepartmental procedures. If problems arise in the validation of coding, more extensive checks\noffice. The data will be preserved exclusively on the two project computers and the back-up\nAll data will be coded and saved on password-protected computers in the project office. No data\nwill be removed from the project office during the period of the project. The only individuals",
           "order": 2,
           "question": [
             {
@@ -141,7 +141,27 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "will be advised of the essential care that must be taken with data collected for this project. Any\nresearch assistants found to be handling data in a careless way will be immediately removed\nfrom the project staff.",
+                  "answer": "will be advised of the essential care that must be taken with data collected for this project. Any",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "research assistants found to be handling data in a careless way will be immediately removed",
+          "description": "No names of individuals or institutions will be used in papers prepared by the project team\nwithout the explicit consent of the individuals and institutions.\nthe data archive will be made available on the project website to researchers who are interested",
+          "order": 3,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "from the project staff.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -150,11 +170,31 @@
             },
             {
               "text": "Data from the project will be preserved in data files stripped of individual and institutional\nnames. These data files will include a small number of variables that will allow researchers to",
-              "order": 10,
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "categorize the institutions. These variables include institutional size, Carnegie category, control\n(private, non-profit or public), and regional location. Following the completion of the project,\nin pursuing questions related to cluster hiring. The preservation format will be platform-\nindependent. Following the end of the project, we will contact the Inter-University Consortium\nfor Political and Social Research (ICPSR) at the University of Michigan about archiving the data\non a permanent basis. We do not anticipate additional costs for preparing data and",
+                  "answer": "categorize the institutions. These variables include institutional size, Carnegie category, control\n(private, non-profit or public), and regional location. Following the completion of the project,\nin pursuing questions related to cluster hiring. The preservation format will be platform-\nindependent. Following the end of the project, we will contact the Inter-University Consortium",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "for Political and Social Research (ICPSR) at the University of Michigan about archiving the data",
+          "description": "",
+          "order": 4,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "on a permanent basis. We do not anticipate additional costs for preparing data and",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -163,7 +203,7 @@
             },
             {
               "text": "documentation for archiving. Potential secondary users of the data include institutional",
-              "order": 11,
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -176,11 +216,31 @@
             },
             {
               "text": "We do not intend to generate metadata from this project. We do not anticipate holding",
-              "order": 12,
+              "order": 3,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "intellectual property rights to these data.\nThe P.I., Professor Steven Brint, will be responsible for all data collection and precautions for\nthe security and confidentiality of the data.",
+                  "answer": "intellectual property rights to these data.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "The P.I., Professor Steven Brint, will be responsible for all data collection and precautions for",
+          "description": "",
+          "order": 5,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "the security and confidentiality of the data.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
