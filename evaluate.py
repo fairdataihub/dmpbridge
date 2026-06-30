@@ -243,6 +243,7 @@ def run_all():
 
     _sample_header()
     total_n = total_tp = 0
+    per_sample = []
 
     for manual_path in samples:
         stem = manual_path.stem.replace("_dmp", "")
@@ -256,20 +257,35 @@ def run_all():
 
         tp = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
         n  = sum(sum(v.values()) for v in confusion.values())
+        missed_n = sum(confusion.get(lbl, {}).get("__missed__", 0) for lbl in LABELS)
+        mismatch_n = n - tp - missed_n
+
         if n:
             _sample_row(stem, n, tp)
         else:
             print(f"{stem:<12}  no blocks")
         total_n  += n
         total_tp += tp
+        per_sample.append((stem, pred_path, gold, mismatch_n, missed_n))
 
     print("-" * 58)
     _sample_row("TOTAL", total_n, total_tp)
 
+    # ── Per-sample missed detail ──────────────────────────────────────────────
+    print(f"\n{'='*62}")
+    print("  MISSED ITEMS PER SAMPLE")
+    print(f"{'='*62}")
+    for stem, pred_path, gold, mismatch_n, missed_n in per_sample:
+        if missed_n == 0 and mismatch_n == 0:
+            continue
+        print(f"\n{stem}  ({mismatch_n} mismatch, {missed_n} missed)")
+        print_missed(pred_path, gold)
+
+    # ── Aggregate ─────────────────────────────────────────────────────────────
     print(f"\n{'='*62}")
     print("  AGGREGATE  (all samples pooled)")
     print(f"{'='*62}")
-    print("\nConfusion matrix  (* = correct)\n")
+    print("\nConfusion matrix  (* = correct, ! = missed)\n")
     print_confusion(total_confusion)
     print_f1(total_confusion)
 
