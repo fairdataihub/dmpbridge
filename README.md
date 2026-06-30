@@ -43,15 +43,11 @@ Blocks are sent to a local Ollama LLM in small batches (default: 10 blocks per r
 
 Temperature is set to 0 for deterministic output.
 
-### Step 4 — Fill in any blocks the LLM skipped
-
-If the LLM returned no label for a block (empty or missing response), that block is assigned the default label `answer.text` so no block is ever left unlabeled.
-
-### Step 5 — Save the flat labeled JSON
+### Step 4 — Save the flat labeled JSON
 
 The complete block list — one entry per line, with the `label` field now filled in — is saved to the output path (default: `<pdf_name>_labeled.json`).
 
-### Step 6 — Convert to the nested DMP Tool schema
+### Step 5 — Convert to the nested DMP Tool schema
 
 The flat list is converted to the nested DMP Tool JSON schema by a positional state machine:
 
@@ -63,7 +59,7 @@ The flat list is converted to the nested DMP Tool JSON schema by a positional st
 
 The converter trusts the LLM's labels exactly — it does not relabel or reinterpret content.
 
-### Step 7 — Save the structured JSON
+### Step 6 — Save the structured JSON
 
 The nested JSON is saved alongside the flat file (default: `<pdf_name>_labeled_structured.json`). Skip with `--no-structured`.
 
