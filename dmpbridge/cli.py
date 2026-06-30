@@ -1,30 +1,17 @@
 """Command-line interface for dmpbridge."""
 
-#
-#   terminal:  dmpbridge  <pdf>  [--model]  [--output]  [--structured]  ...
-#       │
-#       ▼
-#   parse arguments
-#       │
-#       ▼
-#   validate PDF exists
-#       │
-#       ▼
-#   resolve output paths          flat JSON + structured JSON + optional raw/images
-#       │
-#       ▼
-#   process_pdf()                 runs the full pipeline (extract → classify → convert)
-#       │
-#       ▼
-#   print summary                 block counts per label + output file paths
-#
+# What this file does — step by step:
+#   Step 1 — parse command-line arguments (PDF path, model, output paths, flags)
+#   Step 2 — validate that the input PDF file actually exists
+#   Step 3 — resolve output paths for the flat JSON and structured JSON
+#   Step 4 — call process_pdf() which runs the full pipeline (extract → classify → convert)
+#   Step 5 — print a summary showing block counts per label and the paths of saved files
 
 import argparse
 import logging
 import sys
 from collections import Counter
 from pathlib import Path
-
 from .pipeline import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_RAW_DIR, process_pdf
 
 

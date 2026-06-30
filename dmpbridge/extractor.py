@@ -11,7 +11,6 @@ import re
 from collections import defaultdict
 from pathlib import Path
 from typing import Union
-
 import pdfplumber
 
 # Colors used to draw bounding boxes on page images — one color per label.

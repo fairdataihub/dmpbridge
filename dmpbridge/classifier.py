@@ -11,12 +11,8 @@
 
 import json
 import logging
-
 import requests
-
 from . import config
-
-
 
 logger = logging.getLogger(__name__)
 

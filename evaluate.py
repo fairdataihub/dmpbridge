@@ -6,26 +6,15 @@ Usage:
     python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json  # single file
 """
 
-#
-#   manual JSON (gold)              LLM JSON (predicted)
-#         │                               │
-#         ▼                               ▼
-#   extract_gold()              load flat block list
-#   returns (text, label) pairs
-#         │                               │
-#         └───────────────┬───────────────┘
-#                         ▼
-#                 evaluate_sample()
-#                 │
-#                 ├── forward check:  each predicted block → best matching gold label
-#                 └── reverse check:  each gold item → any block covers it? (missed?)
-#                         │
-#                         ▼
-#                 confusion matrix  { true_label: { pred_label: count } }
-#                         │
-#                         ▼
-#         print accuracy / F1 per label / missed items
-#
+# What this file does — step by step:
+#   Step 1 — load the manually labeled gold JSON (the ground truth)
+#   Step 2 — load the LLM-produced flat block list (the predictions)
+#   Step 3 — forward check: for each predicted block, find the best matching gold label
+#             (uses token containment — a predicted block matches gold if 75%+ of its words appear in the gold text)
+#   Step 4 — reverse check: for each gold item, see if any predicted block covers it
+#             (any item with no matching block is recorded as "missed")
+#   Step 5 — build a confusion matrix showing true labels vs predicted labels across all blocks
+#   Step 6 — print per-sample accuracy, per-label precision/recall/F1, and the full confusion matrix
 
 import json
 import re
