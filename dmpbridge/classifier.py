@@ -9,9 +9,15 @@ from . import config
 
 logger = logging.getLogger(__name__)
 
+# The 5 labels the LLM is allowed to assign to each text block.
+# Every block in a DMP must get exactly one of these.
 LABELS = ("title", "section.title", "section.description", "question.text", "answer.text")
 
-# JSON schema that constrains Ollama to output a well-formed array (Ollama ≥ 0.5)
+# This tells Ollama exactly what shape the output must have.
+# Instead of asking the model to "write JSON", we give it a strict schema so it
+# cannot return free text, markdown, or missing entries.
+# Each item in the array must have an integer id (matching the block's position)
+# and a label that is one of the 5 allowed values above.
 _OUTPUT_SCHEMA = {
     "type": "array",
     "items": {
@@ -24,7 +30,11 @@ _OUTPUT_SCHEMA = {
     },
 }
 
-# ── Improvement 1: few-shot examples drawn from manually labeled DMPs ────────
+# Real examples taken from our 10 manually labeled DMP documents.
+# Including these in the prompt ("few-shot examples") helps the model
+# understand what each label looks like in practice, not just in theory.
+# Without these, the model relies only on the label definitions, which can
+# be ambiguous when the text is unusual or the DMP format is non-standard.
 _FEW_SHOT_EXAMPLES = """
 EXAMPLES FROM REAL DMP DOCUMENTS:
 
@@ -56,6 +66,12 @@ answer.text (researcher's actual written response — narrative, first-person, d
   "Data will be analyzed with custom code by our statistical and computer science team."
 """
 
+# The system prompt is the main instruction sent to the LLM before any document text.
+# It explains the task, defines the 5 labels, gives the most important decision rules
+# to resolve common confusions, and embeds the few-shot examples above.
+# The key distinctions section is important because the hardest cases are:
+#   - section.description vs answer.text  (both are paragraph-length prose)
+#   - question.text vs section.description (both can sound like instructions)
 SYSTEM_PROMPT = f"""You are a classifier for Data Management Plan (DMP) documents.
 
 Label each text block with exactly one of these 5 labels:
@@ -75,8 +91,14 @@ Key distinctions:
 You MUST output a JSON array with one entry for EVERY block in the TO CLASSIFY list — no explanation, no markdown.
 """
 
+# How many blocks to send to the LLM in one request.
+# Larger batches are faster but risk hitting the model's context window limit.
 BATCH_SIZE = config.BATCH_SIZE
-CONTEXT_SIZE = 3  # number of preceding labeled blocks sent as context
+
+# How many already-labeled blocks to include as context before each new batch.
+# This helps the model maintain continuity — e.g., if the last labeled block
+# was a section.title, the model can correctly infer what comes next.
+CONTEXT_SIZE = 3
 
 
 class OllamaClassifier:
@@ -88,6 +110,9 @@ class OllamaClassifier:
         self._verify_connection()
 
     def _verify_connection(self) -> None:
+        # Quick sanity check before processing any document.
+        # Fails early with a clear message if Ollama is not running or the
+        # host address is wrong, rather than timing out mid-document.
         try:
             r = requests.get(f"{self.host}/api/tags", timeout=5)
             r.raise_for_status()
@@ -101,14 +126,26 @@ class OllamaClassifier:
 
     def classify_blocks(self, blocks: list[dict]) -> list[dict]:
         """Return blocks with the 'label' field populated."""
+
+        # Work on a copy so we never modify the caller's original list
         result = [dict(b) for b in blocks]
 
+        # Process the document in chunks (batches) rather than all at once.
+        # This keeps each request within the model's context window size.
         for start in range(0, len(result), BATCH_SIZE):
             batch = result[start : start + BATCH_SIZE]
-            # Improvement 2: pass last CONTEXT_SIZE labeled blocks as context
+
+            # Grab the last few already-labeled blocks to send as context.
+            # The model uses these to understand what section it is currently
+            # inside, without having to re-process the whole document.
             context = result[max(0, start - CONTEXT_SIZE) : start]
+
             logger.info(f"  Classifying blocks {start}–{start + len(batch) - 1} …")
             labels = self._classify_batch(batch, offset=start, context=context)
+
+            # Write each returned label back into the matching block by id.
+            # We validate the id is in range and the label is one of the 5 allowed
+            # values before writing, so a bad LLM response cannot corrupt the output.
             for entry in labels:
                 idx = entry.get("id")
                 lbl = entry.get("label", "answer.text")
@@ -120,7 +157,11 @@ class OllamaClassifier:
     def _classify_batch(
         self, batch: list[dict], offset: int, context: list[dict] | None = None
     ) -> list[dict]:
-        # Build context prefix (already-labeled blocks — read only)
+
+        # If we have previously labeled blocks, format them as a read-only
+        # context section so the model knows what came just before this batch.
+        # We include text, bold/italic formatting flags, and the assigned label
+        # so the model can see the full picture of the preceding content.
         ctx_section = ""
         if context:
             ctx_blocks = [
@@ -138,7 +179,11 @@ class OllamaClassifier:
                 + "\n\n"
             )
 
-        # Blocks to classify
+        # Build the list of blocks the LLM needs to classify.
+        # Each block includes its global id (position in the full document),
+        # the extracted text, bold/italic flags from pdfplumber, and the page number.
+        # Bold and italic are useful signals — section titles are often bold,
+        # and template instructions sometimes use italic text.
         payload = [
             {
                 "id": offset + j,
@@ -150,12 +195,20 @@ class OllamaClassifier:
             for j, b in enumerate(batch)
         ]
 
+        # Combine the context prefix and the blocks to classify into one prompt.
         prompt = (
             ctx_section
             + f"TO CLASSIFY — return a JSON array with exactly {len(batch)} entries, one per block:\n"
             + json.dumps(payload, ensure_ascii=False)
         )
 
+        # Send the request to the local Ollama server.
+        # Key settings:
+        #   system      = the standing instructions (label definitions, examples)
+        #   prompt      = the actual blocks to classify for this batch
+        #   format      = the JSON schema that forces structured output
+        #   temperature = 0.0 means fully deterministic — same input always gives
+        #                 the same output, which matters for reproducibility
         resp = requests.post(
             f"{self.host}/api/generate",
             json={
@@ -169,6 +222,10 @@ class OllamaClassifier:
             timeout=300,
         )
         resp.raise_for_status()
+
+        # Parse the JSON response from Ollama.
+        # If the response is empty (model timed out or returned nothing),
+        # log a warning and return an empty list so the pipeline can continue.
         raw = resp.json().get("response", "")
         parsed = json.loads(raw) if raw else []
 
