@@ -127,6 +127,45 @@ def add_confusion(total, new):
             total[true_lbl][pred_lbl] += count
 
 
+# ── Error list helper (used by notebooks) ────────────────────────────────────
+
+def get_errors(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> list[dict]:
+    """Return forward mismatches + missed gold items as a list of dicts."""
+    blocks = json.loads(pred_path.read_text(encoding="utf-8"))
+    errors: list[dict] = []
+    covered: set[int] = set()
+
+    for block in blocks:
+        btok = tokenize(block["text"])
+        if not btok:
+            continue
+        idx, score, gold_label = _best_gold_idx(btok, gold_pairs)
+        if score >= 0.75 and idx is not None:
+            covered.add(idx)
+            true_label = gold_label
+        else:
+            true_label = NO_MATCH
+        pred_label = block.get("label", "answer.text")
+        if true_label != pred_label:
+            errors.append({
+                "text": block["text"][:120],
+                "true": true_label,
+                "pred": pred_label,
+                "page": block.get("page", "-"),
+            })
+
+    for j, (gold_text, gold_label) in enumerate(gold_pairs):
+        if j not in covered:
+            errors.append({
+                "text": gold_text[:120],
+                "true": gold_label,
+                "pred": "__missed__",
+                "page": "-",
+            })
+
+    return errors
+
+
 # ── Print helpers ─────────────────────────────────────────────────────────────
 
 def print_confusion(confusion: dict):
