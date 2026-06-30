@@ -2,34 +2,14 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM",
+      "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES",
       "description": "",
       "version": "v1",
       "section": [
         {
-          "title": "",
-          "description": "",
-          "order": 1,
-          "question": [
-            {
-              "text": "",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "ELECTRODES",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
           "title": "Products of Research",
           "description": "",
-          "order": 2,
+          "order": 1,
           "question": [
             {
               "text": "",
@@ -62,7 +42,7 @@
         {
           "title": "Data Format Standards",
           "description": "In order to allow for interoperability, reproducibility, and reuse, all data will be stored and saved in",
-          "order": 3,
+          "order": 2,
           "question": [
             {
               "text": "standard and open formats. Experimental characterization data will be stored and saved as, e.g.,",
@@ -95,7 +75,7 @@
         {
           "title": "available software tools (VESTA, cif2file, etc.). Crystallographic data for previously-unreported",
           "description": "files for readability across many programs and platforms. The CRYSTAL code manual will be",
-          "order": 4,
+          "order": 3,
           "question": [
             {
               "text": "compounds/structures will be uploaded to the ICSD database. First principles simulation input and",
@@ -141,7 +121,7 @@
         {
           "title": "CRYSTAL calculations of NMR properties. The uniform file structure enforced by CASM for the",
           "description": "",
-          "order": 5,
+          "order": 4,
           "question": [
             {
               "text": "effective Hamiltonian construction and the large number of Monte Carlo simulations that are",
@@ -161,13 +141,13 @@
         {
           "title": "different people.",
           "description": "",
-          "order": 6,
+          "order": 5,
           "question": []
         },
         {
           "title": "Access and sharing",
           "description": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in",
-          "order": 7,
+          "order": 6,
           "question": [
             {
               "text": "",
@@ -187,7 +167,7 @@
         {
           "title": "be disseminated through peer-reviewed publications, conference presentations, and annual reports.",
           "description": "along with supplementary information, on the UC eScholarship website.\nintellectual property protection of data stored in this manner are guaranteed by the privacy policy",
-          "order": 8,
+          "order": 7,
           "question": [
             {
               "text": "The supporting information accompanying publications will include detailed",
@@ -246,7 +226,7 @@
         {
           "title": "been performed on a given system and has tools to query a wide range of properties for each",
           "description": "CASM is an open source software package released under the GNU Lesser General Public License",
-          "order": 9,
+          "order": 8,
           "question": [
             {
               "text": "",
@@ -292,7 +272,7 @@
         {
           "title": "(LGPL) and available free of charge via the prisms-center conda channel at",
           "description": "https://anaconda.org/prisms-center. All additions of the CASM software developed during this",
-          "order": 10,
+          "order": 9,
           "question": [
             {
               "text": "project will be incorporated into the CASM software and made accessible free of charge and open",
@@ -312,7 +292,7 @@
         {
           "title": "Policies and provisions for re-use, re-distribution, and production of derivatives",
           "description": "The existing open source software infrastructure within CASM that serves as a foundation to this",
-          "order": 11,
+          "order": 10,
           "question": [
             {
               "text": "All data will be stored in Dryad and will be available under a public domain, creative commons",
@@ -332,7 +312,7 @@
         {
           "title": "project, is already licensed by the Regents of the University of California under the ``LGPL'' open",
           "description": "",
-          "order": 12,
+          "order": 11,
           "question": [
             {
               "text": "source license, and distributed via the prisms-center conda channel, permitting non-exclusive use of",
@@ -352,7 +332,7 @@
         {
           "title": "Archiving of Data, Samples, and Other Relevant Research Products",
           "description": "",
-          "order": 13,
+          "order": 12,
           "question": [
             {
               "text": "",

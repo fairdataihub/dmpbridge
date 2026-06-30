@@ -2,20 +2,14 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "",
+      "title": "DATA MANAGEMENT",
       "description": "",
       "version": "v1",
       "section": [
         {
-          "title": "DATA MANAGEMENT",
-          "description": "",
-          "order": 1,
-          "question": []
-        },
-        {
           "title": "1. Policy and Practice",
           "description": "",
-          "order": 2,
+          "order": 1,
           "question": [
             {
               "text": "",
@@ -35,7 +29,7 @@
         {
           "title": "2. Scope",
           "description": "",
-          "order": 3,
+          "order": 2,
           "question": [
             {
               "text": "",
@@ -55,7 +49,7 @@
         {
           "title": "3. Data and Metadata Format and Contents",
           "description": "",
-          "order": 4,
+          "order": 3,
           "question": [
             {
               "text": "",
@@ -75,7 +69,7 @@
         {
           "title": "4. Accessibility and Data Protection",
           "description": "",
-          "order": 5,
+          "order": 4,
           "question": [
             {
               "text": "",
@@ -95,7 +89,7 @@
         {
           "title": "5. Derivative Products",
           "description": "",
-          "order": 6,
+          "order": 5,
           "question": [
             {
               "text": "",
@@ -115,7 +109,7 @@
         {
           "title": "6. Archiving and Access",
           "description": "It is understood that the NSF Engineering Directorate requires data to be made available for a minimum\nof three years after conclusion of the award or public release, whichever is later. If the PI leaves his",
-          "order": 7,
+          "order": 6,
           "question": [
             {
               "text": "",

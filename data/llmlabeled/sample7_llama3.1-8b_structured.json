@@ -2,12 +2,12 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "",
+      "title": "Resource/Data Sharing Plan",
       "description": "",
       "version": "v1",
       "section": [
         {
-          "title": "Resource/Data Sharing Plan",
+          "title": "",
           "description": "Archive (NDA) Data Sharing Terms and Conditions, including submitting and harmonizing all descriptive/raw",
           "order": 1,
           "question": [

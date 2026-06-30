@@ -182,59 +182,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "title": "(i) the SOL-VIDA Study – Data requests may be made by following instructions on the Hispanic Community",
-          "description": "",
-          "order": 7,
-          "question": [
-            {
-              "text": "",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "Health Study/ Study of Latinos dbGap page.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "title": "(ii) the MOCA Study – Data requests may be made by following MOCA Study policies",
-          "description": "",
-          "order": 8,
-          "question": []
-        },
-        {
-          "title": "(iii) the PHASE Study – Data requests may be made by following PHASE Study policies",
-          "description": "",
-          "order": 9,
-          "question": []
-        },
-        {
-          "title": "(iv) the AusDiab Study – Data may be requested by following AusDiab policies available from the AusDiab",
-          "description": "",
-          "order": 10,
-          "question": [
-            {
-              "text": "",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "study website, hosted by the Baker Heart & Diabetes Institute.",
+                  "answer": "(i) the SOL-VIDA Study – Data requests may be made by following instructions on the Hispanic Community\nHealth Study/ Study of Latinos dbGap page.\n(ii) the MOCA Study – Data requests may be made by following MOCA Study policies\n(iii) the PHASE Study – Data requests may be made by following PHASE Study policies\n(iv) the AusDiab Study – Data may be requested by following AusDiab policies available from the AusDiab\nstudy website, hosted by the Baker Heart & Diabetes Institute.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -246,7 +194,7 @@
         {
           "title": "(v) the ACT Study - Data are managed and stored in the ACT Data Repository and sharing requests may",
           "description": "",
-          "order": 11,
+          "order": 7,
           "question": [
             {
               "text": "",
@@ -266,7 +214,7 @@
         {
           "title": "(vi) the WHISH accelerometer sub-study – Data are managed by the Women’s Health Initiative",
           "description": "",
-          "order": 12,
+          "order": 8,
           "question": [
             {
               "text": "",
@@ -299,7 +247,7 @@
         {
           "title": "Protections for privacy, rights, and confidentiality of human research participants:",
           "description": "",
-          "order": 13,
+          "order": 9,
           "question": [
             {
               "text": "",
@@ -319,7 +267,7 @@
         {
           "title": "Element 6: Oversight of Data Management and Sharing:",
           "description": "University of California San Diego Library repository manager to ensure that the datasets, protocols, and",
-          "order": 14,
+          "order": 10,
           "question": [
             {
               "text": "",
