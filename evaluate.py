@@ -73,47 +73,41 @@ def extract_gold(path: Path) -> list[tuple[str, str]]:
 NO_MATCH = "__no_match__"
 
 
-def _best_gold_idx(btok: set, gold_pairs: list[tuple[str, str]]) -> tuple[int | None, float, str | None]:
-    """Return (index, score, label) of best gold match for a block token set."""
-    best_score, best_idx, best_label = 0.0, None, None
-    for j, (gt, gl) in enumerate(gold_pairs):
-        score = containment(btok, tokenize(gt))
+def match(block_text: str, gold_pairs: list[tuple[str, str]]) -> str | None:
+    """Return the gold label whose text best contains the block."""
+    btok = tokenize(block_text)
+    if not btok:
+        return None
+    best_score, best_label = 0.0, None
+    for gold_text, gold_label in gold_pairs:
+        score = containment(btok, tokenize(gold_text))
         if score > best_score:
-            best_score, best_idx, best_label = score, j, gl
-    return best_idx, best_score, best_label
+            best_score, best_label = score, gold_label
+    return best_label if best_score >= 0.75 else None
 
 
 # ── Evaluate one sample ───────────────────────────────────────────────────────
 
 def evaluate_sample(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> dict:
-    """Return confusion dict {true_label: {pred_label: count}}.
-
-    Forward: each pred block → best gold match (containment ≥ 0.75).
-    Reverse: any gold item that was never the best match for any pred block
-             is counted as missed. This uses the same forward matching so that
-             short gold entries ('Data Repositories.') are not falsely covered
-             by tiny pred blocks ('data.') that forward-match something else.
-    """
+    """Return confusion dict {true_label: {pred_label: count}}."""
     blocks = json.loads(pred_path.read_text(encoding="utf-8"))
     confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
-    covered: set[int] = set()  # gold indices forward-matched by at least one pred block
 
     for block in blocks:
-        btok = tokenize(block["text"])
-        if not btok:
-            continue
-        idx, score, gold_label = _best_gold_idx(btok, gold_pairs)
-        if score >= 0.75 and idx is not None:
-            covered.add(idx)
-            gold_label = gold_label
-        else:
-            gold_label = NO_MATCH
+        gold_label = match(block["text"], gold_pairs) or NO_MATCH
         pred_label = block.get("label", "answer.text")
         confusion[gold_label][pred_label] += 1
 
-    # Reverse: gold items never forward-matched by any pred block → missed
-    for j, (gold_text, gold_label) in enumerate(gold_pairs):
-        if j not in covered:
+    # Reverse check: gold items with no matching LLM block → missed
+    pred_texts = [b["text"] for b in blocks]
+    for gold_text, gold_label in gold_pairs:
+        gtok = tokenize(gold_text)
+        matched = any(
+            containment(tokenize(pt), gtok) >= 0.75
+            for pt in pred_texts
+            if tokenize(pt)
+        )
+        if not matched:
             confusion[gold_label]["__missed__"] += 1
 
     return confusion
@@ -125,45 +119,6 @@ def add_confusion(total, new):
     for true_lbl, preds in new.items():
         for pred_lbl, count in preds.items():
             total[true_lbl][pred_lbl] += count
-
-
-# ── Error list helper (used by notebooks) ────────────────────────────────────
-
-def get_errors(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> list[dict]:
-    """Return forward mismatches + missed gold items as a list of dicts."""
-    blocks = json.loads(pred_path.read_text(encoding="utf-8"))
-    errors: list[dict] = []
-    covered: set[int] = set()
-
-    for block in blocks:
-        btok = tokenize(block["text"])
-        if not btok:
-            continue
-        idx, score, gold_label = _best_gold_idx(btok, gold_pairs)
-        if score >= 0.75 and idx is not None:
-            covered.add(idx)
-            true_label = gold_label
-        else:
-            true_label = NO_MATCH
-        pred_label = block.get("label", "answer.text")
-        if true_label != pred_label:
-            errors.append({
-                "text": block["text"][:120],
-                "true": true_label,
-                "pred": pred_label,
-                "page": block.get("page", "-"),
-            })
-
-    for j, (gold_text, gold_label) in enumerate(gold_pairs):
-        if j not in covered:
-            errors.append({
-                "text": gold_text[:120],
-                "true": gold_label,
-                "pred": "__missed__",
-                "page": "-",
-            })
-
-    return errors
 
 
 # ── Print helpers ─────────────────────────────────────────────────────────────
@@ -223,18 +178,17 @@ def _sample_row(stem: str, n: int, tp: int) -> None:
 def print_missed(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> None:
     """Print each gold item that no LLM block matched."""
     blocks = json.loads(pred_path.read_text(encoding="utf-8"))
-    covered: set[int] = set()
-    for block in blocks:
-        btok = tokenize(block["text"])
-        if not btok:
-            continue
-        idx, score, _ = _best_gold_idx(btok, gold_pairs)
-        if score >= 0.75 and idx is not None:
-            covered.add(idx)
-    missed = [
-        (gl, gt) for j, (gt, gl) in enumerate(gold_pairs) if j not in covered
-    ]
-
+    pred_texts = [b["text"] for b in blocks]
+    missed = []
+    for gold_text, gold_label in gold_pairs:
+        gtok = tokenize(gold_text)
+        matched = any(
+            containment(tokenize(pt), gtok) >= 0.75
+            for pt in pred_texts
+            if tokenize(pt)
+        )
+        if not matched:
+            missed.append((gold_label, gold_text))
     if not missed:
         print("  (none)")
         return
