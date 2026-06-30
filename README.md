@@ -22,15 +22,57 @@ Each text block is classified as one of:
 
 ---
 
+## How it works
+
+### Step 1 — Extraction
+
+pdfplumber reads every line from the PDF with full character-level detail (font name, size, bounding box). Each line becomes a **block dict** with fields: `text`, `page`, `x0/top/x1/bottom`, `avg_font_size`, `is_bold`, `is_italic`, `label` (initially `null`).
+
+### Step 2 — Classification
+
+Blocks are sent to a local Ollama LLM in small batches (default: 10 blocks per request). Each batch includes the last 3 already-labeled blocks as context so the model can track where it is in the document. The model receives a system prompt with:
+
+- Definitions of all 5 labels
+- Key decision rules (e.g. "should/must" phrasing → `section.description`; researcher narrative → `answer.text`)
+- Real few-shot examples from actual DMP documents
+- A JSON schema that forces the output format
+
+Temperature is set to 0 for deterministic output.
+
+### Step 3 — Conversion
+
+The flat labeled block list is converted to the nested DMP Tool JSON schema by a positional state machine:
+
+- `section.title` opens a new section
+- `section.description` appearing before any question goes into the section's description field
+- `section.description` appearing after a question has started stays in document reading order (appended to the question text or answer — whichever is currently open)
+- Consecutive `question.text` blocks with no answer yet are merged into one question
+- `answer.text` is always appended to the current question's answer
+
+The converter trusts the LLM's labels exactly — it does not relabel or reinterpret content.
+
+---
+
+## Model performance
+
+Evaluated against 10 manually labeled DMP samples:
+
+| Model | Size | Accuracy | Notes |
+|-------|------|----------|-------|
+| `llama3.3:70b` | ~42 GB | ~85–90% | Best accuracy; recommended for production |
+| `llama3.1:8b` | ~5 GB | ~67% | Fast, runs on laptop GPU; good for testing |
+
+---
+
 ## Project structure
 
 ```
 dmpbridge/
 ├── __init__.py     # exports process_pdf, to_structured, convert_file
 ├── extractor.py    # pdfplumber text extraction + page image export
-├── classifier.py   # Ollama LLM classifier (few-shot + context window)
-├── pipeline.py     # combines extraction + classification
-├── converter.py    # converts flat labeled JSON → hierarchical manual schema
+├── classifier.py   # Ollama LLM classifier (few-shot + sliding context window)
+├── pipeline.py     # combines extraction + classification + conversion
+├── converter.py    # converts flat labeled blocks → nested DMP Tool schema
 ├── cli.py          # dmpbridge command-line tool
 └── config.py       # ← edit here to change model / host / batch size
 
@@ -42,18 +84,19 @@ data/
 └── pdfplumber/     # (auto-generated) raw pdfplumber JSON before labeling
 
 notebooks/
-├── 01_pdfplumber_batch_test.ipynb     # batch extraction across all sample PDFs
+├── 01_pdfplumber_batch_test.ipynb         # batch extraction across all sample PDFs
 ├── 02_evaluation_pdfplumber_batch_test.ipynb
-├── 03_eval_llama3.3-70b.ipynb         # evaluation: confusion matrix + F1 charts (llama3.3:70b)
-├── 03_eval_llama3.1-8b.ipynb          # evaluation: confusion matrix + F1 charts (llama3.1:8b)
-└── 03_comparison_dashboard.ipynb      # side-by-side model comparison + error analysis
+├── 03_eval_llama3.3-70b.ipynb             # confusion matrix + F1 charts (llama3.3:70b)
+├── 03_eval_llama3.1-8b.ipynb             # confusion matrix + F1 charts (llama3.1:8b)
+└── 03_comparison_dashboard.ipynb          # side-by-side model comparison + error analysis
 
 templates/
 └── index.html      # Viewer UI served by FastAPI
 
-evaluate.py         # CLI evaluation script (confusion matrix + per-label F1)
-main.py             # FastAPI server
-dmpbridge.html      # Standalone viewer (no server needed)
+evaluate.py                   # CLI evaluation script (confusion matrix + per-label F1)
+main.py                       # FastAPI server for the browser viewer
+dmpbridge.html                # Standalone viewer (no server needed)
+DMP_Labeling_Strategy.docx    # Strategy overview document (prompt design, models, evaluation)
 pyproject.toml
 requirements.txt
 ```
@@ -81,7 +124,7 @@ pip install -e .
 Download from **https://ollama.com** and install, then pull a model:
 
 ```powershell
-ollama pull llama3.3:70b     # best accuracy (requires ~42 GB)
+ollama pull llama3.3:70b     # best accuracy (requires ~42 GB RAM/VRAM)
 ollama pull llama3.1:8b      # faster, less memory (~5 GB)
 ```
 
@@ -96,31 +139,34 @@ Set your chosen model in `dmpbridge/config.py`.
 Edit **[dmpbridge/config.py](dmpbridge/config.py)**:
 
 ```python
-MODEL      = "llama3.3:70b"   # any model installed in Ollama
+MODEL      = "llama3.3:70b"          # any model installed in Ollama
 HOST       = "http://localhost:11434"
-BATCH_SIZE = 10
+BATCH_SIZE = 10                       # blocks per LLM request
 ```
 
 ### CLI
 
 ```powershell
-# Run pipeline
+# Basic run — produces <pdf>_labeled.json and <pdf>_labeled_structured.json
 dmpbridge document.pdf
 
 # Specify output path
 dmpbridge document.pdf -o data/llmlabeled/output.json
 
-# Also produce hierarchical structured JSON
-dmpbridge document.pdf -o data/llmlabeled/sample1_llama3.3-70b.json --structured
-
 # Override model for this run
 dmpbridge document.pdf --model llama3.1:8b -o data/llmlabeled/sample1_llama3.1-8b.json
 
-# Show detailed progress
+# Show detailed progress (logs each batch)
 dmpbridge document.pdf -v
 
 # Skip saving the raw pdfplumber JSON
 dmpbridge document.pdf --no-raw
+
+# Skip writing the structured JSON (flat labeled JSON only)
+dmpbridge document.pdf --no-structured
+
+# Save per-page PNG images with colored bounding boxes per label
+dmpbridge document.pdf --save-images data/pdfplumber
 ```
 
 ### Python API
@@ -162,11 +208,19 @@ python evaluate.py
 python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json
 ```
 
+The evaluation uses **token containment** to match predicted blocks to gold items: a predicted block matches a gold entry if 75% or more of the block's words appear in the gold text. Both a forward pass (predicted → gold) and a reverse pass (gold → predicted, to find missed items) are run.
+
+Output includes:
+- Per-sample accuracy table
+- Confusion matrix (true label vs predicted label)
+- Per-label precision, recall, and F1 score
+- List of gold items the LLM produced no matching block for
+
 For interactive charts (confusion matrix, F1 scores, model comparison):
 
 ```powershell
-jupyter lab notebooks/03_eval_llama3.3-70b.ipynb   # single-model deep dive
-jupyter lab notebooks/03_comparison_dashboard.ipynb  # cross-model comparison
+jupyter lab notebooks/03_eval_llama3.3-70b.ipynb    # single-model deep dive
+jupyter lab notebooks/03_comparison_dashboard.ipynb   # cross-model comparison
 ```
 
 ---
