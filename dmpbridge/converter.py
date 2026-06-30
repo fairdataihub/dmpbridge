@@ -131,7 +131,7 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
         "narrative": {
             "download_url": pdf_url,
             "template": {
-                "title": title or "DMP Template",
+                "title": title,
                 "description": "",
                 "version": "v1",
                 "section": sections,
