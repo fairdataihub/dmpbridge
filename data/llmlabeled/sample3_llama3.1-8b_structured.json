@@ -28,7 +28,7 @@
         },
         {
           "title": "Types of data",
-          "description": "The Data Management Plan should describe the types of data, samples, physical\nof the project. It should then describe the expected types of data to be retained and shared,\nand the plans for doing so. The DMP should cover how data are to be managed and\nmaintained during the project.",
+          "description": "The Data Management Plan should describe the types of data, samples, physical\nof the project. It should then describe the expected types of data to be retained and shared,\nand the plans for doing so. The DMP should cover how data are to be managed and\nmaintained during the project.\nPolicies for access and sharing and appropriate protection and privacy\nand shared; factors that limit the ability to manage and share data, e.g., legal and ethical\nrestrictions on access to human subjects data; and provisions for appropriate protection of\nprivacy, confidentiality, security, and intellectual property.\nThere will be no copyright or licensing required for any of the data generated in this project.",
           "order": 2,
           "question": [
             {
@@ -63,27 +63,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Specifically, we store all code necessary to recreate figures, tables, and other results reported in all\npublished manuscripts.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "title": "The proposed foundational developments will produce substantial simulation code for controller",
-          "description": "Policies for access and sharing and appropriate protection and privacy\nand shared; factors that limit the ability to manage and share data, e.g., legal and ethical\nrestrictions on access to human subjects data; and provisions for appropriate protection of\nprivacy, confidentiality, security, and intellectual property.\nThere will be no copyright or licensing required for any of the data generated in this project.",
-          "order": 3,
-          "question": [
-            {
-              "text": "",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "development and testing. These and the outputs relevant to all key findings will also be managed.",
+                  "answer": "Specifically, we store all code necessary to recreate figures, tables, and other results reported in all\npublished manuscripts.\nThe proposed foundational developments will produce substantial simulation code for controller\ndevelopment and testing. These and the outputs relevant to all key findings will also be managed.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -92,7 +72,7 @@
             },
             {
               "text": "The Data Management Plan should describe the period of time the data will be retained",
-              "order": 2,
+              "order": 4,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -108,7 +88,7 @@
         {
           "title": "Data storage and preservation of access",
           "description": "The Data Management Plan should describe the mechanisms and formats for storing data\nand making them accessible to others, which may include third party facilities and\nrepositories; and other types of information that would be maintained and shared regarding",
-          "order": 4,
+          "order": 3,
           "question": [
             {
               "text": "data, e.g. the means by which it was generated, detailed analytical and procedural",
@@ -129,7 +109,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "during generation will be documented. All raw data will be de-identified to ensure subject\nanonynimity.\nUpon request, data will be made available through the project's website, hosted on an archived server\nrun by the RIC IT Team.",
+                  "answer": "during generation will be documented. All raw data will be de-identified to ensure subject\nanonynimity.\nUpon request, data will be made available through the project's website, hosted on an archived server\nrun by the RIC IT Team.\nAdditional possible data management requirements",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -137,12 +117,6 @@
               }
             }
           ]
-        },
-        {
-          "title": "Additional possible data management requirements",
-          "description": "",
-          "order": 5,
-          "question": []
         }
       ]
     }

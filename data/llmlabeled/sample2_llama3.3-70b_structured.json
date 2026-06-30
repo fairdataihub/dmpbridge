@@ -8,7 +8,7 @@
       "section": [
         {
           "title": "1. Data sharing and preservation",
-          "description": "Data management plans should describe whether and how data generated in the course\nof the proposed research will be shared and preserved. If the plan is not to share and/or\npreserve certain data, then the plan must explain the basis of the decision (for example,\ncost/benefit considerations, other parameters of feasibility, scientific appropriateness, or\nlimitations discussed in #4). At a minimum, DMPs must describe how data sharing and\npreservation will enable validation of results, or how results could be validated if data\nare not shared or preserved.\nthe course of the proposed research and which of these are considered Digital Research Data\nnecessary to Validate the research findings.\napplicable, a description of documentation plans, annotation of relevant software, and the rationale for\nthe selection of appropriate standards. (Existing, accepted community standards should be used where\npossible. Where community standards are missing or inadequate, the DMP could propose alternate\nstrategies that facilitate data sharing, and should advise the sponsoring program of any need to\ndevelop or generalize standards.)",
+          "description": "Data management plans should describe whether and how data generated in the course\nof the proposed research will be shared and preserved. If the plan is not to share and/or\npreserve certain data, then the plan must explain the basis of the decision (for example,\ncost/benefit considerations, other parameters of feasibility, scientific appropriateness, or\nlimitations discussed in #4). At a minimum, DMPs must describe how data sharing and\npreservation will enable validation of results, or how results could be validated if data\nare not shared or preserved.\nthe course of the proposed research and which of these are considered Digital Research Data\nnecessary to Validate the research findings.\napplicable, a description of documentation plans, annotation of relevant software, and the rationale for\nthe selection of appropriate standards. (Existing, accepted community standards should be used where\npossible. Where community standards are missing or inadequate, the DMP could propose alternate\nstrategies that facilitate data sharing, and should advise the sponsoring program of any need to\ndevelop or generalize standards.)\nThis should include, where appropriate:\nincluding, for example, the potential impact of the data within the immediate field and in other fields,\nand any broader societal impact.\nprinciples of this Statement, data sharing should make digital research data available to and useful for",
           "order": 1,
           "question": [
             {
@@ -43,27 +43,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Data are output from the various instruments in lab in formats, which are occasionally proprietary.\nWhen possible, the data are converted to comma delimited or other universally accessible formats. If\nthe format is not comma delimited, all instruments can export into a format compatible with common\nsoftware such as Microsoft Excel, OriginPro, Shelx, etc. Files are typically stored electronically on\ngroup servers with file names that are related to lab notebook pages. Data sharing and preservation will\nenable validation of results by enabling students to repeat synthetic preps and data analysis. Every\npiece of data fitting including the equations used to fit the data are backed up on local group servers or\nto secure cloud services. This enables validation through equation checking, reproducing data and\nanalyses. Binary data files will be accompanied by a text file describing their content and by source\ncode for reading the binary format. The video will be encoded following standard conventions readable\nby the majority of widely and freely available video decoding programs. Lossless compression of the\ndata files may be performed on large data sets.\nPublic talks and outreach activities will generate audio and video files (.mpeg, .avi etc) and is expected\nto be less than XX GB. Experimental techniques will generate text and Microsoft Office files and\nvideos that are expected to be less than XX GB.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "title": "Data Sharing and Data Preservation. A description of the plans for data sharing and preservation.",
-          "description": "This should include, where appropriate:\nincluding, for example, the potential impact of the data within the immediate field and in other fields,\nand any broader societal impact.\nprinciples of this Statement, data sharing should make digital research data available to and useful for",
-          "order": 2,
-          "question": [
-            {
-              "text": "the anticipated means for sharing and rationale for any restrictions on who may access the data",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
+                  "answer": "Data are output from the various instruments in lab in formats, which are occasionally proprietary.\nWhen possible, the data are converted to comma delimited or other universally accessible formats. If\nthe format is not comma delimited, all instruments can export into a format compatible with common\nsoftware such as Microsoft Excel, OriginPro, Shelx, etc. Files are typically stored electronically on\ngroup servers with file names that are related to lab notebook pages. Data sharing and preservation will\nenable validation of results by enabling students to repeat synthetic preps and data analysis. Every\npiece of data fitting including the equations used to fit the data are backed up on local group servers or\nto secure cloud services. This enables validation through equation checking, reproducing data and\nanalyses. Binary data files will be accompanied by a text file describing their content and by source\ncode for reading the binary format. The video will be encoded following standard conventions readable\nby the majority of widely and freely available video decoding programs. Lossless compression of the\ndata files may be performed on large data sets.\nPublic talks and outreach activities will generate audio and video files (.mpeg, .avi etc) and is expected\nto be less than XX GB. Experimental techniques will generate text and Microsoft Office files and\nvideos that are expected to be less than XX GB.\nData Sharing and Data Preservation. A description of the plans for data sharing and preservation.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -71,229 +51,8 @@
               }
             },
             {
-              "text": "and under what conditions;",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "a timeline for sharing and preservation that addresses both the minimum length of time the data",
-              "order": 3,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "will be available and any anticipated delay to data access after research findings are published;",
+              "text": "the anticipated means for sharing and rationale for any restrictions on who may access the data\nand under what conditions;\na timeline for sharing and preservation that addresses both the minimum length of time the data\nwill be available and any anticipated delay to data access after research findings are published;\nany special requirements for data sharing, for example, proprietary software needed to access\nor interpret data, applicable policies, provisions, and licenses for re-use and re-distribution, and\nfor the production of derivatives, including guidance for how data and data products should be\ncited;\nany resources and capabilities (equipment, connections, systems, software, expertise, etc.)\nrequested in the research proposal that are needed to meet the stated goals for sharing and\npreservation. (This could reference the relevant section of the associated research proposal and\nbudget request);\ncost/benefit considerations to support whether/where the data will be preserved after direct\nproject funding ends and any plans for the transfer of responsibilities for sharing and\npreservation;\nwhether, when, or under what conditions the management responsibility for the research data\nwill be transferred to a third party (e.g. institutional, or community repository);\nany future decision points regarding the management of the research data including plans to\nreevaluate the costs and benefits of data sharing and preservation.",
               "order": 4,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "any special requirements for data sharing, for example, proprietary software needed to access",
-              "order": 5,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "or interpret data, applicable policies, provisions, and licenses for re-use and re-distribution, and",
-              "order": 6,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "for the production of derivatives, including guidance for how data and data products should be",
-              "order": 7,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "cited;",
-              "order": 8,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "any resources and capabilities (equipment, connections, systems, software, expertise, etc.)",
-              "order": 9,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "requested in the research proposal that are needed to meet the stated goals for sharing and",
-              "order": 10,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "preservation. (This could reference the relevant section of the associated research proposal and",
-              "order": 11,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "budget request);",
-              "order": 12,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "cost/benefit considerations to support whether/where the data will be preserved after direct",
-              "order": 13,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "project funding ends and any plans for the transfer of responsibilities for sharing and",
-              "order": 14,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "preservation;",
-              "order": 15,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "whether, when, or under what conditions the management responsibility for the research data",
-              "order": 16,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "will be transferred to a third party (e.g. institutional, or community repository);",
-              "order": 17,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "any future decision points regarding the management of the research data including plans to",
-              "order": 18,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "reevaluate the costs and benefits of data sharing and preservation.",
-              "order": 19,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -306,7 +65,7 @@
             },
             {
               "text": "Rationale. A discussion of the rationale or justification for the proposed data management plan",
-              "order": 20,
+              "order": 5,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -322,7 +81,7 @@
         {
           "title": "2. Data used in publications",
           "description": "Data management plans should provide a plan for making all research data displayed in\npublications resulting from the proposed research open, machine-readable, and digitally\naccessible to the public at the time of publication. This includes data that are displayed\nin charts, figures, images, etc. In addition, the underlying digital research data used to\ngenerate the displayed data should be made as accessible as possible to the public in\naccordance with the Principles published in the DOE Policy for Digital Research Data\nManagement. The published article should indicate how these data can be accessed.",
-          "order": 3,
+          "order": 2,
           "question": [
             {
               "text": "",
@@ -342,7 +101,7 @@
         {
           "title": "3. Data management resources",
           "description": "Data management plans should consult and reference available information about data\nmanagement resources to be used in the course of the proposed research. In particular,\nDMPs tht explicitly or implicitly commit data management resources at a facility\nbeyond what is conventionally made available to approved users should be accompanied\nby written approval from that facility. In determining the resources available for data\nmanagement at DOE Scientific User Facilities, researchers should consult the\npublished description of data management resources and practices at that facility and\nreference it in the DMP. Information about other Office of Science facilities can be\nfound in the additional guidance from the sponsporing program.\nDMPs should consult and reference available information about data management resources to be\nused in the course of the proposed research. In particular, DMPs that explicitly or implicitly commit\ndata management resources at a facility beyond what is conventionally made available to approved\nusers should be accompanied by written approval from that facility. In determining the resources\navailable for data management at Office of Science User Facilities, researchers should consult the\npublished description of data management resources and practices at that facility and reference it in\nthe DMP. Information about other Office of Science facilities can be found in the additional guidance\nfrom the sponsoring program.",
-          "order": 4,
+          "order": 3,
           "question": [
             {
               "text": "",
@@ -356,17 +115,10 @@
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "Data Volume. Generally, the volume of data generated by CBES researchers should not prohibit their",
-          "description": "",
-          "order": 5,
-          "question": [
+            },
             {
-              "text": "",
-              "order": 1,
+              "text": "Data Volume. Generally, the volume of data generated by CBES researchers should not prohibit their",
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -382,7 +134,7 @@
         {
           "title": "4. Confidentiality, security and rights",
           "description": "Data management plans must protect confidentiality, personal privacy, Personally\nIdentifiable Information and U.S. national, homeland, and economic security; recognize\nproprietary interests, business confidential information, and intellectual property\nrights; avoid significant negative impact on innovation and U.S. competitiveness; and\notherwise be consistent with all applicable laws, regulations, agreement terms and\nconditions, and DOE orders and policies. There is no requirement to share proprietary\ndata.",
-          "order": 6,
+          "order": 4,
           "question": [
             {
               "text": "",

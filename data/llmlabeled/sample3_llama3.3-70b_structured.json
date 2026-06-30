@@ -70,7 +70,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The servers at the Rehabilitation Institute of Chicago will serve as the central repository for all\ncollected data. Raw data files will be saved in either Matlab or comma-separated value (CSV)\nformat. Code for converting between these formats will also be provided to ensure easy access. The\ncontents of each data file, including the experimental conditions or the analysis procedures used\nduring generation will be documented. All raw data will be de-identified to ensure subject\nanonynimity.\nUpon request, data will be made available through the project's website, hosted on an archived server\nrun by the RIC IT Team.",
+                  "answer": "The servers at the Rehabilitation Institute of Chicago will serve as the central repository for all\ncollected data. Raw data files will be saved in either Matlab or comma-separated value (CSV)\nformat. Code for converting between these formats will also be provided to ensure easy access. The\ncontents of each data file, including the experimental conditions or the analysis procedures used\nduring generation will be documented. All raw data will be de-identified to ensure subject\nanonynimity.\nUpon request, data will be made available through the project's website, hosted on an archived server\nrun by the RIC IT Team.\nAdditional possible data management requirements",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -78,12 +78,6 @@
               }
             }
           ]
-        },
-        {
-          "title": "Additional possible data management requirements",
-          "description": "",
-          "order": 4,
-          "question": []
         }
       ]
     }

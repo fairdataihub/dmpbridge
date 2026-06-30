@@ -43,27 +43,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "In addition to the data described above, code and models will be included in the repository and in on our\nproject’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep\nPostures”.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "title": "Element 2: Related Tools, Software and/or Code:",
-          "description": "",
-          "order": 2,
-          "question": [
-            {
-              "text": "",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "Data will be analyzed with custom code by our statistical and computer science team. ActiGraph data will be\nprocessed and analyzed using ActiLife software which requires a paid license. All custom code and models\nwill also be shared in the data repository and on our project’s GitHub website, hosted as part of the UCSD\nAdvance Data Analytics Lab GitHub and titled “Deep Postures”.",
+                  "answer": "In addition to the data described above, code and models will be included in the repository and in on our\nproject’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep\nPostures”.\nElement 2: Related Tools, Software and/or Code:\nData will be analyzed with custom code by our statistical and computer science team. ActiGraph data will be\nprocessed and analyzed using ActiLife software which requires a paid license. All custom code and models\nwill also be shared in the data repository and on our project’s GitHub website, hosted as part of the UCSD\nAdvance Data Analytics Lab GitHub and titled “Deep Postures”.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -75,7 +55,7 @@
         {
           "title": "Element 3: Standards:",
           "description": "",
-          "order": 3,
+          "order": 2,
           "question": [
             {
               "text": "The following data will be created as a result of this project:",
@@ -83,23 +63,16 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Objective sedentary behavior metrics – no existing standards",
+                  "answer": "Objective sedentary behavior metrics – no existing standards\nElement 4: Data Preservation, Access, and Associated Timelines:",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "Element 4: Data Preservation, Access, and Associated Timelines:",
-          "description": "",
-          "order": 4,
-          "question": [
+            },
             {
               "text": "A. Repository where scientific data and metadata will be archived:",
-              "order": 1,
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -112,7 +85,7 @@
             },
             {
               "text": "B. How scientific data will be findable and identifiable:",
-              "order": 2,
+              "order": 3,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -125,27 +98,20 @@
             },
             {
               "text": "C. When and how long the scientific data will be made available:",
-              "order": 3,
+              "order": 4,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The research community will have access to data when the main outcome manuscript has been published.\n$2,500 in years 2-5 of the project has been budgeted for preparing the data that is able to be stored in the\nrepository (the RISE study, the iWATCH study, and NHANES) and for data storage on the University of\nCalifornia San Diego Library repository. We anticipate data being available for the foreseeable future\n(minimum of at least 5 years) after the study has been completed. The University of California San Diego\nLibrary repository does not currently have a limit on how long data can be stored.",
+                  "answer": "The research community will have access to data when the main outcome manuscript has been published.\n$2,500 in years 2-5 of the project has been budgeted for preparing the data that is able to be stored in the\nrepository (the RISE study, the iWATCH study, and NHANES) and for data storage on the University of\nCalifornia San Diego Library repository. We anticipate data being available for the foreseeable future\n(minimum of at least 5 years) after the study has been completed. The University of California San Diego\nLibrary repository does not currently have a limit on how long data can be stored.\nElement 5: Access, Distribution, or Reuse Considerations:",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "Element 5: Access, Distribution, or Reuse Considerations:",
-          "description": "",
-          "order": 5,
-          "question": [
+            },
             {
               "text": "A. Factors affecting subsequent access, distribution, or reuse of scientific data:",
-              "order": 1,
+              "order": 5,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -158,51 +124,11 @@
             },
             {
               "text": "B. Whether access to scientific data will be controlled:",
-              "order": 2,
+              "order": 6,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It\nwill be deposited into the UC San Diego Library Data repository along with study protocols, code, and models\nfor public use. De-identified data will be available after the main outcome papers are published.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "title": "Protections for privacy, rights, and confidentiality of human research participants:",
-          "description": "",
-          "order": 6,
-          "question": [
-            {
-              "text": "",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "All data used in this study was de-identified prior to use.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "title": "Element 6: Oversight of Data Management and Sharing:",
-          "description": "",
-          "order": 7,
-          "question": [
-            {
-              "text": "",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The\nPI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to\nensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once\nthe main outcome manuscript has been published. The Statistician/Data Manager will work closely with the\nUniversity of California San Diego Library repository manager to ensure that the datasets, protocols, and\ncode are correctly stored and available for sharing.",
+                  "answer": "The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It\nwill be deposited into the UC San Diego Library Data repository along with study protocols, code, and models\nfor public use. De-identified data will be available after the main outcome papers are published.\nProtections for privacy, rights, and confidentiality of human research participants:\nAll data used in this study was de-identified prior to use.\nElement 6: Oversight of Data Management and Sharing:\nThe PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The\nPI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to\nensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once\nthe main outcome manuscript has been published. The Statistician/Data Manager will work closely with the\nUniversity of California San Diego Library repository manager to ensure that the datasets, protocols, and\ncode are correctly stored and available for sharing.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
