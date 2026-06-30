@@ -94,7 +94,7 @@
         },
         {
           "title": "available software tools (VESTA, cif2file, etc.). Crystallographic data for previously-unreported",
-          "description": "files for readability across many programs and platforms. The CRYSTAL code manual will be",
+          "description": "",
           "order": 4,
           "question": [
             {
@@ -103,7 +103,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "output files (generated with the VASP and CRYSTAL codes) will be stored as rich text format (*.rtf)",
+                  "answer": "output files (generated with the VASP and CRYSTAL codes) will be stored as rich text format (*.rtf)\nfiles for readability across many programs and platforms. The CRYSTAL code manual will be",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -186,7 +186,7 @@
         },
         {
           "title": "be disseminated through peer-reviewed publications, conference presentations, and annual reports.",
-          "description": "along with supplementary information, on the UC eScholarship website.\nintellectual property protection of data stored in this manner are guaranteed by the privacy policy",
+          "description": "",
           "order": 8,
           "question": [
             {
@@ -195,7 +195,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "data analysis. All of the journals of interest to the group make supporting information files publicly-\navailable online free of charge. In addition, all publication pre-prints will be made freely available,\nOver the course of the project, digital data will be internally stored and shared for collaborative work\non the UCSB-administered, Box platform with unlimited cloud storage. The privacy, security and\nand terms of service contract between University of California and Box. As a means of making data",
+                  "answer": "data analysis. All of the journals of interest to the group make supporting information files publicly-\navailable online free of charge. In addition, all publication pre-prints will be made freely available,\nalong with supplementary information, on the UC eScholarship website.\nOver the course of the project, digital data will be internally stored and shared for collaborative work\non the UCSB-administered, Box platform with unlimited cloud storage. The privacy, security and\nintellectual property protection of data stored in this manner are guaranteed by the privacy policy\nand terms of service contract between University of California and Box. As a means of making data",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -232,7 +232,7 @@
         },
         {
           "title": "been performed on a given system and has tools to query a wide range of properties for each",
-          "description": "CASM is an open source software package released under the GNU Lesser General Public License",
+          "description": "",
           "order": 9,
           "question": [
             {
@@ -267,7 +267,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "functions and Monte Carlo results) and uploaded to Dryad. Dryad is free of charge for UCSB\nresearchers and can be accessed using a personal ORCID.",
+                  "answer": "functions and Monte Carlo results) and uploaded to Dryad. Dryad is free of charge for UCSB\nresearchers and can be accessed using a personal ORCID.\nCASM is an open source software package released under the GNU Lesser General Public License",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -298,7 +298,7 @@
         },
         {
           "title": "Policies and provisions for re-use, re-distribution, and production of derivatives",
-          "description": "The existing open source software infrastructure within CASM that serves as a foundation to this",
+          "description": "",
           "order": 11,
           "question": [
             {
@@ -307,7 +307,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "license (CC0). Note that while a personal ORCID is needed to deposit data in Dryad, no ORCID is\nrequired to search, find and download datasets.",
+                  "answer": "license (CC0). Note that while a personal ORCID is needed to deposit data in Dryad, no ORCID is\nrequired to search, find and download datasets.\nThe existing open source software infrastructure within CASM that serves as a foundation to this",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

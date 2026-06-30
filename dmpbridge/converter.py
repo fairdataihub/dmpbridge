@@ -106,10 +106,18 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
             if cur_section is None:
                 cur_section = _new_section("")
                 sections.append(cur_section)
-            if cur_section["description"]:
-                cur_section["description"] += "\n" + text
+            if cur_question is None:
+                # no question open yet — true leading description
+                if cur_section["description"]:
+                    cur_section["description"] += "\n" + text
+                else:
+                    cur_section["description"] = text
+            elif not cur_question["answer"]["json"]["answer"]:
+                # a question is open with no answer yet — stay in sequence, continue its text
+                cur_question["text"] = (cur_question["text"] + "\n" + text) if cur_question["text"] else text
             else:
-                cur_section["description"] = text
+                # a question already has an answer — stay in sequence, continue the answer
+                cur_question["answer"]["json"]["answer"] += "\n" + text
 
         elif label == "question.text":
             if cur_section is None:

@@ -318,7 +318,7 @@
         },
         {
           "title": "Element 6: Oversight of Data Management and Sharing:",
-          "description": "University of California San Diego Library repository manager to ensure that the datasets, protocols, and",
+          "description": "",
           "order": 14,
           "question": [
             {
@@ -340,7 +340,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "the main outcome manuscript has been published. The Statistician/Data Manager will work closely with the\ncode are correctly stored and available for sharing.",
+                  "answer": "the main outcome manuscript has been published. The Statistician/Data Manager will work closely with the\nUniversity of California San Diego Library repository manager to ensure that the datasets, protocols, and\ncode are correctly stored and available for sharing.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

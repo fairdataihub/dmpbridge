@@ -88,7 +88,7 @@
         },
         {
           "title": "5. Derivative Products",
-          "description": "In keeping with standard ethical practices, it is expected that subsequent users of the data will acknowledge the\nsource.",
+          "description": "",
           "order": 5,
           "question": [
             {
@@ -97,7 +97,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based upon work\nsupported by the National Science Foundation under Grant No. (NSF grant number).” Additionally, materials will\ncontain a disclaimer that “any opinions, findings, and conclusions or recommendations expressed in this material are\nthose of the author(s) and do not necessarily reflect the views of the National Science Foundation.”",
+                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based upon work\nsupported by the National Science Foundation under Grant No. (NSF grant number).” Additionally, materials will\ncontain a disclaimer that “any opinions, findings, and conclusions or recommendations expressed in this material are\nthose of the author(s) and do not necessarily reflect the views of the National Science Foundation.”\nIn keeping with standard ethical practices, it is expected that subsequent users of the data will acknowledge the\nsource.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
