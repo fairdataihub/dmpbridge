@@ -111,6 +111,30 @@ class OllamaClassifier:
                 f"Details: {exc}"
             ) from exc
 
+    # ──────────────────────────────────────────────────────────────────
+    #  Entire document
+    #        │
+    #        ▼
+    #  Split into batches
+    #        │
+    #        ▼
+    #  Batch 1 ───────► _classify_batch()
+    #        │
+    #        ▼
+    #  Save labels back into result
+    #        │
+    #        ▼
+    #  Batch 2 ───────► _classify_batch()
+    #        │
+    #        ▼
+    #  Save labels back into result
+    #        │
+    #        ▼
+    #       ...
+    #        │
+    #        ▼
+    #  Return complete labeled document
+    # ──────────────────────────────────────────────────────────────────
     def classify_blocks(self, blocks: list[dict]) -> list[dict]:
         """Overall classification of all blocks in a document, in batches, with context. 1. Copy the original blocks. 2. Process in batches. 3. For each batch, send to the LLM with context of previous labeled blocks. 4. Update the result with the labels returned by the LLM."""
 
