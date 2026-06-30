@@ -24,11 +24,15 @@ Each text block is classified as one of:
 
 ## How it works
 
-### Step 1 — Extraction
+### Step 1 — Extract text blocks from the PDF
 
-pdfplumber reads every line from the PDF with full character-level detail (font name, size, bounding box). Each line becomes a **block dict** with fields: `text`, `page`, `x0/top/x1/bottom`, `avg_font_size`, `is_bold`, `is_italic`, `label` (initially `null`).
+pdfplumber reads every line with full character-level detail (font name, size, bounding box). Each line becomes a **block dict** with fields: `text`, `page`, `x0/top/x1/bottom`, `avg_font_size`, `is_bold`, `is_italic`, `label` (initially `null`).
 
-### Step 2 — Classification
+### Step 2 — Save the raw extraction to disk
+
+Before the LLM touches anything, the raw block list is saved as JSON (default: `data/pdfplumber/<name>.json`). This lets you inspect or debug the pdfplumber output independently of the classification. Skip with `--no-raw`.
+
+### Step 3 — Classify blocks with the LLM
 
 Blocks are sent to a local Ollama LLM in small batches (default: 10 blocks per request). Each batch includes the last 3 already-labeled blocks as context so the model can track where it is in the document. The model receives a system prompt with:
 
@@ -39,17 +43,29 @@ Blocks are sent to a local Ollama LLM in small batches (default: 10 blocks per r
 
 Temperature is set to 0 for deterministic output.
 
-### Step 3 — Conversion
+### Step 4 — Fill in any blocks the LLM skipped
 
-The flat labeled block list is converted to the nested DMP Tool JSON schema by a positional state machine:
+If the LLM returned no label for a block (empty or missing response), that block is assigned the default label `answer.text` so no block is ever left unlabeled.
+
+### Step 5 — Save the flat labeled JSON
+
+The complete block list — one entry per line, with the `label` field now filled in — is saved to the output path (default: `<pdf_name>_labeled.json`).
+
+### Step 6 — Convert to the nested DMP Tool schema
+
+The flat list is converted to the nested DMP Tool JSON schema by a positional state machine:
 
 - `section.title` opens a new section
-- `section.description` appearing before any question goes into the section's description field
-- `section.description` appearing after a question has started stays in document reading order (appended to the question text or answer — whichever is currently open)
-- Consecutive `question.text` blocks with no answer yet are merged into one question
-- `answer.text` is always appended to the current question's answer
+- `section.description` before any question → goes into the section's description field
+- `section.description` after a question has started → stays in document reading order (continues the question text or answer, whichever is open)
+- Consecutive `question.text` blocks with no answer yet → merged into one question
+- `answer.text` → appended to the current question's answer
 
 The converter trusts the LLM's labels exactly — it does not relabel or reinterpret content.
+
+### Step 7 — Save the structured JSON
+
+The nested JSON is saved alongside the flat file (default: `<pdf_name>_labeled_structured.json`). Skip with `--no-structured`.
 
 ---
 
