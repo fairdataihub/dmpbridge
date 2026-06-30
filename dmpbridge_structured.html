@@ -238,20 +238,10 @@ body {
 
   <div class="vdiv"></div>
 
-  <label class="upload-btn" id="btn-ma">
-    <span id="lbl-ma">🤖 Load Model A</span>
-    <input type="file" id="in-ma" accept=".json">
+  <label class="upload-btn" id="btn-model">
+    <span id="lbl-model">🤖 Load Model JSON</span>
+    <input type="file" id="in-model" accept=".json">
   </label>
-
-  <label class="upload-btn" id="btn-mb">
-    <span id="lbl-mb">🤖 Load Model B</span>
-    <input type="file" id="in-mb" accept=".json">
-  </label>
-
-  <div class="tog-grp" id="model-tog">
-    <div class="tog-opt on" data-m="ma">Model A</div>
-    <div class="tog-opt"    data-m="mb">Model B</div>
-  </div>
 
   <div class="spacer"></div>
   <span id="hdr-stats" style="font-size:10px;color:var(--dim);"></span>
@@ -283,7 +273,6 @@ body {
       <span class="col-bar-title model" id="model-col-title">LLM Output</span>
       <span id="stats-model" style="font-size:10px;margin-left:4px;"></span>
     </div>
-    <div class="col-counts" id="counts-model"></div>
     <div class="col-body" id="body-model">
       <div class="empty-state">
         <div class="empty-icon">🤖</div>
@@ -384,9 +373,7 @@ function renderBlocks(blocks, generated = false) {
 // ── State ────────────────────────────────────────────────────────────────────
 const state = {
   manual: null,
-  ma:     null,
-  mb:     null,
-  active: 'ma',   // which model is shown
+  model:  null,
 };
 
 function countIssues(blocks) {
@@ -445,16 +432,12 @@ function render() {
   }
 
   // Model column
-  const modelData = state[state.active];
-  const modelTitle = document.getElementById('model-col-title');
-  modelTitle.textContent = state.active === 'ma' ? 'Model A' : 'Model B';
+  document.getElementById('model-col-title').textContent = 'LLM Output';
 
-  if (modelData) {
-    const blocks  = flatten(modelData);
-    const issues  = countIssues(blocks);
-    const s       = blockStats(blocks);
+  if (state.model) {
+    const blocks = flatten(state.model);
+    const issues = countIssues(blocks);
     document.getElementById('body-model').innerHTML = renderBlocks(blocks, true);
-    renderCounts('counts-model', s, manualStats);
 
     const issueChip = issues
       ? `<span class="chip err"><b>${issues}</b> issue${issues!==1?'s':''}</span>`
@@ -463,9 +446,9 @@ function render() {
   } else {
     document.getElementById('body-model').innerHTML =
       `<div class="empty-state"><div class="empty-icon">🤖</div>` +
-      `<p>Load ${state.active === 'ma' ? 'Model A' : 'Model B'} JSON</p></div>`;
+      `<p>Load a model JSON</p>` +
+      `<p style="font-size:11px;">e.g. data/llmlabeled/sample1_llama3.3-70b_structured.json</p></div>`;
     document.getElementById('stats-model').innerHTML = '';
-    document.getElementById('counts-model').innerHTML = '';
   }
 }
 
@@ -478,26 +461,16 @@ function loadFile(key, file) {
       document.getElementById('btn-' + key).classList.add('loaded');
       document.getElementById('lbl-' + key).textContent =
         (key === 'manual' ? '📋 ' : '🤖 ') + clip(file.name, 24);
-      if (key === state.active || key === 'manual') render();
+      render();
     } catch(err) { alert('JSON error: ' + err.message); }
   };
   r.readAsText(file);
 }
 
-['manual','ma','mb'].forEach(k => {
+['manual','model'].forEach(k => {
   document.getElementById('in-' + k).addEventListener('change', e => {
     const f = e.target.files[0];
     if (f) loadFile(k, f);
-  });
-});
-
-// ── Model toggle ──────────────────────────────────────────────────────────────
-document.querySelectorAll('#model-tog .tog-opt').forEach(opt => {
-  opt.addEventListener('click', () => {
-    document.querySelectorAll('#model-tog .tog-opt').forEach(o => o.classList.remove('on'));
-    opt.classList.add('on');
-    state.active = opt.dataset.m;
-    render();
   });
 });
 
@@ -506,7 +479,7 @@ document.addEventListener('dragover', e => e.preventDefault());
 document.addEventListener('drop', e => {
   e.preventDefault();
   const files = [...e.dataTransfer.files].filter(f => f.name.endsWith('.json'));
-  const order = ['manual', 'ma', 'mb'];
+  const order = ['manual', 'model'];
   files.forEach((f, i) => { if (i < order.length) loadFile(order[i], f); });
 });
 
