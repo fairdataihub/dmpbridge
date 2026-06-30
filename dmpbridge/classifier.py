@@ -7,6 +7,8 @@ import requests
 
 from . import config
 
+
+
 logger = logging.getLogger(__name__)
 
 # The 5 labels the LLM is allowed to assign to each text block.
@@ -14,10 +16,6 @@ logger = logging.getLogger(__name__)
 LABELS = ("title", "section.title", "section.description", "question.text", "answer.text")
 
 # This tells Ollama exactly what shape the output must have.
-# Instead of asking the model to "write JSON", we give it a strict schema so it
-# cannot return free text, markdown, or missing entries.
-# Each item in the array must have an integer id (matching the block's position)
-# and a label that is one of the 5 allowed values above.
 _OUTPUT_SCHEMA = {
     "type": "array",
     "items": {
@@ -101,9 +99,7 @@ class OllamaClassifier:
         self._verify_connection()
 
     def _verify_connection(self) -> None:
-        # Quick sanity check before processing any document.
-        # Fails early with a clear message if Ollama is not running or the
-        # host address is wrong, rather than timing out mid-document.
+        # Quick check — fails early with a clear message if Ollama is not running.
         try:
             r = requests.get(f"{self.host}/api/tags", timeout=5)
             r.raise_for_status()
@@ -116,27 +112,24 @@ class OllamaClassifier:
             ) from exc
 
     def classify_blocks(self, blocks: list[dict]) -> list[dict]:
-        """Return blocks with the 'label' field populated."""
+        """Overall classification of all blocks in a document, in batches, with context. 1. Copy the original blocks. 2. Process in batches. 3. For each batch, send to the LLM with context of previous labeled blocks. 4. Update the result with the labels returned by the LLM."""
 
-        # Work on a copy so we never modify the caller's original list
+        # Instead of changing the original blocks, it makes a copy.
         result = [dict(b) for b in blocks]
 
-        # Process the document in chunks (batches) rather than all at once.
-        # This keeps each request within the model's context window size.
+        # Process the document in chunks (batches) rather than all at once. Instead of sending all 100 blocks to the LLM, it sends only a few at a time.
         for start in range(0, len(result), BATCH_SIZE):
             batch = result[start : start + BATCH_SIZE]
 
             # Grab the last few already-labeled blocks to send as context.
-            # The model uses these to understand what section it is currently
-            # inside, without having to re-process the whole document.
+            # The model uses these to understand what section it is currently in, so it can correctly label the next blocks.
             context = result[max(0, start - CONTEXT_SIZE) : start]
 
             logger.info(f"  Classifying blocks {start}–{start + len(batch) - 1} …")
+            # Call the LLM to classify this batch of blocks, passing in the context.
             labels = self._classify_batch(batch, offset=start, context=context)
 
-            # Write each returned label back into the matching block by id.
-            # We validate the id is in range and the label is one of the 5 allowed
-            # values before writing, so a bad LLM response cannot corrupt the output.
+            # Update the result with the labels returned by the LLM. Each label entry has an "id" (the block's position) and a "label" (the assigned label). We check that the id is valid and the label is one of the allowed values before updating.
             for entry in labels:
                 idx = entry.get("id")
                 lbl = entry.get("label", "answer.text")
@@ -145,14 +138,10 @@ class OllamaClassifier:
 
         return result
 
-    def _classify_batch(
-        self, batch: list[dict], offset: int, context: list[dict] | None = None
-    ) -> list[dict]:
+    def _classify_batch(self, batch: list[dict], offset: int, context: list[dict] | None = None) -> list[dict]:
+        """Send a batch of blocks to the LLM for classification, with optional context of previously labeled blocks. Workflow for one batch: 1. Build a context section from previously labeled blocks. 2. Build the payload for the current batch. 3. Create the prompt. 4. Send the prompt to Ollama. 5. Parse the JSON response. 6. Return the predicted labels."""
 
-        # If we have previously labeled blocks, format them as a read-only
-        # context section so the model knows what came just before this batch.
-        # We include text, bold/italic formatting flags, and the assigned label
-        # so the model can see the full picture of the preceding content.
+        # Format the already-labeled blocks into a read-only context string for the LLM.
         ctx_section = ""
         if context:
             ctx_blocks = [
@@ -170,11 +159,7 @@ class OllamaClassifier:
                 + "\n\n"
             )
 
-        # Build the list of blocks the LLM needs to classify.
-        # Each block includes its global id (position in the full document),
-        # the extracted text, bold/italic flags from pdfplumber, and the page number.
-        # Bold and italic are useful signals — section titles are often bold,
-        # and template instructions sometimes use italic text.
+        # Build the list of blocks to classify — include text, bold/italic flags, and page number.
         payload = [
             {
                 "id": offset + j,
@@ -186,20 +171,14 @@ class OllamaClassifier:
             for j, b in enumerate(batch)
         ]
 
-        # Combine the context prefix and the blocks to classify into one prompt.
+        # Combine context + blocks into one prompt string.
         prompt = (
             ctx_section
             + f"TO CLASSIFY — return a JSON array with exactly {len(batch)} entries, one per block:\n"
             + json.dumps(payload, ensure_ascii=False)
         )
 
-        # Send the request to the local Ollama server.
-        # Key settings:
-        #   system      = the standing instructions (label definitions, examples)
-        #   prompt      = the actual blocks to classify for this batch
-        #   format      = the JSON schema that forces structured output
-        #   temperature = 0.0 means fully deterministic — same input always gives
-        #                 the same output, which matters for reproducibility
+        # Send to Ollama — system=instructions, prompt=blocks, format=JSON schema, temperature=0 for deterministic output.
         resp = requests.post(
             f"{self.host}/api/generate",
             json={
@@ -214,9 +193,7 @@ class OllamaClassifier:
         )
         resp.raise_for_status()
 
-        # Parse the JSON response from Ollama.
-        # If the response is empty (model timed out or returned nothing),
-        # log a warning and return an empty list so the pipeline can continue.
+        # Parse the response — if empty (model returned nothing), log a warning and continue.
         raw = resp.json().get("response", "")
         parsed = json.loads(raw) if raw else []
 
