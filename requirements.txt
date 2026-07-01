@@ -2,6 +2,7 @@
 pdfplumber>=0.11
 requests>=2.28
 Pillow>=11.0
+python-dotenv>=1.0
 
 # API server
 fastapi>=0.115
@@ -12,3 +13,8 @@ python-multipart>=0.0.20
 matplotlib>=3.10
 seaborn>=0.13
 pandas>=2.3
+
+# Optional LLM providers — install only what you need
+# pip install openai              (for OpenAI GPT models)
+# pip install anthropic           (for Anthropic Claude models)
+# pip install google-generativeai (for Google Gemini models)

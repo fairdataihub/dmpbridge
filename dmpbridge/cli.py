@@ -12,7 +12,7 @@ import logging
 import sys
 from collections import Counter
 from pathlib import Path
-from .pipeline import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_RAW_DIR, process_pdf
+from .pipeline import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_PROVIDER, DEFAULT_RAW_DIR, process_pdf
 
 
 def main() -> None:
@@ -30,14 +30,20 @@ def main() -> None:
         help="Labeled JSON output path. Defaults to <pdf_name>_labeled.json.",
     )
     parser.add_argument(
+        "--provider",
+        default=DEFAULT_PROVIDER,
+        choices=["ollama", "openai", "anthropic", "gemini"],
+        help=f"LLM provider to use (default: {DEFAULT_PROVIDER}).",
+    )
+    parser.add_argument(
         "--model",
         default=DEFAULT_MODEL,
-        help=f"Ollama model name (default: {DEFAULT_MODEL}).",
+        help=f"Model name for the selected provider (default: {DEFAULT_MODEL}).",
     )
     parser.add_argument(
         "--host",
         default=DEFAULT_HOST,
-        help=f"Ollama server URL (default: {DEFAULT_HOST}).",
+        help=f"Ollama server URL — only used with --provider ollama (default: {DEFAULT_HOST}).",
     )
     parser.add_argument(
         "--raw-dir",
@@ -110,6 +116,7 @@ def main() -> None:
     try:
         blocks = process_pdf(
             pdf_path,
+            provider=args.provider,
             model=args.model,
             host=args.host,
             output=output,

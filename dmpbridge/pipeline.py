@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Optional, Union
 
 from . import config
-from .classifier import OllamaClassifier
+from .classifier import get_classifier
 from .converter import to_structured
 from .extractor import extract_blocks, save_page_images
 
@@ -26,14 +26,16 @@ for _noisy in ("pdfminer", "pdfminer.pdfpage", "pdfminer.pdfdocument",
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_MODEL   = config.MODEL
-DEFAULT_HOST    = config.HOST
-DEFAULT_RAW_DIR = "data/pdfplumber"
+DEFAULT_PROVIDER = config.PROVIDER
+DEFAULT_MODEL    = config.MODEL
+DEFAULT_HOST     = config.HOST
+DEFAULT_RAW_DIR  = "data/pdfplumber"
 
 
 def process_pdf(
     pdf_path: Union[str, Path],
     *,
+    provider: str = DEFAULT_PROVIDER,
     model: str = DEFAULT_MODEL,
     host: str = DEFAULT_HOST,
     output: Optional[Union[str, Path]] = None,
@@ -77,8 +79,8 @@ def process_pdf(
             logger.warning(f"Image export skipped: {exc}")
 
     # Step 4 — send all blocks to the LLM in batches to get label predictions.
-    logger.info(f"Classifying with model '{model}' at {host} …")
-    clf = OllamaClassifier(model=model, host=host)
+    logger.info(f"Classifying with {provider} / {model} …")
+    clf = get_classifier(provider=provider, model=model, host=host)
     blocks = clf.classify_blocks(blocks)
 
     # Step 5 — if the LLM skipped any block, default its label to answer.text.
