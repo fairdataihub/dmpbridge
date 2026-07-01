@@ -1,10 +1,11 @@
 # dmpbridge
 
-Extract and label the structure of Data Management Plan (DMP) PDF documents.
+Extract and label the structure of Data Management Plan (DMP) PDF documents using local or cloud LLMs.
 
-1. **Pipeline** — extract text from a PDF with pdfplumber, classify each block using a local LLM (via Ollama), and output a labeled JSON file.
-2. **Viewer** — a side-by-side PDF + JSON browser UI that overlays bounding boxes on the PDF, synchronized with the JSON table.
+1. **Pipeline** — extract text from a PDF with pdfplumber, classify each block with an LLM, and output a labeled JSON file.
+2. **Whole-document inference** — send the entire document to the model in a single call for higher-context classification.
 3. **Evaluation** — compare LLM predictions against manually labeled ground truth with a confusion matrix and per-label F1 scores.
+4. **Viewer** — a side-by-side PDF + JSON browser UI that overlays bounding boxes on the PDF, synchronized with the JSON table.
 
 ---
 
@@ -24,44 +25,17 @@ Each text block is classified as one of:
 
 ## How it works
 
-### Step 1 — Extract text blocks from the PDF
+### Batch inference (default)
 
-pdfplumber reads every line with full character-level detail (font name, size, bounding box). Each line becomes a **block dict** with fields: `text`, `page`, `x0/top/x1/bottom`, `avg_font_size`, `is_bold`, `is_italic`, `label` (initially `null`).
+Blocks are sent to the LLM in small batches (default: 10 blocks per request). Each batch includes the last 3 already-labeled blocks as context so the model can track where it is in the document. Temperature is set to 0 for deterministic output.
 
-### Step 2 — Save the raw extraction to disk
+### Whole-document inference
 
-Before the LLM touches anything, the raw block list is saved as JSON (default: `data/pdfplumber/<name>.json`). This lets you inspect or debug the pdfplumber output independently of the classification. Skip with `--no-raw`.
+All blocks in the document are sent in a single request. The model sees the full document at once — better for structural continuity, but slower and more expensive for long documents.
 
-### Step 3 — Classify blocks with the LLM
+### Conversion
 
-Blocks are sent to a local Ollama LLM in small batches (default: 10 blocks per request). Each batch includes the last 3 already-labeled blocks as context so the model can track where it is in the document. The model receives a system prompt with:
-
-- Definitions of all 5 labels
-- Key decision rules (e.g. "should/must" phrasing → `section.description`; researcher narrative → `answer.text`)
-- Real few-shot examples from actual DMP documents
-- A JSON schema that forces the output format
-
-Temperature is set to 0 for deterministic output.
-
-### Step 4 — Save the flat labeled JSON
-
-The complete block list — one entry per line, with the `label` field now filled in — is saved to the output path (default: `<pdf_name>_labeled.json`).
-
-### Step 5 — Convert to the nested DMP Tool schema
-
-The flat list is converted to the nested DMP Tool JSON schema by a positional state machine:
-
-- `section.title` opens a new section
-- `section.description` before any question → goes into the section's description field
-- `section.description` after a question has started → stays in document reading order (continues the question text or answer, whichever is open)
-- Consecutive `question.text` blocks with no answer yet → merged into one question
-- `answer.text` → appended to the current question's answer
-
-The converter trusts the LLM's labels exactly — it does not relabel or reinterpret content.
-
-### Step 6 — Save the structured JSON
-
-The nested JSON is saved alongside the flat file (default: `<pdf_name>_labeled_structured.json`). Skip with `--no-structured`.
+The flat labeled block list is converted to the nested DMP Tool JSON schema by a positional state machine that groups blocks into sections, questions, and answers in document reading order.
 
 ---
 
@@ -69,10 +43,14 @@ The nested JSON is saved alongside the flat file (default: `<pdf_name>_labeled_s
 
 Evaluated against 10 manually labeled DMP samples:
 
-| Model | Size | Accuracy | Notes |
-|-------|------|----------|-------|
-| `llama3.3:70b` | ~42 GB | ~85–90% | Best accuracy; recommended for production |
-| `llama3.1:8b` | ~5 GB | ~67% | Fast, runs on laptop GPU; good for testing |
+| Model | Provider | Strategy | Accuracy |
+|-------|----------|----------|----------|
+| `claude-opus-4-8` | Anthropic | Whole-doc | **96.9%** |
+| `claude-opus-4-8` | Anthropic | Batch | 94.9% |
+| `llama3.3:70b` | Ollama (local) | Batch | 94.1% |
+| `llama3.3:70b` | Ollama (local) | Whole-doc | 91.8% |
+| `llama3.1:8b` | Ollama (local) | Whole-doc | 84.2% |
+| `llama3.1:8b` | Ollama (local) | Batch | 67.3% |
 
 ---
 
@@ -80,37 +58,38 @@ Evaluated against 10 manually labeled DMP samples:
 
 ```
 dmpbridge/
-├── __init__.py     # exports process_pdf, to_structured, convert_file
-├── extractor.py    # pdfplumber text extraction + page image export
-├── classifier.py   # Ollama LLM classifier (few-shot + sliding context window)
-├── pipeline.py     # combines extraction + classification + conversion
-├── converter.py    # converts flat labeled blocks → nested DMP Tool schema
-├── cli.py          # dmpbridge command-line tool
-└── config.py       # ← edit here to change model / host / batch size
+├── __init__.py         # exports process_pdf, to_structured, convert_file
+├── config.py           # model / host / API keys / batch size — edit here
+├── prompt.py           # all prompt content: labels, system prompt, prompt builders
+├── extractor.py        # pdfplumber text extraction + page image export
+├── classifier.py       # batch LLM classifier (Ollama, OpenAI, Anthropic, Gemini)
+├── wholedoc.py         # whole-document inference helpers
+├── runner.py           # whole-document CLI (dmpbridge-wholedoc)
+├── pipeline.py         # combines extraction + classification + conversion
+├── converter.py        # flat labeled blocks → nested DMP Tool schema
+├── evaluate.py         # evaluation logic + notebook helpers (dmpbridge-evaluate)
+├── cli.py              # dmpbridge command-line tool
+├── logging_setup.py    # shared logging config (console + rotating file)
+└── exceptions.py       # custom exception hierarchy
 
 data/
-├── pdfsamples/     # sample DMP PDFs
-├── manuallabeled/  # hand-labeled ground truth JSON  (<sample>_dmp.json)
-├── llmlabeled/     # LLM output: flat (<sample>_<model>.json)
-│                   #             structured (<sample>_<model>_structured.json)
-└── pdfplumber/     # (auto-generated) raw pdfplumber JSON before labeling
+├── pdfsamples/         # sample DMP PDFs
+├── manuallabeled/      # hand-labeled ground truth JSON  (<sample>_dmp.json)
+├── llmlabeled/         # LLM output: flat and structured labeled JSON
+└── pdfplumber/         # raw pdfplumber extraction before labeling
 
 notebooks/
-├── 01_pdfplumber_batch_test.ipynb         # batch extraction across all sample PDFs
-├── 02_evaluation_pdfplumber_batch_test.ipynb
-├── 03_eval_llama3.3-70b.ipynb             # confusion matrix + F1 charts (llama3.3:70b)
-├── 03_eval_llama3.1-8b.ipynb             # confusion matrix + F1 charts (llama3.1:8b)
-└── 03_comparison_dashboard.ipynb          # side-by-side model comparison + error analysis
+└── eval/
+    ├── llama3.3-70b.ipynb       # confusion matrix + F1 charts (llama3.3:70b)
+    ├── llama3.1-8b.ipynb        # confusion matrix + F1 charts (llama3.1:8b)
+    └── claude-opus-4-8.ipynb    # confusion matrix + F1 charts (Claude)
 
+logs/                   # rotating log file (excluded from git)
 templates/
-└── index.html      # Viewer UI served by FastAPI
-
-evaluate.py                   # CLI evaluation script (confusion matrix + per-label F1)
-main.py                       # FastAPI server for the browser viewer
-dmpbridge.html                # Standalone viewer (no server needed)
-DMP_Labeling_Strategy.docx    # Strategy overview document (prompt design, models, evaluation)
+└── index.html          # Viewer UI served by FastAPI
+main.py                 # FastAPI server for the browser viewer
+dmpbridge.html          # Standalone viewer (no server needed)
 pyproject.toml
-requirements.txt
 ```
 
 ---
@@ -131,54 +110,70 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
-### 3. Install Ollama
+### 3. Configure providers
 
-Download from **https://ollama.com** and install, then pull a model:
+Edit **[dmpbridge/config.py](dmpbridge/config.py)** or set environment variables in a `.env` file:
+
+```env
+# For Ollama (local)
+PROVIDER   = ollama
+MODEL      = llama3.3:70b
+HOST       = http://localhost:11434
+
+# For Anthropic (Claude)
+PROVIDER          = anthropic
+MODEL             = claude-opus-4-8
+ANTHROPIC_API_KEY = sk-ant-...
+```
+
+For Ollama, install from **https://ollama.com** and pull a model:
 
 ```powershell
-ollama pull llama3.3:70b     # best accuracy (requires ~42 GB RAM/VRAM)
+ollama pull llama3.3:70b     # best local accuracy (~42 GB)
 ollama pull llama3.1:8b      # faster, less memory (~5 GB)
 ```
 
-Set your chosen model in `dmpbridge/config.py`.
-
 ---
 
-## Pipeline (PDF → labeled JSON)
+## Usage
 
-### Configure the model
-
-Edit **[dmpbridge/config.py](dmpbridge/config.py)**:
-
-```python
-MODEL      = "llama3.3:70b"          # any model installed in Ollama
-HOST       = "http://localhost:11434"
-BATCH_SIZE = 10                       # blocks per LLM request
-```
-
-### CLI
+### Batch inference (PDF → labeled JSON)
 
 ```powershell
-# Basic run — produces <pdf>_labeled.json and <pdf>_labeled_structured.json
+# Basic run
 dmpbridge document.pdf
 
-# Specify output path
-dmpbridge document.pdf -o data/llmlabeled/output.json
+# Override model or provider for this run
+dmpbridge document.pdf --provider anthropic --model claude-opus-4-8
 
-# Override model for this run
-dmpbridge document.pdf --model llama3.1:8b -o data/llmlabeled/sample1_llama3.1-8b.json
-
-# Show detailed progress (logs each batch)
+# Show detailed progress
 dmpbridge document.pdf -v
+```
 
-# Skip saving the raw pdfplumber JSON
-dmpbridge document.pdf --no-raw
+### Whole-document inference
 
-# Skip writing the structured JSON (flat labeled JSON only)
-dmpbridge document.pdf --no-structured
+```powershell
+# Ollama
+dmpbridge-wholedoc --provider ollama --model llama3.3:70b
 
-# Save per-page PNG images with colored bounding boxes per label
-dmpbridge document.pdf --save-images data/pdfplumber
+# Anthropic
+dmpbridge-wholedoc --provider anthropic --model claude-opus-4-8
+```
+
+### Evaluation
+
+```powershell
+# Evaluate all samples (uses default model from config)
+dmpbridge-evaluate
+
+# Evaluate a single file
+dmpbridge-evaluate data/llmlabeled/sample1_llama3.3-70b_batch.json
+```
+
+For interactive charts — confusion matrices, F1 comparisons, and error breakdowns:
+
+```powershell
+jupyter lab notebooks/eval/llama3.3-70b.ipynb
 ```
 
 ### Python API
@@ -187,67 +182,10 @@ dmpbridge document.pdf --save-images data/pdfplumber
 from dmpbridge import process_pdf
 
 blocks = process_pdf("document.pdf", output="labeled.json")
-
-# Both flat + structured in one call
-blocks = process_pdf(
-    "document.pdf",
-    output="labeled.json",
-    structured_output="labeled_structured.json",
-)
 ```
 
-### Convert an existing flat file to structured
+### Viewer (PDF + JSON side by side)
 
-```python
-from dmpbridge import convert_file
+**Standalone** — open `dmpbridge.html` in any browser and drag-drop a PDF + labeled JSON.
 
-convert_file("data/llmlabeled/sample1_llama3.3-70b.json")
-```
-
-The structured JSON follows the DMP Tool narrative schema. `id` fields (`template.id`, `section.id`, `question.id`, `answer.id`) are omitted because they cannot be determined from a PDF — they can be added downstream once the record is stored in the DMP Tool database.
-
----
-
-## Evaluation
-
-Compare LLM output against manually labeled ground truth in `data/manuallabeled/`.
-
-```powershell
-# Evaluate all samples
-python evaluate.py
-
-# Evaluate a single file
-python evaluate.py data/llmlabeled/sample1_llama3.3-70b.json
-```
-
-The evaluation uses **token containment** to match predicted blocks to gold items: a predicted block matches a gold entry if 75% or more of the block's words appear in the gold text. Both a forward pass (predicted → gold) and a reverse pass (gold → predicted, to find missed items) are run.
-
-Output includes:
-- Per-sample accuracy table
-- Confusion matrix (true label vs predicted label)
-- Per-label precision, recall, and F1 score
-- List of gold items the LLM produced no matching block for
-
-For interactive charts (confusion matrix, F1 scores, model comparison):
-
-```powershell
-jupyter lab notebooks/03_eval_llama3.3-70b.ipynb    # single-model deep dive
-jupyter lab notebooks/03_comparison_dashboard.ipynb   # cross-model comparison
-```
-
----
-
-## Viewer (PDF + JSON side by side)
-
-### Option A — Standalone HTML (no server needed)
-
-Open `dmpbridge.html` in any modern browser. Drag and drop a PDF and its labeled JSON onto the page.
-
-### Option B — FastAPI server
-
-```powershell
-.\venv\Scripts\Activate.ps1
-uvicorn main:app --reload
-```
-
-Open **http://localhost:8000** — upload files through the browser UI.
+**Server** — `uvicorn main:app --reload` then open `http://localhost:8000`.
