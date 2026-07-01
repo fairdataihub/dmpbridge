@@ -32,6 +32,7 @@ notebooks = [
 dmpbridge          = "dmpbridge.cli:main"
 dmpbridge-wholedoc = "dmpbridge.runner:main"
 dmpbridge-evaluate = "dmpbridge.evaluate:main"
+dmpbridge-pdf      = "dmpbridge.pdf_direct:main"
 
 [tool.setuptools.packages.find]
 include = ["dmpbridge*"]
