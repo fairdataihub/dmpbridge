@@ -169,6 +169,13 @@ class BaseClassifier:
         if not raw:
             logger.warning(f"Empty response from LLM for batch at offset {offset}.")
             return []
+        # Strip markdown code fences that some providers (e.g. Anthropic) wrap around JSON.
+        stripped = raw.strip()
+        if stripped.startswith("```"):
+            stripped = stripped.split("```", 2)[1]
+            if stripped.startswith("json"):
+                stripped = stripped[4:]
+            raw = stripped.strip()
         try:
             data = json.loads(raw)
         except json.JSONDecodeError:
@@ -295,7 +302,6 @@ class AnthropicClassifier(BaseClassifier):
             max_tokens=4096,
             system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": prompt}],
-            temperature=0,
         )
         raw = response.content[0].text if response.content else ""
         return self._parse_json(raw, offset)
