@@ -10,14 +10,14 @@
 #   Step 7 — return the complete block list with every label filled in
 
 import json
-import logging
 
 import requests
 
 from . import config
+from .exceptions import ConfigurationError, ProviderConnectionError
+from .logging_setup import get_logger
 
-
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 # The 5 labels the LLM is allowed to assign to each text block.
 # Every block in a DMP must get exactly one of these.
@@ -104,19 +104,22 @@ class BaseClassifier:
     """Shared batching and context-window logic. Subclasses only implement _classify_batch."""
 
     def classify_blocks(self, blocks: list[dict]) -> list[dict]:
-        """Classify all blocks in document order, in batches, with sliding context. 1. Copy the original blocks. 2. Process in batches of BATCH_SIZE. 3. For each batch, pass the last 3 labeled blocks as context. 4. Update the result with labels returned by the provider."""
-        # Instead of changing the original blocks, make a copy.
+        """Classify all blocks in document order, in batches, with sliding context.
+
+        1. Copy the original blocks.
+        2. Process in batches of BATCH_SIZE.
+        3. For each batch, pass the last 3 labeled blocks as context.
+        4. Update the result with labels returned by the provider.
+        """
         result = [dict(b) for b in blocks]
 
         for start in range(0, len(result), BATCH_SIZE):
             batch   = result[start : start + BATCH_SIZE]
-            # Grab the last few already-labeled blocks so the model knows where it is in the document.
             context = result[max(0, start - CONTEXT_SIZE) : start]
 
-            logger.info(f"  Classifying blocks {start}–{start + len(batch) - 1} …")
+            logger.info("  Classifying blocks %d–%d …", start, start + len(batch) - 1)
             labels = self._classify_batch(batch, offset=start, context=context)
 
-            # Write each returned label back into the result list.
             for entry in labels:
                 idx = entry.get("id")
                 lbl = entry.get("label", "answer.text")
@@ -125,10 +128,20 @@ class BaseClassifier:
 
         return result
 
-    def _classify_batch(self, batch: list[dict], offset: int, context: list[dict] | None = None) -> list[dict]:
+    def _classify_batch(
+        self,
+        batch: list[dict],
+        offset: int,
+        context: list[dict] | None = None,
+    ) -> list[dict]:
         raise NotImplementedError
 
-    def _build_user_prompt(self, batch: list[dict], offset: int, context: list[dict] | None) -> str:
+    def _build_user_prompt(
+        self,
+        batch: list[dict],
+        offset: int,
+        context: list[dict] | None,
+    ) -> str:
         """Build the user-facing prompt: optional labeled context + blocks to classify."""
         ctx_section = ""
         if context:
@@ -142,7 +155,8 @@ class BaseClassifier:
                 for b in context
             ]
             ctx_section = (
-                "PRECEDING BLOCKS (already labeled — use for context only, do not output labels for these):\n"
+                "PRECEDING BLOCKS (already labeled — use for context only, "
+                "do not output labels for these):\n"
                 + json.dumps(ctx_blocks, ensure_ascii=False)
                 + "\n\n"
             )
@@ -160,14 +174,18 @@ class BaseClassifier:
 
         return (
             ctx_section
-            + f"TO CLASSIFY — return a JSON array with exactly {len(batch)} entries, one per block:\n"
+            + "TO CLASSIFY — return a JSON array with exactly %d entries, one per block:\n"
+            % len(batch)
             + json.dumps(payload, ensure_ascii=False)
         )
 
     def _parse_json(self, raw: str, offset: int) -> list[dict]:
-        """Parse the LLM's JSON response. Handles bare arrays and wrapped objects like {"labels": [...]}."""
+        """Parse the LLM's JSON response.
+
+        Handles bare arrays and wrapped objects like {"labels": [...]}.
+        """
         if not raw:
-            logger.warning(f"Empty response from LLM for batch at offset {offset}.")
+            logger.warning("Empty response from LLM for batch at offset %d.", offset)
             return []
         # Strip markdown code fences that some providers (e.g. Anthropic) wrap around JSON.
         stripped = raw.strip()
@@ -179,16 +197,15 @@ class BaseClassifier:
         try:
             data = json.loads(raw)
         except json.JSONDecodeError:
-            logger.warning(f"Could not parse LLM response for batch at offset {offset}.")
+            logger.warning("Could not parse LLM response for batch at offset %d.", offset)
             return []
         if isinstance(data, list):
             return data
         if isinstance(data, dict):
-            # Unwrap {"labels": [...]} or any dict whose first list value is the result.
             for v in data.values():
                 if isinstance(v, list):
                     return v
-        logger.warning(f"Unexpected response shape for batch at offset {offset}.")
+        logger.warning("Unexpected response shape for batch at offset %d.", offset)
         return []
 
 
@@ -207,18 +224,22 @@ class OllamaClassifier(BaseClassifier):
         try:
             r = requests.get(f"{self.host}/api/tags", timeout=5)
             r.raise_for_status()
-        except Exception as exc:
-            raise ConnectionError(
+        except requests.exceptions.RequestException as exc:
+            raise ProviderConnectionError(
                 f"Ollama is not reachable at {self.host}.\n"
                 "Install and start it: https://ollama.com\n"
                 f"Then pull the model:  ollama pull {self.model}\n"
                 f"Details: {exc}"
             ) from exc
 
-    def _classify_batch(self, batch: list[dict], offset: int, context: list[dict] | None = None) -> list[dict]:
+    def _classify_batch(
+        self,
+        batch: list[dict],
+        offset: int,
+        context: list[dict] | None = None,
+    ) -> list[dict]:
         """Send one batch to Ollama with JSON schema enforcement and return the predicted labels."""
         prompt = self._build_user_prompt(batch, offset, context)
-        # Send to Ollama — format=JSON schema forces it to return the exact shape we need.
         resp = requests.post(
             f"{self.host}/api/generate",
             json={
@@ -248,17 +269,21 @@ class OpenAIClassifier(BaseClassifier):
                 "Install it with:  pip install openai"
             )
         if not config.OPENAI_API_KEY:
-            raise ValueError(
+            raise ConfigurationError(
                 "OPENAI_API_KEY is not set.\n"
                 "Add it to your .env file:  OPENAI_API_KEY=sk-..."
             )
         self.client = _openai.OpenAI(api_key=config.OPENAI_API_KEY)
         self.model  = model
 
-    def _classify_batch(self, batch: list[dict], offset: int, context: list[dict] | None = None) -> list[dict]:
+    def _classify_batch(
+        self,
+        batch: list[dict],
+        offset: int,
+        context: list[dict] | None = None,
+    ) -> list[dict]:
         """Send one batch to OpenAI with json_object mode and return the predicted labels."""
         prompt = self._build_user_prompt(batch, offset, context)
-        # json_object mode requires a dict output — ask for {"labels": [...]} wrapper so it's reliable.
         response = self.client.chat.completions.create(
             model=self.model,
             messages=[
@@ -287,14 +312,19 @@ class AnthropicClassifier(BaseClassifier):
                 "Install it with:  pip install anthropic"
             )
         if not config.ANTHROPIC_API_KEY:
-            raise ValueError(
+            raise ConfigurationError(
                 "ANTHROPIC_API_KEY is not set.\n"
                 "Add it to your .env file:  ANTHROPIC_API_KEY=sk-ant-..."
             )
         self.client = _anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
         self.model  = model
 
-    def _classify_batch(self, batch: list[dict], offset: int, context: list[dict] | None = None) -> list[dict]:
+    def _classify_batch(
+        self,
+        batch: list[dict],
+        offset: int,
+        context: list[dict] | None = None,
+    ) -> list[dict]:
         """Send one batch to Anthropic and return the predicted labels."""
         prompt = self._build_user_prompt(batch, offset, context)
         response = self.client.messages.create(
@@ -319,7 +349,7 @@ class GeminiClassifier(BaseClassifier):
                 "Install it with:  pip install google-generativeai"
             )
         if not config.GEMINI_API_KEY:
-            raise ValueError(
+            raise ConfigurationError(
                 "GEMINI_API_KEY is not set.\n"
                 "Add it to your .env file:  GEMINI_API_KEY=AIza..."
             )
@@ -327,10 +357,14 @@ class GeminiClassifier(BaseClassifier):
         self._genai     = _genai
         self.model_name = model
 
-    def _classify_batch(self, batch: list[dict], offset: int, context: list[dict] | None = None) -> list[dict]:
+    def _classify_batch(
+        self,
+        batch: list[dict],
+        offset: int,
+        context: list[dict] | None = None,
+    ) -> list[dict]:
         """Send one batch to Gemini with JSON mime type enforcement and return the predicted labels."""
         prompt = self._build_user_prompt(batch, offset, context)
-        # Build a fresh model instance per batch — Gemini's GenerativeModel is lightweight.
         model = self._genai.GenerativeModel(
             model_name=self.model_name,
             system_instruction=SYSTEM_PROMPT,
@@ -351,7 +385,7 @@ def get_classifier(
     model:    str | None = None,
     host:     str | None = None,
 ) -> BaseClassifier:
-    """Return the right classifier for the given provider. Falls back to config defaults if not specified."""
+    """Return the right classifier for the given provider. Falls back to config defaults."""
     provider = (provider or config.PROVIDER).lower()
     model    = model or config.MODEL
 
@@ -364,7 +398,6 @@ def get_classifier(
     if provider == "gemini":
         return GeminiClassifier(model=model)
 
-    raise ValueError(
-        f"Unknown provider: {provider!r}. "
-        "Choose from: ollama, openai, anthropic, gemini"
+    raise ConfigurationError(
+        "Unknown provider: %r. Choose from: ollama, openai, anthropic, gemini" % provider
     )

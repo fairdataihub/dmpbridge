@@ -10,21 +10,17 @@
 #   Step 7 — save the structured JSON to disk
 
 import json
-import logging
 from pathlib import Path
 from typing import Optional, Union
 
 from . import config
 from .classifier import get_classifier
 from .converter import to_structured
+from .exceptions import ExtractionError
 from .extractor import extract_blocks, save_page_images
+from .logging_setup import get_logger
 
-# Silence noisy pdfminer internal loggers so the terminal output stays clean.
-for _noisy in ("pdfminer", "pdfminer.pdfpage", "pdfminer.pdfdocument",
-               "pdfminer.pdfinterp", "pdfminer.converter", "pdfminer.cmapdb"):
-    logging.getLogger(_noisy).setLevel(logging.ERROR)
-
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 DEFAULT_PROVIDER = config.PROVIDER
 DEFAULT_MODEL    = config.MODEL
@@ -43,21 +39,29 @@ def process_pdf(
     raw_dir: Optional[Union[str, Path]] = DEFAULT_RAW_DIR,
     images_dir: Optional[Union[str, Path]] = None,
 ) -> list[dict]:
-    """Run the full pipeline for one PDF. 1. Extract text blocks with pdfplumber. 2. Optionally save the raw extraction JSON before labeling. 3. Optionally save per-page PNG images with bounding boxes. 4. Send blocks to the LLM for label classification. 5. Fill any blocks the LLM missed with a default label. 6. Save the flat labeled JSON. 7. Optionally convert and save the structured JSON."""
+    """Run the full pipeline for one PDF.
 
+    1. Extract text blocks with pdfplumber.
+    2. Optionally save the raw extraction JSON before labeling.
+    3. Optionally save per-page PNG images with bounding boxes.
+    4. Send blocks to the LLM for label classification.
+    5. Fill any blocks the LLM missed with a default label.
+    6. Save the flat labeled JSON.
+    7. Optionally convert and save the structured JSON.
+    """
     pdf_path = Path(pdf_path)
     if not pdf_path.exists():
-        raise FileNotFoundError(f"PDF not found: {pdf_path}")
+        raise FileNotFoundError("PDF not found: %s" % pdf_path)
 
     # Step 1 — extract all text lines from the PDF as individual blocks.
-    logger.info(f"Extracting text from {pdf_path.name} …")
+    logger.info("Extracting text from %s …", pdf_path.name)
     blocks = extract_blocks(pdf_path)
     if not blocks:
         logger.warning("No text blocks found in the PDF.")
         return []
 
     pages = len({b["page"] for b in blocks})
-    logger.info(f"  → {len(blocks)} blocks across {pages} page(s)")
+    logger.info("  → %d blocks across %d page(s)", len(blocks), pages)
 
     # Step 2 — save the raw pdfplumber output before any LLM labeling, useful for debugging.
     if raw_dir is not None:
@@ -67,19 +71,19 @@ def process_pdf(
             json.dumps(blocks, indent=2, ensure_ascii=False),
             encoding="utf-8",
         )
-        logger.info(f"Raw extraction saved → {raw_path}")
+        logger.info("Raw extraction saved → %s", raw_path)
 
     # Step 3 — optionally render each page as a PNG with colored bounding boxes per label.
     if images_dir is not None:
-        logger.info(f"Saving page images → {images_dir} …")
+        logger.info("Saving page images → %s …", images_dir)
         try:
             saved = save_page_images(pdf_path, blocks, output_dir=images_dir)
-            logger.info(f"  → {len(saved)} image(s) saved")
-        except Exception as exc:
-            logger.warning(f"Image export skipped: {exc}")
+            logger.info("  → %d image(s) saved", len(saved))
+        except ExtractionError as exc:
+            logger.warning("Image export skipped: %s", exc)
 
     # Step 4 — send all blocks to the LLM in batches to get label predictions.
-    logger.info(f"Classifying with {provider} / {model} …")
+    logger.info("Classifying with %s / %s …", provider, model)
     clf = get_classifier(provider=provider, model=model, host=host)
     blocks = clf.classify_blocks(blocks)
 
@@ -96,7 +100,7 @@ def process_pdf(
             json.dumps(blocks, indent=2, ensure_ascii=False),
             encoding="utf-8",
         )
-        logger.info(f"Labeled JSON saved → {out_path}")
+        logger.info("Labeled JSON saved → %s", out_path)
 
     # Step 7 — convert the flat block list into the nested DMP Tool JSON schema and save it.
     if structured_output:
@@ -106,6 +110,6 @@ def process_pdf(
             json.dumps(to_structured(blocks), indent=2, ensure_ascii=False),
             encoding="utf-8",
         )
-        logger.info(f"Structured JSON saved → {struct_path}")
+        logger.info("Structured JSON saved → %s", struct_path)
 
     return blocks

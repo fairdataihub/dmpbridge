@@ -8,17 +8,26 @@
 #   Step 5 — print a summary showing block counts per label and the paths of saved files
 
 import argparse
-import logging
 import sys
 from collections import Counter
 from pathlib import Path
+
+from .exceptions import DmpBridgeError
+from .logging_setup import get_logger, setup_logging
 from .pipeline import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_PROVIDER, DEFAULT_RAW_DIR, process_pdf
+
+logger = get_logger(__name__)
 
 
 def main() -> None:
-    """Entry point for the dmpbridge command. 1. Parse command-line arguments. 2. Validate the input PDF exists. 3. Resolve output paths. 4. Run the full pipeline. 5. Print a summary of labeled block counts."""
+    """Entry point for the dmpbridge CLI.
 
-    # Define all the arguments the user can pass from the terminal.
+    1. Parse command-line arguments.
+    2. Validate the input PDF exists.
+    3. Resolve output paths.
+    4. Run the full pipeline.
+    5. Print a summary of labeled block counts.
+    """
     parser = argparse.ArgumentParser(
         prog="dmpbridge",
         description="Extract and label PDF text blocks using pdfplumber + LLaMA via Ollama.",
@@ -43,13 +52,19 @@ def main() -> None:
     parser.add_argument(
         "--host",
         default=DEFAULT_HOST,
-        help=f"Ollama server URL — only used with --provider ollama (default: {DEFAULT_HOST}).",
+        help=(
+            f"Ollama server URL — only used with --provider ollama "
+            f"(default: {DEFAULT_HOST})."
+        ),
     )
     parser.add_argument(
         "--raw-dir",
         default=DEFAULT_RAW_DIR,
         metavar="DIR",
-        help=f"Folder for raw pdfplumber JSON saved before LLM labeling (default: {DEFAULT_RAW_DIR}).",
+        help=(
+            f"Folder for raw pdfplumber JSON saved before LLM labeling "
+            f"(default: {DEFAULT_RAW_DIR})."
+        ),
     )
     parser.add_argument(
         "--no-raw",
@@ -70,7 +85,8 @@ def main() -> None:
         metavar="PATH",
         help=(
             "Path for the hierarchical structured JSON (DMP Tool narrative schema). "
-            "Produced by default as <output_stem>_structured.json. Pass a path to override location."
+            "Produced by default as <output_stem>_structured.json. "
+            "Pass a path to override the location."
         ),
     )
     parser.add_argument(
@@ -86,23 +102,20 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    # Set log level — verbose mode shows every batch being classified, normal mode just shows steps.
-    logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.INFO,
-        format="%(message)s",
-    )
+    setup_logging(verbose=args.verbose)
 
-    # Validate that the PDF actually exists before doing any work.
     pdf_path = Path(args.pdf)
     if not pdf_path.exists():
-        print(f"Error: file not found — {pdf_path}", file=sys.stderr)
+        logger.error("File not found: %s", pdf_path)
         sys.exit(1)
 
-    # Resolve output paths — default flat JSON goes next to the PDF with _labeled suffix.
-    output  = Path(args.output) if args.output else pdf_path.with_name(pdf_path.stem + "_labeled.json")
+    output = (
+        Path(args.output)
+        if args.output
+        else pdf_path.with_name(pdf_path.stem + "_labeled.json")
+    )
     raw_dir = None if args.no_raw else args.raw_dir
 
-    # Resolve structured JSON path — skip if --no-structured, otherwise default next to flat JSON.
     if args.no_structured:
         structured_output = None
     else:
@@ -112,7 +125,6 @@ def main() -> None:
             else output.with_name(output.stem + "_structured.json")
         )
 
-    # Run the full pipeline — extract, classify, and save.
     try:
         blocks = process_pdf(
             pdf_path,
@@ -124,11 +136,10 @@ def main() -> None:
             raw_dir=raw_dir,
             images_dir=args.save_images,
         )
-    except Exception as exc:
-        print(f"Error: {exc}", file=sys.stderr)
+    except DmpBridgeError as exc:
+        logger.error("%s", exc)
         sys.exit(1)
 
-    # Print a summary showing how many blocks got each label.
     counts = Counter(b.get("label", "answer.text") for b in blocks)
     print(f"\nDone — {len(blocks)} blocks labeled:")
     for lbl in ("title", "section.title", "section.description", "question.text", "answer.text"):

@@ -11,7 +11,10 @@ import re
 from collections import defaultdict
 from pathlib import Path
 from typing import Union
+
 import pdfplumber
+
+from .exceptions import ExtractionError
 
 # Colors used to draw bounding boxes on page images — one color per label.
 # Each entry is (stroke_color, fill_color) as RGBA tuples.
@@ -25,7 +28,12 @@ _LABEL_STYLE: dict[str, tuple[tuple, tuple]] = {
 
 
 def extract_blocks(pdf_path: Union[str, Path]) -> list[dict]:
-    """Open the PDF and turn every text line into a block dict. 1. Open the PDF with pdfplumber. 2. For each page, extract all text lines with layout info. 3. Convert each line into a block with text, position, font info, and an empty label."""
+    """Open the PDF and turn every text line into a block dict.
+
+    1. Open the PDF with pdfplumber.
+    2. For each page, extract all text lines with layout info.
+    3. Convert each line into a block with text, position, font info, and an empty label.
+    """
     blocks = []
     with pdfplumber.open(pdf_path) as pdf:
         for page_num, page in enumerate(pdf.pages, start=1):
@@ -44,7 +52,13 @@ def extract_blocks(pdf_path: Union[str, Path]) -> list[dict]:
 
 
 def _line_to_blocks(line: dict, page_num: int, line_order: int) -> list[dict]:
-    """Convert one pdfplumber line into a single block dict. 1. Clean and deduplicate the text. 2. Walk each character to collect font names, sizes, and bounding box. 3. Determine bold/italic from the first non-whitespace character's font name. 4. Return a single-item list with the assembled block."""
+    """Convert one pdfplumber line into a single block dict.
+
+    1. Clean and deduplicate the text.
+    2. Walk each character to collect font names, sizes, and bounding box.
+    3. Determine bold/italic from the first non-whitespace character's font name.
+    4. Return a single-item list with the assembled block.
+    """
     chars = line.get("chars", [])
     # Clean the text and collapse any doubled characters from layered PDF rendering.
     text = _deduplicate_chars(line.get("text", "").strip())
@@ -68,10 +82,14 @@ def _line_to_blocks(line: dict, page_num: int, line_order: int) -> list[dict]:
         # Track the overall bounding box of the line across all characters.
         cx0, cx1 = c.get("x0", 0), c.get("x1", 0)
         ct, cb   = c.get("top", 0), c.get("bottom", 0)
-        if x0 is None or cx0 < x0: x0 = cx0
-        if x1 is None or cx1 > x1: x1 = cx1
-        if top is None or ct < top: top = ct
-        if bottom is None or cb > bottom: bottom = cb
+        if x0 is None or cx0 < x0:
+            x0 = cx0
+        if x1 is None or cx1 > x1:
+            x1 = cx1
+        if top is None or ct < top:
+            top = ct
+        if bottom is None or cb > bottom:
+            bottom = cb
         # Use the first visible (non-whitespace) character to decide bold/italic for the whole line.
         if first_bold is None and c.get("text", "").strip():
             first_bold   = _font_is_bold(fn)
@@ -99,7 +117,13 @@ def save_page_images(
     output_dir: Union[str, Path] = "pdfplumber",
     resolution: int = 150,
 ) -> list[Path]:
-    """Render each page as a PNG with colored bounding boxes drawn over each labeled block. 1. Open the PDF. 2. For each page, render it as an image. 3. Group blocks by label and draw colored rectangles. 4. Save the image and return the list of saved paths."""
+    """Render each page as a PNG with colored bounding boxes drawn over each labeled block.
+
+    1. Open the PDF.
+    2. For each page, render it as an image.
+    3. Group blocks by label and draw colored rectangles.
+    4. Save the image and return the list of saved paths.
+    """
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -112,7 +136,7 @@ def save_page_images(
             try:
                 im = page.to_image(resolution=resolution)
             except Exception as exc:
-                raise RuntimeError(
+                raise ExtractionError(
                     f"pdfplumber could not render page {page_num} as an image.\n"
                     "Ensure Pillow is installed: pip install Pillow\n"
                     f"Details: {exc}"
@@ -151,7 +175,12 @@ def _font_is_italic(name: str) -> bool:
 
 
 def _deduplicate_chars(text: str) -> str:
-    """Fix doubled characters caused by layered PDF text rendering. Some PDFs render text twice (bold shadow over regular), so pdfplumber returns 'HHeelllloo' instead of 'Hello'. Detects this by checking if most consecutive character pairs are identical, then collapses them."""
+    """Fix doubled characters caused by layered PDF text rendering.
+
+    Some PDFs render text twice (bold shadow over regular), so pdfplumber
+    returns 'HHeelllloo' instead of 'Hello'. Detects this by checking if
+    most consecutive character pairs are identical, then collapses them.
+    """
     stripped = text.replace(" ", "")
     if len(stripped) < 4:
         return text
