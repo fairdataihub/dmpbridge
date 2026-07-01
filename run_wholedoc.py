@@ -1,4 +1,7 @@
-"""Run whole-document Claude classification on all 10 samples."""
+"""Run whole-document Claude classification on all 10 samples.
+
+Output files: data/llmlabeled/sampleN_claude-opus-4-8_whole_doc.json
+"""
 import sys, json
 sys.path.insert(0, ".")
 
@@ -15,7 +18,7 @@ OUT_DIR = Path("data/llmlabeled")
 
 for i in range(1, 11):
     pdf_path = PDF_DIR / f"sample{i}.pdf"
-    out_path = OUT_DIR / f"sample{i}_claude-opus-4-8-wholedoc.json"
+    out_path = OUT_DIR / f"sample{i}_claude-opus-4-8_whole_doc.json"
 
     if out_path.exists():
         print(f"[sample{i}] already exists — skipping")

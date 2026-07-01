@@ -3,6 +3,9 @@
 Usage:
     python run_wholedoc_ollama.py --model llama3.3:70b
     python run_wholedoc_ollama.py --model llama3.1:8b
+
+Output files: data/llmlabeled/sampleN_{model}_whole_doc.json
+  e.g.  sample1_llama3.3-70b_whole_doc.json
 """
 import argparse, json, sys
 sys.path.insert(0, ".")
