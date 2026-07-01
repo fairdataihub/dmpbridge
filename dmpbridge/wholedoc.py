@@ -3,9 +3,9 @@ import json
 from pathlib import Path
 from typing import Callable
 
-from .classifier import LABELS
 from .extractor import extract_blocks
 from .logging_setup import get_logger
+from .prompt import LABELS, build_wholedoc_prompt
 
 logger = get_logger(__name__)
 
@@ -22,15 +22,6 @@ def build_payload(blocks: list[dict]) -> list[dict]:
         }
         for j, b in enumerate(blocks)
     ]
-
-
-def build_prompt(payload: list[dict]) -> str:
-    """Format the single-call classification prompt for a full document."""
-    return (
-        f"CLASSIFY ALL BLOCKS — return a JSON array with exactly {len(payload)} entries, "
-        f"one per block, in the same order:\n"
-        + json.dumps(payload, ensure_ascii=False)
-    )
 
 
 def parse_response(raw: str, label: str = "") -> list[dict]:
@@ -104,7 +95,7 @@ def run_samples(
         logger.info("%s extracting blocks from %s …", label, pdf_path.name)
         blocks  = extract_blocks(pdf_path)
         payload = build_payload(blocks)
-        prompt  = build_prompt(payload)
+        prompt  = build_wholedoc_prompt(payload)
 
         parsed = classify_fn(blocks, payload, prompt, label)
         result = apply_labels(blocks, parsed)

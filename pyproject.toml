@@ -29,7 +29,9 @@ notebooks = [
 ]
 
 [project.scripts]
-dmpbridge = "dmpbridge.cli:main"
+dmpbridge          = "dmpbridge.cli:main"
+dmpbridge-wholedoc = "dmpbridge.runner:main"
+dmpbridge-evaluate = "dmpbridge.evaluate:main"
 
 [tool.setuptools.packages.find]
 include = ["dmpbridge*"]

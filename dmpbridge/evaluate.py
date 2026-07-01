@@ -1,9 +1,15 @@
-"""
-Evaluate LLM-labeled JSON against manually labeled ground truth.
+"""Evaluate LLM-labeled JSON against manually labeled ground truth.
 
-Usage:
-    python evaluate.py                                          # all samples (default model tag)
-    python evaluate.py data/llmlabeled/sample1_llama3.3-70b_batch.json
+Usage (CLI):
+    dmpbridge-evaluate                                          # all samples
+    dmpbridge-evaluate data/llmlabeled/sample1_llama3.3-70b_batch.json
+
+Notebook usage:
+    from dmpbridge.evaluate import (
+        load_method, compute_f1_rows,
+        extract_gold, evaluate_sample, match,
+        LABELS, SHORT, LLM_DIR, MANUAL_DIR, NO_MATCH,
+    )
 """
 import json
 import re
@@ -11,20 +17,19 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-from dmpbridge import config as _config
-from dmpbridge.classifier import LABELS
-from dmpbridge.logging_setup import get_logger, setup_logging
+from . import config as _config
+from .logging_setup import get_logger, setup_logging
+from .prompt import LABELS
 
-logger = get_logger("dmpbridge.evaluate")
+logger = get_logger(__name__)
 
 SHORT = ["title", "sec.title", "sec.desc", "q.text", "ans.text"]
 
-_ROOT      = Path(__file__).parent
+_ROOT      = Path(__file__).parent.parent
 MANUAL_DIR = _ROOT / "data/manuallabeled"
 LLM_DIR    = _ROOT / "data/llmlabeled"
 
 MODEL_TAG  = _config.MODEL.replace(":", "-").replace("/", "-")
-# Files follow the sampleN_{model}_batch / sampleN_{model}_whole_doc naming convention.
 LLM_SUFFIX = f"_{MODEL_TAG}_batch"
 
 
@@ -63,7 +68,6 @@ def extract_gold(path: Path) -> list[tuple[str, str]]:
             if question.get("text"):
                 pairs.append((question["text"].strip(), "question.text"))
             ans = question.get("answer", {})
-            # Answer text is nested: answer → json → answer
             ans_text = ""
             if isinstance(ans, dict):
                 ans_text = ans.get("json", {}).get("answer", "") or ans.get("text", "")
@@ -130,6 +134,92 @@ def add_confusion(total: dict, new: dict) -> None:
             total[true_lbl][pred_lbl] += count
 
 
+# ── Metrics ───────────────────────────────────────────────────────────────────
+
+def _compute_label_metrics(confusion: dict) -> list[dict]:
+    """Compute precision, recall, and F1 for each label. Returns a list of dicts."""
+    rows = []
+    for lbl in LABELS:
+        tp      = confusion.get(lbl, {}).get(lbl, 0)
+        fp      = sum(confusion.get(other, {}).get(lbl, 0) for other in LABELS if other != lbl)
+        fn      = sum(v for pred, v in confusion.get(lbl, {}).items() if pred != lbl)
+        support = tp + fn
+        p  = tp / (tp + fp) if (tp + fp) else 0.0
+        r  = tp / support   if support   else 0.0
+        f1 = 2 * p * r / (p + r) if (p + r) else 0.0
+        rows.append({"label": lbl, "precision": p, "recall": r, "f1": f1, "support": support})
+    return rows
+
+
+def compute_f1_rows(confusion: dict):
+    """Return a pandas DataFrame with precision, recall, F1, and support per label."""
+    import pandas as pd
+    return pd.DataFrame(_compute_label_metrics(confusion))
+
+
+# ── Notebook helper ───────────────────────────────────────────────────────────
+
+def _snum(path: Path) -> int:
+    """Extract sample number from a path like data/manuallabeled/sample3_dmp.json → 3."""
+    return int(path.stem.replace("_dmp", "").replace("sample", ""))
+
+
+def load_method(tag: str):
+    """Load and evaluate all samples for a given file tag.
+
+    Files follow the pattern: ``data/llmlabeled/sampleN_{tag}.json``
+
+    Returns
+    -------
+    tuple[pd.DataFrame, dict, pd.DataFrame] | tuple[None, None, None]
+        ``(accuracy_df, confusion_dict, errors_df)`` or ``(None, None, None)``
+        if no output files are found.
+    """
+    import pandas as pd
+
+    samples = sorted(MANUAL_DIR.glob("*_dmp.json"), key=_snum)
+    found   = [mp for mp in samples
+               if (LLM_DIR / f"{mp.stem.replace('_dmp', '')}_{tag}.json").exists()]
+    if not found:
+        return None, None, None
+
+    conf_all: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    rows, errors = [], []
+
+    for mp in samples:
+        stem = mp.stem.replace("_dmp", "")
+        pp   = LLM_DIR / f"{stem}_{tag}.json"
+        if not pp.exists():
+            continue
+        gold   = extract_gold(mp)
+        conf   = evaluate_sample(pp, gold)
+        blocks = json.loads(pp.read_text(encoding="utf-8"))
+        for b in blocks:
+            tl = match(b["text"], gold)
+            pl = b.get("label", "answer.text")
+            conf_all[tl or NO_MATCH][pl] += 1
+            if tl != pl:
+                errors.append({
+                    "sample": stem,
+                    "text":   b["text"][:120],
+                    "true":   tl or "no_match",
+                    "pred":   pl,
+                    "page":   b.get("page", "-"),
+                })
+        tp = sum(conf.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
+        n  = sum(sum(v.values()) for v in conf.values())
+        rows.append({
+            "sample":   stem,
+            "total":    n,
+            "correct":  tp,
+            "errors":   n - tp,
+            "accuracy": tp / n if n else 0,
+            "formula":  f"{tp}/{n}",
+        })
+
+    return pd.DataFrame(rows), conf_all, pd.DataFrame(errors)
+
+
 # ── Print helpers ─────────────────────────────────────────────────────────────
 
 def print_confusion(confusion: dict) -> None:
@@ -157,16 +247,12 @@ def print_f1(confusion: dict) -> None:
     print(f"\n{'Label':<22}  {'Precision':>10}  {'Recall':>8}  {'F1':>8}  {'Support':>8}")
     print("-" * 62)
     total_tp = total_support = 0
-    for lbl in LABELS:
-        tp      = confusion.get(lbl, {}).get(lbl, 0)
-        fp      = sum(confusion.get(other, {}).get(lbl, 0) for other in LABELS if other != lbl)
-        fn      = sum(v for pred, v in confusion.get(lbl, {}).items() if pred != lbl)
-        support = tp + fn
-        p       = tp / (tp + fp) if (tp + fp) else 0.0
-        r       = tp / support   if support   else 0.0
-        f1      = 2 * p * r / (p + r) if (p + r) else 0.0
+    for row in _compute_label_metrics(confusion):
+        lbl, p, r, f1, support = (
+            row["label"], row["precision"], row["recall"], row["f1"], row["support"]
+        )
         print(f"{lbl:<22}  {p*100:>9.1f}%  {r*100:>7.1f}%  {f1*100:>7.1f}%  {support:>8}")
-        total_tp      += tp
+        total_tp      += confusion.get(lbl, {}).get(lbl, 0)
         total_support += support
     overall = total_tp / total_support if total_support else 0.0
     print("-" * 62)
@@ -284,10 +370,15 @@ def run_all() -> None:
     print_f1(total_confusion)
 
 
-if __name__ == "__main__":
+def main() -> None:
+    """CLI entry point: dmpbridge-evaluate."""
     setup_logging()
     pos_args = [a for a in sys.argv[1:] if not a.startswith("--")]
     if pos_args:
         run_single(Path(pos_args[0]))
     else:
         run_all()
+
+
+if __name__ == "__main__":
+    main()
