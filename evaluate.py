@@ -33,7 +33,8 @@ MANUAL_DIR = _ROOT / "data/manuallabeled"
 LLM_DIR    = _ROOT / "data/llmlabeled"
 
 MODEL_TAG  = _config.MODEL.replace(":", "-").replace("/", "-")
-LLM_SUFFIX = f"_{MODEL_TAG}"
+# Files follow the {model}_batch / {model}_whole_doc naming convention
+LLM_SUFFIX = f"_{MODEL_TAG}_batch"
 
 
 # ── Text helpers ──────────────────────────────────────────────────────────────

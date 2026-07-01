@@ -7,14 +7,18 @@ Usage:
 Output files: data/llmlabeled/sampleN_{model}_whole_doc.json
   e.g.  sample1_llama3.3-70b_whole_doc.json
 """
-import argparse, json, sys
+import argparse
+import json
+import sys
 sys.path.insert(0, ".")
 
-import requests
 from pathlib import Path
-from dmpbridge.extractor import extract_blocks
-from dmpbridge.classifier import LABELS, SYSTEM_PROMPT, _OUTPUT_SCHEMA
+
+import requests
+
 from dmpbridge import config
+from dmpbridge.classifier import LABELS, SYSTEM_PROMPT, _OUTPUT_SCHEMA
+from dmpbridge.extractor import extract_blocks
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model", default="llama3.3:70b",
@@ -36,7 +40,7 @@ print()
 
 for i in range(1, 11):
     pdf_path = PDF_DIR / f"sample{i}.pdf"
-    out_path = OUT_DIR / f"sample{i}_{TAG}-wholedoc.json"
+    out_path = OUT_DIR / f"sample{i}_{TAG}_whole_doc.json"
 
     if out_path.exists():
         print(f"[sample{i}] already exists — skipping")
