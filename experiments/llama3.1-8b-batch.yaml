@@ -1,4 +1,4 @@
-﻿name: Llama 3.1 8B â€” Batch
+﻿name: Llama 3.1 8B Batch
 strategy: batch
 model: llama3.1:8b
 provider: ollama

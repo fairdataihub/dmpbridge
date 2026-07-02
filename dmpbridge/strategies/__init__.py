@@ -58,6 +58,8 @@ def get_strategy(
     model: str | None = None,
     host: str | None = None,
     api_key: str | None = None,
+    batch_size: int | None = None,
+    context_size: int | None = None,
 ) -> Strategy:
     """Return a configured Strategy instance by name.
 
@@ -75,6 +77,10 @@ def get_strategy(
         Ollama base URL.  Falls back to ``config.HOST`` when omitted.
     api_key:
         API key for cloud providers.  Falls back to the relevant config key.
+    batch_size:
+        Number of blocks per LLM request.  Only used by ``BatchStrategy``.
+    context_size:
+        Sliding-context window size.  Only used by ``BatchStrategy``.
     """
     from ..core import config as _cfg
 
@@ -84,7 +90,10 @@ def get_strategy(
 
     if name == "batch":
         from .batch import BatchStrategy
-        return BatchStrategy(provider=_provider, model=_model, host=_host)
+        kwargs = {}
+        if batch_size   is not None: kwargs["batch_size"]   = batch_size
+        if context_size is not None: kwargs["context_size"] = context_size
+        return BatchStrategy(provider=_provider, model=_model, host=_host, **kwargs)
 
     if name == "wholedoc":
         from .wholedoc import WholeDocStrategy
