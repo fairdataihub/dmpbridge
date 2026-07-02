@@ -10,5 +10,6 @@ data/pdfplumber_extracted_blocks_debug/
 data/pdfplumber_extracted_markdown/
 data/pdfplumber_extracted_text/
 *.docx
+report-doc/
 *.log
 logs/
