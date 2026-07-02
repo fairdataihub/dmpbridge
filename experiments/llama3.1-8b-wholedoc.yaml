@@ -1,4 +1,4 @@
-﻿name: Llama 3.1 8B â€” Whole-doc
+﻿name: Llama 3.1 8B Whole-doc
 strategy: wholedoc
 model: llama3.1:8b
 provider: ollama
