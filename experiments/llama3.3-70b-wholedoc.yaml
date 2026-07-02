@@ -1,4 +1,4 @@
-﻿name: Llama 3.3 70B â€” Whole-doc
+﻿name: Llama 3.3 70B Whole-doc
 strategy: wholedoc
 model: llama3.3:70b
 provider: ollama

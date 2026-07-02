@@ -1,4 +1,4 @@
-﻿name: Claude Opus 4.8 â€” Whole-doc
+﻿name: Claude Opus 4.8 — Whole-doc
 strategy: wholedoc
 model: claude-opus-4-8
 provider: anthropic

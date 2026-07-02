@@ -1,4 +1,4 @@
-﻿name: Claude Opus 4.8 â€” Batch
+﻿name: Claude Opus 4.8 — Batch
 strategy: batch
 model: claude-opus-4-8
 provider: anthropic

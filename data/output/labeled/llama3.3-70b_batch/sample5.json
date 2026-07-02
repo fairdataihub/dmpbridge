@@ -50,7 +50,7 @@
   {
     "page": 1,
     "line_order": 4,
-    "text": "•  Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and",
+    "text": "• Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and",
     "x0": 90.0,
     "top": 125.02,
     "x1": 540.14,
@@ -84,7 +84,7 @@
   {
     "page": 1,
     "line_order": 6,
-    "text": "•  Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)",
+    "text": "• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)",
     "x0": 90.0,
     "top": 151.18,
     "x1": 540.09,
@@ -118,7 +118,7 @@
   {
     "page": 1,
     "line_order": 8,
-    "text": "•  Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic",
+    "text": "• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic",
     "x0": 90.0,
     "top": 177.1,
     "x1": 540.03,
@@ -262,7 +262,7 @@
     ],
     "is_bold": true,
     "is_italic": false,
-    "label": "answer.text"
+    "label": "section.title"
   },
   {
     "page": 1,
@@ -327,7 +327,7 @@
     ],
     "is_bold": true,
     "is_italic": false,
-    "label": "answer.text"
+    "label": "section.title"
   },
   {
     "page": 1,

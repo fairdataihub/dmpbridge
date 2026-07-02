@@ -17,7 +17,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The proposal is separated into three sections.\n•  Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and\ncompares well construction patterns before and after the establishment of regulatory controls.\n•  Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)\nyearly (2016-2021) at the field scale.\n•  Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic\nSciences Workshops.",
+                  "answer": "The proposal is separated into three sections.\n• Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and\ncompares well construction patterns before and after the establishment of regulatory controls.\n• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)\nyearly (2016-2021) at the field scale.\n• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic\nSciences Workshops.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -37,7 +37,47 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection,\ndocumentation and metadata description, quality control, storage and backup, archiving, and sharing.\nThe project will result in new sets of data, code, and tools. These outputs include: (a) source code to\nquality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and\n(c) sharable instructional materials (Scientist Spotlight activities and workshop materials).\nInput data: Available data will be systematically reviewed and downloaded. These data are likely\navailable in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files;\nor text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be\nadopted and will likely evolve as new datasets provide for challenging formats and organization.\nProduced Data: Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be\nformatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection,\ndocumentation and metadata description, quality control, storage and backup, archiving, and sharing.\nThe project will result in new sets of data, code, and tools. These outputs include: (a) source code to\nquality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and\n(c) sharable instructional materials (Scientist Spotlight activities and workshop materials).",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "Input data: Available data will be systematically reviewed and downloaded. These data are likely",
+          "description": "",
+          "order": 3,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files;\nor text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be\nadopted and will likely evolve as new datasets provide for challenging formats and organization.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "Produced Data: Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be",
+          "description": "",
+          "order": 4,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -49,7 +89,7 @@
         {
           "title": "DATA AND METADATA STANDARDS",
           "description": "",
-          "order": 3,
+          "order": 5,
           "question": [
             {
               "text": "",
@@ -69,7 +109,7 @@
         {
           "title": "POLICIES FOR ACCESS AND SHARING",
           "description": "",
-          "order": 4,
+          "order": 6,
           "question": [
             {
               "text": "Raw data: Detailed information about how the data were obtained, including detailed contact information",
@@ -89,7 +129,7 @@
         {
           "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
           "description": "",
-          "order": 5,
+          "order": 7,
           "question": [
             {
               "text": "",
@@ -109,7 +149,7 @@
         {
           "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
           "description": "",
-          "order": 6,
+          "order": 8,
           "question": [
             {
               "text": "",
