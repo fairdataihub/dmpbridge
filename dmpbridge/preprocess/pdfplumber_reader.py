@@ -58,10 +58,14 @@ def _line_to_blocks(line: dict, page_num: int, line_order: int) -> list[dict]:
             sizes.append(c["size"])
         cx0, cx1 = c.get("x0", 0), c.get("x1", 0)
         ct, cb   = c.get("top", 0), c.get("bottom", 0)
-        if x0 is None or cx0 < x0:  x0 = cx0
-        if x1 is None or cx1 > x1:  x1 = cx1
-        if top    is None or ct < top:     top    = ct
-        if bottom is None or cb > bottom:  bottom = cb
+        if x0 is None or cx0 < x0:
+            x0 = cx0
+        if x1 is None or cx1 > x1:
+            x1 = cx1
+        if top is None or ct < top:
+            top = ct
+        if bottom is None or cb > bottom:
+            bottom = cb
         if first_bold is None and c.get("text", "").strip():
             first_bold   = _font_is_bold(fn)
             first_italic = _font_is_italic(fn)

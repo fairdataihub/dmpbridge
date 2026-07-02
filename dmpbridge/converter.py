@@ -15,7 +15,7 @@ from typing import Union
 
 
 def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
-    """Convert a flat list of labeled blocks into the nested DMP Tool JSON schema. 1. Walk blocks in document order. 2. section.title opens a new section. 3. section.description before any question goes into the section description field. 4. section.description after a question has started stays in sequence (continues the question text or answer). 5. Consecutive question.text blocks with no answer yet are merged into one question. 6. answer.text always appends to the current question's answer."""
+    """Convert a flat list of labeled blocks into the nested DMP Tool JSON schema."""
 
     title = ""
     sections: list[dict] = []
@@ -147,7 +147,7 @@ def convert_file(
     structured_path: Union[str, Path, None] = None,
     pdf_url: str = "",
 ) -> dict:
-    """Load a flat labeled JSON file, convert it to structured JSON, and save it. 1. Read the flat block list from disk. 2. Run to_structured to build the nested schema. 3. Save to structured_path (defaults to <stem>_structured.json next to the input)."""
+    """Load a flat labeled JSON file and write the structured JSON to disk."""
     flat_path = Path(flat_path)
     # Read the flat labeled JSON produced by the LLM classifier.
     blocks = json.loads(flat_path.read_text(encoding="utf-8"))

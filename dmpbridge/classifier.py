@@ -8,10 +8,10 @@ not a new classifier subclass.
 Use :func:`get_classifier` to get a ready-to-use instance.
 """
 from . import config
+from .logging_setup import get_logger
 from .models import ModelBackend, get_model
 from .parsers import parse_llm_json
 from .prompt import LABELS, SYSTEM_PROMPT, build_batch_prompt
-from .logging_setup import get_logger
 
 logger = get_logger(__name__)
 

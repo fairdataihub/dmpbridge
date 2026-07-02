@@ -27,7 +27,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass
 from pathlib import Path
 
 import yaml
@@ -174,7 +174,7 @@ class Experiment:
         if self._strategy is None:
             from .strategies import get_strategy
             cfg = self.config
-            kwargs: dict = dict(provider=cfg.provider, model=cfg.model, host=cfg.host)
+            kwargs: dict = {"provider": cfg.provider, "model": cfg.model, "host": cfg.host}
             if cfg.strategy == "batch":
                 kwargs["batch_size"]   = cfg.batch_size
                 kwargs["context_size"] = cfg.context_size
@@ -245,7 +245,7 @@ class Experiment:
 
     def summary(self) -> None:
         """Print a one-line accuracy summary to stdout."""
-        df, conf, _ = self.evaluate()
+        df, _, _ = self.evaluate()
         if df is None:
             print(f"[{self.config.name}]  no results found — run first")
             return
