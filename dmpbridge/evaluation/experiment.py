@@ -222,6 +222,15 @@ class Experiment:
                 encoding="utf-8",
             )
             logger.info("%s %d blocks → %s", label, len(blocks), out_path.name)
+
+            from ..core.converter import to_structured
+            struct_path = out_dir / f"sample{i}_structured.json"
+            struct_path.write_text(
+                json.dumps(to_structured(blocks), indent=2, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            logger.info("%s structured JSON → %s", label, struct_path.name)
+
             outputs.append(out_path)
 
         logger.info("Done — %d/%d samples processed.", len(outputs), len(cfg.sample_range))
