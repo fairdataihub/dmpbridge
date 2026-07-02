@@ -32,7 +32,7 @@ from pathlib import Path
 
 import yaml
 
-from .logging_setup import get_logger, setup_logging
+from .utils import get_logger, setup_logging
 
 logger = get_logger(__name__)
 

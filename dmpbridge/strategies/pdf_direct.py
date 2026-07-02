@@ -24,15 +24,14 @@ import base64
 import json
 from pathlib import Path
 
-from .. import config
-from ..exceptions import ConfigurationError
-from ..logging_setup import get_logger, setup_logging
+from ..core import config
 from ..parsers import parse_llm_json
-from ..prompt import LABELS, SYSTEM_PROMPT
+from ..prompts import LABELS, SYSTEM_PROMPT
+from ..utils import ConfigurationError, get_logger, setup_logging
 
 logger = get_logger(__name__)
 
-_USER_PROMPT = (
+_PDF_USER_PROMPT = (
     "Read this DMP (Data Management Plan) document and classify every text block you see.\n\n"
     "Return a JSON array — one entry per block — in document reading order:\n"
     '  [{"text": "<exact text of the block>", "label": "<label>", "page": <page number>}, ...]\n\n'
@@ -79,7 +78,7 @@ def classify_pdf(pdf_path: Path, model: str, api_key: str) -> list[dict]:
                             "data":       pdf_b64,
                         },
                     },
-                    {"type": "text", "text": _USER_PROMPT},
+                    {"type": "text", "text": _PDF_USER_PROMPT},
                 ],
             }
         ],

@@ -76,7 +76,7 @@ def get_strategy(
     api_key:
         API key for cloud providers.  Falls back to the relevant config key.
     """
-    from .. import config as _cfg
+    from ..core import config as _cfg
 
     _provider = provider or _cfg.PROVIDER
     _model    = model    or _cfg.MODEL

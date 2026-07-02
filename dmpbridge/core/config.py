@@ -9,7 +9,7 @@ from pathlib import Path
 # Load .env if present — API keys and provider settings live there.
 try:
     from dotenv import load_dotenv
-    load_dotenv(Path(__file__).parent.parent / ".env")
+    load_dotenv(Path(__file__).parent.parent.parent / ".env")
 except ImportError:
     pass  # python-dotenv not installed; export variables in your shell instead
 

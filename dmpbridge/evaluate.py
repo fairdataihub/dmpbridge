@@ -17,9 +17,9 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-from . import config as _config
-from .logging_setup import get_logger, setup_logging
-from .prompt import LABELS
+from .core import config as _config
+from .prompts import LABELS
+from .utils import get_logger, setup_logging
 
 logger = get_logger(__name__)
 

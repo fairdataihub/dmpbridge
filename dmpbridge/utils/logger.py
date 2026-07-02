@@ -1,21 +1,20 @@
 """Shared logging configuration for dmpbridge.
 
 Usage in modules:
-    from .logging_setup import get_logger
+    from .utils import get_logger
     logger = get_logger(__name__)
 
-Usage at script / CLI entry points (call once before any work):
-    from dmpbridge.logging_setup import setup_logging
+Usage at CLI entry points (call once before any work):
+    from .utils import setup_logging
     setup_logging(verbose=True)
 """
 import logging
 import logging.handlers
 from pathlib import Path
 
-_LOG_DIR  = Path(__file__).parent.parent / "logs"
+_LOG_DIR  = Path(__file__).parent.parent.parent / "logs"
 _LOG_FILE = _LOG_DIR / "dmpbridge.log"
 
-# Third-party loggers that are noisy at INFO/DEBUG level.
 _NOISY_LOGGERS = (
     "pdfminer",
     "pdfminer.pdfpage",
@@ -35,8 +34,6 @@ def setup_logging(*, verbose: bool = False) -> None:
     """Configure console and rotating-file handlers on the root logger.
 
     Subsequent calls are no-ops when handlers are already attached.
-    Console output uses a clean single-line format; the log file includes
-    timestamps and module names for post-run debugging.
     """
     _LOG_DIR.mkdir(parents=True, exist_ok=True)
 

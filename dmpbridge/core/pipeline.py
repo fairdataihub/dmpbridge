@@ -23,11 +23,10 @@ import json
 from pathlib import Path
 from typing import Optional, Union
 
+from ..preprocess import extract_blocks, save_page_images
+from ..utils import ExtractionError, get_logger
 from . import config
 from .converter import to_structured
-from .exceptions import ExtractionError
-from .logging_setup import get_logger
-from .preprocess import extract_blocks, save_page_images
 
 logger = get_logger(__name__)
 
@@ -79,11 +78,11 @@ def process_pdf(
 
     # ── Resolve strategy ──────────────────────────────────────────────────────
     if strategy is None:
-        from .strategies.batch import BatchStrategy
+        from ..strategies.batch import BatchStrategy
         strategy = BatchStrategy(provider=provider, model=model, host=host)
 
     # ── Check whether this strategy does its own preprocessing ────────────────
-    from .strategies.pdf_direct import PdfDirectStrategy
+    from ..strategies.pdf_direct import PdfDirectStrategy
     _strategy_owns_preprocessing = isinstance(strategy, PdfDirectStrategy)
 
     # ── Preprocessing (pdfplumber path only) ──────────────────────────────────

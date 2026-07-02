@@ -1,8 +1,7 @@
 """dmpbridge — PDF extraction and structure labeling pipeline."""
 import logging
 
-from .converter import convert_file, to_structured
-from .pipeline import process_pdf
+from .core import convert_file, process_pdf, to_structured
 
 # Standard library best-practice: add a NullHandler so callers that don't call
 # setup_logging() never see "No handlers could be found for logger 'dmpbridge'".

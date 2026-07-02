@@ -15,17 +15,25 @@ Example
     strategy = WholeDocStrategy(provider="anthropic", model="claude-opus-4-8")
     blocks   = strategy.run(Path("document.pdf"))
 """
+import json
 from pathlib import Path
 
-from .. import config
-from ..exceptions import ConfigurationError
-from ..logging_setup import get_logger
+from ..core import config
 from ..models import get_model
 from ..parsers import parse_llm_json
 from ..preprocess import extract_blocks
-from ..prompt import LABELS, SYSTEM_PROMPT, build_wholedoc_prompt
+from ..prompts import LABELS, SYSTEM_PROMPT
+from ..utils import ConfigurationError, get_logger
 
 logger = get_logger(__name__)
+
+
+def _build_wholedoc_prompt(payload: list[dict]) -> str:
+    return (
+        f"CLASSIFY ALL BLOCKS — return a JSON array with exactly {len(payload)} entries, "
+        f"one per block, in the same order:\n"
+        + json.dumps(payload, ensure_ascii=False)
+    )
 
 
 def _build_payload(blocks: list[dict]) -> list[dict]:
@@ -108,7 +116,7 @@ class WholeDocStrategy:
             return []
 
         payload = _build_payload(blocks)
-        prompt  = build_wholedoc_prompt(payload)
+        prompt  = _build_wholedoc_prompt(payload)
 
         logger.info("[wholedoc] sending %d blocks to %s / %s …",
                     len(payload), self.provider, self.model)

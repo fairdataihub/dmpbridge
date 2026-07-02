@@ -1,6 +1,5 @@
 """OpenAI model backend."""
-from ..exceptions import ConfigurationError
-from ..logging_setup import get_logger
+from ..utils import ConfigurationError, get_logger
 
 logger = get_logger(__name__)
 

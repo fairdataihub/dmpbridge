@@ -1,33 +1,4 @@
-"""Centralized prompt definitions for all models and strategies.
-
-Everything the LLM sees lives here:
-- LABELS                 : the 5 allowed classification labels
-- OUTPUT_SCHEMA          : Ollama JSON schema for structured output enforcement
-- SYSTEM_PROMPT          : shared system prompt for all providers and strategies
-- build_batch_prompt()   : user-facing prompt for batch inference
-- build_wholedoc_prompt(): user-facing prompt for whole-document inference
-"""
-import json
-
-# ── Labels ────────────────────────────────────────────────────────────────────
-
-LABELS = ("title", "section.title", "section.description", "question.text", "answer.text")
-
-# ── Ollama structured output schema ──────────────────────────────────────────
-
-OUTPUT_SCHEMA = {
-    "type": "array",
-    "items": {
-        "type": "object",
-        "properties": {
-            "id":    {"type": "integer"},
-            "label": {"type": "string", "enum": list(LABELS)},
-        },
-        "required": ["id", "label"],
-    },
-}
-
-# ── System prompt ─────────────────────────────────────────────────────────────
+"""Shared system prompt used by all strategies and providers."""
 
 _FEW_SHOT_EXAMPLES = """
 EXAMPLES FROM REAL DMP DOCUMENTS:
@@ -79,59 +50,4 @@ Key distinctions:
 You MUST output a JSON array with one entry for EVERY block in the TO CLASSIFY list — no explanation, no markdown.
 """
 
-# ── Prompt builders ───────────────────────────────────────────────────────────
-
-def build_batch_prompt(
-    batch: list[dict],
-    offset: int,
-    context: list[dict] | None = None,
-) -> str:
-    """Build the user-facing prompt for batch inference with a sliding context window.
-
-    Optionally prepends the last few already-labeled blocks as context so the
-    model knows where it is in the document, then lists the blocks to classify.
-    """
-    ctx_section = ""
-    if context:
-        ctx_blocks = [
-            {
-                "text":   b["text"],
-                "bold":   b["is_bold"],
-                "italic": b.get("is_italic", False),
-                "label":  b.get("label", "?"),
-            }
-            for b in context
-        ]
-        ctx_section = (
-            "PRECEDING BLOCKS (already labeled — use for context only, "
-            "do not output labels for these):\n"
-            + json.dumps(ctx_blocks, ensure_ascii=False)
-            + "\n\n"
-        )
-
-    payload = [
-        {
-            "id":     offset + j,
-            "text":   b["text"],
-            "bold":   b["is_bold"],
-            "italic": b.get("is_italic", False),
-            "page":   b["page"],
-        }
-        for j, b in enumerate(batch)
-    ]
-
-    return (
-        ctx_section
-        + "TO CLASSIFY — return a JSON array with exactly %d entries, one per block:\n"
-        % len(batch)
-        + json.dumps(payload, ensure_ascii=False)
-    )
-
-
-def build_wholedoc_prompt(payload: list[dict]) -> str:
-    """Build the prompt for whole-document inference (all blocks in a single call)."""
-    return (
-        f"CLASSIFY ALL BLOCKS — return a JSON array with exactly {len(payload)} entries, "
-        f"one per block, in the same order:\n"
-        + json.dumps(payload, ensure_ascii=False)
-    )
+__all__ = ["SYSTEM_PROMPT"]

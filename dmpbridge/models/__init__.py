@@ -17,7 +17,7 @@ importing each class directly.
 """
 from typing import Protocol, runtime_checkable
 
-from .. import config as _cfg
+from ..core import config as _cfg
 
 
 @runtime_checkable
@@ -107,7 +107,7 @@ def get_model(
             api_key=api_key or _cfg.GEMINI_API_KEY,
         )
 
-    from ..exceptions import ConfigurationError
+    from ..utils import ConfigurationError
     raise ConfigurationError(
         f"Unknown provider {provider!r}. "
         "Choose from: ollama, anthropic, openai, gemini"

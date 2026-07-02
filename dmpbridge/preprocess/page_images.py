@@ -9,7 +9,7 @@ from typing import Union
 
 import pdfplumber
 
-from ..exceptions import ExtractionError
+from ..utils import ExtractionError
 
 # One (stroke, fill) RGBA pair per label.
 _LABEL_STYLE: dict[str, tuple[tuple, tuple]] = {

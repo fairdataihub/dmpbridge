@@ -1,9 +1,8 @@
 """Ollama model backend."""
 import requests
 
-from ..exceptions import ProviderConnectionError
-from ..logging_setup import get_logger
-from ..prompt import OUTPUT_SCHEMA
+from ..prompts import OUTPUT_SCHEMA
+from ..utils import ProviderConnectionError, get_logger
 
 logger = get_logger(__name__)
 

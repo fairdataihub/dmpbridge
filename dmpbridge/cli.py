@@ -12,9 +12,8 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from .exceptions import DmpBridgeError
-from .logging_setup import get_logger, setup_logging
-from .pipeline import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_PROVIDER, DEFAULT_RAW_DIR, process_pdf
+from .core import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_PROVIDER, DEFAULT_RAW_DIR, process_pdf
+from .utils import DmpBridgeError, get_logger, setup_logging
 
 logger = get_logger(__name__)
 
