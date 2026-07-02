@@ -19,8 +19,8 @@ from pathlib import Path
 # Allow running as a script from the project root without installing.
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from dmpbridge.evaluate import gold_metrics
-from dmpbridge.experiment import EXPERIMENTS_DIR, Experiment, list_experiments
+from dmpbridge.evaluation.evaluate import gold_metrics
+from dmpbridge.evaluation.experiment import EXPERIMENTS_DIR, Experiment, list_experiments
 
 
 def run_benchmark(

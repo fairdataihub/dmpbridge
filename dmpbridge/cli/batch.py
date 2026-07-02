@@ -12,8 +12,8 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from .core import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_PROVIDER, DEFAULT_RAW_DIR, process_pdf
-from .utils import DmpBridgeError, get_logger, setup_logging
+from ..core import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_PROVIDER, DEFAULT_RAW_DIR, process_pdf
+from ..utils import DmpBridgeError, get_logger, setup_logging
 
 logger = get_logger(__name__)
 
@@ -124,7 +124,7 @@ def main() -> None:
             else output.with_name(output.stem + "_structured.json")
         )
 
-    from .strategies.batch import BatchStrategy
+    from ..strategies.batch import BatchStrategy
     strategy = BatchStrategy(provider=args.provider, model=args.model, host=args.host)
 
     try:

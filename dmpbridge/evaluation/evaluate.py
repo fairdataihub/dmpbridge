@@ -5,7 +5,7 @@ Usage (CLI):
     dmpbridge-evaluate data/llmlabeled/sample1_llama3.3-70b_batch.json
 
 Notebook usage:
-    from dmpbridge.evaluate import (
+    from dmpbridge.evaluation.evaluate import (
         load_method, compute_f1_rows,
         extract_gold, evaluate_sample, match,
         LABELS, SHORT, LLM_DIR, MANUAL_DIR, NO_MATCH,
@@ -17,15 +17,15 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-from .core import config as _config
-from .prompts import LABELS
-from .utils import get_logger, setup_logging
+from ..core import config as _config
+from ..prompts import LABELS
+from ..utils import get_logger, setup_logging
 
 logger = get_logger(__name__)
 
 SHORT = ["title", "sec.title", "sec.desc", "q.text", "ans.text"]
 
-_ROOT      = Path(__file__).parent.parent
+_ROOT      = Path(__file__).parent.parent.parent
 MANUAL_DIR = _ROOT / "data/manuallabeled"
 LLM_DIR    = _ROOT / "data/llmlabeled"
 

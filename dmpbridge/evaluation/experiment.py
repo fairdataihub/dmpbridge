@@ -10,7 +10,7 @@ every sample PDF, saves the results, and optionally evaluates them.
 
 Usage — Python API
 ------------------
-    from dmpbridge.experiment import Experiment, ExperimentConfig
+    from dmpbridge.evaluation.experiment import Experiment, ExperimentConfig
 
     exp    = Experiment.from_yaml("experiments/claude-opus-4-8-batch.yaml")
     paths  = exp.run()                 # classify + save JSON for each sample
@@ -32,12 +32,12 @@ from pathlib import Path
 
 import yaml
 
-from .utils import get_logger, setup_logging
+from ..utils import get_logger, setup_logging
 
 logger = get_logger(__name__)
 
 # Default experiments directory (project root / experiments/)
-EXPERIMENTS_DIR = Path(__file__).parent.parent / "experiments"
+EXPERIMENTS_DIR = Path(__file__).parent.parent.parent / "experiments"
 
 
 # ── Config ────────────────────────────────────────────────────────────────────
@@ -172,7 +172,7 @@ class Experiment:
 
     def _get_strategy(self):
         if self._strategy is None:
-            from .strategies import get_strategy
+            from ..strategies import get_strategy
             cfg = self.config
             kwargs: dict = {"provider": cfg.provider, "model": cfg.model, "host": cfg.host}
             if cfg.strategy == "batch":
@@ -228,7 +228,7 @@ class Experiment:
         return outputs
 
     def evaluate(self):
-        """Evaluate results against manual labels using :func:`~dmpbridge.evaluate.load_method`.
+        """Evaluate results against manual labels using :func:`~dmpbridge.evaluation.evaluate.load_method`.
 
         Returns
         -------

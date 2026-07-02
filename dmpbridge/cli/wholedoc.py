@@ -13,9 +13,9 @@ import argparse
 import json
 from pathlib import Path
 
-from .core import config
-from .strategies.wholedoc import WholeDocStrategy
-from .utils import get_logger, setup_logging
+from ..core import config
+from ..strategies.wholedoc import WholeDocStrategy
+from ..utils import get_logger, setup_logging
 
 logger = get_logger(__name__)
 
