@@ -1,28 +1,37 @@
-"""Vision-batch strategy — pdfplumber extraction + page image sent to Claude.
+"""Vision-batch strategy — pdfplumber extraction + page image sent to a vision LLM.
 
 For each page:
   1. Extract text blocks with pdfplumber (text, position, font metadata).
-  2. Render the page as a PNG image (base64-encoded).
-  3. Send both the image and the block list to Claude in a single multimodal call.
+  2. Render the page as a PNG image (base64-encoded, saved to disk).
+  3. Send both the image and the block list to the model in a single multimodal call.
 
-Claude uses the visual layout (font sizes, spacing, bold/italic rendering) alongside
+The model uses the visual layout (font sizes, spacing, bold/italic rendering) alongside
 the structured text to classify each block.  This gives more context than text alone
 without the paragraph-level coarseness of the pdf-direct strategy.
 
-Only the Anthropic provider is supported because this strategy relies on Claude's
-vision capability.
+Supported providers
+-------------------
+- ``"anthropic"`` — Claude vision models (e.g. ``claude-opus-4-8``)
+- ``"ollama"``    — Local Ollama vision models (e.g. ``qwen2-vl:7b``, ``llama3.2-vision:11b``)
 
 Example
 -------
     from pathlib import Path
     from dmpbridge.strategies.vision_batch import VisionBatchStrategy
 
-    strategy = VisionBatchStrategy(model="claude-opus-4-8")
+    # Anthropic
+    strategy = VisionBatchStrategy(model="claude-opus-4-8", provider="anthropic")
+    blocks   = strategy.run(Path("document.pdf"))
+
+    # Ollama (local)
+    strategy = VisionBatchStrategy(model="qwen2-vl:7b", provider="ollama")
     blocks   = strategy.run(Path("document.pdf"))
 """
 import base64
 import json
 from pathlib import Path
+
+import requests as _requests
 
 from ..core import config
 from ..parsers import parse_llm_json
@@ -49,7 +58,17 @@ def _file_to_b64(path: Path) -> str:
     return base64.standard_b64encode(path.read_bytes()).decode("utf-8")
 
 
-def _classify_page(
+def _build_prompt(page_num: int, payload: list[dict]) -> str:
+    return _PAGE_PROMPT_TEMPLATE.format(
+        page_num=page_num,
+        n=len(payload),
+        payload=json.dumps(payload, ensure_ascii=False),
+    )
+
+
+# ── Anthropic path ────────────────────────────────────────────────────────────
+
+def _classify_page_anthropic(
     client,
     model: str,
     page_num: int,
@@ -57,35 +76,26 @@ def _classify_page(
     payload: list[dict],
     max_tokens: int,
 ) -> list[dict]:
-    """Send one page image + block list to Claude and return the parsed labels."""
-    prompt_text = _PAGE_PROMPT_TEMPLATE.format(
-        page_num=page_num,
-        n=len(payload),
-        payload=json.dumps(payload, ensure_ascii=False),
-    )
-
+    """Send one page to Claude (Anthropic API) and return the parsed labels."""
     response = client.messages.create(
         model=model,
         max_tokens=max_tokens,
         system=SYSTEM_PROMPT,
-        messages=[
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "image",
-                        "source": {
-                            "type":       "base64",
-                            "media_type": "image/png",
-                            "data":       page_b64,
-                        },
+        messages=[{
+            "role": "user",
+            "content": [
+                {
+                    "type": "image",
+                    "source": {
+                        "type":       "base64",
+                        "media_type": "image/png",
+                        "data":       page_b64,
                     },
-                    {"type": "text", "text": prompt_text},
-                ],
-            }
-        ],
+                },
+                {"type": "text", "text": _build_prompt(page_num, payload)},
+            ],
+        }],
     )
-
     raw = response.content[0].text if response.content else ""
     logger.info(
         "  page %d — in=%s  out=%s",
@@ -96,63 +106,122 @@ def _classify_page(
     return parse_llm_json(raw, label=f"page={page_num}")
 
 
+# ── Ollama path ───────────────────────────────────────────────────────────────
+
+def _classify_page_ollama(
+    host: str,
+    model: str,
+    page_num: int,
+    page_b64: str,
+    payload: list[dict],
+) -> list[dict]:
+    """Send one page to an Ollama vision model and return the parsed labels."""
+    resp = _requests.post(
+        f"{host}/api/generate",
+        json={
+            "model":   model,
+            "system":  SYSTEM_PROMPT,
+            "prompt":  _build_prompt(page_num, payload),
+            "images":  [page_b64],
+            "stream":  False,
+            "options": {"temperature": 0.0},
+        },
+        timeout=600,
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    raw  = data.get("response", "")
+    logger.info(
+        "  page %d — in=%s  out=%s",
+        page_num,
+        data.get("prompt_eval_count", "?"),
+        data.get("eval_count", "?"),
+    )
+    return parse_llm_json(raw, label=f"page={page_num}")
+
+
+# ── Strategy class ────────────────────────────────────────────────────────────
+
 class VisionBatchStrategy:
     """Extract blocks with pdfplumber, classify page-by-page with image context.
 
-    Each page is rendered as a PNG and sent to Claude alongside the text blocks
-    extracted from that page.  Claude uses the visual layout to classify each block.
+    Each page is rendered as a PNG (saved to disk for reuse) and sent to the
+    model alongside the text blocks extracted from that page.
 
     Parameters
     ----------
     model:
-        Anthropic model that supports vision (e.g. ``"claude-opus-4-8"``).
+        Vision-capable model identifier.
+        Anthropic: ``"claude-opus-4-8"``.
+        Ollama: ``"qwen2-vl:7b"``, ``"llama3.2-vision:11b"``, etc.
+    provider:
+        ``"anthropic"`` or ``"ollama"``.  Defaults to ``"anthropic"``.
+    host:
+        Ollama base URL.  Only used when ``provider="ollama"``.
+        Defaults to ``"http://localhost:11434"``.
     api_key:
-        Anthropic API key — falls back to ``config.ANTHROPIC_API_KEY``.
+        Anthropic API key.  Only used when ``provider="anthropic"``.
+        Falls back to ``config.ANTHROPIC_API_KEY``.
     images_dir:
-        Root directory where page PNGs are saved, organised as
+        Root directory where page PNGs are saved as
         ``{images_dir}/{pdf_stem}/page_001.png``.
-        Defaults to ``data/output/page_images``.
-        Pages already on disk are reused — rendering only runs once per PDF
-        regardless of how many models or experiments consume the images.
+        Pages already on disk are reused across experiments.
     resolution:
         DPI for page image rendering (default: 150).
     max_tokens:
-        Maximum response tokens per page call (default: 4096).
+        Max response tokens per page call — Anthropic only (default: 4096).
     """
 
     def __init__(
         self,
         model:      str = "claude-opus-4-8",
+        provider:   str = "anthropic",
+        host:       str = "http://localhost:11434",
         api_key:    str | None = None,
         images_dir: str | Path = "data/output/page_images",
         resolution: int = 150,
         max_tokens: int = 4096,
     ) -> None:
-        _key = api_key or config.ANTHROPIC_API_KEY
-        if not _key:
+        if provider not in ("anthropic", "ollama"):
             raise ConfigurationError(
-                "VisionBatchStrategy requires ANTHROPIC_API_KEY to be set."
+                f"vision_batch only supports provider='anthropic' or 'ollama', got {provider!r}."
             )
-        try:
-            import anthropic
-        except ImportError:
-            raise ImportError(
-                "The anthropic package is not installed.\n"
-                "Install it with:  pip install anthropic"
-            )
-        self.model       = model
-        self.images_dir  = Path(images_dir)
-        self.resolution  = resolution
-        self.max_tokens  = max_tokens
-        self._client     = anthropic.Anthropic(api_key=_key)
+
+        self.model      = model
+        self.provider   = provider
+        self.images_dir = Path(images_dir)
+        self.resolution = resolution
+        self.max_tokens = max_tokens
+
+        if provider == "anthropic":
+            _key = api_key or config.ANTHROPIC_API_KEY
+            if not _key:
+                raise ConfigurationError(
+                    "VisionBatchStrategy with provider='anthropic' requires ANTHROPIC_API_KEY."
+                )
+            try:
+                import anthropic
+            except ImportError:
+                raise ImportError(
+                    "anthropic package not installed — run: pip install anthropic"
+                )
+            self._client = anthropic.Anthropic(api_key=_key)
+            self._host   = None
+        else:
+            self._client = None
+            self._host   = host.rstrip("/")
+            # Verify Ollama is reachable and the model is available
+            try:
+                _requests.get(f"{self._host}/api/tags", timeout=5).raise_for_status()
+            except _requests.exceptions.RequestException as exc:
+                raise ConfigurationError(
+                    f"Ollama not reachable at {self._host}.\n"
+                    f"Start Ollama, then run:  ollama pull {model}\n"
+                    f"Details: {exc}"
+                ) from exc
 
     def run(self, pdf_path: Path) -> list[dict]:
-        """Extract and classify all blocks in *pdf_path* using page images.
-
-        1. Extract all text blocks from the PDF via pdfplumber.
-        2. For each page, render a PNG and call Claude with image + blocks.
-        3. Merge predicted labels back into the block list.
-        """
+        """Extract and classify all blocks in *pdf_path* using page images."""
         logger.info("[vision_batch] extracting from %s …", pdf_path.name)
         blocks = extract_blocks(pdf_path)
         if not blocks:
@@ -162,13 +231,12 @@ class VisionBatchStrategy:
         result = [dict(b) for b in blocks]
         pages  = sorted(set(b["page"] for b in result))
 
-        # Render pages to disk once; subsequent runs (and other models) reuse them.
         img_dir   = self.images_dir / pdf_path.stem
         page_imgs = render_pages(pdf_path, img_dir, resolution=self.resolution)
 
         logger.info(
-            "[vision_batch] %d blocks across %d pages — model=%s  images=%s",
-            len(result), len(pages), self.model, img_dir,
+            "[vision_batch] %d blocks across %d pages — model=%s  provider=%s  images=%s",
+            len(result), len(pages), self.model, self.provider, img_dir,
         )
 
         for page_num in pages:
@@ -189,10 +257,17 @@ class VisionBatchStrategy:
             ]
 
             logger.info("  page %d — %d blocks", page_num, len(page_blocks))
-            parsed = _classify_page(
-                self._client, self.model, page_num,
-                img_b64, payload, self.max_tokens,
-            )
+
+            if self.provider == "anthropic":
+                parsed = _classify_page_anthropic(
+                    self._client, self.model, page_num,
+                    img_b64, payload, self.max_tokens,
+                )
+            else:
+                parsed = _classify_page_ollama(
+                    self._host, self.model, page_num,
+                    img_b64, payload,
+                )
 
             for entry in parsed:
                 local_idx = entry.get("id")

@@ -1,0 +1,8 @@
+name: Qwen2.5-VL 7B — Vision Batch
+strategy: vision_batch
+model: qwen2.5vl:7b
+provider: ollama
+pdf_dir: data/input/pdfs
+out_dir: data/output/labeled
+sample_start: 1
+sample_end: 10

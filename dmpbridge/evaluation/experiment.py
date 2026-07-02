@@ -176,7 +176,7 @@ class Experiment:
             from ..strategies import get_strategy
             cfg = self.config
             kwargs: dict = {"provider": cfg.provider, "model": cfg.model, "host": cfg.host}
-            if cfg.strategy in ("batch", "vision_batch"):
+            if cfg.strategy == "batch":
                 kwargs["batch_size"]   = cfg.batch_size
                 kwargs["context_size"] = cfg.context_size
             self._strategy = get_strategy(cfg.strategy, **kwargs)
