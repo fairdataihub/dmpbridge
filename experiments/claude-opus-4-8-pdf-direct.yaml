@@ -1,0 +1,11 @@
+name: Claude Opus 4.8 — PDF Direct (Option A)
+strategy: pdf_direct
+model: claude-opus-4-8
+provider: anthropic
+prompt: default
+batch_size: 10
+context_size: 3
+pdf_dir: data/pdfsamples
+out_dir: data/llmlabeled
+sample_start: 1
+sample_end: 10

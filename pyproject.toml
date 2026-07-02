@@ -19,6 +19,7 @@ dependencies = [
     "fastapi>=0.115",
     "uvicorn>=0.34",
     "python-multipart>=0.0.20",
+    "pyyaml>=6.0",
 ]
 
 [project.optional-dependencies]
@@ -29,10 +30,11 @@ notebooks = [
 ]
 
 [project.scripts]
-dmpbridge          = "dmpbridge.cli:main"
-dmpbridge-wholedoc = "dmpbridge.runner:main"
-dmpbridge-evaluate = "dmpbridge.evaluate:main"
-dmpbridge-pdf      = "dmpbridge.pdf_direct:main"
+dmpbridge            = "dmpbridge.cli:main"
+dmpbridge-wholedoc   = "dmpbridge.runner:main"
+dmpbridge-evaluate   = "dmpbridge.evaluate:main"
+dmpbridge-pdf        = "dmpbridge.pdf_direct:main"
+dmpbridge-experiment = "dmpbridge.experiment:main"
 
 [tool.setuptools.packages.find]
 include = ["dmpbridge*"]
