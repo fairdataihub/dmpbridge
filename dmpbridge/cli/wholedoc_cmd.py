@@ -46,13 +46,13 @@ def main() -> None:
     )
 
     tag     = f"{args.model.replace(':', '-')}_whole_doc"
-    out_dir = args.out_dir
+    out_dir = args.out_dir / tag
     out_dir.mkdir(parents=True, exist_ok=True)
 
     for i in range(args.start, args.end + 1):
         label    = f"[sample{i}]"
         pdf_path = args.pdf_dir / f"sample{i}.pdf"
-        out_path = out_dir / f"sample{i}_{tag}.json"
+        out_path = out_dir / f"sample{i}.json"
 
         if out_path.exists():
             logger.info("%s already exists — skipping", label)

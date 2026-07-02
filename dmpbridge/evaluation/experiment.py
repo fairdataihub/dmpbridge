@@ -196,7 +196,7 @@ class Experiment:
         """
         strategy = self._get_strategy()
         cfg      = self.config
-        out_dir  = Path(cfg.out_dir)
+        out_dir  = Path(cfg.out_dir) / cfg.tag
         out_dir.mkdir(parents=True, exist_ok=True)
 
         outputs: list[Path] = []
@@ -204,7 +204,7 @@ class Experiment:
         for i in cfg.sample_range:
             label    = f"[sample{i}]"
             pdf_path = Path(cfg.pdf_dir) / f"sample{i}.pdf"
-            out_path = out_dir / f"sample{i}_{cfg.tag}.json"
+            out_path = out_dir / f"sample{i}.json"
 
             if out_path.exists():
                 logger.info("%s already exists — skipping", label)

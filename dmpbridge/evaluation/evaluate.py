@@ -30,7 +30,7 @@ MANUAL_DIR = _ROOT / "data/input/ground_truth"
 LLM_DIR    = _ROOT / "data/output/labeled"
 
 MODEL_TAG  = _config.MODEL.replace(":", "-").replace("/", "-")
-LLM_SUFFIX = f"_{MODEL_TAG}_batch"
+LLM_SUFFIX = f"{MODEL_TAG}_batch"
 
 
 # ── Text helpers ──────────────────────────────────────────────────────────────
@@ -195,7 +195,7 @@ def _snum(path: Path) -> int:
 def load_method(tag: str):
     """Load and evaluate all samples for a given file tag.
 
-    Files follow the pattern: ``data/llmlabeled/sampleN_{tag}.json``
+    Files follow the pattern: ``data/output/labeled/{tag}/sampleN.json``
 
     Returns
     -------
@@ -207,7 +207,7 @@ def load_method(tag: str):
 
     samples = sorted(MANUAL_DIR.glob("*_dmp.json"), key=_snum)
     found   = [mp for mp in samples
-               if (LLM_DIR / f"{mp.stem.replace('_dmp', '')}_{tag}.json").exists()]
+               if (LLM_DIR / tag / f"{mp.stem.replace('_dmp', '')}.json").exists()]
     if not found:
         return None, None, None
 
@@ -216,7 +216,7 @@ def load_method(tag: str):
 
     for mp in samples:
         stem = mp.stem.replace("_dmp", "")
-        pp   = LLM_DIR / f"{stem}_{tag}.json"
+        pp   = LLM_DIR / tag / f"{stem}.json"
         if not pp.exists():
             continue
         gold   = extract_gold(mp)
@@ -357,7 +357,7 @@ def run_all() -> None:
 
     for manual_path in samples:
         stem      = manual_path.stem.replace("_dmp", "")
-        pred_path = LLM_DIR / f"{stem}{LLM_SUFFIX}.json"
+        pred_path = LLM_DIR / LLM_SUFFIX / f"{stem}.json"
         if not pred_path.exists():
             logger.warning("SKIP %s — no %s", stem, pred_path.name)
             continue
