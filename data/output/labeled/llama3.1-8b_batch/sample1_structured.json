@@ -30,7 +30,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library\nRepository sitting behavior metrics or analysis that were created in this project from the following UCSD-\nbased study datasets:\n(i) The RISE study\n(ii) The iWATCH study\n(iii) NHANES cohorts\nSufficient data from those datasets will be preserved to enable sharing to validate and replicate research\nfindings described in the Aims with those datasets only. Please see Element 5 for data access information\nabout other studies.",
+                  "answer": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library\nRepository sitting behavior metrics or analysis that were created in this project from the following UCSD-\nbased study datasets:\n(i) The RISE study\n(ii) The iWATCH study\n(iii) NHANES cohorts\nSufficient data from those datasets will be preserved to enable sharing to validate and replicate research\nfindings described in the Aims with those datasets only. Please see Element 5 for data access information",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -38,8 +38,28 @@
               }
             },
             {
-              "text": "C. Metadata, other relevant data, and associated documentation:",
+              "text": "about other studies.",
               "order": 3,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "C. Metadata, other relevant data, and associated documentation:",
+          "description": "",
+          "order": 2,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -55,7 +75,7 @@
         {
           "title": "Element 2: Related Tools, Software and/or Code:",
           "description": "",
-          "order": 2,
+          "order": 3,
           "question": [
             {
               "text": "",
@@ -75,7 +95,7 @@
         {
           "title": "Element 3: Standards:",
           "description": "",
-          "order": 3,
+          "order": 4,
           "question": [
             {
               "text": "The following data will be created as a result of this project:",
@@ -95,7 +115,7 @@
         {
           "title": "Element 4: Data Preservation, Access, and Associated Timelines:",
           "description": "",
-          "order": 4,
+          "order": 5,
           "question": [
             {
               "text": "A. Repository where scientific data and metadata will be archived:",
@@ -141,7 +161,7 @@
         {
           "title": "Element 5: Access, Distribution, or Reuse Considerations:",
           "description": "",
-          "order": 5,
+          "order": 6,
           "question": [
             {
               "text": "A. Factors affecting subsequent access, distribution, or reuse of scientific data:",
@@ -149,7 +169,112 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The following studies have independent data use agreement & approved paper proposal processes for use\nof their data that are specific to each institution that collected the data: (i) the SOL-VIDA Study, (ii) the\nMOCA Study, (iii) the PHASE Study, (iv) the AusDiab Study, (v) the ACT Study, and (vi) the WHISH\naccelerometer sub-study such as data use agreements or approved publication proposals. We will be\nsecuring the appropriate approvals from each institution to use their data for purposes of this study\nincluding publications, but are unable to publicly share their data in our study data repository Researchers\nwho wish to use data from those studies will need to follow those studies data use protocols to inquire\nabout using their data:\n(i) the SOL-VIDA Study – Data requests may be made by following instructions on the Hispanic Community\nHealth Study/ Study of Latinos dbGap page.\n(ii) the MOCA Study – Data requests may be made by following MOCA Study policies\n(iii) the PHASE Study – Data requests may be made by following PHASE Study policies\n(iv) the AusDiab Study – Data may be requested by following AusDiab policies available from the AusDiab\nstudy website, hosted by the Baker Heart & Diabetes Institute.\n(v) the ACT Study - Data are managed and stored in the ACT Data Repository and sharing requests may\nbe made according to the policies and procedures available on the “Work With Us” page of the Adult\nChanges in Thought Study website.\n(vi) the WHISH accelerometer sub-study – Data are managed by the Women’s Health Initiative\nCoordinating Center. Requests may be made according to policies and procedures available on the\n“Working with WHI Data” page on the WHI study website.",
+                  "answer": "The following studies have independent data use agreement & approved paper proposal processes for use\nof their data that are specific to each institution that collected the data: (i) the SOL-VIDA Study, (ii) the\nMOCA Study, (iii) the PHASE Study, (iv) the AusDiab Study, (v) the ACT Study, and (vi) the WHISH\naccelerometer sub-study such as data use agreements or approved publication proposals. We will be\nsecuring the appropriate approvals from each institution to use their data for purposes of this study\nincluding publications, but are unable to publicly share their data in our study data repository Researchers\nwho wish to use data from those studies will need to follow those studies data use protocols to inquire",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            },
+            {
+              "text": "about using their data:",
+              "order": 2,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "(i) the SOL-VIDA Study – Data requests may be made by following instructions on the Hispanic Community",
+          "description": "",
+          "order": 7,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Health Study/ of Latinos dbGap page.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "(ii) the MOCA Study – Data requests may be made by following MOCA Study policies",
+          "description": "",
+          "order": 8,
+          "question": []
+        },
+        {
+          "title": "(iii) the PHASE Study – Data requests may be made by following PHASE Study policies",
+          "description": "",
+          "order": 9,
+          "question": []
+        },
+        {
+          "title": "(iv) the AusDiab Study – Data may be requested by following AusDiab policies available from the AusDiab",
+          "description": "",
+          "order": 10,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "study website, hosted by the Baker Heart & Diabetes Institute.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "(v) the ACT Study - Data are managed and stored in the ACT Data Repository and sharing requests may",
+          "description": "",
+          "order": 11,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "be made according to the policies and procedures available on the “Work With Us” page of the Adult\nChanges in Thought Study website.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "(vi) the WHISH accelerometer sub-study – Data are managed by the Women’s Health Initiative",
+          "description": "",
+          "order": 12,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Coordinating Center. Requests may be made according to policies and procedures available on the\n“Working with WHI Data” page on the WHI study website.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -174,7 +299,7 @@
         {
           "title": "Protections for privacy, rights, and confidentiality of human research participants:",
           "description": "",
-          "order": 6,
+          "order": 13,
           "question": [
             {
               "text": "",
@@ -194,7 +319,7 @@
         {
           "title": "Element 6: Oversight of Data Management and Sharing:",
           "description": "",
-          "order": 7,
+          "order": 14,
           "question": [
             {
               "text": "",
@@ -202,7 +327,20 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The\nPI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to\nensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once\nthe main outcome manuscript has been published. The Statistician/Data Manager will work closely with the\nUniversity of California San Diego Library repository manager to ensure that the datasets, protocols, and\ncode are correctly stored and available for sharing.",
+                  "answer": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The\nPI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            },
+            {
+              "text": "ensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once",
+              "order": 2,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "the main outcome manuscript has been published. The Statistician/Data Manager will work closely with the\nUniversity of California San Diego Library repository manager to ensure that the datasets, protocols, and\ncode are correctly stored and available for sharing.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
