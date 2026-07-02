@@ -1,17 +1,24 @@
-"""Shared helpers for whole-document inference scripts."""
+"""Shared helpers for whole-document inference.
+
+These utilities are used by :class:`~dmpbridge.strategies.wholedoc.WholeDocStrategy`
+to convert extracted blocks into the API payload format, parse model responses,
+and merge predicted labels back into the block list.
+"""
 import json
 from pathlib import Path
-from typing import Callable
 
-from .extractor import extract_blocks
 from .logging_setup import get_logger
-from .prompt import LABELS, build_wholedoc_prompt
+from .prompt import LABELS
 
 logger = get_logger(__name__)
 
 
 def build_payload(blocks: list[dict]) -> list[dict]:
-    """Convert extracted blocks into the API payload format."""
+    """Convert extracted blocks into the model payload format.
+
+    Adds a numeric ``id`` field and surfaces ``bold`` / ``italic`` flags so the
+    model can use visual cues when assigning labels.
+    """
     return [
         {
             "id":     j,
@@ -25,10 +32,9 @@ def build_payload(blocks: list[dict]) -> list[dict]:
 
 
 def parse_response(raw: str, label: str = "") -> list[dict]:
-    """Parse the model's JSON response.
+    """Parse the model's JSON response into a list of ``{id, label}`` dicts.
 
-    Handles markdown code fences (Claude sometimes wraps output in ```json blocks)
-    and dict-wrapped arrays (model returns {"blocks": [...]} instead of [...]).
+    Handles markdown code fences and dict-wrapped arrays gracefully.
     Returns an empty list on parse failure.
     """
     cleaned = raw.strip()
@@ -48,8 +54,8 @@ def parse_response(raw: str, label: str = "") -> list[dict]:
 def apply_labels(blocks: list[dict], parsed: list[dict]) -> list[dict]:
     """Merge model predictions back into the extracted block list.
 
-    Predictions are matched by the numeric id field assigned in build_payload.
-    Any block with no prediction or an invalid label defaults to 'answer.text'.
+    Predictions are matched by the numeric ``id`` set in :func:`build_payload`.
+    Blocks with no prediction or an invalid label default to ``answer.text``.
     """
     result = [dict(b) for b in blocks]
     for entry in parsed:
@@ -61,46 +67,3 @@ def apply_labels(blocks: list[dict], parsed: list[dict]) -> list[dict]:
         if not b.get("label"):
             b["label"] = "answer.text"
     return result
-
-
-def run_samples(
-    pdf_dir: Path,
-    out_dir: Path,
-    classify_fn: Callable,
-    tag: str,
-    sample_range: range = range(1, 11),
-) -> None:
-    """Run whole-document inference for each sample index in sample_range.
-
-    Parameters
-    ----------
-    classify_fn : callable
-        Provider-specific function with signature:
-        ``classify_fn(blocks, payload, prompt, label) -> list[dict]``
-        Called once per sample; returns the list of parsed prediction entries.
-    tag : str
-        Output filename suffix: ``out_dir/sample{N}_{tag}.json``
-    sample_range : range
-        Indices to process (default ``range(1, 11)`` = samples 1–10).
-    """
-    for i in sample_range:
-        label    = f"[sample{i}]"
-        pdf_path = pdf_dir / f"sample{i}.pdf"
-        out_path = out_dir / f"sample{i}_{tag}.json"
-
-        if out_path.exists():
-            logger.info("%s already exists — skipping", label)
-            continue
-
-        logger.info("%s extracting blocks from %s …", label, pdf_path.name)
-        blocks  = extract_blocks(pdf_path)
-        payload = build_payload(blocks)
-        prompt  = build_wholedoc_prompt(payload)
-
-        parsed = classify_fn(blocks, payload, prompt, label)
-        result = apply_labels(blocks, parsed)
-
-        out_path.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
-        logger.info("%s saved → %s", label, out_path.name)
-
-    logger.info("Done.")

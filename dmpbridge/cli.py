@@ -125,12 +125,13 @@ def main() -> None:
             else output.with_name(output.stem + "_structured.json")
         )
 
+    from .strategies.batch import BatchStrategy
+    strategy = BatchStrategy(provider=args.provider, model=args.model, host=args.host)
+
     try:
         blocks = process_pdf(
             pdf_path,
-            provider=args.provider,
-            model=args.model,
-            host=args.host,
+            strategy=strategy,
             output=output,
             structured_output=structured_output,
             raw_dir=raw_dir,

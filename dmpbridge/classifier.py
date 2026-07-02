@@ -25,11 +25,7 @@ _OUTPUT_SCHEMA = OUTPUT_SCHEMA
 
 # How many blocks to send to the LLM in one request.
 # Larger batches are faster but risk hitting the model's context window limit.
-BATCH_SIZE = config.BATCH_SIZE
-
-# How many already-labeled blocks to include as context before each new batch.
-# This helps the model maintain continuity — e.g., if the last labeled block
-# was a section.title, the model can correctly infer what comes next.
+BATCH_SIZE   = config.BATCH_SIZE
 CONTEXT_SIZE = 3
 
 
@@ -38,19 +34,27 @@ CONTEXT_SIZE = 3
 class BaseClassifier:
     """Shared batching and context-window logic. Subclasses only implement _classify_batch."""
 
+    def __init__(
+        self,
+        batch_size:   int = BATCH_SIZE,
+        context_size: int = CONTEXT_SIZE,
+    ) -> None:
+        self.batch_size   = batch_size
+        self.context_size = context_size
+
     def classify_blocks(self, blocks: list[dict]) -> list[dict]:
         """Classify all blocks in document order, in batches, with sliding context.
 
         1. Copy the original blocks.
-        2. Process in batches of BATCH_SIZE.
-        3. For each batch, pass the last 3 labeled blocks as context.
+        2. Process in batches of self.batch_size.
+        3. For each batch, pass the last context_size labeled blocks as context.
         4. Update the result with labels returned by the provider.
         """
         result = [dict(b) for b in blocks]
 
-        for start in range(0, len(result), BATCH_SIZE):
-            batch   = result[start : start + BATCH_SIZE]
-            context = result[max(0, start - CONTEXT_SIZE) : start]
+        for start in range(0, len(result), self.batch_size):
+            batch   = result[start : start + self.batch_size]
+            context = result[max(0, start - self.context_size) : start]
 
             logger.info("  Classifying blocks %d–%d …", start, start + len(batch) - 1)
             labels = self._classify_batch(batch, offset=start, context=context)
@@ -115,7 +119,14 @@ class BaseClassifier:
 class OllamaClassifier(BaseClassifier):
     """Classifies blocks using a locally running Ollama model."""
 
-    def __init__(self, model: str = config.MODEL, host: str = config.HOST):
+    def __init__(
+        self,
+        model:        str = config.MODEL,
+        host:         str = config.HOST,
+        batch_size:   int = BATCH_SIZE,
+        context_size: int = CONTEXT_SIZE,
+    ) -> None:
+        super().__init__(batch_size=batch_size, context_size=context_size)
         self.model = model
         self.host  = host.rstrip("/")
         self._verify_connection()
@@ -161,7 +172,13 @@ class OllamaClassifier(BaseClassifier):
 class OpenAIClassifier(BaseClassifier):
     """Classifies blocks using the OpenAI API (GPT-4o, GPT-4o-mini, etc.)."""
 
-    def __init__(self, model: str = "gpt-4o"):
+    def __init__(
+        self,
+        model:        str = "gpt-4o",
+        batch_size:   int = BATCH_SIZE,
+        context_size: int = CONTEXT_SIZE,
+    ) -> None:
+        super().__init__(batch_size=batch_size, context_size=context_size)
         try:
             import openai as _openai
         except ImportError:
@@ -204,7 +221,13 @@ class OpenAIClassifier(BaseClassifier):
 class AnthropicClassifier(BaseClassifier):
     """Classifies blocks using the Anthropic API (Claude models)."""
 
-    def __init__(self, model: str = "claude-sonnet-4-6"):
+    def __init__(
+        self,
+        model:        str = "claude-sonnet-4-6",
+        batch_size:   int = BATCH_SIZE,
+        context_size: int = CONTEXT_SIZE,
+    ) -> None:
+        super().__init__(batch_size=batch_size, context_size=context_size)
         try:
             import anthropic as _anthropic
         except ImportError:
@@ -241,7 +264,13 @@ class AnthropicClassifier(BaseClassifier):
 class GeminiClassifier(BaseClassifier):
     """Classifies blocks using the Google Gemini API."""
 
-    def __init__(self, model: str = "gemini-2.0-flash"):
+    def __init__(
+        self,
+        model:        str = "gemini-2.0-flash",
+        batch_size:   int = BATCH_SIZE,
+        context_size: int = CONTEXT_SIZE,
+    ) -> None:
+        super().__init__(batch_size=batch_size, context_size=context_size)
         try:
             import google.generativeai as _genai
         except ImportError:
@@ -282,22 +311,28 @@ class GeminiClassifier(BaseClassifier):
 # ── Factory ───────────────────────────────────────────────────────────────────
 
 def get_classifier(
-    provider: str | None = None,
-    model:    str | None = None,
-    host:     str | None = None,
+    provider:     str | None = None,
+    model:        str | None = None,
+    host:         str | None = None,
+    batch_size:   int = BATCH_SIZE,
+    context_size: int = CONTEXT_SIZE,
 ) -> BaseClassifier:
     """Return the right classifier for the given provider. Falls back to config defaults."""
     provider = (provider or config.PROVIDER).lower()
     model    = model or config.MODEL
 
     if provider == "ollama":
-        return OllamaClassifier(model=model, host=host or config.HOST)
+        return OllamaClassifier(model=model, host=host or config.HOST,
+                                batch_size=batch_size, context_size=context_size)
     if provider == "openai":
-        return OpenAIClassifier(model=model)
+        return OpenAIClassifier(model=model,
+                                batch_size=batch_size, context_size=context_size)
     if provider == "anthropic":
-        return AnthropicClassifier(model=model)
+        return AnthropicClassifier(model=model,
+                                   batch_size=batch_size, context_size=context_size)
     if provider == "gemini":
-        return GeminiClassifier(model=model)
+        return GeminiClassifier(model=model,
+                                batch_size=batch_size, context_size=context_size)
 
     raise ConfigurationError(
         "Unknown provider: %r. Choose from: ollama, openai, anthropic, gemini" % provider
