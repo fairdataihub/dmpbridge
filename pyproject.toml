@@ -33,8 +33,8 @@ notebooks = [
 ]
 
 [project.scripts]
-dmpbridge            = "dmpbridge.cli.batch:main"
-dmpbridge-wholedoc   = "dmpbridge.cli.wholedoc:main"
+dmpbridge            = "dmpbridge.cli.main:main"
+dmpbridge-wholedoc   = "dmpbridge.cli.wholedoc_cmd:main"
 dmpbridge-evaluate   = "dmpbridge.evaluation.evaluate:main"
 dmpbridge-pdf        = "dmpbridge.strategies.pdf_direct:main"
 dmpbridge-experiment = "dmpbridge.evaluation.experiment:main"
