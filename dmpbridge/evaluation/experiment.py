@@ -105,8 +105,9 @@ class ExperimentConfig:
             sample1_{tag}.json
         """
         _suffix = {
-            "batch":      "batch",
-            "wholedoc":   "whole_doc",
+            "batch":        "batch",
+            "wholedoc":     "whole_doc",
+            "vision_batch": "vision",
             "pdf_direct": "pdf",
         }
         suffix = _suffix.get(self.strategy, self.strategy)
@@ -175,7 +176,7 @@ class Experiment:
             from ..strategies import get_strategy
             cfg = self.config
             kwargs: dict = {"provider": cfg.provider, "model": cfg.model, "host": cfg.host}
-            if cfg.strategy == "batch":
+            if cfg.strategy in ("batch", "vision_batch"):
                 kwargs["batch_size"]   = cfg.batch_size
                 kwargs["context_size"] = cfg.context_size
             self._strategy = get_strategy(cfg.strategy, **kwargs)

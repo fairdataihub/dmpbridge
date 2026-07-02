@@ -1,7 +1,8 @@
-"""Render PDF pages as PNG images with colored bounding-box overlays.
+"""Render PDF pages as PNG images.
 
-Used by the viewer and for debugging — each labeled block gets a colored
-rectangle drawn over its position on the page.
+Two modes:
+- render_pages()      — clean page renders saved to disk; reusable across models.
+- save_page_images()  — pages with colored bounding-box overlays for the viewer.
 """
 from collections import defaultdict
 from pathlib import Path
@@ -65,6 +66,52 @@ def save_page_images(
 
             out = output_dir / f"page_{page_num:03d}.png"
             im.save(out)
+            saved.append(out)
+
+    return saved
+
+
+def render_pages(
+    pdf_path: Union[str, Path],
+    output_dir: Union[str, Path],
+    resolution: int = 150,
+) -> list[Path]:
+    """Render each PDF page as a plain PNG with no overlays and save to disk.
+
+    Pages that already exist on disk are skipped, so this is safe to call
+    repeatedly and across different model experiments.
+
+    Parameters
+    ----------
+    pdf_path:
+        Path to the source PDF.
+    output_dir:
+        Directory where page PNGs are written (``page_001.png``, ``page_002.png``, …).
+    resolution:
+        Render DPI (default 150 — good quality, reasonable file size).
+
+    Returns
+    -------
+    list[Path]
+        Paths of all page images (existing + newly rendered), in page order.
+    """
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    saved: list[Path] = []
+    with pdfplumber.open(pdf_path) as pdf:
+        for page_num, page in enumerate(pdf.pages, start=1):
+            out = output_dir / f"page_{page_num:03d}.png"
+            if not out.exists():
+                try:
+                    img = page.to_image(resolution=resolution)
+                except Exception as exc:
+                    raise ExtractionError(
+                        f"pdfplumber could not render page {page_num} of {Path(pdf_path).name}.\n"
+                        "Ensure Pillow is installed: pip install Pillow\n"
+                        f"Details: {exc}"
+                    ) from exc
+                img.original.save(out, format="PNG")
             saved.append(out)
 
     return saved

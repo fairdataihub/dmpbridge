@@ -7,9 +7,10 @@ other code.
 
 Available strategies
 --------------------
-BatchStrategy      — pdfplumber extraction → LLM called in sliding batches
-WholeDocStrategy   — pdfplumber extraction → single LLM call for the whole doc
-PdfDirectStrategy  — raw PDF bytes → single Claude document-API call
+BatchStrategy       — pdfplumber extraction → LLM called in sliding batches
+WholeDocStrategy    — pdfplumber extraction → single LLM call for the whole doc
+PdfDirectStrategy   — raw PDF bytes → single Claude document-API call
+VisionBatchStrategy — pdfplumber extraction + page PNG → Claude vision, page by page
 
 Usage
 -----
@@ -66,7 +67,7 @@ def get_strategy(
     Parameters
     ----------
     name:
-        ``"batch"`` | ``"wholedoc"`` | ``"pdf_direct"``
+        ``"batch"`` | ``"wholedoc"`` | ``"pdf_direct"`` | ``"vision_batch"``
     provider:
         LLM provider — ``"anthropic"`` | ``"ollama"`` | ``"openai"`` | ``"gemini"``.
         Falls back to ``config.PROVIDER`` when omitted.
@@ -104,8 +105,13 @@ def get_strategy(
         _key = api_key or _cfg.ANTHROPIC_API_KEY
         return PdfDirectStrategy(model=_model, api_key=_key)
 
+    if name == "vision_batch":
+        from .vision_batch import VisionBatchStrategy
+        _key = api_key or _cfg.ANTHROPIC_API_KEY
+        return VisionBatchStrategy(model=_model, api_key=_key)
+
     raise ValueError(
-        f"Unknown strategy {name!r}. Choose from: batch, wholedoc, pdf_direct"
+        f"Unknown strategy {name!r}. Choose from: batch, wholedoc, pdf_direct, vision_batch"
     )
 
 

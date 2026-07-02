@@ -5,10 +5,11 @@ Sub-modules
 pdfplumber_reader
     Line-level text extraction using pdfplumber.
 page_images
-    Render PDF pages as PNG images with labeled bounding-box overlays.
+    render_pages()     — clean page PNGs saved to disk; reusable across models.
+    save_page_images() — pages with colored bounding-box overlays for the viewer.
 """
-from .page_images import save_page_images
+from .page_images import render_pages, save_page_images
 from .pdfplumber_reader import extract_blocks
 from .text_cleaner import clean_blocks, clean_repeated_words
 
-__all__ = ["extract_blocks", "save_page_images", "clean_blocks", "clean_repeated_words"]
+__all__ = ["extract_blocks", "render_pages", "save_page_images", "clean_blocks", "clean_repeated_words"]
