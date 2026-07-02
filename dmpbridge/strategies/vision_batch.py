@@ -52,6 +52,27 @@ _PAGE_PROMPT_TEMPLATE = (
     "{payload}"
 )
 
+# Ollama-specific prompt: plainer format with a concrete output example to
+# prevent the model from echoing back the input instead of adding labels.
+_OLLAMA_PROMPT_TEMPLATE = (
+    "Page {page_num} of a Data Management Plan is shown in the image above.\n\n"
+    "Use the image to see font sizes, bold/italic formatting, and layout.\n\n"
+    "TASK: Assign exactly ONE label to each text block listed below.\n\n"
+    "VALID LABELS (use exactly as written):\n"
+    "  title               — the document's main title\n"
+    "  section.title       — a section or sub-section heading\n"
+    "  section.description — funder-provided context or instructions\n"
+    "  question.text       — a specific data management requirement item\n"
+    "  answer.text         — researcher's response or body text\n\n"
+    "TEXT BLOCKS:\n"
+    "{block_lines}\n\n"
+    "OUTPUT: Reply with ONLY a JSON array — one object per block with "
+    '"id" and "label". No other text.\n'
+    "Example format: "
+    '[{{"id": 0, "label": "title"}}, {{"id": 1, "label": "answer.text"}}]\n\n'
+    "Your answer:"
+)
+
 
 def _file_to_b64(path: Path) -> str:
     """Read a PNG file from disk and return its base64 encoding."""
@@ -63,6 +84,17 @@ def _build_prompt(page_num: int, payload: list[dict]) -> str:
         page_num=page_num,
         n=len(payload),
         payload=json.dumps(payload, ensure_ascii=False),
+    )
+
+
+def _build_ollama_prompt(page_num: int, payload: list[dict]) -> str:
+    lines = "\n".join(
+        f'  id={b["id"]}  bold={b["bold"]}  "{b["text"][:120]}"'
+        for b in payload
+    )
+    return _OLLAMA_PROMPT_TEMPLATE.format(
+        page_num=page_num,
+        block_lines=lines,
     )
 
 
@@ -108,6 +140,24 @@ def _classify_page_anthropic(
 
 # ── Ollama path ───────────────────────────────────────────────────────────────
 
+def _resize_b64_image(b64: str, max_px: int = 900) -> str:
+    """Resize a base64 PNG so its longest side is at most *max_px*.
+
+    Keeps the original file untouched; returns a new base64 string.
+    Smaller images are returned unchanged.
+    """
+    import io
+    from PIL import Image
+
+    data = base64.standard_b64decode(b64)
+    img  = Image.open(io.BytesIO(data)).convert("RGB")
+    if max(img.size) > max_px:
+        img.thumbnail((max_px, max_px), Image.LANCZOS)
+    buf = io.BytesIO()
+    img.save(buf, format="PNG", optimize=True)
+    return base64.standard_b64encode(buf.getvalue()).decode("utf-8")
+
+
 def _classify_page_ollama(
     host: str,
     model: str,
@@ -116,15 +166,19 @@ def _classify_page_ollama(
     payload: list[dict],
 ) -> list[dict]:
     """Send one page to an Ollama vision model and return the parsed labels."""
+    # Resize to ≤900 px — reduces visual tokens and avoids OOM on 7B models.
+    # The original 150 DPI file on disk stays untouched for Claude reuse.
+    small_b64 = _resize_b64_image(page_b64, max_px=900)
+
     resp = _requests.post(
         f"{host}/api/generate",
         json={
             "model":   model,
             "system":  SYSTEM_PROMPT,
-            "prompt":  _build_prompt(page_num, payload),
-            "images":  [page_b64],
+            "prompt":  _build_ollama_prompt(page_num, payload),
+            "images":  [small_b64],
             "stream":  False,
-            "options": {"temperature": 0.0},
+            "options": {"temperature": 0.0, "num_predict": 4096, "num_ctx": 8192},
         },
         timeout=600,
     )
