@@ -1,11 +1,11 @@
-"""Whole-document strategy — pdfplumber extraction + single LLM call.
+"""Whole-document strategy — pdfplumber extraction + single model call.
 
-Instead of processing blocks in batches, this strategy sends the entire document
-to the model in one request.  The model sees the full document at once, which
-improves structural continuity (e.g. it never loses track of which section it is
-inside) at the cost of higher token usage and longer latency.
+All blocks are sent to the model in one request so it sees the full document
+at once, improving structural continuity at the cost of higher token usage.
 
-Supports Anthropic and Ollama providers.
+Uses :class:`~dmpbridge.models.ModelBackend` for the model call and
+:func:`~dmpbridge.parsers.parse_llm_json` for response parsing — no
+strategy-specific closures or duplicated parsing logic.
 
 Example
 -------
@@ -19,13 +19,39 @@ from pathlib import Path
 
 from .. import config
 from ..exceptions import ConfigurationError
-from ..extractor import extract_blocks
 from ..logging_setup import get_logger
-from ..prompt import OUTPUT_SCHEMA, SYSTEM_PROMPT
-from ..wholedoc import apply_labels, build_payload, parse_response
-from ..prompt import build_wholedoc_prompt
+from ..models import get_model
+from ..parsers import parse_llm_json
+from ..preprocess import extract_blocks
+from ..prompt import LABELS, SYSTEM_PROMPT, build_wholedoc_prompt
 
 logger = get_logger(__name__)
+
+
+def _build_payload(blocks: list[dict]) -> list[dict]:
+    return [
+        {
+            "id":     j,
+            "text":   b["text"],
+            "bold":   b["is_bold"],
+            "italic": b.get("is_italic", False),
+            "page":   b["page"],
+        }
+        for j, b in enumerate(blocks)
+    ]
+
+
+def _apply_labels(blocks: list[dict], parsed: list[dict]) -> list[dict]:
+    result = [dict(b) for b in blocks]
+    for entry in parsed:
+        idx = entry.get("id")
+        lbl = entry.get("label", "answer.text")
+        if idx is not None and 0 <= idx < len(result) and lbl in LABELS:
+            result[idx]["label"] = lbl
+    for b in result:
+        if not b.get("label"):
+            b["label"] = "answer.text"
+    return result
 
 
 class WholeDocStrategy:
@@ -50,24 +76,20 @@ class WholeDocStrategy:
         host:     str = config.HOST,
         api_key:  str | None = None,
     ) -> None:
-        self.provider = provider
-        self.model    = model
-
-        if provider == "anthropic":
-            _key = api_key or config.ANTHROPIC_API_KEY
-            if not _key:
-                raise ConfigurationError("ANTHROPIC_API_KEY is not set.")
-            self._classify_fn = self._make_anthropic_fn(_key)
-
-        elif provider == "ollama":
-            _host = host.rstrip("/")
-            self._classify_fn = self._make_ollama_fn(_host)
-
-        else:
+        if provider not in ("anthropic", "ollama"):
             raise ConfigurationError(
                 f"WholeDocStrategy: unsupported provider {provider!r}. "
                 "Choose from: anthropic, ollama"
             )
+        self.provider = provider
+        self.model    = model
+        self._backend = get_model(
+            provider,
+            model,
+            host=host,
+            api_key=api_key,
+            max_tokens=16384,   # whole-doc responses are large
+        )
 
     # ── Strategy protocol ──────────────────────────────────────────────────────
 
@@ -75,9 +97,9 @@ class WholeDocStrategy:
         """Extract and classify all blocks in *pdf_path* in one model call.
 
         1. Extract text blocks with pdfplumber.
-        2. Build the whole-document prompt (all blocks in a single payload).
-        3. Send to the model; parse the JSON response.
-        4. Merge predicted labels back into the extracted block list.
+        2. Build a single whole-document prompt from all blocks.
+        3. Call the model and parse the JSON response.
+        4. Merge predicted labels back into the block list.
         """
         logger.info("[wholedoc] extracting from %s …", pdf_path.name)
         blocks = extract_blocks(pdf_path)
@@ -85,61 +107,11 @@ class WholeDocStrategy:
             logger.warning("[wholedoc] no blocks found in %s", pdf_path.name)
             return []
 
-        payload = build_payload(blocks)
+        payload = _build_payload(blocks)
         prompt  = build_wholedoc_prompt(payload)
 
         logger.info("[wholedoc] sending %d blocks to %s / %s …",
                     len(payload), self.provider, self.model)
-        parsed  = self._classify_fn(blocks, payload, prompt, pdf_path.stem)
-        labeled = apply_labels(blocks, parsed)
-
-        return labeled
-
-    # ── Provider-specific closures ─────────────────────────────────────────────
-
-    def _make_anthropic_fn(self, api_key: str):
-        import anthropic
-        client = anthropic.Anthropic(api_key=api_key)
-        model  = self.model
-
-        def _call(_blocks, payload, prompt, label):
-            resp = client.messages.create(
-                model=model,
-                max_tokens=16384,
-                system=SYSTEM_PROMPT,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            raw = resp.content[0].text if resp.content else ""
-            logger.info("[wholedoc] %s in=%s out=%s",
-                        label, f"{resp.usage.input_tokens:,}", f"{resp.usage.output_tokens:,}")
-            return parse_response(raw, label)
-
-        return _call
-
-    def _make_ollama_fn(self, host: str):
-        import requests as _req
-        model = self.model
-
-        def _call(_blocks, payload, prompt, label):
-            try:
-                resp = _req.post(
-                    f"{host}/api/generate",
-                    json={
-                        "model":   model,
-                        "system":  SYSTEM_PROMPT,
-                        "prompt":  prompt,
-                        "stream":  False,
-                        "format":  OUTPUT_SCHEMA,
-                        "options": {"temperature": 0.0, "num_ctx": 32768},
-                    },
-                    timeout=600,
-                )
-                resp.raise_for_status()
-            except _req.exceptions.RequestException as e:
-                logger.error("[wholedoc] %s ERROR: %s", label, e)
-                return []
-            raw = resp.json().get("response", "")
-            logger.info("[wholedoc] %s %d chars", label, len(raw))
-            return parse_response(raw, label)
-
-        return _call
+        raw    = self._backend.complete(SYSTEM_PROMPT, prompt)
+        parsed = parse_llm_json(raw, label=pdf_path.stem)
+        return _apply_labels(blocks, parsed)

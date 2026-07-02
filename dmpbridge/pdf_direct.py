@@ -12,12 +12,13 @@ Usage:
 """
 import argparse
 import base64
-import json
+import json  # still used for json.dumps in main()
 from pathlib import Path
 
 from . import config
 from .exceptions import ConfigurationError
 from .logging_setup import get_logger, setup_logging
+from .parsers import parse_llm_json
 from .prompt import LABELS, SYSTEM_PROMPT
 
 logger = get_logger(__name__)
@@ -83,17 +84,7 @@ def classify_pdf(pdf_path: Path, model: str, api_key: str) -> list[dict]:
         len(raw),
     )
 
-    cleaned = raw.strip()
-    if cleaned.startswith("```"):
-        cleaned = cleaned.split("```", 2)[1].lstrip("json").strip()
-
-    try:
-        parsed = json.loads(cleaned)
-        if isinstance(parsed, dict):
-            parsed = next((v for v in parsed.values() if isinstance(v, list)), [])
-    except json.JSONDecodeError as e:
-        logger.warning("JSON parse error: %s", e)
-        return []
+    parsed = parse_llm_json(raw, label=pdf_path.name)
 
     valid = []
     for b in parsed:

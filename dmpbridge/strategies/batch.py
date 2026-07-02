@@ -20,7 +20,7 @@ from pathlib import Path
 
 from .. import config
 from ..classifier import BATCH_SIZE, CONTEXT_SIZE, get_classifier
-from ..extractor import extract_blocks
+from ..preprocess import extract_blocks
 from ..logging_setup import get_logger
 
 logger = get_logger(__name__)

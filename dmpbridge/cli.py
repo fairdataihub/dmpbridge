@@ -30,7 +30,7 @@ def main() -> None:
     """
     parser = argparse.ArgumentParser(
         prog="dmpbridge",
-        description="Extract and label PDF text blocks using pdfplumber + LLaMA via Ollama.",
+        description="Extract and label DMP PDF text blocks (batch strategy, all providers).",
     )
     parser.add_argument("pdf", help="Path to the input PDF file.")
     parser.add_argument(

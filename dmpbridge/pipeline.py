@@ -26,7 +26,7 @@ from typing import Optional, Union
 from . import config
 from .converter import to_structured
 from .exceptions import ExtractionError
-from .extractor import extract_blocks, save_page_images
+from .preprocess import extract_blocks, save_page_images
 from .logging_setup import get_logger
 
 logger = get_logger(__name__)
