@@ -11,4 +11,4 @@ data/pdfplumber_extracted_markdown/
 data/pdfplumber_extracted_text/
 *.docx
 *.log
-logs/*.log
+logs/
