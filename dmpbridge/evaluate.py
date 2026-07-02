@@ -125,6 +125,34 @@ def evaluate_sample(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> dict:
     return confusion
 
 
+# ── Gold-based metrics ───────────────────────────────────────────────────────
+
+def gold_metrics(confusion: dict) -> tuple[int, int, int]:
+    """Compute gold-based metrics using the same manual-label denominator for all strategies.
+
+    Unlike block accuracy (correct / predicted_blocks), gold accuracy uses the
+    total number of manually labeled gold items as the denominator, making it
+    directly comparable across strategies that produce different block counts
+    (e.g. pdfplumber line-level vs Claude PDF-direct paragraph-level).
+
+    Returns
+    -------
+    (correct, covered, total_gold)
+        correct    : gold items covered AND correctly labeled
+        covered    : gold items matched by at least one predicted block
+        total_gold : all gold items (correct + mislabeled + missed)
+    """
+    correct    = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
+    missed     = sum(confusion.get(lbl, {}).get("__missed__", 0) for lbl in LABELS)
+    total_pred = sum(
+        sum(v for k, v in confusion.get(lbl, {}).items() if k != "__missed__")
+        for lbl in LABELS
+    )
+    total_gold = total_pred + missed
+    covered    = total_gold - missed
+    return correct, covered, total_gold
+
+
 # ── Aggregate confusion matrices ──────────────────────────────────────────────
 
 def add_confusion(total: dict, new: dict) -> None:
