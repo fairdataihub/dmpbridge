@@ -88,8 +88,8 @@ class ExperimentConfig:
     batch_size:   int = 10
     context_size: int = 3
 
-    pdf_dir:      str = "data/pdfsamples"
-    out_dir:      str = "data/llmlabeled"
+    pdf_dir:      str = "data/input/pdfs"
+    out_dir:      str = "data/output/labeled"
     sample_start: int = 1
     sample_end:   int = 10
 

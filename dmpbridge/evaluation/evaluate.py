@@ -26,8 +26,8 @@ logger = get_logger(__name__)
 SHORT = ["title", "sec.title", "sec.desc", "q.text", "ans.text"]
 
 _ROOT      = Path(__file__).parent.parent.parent
-MANUAL_DIR = _ROOT / "data/manuallabeled"
-LLM_DIR    = _ROOT / "data/llmlabeled"
+MANUAL_DIR = _ROOT / "data/input/ground_truth"
+LLM_DIR    = _ROOT / "data/output/labeled"
 
 MODEL_TAG  = _config.MODEL.replace(":", "-").replace("/", "-")
 LLM_SUFFIX = f"_{MODEL_TAG}_batch"

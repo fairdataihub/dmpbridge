@@ -33,7 +33,7 @@ logger = get_logger(__name__)
 DEFAULT_PROVIDER = config.PROVIDER
 DEFAULT_MODEL    = config.MODEL
 DEFAULT_HOST     = config.HOST
-DEFAULT_RAW_DIR  = "data/pdfplumber"
+DEFAULT_RAW_DIR  = "data/output/extracted"
 
 
 def process_pdf(
