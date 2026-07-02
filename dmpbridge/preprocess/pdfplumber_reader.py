@@ -10,6 +10,8 @@ from typing import Union
 
 import pdfplumber
 
+from .text_cleaner import clean_blocks
+
 
 def extract_blocks(pdf_path: Union[str, Path]) -> list[dict]:
     """Open the PDF and turn every text line into a block dict.
@@ -28,7 +30,7 @@ def extract_blocks(pdf_path: Union[str, Path]) -> list[dict]:
             ) or []
             for line_order, line in enumerate(lines, start=1):
                 blocks.extend(_line_to_blocks(line, page_num, line_order))
-    return blocks
+    return clean_blocks(blocks)
 
 
 def _line_to_blocks(line: dict, page_num: int, line_order: int) -> list[dict]:
