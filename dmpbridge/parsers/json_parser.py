@@ -26,7 +26,7 @@ def parse_llm_json(raw: str, label: str = "") -> list[dict]:
     raw:
         The raw text returned by the model.
     label:
-        An optional context string (e.g. sample name or batch offset) included
+        An optional context string (e.g. sample name) included
         in warning log messages to make debugging easier.
 
     Returns

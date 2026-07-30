@@ -21,7 +21,7 @@ class OllamaModel:
         Base URL of the Ollama server.
     num_ctx:
         Context window size passed to Ollama.  32 768 comfortably fits a full
-        DMP document for whole-doc inference while being fine for batch calls.
+        DMP document for whole-doc inference.
     """
 
     def __init__(

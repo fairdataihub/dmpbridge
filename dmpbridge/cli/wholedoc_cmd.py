@@ -1,7 +1,7 @@
 """Whole-document inference CLI.
 
 Runs the WholeDocStrategy (pdfplumber extraction + single LLM call) over a
-batch of sample PDFs and writes one labeled JSON file per sample.
+set of sample PDFs and writes one labeled JSON file per sample.
 
 Usage:
     dmpbridge-wholedoc
