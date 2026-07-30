@@ -9,14 +9,13 @@ Available strategies
 --------------------
 BatchStrategy       — pdfplumber extraction → LLM called in sliding batches
 WholeDocStrategy    — pdfplumber extraction → single LLM call for the whole doc
-PdfDirectStrategy   — raw PDF bytes → single Claude document-API call
-VisionBatchStrategy — pdfplumber extraction + page PNG → vision LLM, page by page (Anthropic or Ollama)
+VisionBatchStrategy — pdfplumber extraction + page PNG → vision LLM, page by page
 
 Usage
 -----
     from dmpbridge.strategies import get_strategy, Strategy
 
-    strategy = get_strategy("batch", provider="anthropic", model="claude-opus-4-8")
+    strategy = get_strategy("batch", provider="ollama", model="llama3.3:70b")
     blocks   = strategy.run(Path("document.pdf"))
 """
 from pathlib import Path
@@ -58,7 +57,6 @@ def get_strategy(
     provider: str | None = None,
     model: str | None = None,
     host: str | None = None,
-    api_key: str | None = None,
     batch_size: int | None = None,
     context_size: int | None = None,
     system_prompt: str | None = None,
@@ -68,17 +66,15 @@ def get_strategy(
     Parameters
     ----------
     name:
-        ``"batch"`` | ``"wholedoc"`` | ``"pdf_direct"`` | ``"vision_batch"``
+        ``"batch"`` | ``"wholedoc"`` | ``"vision_batch"``
     provider:
-        LLM provider — ``"anthropic"`` | ``"ollama"`` | ``"openai"`` | ``"gemini"``.
+        LLM provider — only ``"ollama"`` is supported.
         Falls back to ``config.PROVIDER`` when omitted.
     model:
-        Model identifier (e.g. ``"claude-opus-4-8"``).
+        Model identifier (e.g. ``"llama3.3:70b"``).
         Falls back to ``config.MODEL`` when omitted.
     host:
         Ollama base URL.  Falls back to ``config.HOST`` when omitted.
-    api_key:
-        API key for cloud providers.  Falls back to the relevant config key.
     batch_size:
         Number of blocks per LLM request.  Only used by ``BatchStrategy``.
     context_size:
@@ -104,20 +100,12 @@ def get_strategy(
         if system_prompt is not None: kwargs["system_prompt"] = system_prompt
         return WholeDocStrategy(provider=_provider, model=_model, host=_host, **kwargs)
 
-    if name == "pdf_direct":
-        from .pdf_direct import PdfDirectStrategy
-        _key = api_key or _cfg.ANTHROPIC_API_KEY
-        return PdfDirectStrategy(model=_model, api_key=_key)
-
     if name == "vision_batch":
         from .vision_batch import VisionBatchStrategy
-        _key = api_key or _cfg.ANTHROPIC_API_KEY
-        return VisionBatchStrategy(
-            model=_model, provider=_provider, host=_host, api_key=_key
-        )
+        return VisionBatchStrategy(model=_model, host=_host)
 
     raise ValueError(
-        f"Unknown strategy {name!r}. Choose from: batch, wholedoc, pdf_direct, vision_batch"
+        f"Unknown strategy {name!r}. Choose from: batch, wholedoc, vision_batch"
     )
 
 

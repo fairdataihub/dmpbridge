@@ -10,7 +10,7 @@ Example
     from pathlib import Path
     from dmpbridge.strategies.batch import BatchStrategy
 
-    strategy = BatchStrategy(provider="anthropic", model="claude-opus-4-8")
+    strategy = BatchStrategy(model="llama3.3:70b")
     blocks   = strategy.run(Path("document.pdf"))
 """
 import json
@@ -77,7 +77,7 @@ class BatchStrategy:
     Parameters
     ----------
     provider:
-        LLM provider — ``"ollama"`` | ``"anthropic"`` | ``"openai"`` | ``"gemini"``.
+        LLM provider — only ``"ollama"`` is supported.
     model:
         Model identifier.
     host:

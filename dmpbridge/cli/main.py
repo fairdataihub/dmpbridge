@@ -40,7 +40,7 @@ def main() -> None:
     parser.add_argument(
         "--provider",
         default=DEFAULT_PROVIDER,
-        choices=["ollama", "openai", "anthropic", "gemini"],
+        choices=["ollama"],
         help=f"LLM provider to use (default: {DEFAULT_PROVIDER}).",
     )
     parser.add_argument(

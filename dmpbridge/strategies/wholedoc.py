@@ -3,16 +3,12 @@
 All blocks are sent to the model in one request so it sees the full document
 at once, improving structural continuity at the cost of higher token usage.
 
-Uses :class:`~dmpbridge.models.ModelBackend` for the model call and
-:func:`~dmpbridge.parsers.parse_llm_json` for response parsing — no
-strategy-specific closures or duplicated parsing logic.
-
 Example
 -------
     from pathlib import Path
     from dmpbridge.strategies.wholedoc import WholeDocStrategy
 
-    strategy = WholeDocStrategy(provider="anthropic", model="claude-opus-4-8")
+    strategy = WholeDocStrategy(model="llama3.3:70b")
     blocks   = strategy.run(Path("document.pdf"))
 """
 import json
@@ -72,13 +68,11 @@ class WholeDocStrategy:
     Parameters
     ----------
     provider:
-        ``"anthropic"`` or ``"ollama"``.
+        LLM provider — only ``"ollama"`` is supported.
     model:
-        Model identifier.
+        Ollama model identifier (e.g. ``"llama3.3:70b"``).
     host:
-        Ollama base URL (ignored for Anthropic).
-    api_key:
-        Anthropic API key — falls back to ``config.ANTHROPIC_API_KEY``.
+        Ollama base URL.
     system_prompt:
         Override the default system prompt.  Used by the rotation evaluation design
         to inject dynamic few-shot examples drawn from a specific sample pair.
@@ -90,13 +84,11 @@ class WholeDocStrategy:
         provider:      str = config.PROVIDER,
         model:         str = config.MODEL,
         host:          str = config.HOST,
-        api_key:       str | None = None,
         system_prompt: str | None = None,
     ) -> None:
-        if provider not in ("anthropic", "ollama"):
+        if provider != "ollama":
             raise ConfigurationError(
-                f"WholeDocStrategy: unsupported provider {provider!r}. "
-                "Choose from: anthropic, ollama"
+                f"WholeDocStrategy: unsupported provider {provider!r}. Only 'ollama' is supported."
             )
         self.provider       = provider
         self.model          = model
@@ -105,20 +97,13 @@ class WholeDocStrategy:
             provider,
             model,
             host=host,
-            api_key=api_key,
             max_tokens=16384,
         )
 
     # ── Strategy protocol ──────────────────────────────────────────────────────
 
     def run(self, pdf_path: Path) -> list[dict]:
-        """Extract and classify all blocks in *pdf_path* in one model call.
-
-        1. Extract text blocks with pdfplumber.
-        2. Build a single whole-document prompt from all blocks.
-        3. Call the model and parse the JSON response.
-        4. Merge predicted labels back into the block list.
-        """
+        """Extract and classify all blocks in *pdf_path* in one model call."""
         logger.info("[wholedoc] extracting from %s …", pdf_path.name)
         blocks = extract_blocks(pdf_path)
         if not blocks:

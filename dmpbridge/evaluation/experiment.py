@@ -58,7 +58,7 @@ class ExperimentConfig:
     model:
         Model identifier passed to the provider.
     provider:
-        ``"anthropic"`` | ``"ollama"`` | ``"openai"`` | ``"gemini"``
+        ``"ollama"`` — only supported provider.
     host:
         Ollama base URL (ignored for cloud providers).
     prompt:

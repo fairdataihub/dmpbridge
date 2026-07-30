@@ -5,8 +5,7 @@ batch of sample PDFs and writes one labeled JSON file per sample.
 
 Usage:
     dmpbridge-wholedoc
-    dmpbridge-wholedoc --provider ollama   --model llama3.3:70b
-    dmpbridge-wholedoc --provider anthropic --model claude-opus-4-8
+    dmpbridge-wholedoc --model llama3.3:70b
     dmpbridge-wholedoc --start 3 --end 6
 """
 import argparse
@@ -28,11 +27,12 @@ def main() -> None:
         description="Run whole-document LLM classification on DMP PDF samples."
     )
     ap.add_argument(
-        "--provider", default=config.PROVIDER, choices=["anthropic", "ollama"],
+        "--provider", default=config.PROVIDER, choices=["ollama"],
         help="LLM provider (default: %(default)s)",
     )
     ap.add_argument("--model",   default=config.MODEL, help="Model name (default: %(default)s)")
-    ap.add_argument("--host",    default=config.HOST,  help="Ollama host URL (default: %(default)s)")
+    ap.add_argument("--host",    default=config.HOST,
+                    help="Ollama host URL (default: %(default)s)")
     ap.add_argument("--pdf-dir", default="data/input/pdfs",    type=Path)
     ap.add_argument("--out-dir", default="data/output/labeled", type=Path)
     ap.add_argument("--start",   default=1,  type=int, help="First sample index (inclusive)")
