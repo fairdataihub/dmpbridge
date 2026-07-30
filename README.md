@@ -10,13 +10,11 @@
 
 DMP documents mix funder-written instructions with researcher-written responses inside the same PDF. DMPBridge reads those PDFs and classifies each text block into one of five semantic labels, producing structured JSON that downstream tools can process.
 
-The pipeline uses a whole-document inference strategy, a full evaluation framework comparing predictions against manually labeled ground truth, and a leave-2-out cross-validation design for measuring prompt robustness.
+The pipeline supports three PDF extraction backends (**pdfplumber**, **Docling**, **LightOnOCR**) and any number of Ollama models. A single YAML config defines which models × extractors to run, and the system produces one result set per combination.
 
 ---
 
 ## Labels
-
-Each text block is classified as one of:
 
 | Label | What it represents |
 |---|---|
@@ -40,7 +38,7 @@ venv\Scripts\Activate.ps1      # Windows
 pip install -e .
 ```
 
-Pull a model (choose based on your hardware):
+Pull the models you want to use:
 
 ```bash
 ollama pull llama3.3:70b       # ~42 GB — best accuracy
@@ -48,7 +46,18 @@ ollama pull llama3.1:8b        # ~5 GB  — fast, good quality
 ollama pull gemma4:e4b         # ~3 GB  — efficient small model
 ```
 
-Configure in `.env` at the project root:
+### Optional extraction backends
+
+By default only **pdfplumber** is installed (included in the base install).  
+Install additional backends as needed:
+
+```bash
+pip install -e ".[docling]"         # Docling (IBM ML layout analyser)
+pip install -e ".[lighton]"         # LightOnOCR-2-1B (HuggingFace transformer)
+pip install -e ".[all-extractors]"  # Both at once
+```
+
+Configure defaults in `.env` at the project root (optional):
 
 ```env
 DMPBRIDGE_PROVIDER=ollama
@@ -58,56 +67,101 @@ DMPBRIDGE_HOST=http://localhost:11434
 
 ---
 
-## Basic usage
-
-```bash
-# Run a full experiment (all 10 samples)
-dmpbridge-experiment experiments/llama3.3-70b-wholedoc.yaml
-
-# Run with a different model
-dmpbridge-experiment experiments/llama3.1-8b-wholedoc.yaml
-
-# Evaluate results against ground truth
-dmpbridge-evaluate
-```
-
----
-
-## Inference strategy
-
-DMPBridge uses the **whole-document** strategy: all blocks from a PDF are sent in a single model call, giving the model full structural context to resolve ambiguous blocks.
-
-```
-PDF → pdfplumber extraction → all blocks in one prompt → labeled JSON
-```
-
----
-
 ## Running experiments
 
-Each experiment is defined by a YAML config file in `experiments/`.
+### Experiment YAML format
 
-```bash
-# Run a full experiment (all 10 samples)
-dmpbridge-experiment experiments/llama3.3-70b-wholedoc.yaml
+Every experiment is a YAML file that defines which models and extractors to run.  
+`models` and `extractors` are lists — the system runs every combination automatically.
 
-# List available experiments
-dmpbridge-experiment --list
+```yaml
+# experiments/llama3.1-8b-wholedoc.yaml
+name: Llama 3.1 8B — Whole-doc
+strategy: wholedoc
+models: [llama3.1:8b]
+extractors: [pdfplumber, docling, lighton]
+provider: ollama
+host: http://localhost:11434
+prompt: default
+pdf_dir: data/input/pdfs
+out_dir: data/output/labeled
+sample_start: 1
+sample_end: 10
 ```
 
-### Available experiments
+The above produces three output directories:
 
-| Model | Config file |
-|---|---|
-| Llama 3.3 70B | `experiments/llama3.3-70b-wholedoc.yaml` |
-| Llama 3.1 8B | `experiments/llama3.1-8b-wholedoc.yaml` |
-| Gemma 4 E4B | `experiments/gemma4-e4b-wholedoc.yaml` |
+```
+data/output/labeled/
+  llama3.1-8b_whole_doc/          ← pdfplumber results
+  llama3.1-8b_docling_whole_doc/  ← Docling results
+  llama3.1-8b_lighton_whole_doc/  ← LightOnOCR results
+```
+
+### Run a single-model experiment
+
+```bash
+# Llama 3.1 8B — all three extractors
+dmpbridge-experiment experiments/llama3.1-8b-wholedoc.yaml
+
+# Gemma 4 E4B — all three extractors
+dmpbridge-experiment experiments/gemma4-e4b-wholedoc.yaml
+
+# Llama 3.3 70B — all three extractors (requires ~42 GB VRAM, slow)
+dmpbridge-experiment experiments/llama3.3-70b-wholedoc.yaml
+```
+
+### Run the full matrix (all models × all extractors)
+
+```bash
+dmpbridge-experiment experiments/wholedoc.yaml
+```
+
+This runs 3 models × 3 extractors = **9 combinations** over 10 PDFs.
+
+### Available experiment configs
+
+| Config | Models | Extractors |
+|---|---|---|
+| `experiments/wholedoc.yaml` | llama3.1:8b, gemma4:e4b, llama3.3:70b | pdfplumber, docling, lighton |
+| `experiments/llama3.1-8b-wholedoc.yaml` | llama3.1:8b | pdfplumber, docling, lighton |
+| `experiments/gemma4-e4b-wholedoc.yaml` | gemma4:e4b | pdfplumber, docling, lighton |
+| `experiments/llama3.3-70b-wholedoc.yaml` | llama3.3:70b | pdfplumber, docling, lighton |
+
+---
+
+## Quick single-run CLI
+
+For a fast one-off inference without a YAML file:
+
+```bash
+# Default model (from .env or llama3.3:70b), pdfplumber extractor
+dmpbridge-wholedoc
+
+# Choose model and extractor explicitly
+dmpbridge-wholedoc --model llama3.1:8b --extractor pdfplumber
+dmpbridge-wholedoc --model gemma4:e4b   --extractor docling
+dmpbridge-wholedoc --model llama3.1:8b  --extractor lighton
+
+# Limit to a subset of samples
+dmpbridge-wholedoc --model llama3.1:8b --start 3 --end 6
+
+# All options
+dmpbridge-wholedoc --help
+```
+
+Output goes to `data/output/labeled/{model-slug}_whole_doc/` (pdfplumber)  
+or `data/output/labeled/{model-slug}_{extractor}_whole_doc/` (docling / lighton).
 
 ---
 
 ## Evaluation
 
-The evaluation framework compares predicted labels against manually annotated ground truth in `data/input/ground_truth/`.
+Compare predicted labels against manually annotated ground truth:
+
+```bash
+dmpbridge-evaluate
+```
 
 **Metrics computed:**
 - **Block accuracy** — fraction of predicted blocks with the correct label
@@ -116,8 +170,6 @@ The evaluation framework compares predicted labels against manually annotated gr
 - **Confidence calibration** — every predicted block carries a `confidence` score (0.0–1.0); calibration plots show whether stated confidence tracks actual accuracy
 
 ### Confidence scores
-
-The LLM assigns a confidence score to every block alongside its label. The five tiers are:
 
 | Score | Meaning |
 |---|---|
@@ -129,13 +181,46 @@ The LLM assigns a confidence score to every block alongside its label. The five 
 
 Blocks below the review threshold (default 0.75) are flagged for human review.
 
-### Leave-2-out cross-validation
+---
 
-The rotation experiment design uses 2 gold DMPs as few-shot examples, evaluates on the remaining 8, and rotates through 5 pairs. Low variance across rotations means the prompt generalises rather than overfitting to specific examples.
+## Leave-2-out cross-validation
+
+The rotation design uses 2 gold DMPs as few-shot examples, evaluates on the remaining 8, and rotates through 5 pairs. Results are reported per `(model, extractor)` combination.
 
 ```bash
+# Run all 5 rotations — all models × all extractors
 python experiments/run_rotations.py
+
+# Skip inference, re-evaluate existing results only
+python experiments/run_rotations.py --evaluate-only
+
+# Filter to one model or one extractor
+python experiments/run_rotations.py --model llama3.1:8b
+python experiments/run_rotations.py --extractor pdfplumber
+python experiments/run_rotations.py --model gemma4:e4b --extractor docling
 ```
+
+Output shows a table per rotation, then a summary:
+
+```
+  Model             Extractor     Mean gold acc   Std dev
+  ──────────────────────────────────────────────────────
+  gemma4:e4b        pdfplumber         90.8%      3.1%
+  llama3.1:8b       pdfplumber         70.2%      5.4%
+  ...
+```
+
+---
+
+## Extraction backends
+
+| Backend | Install | Bbox/font data | Speed | Notes |
+|---|---|---|---|---|
+| `pdfplumber` | base install | full | fast | default; best for clean, text-layer PDFs |
+| `docling` | `.[docling]` | bbox only (no font) | medium | IBM ML layout analyser; good for complex layouts |
+| `lighton` | `.[lighton]` | none (OCR only) | slow | HuggingFace `lightonai/LightOnOCR-2-1B`; handles scanned PDFs |
+
+Blocks from Docling and LightOnOCR carry `None` for unavailable fields (`avg_font_size`, `font_names`, bbox for LightOnOCR). The visualisation tools skip those fields silently.
 
 ---
 
@@ -144,16 +229,27 @@ python experiments/run_rotations.py
 ```
 dmpbridge/                  Python package
   strategies/               Inference strategy (wholedoc)
+  extractors/               PDF extraction backends
+    base.py                 BaseExtractor ABC
+    pdfplumber_extractor.py pdfplumber wrapper
+    docling_extractor.py    Docling wrapper
+    lighton_extractor.py    LightOnOCR-2-1B wrapper
   models/                   Ollama model backend
   prompts/                  System prompt, label schema, few-shot builder
   evaluation/               Metrics, confusion matrix, confidence calibration
   core/                     Config, pipeline, converter
   cli/                      CLI entry points
   parsers/                  LLM JSON response parser
-  preprocess/               PDF extraction (pdfplumber)
+  preprocess/               pdfplumber text utilities
 
 experiments/                YAML experiment configs
-  rotations/                Leave-2-out rotation configs (r1–r5)
+  wholedoc.yaml             Master config — all models × all extractors
+  llama3.1-8b-wholedoc.yaml
+  gemma4-e4b-wholedoc.yaml
+  llama3.3-70b-wholedoc.yaml
+  rotations/                Leave-2-out rotation configs (r1–r5, 3 models each)
+  run_rotations.py          Rotation runner + summary reporter
+  benchmark.py              Cross-experiment benchmark table
 
 data/
   input/
@@ -201,10 +297,14 @@ A companion `_structured.json` file reorganises the same blocks into the DMP Too
 from dmpbridge.strategies import get_strategy
 from pathlib import Path
 
-strategy = get_strategy("wholedoc", model="llama3.3:70b")
+# pdfplumber (default)
+strategy = get_strategy("wholedoc", model="llama3.1:8b")
 blocks   = strategy.run(Path("document.pdf"))
 
-# Blocks with confidence scores
+# Docling extractor
+strategy = get_strategy("wholedoc", model="gemma4:e4b", extractor="docling")
+blocks   = strategy.run(Path("document.pdf"))
+
 for b in blocks:
     print(b["label"], b["confidence"], b["text"][:60])
 ```
@@ -212,7 +312,7 @@ for b in blocks:
 ```python
 from dmpbridge.evaluation.evaluate import load_method, compute_f1_rows
 
-df, confusion, errors = load_method("llama3.3-70b_whole_doc")
+df, confusion, errors = load_method("llama3.1-8b_whole_doc")
 print(df)                          # per-sample accuracy
 print(compute_f1_rows(confusion))  # per-label F1
 ```
@@ -221,11 +321,12 @@ print(compute_f1_rows(confusion))  # per-label F1
 
 ## Current results
 
-| Model | Strategy | Accuracy |
+| Model | Extractor | Accuracy |
 |---|---|---|
-| Gemma 4 E4B | whole-doc | 90.8% |
-| Llama 3.1 8B | whole-doc | 70.2% |
-| Llama 3.3 70B | whole-doc | Pending |
+| Gemma 4 E4B | pdfplumber | 90.8% |
+| Llama 3.1 8B | pdfplumber | 70.2% |
+| Llama 3.3 70B | pdfplumber | Pending |
+| All models | docling / lighton | Pending |
 
 Evaluated on 10 manually labeled DMP documents.  
 Detailed per-label F1, confusion matrices, and confidence calibration: `notebooks/003_strategy_comparison.ipynb`.
