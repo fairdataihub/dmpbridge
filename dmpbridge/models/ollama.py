@@ -47,7 +47,7 @@ class OllamaModel:
                 "format":  OUTPUT_SCHEMA,
                 "options": {"temperature": 0.0, "num_ctx": self.num_ctx},
             },
-            timeout=600,
+            timeout=3600,
         )
         resp.raise_for_status()
         return resp.json().get("response", "")
