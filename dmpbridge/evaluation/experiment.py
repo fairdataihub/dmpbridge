@@ -111,10 +111,8 @@ class ExperimentConfig:
             sample1_{tag}.json
         """
         _suffix = {
-            "batch":        "batch",
-            "wholedoc":     "whole_doc",
-            "vision_batch": "vision",
-            "pdf_direct": "pdf",
+            "batch":    "batch",
+            "wholedoc": "whole_doc",
         }
         suffix = _suffix.get(self.strategy, self.strategy)
         return f"{self.model.replace(':', '-')}_{suffix}"

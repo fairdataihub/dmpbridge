@@ -20,7 +20,7 @@ except ImportError:
 PROVIDER = os.getenv("DMPBRIDGE_PROVIDER", "ollama")
 
 # Model name served by Ollama.
-# Examples: "llama3.3:70b"  "llama3.1:8b"  "qwen2-vl:7b"
+# Examples: "llama3.3:70b"  "llama3.3:8b"  "llama3.1:8b"  "gemma4:4b"
 MODEL = os.getenv("DMPBRIDGE_MODEL", "llama3.3:70b")
 
 # Ollama server URL.

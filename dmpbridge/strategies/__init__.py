@@ -7,15 +7,14 @@ other code.
 
 Available strategies
 --------------------
-BatchStrategy       — pdfplumber extraction → LLM called in sliding batches
-WholeDocStrategy    — pdfplumber extraction → single LLM call for the whole doc
-VisionBatchStrategy — pdfplumber extraction + page PNG → vision LLM, page by page
+BatchStrategy    — pdfplumber extraction → LLM called in sliding batches
+WholeDocStrategy — pdfplumber extraction → single LLM call for the whole doc
 
 Usage
 -----
     from dmpbridge.strategies import get_strategy, Strategy
 
-    strategy = get_strategy("batch", provider="ollama", model="llama3.3:70b")
+    strategy = get_strategy("batch", model="llama3.3:70b")
     blocks   = strategy.run(Path("document.pdf"))
 """
 from pathlib import Path
@@ -66,7 +65,7 @@ def get_strategy(
     Parameters
     ----------
     name:
-        ``"batch"`` | ``"wholedoc"`` | ``"vision_batch"``
+        ``"batch"`` | ``"wholedoc"``
     provider:
         LLM provider — only ``"ollama"`` is supported.
         Falls back to ``config.PROVIDER`` when omitted.
@@ -100,12 +99,8 @@ def get_strategy(
         if system_prompt is not None: kwargs["system_prompt"] = system_prompt
         return WholeDocStrategy(provider=_provider, model=_model, host=_host, **kwargs)
 
-    if name == "vision_batch":
-        from .vision_batch import VisionBatchStrategy
-        return VisionBatchStrategy(model=_model, host=_host)
-
     raise ValueError(
-        f"Unknown strategy {name!r}. Choose from: batch, wholedoc, vision_batch"
+        f"Unknown strategy {name!r}. Choose from: batch, wholedoc"
     )
 
 

@@ -10,7 +10,7 @@
 
 DMP documents mix funder-written instructions with researcher-written responses inside the same PDF. DMPBridge reads those PDFs and classifies each text block into one of five semantic labels, producing structured JSON that downstream tools can process.
 
-The pipeline supports three inference strategies, a full evaluation framework comparing predictions against manually labeled ground truth, and a leave-2-out cross-validation design for measuring prompt robustness.
+The pipeline supports two inference strategies, a full evaluation framework comparing predictions against manually labeled ground truth, and a leave-2-out cross-validation design for measuring prompt robustness.
 
 ---
 
@@ -154,7 +154,7 @@ python experiments/run_rotations.py
 
 ```
 dmpbridge/                  Python package
-  strategies/               Inference strategies (batch, wholedoc, vision_batch)
+  strategies/               Inference strategies (batch, wholedoc)
   models/                   Ollama model backend
   prompts/                  System prompt, label schema, few-shot builder
   evaluation/               Metrics, confusion matrix, confidence calibration
