@@ -1,5 +1,7 @@
 """Shared system prompt used by all strategies and providers."""
 
+from .few_shot import build_few_shot_examples
+
 # ── Section 1: Label definitions ──────────────────────────────────────────────
 
 _LABEL_DEFINITIONS = """\
@@ -56,32 +58,63 @@ KEY DISTINCTIONS
 _CLASSIFICATION_RULES = """\
 CLASSIFICATION RULES
 --------------------
-Rule 1 — section.title opens a NEW section of the document:
-    Any heading that introduces a new top-level section is section.title.
-    This includes numbered elements ("Element 2: Related Tools, Software and/or Code:"),
-    numbered sections ("1. Data sharing and preservation"), and named sections
-    ("Roles and Responsibilities", "Types of data", "Data storage and preservation of access").
-    Even when the heading is the only prompt in the section (no A./B. sub-items follow),
-    STILL label it section.title — the downstream converter automatically populates
-    question.text from the section title. Do NOT label a section heading question.text
-    just because it is the only item in its section.
 
-Rule 2 — question.text is a sub-prompt WITHIN an already-open section:
-    question.text only appears after a section.title has already been established for
-    the current section. These are specific sub-questions or named sub-topics the author
-    must address inside a section. They often begin with a letter prefix (A., B., C.) or
-    a bold named phrase (e.g. "Roles & Responsibilities.", "Data Types and Sources.",
-    "Content and Format.", "Data Repositories.", "Data Volume.").
+QUESTION.TEXT AND SECTION.TITLE — THE MOST IMPORTANT DISTINCTION
 
-Rule 3 — When in doubt, choose section.title over question.text:
-    A heading that could be either is almost certainly a section heading (section.title).
-    Prefer section.title unless you can clearly identify an enclosing parent section
-    that this block is a sub-topic of.
+The product manager requirement is: every section in the output MUST have a
+question.text. A missing question.text is never acceptable.
 
-Rule 4 — section.description vs answer.text:
-    Both can be long paragraphs. Distinguish by voice and intent:
-    section.description uses imperative/directive language about what SHOULD be in the plan.
-    answer.text uses declarative language about what the research team WILL DO or HAS DONE.
+However, the LLM does NOT produce the question.text repetition — the downstream
+converter handles it automatically using these guaranteed rules:
+  - If a section has no question.text block → converter copies section.title into question.text
+  - If the document has only a title and no sections → converter cascades the title
+    to section.title AND question.text
+  - If a section.title IS the question (nothing else follows) → converter repeats it
+    as question.text
+
+Your job is only to label blocks correctly. The converter guarantees question.text
+is always populated in the final JSON output.
+
+Rule 1 — section.title: any heading that opens a new top-level section
+    Label a block section.title when it is a structural heading that introduces a
+    new section of the document. This includes:
+      - Numbered elements:  "Element 1: Data Type:",  "Element 2: Related Tools..."
+      - Numbered sections:  "1. Data sharing and preservation",  "3. Data management resources"
+      - Named sections:     "Roles and Responsibilities",  "Types of data",
+                            "Data storage and preservation of access",  "Products of Research"
+
+    CRITICAL: label it section.title EVEN IF it is the only item in the section
+    with no explicit sub-question following it. The converter will automatically
+    repeat the section title as question.text. You do not need to do this yourself.
+
+    WRONG:  "Element 2: Related Tools, Software and/or Code:"  → question.text  ✗
+    CORRECT: "Element 2: Related Tools, Software and/or Code:" → section.title  ✓
+             (converter then sets question.text = "Element 2: Related Tools..." automatically)
+
+Rule 2 — question.text: explicit sub-prompts WITHIN an already-open section
+    Label a block question.text only when:
+      (a) a section.title has already appeared for the current section, AND
+      (b) this block is a specific sub-question or named sub-topic the author must address
+    These typically begin with a letter prefix (A., B., C.) or a short bold phrase:
+      "A. Types and amount of scientific data expected to be generated:"
+      "B. Whether access to scientific data will be controlled:"
+      "Roles & Responsibilities."   ← sub-prompt inside "1. Data sharing and preservation"
+      "Data Types and Sources."     ← sub-prompt inside "1. Data sharing and preservation"
+      "Data Repositories."
+      "Data Volume."
+    Do NOT label a block question.text if it opens a new section — use section.title.
+
+Rule 3 — When in doubt, choose section.title
+    A heading that could be either label is almost always a section heading.
+    Prefer section.title unless the block is clearly a sub-topic of an already-named
+    parent section visible earlier on the same page.
+
+Rule 4 — section.description vs answer.text
+    Both are long paragraphs. Distinguish by voice and intent:
+      section.description  — funder's directive voice: "should", "must", "DMPs should",
+                             "provide a plan for", "describe whether and how"
+      answer.text          — researcher's declarative voice: what the team will do,
+                             has done, or plans to do; first- or third-person narrative
 """
 
 
@@ -184,7 +217,6 @@ def build_system_prompt(few_shot_examples: str | None = None) -> str:
         Rotation experiments pass their own pair-specific block here.
     """
     if few_shot_examples is None:
-        from .few_shot import build_few_shot_examples
         few_shot_examples = build_few_shot_examples(_DEFAULT_FEW_SHOT_SAMPLES)
     return (
         _LABEL_DEFINITIONS
