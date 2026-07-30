@@ -1,9 +1,0 @@
-name: Claude Opus 4.8 — Vision Batch
-strategy: vision_batch
-model: claude-opus-4-8
-provider: anthropic
-prompt: default
-pdf_dir: data/input/pdfs
-out_dir: data/output/labeled
-sample_start: 1
-sample_end: 10
