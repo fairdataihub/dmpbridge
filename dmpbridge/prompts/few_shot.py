@@ -9,10 +9,10 @@ GROUND_TRUTH_DIR = _ROOT / "data/input/ground_truth"
 
 _LABEL_DESCRIPTIONS = {
     "title":               "title",
-    "section.title":       "section.title",
+    "section.title":       "section.title (opens a new top-level section of the document)",
     "section.description": "section.description (funder template text — instructs the author what to write)",
-    "question.text":       "question.text (sub-question prompt inside a section — asks the author to address a specific topic)",
-    "answer.text":         "answer.text (researcher's actual written response — narrative, first-person, describes what the team will do)",
+    "question.text":       "question.text (sub-question prompt WITHIN an already-open section)",
+    "answer.text":         "answer.text (researcher's actual written response)",
 }
 
 
@@ -86,7 +86,7 @@ def build_few_shot_examples(
             if label in by_label:
                 by_label[label].append(text)
 
-    lines = ["\nEXAMPLES FROM REAL DMP DOCUMENTS:\n"]
+    lines = ["\nFEW-SHOT EXAMPLES FROM REAL DMP DOCUMENTS\n------------------------------------------"]
     for label, description in _LABEL_DESCRIPTIONS.items():
         seen: set[str] = set()
         picked: list[str] = []
