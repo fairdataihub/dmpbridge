@@ -47,7 +47,7 @@ ollama pull llama3.3:70b       # ~42 GB — best accuracy
 ollama pull llama3.3:8b        # ~5 GB  — fast, good quality
 ollama pull llama3.1:8b        # ~5 GB  — baseline 8B
 ollama pull gemma4:4b          # ~2.5 GB — smallest / fastest
-ollama pull qwen2-vl:7b        # vision strategy only
+
 ```
 
 Configure in `.env` at the project root:
@@ -82,7 +82,7 @@ dmpbridge-wholedoc --model llama3.1:8b
 |---|---|---|
 | `batch` | Blocks sent in sliding windows of 10 with 3-block context overlap | Large models (70B+) |
 | `wholedoc` | All blocks sent in a single model call | Small models (≤8B) |
-| `vision_batch` | Page image + block text sent together per page | Vision-capable models |
+
 
 ---
 
