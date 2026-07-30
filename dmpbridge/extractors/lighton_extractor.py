@@ -71,7 +71,7 @@ class LightOnExtractor(BaseExtractor):
     def _load_model(model_id: str):
         try:
             import torch
-            from transformers import AutoModelForCausalLM, AutoProcessor
+            from transformers import AutoModelForImageTextToText, AutoProcessor
         except ImportError as exc:
             raise ImportError(
                 "transformers / torch are not installed.\n"
@@ -93,8 +93,8 @@ class LightOnExtractor(BaseExtractor):
         dtype  = torch.float16 if device == "cuda" else torch.float32
 
         processor = AutoProcessor.from_pretrained(model_id)
-        model     = AutoModelForCausalLM.from_pretrained(
-            model_id, torch_dtype=dtype
+        model     = AutoModelForImageTextToText.from_pretrained(
+            model_id, dtype=dtype
         ).to(device)
         model.eval()
         return processor, model
@@ -119,13 +119,29 @@ class LightOnExtractor(BaseExtractor):
 
     def _ocr_image(self, image) -> str:
         import torch
-        inputs  = self._processor(images=image, return_tensors="pt").to(self._device)
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "image"},
+                    {"type": "text", "text": "Transcribe all text in this document page exactly as it appears."},
+                ],
+            }
+        ]
+        text_prompt = self._processor.apply_chat_template(
+            messages, add_generation_prompt=True
+        )
+        inputs = self._processor(
+            text=text_prompt, images=image, return_tensors="pt"
+        ).to(self._device)
         with torch.no_grad():
             output_ids = self._model.generate(
                 **inputs,
                 max_new_tokens=self._max_new_tokens,
             )
-        return self._processor.decode(output_ids[0], skip_special_tokens=True)
+        # Slice off the prompt tokens — keep only generated text
+        generated = output_ids[:, inputs["input_ids"].shape[-1]:]
+        return self._processor.decode(generated[0], skip_special_tokens=True)
 
     @staticmethod
     def _text_to_blocks(text: str, page_num: int, offset: int) -> list[dict]:
