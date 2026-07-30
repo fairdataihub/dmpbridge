@@ -1,11 +1,12 @@
 """Whole-document inference CLI.
 
-Runs the WholeDocStrategy (pdfplumber extraction + single LLM call) over a
-set of sample PDFs and writes one labeled JSON file per sample.
+Runs the WholeDocStrategy over a set of sample PDFs and writes one labeled
+JSON file per sample.
 
 Usage:
     dmpbridge-wholedoc
     dmpbridge-wholedoc --model llama3.3:70b
+    dmpbridge-wholedoc --model gemma4:e4b --extractor docling
     dmpbridge-wholedoc --start 3 --end 6
 """
 import argparse
@@ -33,6 +34,11 @@ def main() -> None:
     ap.add_argument("--model",   default=config.MODEL, help="Model name (default: %(default)s)")
     ap.add_argument("--host",    default=config.HOST,
                     help="Ollama host URL (default: %(default)s)")
+    ap.add_argument(
+        "--extractor", default="pdfplumber",
+        choices=["pdfplumber", "docling", "lighton"],
+        help="PDF extraction backend (default: %(default)s)",
+    )
     ap.add_argument("--pdf-dir", default="data/input/pdfs",    type=Path)
     ap.add_argument("--out-dir", default="data/output/labeled", type=Path)
     ap.add_argument("--start",   default=1,  type=int, help="First sample index (inclusive)")
@@ -43,9 +49,14 @@ def main() -> None:
         provider=args.provider,
         model=args.model,
         host=args.host,
+        extractor=args.extractor,
     )
 
-    tag     = f"{args.model.replace(':', '-')}_whole_doc"
+    model_slug = args.model.replace(":", "-")
+    if args.extractor == "pdfplumber":
+        tag = f"{model_slug}_whole_doc"
+    else:
+        tag = f"{model_slug}_{args.extractor}_whole_doc"
     out_dir = args.out_dir / tag
     out_dir.mkdir(parents=True, exist_ok=True)
 
