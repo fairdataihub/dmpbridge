@@ -47,31 +47,32 @@ def run_benchmark(
     rows = []
     for path in list_experiments(experiments_dir):
         exp     = Experiment.from_yaml(path)
-        results = exp.evaluate()   # dict[extractor, (df, conf, errs)]
+        results = exp.evaluate()   # {model: {extractor: (df, conf, errs)}}
 
-        for extractor, (df, conf, _) in results.items():
-            if df is None or df.empty:
-                continue
+        for model, ext_results in results.items():
+            for extractor, (df, conf, _) in ext_results.items():
+                if df is None or df.empty:
+                    continue
 
-            tc = int(df["correct"].sum())
-            tn = int(df["total"].sum())
+                tc = int(df["correct"].sum())
+                tn = int(df["total"].sum())
 
-            gold_correct, _, gold_total = gold_metrics(conf)
+                gold_correct, _, gold_total = gold_metrics(conf)
 
-            rows.append({
-                "name":         exp.config.name,
-                "extractor":    extractor,
-                "strategy":     exp.config.strategy,
-                "model":        exp.config.model,
-                "provider":     exp.config.provider,
-                "correct":      tc,
-                "total":        tn,
-                "block_acc":    tc / tn if tn else 0.0,
-                "gold_correct": gold_correct,
-                "gold_total":   gold_total,
-                "gold_acc":     gold_correct / gold_total if gold_total else 0.0,
-                "tag":          exp.config.tag_for(extractor),
-            })
+                rows.append({
+                    "name":         exp.config.name,
+                    "model":        model,
+                    "extractor":    extractor,
+                    "strategy":     exp.config.strategy,
+                    "provider":     exp.config.provider,
+                    "correct":      tc,
+                    "total":        tn,
+                    "block_acc":    tc / tn if tn else 0.0,
+                    "gold_correct": gold_correct,
+                    "gold_total":   gold_total,
+                    "gold_acc":     gold_correct / gold_total if gold_total else 0.0,
+                    "tag":          exp.config.tag_for(model, extractor),
+                })
 
     if sort_by in ("block_acc", "gold_acc", "gold_correct", "correct"):
         rows.sort(key=lambda r: r[sort_by], reverse=True)
@@ -88,17 +89,16 @@ def print_benchmark(rows: list[dict]) -> None:
         return
 
     header = (
-        f"  {'Experiment':<36}  {'Extractor':<12}  {'Model':<22}"
-        f"  {'Blocks':>8}  {'Block acc':>10}  {'Gold acc':>10}"
+        f"  {'Model':<22}  {'Extractor':<12}  {'Blocks':>8}"
+        f"  {'Block acc':>10}  {'Gold acc':>10}  Tag"
     )
     print(header)
-    print("  " + "-" * (len(header) - 2))
+    print("  " + "-" * (len(header) + 20))
 
     for r in rows:
-        name = r["name"][:35]
         print(
-            f"  {name:<36}  {r['extractor']:<12}  {r['model']:<22}"
-            f"  {r['total']:>8}  {r['block_acc']*100:>9.1f}%  {r['gold_acc']*100:>9.1f}%"
+            f"  {r['model']:<22}  {r['extractor']:<12}  {r['total']:>8}"
+            f"  {r['block_acc']*100:>9.1f}%  {r['gold_acc']*100:>9.1f}%  {r['tag']}"
         )
 
     print()

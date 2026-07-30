@@ -1,7 +1,7 @@
 ﻿name: Llama 3.3 70B Wholedoc — Rotation 3 (few-shot 5, 6 / eval 1, 2, 3, 4, 7, 8, 9, 10)
 strategy: wholedoc
 extractors: [pdfplumber, docling, lighton]
-model: llama3.3:70b
+models: [llama3.3:70b]
 provider: ollama
 host: http://localhost:11434
 prompt: default

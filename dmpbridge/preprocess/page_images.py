@@ -1,8 +1,10 @@
 """Render PDF pages as PNG images.
 
 Two modes:
-- render_pages()      — clean page renders saved to disk; reusable across models.
-- save_page_images()  — pages with colored bounding-box overlays for the viewer.
+- render_pages()      — clean page renders saved to disk; reusable across extractors.
+- save_page_images()  — page PNGs with per-label bounding-box overlays.
+                        Blocks without bbox data (Docling partial, LightOnOCR)
+                        are silently skipped — the page image is still rendered.
 """
 from collections import defaultdict
 from pathlib import Path
@@ -52,8 +54,12 @@ def save_page_images(
                     f"Details: {exc}"
                 ) from exc
 
+            # Only draw boxes for blocks that carry bbox data (pdfplumber / Docling).
+            # LightOnOCR blocks have None coords — skip them silently.
             by_label: dict[str, list[dict]] = defaultdict(list)
             for b in page_blocks:
+                if b.get("x0") is None:
+                    continue
                 by_label[b.get("label") or "answer.text"].append(b)
 
             for label, group in by_label.items():
