@@ -52,13 +52,17 @@ def _build_payload(blocks: list[dict]) -> list[dict]:
 def _apply_labels(blocks: list[dict], parsed: list[dict]) -> list[dict]:
     result = [dict(b) for b in blocks]
     for entry in parsed:
-        idx = entry.get("id")
-        lbl = entry.get("label", "answer.text")
+        idx  = entry.get("id")
+        lbl  = entry.get("label", "answer.text")
+        conf = float(entry.get("confidence", 1.0))
         if idx is not None and 0 <= idx < len(result) and lbl in LABELS:
-            result[idx]["label"] = lbl
+            result[idx]["label"]      = lbl
+            result[idx]["confidence"] = max(0.0, min(1.0, conf))
     for b in result:
         if not b.get("label"):
             b["label"] = "answer.text"
+        if "confidence" not in b:
+            b["confidence"] = 1.0
     return result
 
 

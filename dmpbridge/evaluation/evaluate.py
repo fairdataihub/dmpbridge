@@ -7,6 +7,7 @@ Usage (CLI):
 Notebook usage:
     from dmpbridge.evaluation.evaluate import (
         load_method, compute_f1_rows, confusion_matrix_df,
+        load_confidence, confidence_calibration_df,
         extract_gold, evaluate_sample, match,
         LABELS, SHORT, LLM_DIR, MANUAL_DIR, NO_MATCH,
     )
@@ -269,6 +270,85 @@ def load_method(tag: str):
         })
 
     return pd.DataFrame(rows), conf_all, pd.DataFrame(errors)
+
+
+# ── Confidence analysis ───────────────────────────────────────────────────────
+
+def load_confidence(tag: str):
+    """Load predicted blocks with confidence scores for all samples under *tag*.
+
+    Returns a flat DataFrame with one row per predicted block that could be
+    matched to a gold label.  Blocks with no gold match are excluded.
+
+    Columns
+    -------
+    sample, label, confidence, gold_label, correct, page, text
+    """
+    import pandas as pd
+
+    samples = sorted(MANUAL_DIR.glob("*_dmp.json"), key=_snum)
+    rows = []
+    for mp in samples:
+        stem = mp.stem.replace("_dmp", "")
+        pp   = LLM_DIR / tag / f"{stem}.json"
+        if not pp.exists():
+            continue
+        gold   = extract_gold(mp)
+        blocks = json.loads(pp.read_text(encoding="utf-8"))
+        for b in blocks:
+            gold_label = match(b["text"], gold)
+            if gold_label is None:
+                continue
+            pred_label = b.get("label", "answer.text")
+            conf       = float(b.get("confidence", 1.0))
+            rows.append({
+                "sample":     stem,
+                "label":      pred_label,
+                "confidence": conf,
+                "gold_label": gold_label,
+                "correct":    pred_label == gold_label,
+                "page":       b.get("page", "-"),
+                "text":       b.get("text", "")[:120],
+            })
+    return pd.DataFrame(rows)
+
+
+def confidence_calibration_df(conf_df):
+    """Bucket blocks by confidence and compute accuracy per bucket.
+
+    Useful for calibration plots: a well-calibrated model has accuracy ≈ confidence
+    in each bucket.
+
+    Parameters
+    ----------
+    conf_df:
+        DataFrame from :func:`load_confidence`.
+
+    Returns
+    -------
+    pd.DataFrame
+        Columns: ``bucket_label``, ``mid``, ``count``, ``accuracy``.
+    """
+    import pandas as pd
+    import numpy as np
+
+    edges  = [0.0, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 1.01]
+    labels = ["<0.5", "0.5–0.6", "0.6–0.7", "0.7–0.8", "0.8–0.9", "0.9–0.95", "≥0.95"]
+    mids   = [0.25,   0.55,      0.65,       0.75,       0.85,       0.925,      0.975]
+
+    df = conf_df.copy()
+    df["bucket"] = pd.cut(
+        df["confidence"], bins=edges, labels=labels, right=False, include_lowest=True
+    )
+    grouped = (
+        df.groupby("bucket", observed=True)
+        .agg(count=("correct", "size"), accuracy=("correct", "mean"))
+        .reset_index()
+        .rename(columns={"bucket": "bucket_label"})
+    )
+    mid_map = dict(zip(labels, mids))
+    grouped["mid"] = grouped["bucket_label"].map(mid_map)
+    return grouped[["bucket_label", "mid", "count", "accuracy"]]
 
 
 # ── Print helpers ─────────────────────────────────────────────────────────────

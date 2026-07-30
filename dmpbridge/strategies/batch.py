@@ -150,9 +150,11 @@ class BatchStrategy:
             labels = parse_llm_json(raw, label=f"offset={start}")
 
             for entry in labels:
-                idx = entry.get("id")
-                lbl = entry.get("label", "answer.text")
+                idx  = entry.get("id")
+                lbl  = entry.get("label", "answer.text")
+                conf = float(entry.get("confidence", 1.0))
                 if idx is not None and 0 <= idx < len(result) and lbl in LABELS:
-                    result[idx]["label"] = lbl
+                    result[idx]["label"]      = lbl
+                    result[idx]["confidence"] = max(0.0, min(1.0, conf))
 
         return result

@@ -7,9 +7,10 @@ OUTPUT_SCHEMA = {
     "items": {
         "type": "object",
         "properties": {
-            "id":    {"type": "integer"},
-            "label": {"type": "string", "enum": list(LABELS)},
+            "id":         {"type": "integer"},
+            "label":      {"type": "string", "enum": list(LABELS)},
+            "confidence": {"type": "number", "minimum": 0.0, "maximum": 1.0},
         },
-        "required": ["id", "label"],
+        "required": ["id", "label", "confidence"],
     },
 }

@@ -75,9 +75,40 @@ Key distinctions:
 - If a block describes what the research team will actually do → answer.text
 """
 
+_CONFIDENCE_INSTRUCTIONS = """
+CONFIDENCE SCORE
+----------------
+For every block, include a "confidence" field: a float from 0.0 to 1.0 reflecting how
+certain you are that the chosen label is correct. Base it on structural and lexical clarity:
+
+  1.0   Unambiguous. Only one label is consistent with the text and its structural
+        position. No plausible alternative exists.
+        Examples: a short document title, a numbered section heading like "1. Data Type",
+        funder instructions opening with "Data management plans should …".
+
+  0.8–0.9  High confidence. The chosen label is clearly best, but one minor cue is
+           ambiguous — e.g. a prompt-like phrase with no question mark, or a heading
+           that could be either section.title or question.text.
+
+  0.6–0.7  Moderate confidence. Two labels are plausible; you chose the most likely one
+           based on position, phrasing, and surrounding context. Flag for review.
+
+  0.4–0.5  Low confidence. Evidence is roughly balanced between two or more labels.
+           The block is structurally atypical or very short. Definitely flag for review.
+
+  < 0.4   Very uncertain. The text is truncated, mixed-register, or could fit several
+          labels. Assign the best-fit label but treat this block as unreliable.
+
+Calibration target: blocks with confidence ≥ 0.9 should be correct at least 90% of
+the time. Do not assign high confidence to every block — reserve it for genuinely clear
+cases to make the score useful for downstream review prioritisation.
+"""
+
 _PROMPT_FOOTER = (
     "You MUST output a JSON array with one entry for EVERY block in the TO CLASSIFY list"
     " — no explanation, no markdown.\n"
+    "Each entry must have exactly three fields: \"id\" (integer), \"label\" (string),"
+    " and \"confidence\" (float 0.0–1.0).\n"
 )
 
 
@@ -92,7 +123,13 @@ def build_system_prompt(few_shot_examples: str | None = None) -> str:
         When ``None``, the default hardcoded examples are used.
     """
     examples = few_shot_examples if few_shot_examples is not None else _FEW_SHOT_EXAMPLES
-    return _PROMPT_HEADER + _QUESTION_TEXT_RULES + examples + _PROMPT_FOOTER
+    return (
+        _PROMPT_HEADER
+        + _CONFIDENCE_INSTRUCTIONS
+        + _QUESTION_TEXT_RULES
+        + examples
+        + _PROMPT_FOOTER
+    )
 
 
 # Module-level constant for backward compatibility — strategies use this by default.
