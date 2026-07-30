@@ -4,8 +4,6 @@ model: llama3.3:70b
 provider: ollama
 host: http://localhost:11434
 prompt: default
-batch_size: 10
-context_size: 3
 pdf_dir: data/input/pdfs
 out_dir: data/output/labeled
 sample_start: 1
