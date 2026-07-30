@@ -6,9 +6,6 @@ prompt and returns raw text.  Each sub-module contains one concrete backend.
 Sub-modules
 -----------
 ollama      OllamaModel — local Ollama server
-anthropic   AnthropicModel — Anthropic messages API
-openai      OpenAIModel — OpenAI chat completions API
-gemini      GeminiModel — Google Gemini API
 
 Factory
 -------
@@ -62,16 +59,15 @@ def get_model(
     Parameters
     ----------
     provider:
-        ``"ollama"`` | ``"anthropic"`` | ``"openai"`` | ``"gemini"``
+        ``"ollama"`` — only supported provider.
     model:
-        Model identifier (provider-specific).
+        Model identifier (e.g. ``"llama3.3:70b"``).
     host:
-        Ollama base URL — ignored for cloud providers.
+        Ollama base URL.
     api_key:
-        API key — falls back to the matching ``config.*_API_KEY`` value.
+        Unused — kept for interface compatibility.
     max_tokens:
-        Maximum response tokens (Anthropic only; default 4 096).
-        Pass 16 384 for whole-document inference.
+        Unused — kept for interface compatibility.
     num_ctx:
         Ollama context window size (default 32 768).
     """
@@ -85,32 +81,9 @@ def get_model(
             num_ctx=num_ctx,
         )
 
-    if p == "anthropic":
-        from .anthropic import AnthropicModel
-        return AnthropicModel(
-            model=model,
-            api_key=api_key or _cfg.ANTHROPIC_API_KEY,
-            max_tokens=max_tokens,
-        )
-
-    if p == "openai":
-        from .openai import OpenAIModel
-        return OpenAIModel(
-            model=model,
-            api_key=api_key or _cfg.OPENAI_API_KEY,
-        )
-
-    if p == "gemini":
-        from .gemini import GeminiModel
-        return GeminiModel(
-            model=model,
-            api_key=api_key or _cfg.GEMINI_API_KEY,
-        )
-
     from ..utils import ConfigurationError
     raise ConfigurationError(
-        f"Unknown provider {provider!r}. "
-        "Choose from: ollama, anthropic, openai, gemini"
+        f"Unknown provider {provider!r}. Only 'ollama' is supported."
     )
 
 
