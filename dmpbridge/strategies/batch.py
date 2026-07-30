@@ -131,6 +131,8 @@ class BatchStrategy:
         for b in result:
             if not b.get("label"):
                 b["label"] = "answer.text"
+            if "confidence" not in b:
+                b["confidence"] = 1.0
 
         return result
 
