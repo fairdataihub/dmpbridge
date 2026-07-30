@@ -85,57 +85,6 @@ Rule 4 — section.description vs answer.text:
 """
 
 
-# ── Section 3: Few-shot examples ──────────────────────────────────────────────
-
-_FEW_SHOT_EXAMPLES = """\
-FEW-SHOT EXAMPLES FROM REAL DMP DOCUMENTS
-------------------------------------------
-title:
-    "Center for Bio-Inspired Energy Science"
-    "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES"
-    "Resource/Data Sharing Plan"
-
-section.title (opens a new top-level section of the document):
-    "1. Data sharing and preservation"
-    "Element 1: Data Type:"
-    "Element 2: Related Tools, Software and/or Code:"
-    "Element 3: Standards:"
-    "2. Data used in publications"
-    "3. Data management resources"
-    "Roles and Responsibilities"
-    "Types of data"
-    "Data storage and preservation of access"
-    "Products of Research"
-
-section.description (funder template text — instructs the author what to write):
-    "Data management plans should describe whether and how data generated in the \
-course of the proposed research will be shared and preserved."
-    "Data management plans should provide a plan for making all research data \
-displayed in publications resulting from the proposed research open, machine-readable, \
-and digitally accessible to the public at the time of publication."
-    "Data management plans must protect confidentiality, personal privacy, \
-Personally Identifiable Information and U.S. national, homeland, and economic security."
-
-question.text (sub-question prompt WITHIN an already-open section):
-    "A. Types and amount of scientific data expected to be generated in the project:"
-    "A. Repository where scientific data and metadata will be archived:"
-    "B. Whether access to scientific data will be controlled:"
-    "Roles & Responsibilities. For the proposed research, describe who will be \
-responsible for coordinating and ensuring data storage and access."
-    "Data Types and Sources. A brief, high-level description of the data to be generated."
-    "Data Repositories."
-    "Data Volume."
-
-answer.text (researcher's actual written response):
-    "This secondary data analysis project will analyze deidentified data from 48,218 \
-participants from eight studies and the publicly available NHANES cohorts."
-    "All data pertaining to any published work will be made available to any person \
-on request. Numerical published data as well as the original raw data files will be \
-freely accessible."
-    "Data will be analyzed with custom code by our statistical and computer science team."
-"""
-
-
 # ── Section 4: Input format ────────────────────────────────────────────────────
 
 _INPUT_FORMAT = """\
@@ -220,28 +169,34 @@ clear cases so the score is useful for downstream review prioritisation.
 
 # ── Prompt assembly ────────────────────────────────────────────────────────────
 
+_DEFAULT_FEW_SHOT_SAMPLES = [1, 2]
+
+
 def build_system_prompt(few_shot_examples: str | None = None) -> str:
-    """Return the system prompt, optionally with dynamic few-shot examples.
+    """Return the system prompt with dynamic few-shot examples.
 
     Parameters
     ----------
     few_shot_examples:
         Pre-formatted examples block from
         :func:`~dmpbridge.prompts.few_shot.build_few_shot_examples`.
-        When ``None``, the default hardcoded examples are used.
+        When ``None``, examples are built from gold samples 1 and 2 (the default pair).
+        Rotation experiments pass their own pair-specific block here.
     """
-    examples = few_shot_examples if few_shot_examples is not None else _FEW_SHOT_EXAMPLES
+    if few_shot_examples is None:
+        from .few_shot import build_few_shot_examples
+        few_shot_examples = build_few_shot_examples(_DEFAULT_FEW_SHOT_SAMPLES)
     return (
         _LABEL_DEFINITIONS
         + _CLASSIFICATION_RULES
-        + examples
+        + few_shot_examples
         + _INPUT_FORMAT
         + _OUTPUT_FORMAT
         + _CONFIDENCE_SCORE
     )
 
 
-# Module-level constant for backward compatibility — strategies use this by default.
+# Module-level constant — built once at import time from the default sample pair.
 SYSTEM_PROMPT = build_system_prompt()
 
 __all__ = ["SYSTEM_PROMPT", "build_system_prompt"]
