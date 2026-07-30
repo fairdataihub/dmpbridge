@@ -1,6 +1,6 @@
-﻿name: Gemma 4 4B Whole-doc
+name: Gemma 4 E4B Whole-doc
 strategy: wholedoc
-model: gemma4:4b
+model: gemma4:e4b
 provider: ollama
 host: http://localhost:11434
 prompt: default
