@@ -1,5 +1,6 @@
-﻿name: Llama 3.1 8B Whole-doc
+name: Llama 3.1 8B Whole-doc
 strategy: wholedoc
+extractors: [pdfplumber, docling, lighton]
 model: llama3.1:8b
 provider: ollama
 host: http://localhost:11434

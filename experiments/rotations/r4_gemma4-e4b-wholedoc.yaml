@@ -1,5 +1,6 @@
-name: Gemma 4 E4B Wholedoc — Rotation 4 (few-shot 7, 8 / eval 1, 2, 3, 4, 5, 6, 9, 10)
+﻿name: Gemma 4 E4B Wholedoc — Rotation 4 (few-shot 7, 8 / eval 1, 2, 3, 4, 5, 6, 9, 10)
 strategy: wholedoc
+extractors: [pdfplumber, docling, lighton]
 model: gemma4:e4b
 provider: ollama
 host: http://localhost:11434

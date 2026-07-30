@@ -1,5 +1,6 @@
 ﻿name: Llama 3.1 8B Wholedoc — Rotation 5 (few-shot 9, 10 / eval 1, 2, 3, 4, 5, 6, 7, 8)
 strategy: wholedoc
+extractors: [pdfplumber, docling, lighton]
 model: llama3.1:8b
 provider: ollama
 host: http://localhost:11434

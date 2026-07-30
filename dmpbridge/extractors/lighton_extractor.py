@@ -1,0 +1,150 @@
+"""LightOnOCR-2-1B extractor — vision-LLM OCR pipeline.
+
+Each PDF page is rendered as an image (via PyMuPDF), then passed through
+the LightOnOCR-2-1B model (HuggingFace transformers) to produce OCR text.
+The text is segmented line-by-line into block dicts.
+
+Because OCR output carries no font or bbox metadata, is_bold is always
+False and spatial fields are None for all blocks.
+
+Install:
+    pip install dmpbridge[lighton]
+    # or directly:
+    pip install transformers torch pymupdf
+"""
+from __future__ import annotations
+
+from pathlib import Path
+
+from .base import BaseExtractor
+
+DEFAULT_MODEL_ID = "lightonai/LightOnOCR-2-1B"
+_RENDER_DPI = 150   # 150 DPI keeps images small enough for 1B model inference
+
+
+class LightOnExtractor(BaseExtractor):
+    """Run LightOnOCR-2-1B on every PDF page and segment output into blocks.
+
+    Parameters
+    ----------
+    model_id:
+        HuggingFace model repository, e.g. ``"lightonai/LightOnOCR-2-1B"``.
+    device:
+        ``"auto"`` selects CUDA if available, otherwise CPU.
+    max_new_tokens:
+        Token budget for the model's OCR output per page.
+    """
+
+    def __init__(
+        self,
+        model_id:       str = DEFAULT_MODEL_ID,
+        device:         str = "auto",
+        max_new_tokens: int = 2048,
+    ) -> None:
+        self._max_new_tokens = max_new_tokens
+        self._device         = self._resolve_device(device)
+        self._processor, self._model = self._load_model(model_id)
+
+    # ── BaseExtractor protocol ────────────────────────────────────────────────
+
+    def extract(self, pdf_path: Path) -> list[dict]:
+        pages  = self._render_pages(pdf_path)
+        blocks: list[dict] = []
+        for page_num, image in enumerate(pages, start=1):
+            text = self._ocr_image(image)
+            blocks.extend(self._text_to_blocks(text, page_num, len(blocks)))
+        return blocks
+
+    # ── Internal — setup ─────────────────────────────────────────────────────
+
+    @staticmethod
+    def _resolve_device(device: str) -> str:
+        if device != "auto":
+            return device
+        try:
+            import torch
+            return "cuda" if torch.cuda.is_available() else "cpu"
+        except ImportError:
+            return "cpu"
+
+    @staticmethod
+    def _load_model(model_id: str):
+        try:
+            import torch
+            from transformers import AutoModelForCausalLM, AutoProcessor
+        except ImportError as exc:
+            raise ImportError(
+                "transformers / torch are not installed.\n"
+                "Install with:  pip install dmpbridge[lighton]\n"
+                "          or:  pip install transformers torch"
+            ) from exc
+        try:
+            import fitz  # noqa: F401  — verify pymupdf is present early
+        except ImportError as exc:
+            raise ImportError(
+                "PyMuPDF is not installed.\n"
+                "Install with:  pip install pymupdf"
+            ) from exc
+
+        import logging
+        logging.getLogger("transformers").setLevel(logging.WARNING)
+
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        dtype  = torch.float16 if device == "cuda" else torch.float32
+
+        processor = AutoProcessor.from_pretrained(model_id)
+        model     = AutoModelForCausalLM.from_pretrained(
+            model_id, torch_dtype=dtype
+        ).to(device)
+        model.eval()
+        return processor, model
+
+    # ── Internal — inference ─────────────────────────────────────────────────
+
+    @staticmethod
+    def _render_pages(pdf_path: Path):
+        """Render every page to a PIL Image at _RENDER_DPI."""
+        import fitz
+        from PIL import Image
+
+        doc    = fitz.open(str(pdf_path))
+        zoom   = _RENDER_DPI / 72.0
+        matrix = fitz.Matrix(zoom, zoom)
+        images = []
+        for page in doc:
+            pix = page.get_pixmap(matrix=matrix)
+            images.append(Image.frombytes("RGB", [pix.width, pix.height], pix.samples))
+        doc.close()
+        return images
+
+    def _ocr_image(self, image) -> str:
+        import torch
+        inputs  = self._processor(images=image, return_tensors="pt").to(self._device)
+        with torch.no_grad():
+            output_ids = self._model.generate(
+                **inputs,
+                max_new_tokens=self._max_new_tokens,
+            )
+        return self._processor.decode(output_ids[0], skip_special_tokens=True)
+
+    @staticmethod
+    def _text_to_blocks(text: str, page_num: int, offset: int) -> list[dict]:
+        return [
+            {
+                "page":          page_num,
+                "line_order":    offset + i,
+                "text":          line,
+                "x0":            None,
+                "top":           None,
+                "x1":            None,
+                "bottom":        None,
+                "avg_font_size": None,
+                "font_names":    [],
+                "is_bold":       False,
+                "is_italic":     False,
+                "label":         None,
+            }
+            for i, line in enumerate(
+                ln.strip() for ln in text.splitlines() if ln.strip()
+            )
+        ]

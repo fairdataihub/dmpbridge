@@ -31,6 +31,22 @@ notebooks = [
     "seaborn>=0.13",
     "pandas>=2.3",
 ]
+# PDF extractor extras — install the one(s) you want to run experiments with
+docling = [
+    "docling>=2.0",
+]
+lighton = [
+    "transformers>=4.40",
+    "torch>=2.2",
+    "pymupdf>=1.24",
+]
+# Install all extractors at once
+all-extractors = [
+    "docling>=2.0",
+    "transformers>=4.40",
+    "torch>=2.2",
+    "pymupdf>=1.24",
+]
 
 [project.scripts]
 dmpbridge            = "dmpbridge.cli.main:main"

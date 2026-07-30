@@ -1,23 +1,27 @@
-"""Whole-document strategy — pdfplumber extraction + single model call.
+"""Whole-document strategy — configurable extraction + single model call.
 
 All blocks are sent to the model in one request so it sees the full document
 at once, improving structural continuity at the cost of higher token usage.
+
+The extraction step is handled by a :class:`~dmpbridge.extractors.BaseExtractor`
+so the pipeline can compare pdfplumber, Docling, and LightOnOCR side-by-side
+without changing any other code.
 
 Example
 -------
     from pathlib import Path
     from dmpbridge.strategies.wholedoc import WholeDocStrategy
 
-    strategy = WholeDocStrategy(model="llama3.3:70b")
+    strategy = WholeDocStrategy(model="llama3.3:70b", extractor="docling")
     blocks   = strategy.run(Path("document.pdf"))
 """
 import json
 from pathlib import Path
 
 from ..core import config
+from ..extractors import get_extractor
 from ..models import get_model
 from ..parsers import parse_llm_json
-from ..preprocess import extract_blocks
 from ..prompts import LABELS, SYSTEM_PROMPT
 from ..utils import ConfigurationError, get_logger
 
@@ -63,7 +67,11 @@ def _apply_labels(blocks: list[dict], parsed: list[dict]) -> list[dict]:
 
 
 class WholeDocStrategy:
-    """Extract blocks with pdfplumber, classify in a single model call.
+    """Extract blocks from a PDF then classify them in a single model call.
+
+    The extraction step is delegated to a :class:`~dmpbridge.extractors.BaseExtractor`
+    so that pdfplumber, Docling, and LightOnOCR can be swapped in without
+    touching the prompt or evaluation code.
 
     Parameters
     ----------
@@ -73,9 +81,12 @@ class WholeDocStrategy:
         Ollama model identifier (e.g. ``"llama3.3:70b"``).
     host:
         Ollama base URL.
+    extractor:
+        PDF extraction backend — ``"pdfplumber"`` (default), ``"docling"``,
+        or ``"lighton"``.
     system_prompt:
-        Override the default system prompt.  Used by the rotation evaluation design
-        to inject dynamic few-shot examples drawn from a specific sample pair.
+        Override the default system prompt.  Used by the rotation evaluation
+        design to inject dynamic few-shot examples from a specific sample pair.
         When ``None``, the module-level ``SYSTEM_PROMPT`` constant is used.
     """
 
@@ -84,6 +95,7 @@ class WholeDocStrategy:
         provider:      str = config.PROVIDER,
         model:         str = config.MODEL,
         host:          str = config.HOST,
+        extractor:     str = "pdfplumber",
         system_prompt: str | None = None,
     ) -> None:
         if provider != "ollama":
@@ -93,6 +105,7 @@ class WholeDocStrategy:
         self.provider       = provider
         self.model          = model
         self._system_prompt = system_prompt if system_prompt is not None else SYSTEM_PROMPT
+        self._extractor     = get_extractor(extractor)
         self._backend       = get_model(
             provider,
             model,
@@ -104,8 +117,9 @@ class WholeDocStrategy:
 
     def run(self, pdf_path: Path) -> list[dict]:
         """Extract and classify all blocks in *pdf_path* in one model call."""
-        logger.info("[wholedoc] extracting from %s …", pdf_path.name)
-        blocks = extract_blocks(pdf_path)
+        logger.info("[wholedoc] extracting from %s via %s …",
+                    pdf_path.name, type(self._extractor).__name__)
+        blocks = self._extractor.extract(pdf_path)
         if not blocks:
             logger.warning("[wholedoc] no blocks found in %s", pdf_path.name)
             return []

@@ -79,8 +79,9 @@ class ExperimentConfig:
     model:        str
     provider:     str
 
-    host:         str = "http://localhost:11434"
-    prompt:       str = "default"
+    host:         str  = "http://localhost:11434"
+    prompt:       str  = "default"
+    extractors:   list = field(default_factory=lambda: ["pdfplumber"])
 
     pdf_dir:      str = "data/input/pdfs"
     out_dir:      str = "data/output/labeled"
@@ -95,17 +96,26 @@ class ExperimentConfig:
 
     # ── Derived properties ────────────────────────────────────────────────────
 
-    @property
-    def tag(self) -> str:
-        """Output filename suffix that identifies this experiment.
+    def tag_for(self, extractor: str) -> str:
+        """Output directory suffix for one extractor within this experiment.
 
-        Matches the existing naming convention so notebooks load files without
-        any changes::
+        pdfplumber keeps the original format for backward compatibility with
+        existing output data and notebooks::
 
-            sample1_{tag}.json
+            llama3.1-8b_whole_doc           ← pdfplumber (unchanged)
+            llama3.1-8b_docling_whole_doc   ← docling
+            llama3.1-8b_lighton_whole_doc   ← lighton
         """
-        suffix = "whole_doc" if self.strategy == "wholedoc" else self.strategy
-        return f"{self.model.replace(':', '-')}_{suffix}"
+        model_slug = self.model.replace(":", "-")
+        suffix     = "whole_doc" if self.strategy == "wholedoc" else self.strategy
+        if extractor == "pdfplumber":
+            return f"{model_slug}_{suffix}"
+        return f"{model_slug}_{extractor}_{suffix}"
+
+    @property
+    def tags(self) -> list[str]:
+        """Tags for all configured extractors."""
+        return [self.tag_for(e) for e in self.extractors]
 
     @property
     def sample_range(self) -> range:
@@ -116,13 +126,26 @@ class ExperimentConfig:
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> ExperimentConfig:
-        """Load a config from a YAML file."""
+        """Load a config from a YAML file.
+
+        Handles backward-compat: an old ``extractor: pdfplumber`` scalar field
+        is silently promoted to ``extractors: [pdfplumber]``.
+        """
         data = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+        if "extractor" in data and "extractors" not in data:
+            data["extractors"] = [data.pop("extractor")]
+        elif "extractor" in data:
+            data.pop("extractor")
         return cls(**data)
 
     @classmethod
     def from_dict(cls, d: dict) -> ExperimentConfig:
         """Build a config from a plain dictionary."""
+        d = dict(d)
+        if "extractor" in d and "extractors" not in d:
+            d["extractors"] = [d.pop("extractor")]
+        elif "extractor" in d:
+            d.pop("extractor")
         return cls(**d)
 
     def to_yaml(self, path: str | Path) -> None:
@@ -140,8 +163,8 @@ class ExperimentConfig:
         return (
             f"ExperimentConfig("
             f"name={self.name!r}, strategy={self.strategy!r}, "
-            f"model={self.model!r}, provider={self.provider!r}, "
-            f"tag={self.tag!r})"
+            f"extractors={self.extractors!r}, model={self.model!r}, "
+            f"provider={self.provider!r}, tags={self.tags!r})"
         )
 
 
@@ -150,13 +173,13 @@ class ExperimentConfig:
 class Experiment:
     """Run and evaluate one experiment defined by an :class:`ExperimentConfig`.
 
-    The strategy is built lazily on first use so that importing this class does
+    Strategies are built lazily per extractor so that importing this class does
     not trigger any network connections or API key checks.
     """
 
     def __init__(self, config: ExperimentConfig) -> None:
-        self.config    = config
-        self._strategy = None
+        self.config      = config
+        self._strategies: dict = {}
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> Experiment:
@@ -165,11 +188,16 @@ class Experiment:
 
     # ── Internal ──────────────────────────────────────────────────────────────
 
-    def _get_strategy(self):
-        if self._strategy is None:
+    def _get_strategy(self, extractor: str):
+        if extractor not in self._strategies:
             from ..strategies import get_strategy
             cfg    = self.config
-            kwargs: dict = {"provider": cfg.provider, "model": cfg.model, "host": cfg.host}
+            kwargs: dict = {
+                "provider":  cfg.provider,
+                "model":     cfg.model,
+                "host":      cfg.host,
+                "extractor": extractor,
+            }
             if cfg.few_shot_samples:
                 from ..prompts.few_shot import build_few_shot_examples
                 from ..prompts.system import build_system_prompt
@@ -178,33 +206,18 @@ class Experiment:
                 logger.info(
                     "Dynamic few-shot prompt built from samples %s", cfg.few_shot_samples
                 )
-            self._strategy = get_strategy(cfg.strategy, **kwargs)
-        return self._strategy
+            self._strategies[extractor] = get_strategy(cfg.strategy, **kwargs)
+        return self._strategies[extractor]
 
-    # ── Public API ────────────────────────────────────────────────────────────
-
-    def run(self) -> list[Path]:
-        """Classify every sample PDF defined in the config and save results.
-
-        Samples that already have an output file are skipped so the command is
-        safe to re-run after a partial failure.
-
-        Returns
-        -------
-        list[Path]
-            Paths of the output JSON files that were written (or already existed).
-        """
-        strategy = self._get_strategy()
+    def _run_extractor(self, extractor: str) -> list[Path]:
+        """Run all samples for one extractor and return output paths."""
+        strategy = self._get_strategy(extractor)
         cfg      = self.config
-        out_dir  = Path(cfg.out_dir) / cfg.tag
+        out_dir  = Path(cfg.out_dir) / cfg.tag_for(extractor)
         out_dir.mkdir(parents=True, exist_ok=True)
 
-        # Determine which samples to evaluate in this run.
         few_shot_set = set(cfg.few_shot_samples)
-        if cfg.eval_samples:
-            eval_set = set(cfg.eval_samples)
-        else:
-            eval_set = set(cfg.sample_range) - few_shot_set
+        eval_set     = set(cfg.eval_samples) if cfg.eval_samples else set(cfg.sample_range) - few_shot_set
 
         outputs: list[Path] = []
 
@@ -226,7 +239,7 @@ class Experiment:
                 logger.warning("%s PDF not found: %s", label, pdf_path)
                 continue
 
-            logger.info("%s running experiment %r …", label, cfg.name)
+            logger.info("%s running experiment %r [%s] …", label, cfg.name, extractor)
             blocks = strategy.run(pdf_path)
             out_path.write_text(
                 json.dumps(blocks, indent=2, ensure_ascii=False),
@@ -241,37 +254,58 @@ class Experiment:
                 encoding="utf-8",
             )
             logger.info("%s structured JSON → %s", label, struct_path.name)
-
             outputs.append(out_path)
 
-        logger.info("Done — %d/%d samples processed.", len(outputs), len(cfg.sample_range))
+        logger.info(
+            "Done [%s] — %d/%d samples processed.",
+            extractor, len(outputs), len(cfg.sample_range),
+        )
         return outputs
 
-    def evaluate(self):
-        """Evaluate results against manual labels using :func:`~dmpbridge.evaluation.evaluate.load_method`.
+    # ── Public API ────────────────────────────────────────────────────────────
+
+    def run(self) -> dict[str, list[Path]]:
+        """Classify every sample PDF for every configured extractor.
+
+        Samples that already have an output file are skipped so the command is
+        safe to re-run after a partial failure.
 
         Returns
         -------
-        tuple[pd.DataFrame, dict, pd.DataFrame] | tuple[None, None, None]
-            ``(accuracy_df, confusion_dict, errors_df)``
+        dict[str, list[Path]]
+            ``{extractor_name: [output_paths]}`` for each extractor.
+        """
+        return {e: self._run_extractor(e) for e in self.config.extractors}
+
+    def evaluate(self) -> dict[str, tuple]:
+        """Evaluate results for every extractor against manual labels.
+
+        Returns
+        -------
+        dict[str, tuple[DataFrame, dict, DataFrame] | tuple[None, None, None]]
+            ``{extractor_name: (accuracy_df, confusion_dict, errors_df)}``
         """
         from .evaluate import load_method
-        return load_method(self.config.tag)
+        return {e: load_method(self.config.tag_for(e)) for e in self.config.extractors}
 
-    def run_and_evaluate(self):
+    def run_and_evaluate(self) -> dict[str, tuple]:
         """Run the experiment then evaluate.  Convenience wrapper."""
         self.run()
         return self.evaluate()
 
     def summary(self) -> None:
-        """Print a one-line accuracy summary to stdout."""
-        df, _, _ = self.evaluate()
-        if df is None:
-            print(f"[{self.config.name}]  no results found — run first")
-            return
-        tc = int(df["correct"].sum())
-        tn = int(df["total"].sum())
-        print(f"[{self.config.name}]  {tc}/{tn}  ({tc/tn*100:.1f}%)  tag={self.config.tag!r}")
+        """Print one accuracy line per extractor to stdout."""
+        for extractor, (df, _, _) in self.evaluate().items():
+            tag = self.config.tag_for(extractor)
+            if df is None:
+                print(f"[{self.config.name} / {extractor}]  no results — run first")
+                continue
+            tc = int(df["correct"].sum())
+            tn = int(df["total"].sum())
+            print(
+                f"[{self.config.name} / {extractor}]  "
+                f"{tc}/{tn}  ({tc/tn*100:.1f}%)  tag={tag!r}"
+            )
 
     def __repr__(self) -> str:
         return f"Experiment({self.config})"
@@ -330,7 +364,8 @@ def main() -> None:
         print(f"Experiments in {EXPERIMENTS_DIR}:\n")
         for p in paths:
             cfg = ExperimentConfig.from_yaml(p)
-            print(f"  {p.name:<45}  {cfg.strategy:<12}  {cfg.model}")
+            exts = ", ".join(cfg.extractors)
+            print(f"  {p.name:<45}  {cfg.strategy:<12}  {cfg.model:<22}  [{exts}]")
         sys.exit(0)
 
     if not args.config:
@@ -338,11 +373,13 @@ def main() -> None:
         sys.exit(1)
 
     exp = Experiment.from_yaml(args.config)
-    print(f"\nExperiment : {exp.config.name}")
-    print(f"Strategy   : {exp.config.strategy}")
-    print(f"Model      : {exp.config.model}  ({exp.config.provider})")
-    print(f"Tag        : {exp.config.tag}")
-    print(f"Samples    : {exp.config.sample_start}–{exp.config.sample_end}\n")
+    cfg = exp.config
+    print(f"\nExperiment : {cfg.name}")
+    print(f"Strategy   : {cfg.strategy}")
+    print(f"Extractors : {', '.join(cfg.extractors)}")
+    print(f"Model      : {cfg.model}  ({cfg.provider})")
+    print(f"Tags       : {', '.join(cfg.tags)}")
+    print(f"Samples    : {cfg.sample_start}–{cfg.sample_end}\n")
 
     if not args.evaluate_only:
         exp.run()

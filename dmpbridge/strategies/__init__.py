@@ -55,6 +55,7 @@ def get_strategy(
     provider: str | None = None,
     model: str | None = None,
     host: str | None = None,
+    extractor: str = "pdfplumber",
     system_prompt: str | None = None,
 ) -> Strategy:
     """Return a configured Strategy instance by name.
@@ -71,6 +72,9 @@ def get_strategy(
         Falls back to ``config.MODEL`` when omitted.
     host:
         Ollama base URL.  Falls back to ``config.HOST`` when omitted.
+    extractor:
+        PDF extraction backend — ``"pdfplumber"`` (default), ``"docling"``,
+        or ``"lighton"``.
     """
     from ..core import config as _cfg
     from .wholedoc import WholeDocStrategy
@@ -80,7 +84,7 @@ def get_strategy(
     _host     = host     or _cfg.HOST
 
     if name == "wholedoc":
-        kwargs = {}
+        kwargs = {"extractor": extractor}
         if system_prompt is not None:
             kwargs["system_prompt"] = system_prompt
         return WholeDocStrategy(provider=_provider, model=_model, host=_host, **kwargs)
