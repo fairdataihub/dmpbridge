@@ -6,7 +6,7 @@ Usage (CLI):
 
 Notebook usage:
     from dmpbridge.evaluation.evaluate import (
-        load_method, compute_f1_rows,
+        load_method, compute_f1_rows, confusion_matrix_df,
         extract_gold, evaluate_sample, match,
         LABELS, SHORT, LLM_DIR, MANUAL_DIR, NO_MATCH,
     )
@@ -192,10 +192,31 @@ def _snum(path: Path) -> int:
     return int(path.stem.replace("_dmp", "").replace("sample", ""))
 
 
+def confusion_matrix_df(confusion: dict):
+    """Return a tidy DataFrame of the confusion matrix for display or heatmap plotting.
+
+    Rows are true labels; columns are predicted labels plus ``missed``.
+    ``missed`` = gold items with no matching predicted block.
+    """
+    import pandas as pd
+    cols = list(SHORT) + ["missed"]
+    data = []
+    for true_lbl in LABELS:
+        row_dict = confusion.get(true_lbl, {})
+        row = [row_dict.get(pred_lbl, 0) for pred_lbl in LABELS]
+        row.append(row_dict.get("__missed__", 0))
+        data.append(row)
+    return pd.DataFrame(data, index=SHORT, columns=cols)
+
+
 def load_method(tag: str):
     """Load and evaluate all samples for a given file tag.
 
     Files follow the pattern: ``data/output/labeled/{tag}/sampleN.json``
+
+    The returned confusion matrix is the gold-aligned aggregate: rows are true
+    labels, columns include predicted labels and ``__missed__``, so F1 computed
+    from it correctly accounts for items the extractor never surfaced.
 
     Returns
     -------
@@ -221,11 +242,13 @@ def load_method(tag: str):
             continue
         gold   = extract_gold(mp)
         conf   = evaluate_sample(pp, gold)
+        add_confusion(conf_all, conf)
+
+        # Collect mislabeled blocks for the error table (forward-check only).
         blocks = json.loads(pp.read_text(encoding="utf-8"))
         for b in blocks:
             tl = match(b["text"], gold)
             pl = b.get("label", "answer.text")
-            conf_all[tl or NO_MATCH][pl] += 1
             if tl != pl:
                 errors.append({
                     "sample": stem,
@@ -234,15 +257,15 @@ def load_method(tag: str):
                     "pred":   pl,
                     "page":   b.get("page", "-"),
                 })
-        tp = sum(conf.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
-        n  = sum(sum(v.values()) for v in conf.values())
+
+        correct, _, total = gold_metrics(conf)
         rows.append({
             "sample":   stem,
-            "total":    n,
-            "correct":  tp,
-            "errors":   n - tp,
-            "accuracy": tp / n if n else 0,
-            "formula":  f"{tp}/{n}",
+            "total":    total,
+            "correct":  correct,
+            "errors":   total - correct,
+            "accuracy": correct / total if total else 0,
+            "formula":  f"{correct}/{total}",
         })
 
     return pd.DataFrame(rows), conf_all, pd.DataFrame(errors)
