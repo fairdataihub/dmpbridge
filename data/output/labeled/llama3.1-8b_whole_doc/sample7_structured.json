@@ -1,0 +1,32 @@
+{
+  "narrative": {
+    "download_url": "",
+    "template": {
+      "title": "Resource/Data Sharing Plan",
+      "description": "",
+      "version": "v1",
+      "section": [
+        {
+          "title": "The study investigators are committed to the open and timely dissemination of study data. The final datasets",
+          "description": "",
+          "order": 1,
+          "question": [
+            {
+              "text": "The study investigators are committed to the open and timely dissemination of study data. The final datasets",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "will include demographic and clinical assessment data obtained from interviews, questionnaires, and\nbehavioral tasks collected from human subjects. The investigators will be fully compliant to the NIMH Data\nArchive (NDA) Data Sharing Terms and Conditions, including submitting and harmonizing all descriptive/raw\ndata and analyzed data at the item and subject-level to the National Database for Clinical Trials (NDCT)\naccording to the expected timeline (semi-annually, at the end of the grant or at the time of publication,\nwhichever occurs first). The investigators will include appropriate language in participant consent documents to\nallow for the data sharing through NDA, and complete all required paperwork related to the submission and\nsharing. The investigators will certify the quality of all data prior to submission and review the data for accuracy\nafter submission. The investigators will also associate the submitted data in NDA with the findings/publications\n(both positive and negative) using NDA-provided features. All submitted data will include an NDA Global\nUnique Identifier (GUID) and will not include personally identifiable information (PII). The exception to the\nabove is the audio recordings of the treatment sessions. Even with the removal of all identifiers, we believe that\nit would be difficult if not impossible to protect the identities of participants given the voice characteristics of\nparticipants will be readily available and the relatively restricted area from which we are recruiting participants.\nTherefore, we are not planning to share this part of the data.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
