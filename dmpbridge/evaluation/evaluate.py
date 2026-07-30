@@ -2,7 +2,7 @@
 
 Usage (CLI):
     dmpbridge-evaluate                                          # all samples
-    dmpbridge-evaluate data/llmlabeled/sample1_llama3.3-70b_batch.json
+    dmpbridge-evaluate data/llmlabeled/sample1_llama3.3-70b_whole_doc.json
 
 Notebook usage:
     from dmpbridge.evaluation.evaluate import (
@@ -31,7 +31,7 @@ MANUAL_DIR = _ROOT / "data/input/ground_truth"
 LLM_DIR    = _ROOT / "data/output/labeled"
 
 MODEL_TAG  = _config.MODEL.replace(":", "-").replace("/", "-")
-LLM_SUFFIX = f"{MODEL_TAG}_batch"
+LLM_SUFFIX = f"{MODEL_TAG}_whole_doc"
 
 
 # ── Text helpers ──────────────────────────────────────────────────────────────

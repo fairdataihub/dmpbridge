@@ -7,12 +7,12 @@ The pipeline has two execution modes:
     both preprocessing and model-call logic, so the pipeline stays thin::
 
         from dmpbridge.strategies import get_strategy
-        strategy = get_strategy("batch", model="llama3.3:70b")
+        strategy = get_strategy("wholedoc", model="llama3.3:70b")
         blocks   = process_pdf("document.pdf", strategy=strategy)
 
 **Legacy mode** (backward compatible)
     Pass ``provider`` / ``model`` / ``host`` kwargs directly.  The pipeline
-    creates a :class:`~dmpbridge.strategies.batch.BatchStrategy` internally::
+    creates a :class:`~dmpbridge.strategies.wholedoc.WholeDocStrategy` internally::
 
         blocks = process_pdf("document.pdf", model="llama3.3:70b")
 
@@ -57,7 +57,7 @@ def process_pdf(
         A :class:`~dmpbridge.strategies.Strategy` instance.  When provided,
         ``provider`` / ``model`` / ``host`` are ignored for classification.
     provider, model, host:
-        Used in legacy mode (no strategy) to build a ``BatchStrategy``.
+        Used in legacy mode (no strategy) to build a ``WholeDocStrategy``.
     output:
         Path to write the flat labeled JSON.
     structured_output:
@@ -75,8 +75,8 @@ def process_pdf(
 
     # ── Resolve strategy ──────────────────────────────────────────────────────
     if strategy is None:
-        from ..strategies.batch import BatchStrategy
-        strategy = BatchStrategy(provider=provider, model=model, host=host)
+        from ..strategies.wholedoc import WholeDocStrategy
+        strategy = WholeDocStrategy(provider=provider, model=model, host=host)
 
     # ── Preprocessing (pdfplumber path) ───────────────────────────────────────
     logger.info("Extracting text from %s …", pdf_path.name)

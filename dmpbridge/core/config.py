@@ -26,8 +26,3 @@ MODEL = os.getenv("DMPBRIDGE_MODEL", "llama3.3:70b")
 # Ollama server URL.
 HOST = os.getenv("DMPBRIDGE_HOST", "http://localhost:11434")
 
-# ── Batch settings ────────────────────────────────────────────────────────────
-
-# How many blocks to send per LLM request.
-# Reduce if the model returns empty responses; increase for faster throughput.
-BATCH_SIZE = int(os.getenv("DMPBRIDGE_BATCH_SIZE", "10"))

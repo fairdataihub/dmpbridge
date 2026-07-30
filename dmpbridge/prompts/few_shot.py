@@ -27,13 +27,18 @@ def _extract_pairs(path: Path) -> list[tuple[str, str]]:
         pairs.append((title, "title"))
 
     for section in template.get("section", []):
-        if section.get("title"):
-            pairs.append((section["title"].strip(), "section.title"))
+        sec_title = section.get("title", "").strip()
+        if sec_title:
+            pairs.append((sec_title, "section.title"))
         if section.get("description"):
             pairs.append((section["description"].strip(), "section.description"))
         for question in section.get("question", []):
-            if question.get("text"):
-                pairs.append((question["text"].strip(), "question.text"))
+            q_text = question.get("text", "").strip()
+            # PM rule: when section has no explicit sub-question, the section title is
+            # repeated as question.text in the JSON. Skip the duplicate so few-shot
+            # examples don't show section headings labeled as question.text.
+            if q_text and q_text != sec_title:
+                pairs.append((q_text, "question.text"))
             ans = question.get("answer", {})
             ans_text = ""
             if isinstance(ans, dict):

@@ -12,14 +12,14 @@ Usage — Python API
 ------------------
     from dmpbridge.evaluation.experiment import Experiment, ExperimentConfig
 
-    exp    = Experiment.from_yaml("experiments/claude-opus-4-8-batch.yaml")
+    exp    = Experiment.from_yaml("experiments/llama3.3-70b-wholedoc.yaml")
     paths  = exp.run()                 # classify + save JSON for each sample
     df, conf, errs = exp.evaluate()    # compare against manual labels
 
 Usage — CLI
 -----------
-    dmpbridge-experiment experiments/claude-opus-4-8-batch.yaml
-    dmpbridge-experiment experiments/claude-opus-4-8-batch.yaml --evaluate
+    dmpbridge-experiment experiments/llama3.3-70b-wholedoc.yaml
+    dmpbridge-experiment experiments/llama3.3-70b-wholedoc.yaml --evaluate
     dmpbridge-experiment --list
 """
 from __future__ import annotations
@@ -54,7 +54,7 @@ class ExperimentConfig:
     name:
         Human-readable experiment name shown in reports.
     strategy:
-        ``"batch"`` | ``"wholedoc"`` | ``"pdf_direct"``
+        ``"wholedoc"`` — the only supported strategy.
     model:
         Model identifier passed to the provider.
     provider:
@@ -64,10 +64,6 @@ class ExperimentConfig:
     prompt:
         Prompt variant to use.  ``"default"`` is the only supported value now;
         reserved for future A/B prompt experiments.
-    batch_size:
-        Number of blocks per LLM request.  Only applies to the batch strategy.
-    context_size:
-        Sliding-context window size for the batch strategy.
     pdf_dir:
         Directory that contains ``sample1.pdf`` … ``sample10.pdf``.
     out_dir:
@@ -85,8 +81,6 @@ class ExperimentConfig:
 
     host:         str = "http://localhost:11434"
     prompt:       str = "default"
-    batch_size:   int = 10
-    context_size: int = 3
 
     pdf_dir:      str = "data/input/pdfs"
     out_dir:      str = "data/output/labeled"
@@ -110,11 +104,7 @@ class ExperimentConfig:
 
             sample1_{tag}.json
         """
-        _suffix = {
-            "batch":    "batch",
-            "wholedoc": "whole_doc",
-        }
-        suffix = _suffix.get(self.strategy, self.strategy)
+        suffix = "whole_doc" if self.strategy == "wholedoc" else self.strategy
         return f"{self.model.replace(':', '-')}_{suffix}"
 
     @property
@@ -180,9 +170,6 @@ class Experiment:
             from ..strategies import get_strategy
             cfg    = self.config
             kwargs: dict = {"provider": cfg.provider, "model": cfg.model, "host": cfg.host}
-            if cfg.strategy == "batch":
-                kwargs["batch_size"]   = cfg.batch_size
-                kwargs["context_size"] = cfg.context_size
             if cfg.few_shot_samples:
                 from ..prompts.few_shot import build_few_shot_examples
                 from ..prompts.system import build_system_prompt

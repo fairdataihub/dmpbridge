@@ -29,7 +29,7 @@ def main() -> None:
     """
     parser = argparse.ArgumentParser(
         prog="dmpbridge",
-        description="Extract and label DMP PDF text blocks (batch strategy, all providers).",
+        description="Extract and label DMP PDF text blocks using Ollama.",
     )
     parser.add_argument("pdf", help="Path to the input PDF file.")
     parser.add_argument(
@@ -124,8 +124,8 @@ def main() -> None:
             else output.with_name(output.stem + "_structured.json")
         )
 
-    from ..strategies.batch import BatchStrategy
-    strategy = BatchStrategy(provider=args.provider, model=args.model, host=args.host)
+    from ..strategies.wholedoc import WholeDocStrategy
+    strategy = WholeDocStrategy(provider=args.provider, model=args.model, host=args.host)
 
     try:
         blocks = process_pdf(
