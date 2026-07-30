@@ -27,7 +27,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 import yaml
@@ -92,6 +92,12 @@ class ExperimentConfig:
     out_dir:      str = "data/output/labeled"
     sample_start: int = 1
     sample_end:   int = 10
+
+    # Leave-2-out rotation fields — empty list means "use all samples / use hardcoded examples".
+    # few_shot_samples: gold sample IDs to extract dynamic few-shot examples from.
+    # eval_samples:     explicit eval set; when empty, all samples except few_shot_samples are used.
+    few_shot_samples: list = field(default_factory=list)
+    eval_samples:     list = field(default_factory=list)
 
     # ── Derived properties ────────────────────────────────────────────────────
 
@@ -174,11 +180,19 @@ class Experiment:
     def _get_strategy(self):
         if self._strategy is None:
             from ..strategies import get_strategy
-            cfg = self.config
+            cfg    = self.config
             kwargs: dict = {"provider": cfg.provider, "model": cfg.model, "host": cfg.host}
             if cfg.strategy == "batch":
                 kwargs["batch_size"]   = cfg.batch_size
                 kwargs["context_size"] = cfg.context_size
+            if cfg.few_shot_samples:
+                from ..prompts.few_shot import build_few_shot_examples
+                from ..prompts.system import build_system_prompt
+                examples = build_few_shot_examples(cfg.few_shot_samples)
+                kwargs["system_prompt"] = build_system_prompt(examples)
+                logger.info(
+                    "Dynamic few-shot prompt built from samples %s", cfg.few_shot_samples
+                )
             self._strategy = get_strategy(cfg.strategy, **kwargs)
         return self._strategy
 
@@ -200,9 +214,20 @@ class Experiment:
         out_dir  = Path(cfg.out_dir) / cfg.tag
         out_dir.mkdir(parents=True, exist_ok=True)
 
+        # Determine which samples to evaluate in this run.
+        few_shot_set = set(cfg.few_shot_samples)
+        if cfg.eval_samples:
+            eval_set = set(cfg.eval_samples)
+        else:
+            eval_set = set(cfg.sample_range) - few_shot_set
+
         outputs: list[Path] = []
 
         for i in cfg.sample_range:
+            if i not in eval_set:
+                logger.info("[sample%d] reserved for few-shot examples — skipping", i)
+                continue
+
             label    = f"[sample{i}]"
             pdf_path = Path(cfg.pdf_dir) / f"sample{i}.pdf"
             out_path = out_dir / f"sample{i}.json"

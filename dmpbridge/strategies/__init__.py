@@ -61,6 +61,7 @@ def get_strategy(
     api_key: str | None = None,
     batch_size: int | None = None,
     context_size: int | None = None,
+    system_prompt: str | None = None,
 ) -> Strategy:
     """Return a configured Strategy instance by name.
 
@@ -92,13 +93,16 @@ def get_strategy(
     if name == "batch":
         from .batch import BatchStrategy
         kwargs = {}
-        if batch_size   is not None: kwargs["batch_size"]   = batch_size
-        if context_size is not None: kwargs["context_size"] = context_size
+        if batch_size    is not None: kwargs["batch_size"]    = batch_size
+        if context_size  is not None: kwargs["context_size"]  = context_size
+        if system_prompt is not None: kwargs["system_prompt"] = system_prompt
         return BatchStrategy(provider=_provider, model=_model, host=_host, **kwargs)
 
     if name == "wholedoc":
         from .wholedoc import WholeDocStrategy
-        return WholeDocStrategy(provider=_provider, model=_model, host=_host)
+        kwargs = {}
+        if system_prompt is not None: kwargs["system_prompt"] = system_prompt
+        return WholeDocStrategy(provider=_provider, model=_model, host=_host, **kwargs)
 
     if name == "pdf_direct":
         from .pdf_direct import PdfDirectStrategy

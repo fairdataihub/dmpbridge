@@ -11,6 +11,7 @@ Strategy-specific prompt builders live in their own strategy files:
     strategies/pdf_direct.py  _PDF_USER_PROMPT
 """
 from .labels import LABELS, OUTPUT_SCHEMA
-from .system import SYSTEM_PROMPT
+from .system import SYSTEM_PROMPT, build_system_prompt
+from .few_shot import build_few_shot_examples
 
-__all__ = ["LABELS", "OUTPUT_SCHEMA", "SYSTEM_PROMPT"]
+__all__ = ["LABELS", "OUTPUT_SCHEMA", "SYSTEM_PROMPT", "build_system_prompt", "build_few_shot_examples"]

@@ -86,21 +86,27 @@ class BatchStrategy:
         Number of blocks per LLM request (default: ``config.BATCH_SIZE``).
     context_size:
         Number of already-labeled blocks prepended as sliding context (default: 3).
+    system_prompt:
+        Override the default system prompt.  Used by the rotation evaluation design
+        to inject dynamic few-shot examples drawn from a specific sample pair.
+        When ``None``, the module-level ``SYSTEM_PROMPT`` constant is used.
     """
 
     def __init__(
         self,
-        provider:     str = config.PROVIDER,
-        model:        str = config.MODEL,
-        host:         str = config.HOST,
-        batch_size:   int = BATCH_SIZE,
-        context_size: int = CONTEXT_SIZE,
+        provider:      str = config.PROVIDER,
+        model:         str = config.MODEL,
+        host:          str = config.HOST,
+        batch_size:    int = BATCH_SIZE,
+        context_size:  int = CONTEXT_SIZE,
+        system_prompt: str | None = None,
     ) -> None:
-        self.provider     = provider
-        self.model        = model
-        self.batch_size   = batch_size
-        self.context_size = context_size
-        self._backend     = get_model(provider, model, host=host)
+        self.provider       = provider
+        self.model          = model
+        self.batch_size     = batch_size
+        self.context_size   = context_size
+        self._system_prompt = system_prompt if system_prompt is not None else SYSTEM_PROMPT
+        self._backend       = get_model(provider, model, host=host)
 
     # ── Strategy protocol ──────────────────────────────────────────────────────
 
@@ -140,7 +146,7 @@ class BatchStrategy:
             logger.info("  Classifying blocks %d–%d …", start, start + len(batch) - 1)
 
             prompt = _build_batch_prompt(batch, start, context)
-            raw    = self._backend.complete(SYSTEM_PROMPT, prompt)
+            raw    = self._backend.complete(self._system_prompt, prompt)
             labels = parse_llm_json(raw, label=f"offset={start}")
 
             for entry in labels:
