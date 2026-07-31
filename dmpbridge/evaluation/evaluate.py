@@ -214,14 +214,18 @@ def confusion_matrix_df(confusion: dict):
     return pd.DataFrame(data, index=SHORT, columns=cols)
 
 
-def load_method(tag: str):
+def load_method(tag: str, exclude: list[int] | None = None):
     """Load and evaluate all samples for a given file tag.
 
     Files follow the pattern: ``data/output/labeled/{tag}/sampleN.json``
 
-    The returned confusion matrix is the gold-aligned aggregate: rows are true
-    labels, columns include predicted labels and ``__missed__``, so F1 computed
-    from it correctly accounts for items the extractor never surfaced.
+    Parameters
+    ----------
+    tag:
+        Result tag directory name under ``data/output/labeled/``.
+    exclude:
+        List of sample numbers to skip (e.g. ``[1, 2]`` to skip sample1 and
+        sample2 that were used for prompt development).
 
     Returns
     -------
@@ -231,9 +235,12 @@ def load_method(tag: str):
     """
     import pandas as pd
 
+    _exclude = set(exclude or [])
+
     samples = sorted(MANUAL_DIR.glob("*_dmp.json"), key=_snum)
     found   = [mp for mp in samples
-               if (LLM_DIR / tag / f"{mp.stem.replace('_dmp', '')}.json").exists()]
+               if (LLM_DIR / tag / f"{mp.stem.replace('_dmp', '')}.json").exists()
+               and _snum(mp) not in _exclude]
     if not found:
         return None, None, None
 
@@ -242,6 +249,8 @@ def load_method(tag: str):
 
     for mp in samples:
         stem = mp.stem.replace("_dmp", "")
+        if _snum(mp) in _exclude:
+            continue
         pp   = LLM_DIR / tag / f"{stem}.json"
         if not pp.exists():
             continue
@@ -278,7 +287,7 @@ def load_method(tag: str):
 
 # ── Confidence analysis ───────────────────────────────────────────────────────
 
-def load_confidence(tag: str):
+def load_confidence(tag: str, exclude: list[int] | None = None):
     """Load predicted blocks with confidence scores for all samples under *tag*.
 
     Returns a flat DataFrame with one row per predicted block that could be
@@ -290,9 +299,12 @@ def load_confidence(tag: str):
     """
     import pandas as pd
 
+    _exclude = set(exclude or [])
     samples = sorted(MANUAL_DIR.glob("*_dmp.json"), key=_snum)
     rows = []
     for mp in samples:
+        if _snum(mp) in _exclude:
+            continue
         stem = mp.stem.replace("_dmp", "")
         pp   = LLM_DIR / tag / f"{stem}.json"
         if not pp.exists():
@@ -460,17 +472,21 @@ def list_tags() -> list[str]:
     return sorted(d.name for d in LLM_DIR.iterdir() if d.is_dir() and list(d.glob("sample*.json")))
 
 
-def run_all(tag: str) -> None:
+def run_all(tag: str, exclude: list[int] | None = None) -> None:
     """Evaluate all samples for *tag* against ground truth."""
+    _exclude = set(exclude or [])
     total_confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
-    samples = sorted(MANUAL_DIR.glob("*_dmp.json"))
+    samples = sorted(MANUAL_DIR.glob("*_dmp.json"), key=_snum)
 
-    print(f"\nEvaluating: {tag}\n")
+    excl_note = f"  (excluding sample{list(_exclude)} — used for prompt development)" if _exclude else ""
+    print(f"\nEvaluating: {tag}{excl_note}\n")
     _sample_header()
     total_n = total_tp = 0
     per_sample = []
 
     for manual_path in samples:
+        if _snum(manual_path) in _exclude:
+            continue
         stem      = manual_path.stem.replace("_dmp", "")
         pred_path = LLM_DIR / tag / f"{stem}.json"
         if not pred_path.exists():
@@ -522,7 +538,10 @@ def main() -> None:
     ap.add_argument("target", nargs="?",
                     help="Result tag (e.g. llama3.1-8b_pdfplumber_whole_doc) or path to a single JSON file.")
     ap.add_argument("--list", "-l", action="store_true", help="List available result tags and exit.")
+    ap.add_argument("--exclude", "-x", default="",
+                    help="Comma-separated sample numbers to skip, e.g. --exclude 1,2")
     args = ap.parse_args()
+    exclude = [int(n) for n in args.exclude.split(",") if n.strip().isdigit()]
 
     if args.list:
         tags = list_tags()
@@ -540,7 +559,7 @@ def main() -> None:
         return
 
     if args.target:
-        run_all(args.target)
+        run_all(args.target, exclude=exclude)
         return
 
     # No argument — auto-detect: use the only tag or prompt the user.
@@ -549,7 +568,7 @@ def main() -> None:
         print(f"No results found in {LLM_DIR}. Run an experiment first.")
         sys.exit(1)
     if len(tags) == 1:
-        run_all(tags[0])
+        run_all(tags[0], exclude=exclude)
     else:
         print("Multiple result sets found. Specify one with:\n")
         for t in tags:
