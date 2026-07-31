@@ -27,7 +27,7 @@ logger = get_logger(__name__)
 SHORT = ["title", "sec.title", "sec.desc", "q.text", "ans.text"]
 
 _ROOT      = Path(__file__).parent.parent.parent
-MANUAL_DIR = _ROOT / "data/input/ground_truth"
+MANUAL_DIR = _ROOT / "data/input/ground_truth_old_version"
 LLM_DIR    = _ROOT / "data/output/labeled"
 
 MODEL_TAG  = _config.MODEL.replace(":", "-").replace("/", "-")
