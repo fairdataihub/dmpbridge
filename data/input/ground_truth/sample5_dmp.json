@@ -1,0 +1,226 @@
+{
+  "narrative": {
+    "download_url": "https://example.com/dmps/123/narrative",
+    "template": {
+      "id": "",
+      "title": "DATA MANAGEMENT PLAN",
+      "description": "",
+      "version": "V1",
+      "section": [
+        {
+          "id": "",
+          "title": "REVIEW OF PROPOSAL COMPONENTS",
+          "description": "",
+          "order": 1,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "The proposal is separated into three sections.\n• Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls.\n• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale.\n• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "TYPES OF DATA",
+          "description": "",
+          "order": 2,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing. The project will result in new sets of data, code, and tools. These outputs include: (a) source code to quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and (c) sharable instructional materials (Scientist Spotlight activities and workshop materials).",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            },
+            {
+              "id": "",
+              "text": "Input data:",
+              "order": 2,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be adopted and will likely evolve as new datasets provide for challenging formats and organization.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            },
+            {
+              "id": "",
+              "text": "Produced Data:",
+              "order": 3,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "DATA AND METADATA STANDARDS",
+          "description": "",
+          "order": 3,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "The data will be shared along with a README.txt, which will describe all files, their relationships, naming conventions, etc. Data elements and attributes will be described following ISO 19115 specifications and metadata schema and standards in Hydrology (e.g., following any establish standards of the Water Information Coordination Program's Open Water Data Initiative (Larsen et al., 2016)) to allow for better interpretability and interoperability. Code and scripts produced in R and/or python will be documented for reproducibility purposes. The metadata for the codes will include: (1) description of the functions required to operate the analyses; (2) description of input parameters and outputs; and (3) test case, files and plots documenting the expected response of the model (Section 2.1) to a standard set of input parameters. Documentation will focus on the description of the functions, input parameters, outputs, the format of input data, instructions to run the model, and instructions to export the results. The outputs will be stored in CSV format with a metadata document describing the data structure of the output data.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "POLICIES FOR ACCESS AND SHARING",
+          "description": "",
+          "order": 4,
+          "question": [
+            {
+              "id": "",
+              "text": "Raw data:",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors. All methodological procedures for data quality control and aggregation will be described in the data documentation. This information will be provided in the form of supplementary documentation for publications, in the README.txt file, and at the repository (record-level). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the agnostic open access repository backed by UCSB and the California Digital Library (CDL), which implements the latest best practices in data curation, publication, citation, and archival. Dryad assigns Digital Object Identifiers (DOIs) to deposited datasets and makes data discoverable through such services as the Thomson-Reuters Data Citation Index, Scopus, and Google Dataset Search. All data in Dryad is publicly accessible and released under a CC0 license. Data will be linked to publications and vice versa through DOIs.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            },
+            {
+              "id": "",
+              "text": "Scripts and code for analyses:",
+              "order": 2,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            },
+            {
+              "id": "",
+              "text": "Scientist spotlight:",
+              "order": 3,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "All scientist spotlight biographies, assignments, and open-access readings will be posted to an online Dashboard associated with the PI's website, which is updated bi-monthly.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            },
+            {
+              "id": "",
+              "text": "Workshop frameworks:",
+              "order": 4,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "Workshop material will be shared with UCSB's Diversity Committee through Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination. The PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist faculty in paying for open access journals.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+          "description": "",
+          "order": 5,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may freely build upon, enhance and reuse the works for any purposes without restriction under copyright or database law. CC0 does not exempt those who reuse the data from following community norms for scholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the original data authors.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
+          "description": "",
+          "order": 6,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing. Box provides encryption of data at rest and in-transit, detailed logging of file actions, two-factor authentication, and access review of collaborators. Data will be accessed using Box Drive, which requires full disk encryption, firewall, and an antivirus software in order to install on a local computer. At the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and code will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits submitted to Dryad are curated prior to public release to conform with quality standards and enable future reuse. The source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved, stored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three planned publications. After the evaluation and refinement of the developed datasets and tools and once the research is completed and published, the final version of the tools and the documentation will be shared on the UCSB's Dryad Data Repository. The final shareable instructional and teaching materials will also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive (workshop materials) and Dryad in pdf format.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

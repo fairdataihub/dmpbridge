@@ -1,0 +1,128 @@
+{
+  "narrative": {
+    "download_url": "https://example.com/dmps/123/narrative",
+    "template": {
+      "id": "",
+      "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES",
+      "description": "",
+      "version": "V1",
+      "section": [
+        {
+          "id": "",
+          "title": "Products of Research",
+          "description": "",
+          "order": 1,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "Battery material samples will be synthesized in powder form and identified through a consistent and systematic labeling procedure, which will include sample composition, name of researcher and date. Experimental data generated over the course of the research will include synthesis procedures and results from characterization of battery electrode samples. Digital characterization data in tabular form will be produced by electrochemical testing, X-ray diffraction, solid-state NMR spectroscopy, EPR spectroscopy, magnetometry, impedance spectroscopy, X-ray photoelectron and absorption spectroscopy, and Mössbauer spectroscopy measurements. Rietveld refinements of scattering data will generate crystallographic data. Scanning electron microscopy will generate images. Synthetic work and optimization of NMR experimental procedures will be documented in lab notebooks and generate physical data. The Van der Ven group's CASM software will be extended to enable the simulation of finite temperature NMR spectra of paramagnetic materials. First principles and Monte Carlo simulations will produce text files, density of states plots and two-dimensional charge density maps. Educational and outreach materials, and assessment results, will be digitized.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Data Format Standards",
+          "description": "",
+          "order": 2,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "In order to allow for interoperability, reproducibility, and reuse, all data will be stored and saved in standard and open formats. Experimental characterization data will be stored and saved as, e.g., ASCII, CSV, Word, Matlab and Python files. Microscope images will be stored as portable graphic files (.tif, .jpg or .png format). Crystallographic data will be reported in standard crystallographic information framework (*.cif) format to facilitate visualization and further analysis through widely available software tools (VESTA, cif2file, etc.). Crystallographic data for previously-unreported compounds/structures will be uploaded to the ICSD database. First principles simulation input and output files (generated with the VASP and CRYSTAL codes) will be stored as rich text format (*.rtf) files for readability across many programs and platforms. The CRYSTAL code manual will be provided along CRYSTAL input/output data to allow for interpretation of variables. Both CRYSTAL and VASP manuals are also available online. The Van der Ven group's CASM software currently interfaces with VASP, automates the construction of effective Hamiltonians and subjects them to Monte Carlo simulations. CASM organizes all the files associated with VASP calculations into a standard structure that can be accessed by subsequent runs of CASM, either by the same user or by a new user. A similar CASM interface and infrastructure will be developed here for CRYSTAL calculations of NMR properties. The uniform file structure enforced by CASM for the effective Hamiltonian construction and the large number of Monte Carlo simulations that are necessary to construct, e.g., temperature composition phase diagrams, will be extended to include Fermi contact shifts and electric field gradient tensors. This will ensure that results from calculations performed by different users are in a format that is readily accessible, either by CASM or directly by different people.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Access and sharing",
+          "description": "",
+          "order": 3,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in partnership with Jamboree Housing (JH) will be uploaded to JH's filesharing system for broad and free dissemination to their different centers and partners in California. All of the research results will be disseminated through peer-reviewed publications, conference presentations, and annual reports. The supporting information accompanying publications will include detailed experimental/simulation/synthetic procedures, as well as detailed information on models used for data analysis. All of the journals of interest to the group make supporting information files publicly-available online free of charge. In addition, all publication pre-prints will be made freely available, along with supplementary information, on the UC eScholarship website. Over the course of the project, digital data will be internally stored and shared for collaborative work on the UCSB-administered, Box platform with unlimited cloud storage. The privacy, security and intellectual property protection of data stored in this manner are guaranteed by the privacy policy and terms of service contract between University of California and Box. As a means of making data accessible and searchable, data collected over the course of this project will be stored in the data repository Dryad. Dryad enables easy data upload and description, and creates digital object identifiers (DOIs) for each dataset to help manage long-term data sharing through digital organization. We note that CASM systematically organizes all first-principles calculations that have been performed on a given system and has tools to query a wide range of properties for each calculation. Furthermore, any structure with a chemical ordering, magnetic ordering or a structural distortion that has been made \"by hand\" can be imported in a CASM project and made to be consistent with the automatically enumerated configurations. Hence, for each system of interest to this work, a structured CASM results packet that can easily be queried will be created (consisting of the results of electronic structure calculations, effective Hamiltonian interaction parameters and basis functions and Monte Carlo results) and uploaded to Dryad. Dryad is free of charge for UCSB researchers and can be accessed using a personal ORCID. CASM is an open source software package released under the GNU Lesser General Public License (LGPL) and available free of charge via the prisms-center conda channel at https://anaconda.org/prisms-center. All additions of the CASM software developed during this project will be incorporated into the CASM software and made accessible free of charge and open source under a similar LGPL license. Demonstrations on how to access and use CASM's NMR extensions (and conditions under which they can use and modify the code) will be uploaded to the CASM software website: https://prisms-center.github.io/CASMcode_docs/.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Policies and provisions for re-use, re-distribution, and production of derivatives",
+          "description": "",
+          "order": 4,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "All data will be stored in Dryad and will be available under a public domain, creative commons license (CC0). Note that while a personal ORCID is needed to deposit data in Dryad, no ORCID is required to search, find and download datasets. The existing open source software infrastructure within CASM that serves as a foundation to this project, is already licensed by the Regents of the University of California under the ``LGPL'' open source license, and distributed via the prisms-center conda channel, permitting non-exclusive use of the software. Additions to CASM will be released as LGPL to follow the current licensing of CASM.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Archiving of Data, Samples, and Other Relevant Research Products",
+          "description": "",
+          "order": 5,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "Laboratory notebooks and samples will be retained for a minimum of 5 years following the conclusion of the program and will remain the property of UC Santa Barbara and kept on campus after students graduate. All digital data produced over the course of the project and stored on Box will be moved to Dryad after completion of the project for indefinite storage (>5 years).",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

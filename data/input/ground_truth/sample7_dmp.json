@@ -1,0 +1,36 @@
+{
+  "narrative": {
+    "download_url": "https://example.com/dmps/123/narrative",
+    "template": {
+      "id": "",
+      "title": "Resource/Data Sharing Plan",
+      "description": "",
+      "version": "V1",
+      "section": [
+        {
+          "id": "",
+          "title": "",
+          "description": "",
+          "order": 1,
+          "question": [
+            {
+              "id": "",
+              "text": "",
+              "order": 1,
+              "answer": {
+                "id": "",
+                "json": {
+                  "type": "textArea",
+                  "answer": "The study investigators are committed to the open and timely dissemination of study data. The final datasets will include demographic and clinical assessment data obtained from interviews, questionnaires, and behavioral tasks collected from human subjects. The investigators will be fully compliant to the NIMH Data Archive (NDA) Data Sharing Terms and Conditions, including submitting and harmonizing all descriptive/raw data and analyzed data at the item and subject-level to the National Database for Clinical Trials (NDCT) according to the expected timeline (semi-annually, at the end of the grant or at the time of publication, whichever occurs first). The investigators will include appropriate language in participant consent documents to allow for the data sharing through NDA, and complete all required paperwork related to the submission and sharing. The investigators will certify the quality of all data prior to submission and review the data for accuracy after submission. The investigators will also associate the submitted data in NDA with the findings/publications (both positive and negative) using NDA-provided features. All submitted data will include an NDA Global Unique Identifier (GUID) and will not include personally identifiable information (PII). The exception to the above is the audio recordings of the treatment sessions. Even with the removal of all identifiers, we believe that it would be difficult if not impossible to protect the identities of participants given the voice characteristics of participants will be readily available and the relatively restricted area from which we are recruiting participants. Therefore, we are not planning to share this part of the data.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
