@@ -88,10 +88,6 @@ class ExperimentConfig:
     sample_start: int = 1
     sample_end:   int = 10
 
-    # Leave-2-out rotation fields — empty list means "use all samples / use hardcoded examples".
-    few_shot_samples: list = field(default_factory=list)
-    eval_samples:     list = field(default_factory=list)
-
     # ── Derived properties ────────────────────────────────────────────────────
 
     def tag_for(self, model: str, extractor: str) -> str:
@@ -139,7 +135,7 @@ class ExperimentConfig:
 
     @staticmethod
     def _normalise(data: dict) -> dict:
-        """Promote singular scalar fields to lists for backward compat."""
+        """Promote/strip fields for backward compat."""
         if "model" in data and "models" not in data:
             data["models"] = [data.pop("model")]
         elif "model" in data:
@@ -148,6 +144,9 @@ class ExperimentConfig:
             data["extractors"] = [data.pop("extractor")]
         elif "extractor" in data:
             data.pop("extractor")
+        # Removed fields — drop silently so old YAMLs still load.
+        data.pop("few_shot_samples", None)
+        data.pop("eval_samples", None)
         return data
 
     def to_yaml(self, path: str | Path) -> None:
@@ -194,22 +193,14 @@ class Experiment:
         key = (model, extractor)
         if key not in self._strategies:
             from ..strategies import get_strategy
-            cfg    = self.config
-            kwargs: dict = {
-                "provider":  cfg.provider,
-                "model":     model,
-                "host":      cfg.host,
-                "extractor": extractor,
-            }
-            if cfg.few_shot_samples:
-                from ..prompts.few_shot import build_few_shot_examples
-                from ..prompts.system import build_system_prompt
-                examples = build_few_shot_examples(cfg.few_shot_samples)
-                kwargs["system_prompt"] = build_system_prompt(examples)
-                logger.info(
-                    "Dynamic few-shot prompt built from samples %s", cfg.few_shot_samples
-                )
-            self._strategies[key] = get_strategy(cfg.strategy, **kwargs)
+            cfg = self.config
+            self._strategies[key] = get_strategy(
+                cfg.strategy,
+                provider=cfg.provider,
+                model=model,
+                host=cfg.host,
+                extractor=extractor,
+            )
         return self._strategies[key]
 
     def _run_combination(self, model: str, extractor: str) -> list[Path]:
@@ -219,16 +210,9 @@ class Experiment:
         out_dir  = Path(cfg.out_dir) / cfg.tag_for(model, extractor)
         out_dir.mkdir(parents=True, exist_ok=True)
 
-        few_shot_set = set(cfg.few_shot_samples)
-        eval_set     = set(cfg.eval_samples) if cfg.eval_samples else set(cfg.sample_range) - few_shot_set
-
         outputs: list[Path] = []
 
         for i in cfg.sample_range:
-            if i not in eval_set:
-                logger.info("[sample%d] reserved for few-shot examples — skipping", i)
-                continue
-
             label    = f"[sample{i}]"
             pdf_path = Path(cfg.pdf_dir) / f"sample{i}.pdf"
             out_path = out_dir / f"sample{i}.json"

@@ -3,19 +3,19 @@
     "download_url": "https://example.com/dmps/123/narrative",
     "template": {
       "id": "",
-      "title": "",
+      "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES",
       "description": "",
       "version": "V1",
       "section": [
         {
           "id": "",
-          "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES",
+          "title": "Products of Research",
           "description": "",
           "order": 1,
           "question": [
             {
               "id": "",
-              "text": "Products of Research",
+              "text": "",
               "order": 1,
               "answer": {
                 "id": "",
@@ -27,11 +27,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Data Format Standards",
+          "description": "",
+          "order": 2,
+          "question": [
             {
               "id": "",
-              "text": "Data Format Standards",
-              "order": 2,
+              "text": "",
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
@@ -42,11 +50,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Access and sharing",
+          "description": "",
+          "order": 3,
+          "question": [
             {
               "id": "",
-              "text": "Access and sharing",
-              "order": 3,
+              "text": "",
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
@@ -57,11 +73,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Policies and provisions for re-use, re-distribution, and production of derivatives",
+          "description": "",
+          "order": 4,
+          "question": [
             {
               "id": "",
-              "text": "Policies and provisions for re-use, re-distribution, and production of derivatives",
-              "order": 4,
+              "text": "",
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
@@ -72,11 +96,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Archiving of Data, Samples, and Other Relevant Research Products",
+          "description": "",
+          "order": 5,
+          "question": [
             {
               "id": "",
-              "text": "Archiving of Data, Samples, and Other Relevant Research Products",
-              "order": 5,
+              "text": "",
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {

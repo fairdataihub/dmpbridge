@@ -3,7 +3,7 @@
     "download_url": "https://example.com/dmps/123/narrative",
     "template": {
       "id": "",
-      "title": "",
+      "title": "Resource/Data Sharing Plan",
       "description": "",
       "version": "V1",
       "section": [
@@ -15,7 +15,7 @@
           "question": [
             {
               "id": "",
-              "text": "Resource/Data Sharing Plan",
+              "text": "",
               "order": 1,
               "answer": {
                 "id": "",

@@ -1,7 +1,5 @@
 """Shared system prompt used by all strategies and providers."""
 
-from .few_shot import build_few_shot_examples
-
 # ── Section 1: Label definitions ──────────────────────────────────────────────
 
 _LABEL_DEFINITIONS = """\
@@ -202,33 +200,12 @@ clear cases so the score is useful for downstream review prioritisation.
 
 # ── Prompt assembly ────────────────────────────────────────────────────────────
 
-_DEFAULT_FEW_SHOT_SAMPLES = [1, 2]
+SYSTEM_PROMPT = (
+    _LABEL_DEFINITIONS
+    + _CLASSIFICATION_RULES
+    + _INPUT_FORMAT
+    + _OUTPUT_FORMAT
+    + _CONFIDENCE_SCORE
+)
 
-
-def build_system_prompt(few_shot_examples: str | None = None) -> str:
-    """Return the system prompt with dynamic few-shot examples.
-
-    Parameters
-    ----------
-    few_shot_examples:
-        Pre-formatted examples block from
-        :func:`~dmpbridge.prompts.few_shot.build_few_shot_examples`.
-        When ``None``, examples are built from gold samples 1 and 2 (the default pair).
-        Rotation experiments pass their own pair-specific block here.
-    """
-    if few_shot_examples is None:
-        few_shot_examples = build_few_shot_examples(_DEFAULT_FEW_SHOT_SAMPLES)
-    return (
-        _LABEL_DEFINITIONS
-        + _CLASSIFICATION_RULES
-        + few_shot_examples
-        + _INPUT_FORMAT
-        + _OUTPUT_FORMAT
-        + _CONFIDENCE_SCORE
-    )
-
-
-# Module-level constant — built once at import time from the default sample pair.
-SYSTEM_PROMPT = build_system_prompt()
-
-__all__ = ["SYSTEM_PROMPT", "build_system_prompt"]
+__all__ = ["SYSTEM_PROMPT"]

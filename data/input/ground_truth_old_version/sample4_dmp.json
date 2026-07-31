@@ -3,7 +3,7 @@
     "download_url": "https://example.com/dmps/123/narrative",
     "template": {
       "id": "",
-      "title": "",
+      "title": "DATA MANAGEMENT PLAN",
       "description": "",
       "version": "",
       "section": [
@@ -15,7 +15,7 @@
           "question": [
             {
               "id": "",
-              "text": "DATA MANAGEMENT PLAN",
+              "text": "",
               "order": 1,
               "answer": {
                 "id": "",

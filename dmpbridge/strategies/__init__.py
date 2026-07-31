@@ -56,7 +56,6 @@ def get_strategy(
     model: str | None = None,
     host: str | None = None,
     extractor: str = "pdfplumber",
-    system_prompt: str | None = None,
 ) -> Strategy:
     """Return a configured Strategy instance by name.
 
@@ -84,10 +83,9 @@ def get_strategy(
     _host     = host     or _cfg.HOST
 
     if name == "wholedoc":
-        kwargs = {"extractor": extractor}
-        if system_prompt is not None:
-            kwargs["system_prompt"] = system_prompt
-        return WholeDocStrategy(provider=_provider, model=_model, host=_host, **kwargs)
+        return WholeDocStrategy(
+            provider=_provider, model=_model, host=_host, extractor=extractor
+        )
 
     raise ValueError(
         f"Unknown strategy {name!r}. Only 'wholedoc' is supported."

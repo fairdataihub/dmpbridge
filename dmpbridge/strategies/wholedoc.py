@@ -84,29 +84,23 @@ class WholeDocStrategy:
     extractor:
         PDF extraction backend — ``"pdfplumber"`` (default), ``"docling"``,
         or ``"lighton"``.
-    system_prompt:
-        Override the default system prompt.  Used by the rotation evaluation
-        design to inject dynamic few-shot examples from a specific sample pair.
-        When ``None``, the module-level ``SYSTEM_PROMPT`` constant is used.
     """
 
     def __init__(
         self,
-        provider:      str = config.PROVIDER,
-        model:         str = config.MODEL,
-        host:          str = config.HOST,
-        extractor:     str = "pdfplumber",
-        system_prompt: str | None = None,
+        provider:  str = config.PROVIDER,
+        model:     str = config.MODEL,
+        host:      str = config.HOST,
+        extractor: str = "pdfplumber",
     ) -> None:
         if provider != "ollama":
             raise ConfigurationError(
                 f"WholeDocStrategy: unsupported provider {provider!r}. Only 'ollama' is supported."
             )
-        self.provider       = provider
-        self.model          = model
-        self._system_prompt = system_prompt if system_prompt is not None else SYSTEM_PROMPT
-        self._extractor     = get_extractor(extractor)
-        self._backend       = get_model(
+        self.provider   = provider
+        self.model      = model
+        self._extractor = get_extractor(extractor)
+        self._backend   = get_model(
             provider,
             model,
             host=host,
@@ -129,6 +123,6 @@ class WholeDocStrategy:
 
         logger.info("[wholedoc] sending %d blocks to %s / %s …",
                     len(payload), self.provider, self.model)
-        raw    = self._backend.complete(self._system_prompt, prompt)
+        raw    = self._backend.complete(SYSTEM_PROMPT, prompt)
         parsed = parse_llm_json(raw, label=pdf_path.stem)
         return _apply_labels(blocks, parsed)

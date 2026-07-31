@@ -68,7 +68,7 @@
           "question": [
             {
               "id": "",
-              "text": "Element 2: Related Tools, Software and/or Code:",
+              "text": "",
               "order": 1,
               "answer": {
                 "id": "",
@@ -91,7 +91,7 @@
           "question": [
             {
               "id": "",
-              "text": "Element 3: Standards:",
+              "text": "",
               "order": 1,
               "answer": {
                 "id": "",
@@ -220,7 +220,7 @@
           "question": [
             {
               "id": "",
-              "text": "Element 6: Oversight of Data Management and Sharing",
+              "text": "",
               "order": 1,
               "answer": {
                 "id": "",
