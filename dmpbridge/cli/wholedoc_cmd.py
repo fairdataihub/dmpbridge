@@ -53,10 +53,7 @@ def main() -> None:
     )
 
     model_slug = args.model.replace(":", "-")
-    if args.extractor == "pdfplumber":
-        tag = f"{model_slug}_whole_doc"
-    else:
-        tag = f"{model_slug}_{args.extractor}_whole_doc"
+    tag     = f"{model_slug}_{args.extractor}_whole_doc"
     out_dir = args.out_dir / tag
     out_dir.mkdir(parents=True, exist_ok=True)
 

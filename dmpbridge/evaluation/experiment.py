@@ -101,8 +101,6 @@ class ExperimentConfig:
         """
         model_slug = model.replace(":", "-")
         suffix     = "whole_doc" if self.strategy == "wholedoc" else self.strategy
-        if extractor == "pdfplumber":
-            return f"{model_slug}_{suffix}"
         return f"{model_slug}_{extractor}_{suffix}"
 
     @property
