@@ -11,6 +11,7 @@ Usage:
 """
 import argparse
 import json
+import time
 from pathlib import Path
 
 from ..core import config
@@ -18,6 +19,27 @@ from ..strategies.wholedoc import WholeDocStrategy
 from ..utils import get_logger, setup_logging
 
 logger = get_logger(__name__)
+
+
+def _log_device_info(extractor: str) -> None:
+    """Print GPU/CPU info before the run starts."""
+    try:
+        import torch
+        if torch.cuda.is_available():
+            idx  = torch.cuda.current_device()
+            name = torch.cuda.get_device_name(idx)
+            total = torch.cuda.get_device_properties(idx).total_memory / 1024**3
+            free, _ = torch.cuda.mem_get_info(idx)
+            free_gb = free / 1024**3
+            logger.info("GPU  : %s (device %d)", name, idx)
+            logger.info("VRAM : %.1f GB total  |  %.1f GB free", total, free_gb)
+        else:
+            logger.info("GPU  : not available — running on CPU")
+    except ImportError:
+        if extractor == "lighton":
+            logger.warning("torch not installed — cannot report GPU info")
+        else:
+            logger.info("Device : CPU (torch not needed for %s)", extractor)
 
 
 def main() -> None:
@@ -45,6 +67,16 @@ def main() -> None:
     ap.add_argument("--end",     default=10, type=int, help="Last sample index (inclusive)")
     args = ap.parse_args()
 
+    n_samples = args.end - args.start + 1
+
+    logger.info("=" * 55)
+    logger.info("Model     : %s", args.model)
+    logger.info("Extractor : %s", args.extractor)
+    logger.info("Ollama    : %s", args.host)
+    logger.info("Samples   : %d–%d  (%d total)", args.start, args.end, n_samples)
+    _log_device_info(args.extractor)
+    logger.info("=" * 55)
+
     strategy = WholeDocStrategy(
         provider=args.provider,
         model=args.model,
@@ -56,6 +88,10 @@ def main() -> None:
     tag     = f"{model_slug}_{args.extractor}_whole_doc"
     out_dir = args.out_dir / tag
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    run_start   = time.perf_counter()
+    done        = 0
+    sample_times: list[float] = []
 
     for i in range(args.start, args.end + 1):
         label    = f"[sample{i}]"
@@ -70,20 +106,44 @@ def main() -> None:
             logger.warning("%s PDF not found: %s", label, pdf_path)
             continue
 
+        t0     = time.perf_counter()
         blocks = strategy.run(pdf_path)
+        elapsed = time.perf_counter() - t0
+        sample_times.append(elapsed)
+        done += 1
 
         out_path.write_text(
             json.dumps(blocks, indent=2, ensure_ascii=False),
             encoding="utf-8",
         )
-        logger.info("%s saved → %s", label, out_path.name)
+
+        remaining = n_samples - done
+        if sample_times and remaining > 0:
+            avg     = sum(sample_times) / len(sample_times)
+            eta_s   = avg * remaining
+            eta_str = f"{eta_s/60:.1f} min" if eta_s >= 60 else f"{eta_s:.0f} s"
+            logger.info(
+                "%s done in %.1f s  |  %d/%d  |  ETA ~%s",
+                label, elapsed, done, n_samples, eta_str,
+            )
+        else:
+            logger.info("%s done in %.1f s  |  %d/%d", label, elapsed, done, n_samples)
 
         from ..core.converter import convert_file
         struct_path = out_dir / f"sample{i}_structured.json"
         convert_file(out_path, struct_path)
         logger.info("%s structured JSON → %s", label, struct_path.name)
 
-    logger.info("Done.")
+    total = time.perf_counter() - run_start
+    logger.info("=" * 55)
+    if sample_times:
+        avg = sum(sample_times) / len(sample_times)
+        logger.info(
+            "Done  %d samples  |  total %.1f s  |  avg %.1f s/sample",
+            done, total, avg,
+        )
+    else:
+        logger.info("Done — all samples already existed, nothing to run.")
 
 
 if __name__ == "__main__":

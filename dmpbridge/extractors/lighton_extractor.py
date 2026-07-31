@@ -92,11 +92,22 @@ class LightOnExtractor(BaseExtractor):
         device = "cuda" if torch.cuda.is_available() else "cpu"
         dtype  = torch.float16 if device == "cuda" else torch.float32
 
+        import logging as _logging
+        _log = _logging.getLogger(__name__)
+        _log.info("LightOnOCR : loading %s on %s (dtype=%s)", model_id, device, dtype)
+
         processor = AutoProcessor.from_pretrained(model_id)
         model     = AutoModelForImageTextToText.from_pretrained(
             model_id, dtype=dtype
         ).to(device)
         model.eval()
+
+        if device == "cuda":
+            used = torch.cuda.memory_allocated() / 1024**3
+            _log.info("LightOnOCR : loaded — VRAM used %.2f GB", used)
+        else:
+            _log.info("LightOnOCR : loaded on CPU")
+
         return processor, model
 
     # ── Internal — inference ─────────────────────────────────────────────────
