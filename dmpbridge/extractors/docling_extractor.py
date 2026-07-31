@@ -30,6 +30,11 @@ class DoclingExtractor(BaseExtractor):
     def __init__(self) -> None:
         try:
             from docling.document_converter import DocumentConverter
+            from docling.datamodel.pipeline_options import (
+                PipelineOptions,
+                AcceleratorOptions,
+                AcceleratorDevice,
+            )
         except ImportError as exc:
             raise ImportError(
                 "Docling is not installed.\n"
@@ -41,7 +46,11 @@ class DoclingExtractor(BaseExtractor):
         import logging
         logging.getLogger("docling").setLevel(logging.WARNING)
 
-        self._converter = DocumentConverter()
+        pipeline_options = PipelineOptions()
+        pipeline_options.accelerator_options = AcceleratorOptions(
+            device=AcceleratorDevice.AUTO,
+        )
+        self._converter = DocumentConverter(pipeline_options=pipeline_options)
 
     # ── BaseExtractor protocol ────────────────────────────────────────────────
 
