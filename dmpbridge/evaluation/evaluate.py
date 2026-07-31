@@ -453,18 +453,26 @@ def run_single(pred_path: Path) -> None:
     print_missed(pred_path, gold)
 
 
-def run_all() -> None:
-    """Evaluate all samples: per-sample accuracy, missed items, aggregate confusion matrix."""
+def list_tags() -> list[str]:
+    """Return all result tags (subdirectories) that have at least one sample JSON."""
+    if not LLM_DIR.exists():
+        return []
+    return sorted(d.name for d in LLM_DIR.iterdir() if d.is_dir() and list(d.glob("sample*.json")))
+
+
+def run_all(tag: str) -> None:
+    """Evaluate all samples for *tag* against ground truth."""
     total_confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     samples = sorted(MANUAL_DIR.glob("*_dmp.json"))
 
+    print(f"\nEvaluating: {tag}\n")
     _sample_header()
     total_n = total_tp = 0
     per_sample = []
 
     for manual_path in samples:
         stem      = manual_path.stem.replace("_dmp", "")
-        pred_path = LLM_DIR / LLM_SUFFIX / f"{stem}.json"
+        pred_path = LLM_DIR / tag / f"{stem}.json"
         if not pred_path.exists():
             logger.warning("SKIP %s — no %s", stem, pred_path.name)
             continue
@@ -508,11 +516,45 @@ def run_all() -> None:
 def main() -> None:
     """CLI entry point: dmpbridge-evaluate."""
     setup_logging()
-    pos_args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    if pos_args:
-        run_single(Path(pos_args[0]))
+
+    import argparse
+    ap = argparse.ArgumentParser(description="Evaluate DMPBridge results against ground truth.")
+    ap.add_argument("target", nargs="?",
+                    help="Result tag (e.g. llama3.1-8b_pdfplumber_whole_doc) or path to a single JSON file.")
+    ap.add_argument("--list", "-l", action="store_true", help="List available result tags and exit.")
+    args = ap.parse_args()
+
+    if args.list:
+        tags = list_tags()
+        if not tags:
+            print(f"No results found in {LLM_DIR}")
+        else:
+            print(f"Available tags in {LLM_DIR}:\n")
+            for t in tags:
+                n = len(list((LLM_DIR / t).glob("sample*.json")))
+                print(f"  {t}  ({n} samples)")
+        return
+
+    if args.target and Path(args.target).is_file():
+        run_single(Path(args.target))
+        return
+
+    if args.target:
+        run_all(args.target)
+        return
+
+    # No argument — auto-detect: use the only tag or prompt the user.
+    tags = list_tags()
+    if not tags:
+        print(f"No results found in {LLM_DIR}. Run an experiment first.")
+        sys.exit(1)
+    if len(tags) == 1:
+        run_all(tags[0])
     else:
-        run_all()
+        print("Multiple result sets found. Specify one with:\n")
+        for t in tags:
+            print(f"  dmpbridge-evaluate {t}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

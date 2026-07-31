@@ -78,6 +78,11 @@ def main() -> None:
         )
         logger.info("%s saved → %s", label, out_path.name)
 
+        from ..core.converter import convert_file
+        struct_path = out_dir / f"sample{i}_structured.json"
+        convert_file(out_path, struct_path)
+        logger.info("%s structured JSON → %s", label, struct_path.name)
+
     logger.info("Done.")
 
 

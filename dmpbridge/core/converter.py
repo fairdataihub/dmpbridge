@@ -7,13 +7,7 @@
 #   Step 4 — section.description after a question has started → stays in sequence (continues the question or answer)
 #   Step 5 — consecutive question.text blocks with no answer yet → merged into one question
 #   Step 6 — answer.text → appended to the current question's answer
-#   Step 7 — post-process: every section must have at least one question (Rules 1–3 below)
-#   Step 8 — return the fully nested JSON: narrative → template → section[] → question[] → answer
-#
-# Question.text fallback rules (PM requirement — question.text must never be empty):
-#   Rule 1: section with no questions → create one question using the section title as text
-#   Rule 2: section with empty title and no questions → use document title as fallback
-#   Rule 3: document with no sections at all → create one section+question from the document title
+#   Step 7 — return the fully nested JSON: narrative → template → section[] → question[] → answer
 
 import json
 from pathlib import Path
@@ -134,54 +128,6 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
             cur_question["answer"]["json"]["answer"] = (
                 existing + "\n" + text if existing else text
             )
-
-    # ── Post-process: ensure every section has at least one question ─────────────
-    # Rule 1/2: section exists but has no questions → use section title as question.text.
-    # Rule 3: no sections at all → create one section+question from the document title.
-    if not sections and title:
-        s = {
-            "title": title,
-            "description": "",
-            "order": 1,
-            "question": [
-                {
-                    "text": title,
-                    "order": 1,
-                    "answer": {
-                        "json": {
-                            "type": "textArea",
-                            "answer": "",
-                            "meta": {"schemaVersion": "1.0"},
-                        }
-                    },
-                }
-            ],
-        }
-        sections.append(s)
-    else:
-        for sec in sections:
-            fallback = sec["title"] or title
-            if not sec["question"]:
-                # No questions at all → create one from the section title.
-                sec["question"].append(
-                    {
-                        "text": fallback,
-                        "order": 1,
-                        "answer": {
-                            "json": {
-                                "type": "textArea",
-                                "answer": "",
-                                "meta": {"schemaVersion": "1.0"},
-                            }
-                        },
-                    }
-                )
-            else:
-                # Questions exist but some may have empty text (implicit placeholders
-                # created when answer.text appeared before any question.text block).
-                for q in sec["question"]:
-                    if not q["text"]:
-                        q["text"] = fallback
 
     return {
         "narrative": {
