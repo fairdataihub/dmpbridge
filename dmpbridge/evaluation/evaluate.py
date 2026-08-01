@@ -29,7 +29,10 @@ SHORT = ["title", "sec.title", "sec.desc", "q.text", "ans.text"]
 
 _ROOT           = Path(__file__).parent.parent.parent
 MANUAL_DIR      = _ROOT / "data/input/ground_truth_old_version"   # files: sampleN_old_dmp.json
-NEW_MANUAL_DIR  = _ROOT / "data/input/ground_truth_new_version"   # files: sampleN_new_dmp.json
+# New-version filenames don't follow one consistent pattern (samples 1,2,3,4,7 use
+# sampleN_dmp_new.json; samples 5,6,8,9,10 use dmp_sampleN_new.json) — resolve by
+# sample number via annotation_rules.resolve_new_gt_path() instead of a fixed pattern.
+NEW_MANUAL_DIR  = _ROOT / "data/input/ground_truth_new_version"
 LLM_DIR         = _ROOT / "data/output/labeled"
 
 

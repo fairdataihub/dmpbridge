@@ -52,10 +52,11 @@ all-extractors = [
 ]
 
 [project.scripts]
-dmpbridge            = "dmpbridge.cli.main:main"
-dmpbridge-wholedoc   = "dmpbridge.cli.wholedoc_cmd:main"
-dmpbridge-evaluate   = "dmpbridge.evaluation.evaluate:main"
-dmpbridge-experiment = "dmpbridge.evaluation.experiment:main"
+dmpbridge              = "dmpbridge.cli.main:main"
+dmpbridge-wholedoc     = "dmpbridge.cli.wholedoc_cmd:main"
+dmpbridge-evaluate     = "dmpbridge.evaluation.evaluate:main"
+dmpbridge-evaluate-new = "dmpbridge.evaluation.annotation_rules:main"
+dmpbridge-experiment   = "dmpbridge.evaluation.experiment:main"
 
 [tool.setuptools.packages.find]
 include = ["dmpbridge*"]
