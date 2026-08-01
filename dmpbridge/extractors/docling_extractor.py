@@ -48,7 +48,8 @@ class DoclingExtractor(BaseExtractor):
 
         pipeline_options = PipelineOptions()
         pipeline_options.accelerator_options = AcceleratorOptions(
-            device=AcceleratorDevice.AUTO,
+            device=AcceleratorDevice.CUDA,
+            num_threads=4,
         )
         self._converter = DocumentConverter(pipeline_options=pipeline_options)
 

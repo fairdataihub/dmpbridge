@@ -22,24 +22,32 @@ logger = get_logger(__name__)
 
 
 def _log_device_info(extractor: str) -> None:
-    """Print GPU/CPU info before the run starts."""
+    """Print info for all available GPUs before the run starts."""
+    import subprocess
     try:
-        import torch
-        if torch.cuda.is_available():
-            idx  = torch.cuda.current_device()
-            name = torch.cuda.get_device_name(idx)
-            total = torch.cuda.get_device_properties(idx).total_memory / 1024**3
-            free, _ = torch.cuda.mem_get_info(idx)
-            free_gb = free / 1024**3
-            logger.info("GPU  : %s (device %d)", name, idx)
-            logger.info("VRAM : %.1f GB total  |  %.1f GB free", total, free_gb)
-        else:
-            logger.info("GPU  : not available — running on CPU")
-    except ImportError:
-        if extractor == "lighton":
-            logger.warning("torch not installed — cannot report GPU info")
-        else:
-            logger.info("Device : CPU (torch not needed for %s)", extractor)
+        out = subprocess.check_output(
+            [
+                "nvidia-smi",
+                "--query-gpu=index,name,memory.total,memory.free",
+                "--format=csv,noheader,nounits",
+            ],
+            stderr=subprocess.DEVNULL,
+            timeout=5,
+            text=True,
+        ).strip()
+        lines = [l for l in out.splitlines() if l.strip()]
+        logger.info("GPUs : %d device(s) detected", len(lines))
+        for line in lines:
+            parts = [p.strip() for p in line.split(",")]
+            if len(parts) == 4:
+                idx, name, total, free = parts
+                logger.info(
+                    "  [%s] %s — %s MB total | %s MB free",
+                    idx, name, total, free,
+                )
+        logger.info("       num_gpu=-1 forced → all layers on GPU")
+    except Exception:
+        logger.info("GPU  : nvidia-smi not found — check CUDA drivers")
 
 
 def main() -> None:

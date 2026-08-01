@@ -45,7 +45,11 @@ class OllamaModel:
                 "prompt":  prompt,
                 "stream":  False,
                 "format":  OUTPUT_SCHEMA,
-                "options": {"temperature": 0.0, "num_ctx": self.num_ctx},
+                "options": {
+                    "temperature": 0.0,
+                    "num_ctx":     self.num_ctx,
+                    "num_gpu":     -1,   # offload all layers to GPU(s)
+                },
             },
             timeout=3600,
         )

@@ -29,7 +29,7 @@ def get_extractor(name: str, **kwargs) -> BaseExtractor:
         ``"pdfplumber"`` | ``"docling"`` | ``"lighton"``
     **kwargs:
         Passed through to the extractor constructor.
-        Recognised by ``"lighton"``: ``model_id``, ``device``, ``max_new_tokens``.
+        Recognised by ``"lighton"``: ``model_id``, ``max_new_tokens``.
     """
     if name == "pdfplumber":
         from .pdfplumber_extractor import PdfplumberExtractor

@@ -1,0 +1,1473 @@
+[
+  {
+    "page": 1,
+    "line_order": 1,
+    "text": "DATA MANAGEMENT PLAN",
+    "x0": 231.14,
+    "top": 73.66,
+    "x1": 380.9,
+    "bottom": 84.7,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 2,
+    "text": "REVIEW OF PROPOSAL COMPONENTS",
+    "x0": 72.0,
+    "top": 98.86,
+    "x1": 280.12,
+    "bottom": 109.9,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 3,
+    "text": "The proposal is separated into three sections.",
+    "x0": 72.0,
+    "top": 111.58,
+    "x1": 269.64,
+    "bottom": 122.62,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "section.description",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 4,
+    "text": "• Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and",
+    "x0": 90.0,
+    "top": 125.02,
+    "x1": 540.14,
+    "bottom": 136.11,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAH+SymbolMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 5,
+    "text": "compares well construction patterns before and after the establishment of regulatory controls.",
+    "x0": 108.0,
+    "top": 137.74,
+    "x1": 519.3,
+    "bottom": 148.78,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 6,
+    "text": "• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)",
+    "x0": 90.0,
+    "top": 151.18,
+    "x1": 540.09,
+    "bottom": 162.27,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAH+SymbolMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 7,
+    "text": "yearly (2016-2021) at the field scale.",
+    "x0": 108.0,
+    "top": 163.66,
+    "x1": 270.46,
+    "bottom": 174.7,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 8,
+    "text": "• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic",
+    "x0": 90.0,
+    "top": 177.1,
+    "x1": 540.03,
+    "bottom": 188.19,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAH+SymbolMT",
+      "AAAAAE+TimesNewRomanPS-BoldMT",
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 9,
+    "text": "Sciences Workshops.",
+    "x0": 108.0,
+    "top": 189.82,
+    "x1": 200.26,
+    "bottom": 200.86,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
+    ],
+    "is_bold": false,
+    "is_italic": true,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 10,
+    "text": "TYPES OF DATA",
+    "x0": 72.0,
+    "top": 215.02,
+    "x1": 159.44,
+    "bottom": 226.06,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 11,
+    "text": "The PI and PhD student will be responsible for all data-related activities including: collection,",
+    "x0": 72.0,
+    "top": 227.74,
+    "x1": 485.52,
+    "bottom": 238.78,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.7
+  },
+  {
+    "page": 1,
+    "line_order": 12,
+    "text": "documentation and metadata description, quality control, storage and backup, archiving, and sharing.",
+    "x0": 72.0,
+    "top": 240.46,
+    "x1": 516.89,
+    "bottom": 251.5,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 13,
+    "text": "The project will result in new sets of data, code, and tools. These outputs include: (a) source code to",
+    "x0": 72.0,
+    "top": 252.94,
+    "x1": 512.44,
+    "bottom": 263.98,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 14,
+    "text": "quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and",
+    "x0": 72.0,
+    "top": 265.66,
+    "x1": 531.46,
+    "bottom": 276.7,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 15,
+    "text": "(c) sharable instructional materials (Scientist Spotlight activities and workshop materials).",
+    "x0": 72.0,
+    "top": 278.38,
+    "x1": 467.32,
+    "bottom": 289.42,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 16,
+    "text": "Input data:",
+    "x0": 72.0,
+    "top": 303.58,
+    "x1": 125.5,
+    "bottom": 314.62,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 16,
+    "text": "Available data will be systematically reviewed and downloaded. These data are likely",
+    "x0": 128.24,
+    "top": 303.58,
+    "x1": 505.81,
+    "bottom": 314.62,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 17,
+    "text": "available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files;",
+    "x0": 72.0,
+    "top": 316.3,
+    "x1": 534.82,
+    "bottom": 327.34,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 18,
+    "text": "or text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be",
+    "x0": 72.0,
+    "top": 329.02,
+    "x1": 519.39,
+    "bottom": 340.06,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 19,
+    "text": "adopted and will likely evolve as new datasets provide for challenging formats and organization.",
+    "x0": 72.0,
+    "top": 341.5,
+    "x1": 497.34,
+    "bottom": 352.54,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 20,
+    "text": "Produced Data:",
+    "x0": 72.0,
+    "top": 366.94,
+    "x1": 146.3,
+    "bottom": 377.98,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 20,
+    "text": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be",
+    "x0": 148.99,
+    "top": 366.94,
+    "x1": 519.29,
+    "bottom": 377.98,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 21,
+    "text": "formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+    "x0": 72.0,
+    "top": 379.42,
+    "x1": 481.46,
+    "bottom": 390.46,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 22,
+    "text": "DATA AND METADATA STANDARDS",
+    "x0": 72.0,
+    "top": 404.86,
+    "x1": 266.71,
+    "bottom": 415.9,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 23,
+    "text": "The data will be shared along with a README.txt, which will describe all files, their relationships,",
+    "x0": 72.0,
+    "top": 417.58,
+    "x1": 509.94,
+    "bottom": 428.62,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 24,
+    "text": "naming conventions, etc. Data elements and attributes will be described following ISO 19115",
+    "x0": 72.0,
+    "top": 430.06,
+    "x1": 483.94,
+    "bottom": 441.1,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 25,
+    "text": "specifications and metadata schema and standards in Hydrology (e.g., following any establish standards",
+    "x0": 72.0,
+    "top": 442.78,
+    "x1": 528.67,
+    "bottom": 453.82,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 26,
+    "text": "of the Water Information Coordination Program’s Open Water Data Initiative (Larsen et al., 2016)) to",
+    "x0": 72.0,
+    "top": 455.5,
+    "x1": 520.42,
+    "bottom": 466.54,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 27,
+    "text": "allow for better interpretability and interoperability. Code and scripts produced in R and/or python will be",
+    "x0": 72.0,
+    "top": 467.98,
+    "x1": 538.18,
+    "bottom": 479.02,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 28,
+    "text": "documented for reproducibility purposes. The metadata for the codes will include: (1) description of the",
+    "x0": 72.0,
+    "top": 480.7,
+    "x1": 529.32,
+    "bottom": 491.74,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 29,
+    "text": "functions required to operate the analyses; (2) description of input parameters and outputs; and (3) test",
+    "x0": 72.0,
+    "top": 493.42,
+    "x1": 522.58,
+    "bottom": 504.46,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 30,
+    "text": "case, files and plots documenting the expected response of the model (Section 2.1) to a standard set of",
+    "x0": 72.0,
+    "top": 506.14,
+    "x1": 521.3,
+    "bottom": 517.18,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 31,
+    "text": "input parameters. Documentation will focus on the description of the functions, input parameters, outputs,",
+    "x0": 72.0,
+    "top": 518.62,
+    "x1": 538.52,
+    "bottom": 529.66,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 32,
+    "text": "the format of input data, instructions to run the model, and instructions to export the results. The outputs",
+    "x0": 72.0,
+    "top": 531.34,
+    "x1": 530.92,
+    "bottom": 542.38,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 33,
+    "text": "will be stored in CSV format with a metadata document describing the data structure of the output data.",
+    "x0": 72.0,
+    "top": 544.06,
+    "x1": 527.55,
+    "bottom": 555.1,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 34,
+    "text": "POLICIES FOR ACCESS AND SHARING",
+    "x0": 72.0,
+    "top": 569.26,
+    "x1": 277.43,
+    "bottom": 580.3,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 35,
+    "text": "Raw data:",
+    "x0": 72.0,
+    "top": 581.98,
+    "x1": 120.62,
+    "bottom": 593.02,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 35,
+    "text": "Detailed information about how the data were obtained, including detailed contact information",
+    "x0": 123.33,
+    "top": 581.98,
+    "x1": 540.19,
+    "bottom": 593.02,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 36,
+    "text": "or websites for direct download and citations to all datasets will be provided to allow for accessibility and",
+    "x0": 72.0,
+    "top": 594.46,
+    "x1": 537.19,
+    "bottom": 605.5,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 37,
+    "text": "correct attribution to original collectors. All methodological procedures for data quality control and",
+    "x0": 72.0,
+    "top": 607.18,
+    "x1": 509.25,
+    "bottom": 618.22,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 38,
+    "text": "aggregation will be described in the data documentation. This information will be provided in the form of",
+    "x0": 72.0,
+    "top": 619.9,
+    "x1": 536.61,
+    "bottom": 630.94,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 39,
+    "text": "supplementary documentation for publications, in the README.txt file, and at the repository (record-",
+    "x0": 72.0,
+    "top": 632.62,
+    "x1": 521.98,
+    "bottom": 643.66,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 40,
+    "text": "level). All sharable raw data and the processed data will be archived in Dryad, https://datadryad.org, the",
+    "x0": 72.0,
+    "top": 645.1,
+    "x1": 529.27,
+    "bottom": 656.14,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 41,
+    "text": "agnostic open access repository backed by UCSB and the California Digital Library (CDL), which",
+    "x0": 72.0,
+    "top": 657.82,
+    "x1": 505.79,
+    "bottom": 668.86,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 42,
+    "text": "implements the latest best practices in data curation, publication, citation, and archival. Dryad assigns",
+    "x0": 72.0,
+    "top": 670.54,
+    "x1": 519.52,
+    "bottom": 681.58,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 43,
+    "text": "Digital Object Identifiers (DOIs) to deposited datasets and makes data discoverable through such services",
+    "x0": 72.0,
+    "top": 683.02,
+    "x1": 537.28,
+    "bottom": 694.06,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 44,
+    "text": "as the Thomson-Reuters Data Citation Index, Scopus, and Google Dataset Search. All data in Dryad is",
+    "x0": 72.0,
+    "top": 695.74,
+    "x1": 522.89,
+    "bottom": 706.78,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 1,
+    "text": "publicly accessible and released under a CC0 license. Data will be linked to publications and vice versa",
+    "x0": 72.0,
+    "top": 73.66,
+    "x1": 527.53,
+    "bottom": 84.7,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 2,
+    "text": "through DOIs.",
+    "x0": 72.0,
+    "top": 86.14,
+    "x1": 135.56,
+    "bottom": 97.18,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 3,
+    "text": "Scripts and code for analyses:",
+    "x0": 72.0,
+    "top": 111.58,
+    "x1": 212.0,
+    "bottom": 122.62,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 3,
+    "text": "All scripts and code will be archived in supplementary information",
+    "x0": 214.69,
+    "top": 111.58,
+    "x1": 509.43,
+    "bottom": 122.62,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 4,
+    "text": "appendices in publications as well as uploaded to Zenodo through the Dryad repository submission",
+    "x0": 72.0,
+    "top": 124.3,
+    "x1": 507.91,
+    "bottom": 135.34,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 5,
+    "text": "process along with the sharable raw and processed data in order to allow citations and a better connection",
+    "x0": 72.0,
+    "top": 136.78,
+    "x1": 536.02,
+    "bottom": 147.82,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 6,
+    "text": "to the research data curation and publication processes.",
+    "x0": 72.0,
+    "top": 149.5,
+    "x1": 314.48,
+    "bottom": 160.54,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 7,
+    "text": "Scientist spotlight:",
+    "x0": 72.0,
+    "top": 174.7,
+    "x1": 159.13,
+    "bottom": 185.74,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 7,
+    "text": "All scientist spotlight biographies, assignments, and open-access readings will be",
+    "x0": 161.84,
+    "top": 174.7,
+    "x1": 519.56,
+    "bottom": 185.74,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 8,
+    "text": "posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
+    "x0": 72.0,
+    "top": 187.42,
+    "x1": 483.52,
+    "bottom": 198.46,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 9,
+    "text": "Workshop frameworks:",
+    "x0": 72.0,
+    "top": 212.62,
+    "x1": 184.76,
+    "bottom": 223.66,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 9,
+    "text": "Workshop material will be shared with UCSB’s Diversity Committee through",
+    "x0": 187.49,
+    "top": 212.62,
+    "x1": 530.63,
+    "bottom": 223.66,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 10,
+    "text": "Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will",
+    "x0": 72.0,
+    "top": 225.34,
+    "x1": 535.84,
+    "bottom": 236.38,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 11,
+    "text": "also be shared through eSholarship for broader dissemination.",
+    "x0": 72.0,
+    "top": 238.06,
+    "x1": 344.5,
+    "bottom": 249.1,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 12,
+    "text": "The PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist",
+    "x0": 72.0,
+    "top": 263.26,
+    "x1": 538.62,
+    "bottom": 274.3,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 13,
+    "text": "faculty in paying for open access journals.",
+    "x0": 72.0,
+    "top": 275.98,
+    "x1": 257.91,
+    "bottom": 287.02,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 14,
+    "text": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+    "x0": 72.0,
+    "top": 301.18,
+    "x1": 397.2,
+    "bottom": 312.22,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 15,
+    "text": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may",
+    "x0": 72.0,
+    "top": 313.9,
+    "x1": 512.72,
+    "bottom": 324.94,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 16,
+    "text": "freely build upon, enhance and reuse the works for any purposes without restriction under copyright or",
+    "x0": 72.0,
+    "top": 326.62,
+    "x1": 523.82,
+    "bottom": 337.66,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 17,
+    "text": "database law. CC0 does not exempt those who reuse the data from following community norms for",
+    "x0": 72.0,
+    "top": 339.1,
+    "x1": 508.36,
+    "bottom": 350.14,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 18,
+    "text": "scholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the",
+    "x0": 72.0,
+    "top": 351.82,
+    "x1": 522.03,
+    "bottom": 362.86,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 19,
+    "text": "original data authors.",
+    "x0": 72.0,
+    "top": 364.54,
+    "x1": 165.21,
+    "bottom": 375.58,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 20,
+    "text": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
+    "x0": 72.0,
+    "top": 389.74,
+    "x1": 383.14,
+    "bottom": 400.78,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAE+TimesNewRomanPS-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 21,
+    "text": "UCSB Box will be used as the primary means to store and back up all collected input, generated output",
+    "x0": 72.0,
+    "top": 402.46,
+    "x1": 526.28,
+    "bottom": 413.5,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 22,
+    "text": "data sets and code, and educational materials over the course of the project and prior to data sharing. Box",
+    "x0": 72.0,
+    "top": 415.18,
+    "x1": 535.07,
+    "bottom": 426.22,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 23,
+    "text": "provides encryption of data at rest and in-transit, detailed logging of file actions, two-factor",
+    "x0": 72.0,
+    "top": 427.66,
+    "x1": 474.29,
+    "bottom": 438.7,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 24,
+    "text": "authentication, and access review of collaborators. Data will be accessed using Box Drive, which requires",
+    "x0": 72.0,
+    "top": 440.38,
+    "x1": 537.94,
+    "bottom": 451.42,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 25,
+    "text": "full disk encryption, firewall, and an antivirus software in order to install on a local computer.",
+    "x0": 72.0,
+    "top": 453.1,
+    "x1": 484.88,
+    "bottom": 464.14,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 26,
+    "text": "At the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and",
+    "x0": 72.0,
+    "top": 478.3,
+    "x1": 539.33,
+    "bottom": 489.34,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 27,
+    "text": "code will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits",
+    "x0": 72.0,
+    "top": 491.02,
+    "x1": 496.49,
+    "bottom": 502.06,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 28,
+    "text": "submitted to Dryad are curated prior to public release to conform with quality standards and enable future",
+    "x0": 72.0,
+    "top": 503.74,
+    "x1": 537.74,
+    "bottom": 514.78,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 29,
+    "text": "reuse.",
+    "x0": 72.0,
+    "top": 516.22,
+    "x1": 97.96,
+    "bottom": 527.26,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 30,
+    "text": "The source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved,",
+    "x0": 72.0,
+    "top": 541.66,
+    "x1": 522.59,
+    "bottom": 552.7,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 31,
+    "text": "stored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three",
+    "x0": 72.0,
+    "top": 554.14,
+    "x1": 537.34,
+    "bottom": 565.18,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 32,
+    "text": "planned publications. After the evaluation and refinement of the developed datasets and tools and once",
+    "x0": 72.0,
+    "top": 566.86,
+    "x1": 524.52,
+    "bottom": 577.9,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 33,
+    "text": "the research is completed and published, the final version of the tools and the documentation will be",
+    "x0": 72.0,
+    "top": 579.58,
+    "x1": 512.73,
+    "bottom": 590.62,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 34,
+    "text": "shared on the UCSB’s Dryad Data Repository. The final shareable instructional and teaching materials",
+    "x0": 72.0,
+    "top": 592.3,
+    "x1": 524.17,
+    "bottom": 603.34,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 35,
+    "text": "will also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive",
+    "x0": 72.0,
+    "top": 604.78,
+    "x1": 522.57,
+    "bottom": 615.82,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT",
+      "AAAAAL+TimesNewRomanPS-ItalicMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 36,
+    "text": "(workshop materials) and Dryad in pdf format.",
+    "x0": 72.0,
+    "top": 617.5,
+    "x1": 278.27,
+    "bottom": 628.54,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "AAAAAG+TimesNewRomanPSMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  }
+]

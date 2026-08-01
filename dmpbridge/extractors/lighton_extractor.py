@@ -29,8 +29,6 @@ class LightOnExtractor(BaseExtractor):
     ----------
     model_id:
         HuggingFace model repository, e.g. ``"lightonai/LightOnOCR-2-1B"``.
-    device:
-        ``"auto"`` selects CUDA if available, otherwise CPU.
     max_new_tokens:
         Token budget for the model's OCR output per page.
     """
@@ -59,13 +57,13 @@ class LightOnExtractor(BaseExtractor):
 
     @staticmethod
     def _resolve_device(device: str) -> str:
-        if device != "auto":
-            return device
-        try:
-            import torch
-            return "cuda" if torch.cuda.is_available() else "cpu"
-        except ImportError:
-            return "cpu"
+        import torch
+        if not torch.cuda.is_available():
+            raise RuntimeError(
+                "No CUDA GPU detected. LightOnOCR requires a GPU.\n"
+                "Check that your drivers and CUDA toolkit are installed."
+            )
+        return "cuda"
 
     @staticmethod
     def _load_model(model_id: str):
@@ -89,24 +87,23 @@ class LightOnExtractor(BaseExtractor):
         import logging
         logging.getLogger("transformers").setLevel(logging.WARNING)
 
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        dtype  = torch.float16 if device == "cuda" else torch.float32
-
-        import logging as _logging
-        _log = _logging.getLogger(__name__)
-        _log.info("LightOnOCR : loading %s on %s (dtype=%s)", model_id, device, dtype)
+        _log = logging.getLogger(__name__)
+        n_gpus = torch.cuda.device_count()
+        _log.info("LightOnOCR : %d GPU(s) detected — loading %s with device_map=auto", n_gpus, model_id)
 
         processor = AutoProcessor.from_pretrained(model_id)
-        model     = AutoModelForImageTextToText.from_pretrained(
-            model_id, dtype=dtype
-        ).to(device)
+        # device_map="auto" spreads model layers across all available GPUs
+        model = AutoModelForImageTextToText.from_pretrained(
+            model_id,
+            torch_dtype=torch.float16,
+            device_map="auto",
+        )
         model.eval()
 
-        if device == "cuda":
-            used = torch.cuda.memory_allocated() / 1024**3
-            _log.info("LightOnOCR : loaded — VRAM used %.2f GB", used)
-        else:
-            _log.info("LightOnOCR : loaded on CPU")
+        for i in range(n_gpus):
+            used  = torch.cuda.memory_allocated(i) / 1024**3
+            total = torch.cuda.get_device_properties(i).total_memory / 1024**3
+            _log.info("LightOnOCR : GPU %d — %.2f / %.1f GB VRAM used", i, used, total)
 
         return processor, model
 
