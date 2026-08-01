@@ -26,9 +26,10 @@ logger = get_logger(__name__)
 
 SHORT = ["title", "sec.title", "sec.desc", "q.text", "ans.text"]
 
-_ROOT      = Path(__file__).parent.parent.parent
-MANUAL_DIR = _ROOT / "data/input/ground_truth_old_version"
-LLM_DIR    = _ROOT / "data/output/labeled"
+_ROOT           = Path(__file__).parent.parent.parent
+MANUAL_DIR      = _ROOT / "data/input/ground_truth_old_version"   # files: sampleN_old_dmp.json
+NEW_MANUAL_DIR  = _ROOT / "data/input/ground_truth_new_version"   # files: sampleN_new_dmp.json
+LLM_DIR         = _ROOT / "data/output/labeled"
 
 MODEL_TAG  = _config.MODEL.replace(":", "-").replace("/", "-")
 LLM_SUFFIX = f"{MODEL_TAG}_whole_doc"
@@ -193,8 +194,8 @@ def compute_f1_rows(confusion: dict):
 # ── Notebook helper ───────────────────────────────────────────────────────────
 
 def _snum(path: Path) -> int:
-    """Extract sample number from a path like data/manuallabeled/sample3_dmp.json → 3."""
-    return int(path.stem.replace("_dmp", "").replace("sample", ""))
+    """Extract sample number from a path like sample3_old_dmp.json → 3."""
+    return int(path.stem.replace("_old_dmp", "").replace("_dmp", "").replace("sample", ""))
 
 
 def confusion_matrix_df(confusion: dict):
@@ -237,9 +238,12 @@ def load_method(tag: str, exclude: list[int] | None = None):
 
     _exclude = set(exclude or [])
 
-    samples = sorted(MANUAL_DIR.glob("*_dmp.json"), key=_snum)
+    samples = sorted(MANUAL_DIR.glob("*_old_dmp.json"), key=_snum)
+    def _stem(mp: Path) -> str:
+        return mp.stem.replace("_old_dmp", "").replace("_dmp", "")
+
     found   = [mp for mp in samples
-               if (LLM_DIR / tag / f"{mp.stem.replace('_dmp', '')}.json").exists()
+               if (LLM_DIR / tag / f"{_stem(mp)}.json").exists()
                and _snum(mp) not in _exclude]
     if not found:
         return None, None, None
@@ -248,7 +252,7 @@ def load_method(tag: str, exclude: list[int] | None = None):
     rows, errors = [], []
 
     for mp in samples:
-        stem = mp.stem.replace("_dmp", "")
+        stem = mp.stem.replace("_old_dmp", "").replace("_dmp", "")
         if _snum(mp) in _exclude:
             continue
         pp   = LLM_DIR / tag / f"{stem}.json"
@@ -300,12 +304,12 @@ def load_confidence(tag: str, exclude: list[int] | None = None):
     import pandas as pd
 
     _exclude = set(exclude or [])
-    samples = sorted(MANUAL_DIR.glob("*_dmp.json"), key=_snum)
+    samples = sorted(MANUAL_DIR.glob("*_old_dmp.json"), key=_snum)
     rows = []
     for mp in samples:
         if _snum(mp) in _exclude:
             continue
-        stem = mp.stem.replace("_dmp", "")
+        stem = mp.stem.replace("_old_dmp", "").replace("_dmp", "")
         pp   = LLM_DIR / tag / f"{stem}.json"
         if not pp.exists():
             continue
@@ -346,7 +350,6 @@ def confidence_calibration_df(conf_df):
         Columns: ``bucket_label``, ``mid``, ``count``, ``accuracy``.
     """
     import pandas as pd
-    import numpy as np
 
     edges  = [0.0, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 1.01]
     labels = ["<0.5", "0.5–0.6", "0.6–0.7", "0.7–0.8", "0.8–0.9", "0.9–0.95", "≥0.95"]
@@ -445,7 +448,7 @@ def print_missed(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> None:
 def run_single(pred_path: Path) -> None:
     """Evaluate one LLM output file against its matching manual annotation."""
     stem        = pred_path.stem.split("_")[0]
-    manual_path = MANUAL_DIR / f"{stem}_dmp.json"
+    manual_path = MANUAL_DIR / f"{stem}_old_dmp.json"
     if not manual_path.exists():
         logger.warning("No manual label found for %s at %s", stem, manual_path)
         return
@@ -476,7 +479,7 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
     """Evaluate all samples for *tag* against ground truth."""
     _exclude = set(exclude or [])
     total_confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
-    samples = sorted(MANUAL_DIR.glob("*_dmp.json"), key=_snum)
+    samples = sorted(MANUAL_DIR.glob("*_old_dmp.json"), key=_snum)
 
     excl_note = f"  (excluding sample{list(_exclude)} — used for prompt development)" if _exclude else ""
     print(f"\nEvaluating: {tag}{excl_note}\n")
@@ -487,7 +490,7 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
     for manual_path in samples:
         if _snum(manual_path) in _exclude:
             continue
-        stem      = manual_path.stem.replace("_dmp", "")
+        stem      = manual_path.stem.replace("_old_dmp", "").replace("_dmp", "")
         pred_path = LLM_DIR / tag / f"{stem}.json"
         if not pred_path.exists():
             logger.warning("SKIP %s — no %s", stem, pred_path.name)
@@ -535,8 +538,10 @@ def main() -> None:
 
     import argparse
     ap = argparse.ArgumentParser(description="Evaluate DMPBridge results against ground truth.")
-    ap.add_argument("target", nargs="?",
-                    help="Result tag (e.g. llama3.1-8b_pdfplumber_whole_doc) or path to a single JSON file.")
+    ap.add_argument(
+        "target", nargs="?",
+        help="Result tag (e.g. llama3.1-8b_pdfplumber_whole_doc) or path to a single JSON file.",
+    )
     ap.add_argument("--list", "-l", action="store_true", help="List available result tags and exit.")
     ap.add_argument("--exclude", "-x", default="",
                     help="Comma-separated sample numbers to skip, e.g. --exclude 1,2")
