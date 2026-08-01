@@ -40,15 +40,16 @@ class OllamaModel:
         resp = requests.post(
             f"{self.host}/api/generate",
             json={
-                "model":   self.model,
-                "system":  system,
-                "prompt":  prompt,
-                "stream":  False,
-                "format":  OUTPUT_SCHEMA,
+                "model":      self.model,
+                "system":     system,
+                "prompt":     prompt,
+                "stream":     False,
+                "format":     OUTPUT_SCHEMA,
+                "keep_alive": -1,   # keep model in VRAM indefinitely
                 "options": {
                     "temperature": 0.0,
                     "num_ctx":     self.num_ctx,
-                    "num_gpu":     -1,   # offload all layers to GPU(s)
+                    "num_gpu":     -1,
                 },
             },
             timeout=3600,
