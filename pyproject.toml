@@ -31,6 +31,9 @@ notebooks = [
     "seaborn>=0.13",
     "pandas>=2.3",
 ]
+dev = [
+    "pytest>=8.0",
+]
 # PDF extractor extras — install the one(s) you want to run experiments with
 docling = [
     "docling>=2.0",
@@ -52,7 +55,6 @@ all-extractors = [
 dmpbridge            = "dmpbridge.cli.main:main"
 dmpbridge-wholedoc   = "dmpbridge.cli.wholedoc_cmd:main"
 dmpbridge-evaluate   = "dmpbridge.evaluation.evaluate:main"
-dmpbridge-pdf        = "dmpbridge.strategies.pdf_direct:main"
 dmpbridge-experiment = "dmpbridge.evaluation.experiment:main"
 
 [tool.setuptools.packages.find]

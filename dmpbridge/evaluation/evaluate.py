@@ -20,7 +20,6 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-from ..core import config as _config
 from ..prompts import LABELS
 from ..utils import get_logger, setup_logging
 
@@ -32,9 +31,6 @@ _ROOT           = Path(__file__).parent.parent.parent
 MANUAL_DIR      = _ROOT / "data/input/ground_truth_old_version"   # files: sampleN_old_dmp.json
 NEW_MANUAL_DIR  = _ROOT / "data/input/ground_truth_new_version"   # files: sampleN_new_dmp.json
 LLM_DIR         = _ROOT / "data/output/labeled"
-
-MODEL_TAG  = _config.MODEL.replace(":", "-").replace("/", "-")
-LLM_SUFFIX = f"{MODEL_TAG}_whole_doc"
 
 
 # ── Text helpers ──────────────────────────────────────────────────────────────

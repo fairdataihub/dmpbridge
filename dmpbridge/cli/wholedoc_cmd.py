@@ -10,11 +10,11 @@ Usage:
     dmpbridge-wholedoc --start 3 --end 6
 """
 import argparse
-import json
 import time
 from pathlib import Path
 
 from ..core import config
+from ..core.pipeline import run_and_save
 from ..strategies.wholedoc import WholeDocStrategy
 from ..utils import get_logger, setup_logging
 
@@ -102,28 +102,25 @@ def main() -> None:
     sample_times: list[float] = []
 
     for i in range(args.start, args.end + 1):
-        label    = f"[sample{i}]"
-        pdf_path = args.pdf_dir / f"sample{i}.pdf"
-        out_path = out_dir / f"sample{i}.json"
+        label       = f"[sample{i}]"
+        pdf_path    = args.pdf_dir / f"sample{i}.pdf"
+        out_path    = out_dir / f"sample{i}.json"
+        struct_path = out_dir / f"sample{i}_structured.json"
 
         if out_path.exists():
             logger.info("%s already exists — skipping", label)
             continue
 
-        if not pdf_path.exists():
+        t0      = time.perf_counter()
+        blocks  = run_and_save(strategy, pdf_path, out_path, struct_path)
+        elapsed = time.perf_counter() - t0
+
+        if blocks is None:
             logger.warning("%s PDF not found: %s", label, pdf_path)
             continue
 
-        t0     = time.perf_counter()
-        blocks = strategy.run(pdf_path)
-        elapsed = time.perf_counter() - t0
         sample_times.append(elapsed)
         done += 1
-
-        out_path.write_text(
-            json.dumps(blocks, indent=2, ensure_ascii=False),
-            encoding="utf-8",
-        )
 
         remaining = n_samples - done
         if sample_times and remaining > 0:
@@ -136,10 +133,6 @@ def main() -> None:
             )
         else:
             logger.info("%s done in %.1f s  |  %d/%d", label, elapsed, done, n_samples)
-
-        from ..core.converter import convert_file
-        struct_path = out_dir / f"sample{i}_structured.json"
-        convert_file(out_path, struct_path)
         logger.info("%s structured JSON → %s", label, struct_path.name)
 
     total = time.perf_counter() - run_start

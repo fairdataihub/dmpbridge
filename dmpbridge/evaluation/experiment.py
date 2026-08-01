@@ -25,13 +25,13 @@ Usage — CLI
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 import yaml
 
+from ..core.pipeline import run_and_save
 from ..utils import get_logger, setup_logging
 
 logger = get_logger(__name__)
@@ -93,11 +93,12 @@ class ExperimentConfig:
     def tag_for(self, model: str, extractor: str) -> str:
         """Output directory suffix for one (model, extractor) combination.
 
-        pdfplumber keeps the original format for backward compatibility::
+        The extractor name is always included, matching the folder layout
+        used everywhere else in the pipeline (e.g. ``dmpbridge-wholedoc``)::
 
-            llama3.1-8b_whole_doc           ← pdfplumber (unchanged)
-            llama3.1-8b_docling_whole_doc   ← docling
-            llama3.1-8b_lighton_whole_doc   ← lighton
+            llama3.1-8b_pdfplumber_whole_doc
+            llama3.1-8b_docling_whole_doc
+            llama3.1-8b_lighton_whole_doc
         """
         model_slug = model.replace(":", "-")
         suffix     = "whole_doc" if self.strategy == "wholedoc" else self.strategy
@@ -211,33 +212,24 @@ class Experiment:
         outputs: list[Path] = []
 
         for i in cfg.sample_range:
-            label    = f"[sample{i}]"
-            pdf_path = Path(cfg.pdf_dir) / f"sample{i}.pdf"
-            out_path = out_dir / f"sample{i}.json"
+            label       = f"[sample{i}]"
+            pdf_path    = Path(cfg.pdf_dir) / f"sample{i}.pdf"
+            out_path    = out_dir / f"sample{i}.json"
+            struct_path = out_dir / f"sample{i}_structured.json"
 
             if out_path.exists():
                 logger.info("%s already exists — skipping", label)
                 outputs.append(out_path)
                 continue
 
-            if not pdf_path.exists():
+            logger.info("%s running [%s / %s] …", label, model, extractor)
+            blocks = run_and_save(strategy, pdf_path, out_path, struct_path)
+
+            if blocks is None:
                 logger.warning("%s PDF not found: %s", label, pdf_path)
                 continue
 
-            logger.info("%s running [%s / %s] …", label, model, extractor)
-            blocks = strategy.run(pdf_path)
-            out_path.write_text(
-                json.dumps(blocks, indent=2, ensure_ascii=False),
-                encoding="utf-8",
-            )
             logger.info("%s %d blocks → %s", label, len(blocks), out_path.name)
-
-            from ..core.converter import to_structured
-            struct_path = out_dir / f"sample{i}_structured.json"
-            struct_path.write_text(
-                json.dumps(to_structured(blocks), indent=2, ensure_ascii=False),
-                encoding="utf-8",
-            )
             logger.info("%s structured JSON → %s", label, struct_path.name)
             outputs.append(out_path)
 

@@ -35,6 +35,43 @@ DEFAULT_HOST     = config.HOST
 DEFAULT_RAW_DIR  = "data/output/extracted"
 
 
+def run_and_save(
+    strategy,
+    pdf_path: Path,
+    out_path: Path,
+    struct_path: Optional[Path] = None,
+) -> Optional[list[dict]]:
+    """Run *strategy* on one PDF and save the flat (+ structured) labeled JSON.
+
+    Shared by the batch runners (``dmpbridge-wholedoc`` and
+    ``dmpbridge-experiment``) so the save-and-convert logic lives in exactly
+    one place instead of two independently-maintained copies.
+
+    Returns the labeled blocks, or ``None`` if *pdf_path* does not exist —
+    callers are responsible for their own "already processed" skip check and
+    logging, since they differ (progress/ETA logging vs. output-path lists).
+    """
+    if not pdf_path.exists():
+        return None
+
+    blocks = strategy.run(pdf_path)
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(
+        json.dumps(blocks, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    if struct_path is not None:
+        struct_path.parent.mkdir(parents=True, exist_ok=True)
+        struct_path.write_text(
+            json.dumps(to_structured(blocks), indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+    return blocks
+
+
 def process_pdf(
     pdf_path: Union[str, Path],
     *,
