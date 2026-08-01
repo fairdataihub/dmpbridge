@@ -3,13 +3,13 @@
     "download_url": "https://example.com/dmps/123/narrative",
     "template": {
       "id": "",
-      "title": "",
+      "title": "Data Management Plan",
       "description": "",
-      "version": "V1",
+      "version": "v1",
       "section": [
         {
           "id": "",
-          "title": "Data Management Plan",
+          "title": "Types of data",
           "description": "",
           "order": 1,
           "question": [
@@ -27,11 +27,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Data and metadata standards",
+          "description": "",
+          "order": 2,
+          "question": [
             {
               "id": "",
               "text": "Data and metadata standards",
-              "order": 2,
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
@@ -42,11 +50,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Policies for access and sharing",
+          "description": "",
+          "order": 3,
+          "question": [
             {
               "id": "",
               "text": "Policies for access and sharing",
-              "order": 3,
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
@@ -57,11 +73,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Policies and provisions for re-use, re-distribution",
+          "description": "",
+          "order": 4,
+          "question": [
             {
               "id": "",
               "text": "Policies and provisions for re-use, re-distribution",
-              "order": 4,
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
@@ -72,11 +96,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "Plans for archiving and preservation of access",
+          "description": "",
+          "order": 5,
+          "question": [
             {
               "id": "",
               "text": "Plans for archiving and preservation of access",
-              "order": 5,
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {

@@ -3,13 +3,13 @@
     "download_url": "https://example.com/dmps/123/narrative",
     "template": {
       "id": "",
-      "title": "",
+      "title": "DATA MANAGEMENT PLAN",
       "description": "",
-      "version": "V1",
+      "version": "v1",
       "section": [
         {
           "id": "",
-          "title": "DATA MANAGEMENT PLAN",
+          "title": "REVIEW OF PROPOSAL COMPONENTS",
           "description": "",
           "order": 1,
           "question": [
@@ -27,11 +27,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "TYPES OF DATA",
+          "description": "",
+          "order": 2,
+          "question": [
             {
               "id": "",
               "text": "TYPES OF DATA",
-              "order": 2,
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
@@ -42,11 +50,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "DATA AND METADATA STANDARDS",
+          "description": "",
+          "order": 3,
+          "question": [
             {
               "id": "",
               "text": "DATA AND METADATA STANDARDS",
-              "order": 3,
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
@@ -57,11 +73,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "POLICIES FOR ACCESS AND SHARING",
+          "description": "",
+          "order": 4,
+          "question": [
             {
               "id": "",
               "text": "POLICIES FOR ACCESS AND SHARING",
-              "order": 4,
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
@@ -72,11 +96,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+          "description": "",
+          "order": 5,
+          "question": [
             {
               "id": "",
               "text": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
-              "order": 5,
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
@@ -87,11 +119,19 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "id": "",
+          "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
+          "description": "",
+          "order": 6,
+          "question": [
             {
               "id": "",
               "text": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
-              "order": 6,
+              "order": 1,
               "answer": {
                 "id": "",
                 "json": {
