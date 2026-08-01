@@ -9,6 +9,7 @@ Notebook usage:
         load_method, compute_f1_rows, confusion_matrix_df,
         load_confidence, confidence_calibration_df,
         extract_gold, evaluate_sample, match,
+        micro_prf1, print_micro_prf1,
         LABELS, SHORT, LLM_DIR, MANUAL_DIR, NO_MATCH,
     )
 """
@@ -192,6 +193,50 @@ def gold_metrics(confusion: dict) -> tuple[int, int, int]:
     total_gold = total_pred + missed
     covered    = total_gold - missed
     return correct, covered, total_gold
+
+
+def micro_prf1(confusion: dict) -> dict:
+    """Compute micro-averaged precision/recall/F1 across all labels.
+
+    Unlike ``gold_metrics()`` (recall-only: correct / total gold items),
+    this is the standard IE/NER-style metric and also penalizes
+    over-generation — predicted blocks with no gold counterpart, stored
+    under the ``__no_gold__`` key, count against precision.
+
+    Returns
+    -------
+    dict with keys: precision, recall, f1, tp, fp, fn
+    """
+    tp = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
+    total_pred = sum(
+        v
+        for preds in confusion.values()
+        for pred_lbl, v in preds.items()
+        if pred_lbl != "__missed__"
+    )
+    total_gold = sum(v for lbl in LABELS for v in confusion.get(lbl, {}).values())
+
+    precision = tp / total_pred if total_pred else 0.0
+    recall    = tp / total_gold if total_gold else 0.0
+    f1        = 2 * precision * recall / (precision + recall) if (precision + recall) else 0.0
+    return {
+        "precision": precision, "recall": recall, "f1": f1,
+        "tp": tp, "fp": total_pred - tp, "fn": total_gold - tp,
+    }
+
+
+def print_micro_prf1(confusion: dict, label: str = "Overall (micro)") -> None:
+    """Print a single, easy-to-read headline line for micro P/R/F1.
+
+    Precision drops when the model over-generates spurious blocks;
+    recall drops when it misses gold items; F1 balances both.
+    """
+    m = micro_prf1(confusion)
+    print(
+        f"{label:<18}  Precision {m['precision']*100:5.1f}%  "
+        f"Recall {m['recall']*100:5.1f}%  F1 {m['f1']*100:5.1f}%  "
+        f"(TP={m['tp']}  FP={m['fp']}  FN={m['fn']})"
+    )
 
 
 # ── Aggregate confusion matrices ──────────────────────────────────────────────
@@ -500,6 +545,8 @@ def run_single(pred_path: Path) -> None:
     print("\nConfusion matrix  (* = correct, ! = missed)\n")
     print_confusion(confusion)
     print_f1(confusion)
+    print()
+    print_micro_prf1(confusion)
     print("\nMissed gold items (LLM produced no matching block):")
     print_missed(pred_path, gold)
 
@@ -566,6 +613,8 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
     print("\nConfusion matrix  (* = correct, ! = missed)\n")
     print_confusion(total_confusion)
     print_f1(total_confusion)
+    print()
+    print_micro_prf1(total_confusion)
 
 
 def main() -> None:
