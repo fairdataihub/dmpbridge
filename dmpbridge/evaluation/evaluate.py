@@ -1,16 +1,17 @@
-"""Evaluate LLM-labeled JSON against manually labeled ground truth.
+"""Evaluate LLM-labeled structured DMP JSON against manually labeled ground truth.
 
 Usage (CLI):
-    dmpbridge-evaluate                                          # all samples
-    dmpbridge-evaluate data/llmlabeled/sample1_llama3.3-70b_whole_doc.json
+    dmpbridge-evaluate                                                    # all tags, all samples
+    dmpbridge-evaluate llama3.1-8b_pdfplumber_whole_doc                   # one tag, all samples
+    dmpbridge-evaluate data/output/labeled/<tag>/sample3_structured.json  # one sample
 
 Notebook usage:
     from dmpbridge.evaluation.evaluate import (
         load_method, compute_f1_rows, confusion_matrix_df,
         load_confidence, confidence_calibration_df,
-        extract_gold, evaluate_sample, match,
+        extract_gold, evaluate_structured_sample, match,
         micro_prf1, print_micro_prf1,
-        LABELS, SHORT, LLM_DIR, MANUAL_DIR, NO_MATCH,
+        LABELS, SHORT, LLM_DIR, MANUAL_DIR,
     )
 """
 import json
@@ -53,8 +54,14 @@ def containment(block_tokens: set, gold_tokens: set) -> float:
 # ── Load manual labels ────────────────────────────────────────────────────────
 
 def extract_gold(path: Path) -> list[tuple[str, str]]:
-    """Read a manually labeled DMP JSON and return a flat list of (text, label) pairs."""
-    data     = json.loads(path.read_text(encoding="utf-8"))
+    """Read a structured DMP JSON (manual or model-predicted) and return a flat list of (text, label) pairs."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(
+            f"{path.name}: expected a structured DMP JSON object with a 'narrative.template' "
+            f"section, got a {type(data).__name__}. Did you mean the '*_structured.json' file "
+            f"instead of the raw per-block labeled JSON?"
+        )
     template = data.get("narrative", data).get("template", {})
     pairs: list[tuple[str, str]] = []
 
@@ -86,9 +93,6 @@ def extract_gold(path: Path) -> list[tuple[str, str]]:
 
 # ── Match a block to the best gold label ──────────────────────────────────────
 
-NO_MATCH = "__no_match__"
-
-
 def match(block_text: str, gold_pairs: list[tuple[str, str]]) -> str | None:
     """Return the gold label for this block, or None if containment < 0.75."""
     btok = tokenize(block_text)
@@ -104,31 +108,69 @@ def match(block_text: str, gold_pairs: list[tuple[str, str]]) -> str | None:
 
 # ── Evaluate one sample ───────────────────────────────────────────────────────
 
-def evaluate_sample(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> dict:
-    """Build a confusion matrix comparing predicted blocks against gold pairs.
+def _match_structured(
+    pred_structured_path: Path, gold_pairs: list[tuple[str, str]]
+) -> tuple[list[dict], list[tuple[str, str]]]:
+    """Greedy gold-oriented matching between predicted and gold structured items.
 
-    Forward check: for each predicted block, find its best-matching gold label.
-    Reverse check: for each gold item, record it as missed if no predicted block covers it.
-    Returns {true_label: {pred_label: count}}.
+    Each gold item claims the best unused predicted item (containment >= 0.75);
+    once claimed, a predicted item cannot be reused for another gold item. This
+    is the single source of truth for matching — every other function that
+    reports matches, mismatches, or misses derives from it, so the confusion
+    matrix, error listing, and "missed items" report can never disagree.
+
+    Returns
+    -------
+    (records, no_gold_pairs)
+        records       : one dict per gold item —
+                         {"gold_text", "gold_label", "pred_text", "pred_label"}
+                         with pred_text/pred_label = None if the gold item was missed.
+        no_gold_pairs : (pred_text, pred_label) for predicted items claimed by no gold
+                         item — spurious/hallucinated output.
     """
-    blocks    = json.loads(pred_path.read_text(encoding="utf-8"))
-    confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    pred_pairs = extract_gold(pred_structured_path)
+    used: set[int] = set()
+    records: list[dict] = []
 
-    for block in blocks:
-        gold_label = match(block["text"], gold_pairs) or NO_MATCH
-        confusion[gold_label][block.get("label", "answer.text")] += 1
-
-    pred_texts = [b["text"] for b in blocks]
     for gold_text, gold_label in gold_pairs:
-        gtok    = tokenize(gold_text)
-        matched = any(
-            containment(tokenize(pt), gtok) >= 0.75
-            for pt in pred_texts
-            if tokenize(pt)
-        )
-        if not matched:
-            confusion[gold_label]["__missed__"] += 1
+        g_tok = tokenize(gold_text)
+        best_s, best_j, best_pl, best_pt = 0.0, None, None, None
+        for j, (pred_text, pred_label) in enumerate(pred_pairs):
+            if j in used:
+                continue
+            s = containment(tokenize(pred_text), g_tok)
+            if s > best_s:
+                best_s, best_j, best_pl, best_pt = s, j, pred_label, pred_text
+        if best_j is not None and best_s >= 0.75:
+            used.add(best_j)
+            records.append({
+                "gold_text": gold_text, "gold_label": gold_label,
+                "pred_text": best_pt, "pred_label": best_pl,
+            })
+        else:
+            records.append({
+                "gold_text": gold_text, "gold_label": gold_label,
+                "pred_text": None, "pred_label": None,
+            })
 
+    no_gold_pairs = [pp for j, pp in enumerate(pred_pairs) if j not in used]
+    return records, no_gold_pairs
+
+
+def _confusion_from_match(records: list[dict], no_gold_pairs: list[tuple[str, str]]) -> dict:
+    """Build a confusion matrix from `_match_structured()` output.
+
+    Unmatched predicted items are counted as false positives under the key
+    '__no_gold__' so precision is penalised for spurious labels the model invented.
+    """
+    confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    for r in records:
+        if r["pred_label"] is not None:
+            confusion[r["gold_label"]][r["pred_label"]] += 1
+        else:
+            confusion[r["gold_label"]]["__missed__"] += 1
+    for _, pred_label in no_gold_pairs:
+        confusion["__no_gold__"][pred_label] += 1
     return confusion
 
 
@@ -140,31 +182,8 @@ def evaluate_structured_sample(pred_structured_path: Path, gold_pairs: list[tupl
     counted as false positives under the key '__no_gold__' so precision
     is penalised for spurious labels the model invented.
     """
-    pred_pairs = extract_gold(pred_structured_path)
-    confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
-    used: set[int] = set()
-
-    for gold_text, gold_label in gold_pairs:
-        g_tok = tokenize(gold_text)
-        best_s, best_j, best_pl = 0.0, None, None
-        for j, (pred_text, pred_label) in enumerate(pred_pairs):
-            if j in used:
-                continue
-            s = containment(tokenize(pred_text), g_tok)
-            if s > best_s:
-                best_s, best_j, best_pl = s, j, pred_label
-        if best_j is not None and best_s >= 0.75:
-            used.add(best_j)
-            confusion[gold_label][best_pl] += 1
-        else:
-            confusion[gold_label]["__missed__"] += 1
-
-    # Unmatched predictions = false positives with no gold counterpart
-    for j, (_, pred_label) in enumerate(pred_pairs):
-        if j not in used:
-            confusion["__no_gold__"][pred_label] += 1
-
-    return confusion
+    records, no_gold_pairs = _match_structured(pred_structured_path, gold_pairs)
+    return _confusion_from_match(records, no_gold_pairs)
 
 
 # ── Gold-based metrics ───────────────────────────────────────────────────────
@@ -341,21 +360,30 @@ def load_method(tag: str, exclude: list[int] | None = None):
             continue
         pp = LLM_DIR / tag / f"{stem}_structured.json"
         if not pp.exists():
+            logger.warning("SKIP %s — no %s", stem, pp.name)
             continue
-        gold = extract_gold(mp)
-        conf = evaluate_structured_sample(pp, gold)
+        gold             = extract_gold(mp)
+        records, no_gold = _match_structured(pp, gold)
+        conf             = _confusion_from_match(records, no_gold)
         add_confusion(conf_all, conf)
 
-        # Collect mislabeled pairs for the error table (forward-check only).
-        for pred_text, pred_label in extract_gold(pp):
-            tl = match(pred_text, gold)
-            if tl != pred_label:
+        # Collect mislabeled/spurious pairs for the error table, from the same
+        # matching used to build `conf` above (so the two can never disagree).
+        for r in records:
+            if r["pred_label"] is not None and r["pred_label"] != r["gold_label"]:
                 errors.append({
                     "sample": stem,
-                    "text":   pred_text[:120],
-                    "true":   tl or "no_match",
-                    "pred":   pred_label,
+                    "text":   r["pred_text"][:120],
+                    "true":   r["gold_label"],
+                    "pred":   r["pred_label"],
                 })
+        for pred_text, pred_label in no_gold:
+            errors.append({
+                "sample": stem,
+                "text":   pred_text[:120],
+                "true":   "no_gold_match",
+                "pred":   pred_label,
+            })
 
         correct, _, total = gold_metrics(conf)
         rows.append({
@@ -505,20 +533,9 @@ def _sample_row(stem: str, n: int, tp: int) -> None:
     print(f"{stem:<12}  {n:>5}  {tp:>7}  {errors:>6}  {acc:>7.1f}%  {tp}/{n}")
 
 
-def print_missed(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> None:
-    """Print every gold item for which the prediction has no matching text."""
-    pred_pairs = extract_gold(pred_path)
-    pred_texts = [t for t, _ in pred_pairs]
-    missed     = []
-    for gold_text, gold_label in gold_pairs:
-        gtok    = tokenize(gold_text)
-        matched = any(
-            containment(tokenize(pt), gtok) >= 0.75
-            for pt in pred_texts
-            if tokenize(pt)
-        )
-        if not matched:
-            missed.append((gold_label, gold_text))
+def print_missed(records: list[dict]) -> None:
+    """Print every gold item left unmatched by `_match_structured()` (pred_text is None)."""
+    missed = [(r["gold_label"], r["gold_text"]) for r in records if r["pred_label"] is None]
     if not missed:
         print("  (none)")
         return
@@ -528,13 +545,25 @@ def print_missed(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> None:
 
 def run_single(pred_path: Path) -> None:
     """Evaluate one structured DMP JSON against its matching manual annotation."""
+    if not pred_path.name.endswith("_structured.json"):
+        logger.warning(
+            "%s does not look like a structured DMP JSON (expected '*_structured.json'). "
+            "Evaluation compares template-level items (title/section/question/answer), "
+            "not raw per-line labeled blocks; this may fail or give meaningless results.",
+            pred_path.name,
+        )
     stem        = pred_path.stem.replace("_structured", "").split("_")[0]
     manual_path = MANUAL_DIR / f"{stem}_old_dmp.json"
     if not manual_path.exists():
         logger.warning("No manual label found for %s at %s", stem, manual_path)
         return
-    gold      = extract_gold(manual_path)
-    confusion = evaluate_structured_sample(pred_path, gold)
+    gold = extract_gold(manual_path)
+    try:
+        records, no_gold_pairs = _match_structured(pred_path, gold)
+    except ValueError as e:
+        logger.error("%s", e)
+        return
+    confusion = _confusion_from_match(records, no_gold_pairs)
     tp = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
     n  = sum(sum(v.values()) for v in confusion.values())
     print("\n" + "=" * 62)
@@ -548,7 +577,7 @@ def run_single(pred_path: Path) -> None:
     print()
     print_micro_prf1(confusion)
     print("\nMissed gold items (LLM produced no matching block):")
-    print_missed(pred_path, gold)
+    print_missed(records)
 
 
 def list_tags() -> list[str]:
@@ -578,8 +607,9 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
         if not pred_path.exists():
             logger.warning("SKIP %s — no %s", stem, pred_path.name)
             continue
-        gold      = extract_gold(manual_path)
-        confusion = evaluate_structured_sample(pred_path, gold)
+        gold                = extract_gold(manual_path)
+        records, no_gold    = _match_structured(pred_path, gold)
+        confusion           = _confusion_from_match(records, no_gold)
         add_confusion(total_confusion, confusion)
 
         tp         = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
@@ -593,7 +623,7 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
             print(f"{stem:<12}  no pairs")
         total_n  += n
         total_tp += tp
-        per_sample.append((stem, pred_path, gold, mismatch_n, missed_n))
+        per_sample.append((stem, records, mismatch_n, missed_n))
 
     print("-" * 58)
     _sample_row("TOTAL", total_n, total_tp)
@@ -601,11 +631,11 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
     print("\n" + "=" * 62)
     print("  MISSED ITEMS PER SAMPLE")
     print("=" * 62)
-    for stem, pred_path, gold, mismatch_n, missed_n in per_sample:
+    for stem, records, mismatch_n, missed_n in per_sample:
         if missed_n == 0 and mismatch_n == 0:
             continue
         print(f"\n{stem}  ({mismatch_n} mismatch, {missed_n} missed)")
-        print_missed(pred_path, gold)
+        print_missed(records)
 
     print("\n" + "=" * 62)
     print("  AGGREGATE  (all samples pooled)")
@@ -625,7 +655,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Evaluate DMPBridge results against ground truth.")
     ap.add_argument(
         "target", nargs="?",
-        help="Result tag (e.g. llama3.1-8b_pdfplumber_whole_doc) or path to a single JSON file.",
+        help="Result tag (e.g. llama3.1-8b_pdfplumber_whole_doc) or path to a single "
+             "'*_structured.json' file.",
     )
     ap.add_argument("--list", "-l", action="store_true", help="List available result tags and exit.")
     ap.add_argument("--exclude", "-x", default="",
