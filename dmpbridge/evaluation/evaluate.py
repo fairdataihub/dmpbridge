@@ -134,29 +134,34 @@ def evaluate_sample(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> dict:
 def evaluate_structured_sample(pred_structured_path: Path, gold_pairs: list[tuple[str, str]]) -> dict:
     """Evaluate a structured DMP JSON prediction against gold pairs.
 
-    Calls extract_gold() on the structured prediction JSON (same DMP template
-    schema as the gold), then does the same forward+reverse containment matching.
-    This gives an honest comparison because the prediction is compared at the
-    same semantic granularity as the gold (sections/questions/answers, not
-    individual PDF lines).
+    Gold-oriented matching: each gold item is matched to the best unused
+    predicted item (containment >= 0.75). Unmatched predicted items are
+    counted as false positives under the key '__no_gold__' so precision
+    is penalised for spurious labels the model invented.
     """
     pred_pairs = extract_gold(pred_structured_path)
     confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    used: set[int] = set()
 
-    for pred_text, pred_label in pred_pairs:
-        gold_label = match(pred_text, gold_pairs) or NO_MATCH
-        confusion[gold_label][pred_label] += 1
-
-    pred_texts = [t for t, _ in pred_pairs]
     for gold_text, gold_label in gold_pairs:
-        gtok    = tokenize(gold_text)
-        matched = any(
-            containment(tokenize(pt), gtok) >= 0.75
-            for pt in pred_texts
-            if tokenize(pt)
-        )
-        if not matched:
+        g_tok = tokenize(gold_text)
+        best_s, best_j, best_pl = 0.0, None, None
+        for j, (pred_text, pred_label) in enumerate(pred_pairs):
+            if j in used:
+                continue
+            s = containment(tokenize(pred_text), g_tok)
+            if s > best_s:
+                best_s, best_j, best_pl = s, j, pred_label
+        if best_j is not None and best_s >= 0.75:
+            used.add(best_j)
+            confusion[gold_label][best_pl] += 1
+        else:
             confusion[gold_label]["__missed__"] += 1
+
+    # Unmatched predictions = false positives with no gold counterpart
+    for j, (_, pred_label) in enumerate(pred_pairs):
+        if j not in used:
+            confusion["__no_gold__"][pred_label] += 1
 
     return confusion
 
@@ -205,7 +210,9 @@ def _compute_label_metrics(confusion: dict) -> list[dict]:
     rows = []
     for lbl in LABELS:
         tp      = confusion.get(lbl, {}).get(lbl, 0)
+        # FP from wrong-label matches + FP from spurious predictions with no gold counterpart
         fp      = sum(confusion.get(other, {}).get(lbl, 0) for other in LABELS if other != lbl)
+        fp     += confusion.get("__no_gold__", {}).get(lbl, 0)
         fn      = sum(v for pred, v in confusion.get(lbl, {}).items() if pred != lbl)
         support = tp + fn
         p  = tp / (tp + fp) if (tp + fp) else 0.0
