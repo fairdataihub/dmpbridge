@@ -131,6 +131,36 @@ def evaluate_sample(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> dict:
     return confusion
 
 
+def evaluate_structured_sample(pred_structured_path: Path, gold_pairs: list[tuple[str, str]]) -> dict:
+    """Evaluate a structured DMP JSON prediction against gold pairs.
+
+    Calls extract_gold() on the structured prediction JSON (same DMP template
+    schema as the gold), then does the same forward+reverse containment matching.
+    This gives an honest comparison because the prediction is compared at the
+    same semantic granularity as the gold (sections/questions/answers, not
+    individual PDF lines).
+    """
+    pred_pairs = extract_gold(pred_structured_path)
+    confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+
+    for pred_text, pred_label in pred_pairs:
+        gold_label = match(pred_text, gold_pairs) or NO_MATCH
+        confusion[gold_label][pred_label] += 1
+
+    pred_texts = [t for t, _ in pred_pairs]
+    for gold_text, gold_label in gold_pairs:
+        gtok    = tokenize(gold_text)
+        matched = any(
+            containment(tokenize(pt), gtok) >= 0.75
+            for pt in pred_texts
+            if tokenize(pt)
+        )
+        if not matched:
+            confusion[gold_label]["__missed__"] += 1
+
+    return confusion
+
+
 # ── Gold-based metrics ───────────────────────────────────────────────────────
 
 def gold_metrics(confusion: dict) -> tuple[int, int, int]:
@@ -218,7 +248,9 @@ def confusion_matrix_df(confusion: dict):
 def load_method(tag: str, exclude: list[int] | None = None):
     """Load and evaluate all samples for a given file tag.
 
-    Files follow the pattern: ``data/output/labeled/{tag}/sampleN.json``
+    Uses ``sampleN_structured.json`` (DMP template format) as the prediction
+    so the comparison against the gold is at the same semantic granularity
+    (sections / questions / answers rather than individual PDF lines).
 
     Parameters
     ----------
@@ -242,9 +274,9 @@ def load_method(tag: str, exclude: list[int] | None = None):
     def _stem(mp: Path) -> str:
         return mp.stem.replace("_old_dmp", "").replace("_dmp", "")
 
-    found   = [mp for mp in samples
-               if (LLM_DIR / tag / f"{_stem(mp)}.json").exists()
-               and _snum(mp) not in _exclude]
+    found = [mp for mp in samples
+             if (LLM_DIR / tag / f"{_stem(mp)}_structured.json").exists()
+             and _snum(mp) not in _exclude]
     if not found:
         return None, None, None
 
@@ -255,25 +287,22 @@ def load_method(tag: str, exclude: list[int] | None = None):
         stem = mp.stem.replace("_old_dmp", "").replace("_dmp", "")
         if _snum(mp) in _exclude:
             continue
-        pp   = LLM_DIR / tag / f"{stem}.json"
+        pp = LLM_DIR / tag / f"{stem}_structured.json"
         if not pp.exists():
             continue
-        gold   = extract_gold(mp)
-        conf   = evaluate_sample(pp, gold)
+        gold = extract_gold(mp)
+        conf = evaluate_structured_sample(pp, gold)
         add_confusion(conf_all, conf)
 
-        # Collect mislabeled blocks for the error table (forward-check only).
-        blocks = json.loads(pp.read_text(encoding="utf-8"))
-        for b in blocks:
-            tl = match(b["text"], gold)
-            pl = b.get("label", "answer.text")
-            if tl != pl:
+        # Collect mislabeled pairs for the error table (forward-check only).
+        for pred_text, pred_label in extract_gold(pp):
+            tl = match(pred_text, gold)
+            if tl != pred_label:
                 errors.append({
                     "sample": stem,
-                    "text":   b["text"][:120],
+                    "text":   pred_text[:120],
                     "true":   tl or "no_match",
-                    "pred":   pl,
-                    "page":   b.get("page", "-"),
+                    "pred":   pred_label,
                 })
 
         correct, _, total = gold_metrics(conf)
@@ -425,9 +454,9 @@ def _sample_row(stem: str, n: int, tp: int) -> None:
 
 
 def print_missed(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> None:
-    """Print every gold item for which the LLM produced no matching block."""
-    blocks     = json.loads(pred_path.read_text(encoding="utf-8"))
-    pred_texts = [b["text"] for b in blocks]
+    """Print every gold item for which the prediction has no matching text."""
+    pred_pairs = extract_gold(pred_path)
+    pred_texts = [t for t, _ in pred_pairs]
     missed     = []
     for gold_text, gold_label in gold_pairs:
         gtok    = tokenize(gold_text)
@@ -446,14 +475,14 @@ def print_missed(pred_path: Path, gold_pairs: list[tuple[str, str]]) -> None:
 
 
 def run_single(pred_path: Path) -> None:
-    """Evaluate one LLM output file against its matching manual annotation."""
-    stem        = pred_path.stem.split("_")[0]
+    """Evaluate one structured DMP JSON against its matching manual annotation."""
+    stem        = pred_path.stem.replace("_structured", "").split("_")[0]
     manual_path = MANUAL_DIR / f"{stem}_old_dmp.json"
     if not manual_path.exists():
         logger.warning("No manual label found for %s at %s", stem, manual_path)
         return
     gold      = extract_gold(manual_path)
-    confusion = evaluate_sample(pred_path, gold)
+    confusion = evaluate_structured_sample(pred_path, gold)
     tp = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
     n  = sum(sum(v.values()) for v in confusion.values())
     print("\n" + "=" * 62)
@@ -476,7 +505,7 @@ def list_tags() -> list[str]:
 
 
 def run_all(tag: str, exclude: list[int] | None = None) -> None:
-    """Evaluate all samples for *tag* against ground truth."""
+    """Evaluate all samples for *tag* against ground truth using structured JSONs."""
     _exclude = set(exclude or [])
     total_confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     samples = sorted(MANUAL_DIR.glob("*_old_dmp.json"), key=_snum)
@@ -491,12 +520,12 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
         if _snum(manual_path) in _exclude:
             continue
         stem      = manual_path.stem.replace("_old_dmp", "").replace("_dmp", "")
-        pred_path = LLM_DIR / tag / f"{stem}.json"
+        pred_path = LLM_DIR / tag / f"{stem}_structured.json"
         if not pred_path.exists():
             logger.warning("SKIP %s — no %s", stem, pred_path.name)
             continue
         gold      = extract_gold(manual_path)
-        confusion = evaluate_sample(pred_path, gold)
+        confusion = evaluate_structured_sample(pred_path, gold)
         add_confusion(total_confusion, confusion)
 
         tp         = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
@@ -507,7 +536,7 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
         if n:
             _sample_row(stem, n, tp)
         else:
-            print(f"{stem:<12}  no blocks")
+            print(f"{stem:<12}  no pairs")
         total_n  += n
         total_tp += tp
         per_sample.append((stem, pred_path, gold, mismatch_n, missed_n))
