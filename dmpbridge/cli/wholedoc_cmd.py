@@ -15,6 +15,7 @@ from pathlib import Path
 
 from ..core import config
 from ..core.pipeline import run_and_save
+from ..evaluation.annotation_rules import apply_new_annotation_rules
 from ..strategies.wholedoc import WholeDocStrategy
 from ..utils import get_logger, setup_logging
 
@@ -71,8 +72,10 @@ def main() -> None:
     )
     ap.add_argument("--pdf-dir", default="data/input/pdfs",    type=Path)
     ap.add_argument("--out-dir", default="data/output/labeled", type=Path)
-    ap.add_argument("--start",   default=1,  type=int, help="First sample index (inclusive)")
-    ap.add_argument("--end",     default=10, type=int, help="Last sample index (inclusive)")
+    ap.add_argument("--start",       default=1,  type=int, help="First sample index (inclusive)")
+    ap.add_argument("--end",         default=10, type=int, help="Last sample index (inclusive)")
+    ap.add_argument("--apply-rules", action="store_true",
+                    help="Apply new-annotation rules to structured JSON (backfill empty question texts)")
     args = ap.parse_args()
 
     n_samples = args.end - args.start + 1
@@ -112,7 +115,7 @@ def main() -> None:
             continue
 
         t0      = time.perf_counter()
-        blocks  = run_and_save(strategy, pdf_path, out_path, struct_path)
+        blocks  = run_and_save(strategy, pdf_path, out_path, struct_path, apply_rules=args.apply_rules)
         elapsed = time.perf_counter() - t0
 
         if blocks is None:

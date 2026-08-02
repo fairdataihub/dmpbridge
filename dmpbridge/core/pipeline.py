@@ -39,6 +39,7 @@ def _write_outputs(
     blocks: list[dict],
     out_path: Optional[Path],
     struct_path: Optional[Path] = None,
+    apply_rules: bool = False,
 ) -> None:
     """Write flat labeled JSON and/or structured JSON to disk."""
     if out_path is not None:
@@ -48,9 +49,13 @@ def _write_outputs(
             encoding="utf-8",
         )
     if struct_path is not None:
+        structured = to_structured(blocks)
+        if apply_rules:
+            from ..evaluation.annotation_rules import apply_new_annotation_rules
+            structured = apply_new_annotation_rules(structured)
         struct_path.parent.mkdir(parents=True, exist_ok=True)
         struct_path.write_text(
-            json.dumps(to_structured(blocks), indent=2, ensure_ascii=False),
+            json.dumps(structured, indent=2, ensure_ascii=False),
             encoding="utf-8",
         )
 
@@ -60,6 +65,7 @@ def run_and_save(
     pdf_path: Path,
     out_path: Path,
     struct_path: Optional[Path] = None,
+    apply_rules: bool = False,
 ) -> Optional[list[dict]]:
     """Run *strategy* on one PDF and save the flat (+ structured) labeled JSON.
 
@@ -74,7 +80,7 @@ def run_and_save(
     if not pdf_path.exists():
         return None
     blocks = strategy.run(pdf_path)
-    _write_outputs(blocks, out_path, struct_path)
+    _write_outputs(blocks, out_path, struct_path, apply_rules=apply_rules)
     return blocks
 
 
@@ -85,6 +91,8 @@ def process_pdf(
     provider: str = DEFAULT_PROVIDER,
     model: str = DEFAULT_MODEL,
     host: str = DEFAULT_HOST,
+    extractor: str = "pdfplumber",
+    apply_rules: bool = False,
     output: Optional[Union[str, Path]] = None,
     structured_output: Optional[Union[str, Path]] = None,
     raw_dir: Optional[Union[str, Path]] = DEFAULT_RAW_DIR,
@@ -97,16 +105,23 @@ def process_pdf(
     pdf_path:
         Path to the source PDF.
     strategy:
-        A :class:`~dmpbridge.strategies.Strategy` instance.  When provided,
-        ``provider`` / ``model`` / ``host`` are ignored for classification.
+        A pre-built :class:`~dmpbridge.strategies.Strategy` instance.
+        When provided, all other kwargs (model, extractor, etc.) are ignored.
     provider, model, host:
-        Used in legacy mode (no strategy) to build a ``WholeDocStrategy``.
+        LLM backend settings — ignored when *strategy* is given.
+    extractor:
+        PDF extraction backend: ``"pdfplumber"`` (default), ``"docling"``,
+        or ``"lighton"``.  Ignored when *strategy* is given.
+    apply_rules:
+        When ``True``, apply the new-annotation rules (backfill empty
+        question texts from section titles) to the structured JSON before
+        saving.  Default ``False``.
     output:
         Path to write the flat labeled JSON.
     structured_output:
         Path to write the nested DMP Tool JSON.
     raw_dir:
-        Directory for the raw pdfplumber JSON (before labeling).
+        Directory to save extracted blocks before labeling.
         Set to ``None`` to skip.
     images_dir:
         Directory for per-page PNG images with bounding-box overlays.
@@ -119,7 +134,7 @@ def process_pdf(
     # ── Resolve strategy ──────────────────────────────────────────────────────
     if strategy is None:
         from ..strategies.wholedoc import WholeDocStrategy
-        strategy = WholeDocStrategy(provider=provider, model=model, host=host)
+        strategy = WholeDocStrategy(provider=provider, model=model, host=host, extractor=extractor)
 
     # ── Extract + classify (delegated to strategy) ────────────────────────────
     logger.info("Running strategy %s on %s …", type(strategy).__name__, pdf_path.name)
@@ -150,9 +165,9 @@ def process_pdf(
             logger.warning("Image export skipped: %s", exc)
 
     # ── Save outputs ──────────────────────────────────────────────────────────
-    out_path    = Path(output)           if output            else None
+    out_path    = Path(output)            if output            else None
     struct_path = Path(structured_output) if structured_output else None
-    _write_outputs(blocks, out_path, struct_path)
+    _write_outputs(blocks, out_path, struct_path, apply_rules=apply_rules)
     if out_path:
         logger.info("Labeled JSON saved → %s", out_path)
     if struct_path:
