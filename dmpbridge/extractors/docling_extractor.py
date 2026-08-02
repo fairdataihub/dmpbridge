@@ -29,29 +29,33 @@ class DoclingExtractor(BaseExtractor):
 
     def __init__(self) -> None:
         try:
-            from docling.document_converter import DocumentConverter
+            from docling.document_converter import DocumentConverter, PdfFormatOption
+            from docling.datamodel.base_models import InputFormat
             from docling.datamodel.pipeline_options import (
-                PipelineOptions,
+                PdfPipelineOptions,
                 AcceleratorOptions,
                 AcceleratorDevice,
             )
         except ImportError as exc:
             raise ImportError(
                 "Docling is not installed.\n"
-                "Install it with:  pip install dmpbridge[docling]\n"
-                "            or:  pip install docling"
+                "Install it with:  pip install docling"
             ) from exc
 
-        # Suppress noisy Docling startup logging
         import logging
         logging.getLogger("docling").setLevel(logging.WARNING)
 
-        pipeline_options = PipelineOptions()
-        pipeline_options.accelerator_options = AcceleratorOptions(
-            device=AcceleratorDevice.CUDA,
-            num_threads=4,
+        pipeline_options = PdfPipelineOptions(
+            accelerator_options=AcceleratorOptions(
+                device=AcceleratorDevice.CUDA,
+                num_threads=4,
+            )
         )
-        self._converter = DocumentConverter(pipeline_options=pipeline_options)
+        self._converter = DocumentConverter(
+            format_options={
+                InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_options)
+            }
+        )
 
     # ── BaseExtractor protocol ────────────────────────────────────────────────
 
