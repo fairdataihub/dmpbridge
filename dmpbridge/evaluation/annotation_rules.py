@@ -44,6 +44,7 @@ from .evaluate import (
     NEW_MANUAL_DIR,
     _confusion_from_match,
     _match_structured,
+    _snum,
     add_confusion,
     compute_f1_rows,
     confusion_matrix_df,
@@ -103,14 +104,6 @@ def resolve_new_gt_path(n: int) -> Path:
     raise FileNotFoundError(f"No new-version ground truth file found for sample{n} in {NEW_MANUAL_DIR}")
 
 
-def _snum(path: Path) -> int:
-    """Extract the sample number from a filename like sample3_structured.json."""
-    m = re.search(r"\d+", path.stem)
-    if not m:
-        raise ValueError(f"Cannot extract a sample number from {path.name}")
-    return int(m.group())
-
-
 # ── Step 1: build final JSON ─────────────────────────────────────────────────
 
 def convert_tag_to_final(tag: str) -> int:
@@ -136,7 +129,7 @@ def convert_tag_to_final(tag: str) -> int:
 
 # ── Step 2: evaluate final JSON against the new-version ground truth ────────
 
-def load_method(tag: str, exclude: list[int] | None = None):
+def load_method_new(tag: str, exclude: list[int] | None = None):
     """Evaluate every final-JSON sample for *tag* against the new-version ground truth.
 
     Mirrors ``evaluate.load_method()``, but reads FINAL_DIR predictions and
@@ -241,7 +234,7 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
         print(f"No structured JSON found for tag {tag!r} under {LLM_DIR / tag}")
         return
 
-    df, conf, _errors = load_method(tag, exclude=_exclude)
+    df, conf, _errors = load_method_new(tag, exclude=_exclude)
     if df is None:
         print(f"No final JSON found for tag {tag!r} under {FINAL_DIR / tag}")
         return

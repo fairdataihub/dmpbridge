@@ -22,7 +22,7 @@ import json
 from pathlib import Path
 from typing import Optional, Union
 
-from ..preprocess import extract_blocks, save_page_images
+from ..preprocess import save_page_images
 from ..utils import ExtractionError, get_logger
 from . import config
 from .converter import to_structured
@@ -33,6 +33,26 @@ DEFAULT_PROVIDER = config.PROVIDER
 DEFAULT_MODEL    = config.MODEL
 DEFAULT_HOST     = config.HOST
 DEFAULT_RAW_DIR  = "data/output/extracted"
+
+
+def _write_outputs(
+    blocks: list[dict],
+    out_path: Optional[Path],
+    struct_path: Optional[Path] = None,
+) -> None:
+    """Write flat labeled JSON and/or structured JSON to disk."""
+    if out_path is not None:
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(
+            json.dumps(blocks, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+    if struct_path is not None:
+        struct_path.parent.mkdir(parents=True, exist_ok=True)
+        struct_path.write_text(
+            json.dumps(to_structured(blocks), indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
 
 
 def run_and_save(
@@ -53,22 +73,8 @@ def run_and_save(
     """
     if not pdf_path.exists():
         return None
-
     blocks = strategy.run(pdf_path)
-
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(
-        json.dumps(blocks, indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
-
-    if struct_path is not None:
-        struct_path.parent.mkdir(parents=True, exist_ok=True)
-        struct_path.write_text(
-            json.dumps(to_structured(blocks), indent=2, ensure_ascii=False),
-            encoding="utf-8",
-        )
-
+    _write_outputs(blocks, out_path, struct_path)
     return blocks
 
 
@@ -115,54 +121,41 @@ def process_pdf(
         from ..strategies.wholedoc import WholeDocStrategy
         strategy = WholeDocStrategy(provider=provider, model=model, host=host)
 
-    # ── Preprocessing (pdfplumber path) ───────────────────────────────────────
-    logger.info("Extracting text from %s …", pdf_path.name)
-    _raw_blocks = extract_blocks(pdf_path)
-    if not _raw_blocks:
-        logger.warning("No text blocks found in the PDF.")
+    # ── Extract + classify (delegated to strategy) ────────────────────────────
+    logger.info("Running strategy %s on %s …", type(strategy).__name__, pdf_path.name)
+    blocks = strategy.run(pdf_path)
+    if not blocks:
+        logger.warning("No text blocks found in %s", pdf_path.name)
         return []
-    pages = len({b["page"] for b in _raw_blocks})
-    logger.info("  → %d blocks across %d page(s)", len(_raw_blocks), pages)
+    pages = len({b["page"] for b in blocks})
+    logger.info("  → %d blocks across %d page(s)", len(blocks), pages)
 
+    # ── Optional: save raw extracted blocks ───────────────────────────────────
     if raw_dir is not None:
         raw_path = Path(raw_dir) / f"{pdf_path.stem}.json"
         raw_path.parent.mkdir(parents=True, exist_ok=True)
         raw_path.write_text(
-            json.dumps(_raw_blocks, indent=2, ensure_ascii=False),
+            json.dumps(blocks, indent=2, ensure_ascii=False),
             encoding="utf-8",
         )
-        logger.info("Raw extraction saved → %s", raw_path)
+        logger.info("Extracted blocks saved → %s", raw_path)
 
+    # ── Optional: save page images ────────────────────────────────────────────
     if images_dir is not None:
         logger.info("Saving page images → %s …", images_dir)
         try:
-            saved = save_page_images(pdf_path, _raw_blocks, output_dir=images_dir)
+            saved = save_page_images(pdf_path, blocks, output_dir=images_dir)
             logger.info("  → %d image(s) saved", len(saved))
         except ExtractionError as exc:
             logger.warning("Image export skipped: %s", exc)
 
-    # ── Classification (delegated to strategy) ────────────────────────────────
-    logger.info("Running strategy %s …", type(strategy).__name__)
-    blocks = strategy.run(pdf_path)
-
-    # ── Save flat labeled JSON ────────────────────────────────────────────────
-    if output:
-        out_path = Path(output)
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-        out_path.write_text(
-            json.dumps(blocks, indent=2, ensure_ascii=False),
-            encoding="utf-8",
-        )
+    # ── Save outputs ──────────────────────────────────────────────────────────
+    out_path    = Path(output)           if output            else None
+    struct_path = Path(structured_output) if structured_output else None
+    _write_outputs(blocks, out_path, struct_path)
+    if out_path:
         logger.info("Labeled JSON saved → %s", out_path)
-
-    # ── Save structured JSON ──────────────────────────────────────────────────
-    if structured_output:
-        struct_path = Path(structured_output)
-        struct_path.parent.mkdir(parents=True, exist_ok=True)
-        struct_path.write_text(
-            json.dumps(to_structured(blocks), indent=2, ensure_ascii=False),
-            encoding="utf-8",
-        )
+    if struct_path:
         logger.info("Structured JSON saved → %s", struct_path)
 
     return blocks

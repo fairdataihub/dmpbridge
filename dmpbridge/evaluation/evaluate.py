@@ -295,7 +295,10 @@ def compute_f1_rows(confusion: dict):
 
 def _snum(path: Path) -> int:
     """Extract sample number from a path like sample3_old_dmp.json → 3."""
-    return int(path.stem.replace("_old_dmp", "").replace("_dmp", "").replace("sample", ""))
+    m = re.search(r"\d+", path.stem)
+    if not m:
+        raise ValueError(f"Cannot extract a sample number from {path.name}")
+    return int(m.group())
 
 
 def confusion_matrix_df(confusion: dict):

@@ -3,7 +3,7 @@
 apply_new_annotation_rules() itself is exercised against real ground truth
 here (it was derived from and validated against that data in
 notebooks/annotation_conversion_test.ipynb); convert_tag_to_final() and
-load_method() are tested against temporary directories via monkeypatch so
+load_method_new() are tested against temporary directories via monkeypatch so
 they don't touch real project data.
 """
 import json
@@ -71,7 +71,7 @@ def test_resolve_new_gt_path_raises_for_unknown_sample():
         ar.resolve_new_gt_path(9999)
 
 
-# ── convert_tag_to_final / load_method (isolated via monkeypatch) ───────────
+# ── convert_tag_to_final / load_method_new (isolated via monkeypatch) ───────
 
 def _write_structured(path, title, section_title, question_text, answer):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -121,7 +121,7 @@ def test_load_method_scores_final_json_against_resolved_gold(tmp_path, monkeypat
 
     monkeypatch.setattr(ar, "resolve_new_gt_path", fake_resolve)
 
-    df, conf, errors = ar.load_method("my-tag")
+    df, conf, errors = ar.load_method_new("my-tag")
 
     assert df is not None
     assert int(df["correct"].sum()) == int(df["total"].sum())  # perfect match
@@ -130,7 +130,7 @@ def test_load_method_scores_final_json_against_resolved_gold(tmp_path, monkeypat
 
 def test_load_method_returns_none_for_missing_tag(tmp_path, monkeypatch):
     monkeypatch.setattr(ar, "FINAL_DIR", tmp_path / "labeled_final")
-    df, conf, errors = ar.load_method("does-not-exist")
+    df, conf, errors = ar.load_method_new("does-not-exist")
     assert df is None
     assert conf is None
     assert errors is None
