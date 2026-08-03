@@ -15,7 +15,6 @@ from pathlib import Path
 
 from ..core import config
 from ..core.pipeline import run_and_save
-from ..evaluation.annotation_rules import apply_new_annotation_rules
 from ..strategies.wholedoc import WholeDocStrategy
 from ..utils import get_logger, setup_logging
 
@@ -46,7 +45,7 @@ def _log_device_info(extractor: str) -> None:
                     "  [%s] %s — %s MB total | %s MB free",
                     idx, name, total, free,
                 )
-        logger.info("       num_gpu=-1 forced → all layers on GPU")
+        logger.info("       Ollama will auto-select GPU layers")
     except Exception:
         logger.info("GPU  : nvidia-smi not found — check CUDA drivers")
 
