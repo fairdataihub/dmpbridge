@@ -49,7 +49,6 @@ class OllamaModel:
                 "options": {
                     "temperature": 0.0,
                     "num_ctx":     self.num_ctx,
-                    "num_gpu":     -1,
                 },
             },
             timeout=3600,
