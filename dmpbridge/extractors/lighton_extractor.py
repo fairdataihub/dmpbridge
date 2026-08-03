@@ -4,8 +4,9 @@ Each PDF page is rendered as an image (via PyMuPDF), then passed through
 the LightOnOCR-2-1B model (HuggingFace transformers) to produce OCR text.
 The text is segmented line-by-line into block dicts.
 
-Because OCR output carries no font or bbox metadata, is_bold is always
-False and spatial fields are None for all blocks.
+OCR output carries no bbox metadata, so spatial fields are None for all
+blocks. The model transcribes into markdown, so heading markers stand in for
+font emphasis and set is_bold.
 
 Install:
     pip install dmpbridge[lighton]
@@ -14,12 +15,35 @@ Install:
 """
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from .base import BaseExtractor
 
+_MD_HEADING_RE = re.compile(r"^#{1,6}\s+(?P<text>.*)$")
+
 DEFAULT_MODEL_ID = "lightonai/LightOnOCR-2-1B"
 _RENDER_DPI = 150   # 150 DPI keeps images small enough for 1B model inference
+
+# The text backbone is Qwen3, which overflows in float16 and emits "!!!!" —
+# bfloat16 is required for usable output. Resolved against torch at load time so
+# this module stays importable without torch installed.
+_MODEL_DTYPE_NAME = "bfloat16"
+
+# Checkpoint submodule names -> the names transformers' Mistral3 implementation
+# expects. Without this the vision half of the model loads as random weights.
+_KEY_RENAMES = (
+    ("model.vision_encoder.",    "model.vision_tower."),
+    ("model.vision_projection.", "model.multi_modal_projector."),
+)
+
+
+def _remap_key(key: str) -> str:
+    """Rename a checkpoint weight key to its transformers equivalent."""
+    for old, new in _KEY_RENAMES:
+        if key.startswith(old):
+            return new + key[len(old):]
+    return key
 
 
 class LightOnExtractor(BaseExtractor):
@@ -69,7 +93,7 @@ class LightOnExtractor(BaseExtractor):
     def _load_model(model_id: str):
         try:
             import torch
-            from transformers import AutoModelForImageTextToText, AutoProcessor
+            from transformers import AutoConfig, AutoModelForImageTextToText, AutoProcessor
         except ImportError as exc:
             raise ImportError(
                 "transformers / torch are not installed.\n"
@@ -83,27 +107,43 @@ class LightOnExtractor(BaseExtractor):
                 "PyMuPDF is not installed.\n"
                 "Install with:  pip install pymupdf"
             ) from exc
+        from huggingface_hub import hf_hub_download
+        from safetensors.torch import load_file
 
         import logging
-        logging.getLogger("transformers").setLevel(logging.WARNING)
+        logging.getLogger("transformers").setLevel(logging.ERROR)
 
         _log = logging.getLogger(__name__)
-        n_gpus = torch.cuda.device_count()
-        _log.info("LightOnOCR : %d GPU(s) detected — loading %s with device_map=auto", n_gpus, model_id)
+        _log.info("LightOnOCR : loading %s …", model_id)
 
         processor = AutoProcessor.from_pretrained(model_id)
-        # device_map="auto" spreads model layers across all available GPUs
-        model = AutoModelForImageTextToText.from_pretrained(
-            model_id,
-            torch_dtype=torch.float16,
-            device_map="auto",
-        )
-        model.eval()
 
-        for i in range(n_gpus):
-            used  = torch.cuda.memory_allocated(i) / 1024**3
-            total = torch.cuda.get_device_properties(i).total_memory / 1024**3
-            _log.info("LightOnOCR : GPU %d — %.2f / %.1f GB VRAM used", i, used, total)
+        # The published checkpoint declares LightOnOCRForConditionalGeneration but
+        # its config resolves to Mistral3, whose weight names differ. Loading via
+        # from_pretrained silently randomises the vision tower (the model then
+        # "sees" blank pages and reports no text), so build from config and load a
+        # key-remapped state dict instead.
+        dtype  = getattr(torch, _MODEL_DTYPE_NAME)
+        config = AutoConfig.from_pretrained(model_id)
+        model  = AutoModelForImageTextToText.from_config(config).to(dtype)
+
+        state = load_file(hf_hub_download(model_id, "model.safetensors"))
+        state = {_remap_key(k): v for k, v in state.items()}
+        missing, unexpected = model.load_state_dict(state, strict=False)
+        model.tie_weights()   # lm_head is tied to embed_tokens, never stored separately
+
+        unresolved = [k for k in missing if k != "lm_head.weight"]
+        if unresolved or unexpected:
+            raise RuntimeError(
+                f"LightOnOCR checkpoint did not load cleanly — "
+                f"{len(unresolved)} missing, {len(unexpected)} unexpected weight(s). "
+                f"First missing: {unresolved[:3]}; first unexpected: {list(unexpected)[:3]}. "
+                f"The transformers version may have renamed the Mistral3 submodules again."
+            )
+
+        model = model.to("cuda").eval()
+        used  = torch.cuda.memory_allocated() / 1024**3
+        _log.info("LightOnOCR : loaded in %s — %.2f GB VRAM", _MODEL_DTYPE_NAME, used)
 
         return processor, model
 
@@ -153,10 +193,19 @@ class LightOnExtractor(BaseExtractor):
 
     @staticmethod
     def _text_to_blocks(text: str, page_num: int, offset: int) -> list[dict]:
-        return [
-            {
+        blocks: list[dict] = []
+        for line in (ln.strip() for ln in text.splitlines() if ln.strip()):
+            # The model transcribes into markdown, so a heading marker is the only
+            # emphasis signal available — treat it the way the other extractors
+            # treat a bold font run, then drop the marker from the text itself.
+            heading = _MD_HEADING_RE.match(line)
+            if heading:
+                line = heading.group("text").strip()
+                if not line:
+                    continue
+            blocks.append({
                 "page":          page_num,
-                "line_order":    offset + i,
+                "line_order":    offset + len(blocks),
                 "text":          line,
                 "x0":            None,
                 "top":           None,
@@ -164,11 +213,8 @@ class LightOnExtractor(BaseExtractor):
                 "bottom":        None,
                 "avg_font_size": None,
                 "font_names":    [],
-                "is_bold":       False,
+                "is_bold":       bool(heading),
                 "is_italic":     False,
                 "label":         None,
-            }
-            for i, line in enumerate(
-                ln.strip() for ln in text.splitlines() if ln.strip()
-            )
-        ]
+            })
+        return blocks
