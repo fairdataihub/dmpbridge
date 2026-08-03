@@ -81,8 +81,17 @@ Each block in the labeled JSON also carries its `page` number and a `confidence`
 |---|---|---|
 | `pdfplumber` | included | Most PDFs |
 | `docling` | `pip install -e ".[docling]"` | Complex layouts |
+| `lighton` | `pip install -e ".[lighton]"` | Scanned / image-based PDFs (OCR) |
 
-Pass `extractor="docling"` to `process_pdf()` or `--extractor docling` on the CLI.
+Pass the extractor name to `process_pdf()` or the CLI:
+
+```python
+dmpbridge.process_pdf("document.pdf", model="gemma4:e4b", extractor="lighton")
+```
+
+```bash
+dmpbridge-wholedoc --model gemma4:e4b --extractor lighton
+```
 
 ---
 
