@@ -47,7 +47,7 @@ class DoclingExtractor(BaseExtractor):
 
         pipeline_options = PdfPipelineOptions(
             accelerator_options=AcceleratorOptions(
-                device=AcceleratorDevice.CUDA,
+                device=AcceleratorDevice.AUTO,
                 num_threads=4,
             )
         )
