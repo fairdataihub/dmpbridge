@@ -82,7 +82,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.85
+    "confidence": 0.9
   },
   {
     "page": 1,
@@ -99,7 +99,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 1.0
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -133,7 +133,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -150,7 +150,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -201,7 +201,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -218,7 +218,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -252,7 +252,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -269,7 +269,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -303,7 +303,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -320,7 +320,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -338,7 +338,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -355,7 +355,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -389,7 +389,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.85
+    "confidence": 0.9
   },
   {
     "page": 1,
@@ -423,7 +423,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.85
+    "confidence": 0.9
   },
   {
     "page": 1,
@@ -457,7 +457,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -474,7 +474,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -627,7 +627,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -644,7 +644,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -678,7 +678,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -695,7 +695,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -712,7 +712,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -780,7 +780,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 1,
@@ -797,7 +797,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 2,
@@ -831,7 +831,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 2,
@@ -882,7 +882,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 2,
@@ -899,7 +899,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 2,
@@ -950,7 +950,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 2,
@@ -1003,7 +1003,7 @@
     "is_bold": false,
     "is_italic": true,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 2,
@@ -1038,7 +1038,7 @@
     "is_bold": false,
     "is_italic": true,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 2,
@@ -1056,7 +1056,7 @@
     "is_bold": false,
     "is_italic": true,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 2,
@@ -1124,7 +1124,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.85
   },
   {
     "page": 2,

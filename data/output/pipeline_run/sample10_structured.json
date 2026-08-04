@@ -12,7 +12,7 @@
           "order": 1,
           "question": [
             {
-              "text": "1. Policy and Practice",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -32,7 +32,7 @@
           "order": 2,
           "question": [
             {
-              "text": "2. Scope",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -52,7 +52,7 @@
           "order": 3,
           "question": [
             {
-              "text": "3. Data and Metadata Format and Contents",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -72,7 +72,7 @@
           "order": 4,
           "question": [
             {
-              "text": "4. Accessibility and Data Protection",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -92,7 +92,7 @@
           "order": 5,
           "question": [
             {
-              "text": "5. Derivative Products",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -112,7 +112,7 @@
           "order": 6,
           "question": [
             {
-              "text": "6. Archiving and Access",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
