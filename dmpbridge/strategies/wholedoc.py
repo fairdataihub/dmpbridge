@@ -17,6 +17,7 @@ Example
 """
 import json
 from pathlib import Path
+from typing import Optional
 
 from ..core import config
 from ..extractors import get_extractor
@@ -88,32 +89,64 @@ class WholeDocStrategy:
 
     def __init__(
         self,
-        provider:  str = config.PROVIDER,
-        model:     str = config.MODEL,
-        host:      str = config.HOST,
-        extractor: str = "pdfplumber",
+        provider:   str = config.PROVIDER,
+        model:      str = config.MODEL,
+        host:       str = config.HOST,
+        extractor:  str = "pdfplumber",
+        cache_dir:  Optional[Path] = None,
     ) -> None:
         if provider != "ollama":
             raise ConfigurationError(
                 f"WholeDocStrategy: unsupported provider {provider!r}. Only 'ollama' is supported."
             )
-        self.provider   = provider
-        self.model      = model
-        self._extractor = get_extractor(extractor)
-        self._backend   = get_model(
+        self.provider       = provider
+        self.model          = model
+        self.extractor_name = extractor
+        self.cache_dir      = Path(cache_dir) if cache_dir else None
+        self._extractor     = get_extractor(extractor)
+        self._backend       = get_model(
             provider,
             model,
             host=host,
             max_tokens=16384,
         )
 
+    # ── Extraction, with an optional on-disk cache ────────────────────────────
+
+    def _extract(self, pdf_path: Path) -> list[dict]:
+        """Extract blocks, reusing a cached result when one exists.
+
+        Extraction depends only on the PDF and the extractor, not on the model,
+        so the cache is keyed by extractor.  Labeling one corpus with three
+        models then costs one extraction instead of three — a meaningful saving
+        for LightOnOCR, which runs a vision model over every page.
+        """
+        if self.cache_dir is None:
+            logger.info("[wholedoc] extracting from %s via %s …",
+                        pdf_path.name, type(self._extractor).__name__)
+            return self._extractor.extract(pdf_path)
+
+        cached = self.cache_dir / f"{pdf_path.stem}.json"
+        if cached.exists():
+            blocks = json.loads(cached.read_text(encoding="utf-8"))
+            logger.info("[wholedoc] reusing %d cached block(s) from %s",
+                        len(blocks), cached)
+            return blocks
+
+        logger.info("[wholedoc] extracting from %s via %s …",
+                    pdf_path.name, type(self._extractor).__name__)
+        blocks = self._extractor.extract(pdf_path)
+        cached.parent.mkdir(parents=True, exist_ok=True)
+        cached.write_text(json.dumps(blocks, indent=2, ensure_ascii=False),
+                          encoding="utf-8")
+        logger.info("[wholedoc] extracted blocks cached -> %s", cached)
+        return blocks
+
     # ── Strategy protocol ──────────────────────────────────────────────────────
 
     def run(self, pdf_path: Path) -> list[dict]:
         """Extract and classify all blocks in *pdf_path* in one model call."""
-        logger.info("[wholedoc] extracting from %s via %s …",
-                    pdf_path.name, type(self._extractor).__name__)
-        blocks = self._extractor.extract(pdf_path)
+        blocks = self._extract(pdf_path)
         if not blocks:
             logger.warning("[wholedoc] no blocks found in %s", pdf_path.name)
             return []

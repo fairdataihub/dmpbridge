@@ -285,8 +285,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "section.description",
-    "confidence": 0.7
+    "label": "answer.text",
+    "confidence": 0.9
   },
   {
     "page": 2,
@@ -302,8 +302,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "question.text",
-    "confidence": 0.6
+    "label": "answer.text",
+    "confidence": 0.8
   },
   {
     "page": 2,
@@ -320,6 +320,6 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.8
+    "confidence": 0.9
   }
 ]

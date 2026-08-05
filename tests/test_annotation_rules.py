@@ -151,26 +151,27 @@ def _write_structured(path, title, section_title, question_text, answer):
 
 
 def test_convert_tag_to_final_writes_rule_converted_output(tmp_path, monkeypatch):
-    llm_dir   = tmp_path / "labeled"
-    final_dir = tmp_path / "labeled_final"
-    monkeypatch.setattr(ar, "LLM_DIR", llm_dir)
+    """Stage 3 -> stage 4, with identical filenames in each stage directory."""
+    structured_dir = tmp_path / "3_structured"
+    final_dir      = tmp_path / "4_final"
+    monkeypatch.setattr(ar._paths, "STRUCTURED_DIR", structured_dir)
     monkeypatch.setattr(ar, "FINAL_DIR", final_dir)
 
-    _write_structured(llm_dir / "my-tag" / "sample1_structured.json",
+    _write_structured(structured_dir / "my-tag" / "sample1.json",
                        title="Doc", section_title="Sec 1", question_text="", answer="content")
 
     n = ar.convert_tag_to_final("my-tag")
 
     assert n == 1
-    out = json.loads((final_dir / "my-tag" / "sample1_structured.json").read_text(encoding="utf-8"))
+    out = json.loads((final_dir / "my-tag" / "sample1.json").read_text(encoding="utf-8"))
     assert out["narrative"]["template"]["section"][0]["question"][0]["text"] == "Sec 1"
 
 
 def test_load_method_scores_final_json_against_resolved_gold(tmp_path, monkeypatch):
-    final_dir = tmp_path / "labeled_final"
+    final_dir = tmp_path / "4_final"
     monkeypatch.setattr(ar, "FINAL_DIR", final_dir)
 
-    _write_structured(final_dir / "my-tag" / "sample1_structured.json",
+    _write_structured(final_dir / "my-tag" / "sample1.json",
                        title="Doc", section_title="Sec 1",
                        question_text="Sec 1", answer="The answer text.")
 

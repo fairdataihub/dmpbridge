@@ -3,7 +3,7 @@
 Usage (CLI):
     dmpbridge-evaluate                                                    # all tags, all samples
     dmpbridge-evaluate llama3.1-8b_pdfplumber_whole_doc                   # one tag, all samples
-    dmpbridge-evaluate data/output/labeled/<tag>/sample3_structured.json  # one sample
+    dmpbridge-evaluate data/output/3_structured/<tag>/sample3.json        # one sample
 
 Notebook usage:
     from dmpbridge.evaluation.evaluate import (
@@ -33,7 +33,11 @@ MANUAL_DIR      = _ROOT / "data/input/ground_truth_old_version"   # files: sampl
 # sampleN_dmp_new.json; samples 5,6,8,9,10 use dmp_sampleN_new.json) — resolve by
 # sample number via annotation_rules.resolve_new_gt_path() instead of a fixed pattern.
 NEW_MANUAL_DIR  = _ROOT / "data/input/ground_truth_new_version"
-LLM_DIR         = _ROOT / "data/output/labeled"
+# Stage directories — see dmpbridge/core/paths.py for the four-stage layout.
+from ..core import paths as _paths          # noqa: E402  (after _ROOT is defined)
+
+LLM_DIR         = _paths.LABELED_DIR        # stage 2 — labeled blocks
+STRUCTURED_DIR  = _paths.STRUCTURED_DIR     # stage 3 — what this module scores
 
 
 # ── Text helpers ──────────────────────────────────────────────────────────────
@@ -321,7 +325,7 @@ def confusion_matrix_df(confusion: dict):
 def load_method(tag: str, exclude: list[int] | None = None):
     """Load and evaluate all samples for a given file tag.
 
-    Uses ``sampleN_structured.json`` (DMP template format) as the prediction
+    Uses stage 3 ``sampleN.json`` (DMP template format) as the prediction
     so the comparison against the gold is at the same semantic granularity
     (sections / questions / answers rather than individual PDF lines).
 
@@ -348,7 +352,7 @@ def load_method(tag: str, exclude: list[int] | None = None):
         return mp.stem.replace("_old_dmp", "").replace("_dmp", "")
 
     found = [mp for mp in samples
-             if (LLM_DIR / tag / f"{_stem(mp)}_structured.json").exists()
+             if (STRUCTURED_DIR / tag / f"{_stem(mp)}.json").exists()
              and _snum(mp) not in _exclude]
     if not found:
         return None, None, None
@@ -360,7 +364,7 @@ def load_method(tag: str, exclude: list[int] | None = None):
         stem = mp.stem.replace("_old_dmp", "").replace("_dmp", "")
         if _snum(mp) in _exclude:
             continue
-        pp = LLM_DIR / tag / f"{stem}_structured.json"
+        pp = STRUCTURED_DIR / tag / f"{stem}.json"
         if not pp.exists():
             logger.warning("SKIP %s — no %s", stem, pp.name)
             continue
@@ -421,7 +425,7 @@ def load_confidence(tag: str, exclude: list[int] | None = None):
         if _snum(mp) in _exclude:
             continue
         stem = mp.stem.replace("_old_dmp", "").replace("_dmp", "")
-        pp   = LLM_DIR / tag / f"{stem}.json"
+        pp   = LLM_DIR / tag / f"{stem}.json"   # stage 2 — needs per-block confidence
         if not pp.exists():
             continue
         gold   = extract_gold(mp)
@@ -584,9 +588,7 @@ def run_single(pred_path: Path) -> None:
 
 def list_tags() -> list[str]:
     """Return all result tags (subdirectories) that have at least one sample JSON."""
-    if not LLM_DIR.exists():
-        return []
-    return sorted(d.name for d in LLM_DIR.iterdir() if d.is_dir() and list(d.glob("sample*.json")))
+    return _paths.list_tags("structured")
 
 
 def run_all(tag: str, exclude: list[int] | None = None) -> None:
@@ -605,7 +607,7 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
         if _snum(manual_path) in _exclude:
             continue
         stem      = manual_path.stem.replace("_old_dmp", "").replace("_dmp", "")
-        pred_path = LLM_DIR / tag / f"{stem}_structured.json"
+        pred_path = STRUCTURED_DIR / tag / f"{stem}.json"
         if not pred_path.exists():
             logger.warning("SKIP %s — no %s", stem, pred_path.name)
             continue
@@ -669,11 +671,11 @@ def main() -> None:
     if args.list:
         tags = list_tags()
         if not tags:
-            print(f"No results found in {LLM_DIR}")
+            print(f"No results found in {STRUCTURED_DIR}")
         else:
-            print(f"Available tags in {LLM_DIR}:\n")
+            print(f"Available tags in {STRUCTURED_DIR}:\n")
             for t in tags:
-                n = len(list((LLM_DIR / t).glob("sample*.json")))
+                n = len(list((STRUCTURED_DIR / t).glob("sample*.json")))
                 print(f"  {t}  ({n} samples)")
         return
 
@@ -688,7 +690,7 @@ def main() -> None:
     # No argument — auto-detect: use the only tag or prompt the user.
     tags = list_tags()
     if not tags:
-        print(f"No results found in {LLM_DIR}. Run an experiment first.")
+        print(f"No results found in {STRUCTURED_DIR}. Run an experiment first.")
         sys.exit(1)
     if len(tags) == 1:
         run_all(tags[0], exclude=exclude)

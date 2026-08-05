@@ -66,12 +66,26 @@ def run_and_save(
     out_path: Path,
     struct_path: Optional[Path] = None,
     apply_rules: bool = False,
+    final_path: Optional[Path] = None,
 ) -> Optional[list[dict]]:
-    """Run *strategy* on one PDF and save the flat (+ structured) labeled JSON.
+    """Run *strategy* on one PDF and write each pipeline stage to its own path.
 
     Shared by the batch runners (``dmpbridge-wholedoc`` and
     ``dmpbridge-experiment``) so the save-and-convert logic lives in exactly
     one place instead of two independently-maintained copies.
+
+    Parameters
+    ----------
+    out_path:
+        Stage 2 — LLM-labeled blocks.
+    struct_path:
+        Stage 3 — the DMP Tool schema, without rule conversion.
+    apply_rules:
+        Legacy: apply the rules to *struct_path* itself.  Prefer *final_path*,
+        which keeps stage 3 and stage 4 separate and inspectable.
+    final_path:
+        Stage 4 — the rule-converted result, written alongside an unconverted
+        stage 3.  Takes precedence over *apply_rules*.
 
     Returns the labeled blocks, or ``None`` if *pdf_path* does not exist —
     callers are responsible for their own "already processed" skip check and
@@ -80,7 +94,20 @@ def run_and_save(
     if not pdf_path.exists():
         return None
     blocks = strategy.run(pdf_path)
-    _write_outputs(blocks, out_path, struct_path, apply_rules=apply_rules)
+
+    # With a separate stage 4, stage 3 must stay unconverted so the two can be
+    # compared; applying the rules in place would collapse them into one.
+    _write_outputs(blocks, out_path, struct_path,
+                   apply_rules=apply_rules and final_path is None)
+
+    if final_path is not None:
+        from ..evaluation.annotation_rules import apply_new_annotation_rules
+        final = apply_new_annotation_rules(to_structured(blocks))
+        final_path.parent.mkdir(parents=True, exist_ok=True)
+        final_path.write_text(
+            json.dumps(final, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+
     return blocks
 
 

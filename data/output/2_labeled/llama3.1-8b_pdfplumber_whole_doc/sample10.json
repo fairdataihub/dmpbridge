@@ -342,7 +342,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.92
+    "confidence": 0.9
   },
   {
     "page": 2,
@@ -376,6 +376,6 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.95
   }
 ]

@@ -13,7 +13,7 @@ import argparse
 import time
 from pathlib import Path
 
-from ..core import config
+from ..core import config, paths
 from ..core.pipeline import run_and_save
 from ..strategies.wholedoc import WholeDocStrategy
 from ..utils import get_logger, setup_logging
@@ -69,35 +69,37 @@ def main() -> None:
         choices=["pdfplumber", "docling", "lighton"],
         help="PDF extraction backend (default: %(default)s)",
     )
-    ap.add_argument("--pdf-dir", default="data/input/pdfs",    type=Path)
-    ap.add_argument("--out-dir", default="data/output/labeled", type=Path)
+    ap.add_argument("--pdf-dir", default="data/input/pdfs", type=Path)
     ap.add_argument("--start",       default=1,  type=int, help="First sample index (inclusive)")
     ap.add_argument("--end",         default=10, type=int, help="Last sample index (inclusive)")
-    ap.add_argument("--apply-rules", action="store_true",
-                    help="Apply new-annotation rules to structured JSON (backfill empty question texts)")
+    ap.add_argument("--no-rules", action="store_true",
+                    help="Skip stage 4 — do not write the rule-converted final JSON")
+    ap.add_argument("--no-cache", action="store_true",
+                    help="Re-extract even when stage 1 already holds this sample")
     args = ap.parse_args()
 
     n_samples = args.end - args.start + 1
+    tag       = paths.make_tag(args.model, args.extractor)
 
     logger.info("=" * 55)
     logger.info("Model     : %s", args.model)
     logger.info("Extractor : %s", args.extractor)
     logger.info("Ollama    : %s", args.host)
     logger.info("Samples   : %d–%d  (%d total)", args.start, args.end, n_samples)
+    logger.info("Tag       : %s", tag)
+    logger.info("Output    : 1_extracted/%s  ->  2_labeled|3_structured|4_final/%s",
+                args.extractor, tag)
     _log_device_info(args.extractor)
     logger.info("=" * 55)
 
+    cache_dir = None if args.no_cache else paths.EXTRACTED_DIR / args.extractor
     strategy = WholeDocStrategy(
         provider=args.provider,
         model=args.model,
         host=args.host,
         extractor=args.extractor,
+        cache_dir=cache_dir,
     )
-
-    model_slug = args.model.replace(":", "-")
-    tag     = f"{model_slug}_{args.extractor}_whole_doc"
-    out_dir = args.out_dir / tag
-    out_dir.mkdir(parents=True, exist_ok=True)
 
     run_start   = time.perf_counter()
     done        = 0
@@ -106,15 +108,17 @@ def main() -> None:
     for i in range(args.start, args.end + 1):
         label       = f"[sample{i}]"
         pdf_path    = args.pdf_dir / f"sample{i}.pdf"
-        out_path    = out_dir / f"sample{i}.json"
-        struct_path = out_dir / f"sample{i}_structured.json"
+        out_path    = paths.labeled_path(tag, i)
+        struct_path = paths.structured_path(tag, i)
+        final_path  = None if args.no_rules else paths.final_path(tag, i)
 
         if out_path.exists():
             logger.info("%s already exists — skipping", label)
             continue
 
         t0      = time.perf_counter()
-        blocks  = run_and_save(strategy, pdf_path, out_path, struct_path, apply_rules=args.apply_rules)
+        blocks  = run_and_save(strategy, pdf_path, out_path, struct_path,
+                               final_path=final_path)
         elapsed = time.perf_counter() - t0
 
         if blocks is None:
@@ -135,7 +139,9 @@ def main() -> None:
             )
         else:
             logger.info("%s done in %.1f s  |  %d/%d", label, elapsed, done, n_samples)
-        logger.info("%s structured JSON → %s", label, struct_path.name)
+        stages = "1_extracted -> 2_labeled -> 3_structured" + \
+                 ("" if final_path is None else " -> 4_final")
+        logger.info("%s %s", label, stages)
 
     total = time.perf_counter() - run_start
     logger.info("=" * 55)

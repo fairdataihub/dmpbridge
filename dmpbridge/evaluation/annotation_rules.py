@@ -70,7 +70,9 @@ from .evaluate import (
 
 logger = get_logger(__name__)
 
-FINAL_DIR = LLM_DIR.parent / "labeled_final"
+from ..core import paths as _paths
+
+FINAL_DIR = _paths.FINAL_DIR   # stage 4 — rule-converted output
 
 
 # ── The rule ──────────────────────────────────────────────────────────────────
@@ -143,12 +145,12 @@ def resolve_new_gt_path(n: int) -> Path:
 def convert_tag_to_final(tag: str) -> int:
     """Apply the annotation rule to every structured JSON prediction under *tag*.
 
-    Saves to FINAL_DIR/tag/, mirroring the layout under LLM_DIR/tag/.
+    Reads stage 3 and writes stage 4, mirroring the per-tag layout.
     Returns the number of files converted.
     """
-    src_dir = LLM_DIR / tag
+    src_dir = _paths.STRUCTURED_DIR / tag
     dst_dir = FINAL_DIR / tag
-    files   = sorted(src_dir.glob("*_structured.json"))
+    files   = sorted(src_dir.glob("sample*.json"))
     if files:
         dst_dir.mkdir(parents=True, exist_ok=True)
     for src in files:
@@ -181,7 +183,7 @@ def load_method_new(tag: str, exclude: list[int] | None = None):
     if not tag_dir.exists():
         return None, None, None
 
-    files = sorted(tag_dir.glob("*_structured.json"), key=_snum)
+    files = sorted(tag_dir.glob("sample*.json"), key=_snum)
     found = [f for f in files if _snum(f) not in _exclude]
     if not found:
         return None, None, None
@@ -265,7 +267,7 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
     _exclude = set(exclude or [])
     n_converted = convert_tag_to_final(tag)
     if n_converted == 0:
-        print(f"No structured JSON found for tag {tag!r} under {LLM_DIR / tag}")
+        print(f"No structured JSON found for tag {tag!r} under {_paths.STRUCTURED_DIR / tag}")
         return
 
     df, conf, _errors = load_method_new(tag, exclude=_exclude)
@@ -324,11 +326,11 @@ def main() -> None:
     if args.list:
         tags = list_tags()
         if not tags:
-            print(f"No results found in {LLM_DIR}")
+            print(f"No results found in {_paths.STRUCTURED_DIR}")
         else:
             print(f"Available tags in {LLM_DIR}:\n")
             for t in tags:
-                n = len(list((LLM_DIR / t).glob("*_structured.json")))
+                n = len(list((_paths.STRUCTURED_DIR / t).glob("sample*.json")))
                 print(f"  {t}  ({n} samples)")
         return
 
@@ -349,7 +351,7 @@ def main() -> None:
     # No argument — auto-detect: use the only tag or prompt the user.
     tags = list_tags()
     if not tags:
-        print(f"No results found in {LLM_DIR}. Run an experiment first.")
+        print(f"No results found in {_paths.STRUCTURED_DIR}. Run an experiment first.")
         sys.exit(1)
     if len(tags) == 1:
         run_all(tags[0], exclude=exclude)
