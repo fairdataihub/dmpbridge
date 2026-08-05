@@ -25,7 +25,12 @@ def test_backfills_empty_question_from_section_title():
     assert q["text"] == "Sec 1"
 
 
-def test_moves_document_title_when_section_title_also_empty():
+def test_copies_document_title_when_section_title_also_empty():
+    """The title fills the question and is *kept* on the template.
+
+    It used to be cleared. The new-version ground truth was revised on
+    5 Aug 2026 to retain it — see test_reproduces_real_new_annotation_*.
+    """
     data = {"narrative": {"template": {"title": "Doc Title", "section": [{
         "title": "",
         "question": [{"text": "", "answer": {"json": {"answer": "content"}}}],
@@ -33,7 +38,7 @@ def test_moves_document_title_when_section_title_also_empty():
     out = ar.apply_new_annotation_rules(data)
     template = out["narrative"]["template"]
     assert template["section"][0]["question"][0]["text"] == "Doc Title"
-    assert template["title"] == ""
+    assert template["title"] == "Doc Title"
 
 
 def test_leaves_non_empty_question_text_untouched():

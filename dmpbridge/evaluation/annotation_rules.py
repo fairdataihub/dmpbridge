@@ -12,9 +12,11 @@ only covers the two patterns that turned out to be fully deterministic.
 
     Rule 1 (backfill):   a question with empty text is filled with its own
                           section's title.
-    Rule 3 (title move): if the section's own title is also empty, the document
+    Rule 3 (title copy): if the section's own title is also empty, the document
                           title fills the question instead (first occurrence
-                          only), then the document title is cleared.
+                          only). The document title itself is left in place —
+                          it used to be cleared, but the new-version ground
+                          truth was revised on 5 Aug 2026 to keep it.
 
 A third pattern seen in the ground truth — merging several same-section
 sub-questions (e.g. "Raw data:", "Scripts and code for analyses:") into one,
@@ -84,9 +86,11 @@ def apply_new_annotation_rules(data: dict) -> dict:
                 question["text"] = doc_title
                 title_used = True
 
-    if title_used:
-        template["title"] = ""
-
+    # The document title is left in place. It used to be cleared once it had
+    # been copied into a question, but the new-version ground truth was revised
+    # on 5 Aug 2026 to keep it: all ten reference files now carry a title, and
+    # samples 4 and 7 — the only ones reaching this branch — disagreed with the
+    # old behaviour. See test_reproduces_real_new_annotation_exactly_*.
     return data
 
 
