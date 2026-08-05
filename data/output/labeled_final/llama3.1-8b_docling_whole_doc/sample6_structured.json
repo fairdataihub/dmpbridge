@@ -17,7 +17,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Policies and provisions for re-use, re-distribution. Simulation data will in essence grow to several  terrabytes  with  an  associated  cost  of  storage.    Data  will  be  made  publicly available upon request at the end of the project. Although open-source, we envisage that intellectual rights to the code will be retained by the CU group. Dissemination of opensource software will be released once fully tested and published.\nPlans for archiving and preservation of access. Local data will be archived on the group's mass storage system. As mentioned above, all data generated is archived with the entire code that generated it. Additionally, further backups of the data will be provided by CU's NSF-funded research computing. We imagine the data being of relevance and stored for > 10 years.",
+                  "answer": "Policies and provisions for re-use, re-distribution. Simulation data will in essence grow to several  terrabytes  with  an  associated  cost  of  storage.    Data  will  be  made  publicly available upon request at the end of the project. Although open-source, we envisage that intellectual rights to the code will be retained by the CU group. Dissemination of opensource software will be released once fully tested and published.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -25,6 +25,12 @@
               }
             }
           ]
+        },
+        {
+          "title": "Plans for archiving and preservation of access. Local data will be archived on the group's mass storage system. As mentioned above, all data generated is archived with the entire code that generated it. Additionally, further backups of the data will be provided by CU's NSF-funded research computing. We imagine the data being of relevance and stored for > 10 years.",
+          "description": "",
+          "order": 2,
+          "question": []
         }
       ]
     }

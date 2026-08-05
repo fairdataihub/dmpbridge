@@ -30,6 +30,12 @@
           "title": "Section  2.3 integrates  research  and  education  through  the Scientist  Spotlight and Hydrologic Sciences Workshops.",
           "description": "",
           "order": 2,
+          "question": []
+        },
+        {
+          "title": "TYPES OF DATA",
+          "description": "",
+          "order": 3,
           "question": [
             {
               "text": "TYPES OF DATA",
@@ -62,7 +68,7 @@
         {
           "title": "DATA AND METADATA STANDARDS",
           "description": "",
-          "order": 3,
+          "order": 4,
           "question": [
             {
               "text": "The data will be shared along with a README.txt, which will describe all files, their relationships, naming conventions, etc. Data elements and attributes will be described following ISO 19115 specifications and metadata schema and standards in Hydrology (e.g., following any establish standards of the Water Information Coordination Program's Open Water Data Initiative (Larsen et al., 2016)) to allow for better interpretability and interoperability. Code and scripts produced in R and/or python will be documented for reproducibility purposes. The metadata for the codes will include: (1) description of the functions required to operate the analyses; (2) description of input parameters and outputs; and (3) test case, files and plots documenting the expected response of the model (Section 2.1) to a standard set of input parameters. Documentation will focus on the description of the functions, input parameters, outputs, the format of input data, instructions to run the model, and instructions to export the results. The outputs will be stored in CSV format with a metadata document describing the data structure of the output data.",
@@ -82,7 +88,7 @@
         {
           "title": "POLICIES FOR ACCESS AND SHARING",
           "description": "",
-          "order": 4,
+          "order": 5,
           "question": [
             {
               "text": "POLICIES FOR ACCESS AND SHARING",
@@ -128,7 +134,7 @@
         {
           "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
           "description": "",
-          "order": 5,
+          "order": 6,
           "question": [
             {
               "text": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may freely build upon, enhance and reuse the works for any purposes without restriction under copyright or database law. CC0 does not exempt those who reuse the data from following community norms for scholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the original data authors.",
@@ -148,7 +154,7 @@
         {
           "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
           "description": "",
-          "order": 6,
+          "order": 7,
           "question": [
             {
               "text": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",

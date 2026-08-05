@@ -37,20 +37,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "This  Data  Management  Plan addresses  the  NSF  policy  that  primary  data  'commonly  accepted  in  the scientific community as necessary to validate research findings' be made available at little or no cost to the  PI  or  project.  In  accordance  with  this  policy  and  guidance  from  the  Office  of  Management  and Budget, this plan does not include preliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or communications with colleagues. Data that must be withheld long enough to enable peer review and publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken place. Under this application, we will determine the effectiveness the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "The release of data about students or any other human subjects is subject to policies and restrictions in protocols adopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act (FERPA) regulations.",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
+                  "answer": "This  Data  Management  Plan addresses  the  NSF  policy  that  primary  data  'commonly  accepted  in  the scientific community as necessary to validate research findings' be made available at little or no cost to the  PI  or  project.  In  accordance  with  this  policy  and  guidance  from  the  Office  of  Management  and Budget, this plan does not include preliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or communications with colleagues. Data that must be withheld long enough to enable peer review and publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken place. Under this application, we will determine the effectiveness the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.\nThe release of data about students or any other human subjects is subject to policies and restrictions in protocols adopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act (FERPA) regulations.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -70,20 +57,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "We will make the proposed nano-vesicles (NETs) available to interested investigators who would like to use  them  in  their  scientific  research.  We  will  publish our  results,  and  present  them  results  in  relevant conferences, workshops, seminars, and teaching forums. Additionally, we will provide our results to any national resources and or databases on nanoparticles that compile and maintain such information. As an example, we will contribute to the nanotechnology information library (NIL) (http://nanoparticlelibrary.net/index.asp), which is maintained by the National Institute for Occupational Safety  and  Health  (NIOSH).  Data  that  must  be  withheld  long  enough  to  enable  peer  review  and publication/dissemination or protection of intellectual property will be subject after appropriate steps have taken place. Confidential material will be handled according to policies and protocols at UCR, Family Educational Rights and Privacy Act (FERPA), and any other applicable regulations and restrictions.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "All materials uploaded to the eScholarship site will be tagged uniformly with metadata about the source and nature of the data. Any electronic file format (e.g., text, spreadsheets, images) can be accepted. As a service to assure that materials are formatted correctly, a curator from the College reviews all submissions before they are accepted.",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
+                  "answer": "We will make the proposed nano-vesicles (NETs) available to interested investigators who would like to use  them  in  their  scientific  research.  We  will  publish our  results,  and  present  them  results  in  relevant conferences, workshops, seminars, and teaching forums. Additionally, we will provide our results to any national resources and or databases on nanoparticles that compile and maintain such information. As an example, we will contribute to the nanotechnology information library (NIL) (http://nanoparticlelibrary.net/index.asp), which is maintained by the National Institute for Occupational Safety  and  Health  (NIOSH).  Data  that  must  be  withheld  long  enough  to  enable  peer  review  and publication/dissemination or protection of intellectual property will be subject after appropriate steps have taken place. Confidential material will be handled according to policies and protocols at UCR, Family Educational Rights and Privacy Act (FERPA), and any other applicable regulations and restrictions.\nAll materials uploaded to the eScholarship site will be tagged uniformly with metadata about the source and nature of the data. Any electronic file format (e.g., text, spreadsheets, images) can be accepted. As a service to assure that materials are formatted correctly, a curator from the College reviews all submissions before they are accepted.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

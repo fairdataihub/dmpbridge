@@ -37,20 +37,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "This  Data  Management  Plan  addresses  the  NSF  policy  that  primary  data  'commonly  accepted  in  the  scientific community as necessary to validate research findings' be made available at little or no cost to the PI or project. In accordance with this policy and guidance from the Office of Management and Budget, this plan does not include preliminary  analyses  (including  raw  data),  drafts  of  scientific  papers,  plans  for  future  research,  peer  reviews,  or communications with colleagues. Data that must be withheld long enough to enable peer review and publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken place. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after its  acquisition.  The  data  will  be  preserved  for  at  least  three  years  beyond  the  award  period,  as  required  by  NSF guidelines.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "The release of data about students or any other human subjects is subject to policies and restrictions in protocols adopted  by  the  relevant  Institutional  Research  Board  (IRB)  and  the  Family  Educational  Rights  and  Privacy  Act (FERPA) regulations.",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "The proposed project will develop programming, compiler, and runtime support for applications, as described in this  proposal.   The  implementations  will  be  made  available  to  other  researchers.     All  code  will  be  preserved  and maintained  for  a  minimum  of  three  years  beyond  the  award  period  as  required  by  NSF  guidelines.    In  addition, sample adaptive versions of applications that will be developed in this work will also be made available.",
+                  "answer": "This  Data  Management  Plan  addresses  the  NSF  policy  that  primary  data  'commonly  accepted  in  the  scientific community as necessary to validate research findings' be made available at little or no cost to the PI or project. In accordance with this policy and guidance from the Office of Management and Budget, this plan does not include preliminary  analyses  (including  raw  data),  drafts  of  scientific  papers,  plans  for  future  research,  peer  reviews,  or communications with colleagues. Data that must be withheld long enough to enable peer review and publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken place. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after its  acquisition.  The  data  will  be  preserved  for  at  least  three  years  beyond  the  award  period,  as  required  by  NSF guidelines.\nThe release of data about students or any other human subjects is subject to policies and restrictions in protocols adopted  by  the  relevant  Institutional  Research  Board  (IRB)  and  the  Family  Educational  Rights  and  Privacy  Act (FERPA) regulations.\nThe proposed project will develop programming, compiler, and runtime support for applications, as described in this  proposal.   The  implementations  will  be  made  available  to  other  researchers.     All  code  will  be  preserved  and maintained  for  a  minimum  of  three  years  beyond  the  award  period  as  required  by  NSF  guidelines.    In  addition, sample adaptive versions of applications that will be developed in this work will also be made available.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -110,20 +97,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: ' This material is based upon work supported by the National Science Foundation under Grant No. (NSF grant number). '  Additionally,  materials  will contain a disclaimer that ' any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation .'",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "In  keeping  with  standard  ethical  practices,  it  is  expected  that  subsequent  users  of  the  data  will  acknowledge  the source.",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
+                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: ' This material is based upon work supported by the National Science Foundation under Grant No. (NSF grant number). '  Additionally,  materials  will contain a disclaimer that ' any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation .'\nIn  keeping  with  standard  ethical  practices,  it  is  expected  that  subsequent  users  of  the  data  will  acknowledge  the source.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
