@@ -6,7 +6,9 @@ the downstream strategy and evaluation code are unaffected by the choice.
 
 Supported extractors
 --------------------
-``"pdfplumber"`` — line-level extraction, full bbox + font metadata (default)
+``"pdfplumber"`` — line-level extraction, full bbox + font metadata (default).
+                  Wrapped lines are merged into paragraphs unless
+                  ``merge_lines=False`` is passed.
 ``"docling"``    — ML layout analysis, understands headings/tables/lists
 ``"lighton"``    — LightOnOCR-2-1B vision-LLM, handles scanned / complex PDFs
 
@@ -29,11 +31,12 @@ def get_extractor(name: str, **kwargs) -> BaseExtractor:
         ``"pdfplumber"`` | ``"docling"`` | ``"lighton"``
     **kwargs:
         Passed through to the extractor constructor.
+        Recognised by ``"pdfplumber"``: ``merge_lines``.
         Recognised by ``"lighton"``: ``model_id``, ``max_new_tokens``.
     """
     if name == "pdfplumber":
         from .pdfplumber_extractor import PdfplumberExtractor
-        return PdfplumberExtractor()
+        return PdfplumberExtractor(**kwargs)
 
     if name == "docling":
         from .docling_extractor import DoclingExtractor
