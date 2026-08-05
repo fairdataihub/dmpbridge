@@ -6,26 +6,34 @@ This is "Path B" alongside the main ``dmpbridge-evaluate`` command ("Path A"):
     Path B (this module)      structured JSON  ->  rule-converted "final JSON"
                                                  ->  scored against NEW annotation
 
-The rule was derived by diffing every sample in data/input/ground_truth_old_version
-against data/input/ground_truth_new_version and is deliberately conservative: it
-only covers the two patterns that turned out to be fully deterministic.
+The rules are specified by ``data/input/Rules.xlsx`` — a 16-row truth table over
+whether each of ``title``, ``question.text``, ``section.title`` and
+``section.description`` is empty (E) or non-empty (N).  All sixteen combinations
+reduce to four branches, applied per question:
 
-    Rule 1 (backfill):   a question with empty text is filled with its own
-                          section's title.
-    Rule 3 (title copy): if the section's own title is also empty, the document
-                          title fills the question instead (first occurrence
-                          only). The document title itself is left in place —
-                          it used to be cleared, but the new-version ground
-                          truth was revised on 5 Aug 2026 to keep it.
+    1. question.text empty, section.title empty
+         - document title present -> copy it into question.text only
+                                                                (rows 9, 10)
+         - else section.description present -> copy that into BOTH
+           question.text and section.title                      (row 2)
+         - else leave unchanged                                 (row 1)
+    2. question.text empty, section.title present
+         -> copy section.title into question.text     (rows 3, 4, 11, 12)
+    3. question.text present, section.title empty
+         -> copy question.text into section.title     (rows 5, 6, 13, 14)
+    4. both present -> leave unchanged                (rows 7, 8, 15, 16)
 
-A third pattern seen in the ground truth — merging several same-section
-sub-questions (e.g. "Raw data:", "Scripts and code for analyses:") into one,
-with their answers concatenated — is NOT applied here. It's real (confirmed on
-sample5) but not mechanically derivable from the JSON alone: sample1 and
-sample2 have superficially identical short, unlettered sub-question labels
-that were *not* merged, so there's no reliable trigger condition to encode
-without guessing. See notebooks/annotation_conversion_test.ipynb for the
-full analysis.
+Note the precedence in branch 1: when the document title and section.description
+could both fill an empty pair, the title wins — that is what rows 9/10 specify
+against row 2.  The document title itself is never cleared.
+
+A pattern seen in the ground truth but NOT covered by the table — merging several
+same-section sub-questions (e.g. "Raw data:", "Scripts and code for analyses:")
+into one with their answers concatenated — remains unimplemented.  It is real
+(confirmed on sample5) but not mechanically derivable from the JSON alone:
+sample1 and sample2 have superficially identical short, unlettered sub-question
+labels that were *not* merged, so there is no reliable trigger condition to
+encode without guessing.  See notebooks/annotation_conversion_test.ipynb.
 
 Usage (CLI):
     dmpbridge-evaluate-new                                        # all tags
@@ -68,29 +76,51 @@ FINAL_DIR = LLM_DIR.parent / "labeled_final"
 # ── The rule ──────────────────────────────────────────────────────────────────
 
 def apply_new_annotation_rules(data: dict) -> dict:
-    """Return a copy of *data* with Rules 1 and 3 applied (see module docstring)."""
+    """Return a copy of *data* with the Rules.xlsx truth table applied.
+
+    See the module docstring for the four branches and how the sixteen rows of
+    the spreadsheet map onto them.  The document title is never modified — it is
+    only ever read as a source, matching the new-version reference files, all
+    ten of which retain their title.
+    """
     data     = copy.deepcopy(data)
     root     = data.get("narrative", data)
     template = root.get("template", {})
-    doc_title  = template.get("title", "").strip()
+    doc_title  = (template.get("title") or "").strip()
     title_used = False
 
     for section in template.get("section", []):
-        sec_title = section.get("title", "").strip()
         for question in section.get("question", []):
-            if question.get("text", "").strip():
-                continue
-            if sec_title:
-                question["text"] = sec_title
-            elif doc_title and not title_used:
-                question["text"] = doc_title
-                title_used = True
+            # Re-read the section title on each pass: an earlier question in
+            # this section may have filled it (branch 3), and later questions
+            # must see that value rather than the original blank.
+            sec_title = (section.get("title") or "").strip()
+            sec_desc  = (section.get("description") or "").strip()
+            q_text    = (question.get("text") or "").strip()
 
-    # The document title is left in place. It used to be cleared once it had
-    # been copied into a question, but the new-version ground truth was revised
-    # on 5 Aug 2026 to keep it: all ten reference files now carry a title, and
-    # samples 4 and 7 — the only ones reaching this branch — disagreed with the
-    # old behaviour. See test_reproduces_real_new_annotation_exactly_*.
+            if not q_text and not sec_title:
+                if doc_title and not title_used:
+                    # Rows 9, 10 — question.text only; section.title stays empty,
+                    # which is what the new-version reference files have for
+                    # samples 4 and 7, the only two documents reaching here.
+                    question["text"] = doc_title
+                    title_used = True
+                elif sec_desc:
+                    # Row 2.
+                    section["title"] = sec_desc
+                    question["text"] = sec_desc
+                # else row 1 — nothing available to copy.
+
+            elif not q_text:
+                # Rows 3, 4, 11, 12.
+                question["text"] = sec_title
+
+            elif not sec_title:
+                # Rows 5, 6, 13, 14.
+                section["title"] = q_text
+
+            # else rows 7, 8, 15, 16 — both present, leave unchanged.
+
     return data
 
 

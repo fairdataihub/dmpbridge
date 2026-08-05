@@ -25,20 +25,81 @@ def test_backfills_empty_question_from_section_title():
     assert q["text"] == "Sec 1"
 
 
-def test_copies_document_title_when_section_title_also_empty():
-    """The title fills the question and is *kept* on the template.
-
-    It used to be cleared. The new-version ground truth was revised on
-    5 Aug 2026 to retain it — see test_reproduces_real_new_annotation_*.
-    """
-    data = {"narrative": {"template": {"title": "Doc Title", "section": [{
-        "title": "",
-        "question": [{"text": "", "answer": {"json": {"answer": "content"}}}],
+def _doc(title="", sec_title="", sec_desc="", q_text="", answer="content"):
+    return {"narrative": {"template": {"title": title, "section": [{
+        "title": sec_title,
+        "description": sec_desc,
+        "question": [{"text": q_text, "answer": {"json": {"answer": answer}}}],
     }]}}}
-    out = ar.apply_new_annotation_rules(data)
-    template = out["narrative"]["template"]
-    assert template["section"][0]["question"][0]["text"] == "Doc Title"
-    assert template["title"] == "Doc Title"
+
+
+def _fields(out):
+    t = out["narrative"]["template"]
+    s = t["section"][0]
+    return t["title"], s["title"], s["question"][0]["text"]
+
+
+def test_rows_9_10_copy_title_into_question_only():
+    """Rows 9/10: section.title stays empty and the document title is kept.
+
+    Rules.xlsx originally said to fill section.title as well; it was corrected
+    on 5 Aug 2026 to match the reference files for samples 4 and 7, the only
+    two documents that reach this branch.
+    """
+    title, sec_title, q_text = _fields(ar.apply_new_annotation_rules(_doc(title="Doc Title")))
+    assert q_text == "Doc Title"
+    assert sec_title == ""          # not filled
+    assert title == "Doc Title"     # not cleared
+
+
+def test_row_2_copies_section_description_into_both():
+    """Row 2: description is the only source, so it fills question and section title."""
+    _, sec_title, q_text = _fields(
+        ar.apply_new_annotation_rules(_doc(sec_desc="Funder guidance text")))
+    assert q_text == "Funder guidance text"
+    assert sec_title == "Funder guidance text"
+
+
+def test_rows_5_6_13_14_copy_question_into_empty_section_title():
+    """Rows 5/6/13/14: the reverse direction — question.text fills section.title."""
+    for title in ("", "Doc Title"):
+        for desc in ("", "Some guidance"):
+            _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
+                _doc(title=title, sec_desc=desc, q_text="A. Types of data")))
+            assert sec_title == "A. Types of data", f"title={title!r} desc={desc!r}"
+            assert q_text == "A. Types of data"
+
+
+def test_document_title_outranks_section_description():
+    """Rows 9/10 beat row 2 when both could fill an empty pair."""
+    _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
+        _doc(title="Doc Title", sec_desc="Guidance")))
+    assert q_text == "Doc Title"
+    assert sec_title == ""
+
+
+def test_document_title_used_once_only():
+    """A second empty section must not be filled from the same document title."""
+    data = {"narrative": {"template": {"title": "Doc Title", "section": [
+        {"title": "", "description": "",
+         "question": [{"text": "", "answer": {"json": {"answer": "a"}}}]},
+        {"title": "", "description": "",
+         "question": [{"text": "", "answer": {"json": {"answer": "b"}}}]},
+    ]}}}
+    sections = ar.apply_new_annotation_rules(data)["narrative"]["template"]["section"]
+    assert sections[0]["question"][0]["text"] == "Doc Title"
+    assert sections[1]["question"][0]["text"] == ""
+
+
+def test_rows_7_8_15_16_leave_both_populated_fields_alone():
+    _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
+        _doc(title="Doc", sec_title="Sec 1", q_text="Q 1")))
+    assert (sec_title, q_text) == ("Sec 1", "Q 1")
+
+
+def test_row_1_leaves_everything_empty_when_nothing_to_copy():
+    _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(_doc()))
+    assert (sec_title, q_text) == ("", "")
 
 
 def test_leaves_non_empty_question_text_untouched():
