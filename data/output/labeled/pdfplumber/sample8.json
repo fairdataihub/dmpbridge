@@ -1,0 +1,468 @@
+[
+  {
+    "page": 1,
+    "line_order": 1,
+    "text": "Univ. of California, Riverside Data Management Plan",
+    "x0": 181.79,
+    "top": 73.6,
+    "x1": 430.07,
+    "bottom": 83.44,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 2,
+    "text": "1. Policy and Practice",
+    "x0": 67.5,
+    "top": 98.94,
+    "x1": 157.41,
+    "bottom": 108.78,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMGB+Times-BoldItalic"
+    ],
+    "is_bold": true,
+    "is_italic": true,
+    "label": "section.title",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 3,
+    "text": "The Bourns College of Engineering (BCOE) at the University of California, Riverside, in partnership with the UCR Libraries and the California Digital Library, has established a new, custom data management system designed to make results of our research readily and reliably accessible. This system combines two services of the California Digital Library for the first time: an eScholarship series, a curated site where all BCOE investigators can store and disseminate their data, and EZID permanent identifiers for long-term identification and management of data resources.",
+    "x0": 67.7,
+    "top": 114.79,
+    "x1": 540.44,
+    "bottom": 182.24,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman",
+      "CKFMGD+Times-Bold"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "section.description",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 9,
+    "text": "All principal investigators in BCOE are responsible for complying with sponsor policies regarding data",
+    "x0": 80.19,
+    "top": 188.0,
+    "x1": 539.96,
+    "bottom": 197.84,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.7
+  },
+  {
+    "page": 1,
+    "line_order": 10,
+    "text": "management and accessibility. All have sufficient computing resources to store and process the data generated in their research. Every principal investigator has the ability to create his or her personal web site, and to make data sets available through that web site. Additionally, the eScholarship series (http://escholarship.org/uc/bcoe) provides a ready-made resource for dissemination. Researchers can submit materials to the eScholarship series site, where it is automatically given an EZID persistent identifier. All material on the site is indexed on Google, Scholar, and Melvyl/WorldCat. The California Digital Library also provides data backup services to avoid accidental loss of data.",
+    "x0": 67.7,
+    "top": 199.75,
+    "x1": 540.35,
+    "bottom": 266.94,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 16,
+    "text": "This partnership, which has resulted in the development of a new service that CDL can provide to other research",
+    "x0": 80.2,
+    "top": 272.94,
+    "x1": 540.08,
+    "bottom": 282.78,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.6
+  },
+  {
+    "page": 1,
+    "line_order": 17,
+    "text": "organizations, makes our data widely available and searchable under the taxonomies, identifiers, and standards of universal data sharing systems envisioned for the near future (see Changing the Conduct of Science in the",
+    "x0": 67.7,
+    "top": 284.46,
+    "x1": 540.24,
+    "bottom": 305.83,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman",
+      "CKFMGF+Times-Italic"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "section.description",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 19,
+    "text": "Information Age, NSF, June 2011).",
+    "x0": 67.7,
+    "top": 307.26,
+    "x1": 208.35,
+    "bottom": 317.1,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMGF+Times-Italic",
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": true,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 20,
+    "text": "2. Scope",
+    "x0": 67.7,
+    "top": 338.46,
+    "x1": 102.05,
+    "bottom": 348.3,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMGB+Times-BoldItalic"
+    ],
+    "is_bold": true,
+    "is_italic": true,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 21,
+    "text": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific community as necessary to validate research findings” be made available at little or no cost to the PI or project. In accordance with this policy and guidance from the Office of Management and Budget, this plan does not include preliminary analyses (including raw data), drafts of scientific papers, plans for future research, peer reviews, or communications with colleagues. Data that must be withheld long enough to enable peer review and publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken place. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after its acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF guidelines.",
+    "x0": 67.7,
+    "top": 354.3,
+    "x1": 540.24,
+    "bottom": 456.07,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 30,
+    "text": "The release of data about students or any other human subjects is subject to policies and restrictions in protocols",
+    "x0": 82.71,
+    "top": 462.07,
+    "x1": 539.97,
+    "bottom": 471.91,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.7
+  },
+  {
+    "page": 1,
+    "line_order": 31,
+    "text": "adopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act (FERPA) regulations.",
+    "x0": 67.71,
+    "top": 473.6,
+    "x1": 539.99,
+    "bottom": 494.96,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 33,
+    "text": "The proposed project will develop programming, compiler, and runtime support for applications, as described in",
+    "x0": 82.71,
+    "top": 500.72,
+    "x1": 539.96,
+    "bottom": 510.56,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 34,
+    "text": "this proposal. The implementations will be made available to other researchers. All code will be preserved and maintained for a minimum of three years beyond the award period as required by NSF guidelines. In addition, sample adaptive versions of applications that will be developed in this work will also be made available.",
+    "x0": 67.72,
+    "top": 512.24,
+    "x1": 540.11,
+    "bottom": 545.11,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 37,
+    "text": "3. Data and Metadata Format and Content",
+    "x0": 67.72,
+    "top": 566.23,
+    "x1": 243.99,
+    "bottom": 576.07,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMGB+Times-BoldItalic"
+    ],
+    "is_bold": true,
+    "is_italic": true,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 38,
+    "text": "The software will be made available in source code form and so will the applications developed. This will allow other researchers to so not only use it but also modify it for their use. All materials uploaded to the eScholarship site from UCR will be tagged uniformly with metadata about the source and nature of the data. Any electronic file format (e.g., text, spreadsheets, images) can be accepted. As a service to assure that materials are formatted correctly, a curator from the College reviews all submissions before they are accepted.",
+    "x0": 67.72,
+    "top": 582.07,
+    "x1": 540.18,
+    "bottom": 637.76,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 1,
+    "line_order": 43,
+    "text": "4. Accessibility and Data Protection",
+    "x0": 67.72,
+    "top": 659.11,
+    "x1": 214.57,
+    "bottom": 668.95,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMGB+Times-BoldItalic"
+    ],
+    "is_bold": true,
+    "is_italic": true,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 44,
+    "text": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar. As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property. Confidential material will be handled according to policies and protocols for human subjects, FERPA, and any other applicable regulations and restrictions.",
+    "x0": 67.71,
+    "top": 674.95,
+    "x1": 540.16,
+    "bottom": 719.11,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 1,
+    "text": "Stored materials are downloadable but not editable, and they are backed up to assure no loss of data. All uploads are approved by a curator before they are published.",
+    "x0": 67.7,
+    "top": 73.74,
+    "x1": 540.14,
+    "bottom": 94.86,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 0.7
+  },
+  {
+    "page": 2,
+    "line_order": 3,
+    "text": "5. Derivative Products",
+    "x0": 67.7,
+    "top": 116.21,
+    "x1": 158.99,
+    "bottom": 126.05,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMGB+Times-BoldItalic"
+    ],
+    "is_bold": true,
+    "is_italic": true,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 4,
+    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based upon work",
+    "x0": 67.7,
+    "top": 131.81,
+    "x1": 539.91,
+    "bottom": 141.65,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman",
+      "CKFMGF+Times-Italic"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 5,
+    "text": "supported by the National Science Foundation under Grant No. (NSF grant number).” Additionally, materials will",
+    "x0": 67.7,
+    "top": 143.57,
+    "x1": 540.0,
+    "bottom": 153.41,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMGF+Times-Italic",
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": true,
+    "label": "question.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 6,
+    "text": "contain a disclaimer that “any opinions, findings, and conclusions or recommendations expressed in this material are",
+    "x0": 67.7,
+    "top": 155.09,
+    "x1": 539.93,
+    "bottom": 164.93,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman",
+      "CKFMGF+Times-Italic"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.7
+  },
+  {
+    "page": 2,
+    "line_order": 7,
+    "text": "those of the author(s) and do not necessarily reflect the views of the National Science Foundation.”",
+    "x0": 67.7,
+    "top": 166.36,
+    "x1": 465.34,
+    "bottom": 176.2,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMGF+Times-Italic",
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": true,
+    "label": "question.text",
+    "confidence": 0.6
+  },
+  {
+    "page": 2,
+    "line_order": 8,
+    "text": "In keeping with standard ethical practices, it is expected that subsequent users of the data will acknowledge the source.",
+    "x0": 67.7,
+    "top": 182.21,
+    "x1": 540.01,
+    "bottom": 203.32,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 10,
+    "text": "6. Archiving and Access",
+    "x0": 67.7,
+    "top": 224.44,
+    "x1": 167.06,
+    "bottom": 234.28,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMGB+Times-BoldItalic"
+    ],
+    "is_bold": true,
+    "is_italic": true,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 11,
+    "text": "If the PI leaves UCR, the products in the eScholarship series will remain stored there. PI is free to reproduce and repost these materials at his/her new institution.",
+    "x0": 67.7,
+    "top": 240.28,
+    "x1": 540.17,
+    "bottom": 261.4,
+    "avg_font_size": 9.84,
+    "font_names": [
+      "CKFMEP+Times-Roman"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.9
+  }
+]
