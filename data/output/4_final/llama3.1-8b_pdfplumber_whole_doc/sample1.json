@@ -37,20 +37,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library Repository sitting behavior metrics or analysis that were created in this project from the following UCSD- based study datasets:\n(i) The RISE study\n(ii) The iWATCH study\n(iii) NHANES cohorts\nSufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only. Please see Element 5 for data access information",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "about other studies.",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
+                  "answer": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library Repository sitting behavior metrics or analysis that were created in this project from the following UCSD- based study datasets:\n(i) The RISE study\n(ii) The iWATCH study\n(iii) NHANES cohorts\nSufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only. Please see Element 5 for data access information\nabout other studies.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -202,20 +189,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The following studies have independent data use agreement & approved paper proposal processes for use of their data that are specific to each institution that collected the data: (i) the SOL-VIDA Study, (ii) the MOCA Study, (iii) the PHASE Study, (iv) the AusDiab Study, (v) the ACT Study, and (vi) the WHISH accelerometer sub-study such as data use agreements or approved publication proposals. We will be securing the appropriate approvals from each institution to use their data for purposes of this study including publications, but are unable to publicly share their data in our study data repository Researchers who wish to use data from those studies will need to follow those studies data use protocols to inquire about using their data:",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "(i) the SOL-VIDA Study – Data requests may be made by following instructions on the Hispanic Community Health Study/ of Latinos dbGap page.\n(ii) the MOCA Study – Data requests may be made by following MOCA Study policies\n(iii) the PHASE Study – Data requests may be made by following PHASE Study policies\n(iv) the AusDiab Study – Data may be requested by following AusDiab policies available from the AusDiab study website, hosted by the Baker Heart & Diabetes Institute.\n(v) the ACT Study - Data are managed and stored in the ACT Data Repository and sharing requests may be made according to the policies and procedures available on the “Work With Us” page of the Adult Changes in Thought Study website.",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "(vi) the WHISH accelerometer sub-study – Data are managed by the Women’s Health Initiative\nCoordinating Center. Requests may be made according to policies and procedures available on the “Working with WHI Data” page on the WHI study website.",
+                  "answer": "The following studies have independent data use agreement & approved paper proposal processes for use of their data that are specific to each institution that collected the data: (i) the SOL-VIDA Study, (ii) the MOCA Study, (iii) the PHASE Study, (iv) the AusDiab Study, (v) the ACT Study, and (vi) the WHISH accelerometer sub-study such as data use agreements or approved publication proposals. We will be securing the appropriate approvals from each institution to use their data for purposes of this study including publications, but are unable to publicly share their data in our study data repository Researchers who wish to use data from those studies will need to follow those studies data use protocols to inquire about using their data:\n(i) the SOL-VIDA Study – Data requests may be made by following instructions on the Hispanic Community Health Study/ of Latinos dbGap page.\n(ii) the MOCA Study – Data requests may be made by following MOCA Study policies\n(iii) the PHASE Study – Data requests may be made by following PHASE Study policies\n(iv) the AusDiab Study – Data may be requested by following AusDiab policies available from the AusDiab study website, hosted by the Baker Heart & Diabetes Institute.\n(v) the ACT Study - Data are managed and stored in the ACT Data Repository and sharing requests may be made according to the policies and procedures available on the “Work With Us” page of the Adult Changes in Thought Study website.\n(vi) the WHISH accelerometer sub-study – Data are managed by the Women’s Health Initiative\nCoordinating Center. Requests may be made according to policies and procedures available on the “Working with WHI Data” page on the WHI study website.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
