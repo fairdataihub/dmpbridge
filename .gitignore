@@ -18,6 +18,9 @@ data/pdfplumber_extracted_text/
 # excluded by pattern instead.
 *.docx
 Report-doc/*.png
+# Copies of pipeline output made by scripts/rerun.py before it overwrites a tag.
+# Recoverable data, not source — and large.
+Report-doc/backups/
 
 *.log
 logs/
