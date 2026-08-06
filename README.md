@@ -64,7 +64,8 @@ Re-runs skip samples that already have output.
 ## How it works
 
 See **[docs/pipeline.md](docs/pipeline.md)** for a diagram of the four stages and the two
-evaluation paths.
+evaluation paths. It is written in Mermaid, so GitHub draws it automatically and it
+version-controls as text — **[docs/DIAGRAMS.md](docs/DIAGRAMS.md)** explains how to edit it.
 
 ---
 
