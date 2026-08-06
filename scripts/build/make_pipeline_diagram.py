@@ -1,4 +1,12 @@
-"""Render the pipeline diagram used in section 3 of the report."""
+"""Render the pipeline diagram used in section 3 of the report.
+
+Defaults suit the Word report. The notebooks ask for a lighter copy, since the
+image is embedded in every .ipynb and 230 dpi is far more than a 720px display
+width needs:
+
+    python make_pipeline_diagram.py --dpi 150 --out Report-doc/pipeline_diagram_web.png
+"""
+import argparse
 from pathlib import Path
 
 import matplotlib
@@ -14,6 +22,12 @@ GREY  = "#5B6470"
 MONO  = "#6B7480"
 LIGHT = "#F4F7FB"
 EDGE  = "#CBD5E1"
+
+_p = argparse.ArgumentParser(description=__doc__)
+_p.add_argument("--dpi", type=int, default=230, help="output resolution (default: 230)")
+_p.add_argument("--out", type=Path, default=Path("Report-doc/pipeline_diagram.png"),
+                help="output path (default: Report-doc/pipeline_diagram.png)")
+args = _p.parse_args()
 
 # Layout columns
 SX, SW = 3, 62          # stage column: x, width
@@ -143,7 +157,6 @@ text((SX + 97) / 2, 2.8,
      size=7.0, color=GREY)
 
 fig.tight_layout(pad=0.25)
-out = Path("Report-doc/pipeline_diagram.png")
-out.parent.mkdir(parents=True, exist_ok=True)
-fig.savefig(out, dpi=230, bbox_inches="tight", facecolor="white")
-print(f"saved -> {out}")
+args.out.parent.mkdir(parents=True, exist_ok=True)
+fig.savefig(args.out, dpi=args.dpi, bbox_inches="tight", facecolor="white")
+print(f"saved -> {args.out}  ({args.dpi} dpi, {args.out.stat().st_size / 1024:.0f} KB)")
