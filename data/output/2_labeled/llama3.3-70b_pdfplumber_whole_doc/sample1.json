@@ -1,0 +1,753 @@
+[
+  {
+    "page": 1,
+    "line_order": 1,
+    "text": "DATA MANAGEMENT AND SHARING PLAN",
+    "x0": 202.2,
+    "top": 53.23,
+    "x1": 427.37,
+    "bottom": 64.27,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 2,
+    "text": "Element 1: Data Type:",
+    "x0": 51.6,
+    "top": 81.91,
+    "x1": 164.83,
+    "bottom": 92.95,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 3,
+    "text": "A. Types and amount of scientific data expected to be generated in the project:",
+    "x0": 51.59,
+    "top": 107.23,
+    "x1": 466.86,
+    "bottom": 118.27,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 4,
+    "text": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts (wrist NHANES 2011-2014; hip/counts-NHANES 2003-2006).",
+    "x0": 51.58,
+    "top": 119.38,
+    "x1": 576.09,
+    "bottom": 143.14,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 6,
+    "text": "The studies include (i) the RISE Study, (ii) the SOL-VIDA Study, (iii) the iWATCH Study, (iv) the MOCA Study, (v) the PHASE Study, (vi) the AusDiab Study, (vii) the ACT Study, and (viii) the WHISH accelerometer sub- study.",
+    "x0": 51.57,
+    "top": 144.7,
+    "x1": 576.04,
+    "bottom": 181.05,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 9,
+    "text": "B. Scientific data that will be preserved and shared, and the rationale for doing so:",
+    "x0": 51.6,
+    "top": 194.59,
+    "x1": 485.0,
+    "bottom": 205.63,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 10,
+    "text": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library Repository sitting behavior metrics or analysis that were created in this project from the following UCSD- based study datasets:",
+    "x0": 51.61,
+    "top": 206.87,
+    "x1": 576.13,
+    "bottom": 243.22,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 13,
+    "text": "(i) The RISE study",
+    "x0": 51.61,
+    "top": 257.38,
+    "x1": 141.61,
+    "bottom": 268.42,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 14,
+    "text": "(ii) The iWATCH study",
+    "x0": 51.62,
+    "top": 270.09,
+    "x1": 161.18,
+    "bottom": 281.13,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 15,
+    "text": "(iii) NHANES cohorts",
+    "x0": 51.62,
+    "top": 282.69,
+    "x1": 154.45,
+    "bottom": 293.73,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 16,
+    "text": "Sufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only. Please see Element 5 for data access information",
+    "x0": 51.62,
+    "top": 308.0,
+    "x1": 576.27,
+    "bottom": 331.64,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT",
+      "JERCKF+Arial-ItalicMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 18,
+    "text": "about other studies.",
+    "x0": 51.6,
+    "top": 333.35,
+    "x1": 148.24,
+    "bottom": 344.39,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "JERCKF+Arial-ItalicMT"
+    ],
+    "is_bold": false,
+    "is_italic": true,
+    "label": "section.description",
+    "confidence": 0.6
+  },
+  {
+    "page": 1,
+    "line_order": 19,
+    "text": "C. Metadata, other relevant data, and associated documentation:",
+    "x0": 51.6,
+    "top": 359.11,
+    "x1": 392.11,
+    "bottom": 370.15,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 20,
+    "text": "In addition to the data described above, code and models will be included in the repository and in on our project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep Postures”.",
+    "x0": 51.6,
+    "top": 371.26,
+    "x1": 576.14,
+    "bottom": 407.62,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 23,
+    "text": "Element 2: Related Tools, Software and/or Code:",
+    "x0": 51.6,
+    "top": 422.33,
+    "x1": 303.46,
+    "bottom": 433.37,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 24,
+    "text": "Data will be analyzed with custom code by our statistical and computer science team. ActiGraph data will be processed and analyzed using ActiLife software which requires a paid license. All custom code and models will also be shared in the data repository and on our project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep Postures”.",
+    "x0": 51.6,
+    "top": 434.49,
+    "x1": 576.1,
+    "bottom": 483.44,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 28,
+    "text": "Element 3: Standards:",
+    "x0": 51.6,
+    "top": 498.16,
+    "x1": 166.64,
+    "bottom": 509.2,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 29,
+    "text": "The following data will be created as a result of this project:",
+    "x0": 51.6,
+    "top": 523.03,
+    "x1": 339.53,
+    "bottom": 534.07,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "section.description",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 30,
+    "text": "Objective sedentary behavior metrics – no existing standards",
+    "x0": 51.6,
+    "top": 548.34,
+    "x1": 348.94,
+    "bottom": 559.38,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT",
+      "JERCKF+Arial-ItalicMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 1,
+    "line_order": 31,
+    "text": "Element 4: Data Preservation, Access, and Associated Timelines:",
+    "x0": 51.6,
+    "top": 585.07,
+    "x1": 390.19,
+    "bottom": 596.11,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 32,
+    "text": "A. Repository where scientific data and metadata will be archived:",
+    "x0": 51.59,
+    "top": 610.26,
+    "x1": 400.74,
+    "bottom": 621.3,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 33,
+    "text": "De-identified data will be uploaded to the University of California San Diego Library repository.",
+    "x0": 51.59,
+    "top": 622.54,
+    "x1": 509.04,
+    "bottom": 633.58,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 34,
+    "text": "B. How scientific data will be findable and identifiable:",
+    "x0": 51.6,
+    "top": 655.75,
+    "x1": 338.23,
+    "bottom": 666.79,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 35,
+    "text": "Data will be findable via publications and on our project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep Postures”.",
+    "x0": 51.6,
+    "top": 667.91,
+    "x1": 576.28,
+    "bottom": 691.66,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 37,
+    "text": "C. When and how long the scientific data will be made available:",
+    "x0": 51.6,
+    "top": 706.38,
+    "x1": 390.89,
+    "bottom": 717.42,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 38,
+    "text": "The research community will have access to data when the main outcome manuscript has been published.",
+    "x0": 51.6,
+    "top": 718.54,
+    "x1": 575.77,
+    "bottom": 729.58,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 1,
+    "line_order": 39,
+    "text": "$2,500 in years 2-5 of the project has been budgeted for preparing the data that is able to be stored in the repository (the RISE study, the iWATCH study, and NHANES) and for data storage on the University of",
+    "x0": 51.6,
+    "top": 52.79,
+    "x1": 576.03,
+    "bottom": 742.17,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 2,
+    "text": "California San Diego Library repository. We anticipate data being available for the foreseeable future (minimum of at least 5 years) after the study has been completed. The University of California San Diego Library repository does not currently have a limit on how long data can be stored.",
+    "x0": 51.6,
+    "top": 65.38,
+    "x1": 576.22,
+    "bottom": 101.74,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 5,
+    "text": "Element 5: Access, Distribution, or Reuse Considerations:",
+    "x0": 51.61,
+    "top": 116.46,
+    "x1": 353.75,
+    "bottom": 127.5,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 6,
+    "text": "A. Factors affecting subsequent access, distribution, or reuse of scientific data:",
+    "x0": 51.62,
+    "top": 141.77,
+    "x1": 471.45,
+    "bottom": 152.81,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 7,
+    "text": "The following studies have independent data use agreement & approved paper proposal processes for use of their data that are specific to each institution that collected the data: (i) the SOL-VIDA Study, (ii) the MOCA Study, (iii) the PHASE Study, (iv) the AusDiab Study, (v) the ACT Study, and (vi) the WHISH accelerometer sub-study such as data use agreements or approved publication proposals. We will be securing the appropriate approvals from each institution to use their data for purposes of this study including publications, but are unable to publicly share their data in our study data repository Researchers who wish to use data from those studies will need to follow those studies data use protocols to inquire about using their data:",
+    "x0": 51.62,
+    "top": 166.52,
+    "x1": 571.62,
+    "bottom": 266.35,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT",
+      "QUBSER+Calibri"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 15,
+    "text": "(i) the SOL-VIDA Study – Data requests may be made by following instructions on the Hispanic Community Health Study/ of Latinos dbGap page.",
+    "x0": 51.67,
+    "top": 281.95,
+    "x1": 572.81,
+    "bottom": 305.58,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 17,
+    "text": "(ii) the MOCA Study – Data requests may be made by following MOCA Study policies",
+    "x0": 51.68,
+    "top": 307.26,
+    "x1": 467.2,
+    "bottom": 318.3,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 18,
+    "text": "(iii) the PHASE Study – Data requests may be made by following PHASE Study policies",
+    "x0": 51.69,
+    "top": 319.86,
+    "x1": 478.38,
+    "bottom": 330.9,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 19,
+    "text": "(iv) the AusDiab Study – Data may be requested by following AusDiab policies available from the AusDiab study website, hosted by the Baker Heart & Diabetes Institute.",
+    "x0": 51.69,
+    "top": 332.57,
+    "x1": 567.1,
+    "bottom": 356.21,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 21,
+    "text": "(v) the ACT Study - Data are managed and stored in the ACT Data Repository and sharing requests may be made according to the policies and procedures available on the “Work With Us” page of the Adult Changes in Thought Study website.",
+    "x0": 51.69,
+    "top": 357.77,
+    "x1": 561.77,
+    "bottom": 394.12,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 24,
+    "text": "(vi) the WHISH accelerometer sub-study – Data are managed by the Women’s Health Initiative",
+    "x0": 51.7,
+    "top": 395.8,
+    "x1": 512.02,
+    "bottom": 406.84,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 25,
+    "text": "Coordinating Center. Requests may be made according to policies and procedures available on the “Working with WHI Data” page on the WHI study website.",
+    "x0": 51.71,
+    "top": 408.4,
+    "x1": 534.76,
+    "bottom": 432.03,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 0.8
+  },
+  {
+    "page": 2,
+    "line_order": 27,
+    "text": "B. Whether access to scientific data will be controlled:",
+    "x0": 51.71,
+    "top": 446.75,
+    "x1": 340.14,
+    "bottom": 457.79,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "question.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 28,
+    "text": "The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It will be deposited into the UC San Diego Library Data repository along with study protocols, code, and models for public use. De-identified data will be available after the main outcome papers are published.",
+    "x0": 51.71,
+    "top": 459.03,
+    "x1": 576.43,
+    "bottom": 495.38,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 31,
+    "text": "Protections for privacy, rights, and confidentiality of human research participants:",
+    "x0": 51.71,
+    "top": 509.98,
+    "x1": 477.89,
+    "bottom": 521.02,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 0.9
+  },
+  {
+    "page": 2,
+    "line_order": 32,
+    "text": "All data used in this study was de-identified prior to use.",
+    "x0": 51.71,
+    "top": 522.25,
+    "x1": 323.31,
+    "bottom": 533.29,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 33,
+    "text": "Element 6: Oversight of Data Management and Sharing:",
+    "x0": 51.71,
+    "top": 548.01,
+    "x1": 339.79,
+    "bottom": 559.05,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "SHEJGN+Arial-BoldMT"
+    ],
+    "is_bold": true,
+    "is_italic": false,
+    "label": "section.title",
+    "confidence": 1.0
+  },
+  {
+    "page": 2,
+    "line_order": 34,
+    "text": "The PI and Trial & IRB Coordinator will provide updates and changes to the plan in the annual RPPR. The PI, Trial & IRB Coordinator, and Statistician/Data Manager will meet monthly in all years of the project to ensure that the datasets, protocols, and codes are being prepared for sharing into the data repository once the main outcome manuscript has been published. The Statistician/Data Manager will work closely with the University of California San Diego Library repository manager to ensure that the datasets, protocols, and code are correctly stored and available for sharing.",
+    "x0": 51.69,
+    "top": 572.76,
+    "x1": 576.23,
+    "bottom": 647.03,
+    "avg_font_size": 11.04,
+    "font_names": [
+      "COGWQT+ArialMT"
+    ],
+    "is_bold": false,
+    "is_italic": false,
+    "label": "answer.text",
+    "confidence": 1.0
+  }
+]
