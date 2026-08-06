@@ -7,29 +7,27 @@ This is "Path B" alongside the main ``dmpbridge-evaluate`` command ("Path A"):
                                                  ->  scored against NEW annotation
 
 The rules are specified by ``data/input/Rules.xlsx`` — a 16-row truth table over
-whether each of ``title``, ``question.text``, ``section.title`` and
-``section.description`` is empty (E) or non-empty (N).  Exactly one row matches
-any given question, and ``_RULES`` below is a direct transcription of the sheet:
+whether each of ``title``, ``section.title``, ``section.description`` and
+``question.text`` is empty (E) or non-empty (N).  Exactly one row matches any
+given question, and ``_RULES`` below is a direct transcription of the sheet:
 the spreadsheet is the specification, and this module executes it literally
 rather than interpreting it.
 
-Six rows instruct a copy that cannot succeed as a fill, and are executed anyway
-because the sheet is authoritative:
+The sixteen rows express one rule in two halves:
 
-    rows 3, 11   source (section.description) is marked empty, so the copy
-                 writes an empty string — effectively a no-op
-    rows 5, 13   source (section.title) is marked empty AND the target
-                 (question.text) is marked non-empty, so the copy CLEARS
-                 existing question text
-    rows 7, 15   target (question.text) is marked non-empty, so the copy
-                 OVERWRITES it with the section title
+* **question.text already has text** — leave it alone.  That is every even row
+  (2, 4, 6, 8, 10, 12, 14, 16), regardless of what else is present.
+* **question.text is empty** — fill it from the first available source, in
+  order of preference::
 
-Note also that every row carrying an action has ``section.description`` empty,
-and every row with a description says "leave unchanged" — so a section that has
-a description is never modified.
+      section.title  >  section.description  >  document title
 
-Unlike earlier revisions, no row writes into ``section.title``; ``question.text``
-is the only field this module ever assigns.
+  Rows 5, 7, 13, 15 take the section title; rows 3 and 11 fall through to the
+  description; row 9 falls all the way through to the document title; row 1 has
+  nothing to copy and leaves the question empty.
+
+``question.text`` is the only field this module ever assigns — neither
+``section.title`` nor the document title is modified.
 
 A pattern seen in the ground truth but NOT covered by the table — merging several
 same-section sub-questions (e.g. "Raw data:", "Scripts and code for analyses:")
@@ -82,14 +80,16 @@ FINAL_DIR = _paths.FINAL_DIR   # stage 4 — rule-converted output
 # ── The rule table ────────────────────────────────────────────────────────────
 
 # Direct transcription of data/input/Rules.xlsx.  Key is the emptiness pattern
-# (title, question.text, section.title, section.description); value is
+# in the sheet's own column order — see RULE_FIELDS — and the value is
 # (source_field, target_field) or None for "leave it unchanged".
 #
 # Keep this aligned with the spreadsheet row for row.  Do not "fix" a row here —
 # if a row looks wrong, correct the sheet and re-transcribe, so the two cannot
-# drift apart.
+# drift apart.  test_rules_table_matches_the_spreadsheet enforces this.
+RULE_FIELDS = ("title", "section.title", "section.description", "question.text")
+
 _RULES: dict[tuple[str, str, str, str], tuple[str, str] | None] = {
-    # row  title q.text sec.title sec.desc      action
+    # row  title sec.title sec.desc q.text     action
     ("E", "E", "E", "E"): None,                                        # 1
     ("E", "E", "E", "N"): None,                                        # 2
     ("E", "E", "N", "E"): ("section.description", "question.text"),    # 3
@@ -118,9 +118,8 @@ def apply_new_annotation_rules(data: dict) -> dict:
     """Return a copy of *data* with the Rules.xlsx truth table applied.
 
     One row of ``_RULES`` matches each question; its action is carried out
-    exactly as the spreadsheet states it, including the six rows whose copy
-    empties or overwrites ``question.text`` (see the module docstring).  The
-    spreadsheet is the specification — this function does not second-guess it.
+    exactly as the spreadsheet states it.  The spreadsheet is the specification
+    — this function does not second-guess it.
     """
     data     = copy.deepcopy(data)
     root     = data.get("narrative", data)
@@ -131,12 +130,11 @@ def apply_new_annotation_rules(data: dict) -> dict:
         for question in section.get("question", []):
             values = {
                 "title":               doc_title,
-                "question.text":       (question.get("text") or "").strip(),
                 "section.title":       (section.get("title") or "").strip(),
                 "section.description": (section.get("description") or "").strip(),
+                "question.text":       (question.get("text") or "").strip(),
             }
-            action = _RULES[tuple(_state(values[f]) for f in (
-                "title", "question.text", "section.title", "section.description"))]
+            action = _RULES[tuple(_state(values[f]) for f in RULE_FIELDS)]
             if action is None:
                 continue
 

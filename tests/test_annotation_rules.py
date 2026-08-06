@@ -5,9 +5,9 @@ check two separate things:
 
 * that the transcription matches the spreadsheet, row for row — the one test
   that will catch the sheet and the code drifting apart;
-* that each row's action is carried out literally, including the rows whose copy
-  writes an empty value or overwrites existing text.  Those are asserted as-is,
-  not corrected, because the sheet is the specification.
+* that each row's action is carried out literally — an empty question is filled
+  from section.title, then section.description, then the document title, and a
+  question that already has text is left alone.
 
 convert_tag_to_final() and load_method_new() are tested against temporary
 directories via monkeypatch so they don't touch real project data.
@@ -20,7 +20,7 @@ import pytest
 
 import dmpbridge.evaluation.annotation_rules as ar
 
-FIELDS = ("title", "question.text", "section.title", "section.description")
+FIELDS = ("title", "section.title", "section.description", "question.text")
 
 
 # ── The table matches the spreadsheet ────────────────────────────────────────
@@ -32,10 +32,18 @@ def test_rules_table_matches_the_spreadsheet():
     someone edited _RULES directly — which would silently diverge from the spec.
     """
     sheet = openpyxl.load_workbook("data/input/Rules.xlsx", data_only=True).worksheets[0]
+
+    # The sheet's column order has changed before, so read it from the header
+    # rather than assuming it — a reordered sheet must not silently remap rows.
+    header = [str(c).strip() if c else "" for c in next(sheet.iter_rows(values_only=True))]
+    assert header[1:5] == list(ar.RULE_FIELDS), (
+        f"Rules.xlsx column order is {header[1:5]}, but RULE_FIELDS is "
+        f"{list(ar.RULE_FIELDS)} — re-transcribe _RULES against the new order")
+
     seen = 0
     for row in sheet.iter_rows(min_row=2, max_row=17, values_only=True):
-        n, title, q_text, sec_title, sec_desc, action = row[:6]
-        key = (title, q_text, sec_title, sec_desc)
+        n, action = row[0], row[5]
+        key = tuple(row[1:5])
         m = re.search(r'Copy "?([\w.]+)"? into "?([\w.]+)"?', action or "")
         expected = (m.group(1), m.group(2)) if m else None
         assert ar._RULES[key] == expected, f"row {n}: sheet says {expected}, code has {ar._RULES[key]}"
@@ -67,74 +75,73 @@ def _fields(out):
     return t["title"], s["title"], s["question"][0]["text"]
 
 
-# ── Rows that fill something ─────────────────────────────────────────────────
+# ── Filling an empty question ────────────────────────────────────────────────
+#
+# Every odd row has question.text empty and fills it from the first available
+# source, in order: section.title > section.description > document title.
 
-def test_row_9_copies_document_title_into_question():
+def test_row_1_leaves_the_question_empty_when_nothing_is_available():
+    """E/E/E/E — no source to copy from."""
+    _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(_doc()))
+    assert (sec_title, q_text) == ("", "")
+
+
+def test_rows_3_and_11_fall_through_to_the_description():
+    """E/E/N/E and N/E/N/E — no section title, so the description fills the question."""
+    for title in ("", "Doc Title"):
+        _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
+            _doc(title=title, sec_title="", sec_desc="Funder guidance", q_text="")))
+        assert q_text == "Funder guidance"
+        assert sec_title == ""
+
+
+def test_rows_5_7_13_15_prefer_the_section_title():
+    """All four patterns where section.title is present and question.text is empty."""
+    for title in ("", "Doc Title"):
+        for sec_desc in ("", "Funder guidance"):
+            _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
+                _doc(title=title, sec_title="Sec 1", sec_desc=sec_desc, q_text="")))
+            assert q_text == "Sec 1", f"{title=} {sec_desc=}"
+            assert sec_title == "Sec 1"
+
+
+def test_row_9_falls_through_to_the_document_title():
     """N/E/E/E — the only row that reads the document title."""
     title, sec_title, q_text = _fields(ar.apply_new_annotation_rules(_doc(title="Doc Title")))
     assert q_text == "Doc Title"
     assert sec_title == ""          # no row writes to section.title
-    assert title == "Doc Title"     # the title is never modified
+    assert title == "Doc Title"     # the title itself is never modified
 
 
-def test_row_7_copies_section_title_into_question():
-    """E/N/N/E — source and target both hold text, so this overwrites."""
-    _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
-        _doc(sec_title="Sec 1", q_text="Original question")))
-    assert q_text == "Sec 1"        # overwritten, as the sheet specifies
-    assert sec_title == "Sec 1"
-
-
-def test_row_15_overwrites_question_with_section_title():
-    """N/N/N/E — same as row 7 but with a document title present."""
+def test_section_title_outranks_description_and_document_title():
+    """Row 15 (N/N/N/E) — all three sources present, section title wins."""
     _, _, q_text = _fields(ar.apply_new_annotation_rules(
-        _doc(title="Doc", sec_title="Sec 1", q_text="Original question")))
+        _doc(title="Doc Title", sec_title="Sec 1", sec_desc="Guidance", q_text="")))
     assert q_text == "Sec 1"
 
 
-# ── Rows whose copy writes an empty value ────────────────────────────────────
+def test_description_outranks_the_document_title():
+    """Row 11 (N/E/N/E) — no section title, so the description beats the title."""
+    _, _, q_text = _fields(ar.apply_new_annotation_rules(
+        _doc(title="Doc Title", sec_title="", sec_desc="Guidance", q_text="")))
+    assert q_text == "Guidance"
 
-def test_rows_3_and_11_are_no_ops_when_description_is_empty():
-    """Both name section.description as the source but mark it empty.
 
-    The copy therefore writes an empty string. Since question.text is also empty
-    in these patterns, nothing is lost — the row simply does not fill anything.
-    This is the single biggest reason the table leaves most questions blank.
+# ── Leaving a populated question alone ───────────────────────────────────────
+
+def test_existing_question_text_is_never_touched():
+    """Every even row: question.text already has text, so nothing changes.
+
+    This covers all eight combinations of the other three fields.
     """
-    for title in ("", "Doc"):                      # row 3 (E/E/N/E), row 11 (N/E/N/E)
-        _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
-            _doc(title=title, sec_title="Sec 1", q_text="", sec_desc="")))
-        assert q_text == ""                        # not filled from the section title
-        assert sec_title == "Sec 1"                # untouched
-
-
-def test_rows_5_and_13_clear_existing_question_text():
-    """Both name section.title as the source but mark it empty, while
-    question.text holds text — so the copy erases it."""
-    for title in ("", "Doc"):                      # row 5 (E/N/E/E), row 13 (N/N/E/E)
-        _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
-            _doc(title=title, sec_title="", q_text="Original question")))
-        assert q_text == ""                        # cleared, as the sheet specifies
-        assert sec_title == ""
-
-
-# ── Rows that leave everything alone ─────────────────────────────────────────
-
-def test_every_row_with_a_description_leaves_the_question_alone():
-    """All eight rows where section.description is non-empty say 'leave unchanged'."""
-    for title in ("", "Doc"):
+    for title in ("", "Doc Title"):
         for sec_title in ("", "Sec 1"):
-            for q_text in ("", "Original question"):
+            for sec_desc in ("", "Guidance"):
                 _, got_sec, got_q = _fields(ar.apply_new_annotation_rules(
-                    _doc(title=title, sec_title=sec_title, q_text=q_text,
-                         sec_desc="Funder guidance")))
-                assert got_q == q_text, f"{title=} {sec_title=} {q_text=}"
+                    _doc(title=title, sec_title=sec_title, sec_desc=sec_desc,
+                         q_text="Original question")))
+                assert got_q == "Original question", f"{title=} {sec_title=} {sec_desc=}"
                 assert got_sec == sec_title
-
-
-def test_row_1_leaves_an_entirely_empty_section_alone():
-    _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(_doc()))
-    assert (sec_title, q_text) == ("", "")
 
 
 # ── Invariants across the whole table ────────────────────────────────────────
@@ -176,14 +183,11 @@ def test_document_title_fills_every_matching_question():
 
 # ── Behaviour on the real reference data ─────────────────────────────────────
 
-def test_reproduces_new_annotation_for_samples_4_and_7():
-    """Documents the table's current agreement with the reference files.
+def test_reproduces_the_new_annotation_for_every_sample():
+    """The rules reproduce the new-version reference annotation on all 10 documents.
 
-    Samples 4 and 7 are the two that reach row 9 (document title -> question).
-    The other eight differ, chiefly because rows 3/11 no-op instead of filling
-    from the section title — see test_rows_3_and_11_are_no_ops_when_description_is_empty.
-    Update this list deliberately when the spreadsheet changes; a change here is
-    a change in how Path B scores.
+    This is the strongest available check that the transcription and the sheet's
+    column order are both right — a mis-ordered column drops this sharply.
     """
     from dmpbridge.evaluation.evaluate import resolve_old_gt_path
 
@@ -198,7 +202,7 @@ def test_reproduces_new_annotation_for_samples_4_and_7():
         new = json.loads(ar.resolve_new_gt_path(n).read_text(encoding="utf-8"))
         if pairs(ar.apply_new_annotation_rules(old)) == pairs(new):
             matching.append(n)
-    assert matching == [4, 7], f"agreement with the reference files changed: {matching}"
+    assert matching == list(range(1, 11)), f"no longer reproduces every sample: {matching}"
 
 
 # ── resolve_new_gt_path ──────────────────────────────────────────────────────
