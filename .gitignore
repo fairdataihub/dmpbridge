@@ -13,3 +13,4 @@ data/pdfplumber_extracted_text/
 report-doc/
 *.log
 logs/
+tests/
