@@ -4,7 +4,9 @@ The README and docs/pipeline.md carry this as mermaid, which GitHub renders in
 .md files but NOT inside .ipynb files. The notebooks embed this PNG instead, so
 the diagram survives the trip to the repo.
 
-Colours match the README's mermaid classDefs, so the two read as one diagram.
+Both the shape and the colours follow the README's mermaid source: one chain
+down to stage 3, then a fork — Path A scores stage 3 directly, while the rules
+branch continues to stage 4 and Path B.
 
     python make_pipeline_simple.py [--dpi 150] [--out PATH]
 
@@ -25,94 +27,107 @@ SLATE = "#94A3B8"
 INK   = "#334155"
 GREY  = "#5B6470"
 LIGHT = "#F4F7FB"
+BLUE  = "#3C6FA8"
 
 p = argparse.ArgumentParser(description=__doc__)
-p.add_argument("--dpi", type=int, default=150)
+# 300 dpi: the image is displayed around 700px wide but viewed on HiDPI screens
+# and zoomed into, where 150 dpi visibly softened the text.
+p.add_argument("--dpi", type=int, default=300)
 p.add_argument("--out", type=Path, default=Path("Report-doc/pipeline_simple.png"))
 args = p.parse_args()
 
-# One column for the flow, one for the two scores branching off it.
-CX, CW = 16, 44          # chain column: x, width
-RX, RW = 66, 32          # score column
-
-fig, ax = plt.subplots(figsize=(6.6, 7.4))
+fig, ax = plt.subplots(figsize=(7.0, 9.0))
 ax.set_xlim(0, 100)
-ax.set_ylim(0, 116)
+ax.set_ylim(0, 142)
 ax.axis("off")
 
+H, GAP = 9.2, 3.6        # box height, vertical gap between rows
+CW, CX = 46, 50          # chain box width, centre
+BW = 40                  # branch box width
+LX, RX = 25, 75          # branch centres, left and right of the fork
 
-def box(x, y, w, h, *, face="#FFFFFF", edge=SLATE, lw=1.4):
+
+def box(cx, y, w, *, face="#FFFFFF", edge=SLATE, lw=1.4):
     ax.add_patch(FancyBboxPatch(
-        (x, y), w, h, boxstyle="round,pad=0,rounding_size=1.6",
+        (cx - w / 2, y), w, H, boxstyle="round,pad=0,rounding_size=1.5",
         facecolor=face, edgecolor=edge, linewidth=lw, zorder=2))
 
 
-def label(x, y, main, sub=None, *, color="#141414", size=9.6, subcolor=GREY):
+def label(cx, y, main, sub=None, *, color="#141414", size=9.6):
     """Bold line, with an optional smaller line beneath it."""
     if sub is None:
-        ax.text(x, y, main, fontsize=size, color=color, fontweight="bold",
+        ax.text(cx, y + H / 2, main, fontsize=size, color=color, fontweight="bold",
                 ha="center", va="center", zorder=5)
     else:
-        ax.text(x, y + 1.9, main, fontsize=size, color=color, fontweight="bold",
-                ha="center", va="center", zorder=5)
-        ax.text(x, y - 2.1, sub, fontsize=7.2, color=subcolor,
+        ax.text(cx, y + H / 2 + 1.9, main, fontsize=size, color=color,
+                fontweight="bold", ha="center", va="center", zorder=5)
+        ax.text(cx, y + H / 2 - 2.1, sub, fontsize=7.2, color=GREY,
                 ha="center", va="center", zorder=5)
 
 
-def arrow(y_from, y_to, x=CX + CW / 2, color=NAVY):
+def down(y_from, y_to, cx=CX, color=NAVY):
+    """Straight arrow between two stacked boxes."""
     ax.add_patch(FancyArrowPatch(
-        (x, y_from), (x, y_to), arrowstyle="-|>", mutation_scale=13,
+        (cx, y_from), (cx, y_to), arrowstyle="-|>", mutation_scale=13,
         linewidth=1.5, color=color, shrinkA=0, shrinkB=0, zorder=3))
 
 
-def connect(y, color):
-    """Horizontal line from the chain column into the score column."""
-    ax.plot([CX + CW, RX], [y, y], color=color, linewidth=1.5, zorder=1)
+def fork(y_from, x_from, y_to, x_to, color=NAVY):
+    """Elbow arrow: down out of the parent, across, then down into the child."""
+    mid = (y_from + y_to) / 2
+    ax.plot([x_from, x_from], [y_from, mid], color=color, linewidth=1.5, zorder=1)
+    ax.plot([x_from, x_to], [mid, mid], color=color, linewidth=1.5, zorder=1)
+    ax.add_patch(FancyArrowPatch(
+        (x_to, mid), (x_to, y_to), arrowstyle="-|>", mutation_scale=13,
+        linewidth=1.5, color=color, shrinkA=0, shrinkB=0, zorder=3))
 
 
-H = 9.2                  # box height
-GAP = 3.6                # arrow gap between boxes
-CXM = CX + CW / 2
-
-# ── The chain, top to bottom ─────────────────────────────────────────────
-rows = [
-    ("PDF",   "DMP PDF",             None,                                        NAVY,  NAVY,  "#FFFFFF"),
-    ("READ",  "Read the PDF",        "pdfplumber · Docling · LightOnOCR",         LIGHT, SLATE, INK),
-    ("S1",    "1. Text blocks",      None,                                        "#FFFFFF", TEAL,  "#141414"),
-    ("LABEL", "Label each block",    "llama3.1:8b · gemma4:e4b · llama3.3:70b",   LIGHT, SLATE, INK),
-    ("S2",    "2. Labeled blocks",   None,                                        "#FFFFFF", NAVY,  "#141414"),
-    ("BUILD", "Build the structure", None,                                        LIGHT, SLATE, INK),
-    ("S3",    "3. Structured JSON",  None,                                        "#FFFFFF", NAVY,  "#141414"),
-    ("RULES", "Apply the rules",     "Rules.xlsx",                                LIGHT, SLATE, INK),
-    ("S4",    "4. Final JSON",       None,                                        "#FFFFFF", AMBER, "#141414"),
+# ── The chain, down to stage 3 ───────────────────────────────────────────
+chain = [
+    ("DMP PDF",             None,                                      NAVY,      NAVY,  "#FFFFFF"),
+    ("Read the PDF",        "pdfplumber · Docling · LightOnOCR",       LIGHT,     SLATE, INK),
+    ("1. Text blocks",      None,                                      "#FFFFFF", TEAL,  "#141414"),
+    ("Label each block",    "llama3.1:8b · gemma4:e4b · llama3.3:70b", LIGHT,     SLATE, INK),
+    ("2. Labeled blocks",   None,                                      "#FFFFFF", NAVY,  "#141414"),
+    ("Build the structure", None,                                      LIGHT,     SLATE, INK),
+    ("3. Structured JSON",  None,                                      "#FFFFFF", NAVY,  "#141414"),
 ]
 
-y = 116 - H - 2
-ys = {}
-for i, (key, main, sub, face, edge, ink) in enumerate(rows):
-    box(CX, y, CW, H, face=face, edge=edge, lw=1.8 if sub is None and key != "PDF" else 1.4)
-    label(CXM, y + H / 2, main, sub, color=ink)
-    ys[key] = (y, y + H)
+y = 142 - 2 - H
+for i, (main, sub, face, edge, ink) in enumerate(chain):
+    box(CX, y, CW, face=face, edge=edge, lw=1.8 if edge in (TEAL, NAVY) and face == "#FFFFFF" else 1.4)
+    label(CX, y, main, sub, color=ink)
     if i:
-        arrow(prev_bottom, y + H)
-    prev_bottom = y
+        down(prev, y + H)
+    prev = y
     y -= H + GAP
 
-# ── The two scores ───────────────────────────────────────────────────────
-# Path A leaves stage 3; Path B leaves stage 4. Drawn to the side rather than
-# below, so the vertical chain still reads as one uninterrupted flow.
-for key, name, face, edge, note in (
-    ("S3", "Path A", "#EDF3FA", "#3C6FA8", "score vs old annotation"),
-    ("S4", "Path B", "#FDF4E9", AMBER,     "score vs new annotation"),
-):
-    bottom, top = ys[key]
-    mid = (bottom + top) / 2
-    connect(mid, edge)
-    box(RX, bottom, RW, H, face=face, edge=edge, lw=1.8)
-    label(RX + RW / 2, mid, name, note, color=edge, size=9.4, subcolor=GREY)
+s3_bottom = prev
 
-ax.text(CXM, ys["S4"][0] - 6.4,
-        "Each numbered box is written to disk",
+# ── The fork ─────────────────────────────────────────────────────────────
+# Left: Path A scores stage 3 as produced. Right: the rules branch continues
+# to stage 4, which Path B scores. Same split the README's mermaid draws.
+y_branch = s3_bottom - (H + GAP)
+
+fork(s3_bottom, CX, y_branch + H, LX, color=BLUE)
+box(LX, y_branch, BW, face="#EDF3FA", edge=BLUE, lw=1.8)
+label(LX, y_branch, "Path A", "score vs old annotation", color=BLUE, size=9.4)
+
+fork(s3_bottom, CX, y_branch + H, RX, color=AMBER)
+box(RX, y_branch, BW, face=LIGHT, edge=SLATE)
+label(RX, y_branch, "Apply the rules", "Rules.xlsx", color=INK)
+
+y_s4 = y_branch - (H + GAP)
+down(y_branch, y_s4 + H, cx=RX, color=AMBER)
+box(RX, y_s4, BW, face="#FFFFFF", edge=AMBER, lw=1.8)
+label(RX, y_s4, "4. Final JSON")
+
+y_pb = y_s4 - (H + GAP)
+down(y_s4, y_pb + H, cx=RX, color=AMBER)
+box(RX, y_pb, BW, face="#FDF4E9", edge=AMBER, lw=1.8)
+label(RX, y_pb, "Path B", "score vs new annotation", color=AMBER, size=9.4)
+
+ax.text(CX, y_pb - 6.5, "Each numbered box is written to disk",
         fontsize=7.6, color=GREY, style="italic", ha="center", va="center")
 
 fig.tight_layout(pad=0.2)
