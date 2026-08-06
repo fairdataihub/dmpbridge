@@ -4,15 +4,15 @@
 flowchart TD
     PDF["<b>DMP PDF</b>"]
 
-    PDF --> READ["<b>Read the PDF</b>"]
+    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · Docling · LightOnOCR</small>"]
     READ --> S1["<b>1. Text blocks</b>"]
-    S1 --> LABEL["<b>Label each block</b>"]
+    S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
     S2 --> BUILD["<b>Build the structure</b>"]
     BUILD --> S3["<b>3. Structured JSON</b>"]
 
     S3 --> PATHA["<b>Path A</b><br/>score vs old annotation"]
-    S3 --> RULES["<b>Apply the rules</b>"]
+    S3 --> RULES["<b>Apply the rules</b><br/><small>Rules.xlsx</small>"]
     RULES --> S4["<b>4. Final JSON</b>"]
     S4 --> PATHB["<b>Path B</b><br/>score vs new annotation"]
 
