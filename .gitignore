@@ -9,8 +9,16 @@ data/pdfplumber_extracted_blocks/
 data/pdfplumber_extracted_blocks_debug/
 data/pdfplumber_extracted_markdown/
 data/pdfplumber_extracted_text/
+# The report and its diagram are build artefacts — binary, no useful diff, and
+# reproducible from scripts/build/. The worklogs are not: they hold reasoning that
+# git history cannot reconstruct, so they stay tracked.
+#
+# Excluding the whole Report-doc/ directory would make that impossible — git cannot
+# re-include a file whose parent directory is excluded — so the artefacts are
+# excluded by pattern instead.
 *.docx
-report-doc/
+Report-doc/*.png
+
 *.log
 logs/
 tests/

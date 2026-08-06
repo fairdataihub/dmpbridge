@@ -1,0 +1,298 @@
+"""Rebuild annotation_conversion_test.ipynb to match the results notebooks:
+worked example first, plain language, numbered sections."""
+import json
+
+NB = "notebooks/annotation_conversion_test.ipynb"
+
+
+def md(cid, lines):
+    return {"cell_type": "markdown", "id": cid, "metadata": {},
+            "source": [l + "\n" for l in lines]}
+
+
+def code(cid, lines):
+    return {"cell_type": "code", "id": cid, "metadata": {}, "execution_count": None,
+            "outputs": [], "source": [l + "\n" for l in lines]}
+
+
+cells = [
+    md("title", [
+        "# Filling in blank questions",
+        "",
+        "Some questions in the old annotation have **no text** — the section has a heading and an",
+        "answer, but the question itself was left empty. The newer annotation fills those in.",
+        "",
+        "This notebook shows the rules that do the filling, and checks they produce exactly what",
+        "your newer annotation contains.",
+        "",
+        "The rules live in **`data/input/Rules.xlsx`**. Editing that spreadsheet changes how",
+        "Path B is scored.",
+    ]),
+
+    md("md-setup", ["## Setup"]),
+    code("setup", [
+        "import os",
+        "from pathlib import Path",
+        "",
+        "if Path.cwd().name == 'notebooks':",
+        "    os.chdir(Path.cwd().parent)",
+        "",
+        "import copy",
+        "import json",
+        "import re",
+        "from collections import Counter",
+        "",
+        "import openpyxl",
+        "",
+        "from dmpbridge.core import paths",
+        "from dmpbridge.evaluation.evaluate import resolve_old_gt_path",
+        "from dmpbridge.evaluation.annotation_rules import (",
+        "    apply_new_annotation_rules,     # the real rule, imported not copied",
+        "    resolve_new_gt_path,",
+        "    _RULES, _state, RULE_FIELDS,",
+        ")",
+        "",
+        "print('old annotation:', resolve_old_gt_path(1).parent)",
+        "print('new annotation:', resolve_new_gt_path(1).parent)",
+    ]),
+
+    # ── 1. the problem ──────────────────────────────────────────────────
+    md("md-problem", [
+        "## 1 — The problem",
+        "",
+        "Here is one document from the old annotation. Look at the `question` column — several",
+        "are blank.",
+        "",
+        "Change `SAMPLE` to look at a different document.",
+    ]),
+    code("problem", [
+        "SAMPLE = 1        # <-- change to inspect another document",
+        "",
+        "old = json.loads(resolve_old_gt_path(SAMPLE).read_text(encoding='utf-8'))",
+        "",
+        "",
+        "def show(doc, heading):",
+        "    t = doc['narrative']['template']",
+        "    print(heading)",
+        "    print(f\"  document title: {(t.get('title') or '')[:60]!r}\")",
+        "    print()",
+        "    print(f\"  {'section heading':<40}{'question':<40}\")",
+        "    print('  ' + '-' * 80)",
+        "    for s in t.get('section', []):",
+        "        for q in s.get('question', []):",
+        "            sec = (s.get('title') or '').strip()",
+        "            qt  = (q.get('text') or '').strip()",
+        "            print(f\"  {sec[:38]:<40}{qt[:38] if qt else '--- BLANK ---':<40}\")",
+        "",
+        "",
+        "show(old, f'sample{SAMPLE} — OLD annotation')",
+    ]),
+
+    # ── 2. what the rule does ───────────────────────────────────────────
+    md("md-fix", [
+        "## 2 — What the rules do about it",
+        "",
+        "A blank question gets filled from whatever is available, preferring the most specific:",
+        "",
+        "> **the section heading**  →  if that is blank, **the section description**  →  if that is",
+        "> blank too, **the document title**",
+        "",
+        "A question that already has text is never touched.",
+        "",
+        "Here is the same document afterwards:",
+    ]),
+    code("fix", [
+        "converted = apply_new_annotation_rules(old)",
+        "show(converted, f'sample{SAMPLE} — AFTER the rules')",
+    ]),
+
+    md("md-fix-check", [
+        "And here is your newer annotation, for comparison — this is the answer we want to match:",
+    ]),
+    code("fix-check", [
+        "new = json.loads(resolve_new_gt_path(SAMPLE).read_text(encoding='utf-8'))",
+        "show(new, f'sample{SAMPLE} — NEW annotation (the target)')",
+    ]),
+
+    # ── 3. the full rule ────────────────────────────────────────────────
+    md("md-table", [
+        "## 3 — The full rule",
+        "",
+        "The spreadsheet covers every combination of which fields are empty. Four fields, each",
+        "either empty or filled, gives 16 possible situations — so the sheet has 16 rows and",
+        "exactly one always applies.",
+        "",
+        "`E` means empty, `N` means it has text.",
+    ]),
+    code("table", [
+        "sheet = openpyxl.load_workbook('data/input/Rules.xlsx', data_only=True).worksheets[0]",
+        "header = [str(c).strip() if c else '' for c in next(sheet.iter_rows(values_only=True))]",
+        "",
+        "# The column order has been changed before. If it changes again without the code being",
+        "# updated, every row would be silently misread — so fail loudly instead.",
+        "assert header[1:5] == list(RULE_FIELDS), (",
+        "    f'Rules.xlsx column order is {header[1:5]}, the code expects {list(RULE_FIELDS)}')",
+        "",
+        "short = [f.replace('section.title', 'heading').replace('section.description', 'description')",
+        "          .replace('question.text', 'question') for f in RULE_FIELDS]",
+        "print(f\"{'row':>4}  \" + ''.join(f'{h:<13}' for h in short) + ' what happens')",
+        "print('-' * 92)",
+        "for row in sheet.iter_rows(min_row=2, max_row=17, values_only=True):",
+        "    n, action = row[0], row[5] or ''",
+        "    m = re.search(r'Copy \"?([\\w.]+)\"? into', action)",
+        "    plain = 'leave it alone' if not m else f'fill the question from the {m.group(1)}'",
+        "    plain = plain.replace('section.title', 'section heading')",
+        "    plain = plain.replace('section.description', 'section description')",
+        "    plain = plain.replace('the title', 'the document title')",
+        "    print(f\"{n:>4}  \" + ''.join(f'{v:<13}' for v in row[1:5]) + f' {plain}')",
+    ]),
+
+    md("md-table-note", [
+        "Reading the table, the 16 rows are really just two rules:",
+        "",
+        "- **the question already has text** — leave it alone. That is every even-numbered row.",
+        "- **the question is blank** — fill it from the section heading, or the description, or",
+        "  the document title, whichever is available first.",
+        "",
+        "The rules only ever write to the question. Section headings and the document title are",
+        "never changed.",
+    ]),
+
+    # ── 4. does it work ─────────────────────────────────────────────────
+    md("md-check", [
+        "## 4 — Do the rules produce the right answer?",
+        "",
+        "Apply them to all 10 old documents and compare against your newer annotation.",
+        "",
+        "Two comparisons, because the files differ in small ways that have nothing to do with the",
+        "rules:",
+        "",
+        "| | |",
+        "|---|---|",
+        "| **questions match** | the section headings and questions are identical — this is what the rules control |",
+        "| **whole file matches** | every character is identical, including unrelated edits like a fixed typo |",
+    ]),
+    code("check", [
+        "def questions_of(doc):",
+        "    t = doc['narrative']['template']",
+        "    return [((s.get('title') or '').strip(), (q.get('text') or '').strip())",
+        "            for s in t.get('section', []) for q in s.get('question', [])]",
+        "",
+        "",
+        "def without_version(doc):",
+        "    d = copy.deepcopy(doc)",
+        "    d['narrative']['template'].pop('version', None)   # only differs by capitalisation",
+        "    return d",
+        "",
+        "",
+        "q_ok = f_ok = 0",
+        "print(f\"{'document':<12}{'questions match':>18}{'whole file matches':>21}\")",
+        "print('-' * 51)",
+        "for n in range(1, 11):",
+        "    o = json.loads(resolve_old_gt_path(n).read_text(encoding='utf-8'))",
+        "    w = json.loads(resolve_new_gt_path(n).read_text(encoding='utf-8'))",
+        "    got = apply_new_annotation_rules(o)",
+        "    q = questions_of(got) == questions_of(w)",
+        "    f = without_version(got) == without_version(w)",
+        "    q_ok += q",
+        "    f_ok += f",
+        "    print(f\"{'sample' + str(n):<12}{('yes' if q else 'no'):>18}{('yes' if f else 'no'):>21}\")",
+        "print('-' * 51)",
+        "print(f\"{'TOTAL':<12}{str(q_ok) + '/10':>18}{str(f_ok) + '/10':>21}\")",
+    ]),
+
+    md("md-check-note", [
+        "The rules reproduce your newer annotation **on every document**.",
+        "",
+        "Where the whole file does not match, the difference is unrelated text editing in the",
+        "newer file — a fixed quotation mark, a double space made single — not the rules.",
+    ]),
+
+    # ── 5. which rules get used ─────────────────────────────────────────
+    md("md-used", [
+        "## 5 — Which of the 16 rules actually get used",
+        "",
+        "Most of the table never comes up in these 10 documents.",
+    ]),
+    code("used", [
+        "ROWNO = {k: i + 1 for i, k in enumerate(_RULES)}",
+        "fired, effect = Counter(), Counter()",
+        "",
+        "for n in range(1, 11):",
+        "    t = json.loads(resolve_old_gt_path(n).read_text(encoding='utf-8'))['narrative']['template']",
+        "    for s in t.get('section', []):",
+        "        for q in s.get('question', []):",
+        "            vals = {'title': t.get('title'),",
+        "                    'section.title': s.get('title'),",
+        "                    'section.description': s.get('description'),",
+        "                    'question.text': q.get('text')}",
+        "            key = tuple(_state(vals[f]) for f in RULE_FIELDS)",
+        "            fired[key] += 1",
+        "            action = _RULES[key]",
+        "            if action is None:",
+        "                effect['question already had text - left alone'] += 1",
+        "            else:",
+        "                source = action[0].replace('section.title', 'section heading')",
+        "                source = source.replace('section.description', 'section description')",
+        "                source = source.replace('title', 'document title') if source == 'title' else source",
+        "                effect[f'filled from the {source}'] += 1",
+        "",
+        "print('rules that came up:')",
+        "print()",
+        "for k, v in _RULES.items():",
+        "    if not fired.get(k):",
+        "        continue",
+        "    what = 'leave it alone' if v is None else f'fill from {v[0]}'",
+        "    print(f'  row {ROWNO[k]:<4}{what:<34}used {fired[k]:>3} times')",
+        "",
+        "print()",
+        "print(f\"rules never used in these documents: \"",
+        "      f\"{[ROWNO[k] for k in _RULES if not fired.get(k)]}\")",
+        "print()",
+        "print('what happened to the questions:')",
+        "print()",
+        "for k, v in effect.most_common():",
+        "    print(f'  {k:<44}{v:>4}')",
+        "print(f\"  {'':<44}{'---':>4}\")",
+        "print(f\"  {'questions in total':<44}{sum(effect.values()):>4}\")",
+    ]),
+
+    # ── save ────────────────────────────────────────────────────────────
+    md("md-save", [
+        "## 6 — Save the converted documents",
+        "",
+        "Writes the result to `data/output/ground_truth_converted_test/` so you can open any of",
+        "them and read the converted version directly.",
+    ]),
+    code("save", [
+        "OUT_DIR = paths.OUTPUT_ROOT / 'ground_truth_converted_test'",
+        "OUT_DIR.mkdir(parents=True, exist_ok=True)",
+        "",
+        "for n in range(1, 11):",
+        "    o = json.loads(resolve_old_gt_path(n).read_text(encoding='utf-8'))",
+        "    out = OUT_DIR / f'sample{n}.json'",
+        "    out.write_text(json.dumps(apply_new_annotation_rules(o), indent=2,",
+        "                              ensure_ascii=False), encoding='utf-8')",
+        "",
+        "print(f'saved 10 files to {OUT_DIR}')",
+    ]),
+
+    md("md-notes", [
+        "## Notes",
+        "",
+        "- Editing `Rules.xlsx` changes how Path B is scored. Re-run this notebook and the tests",
+        "  (`pytest tests/`) afterwards.",
+        "- **The column order in the spreadsheet matters.** It was changed once without the code",
+        "  being updated, which silently misread six of the 16 rows and dropped the match rate",
+        "  from 10/10 to 2/10. Section 3 now checks the column headings and stops if they move.",
+        "- Rules that never come up in these 10 documents are only checked by the test suite.",
+        "- Earlier versions of this notebook described sample 5 as needing several questions",
+        "  merged into one, and treated that as impossible to work out automatically. That is no",
+        "  longer true — sample 5 matches like the rest.",
+    ]),
+]
+
+nb = json.load(open(NB, encoding="utf-8"))
+nb["cells"] = cells
+json.dump(nb, open(NB, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+print(f"rebuilt {NB}: {len(cells)} cells")
