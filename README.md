@@ -61,6 +61,13 @@ Re-runs skip samples that already have output.
 
 ---
 
+## How it works
+
+See **[docs/pipeline.md](docs/pipeline.md)** for a diagram of the four stages and the two
+evaluation paths.
+
+---
+
 ## Output layout
 
 The pipeline runs in four stages, each writing its own folder so any stage can be
