@@ -277,9 +277,10 @@ table(["Parameter", "Value", "Rationale"],
        ["keep_alive", "-1", "Model stays resident in VRAM between documents, avoiding reload per sample"],
        ["timeout", "3600 s", "Accommodates the 70B model on long documents"]],
       widths=[1.15, 1.15, 4.1], size=8.5)
-para("Decoding is deterministic and the output grammar is enforced. Note nonetheless that repeated identical "
-     "runs have been observed to differ by roughly 3 points of F1, presumably through model reload effects, so "
-     "small differences between configurations should not be over-read.",
+para("Decoding is deterministic and the output grammar is enforced. This was verified on 6 August by running "
+     "one configuration three times: every count was identical and F1 did not move at all. The measured "
+     "run-to-run variation is +/-0.002 F1 — a single text block. Differences above roughly 0.005 F1 between "
+     "configurations are therefore real signal, not noise. See section 4.2.",
      size=10, italic=True, color=GREY)
 
 h2("4.2 Label definitions in the prompt")
@@ -308,6 +309,40 @@ para("The correction works completely on gemma4:e4b and not at all on llama3.1:8
 para("This also explains an earlier unknown: removing a duplicated prompt on 5 August cost roughly 16 points "
      "on pdfplumber for no visible reason. The deleted copy carried exactly this guidance.",
      size=10, color=GREY)
+
+para("The noise floor, measured", bold=True, size=11)
+para("On 6 August the same configuration (llama3.1:8b, pdfplumber) was run three times with an identical "
+     "prompt. Every count was identical — TP 96, FP 89, FN 36 — and every per-class F1 agreed to three "
+     "decimals. Over four runs the largest variation observed anywhere was a single block.")
+para("The run-to-run noise floor is +/-0.002 F1. Earlier drafts of this report assumed roughly 3 points and "
+     "used that figure to argue the top two models could not be separated; that assumption was never measured "
+     "and is now withdrawn. Differences above roughly 0.005 F1 are real.")
+
+para("Prompt variants, and a reversal", bold=True, size=11)
+para("With a measurable floor, four wordings of the section.title definition were compared on llama3.1:8b. "
+     "All four differ by more than the noise floor, so the ordering is meaningful:")
+table(["section.title definition", "Path A F1"],
+      [["'Often starts with a letter prefix (A., B., C.) or a bold named phrase'", "62.5%"],
+       ["Original wording", "61.9%"],
+       ["As the first row, but with blank lines split differently", "60.6%"],
+       ["Explicitly excludes lettered sub-items (the 4.2 correction)", "59.1%"]],
+      widths=[4.6, 1.4], size=8.5)
+para("This reverses the conclusion above for this model. The correction described in 4.2 is the worst of the "
+     "four on llama3.1:8b, and restoring the letter-prefix claim is the best. The evidence about the reference "
+     "data still stands — letter prefixes really are used only for questions — but the 8B model does not "
+     "respond to that instruction as intended in either direction.")
+para("Rows one and three have identical wording and differ only in the placement of three blank lines, yet "
+     "differ by 1.9 points of F1 and 13 false positives. Both layouts were re-run and each reproduced to "
+     "within one block. The prompt must therefore be treated as whitespace-significant: an editor that strips "
+     "or adds a blank line on save can move the score more than most rewording does.")
+para("Prompt changes are also model-specific and do not transfer. The best llama3.1:8b variant above was run "
+     "on gemma4:e4b and cost it 4.0 points (74.3% to 70.3%) — not on question.text, which was unchanged, but "
+     "on title, which fell from 90.0% to 77.8% as bold document titles were drawn into section.title. Any "
+     "prompt change requires re-running every model.")
+para("One result has survived every variant: across eight runs and four prompts, llama3.1:8b sends 12 of the "
+     "16 real questions to section.title, 3 to nothing, and labels 1 correctly — identical every time. "
+     "gemma4:e4b and llama3.3:70b each label 9 of 16 correctly using the same prompt. This is a capability "
+     "limit rather than a prompt defect.", size=10, color=GREY)
 
 h2("4.3 Extraction backends")
 table(["Backend", "Method", "Bbox / font", "Blocks/doc", "Requires"],
@@ -373,8 +408,12 @@ para("The six outstanding configurations predate the prompt correction in 4.2 an
 
 # ── 6 ────────────────────────────────────────────────────────────────────
 h1("6. Results")
-para("All ten samples, whole-document strategy, pdfplumber with line merging, current prompt and rules. "
+para("All ten samples, whole-document strategy, pdfplumber with line merging, current annotation rules. "
      "Produced 6 August 2026.", size=10, italic=True, color=GREY)
+para("These figures use the prompt as it stood after the section 4.2 correction, which is the only wording "
+     "run on all three models. The later variants explored in 4.2 have been measured on llama3.1:8b and "
+     "gemma4:e4b only, and are reported there rather than here, because a prompt that has not been run on "
+     "every model cannot produce a comparable table.", size=9.5, italic=True, color=RUST)
 
 h2("6.1 Headline")
 table(["Model","Precision","Recall","Path A F1","Path B F1","Runtime (10 docs)"],
@@ -382,12 +421,14 @@ table(["Model","Precision","Recall","Path A F1","Path B F1","Runtime (10 docs)"]
        ["gemma4:e4b","68.6%","81.1%","74.3%","74.4%","74 s"],
        ["llama3.1:8b","53.9%","72.7%","61.9%","61.8%","74 s"]],
       widths=[1.35,1.05,0.95,1.05,1.05,1.35])
-para("The 70B leads, but gemma4:e4b is within 1.7 points at one-eighteenth the runtime. Repeated identical "
-     "runs of this pipeline have varied by roughly 3 points, so on this evidence those two configurations "
-     "cannot be distinguished; gemma4:e4b is the better practical choice. llama3.1:8b is clearly behind.")
-para("Establishing the noise floor properly — running one configuration three times — has not yet been done, "
-     "and is the reason the top two cannot be separated. It is the first item in section 11.",
-     size=10, italic=True, color=GREY)
+para("The 70B leads, and gemma4:e4b is 1.7 points behind at one-eighteenth the runtime. With the noise floor "
+     "now measured at +/-0.002 F1 (section 4.2), that 1.7-point gap is real rather than noise — but it is "
+     "small enough that gemma4:e4b remains the better practical choice, being roughly eighteen times faster "
+     "for 98% of the score. llama3.1:8b is clearly behind on both paths.")
+para("Earlier drafts stated that the top two could not be separated because runs varied by roughly 3 points. "
+     "That figure was assumed rather than measured, and the measurement on 6 August withdrew it. The ranking "
+     "above is therefore stable, and the practical argument for gemma4:e4b rests on runtime, not on doubt "
+     "about the ordering.", size=10, italic=True, color=GREY)
 
 h2("6.2 Per-label F1")
 table(["Label","llama3.3:70b","gemma4:e4b","llama3.1:8b","Gold items"],
@@ -749,10 +790,14 @@ para("The duplication existed only in the working file and was never committed, 
 # ── 11 ───────────────────────────────────────────────────────────────────
 h1("11. Open Questions and Next Steps")
 table(["Item","Description"],
-      [["Establish the noise floor  (first)",
-        "Run one configuration three times. gemma4:e4b and llama3.3:70b differ by 1.7 points, which is below "
-        "the ~3 point variation seen between identical runs — so the top two cannot currently be separated at "
-        "all. Every comparison in section 6 depends on this."],
+      [["Decide the prompt  (first)",
+        "The best llama3.1:8b wording is the worst gemma4:e4b wording — the same edit gained 0.6 points on one "
+        "and cost 4.0 on the other (section 4.2). Either accept a per-model prompt, or optimise for gemma4:e4b "
+        "and llama3.3:70b and drop the 8B. Every result in section 6 depends on which is chosen."],
+       ["Re-run every model after any prompt change",
+        "Prompt effects do not transfer between models, and the prompt is whitespace-significant — three blank "
+        "lines moved cost 1.9 points of F1 with no wording change. A partial re-run produces figures that "
+        "cannot be compared."],
        ["Complete the sweep",
         "Six configurations remain: Docling and LightOnOCR across all three models. They predate the prompt "
         "correction and the current rules, so they must be run rather than recovered. Roughly 40 minutes, "
