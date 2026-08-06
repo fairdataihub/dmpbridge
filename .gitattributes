@@ -1,0 +1,20 @@
+# GitHub language statistics (github/linguist)
+#
+# Notebooks are analysis and reporting artefacts rather than the codebase, and
+# their size is dominated by stored cell outputs — base64-encoded chart images —
+# not by code. Left undeclared they total ~493 KB against ~206 KB of Python, so
+# GitHub reported the repository as mostly Jupyter Notebook.
+#
+# "linguist-documentation" keeps them out of the language bar while still showing
+# them normally in diffs and file listings.
+*.ipynb linguist-documentation
+
+# Sample PDFs, ground-truth annotations and pipeline output are inputs and
+# results, not source. Linguist already ignores most data formats, but marking
+# the directory keeps the classification explicit.
+data/** linguist-documentation
+
+# Notebooks are JSON: merging them line by line produces conflicts that are
+# painful to resolve by hand and easy to resolve wrongly. Treat them as binary so
+# git asks which version to keep instead of interleaving two.
+*.ipynb merge=binary
