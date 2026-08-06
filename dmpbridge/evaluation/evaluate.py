@@ -28,7 +28,10 @@ logger = get_logger(__name__)
 SHORT = ["title", "sec.title", "sec.desc", "q.text", "ans.text"]
 
 _ROOT           = Path(__file__).parent.parent.parent
-MANUAL_DIR      = _ROOT / "data/input/ground_truth_old_version"   # files: sampleN_old_dmp.json
+# Old-version filenames have changed more than once (sampleN_old_dmp.json ->
+# sampleN_dmp_old.json), so resolve by sample number via resolve_old_gt_path()
+# rather than matching a fixed pattern.
+MANUAL_DIR      = _ROOT / "data/input/ground_truth_old_version"
 # New-version filenames don't follow one consistent pattern (samples 1,2,3,4,7 use
 # sampleN_dmp_new.json; samples 5,6,8,9,10 use dmp_sampleN_new.json) — resolve by
 # sample number via annotation_rules.resolve_new_gt_path() instead of a fixed pattern.
@@ -298,11 +301,35 @@ def compute_f1_rows(confusion: dict):
 # ── Notebook helper ───────────────────────────────────────────────────────────
 
 def _snum(path: Path) -> int:
-    """Extract sample number from a path like sample3_old_dmp.json → 3."""
+    """Extract sample number from a path like sample3_dmp_old.json → 3."""
     m = re.search(r"\d+", path.stem)
     if not m:
         raise ValueError(f"Cannot extract a sample number from {path.name}")
     return int(m.group())
+
+
+def resolve_old_gt_path(n: int) -> Path:
+    """Resolve sample *n*'s old-version ground truth file, whatever it is named.
+
+    The naming has changed during the project (``sampleN_old_dmp.json`` became
+    ``sampleN_dmp_old.json``), so match on the sample number instead.
+    """
+    for p in sorted(MANUAL_DIR.glob("*.json")):
+        m = re.fullmatch(r"\D*(\d+)\D*", p.stem)
+        if m and int(m.group(1)) == n:
+            return p
+    raise FileNotFoundError(
+        f"No old-version ground truth file found for sample{n} in {MANUAL_DIR}")
+
+
+def old_gt_samples() -> list[tuple[int, Path]]:
+    """Return ``(sample_number, path)`` for every old-version reference file."""
+    out = []
+    for p in MANUAL_DIR.glob("*.json"):
+        m = re.fullmatch(r"\D*(\d+)\D*", p.stem)
+        if m:
+            out.append((int(m.group(1)), p))
+    return sorted(out)
 
 
 def confusion_matrix_df(confusion: dict):
@@ -347,22 +374,19 @@ def load_method(tag: str, exclude: list[int] | None = None):
 
     _exclude = set(exclude or [])
 
-    samples = sorted(MANUAL_DIR.glob("*_old_dmp.json"), key=_snum)
-    def _stem(mp: Path) -> str:
-        return mp.stem.replace("_old_dmp", "").replace("_dmp", "")
-
-    found = [mp for mp in samples
-             if (STRUCTURED_DIR / tag / f"{_stem(mp)}.json").exists()
-             and _snum(mp) not in _exclude]
+    samples = old_gt_samples()
+    found = [(n, mp) for n, mp in samples
+             if (STRUCTURED_DIR / tag / f"sample{n}.json").exists()
+             and n not in _exclude]
     if not found:
         return None, None, None
 
     conf_all: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     rows, errors = [], []
 
-    for mp in samples:
-        stem = mp.stem.replace("_old_dmp", "").replace("_dmp", "")
-        if _snum(mp) in _exclude:
+    for n, mp in samples:
+        stem = f"sample{n}"
+        if n in _exclude:
             continue
         pp = STRUCTURED_DIR / tag / f"{stem}.json"
         if not pp.exists():
@@ -419,12 +443,11 @@ def load_confidence(tag: str, exclude: list[int] | None = None):
     import pandas as pd
 
     _exclude = set(exclude or [])
-    samples = sorted(MANUAL_DIR.glob("*_old_dmp.json"), key=_snum)
     rows = []
-    for mp in samples:
-        if _snum(mp) in _exclude:
+    for n, mp in old_gt_samples():
+        if n in _exclude:
             continue
-        stem = mp.stem.replace("_old_dmp", "").replace("_dmp", "")
+        stem = f"sample{n}"
         pp   = LLM_DIR / tag / f"{stem}.json"   # stage 2 — needs per-block confidence
         if not pp.exists():
             continue
@@ -559,9 +582,10 @@ def run_single(pred_path: Path) -> None:
             pred_path.name,
         )
     stem        = pred_path.stem.replace("_structured", "").split("_")[0]
-    manual_path = MANUAL_DIR / f"{stem}_old_dmp.json"
-    if not manual_path.exists():
-        logger.warning("No manual label found for %s at %s", stem, manual_path)
+    try:
+        manual_path = resolve_old_gt_path(int(re.search(r"\d+", stem).group()))
+    except (FileNotFoundError, AttributeError):
+        logger.warning("No manual label found for %s in %s", stem, MANUAL_DIR)
         return
     gold = extract_gold(manual_path)
     try:
@@ -595,7 +619,7 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
     """Evaluate all samples for *tag* against ground truth using structured JSONs."""
     _exclude = set(exclude or [])
     total_confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
-    samples = sorted(MANUAL_DIR.glob("*_old_dmp.json"), key=_snum)
+    samples = old_gt_samples()
 
     excl_note = f"  (excluding sample{list(_exclude)} — used for prompt development)" if _exclude else ""
     print(f"\nEvaluating: {tag}{excl_note}\n")
@@ -603,10 +627,10 @@ def run_all(tag: str, exclude: list[int] | None = None) -> None:
     total_n = total_tp = 0
     per_sample = []
 
-    for manual_path in samples:
-        if _snum(manual_path) in _exclude:
+    for n, manual_path in samples:
+        if n in _exclude:
             continue
-        stem      = manual_path.stem.replace("_old_dmp", "").replace("_dmp", "")
+        stem      = f"sample{n}"
         pred_path = STRUCTURED_DIR / tag / f"{stem}.json"
         if not pred_path.exists():
             logger.warning("SKIP %s — no %s", stem, pred_path.name)

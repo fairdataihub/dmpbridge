@@ -8,24 +8,28 @@ This is "Path B" alongside the main ``dmpbridge-evaluate`` command ("Path A"):
 
 The rules are specified by ``data/input/Rules.xlsx`` — a 16-row truth table over
 whether each of ``title``, ``question.text``, ``section.title`` and
-``section.description`` is empty (E) or non-empty (N).  All sixteen combinations
-reduce to four branches, applied per question:
+``section.description`` is empty (E) or non-empty (N).  Exactly one row matches
+any given question, and ``_RULES`` below is a direct transcription of the sheet:
+the spreadsheet is the specification, and this module executes it literally
+rather than interpreting it.
 
-    1. question.text empty, section.title empty
-         - document title present -> copy it into question.text only
-                                                                (rows 9, 10)
-         - else section.description present -> copy that into BOTH
-           question.text and section.title                      (row 2)
-         - else leave unchanged                                 (row 1)
-    2. question.text empty, section.title present
-         -> copy section.title into question.text     (rows 3, 4, 11, 12)
-    3. question.text present, section.title empty
-         -> copy question.text into section.title     (rows 5, 6, 13, 14)
-    4. both present -> leave unchanged                (rows 7, 8, 15, 16)
+Six rows instruct a copy that cannot succeed as a fill, and are executed anyway
+because the sheet is authoritative:
 
-Note the precedence in branch 1: when the document title and section.description
-could both fill an empty pair, the title wins — that is what rows 9/10 specify
-against row 2.  The document title itself is never cleared.
+    rows 3, 11   source (section.description) is marked empty, so the copy
+                 writes an empty string — effectively a no-op
+    rows 5, 13   source (section.title) is marked empty AND the target
+                 (question.text) is marked non-empty, so the copy CLEARS
+                 existing question text
+    rows 7, 15   target (question.text) is marked non-empty, so the copy
+                 OVERWRITES it with the section title
+
+Note also that every row carrying an action has ``section.description`` empty,
+and every row with a description says "leave unchanged" — so a section that has
+a description is never modified.
+
+Unlike earlier revisions, no row writes into ``section.title``; ``question.text``
+is the only field this module ever assigns.
 
 A pattern seen in the ground truth but NOT covered by the table — merging several
 same-section sub-questions (e.g. "Raw data:", "Scripts and code for analyses:")
@@ -75,53 +79,76 @@ from ..core import paths as _paths
 FINAL_DIR = _paths.FINAL_DIR   # stage 4 — rule-converted output
 
 
-# ── The rule ──────────────────────────────────────────────────────────────────
+# ── The rule table ────────────────────────────────────────────────────────────
+
+# Direct transcription of data/input/Rules.xlsx.  Key is the emptiness pattern
+# (title, question.text, section.title, section.description); value is
+# (source_field, target_field) or None for "leave it unchanged".
+#
+# Keep this aligned with the spreadsheet row for row.  Do not "fix" a row here —
+# if a row looks wrong, correct the sheet and re-transcribe, so the two cannot
+# drift apart.
+_RULES: dict[tuple[str, str, str, str], tuple[str, str] | None] = {
+    # row  title q.text sec.title sec.desc      action
+    ("E", "E", "E", "E"): None,                                        # 1
+    ("E", "E", "E", "N"): None,                                        # 2
+    ("E", "E", "N", "E"): ("section.description", "question.text"),    # 3
+    ("E", "E", "N", "N"): None,                                        # 4
+    ("E", "N", "E", "E"): ("section.title", "question.text"),          # 5
+    ("E", "N", "E", "N"): None,                                        # 6
+    ("E", "N", "N", "E"): ("section.title", "question.text"),          # 7
+    ("E", "N", "N", "N"): None,                                        # 8
+    ("N", "E", "E", "E"): ("title", "question.text"),                  # 9
+    ("N", "E", "E", "N"): None,                                        # 10
+    ("N", "E", "N", "E"): ("section.description", "question.text"),    # 11
+    ("N", "E", "N", "N"): None,                                        # 12
+    ("N", "N", "E", "E"): ("section.title", "question.text"),          # 13
+    ("N", "N", "E", "N"): None,                                        # 14
+    ("N", "N", "N", "E"): ("section.title", "question.text"),          # 15
+    ("N", "N", "N", "N"): None,                                        # 16
+}
+
+
+def _state(value: str) -> str:
+    """'N' when *value* holds text, 'E' otherwise."""
+    return "N" if (value or "").strip() else "E"
+
 
 def apply_new_annotation_rules(data: dict) -> dict:
     """Return a copy of *data* with the Rules.xlsx truth table applied.
 
-    See the module docstring for the four branches and how the sixteen rows of
-    the spreadsheet map onto them.  The document title is never modified — it is
-    only ever read as a source, matching the new-version reference files, all
-    ten of which retain their title.
+    One row of ``_RULES`` matches each question; its action is carried out
+    exactly as the spreadsheet states it, including the six rows whose copy
+    empties or overwrites ``question.text`` (see the module docstring).  The
+    spreadsheet is the specification — this function does not second-guess it.
     """
     data     = copy.deepcopy(data)
     root     = data.get("narrative", data)
     template = root.get("template", {})
-    doc_title  = (template.get("title") or "").strip()
-    title_used = False
+    doc_title = (template.get("title") or "").strip()
 
     for section in template.get("section", []):
         for question in section.get("question", []):
-            # Re-read the section title on each pass: an earlier question in
-            # this section may have filled it (branch 3), and later questions
-            # must see that value rather than the original blank.
-            sec_title = (section.get("title") or "").strip()
-            sec_desc  = (section.get("description") or "").strip()
-            q_text    = (question.get("text") or "").strip()
+            values = {
+                "title":               doc_title,
+                "question.text":       (question.get("text") or "").strip(),
+                "section.title":       (section.get("title") or "").strip(),
+                "section.description": (section.get("description") or "").strip(),
+            }
+            action = _RULES[tuple(_state(values[f]) for f in (
+                "title", "question.text", "section.title", "section.description"))]
+            if action is None:
+                continue
 
-            if not q_text and not sec_title:
-                if doc_title and not title_used:
-                    # Rows 9, 10 — question.text only; section.title stays empty,
-                    # which is what the new-version reference files have for
-                    # samples 4 and 7, the only two documents reaching here.
-                    question["text"] = doc_title
-                    title_used = True
-                elif sec_desc:
-                    # Row 2.
-                    section["title"] = sec_desc
-                    question["text"] = sec_desc
-                # else row 1 — nothing available to copy.
-
-            elif not q_text:
-                # Rows 3, 4, 11, 12.
-                question["text"] = sec_title
-
-            elif not sec_title:
-                # Rows 5, 6, 13, 14.
-                section["title"] = q_text
-
-            # else rows 7, 8, 15, 16 — both present, leave unchanged.
+            source, target = action
+            if target == "question.text":
+                question["text"] = values[source]
+            elif target == "section.title":
+                section["title"] = values[source]
+            elif target == "section.description":
+                section["description"] = values[source]
+            else:                                   # pragma: no cover
+                raise ValueError(f"Rules.xlsx: unknown target field {target!r}")
 
     return data
 
