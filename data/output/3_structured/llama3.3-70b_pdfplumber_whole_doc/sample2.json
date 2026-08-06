@@ -10,9 +10,15 @@
           "title": "1. Data sharing and preservation",
           "description": "Data management plans should describe whether and how data generated in the course of the proposed research will be shared and preserved. If the plan is not to share and/or preserve certain data, then the plan must explain the basis of the decision (for example, cost/benefit considerations, other parameters of feasibility, scientific appropriateness, or limitations discussed in #4). At a minimum, DMPs must describe how data sharing and preservation will enable validation of results, or how results could be validated if data are not shared or preserved.",
           "order": 1,
+          "question": []
+        },
+        {
+          "title": "Roles & Responsibilities. For the proposed research, Director Samuel Stupp with help from the",
+          "description": "",
+          "order": 2,
           "question": [
             {
-              "text": "Roles & Responsibilities. For the proposed research, Director Samuel Stupp with help from the",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -42,7 +48,7 @@
         {
           "title": "Content and Format. A statement of plans for data and metadata content and format including, where",
           "description": "applicable, a description of documentation plans, annotation of relevant software, and the rationale for the selection of appropriate standards. (Existing, accepted community standards should be used where possible. Where community standards are missing or inadequate, the DMP could propose alternate strategies that facilitate data sharing, and should advise the sponsoring program of any need to develop or generalize standards.)",
-          "order": 2,
+          "order": 3,
           "question": [
             {
               "text": "",
@@ -62,7 +68,7 @@
         {
           "title": "Data Sharing and Data Preservation. A description of the plans for data sharing and preservation.",
           "description": "",
-          "order": 3,
+          "order": 4,
           "question": [
             {
               "text": "This should include, where appropriate:\nthe anticipated means for sharing and rationale for any restrictions on who may access the data and under what conditions; a timeline for sharing and preservation that addresses both the minimum length of time the data will be available and any anticipated delay to data access after research findings are published; any special requirements for data sharing, for example, proprietary software needed to access or interpret data, applicable policies, provisions, and licenses for re-use and re-distribution, and for the production of derivatives, including guidance for how data and data products should be cited; any resources and capabilities (equipment, connections, systems, software, expertise, etc.) requested in the research proposal that are needed to meet the stated goals for sharing and preservation. (This could reference the relevant section of the associated research proposal and budget request); cost/benefit considerations to support whether/where the data will be preserved after direct project funding ends and any plans for the transfer of responsibilities for sharing and preservation; whether, when, or under what conditions the management responsibility for the research data will be transferred to a third party (e.g. institutional, or community repository); any future decision points regarding the management of the research data including plans to reevaluate the costs and benefits of data sharing and preservation.",
@@ -81,11 +87,11 @@
         },
         {
           "title": "Rationale. A discussion of the rationale or justification for the proposed data management plan",
-          "description": "",
-          "order": 4,
+          "description": "including, for example, the potential impact of the data within the immediate field and in other fields, and any broader societal impact.",
+          "order": 5,
           "question": [
             {
-              "text": "including, for example, the potential impact of the data within the immediate field and in other fields, and any broader societal impact.",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -102,7 +108,7 @@
         {
           "title": "2. Data used in publications",
           "description": "",
-          "order": 5,
+          "order": 6,
           "question": [
             {
               "text": "Data management plans should provide a plan for making all research data displayed in publications resulting from the proposed research open, machine-readable, and digitally accessible to the public at the time of publication. This includes data that are displayed in charts, figures, images, etc. In addition, the underlying digital research data used to generate the displayed data should be made as accessible as possible to the public in accordance with the Principles published in the DOE Policy for Digital Research Data Management. The published article should indicate how these data can be accessed.",
@@ -122,7 +128,7 @@
         {
           "title": "3. Data management resources",
           "description": "",
-          "order": 6,
+          "order": 7,
           "question": [
             {
               "text": "Data management plans should consult and reference available information about data management resources to be used in the course of the proposed research. In particular, DMPs tht explicitly or implicitly commit data management resources at a facility beyond what is conventionally made available to approved users should be accompanied by written approval from that facility. In determining the resources available for data management at DOE Scientific User Facilities, researchers should consult the published description of data management resources and practices at that facility and reference it in the DMP. Information about other Office of Science facilities can be found in the additional guidance from the sponsporing program.\nDMPs should consult and reference available information about data management resources to be used in the course of the proposed research. In particular, DMPs that explicitly or implicitly commit data management resources at a facility beyond what is conventionally made available to approved users should be accompanied by written approval from that facility. In determining the resources available for data management at Office of Science User Facilities, researchers should consult the published description of data management resources and practices at that facility and reference it in the DMP. Information about other Office of Science facilities can be found in the additional guidance from the sponsoring program.",
@@ -142,7 +148,7 @@
         {
           "title": "Data Repositories. Senior investigators typically archive relevant data using their own group servers.",
           "description": "",
-          "order": 7,
+          "order": 8,
           "question": [
             {
               "text": "",
@@ -162,7 +168,7 @@
         {
           "title": "Data Volume. Generally, the volume of data generated by CBES researchers should not prohibit their",
           "description": "",
-          "order": 8,
+          "order": 9,
           "question": [
             {
               "text": "",
@@ -182,7 +188,7 @@
         {
           "title": "4. Confidentiality, security and rights",
           "description": "",
-          "order": 9,
+          "order": 10,
           "question": [
             {
               "text": "Data management plans must protect confidentiality, personal privacy, Personally Identifiable Information and U.S. national, homeland, and economic security; recognize proprietary interests, business confidential information, and intellectual property rights; avoid significant negative impact on innovation and U.S. competitiveness; and otherwise be consistent with all applicable laws, regulations, agreement terms and conditions, and DOE orders and policies. There is no requirement to share proprietary data.",

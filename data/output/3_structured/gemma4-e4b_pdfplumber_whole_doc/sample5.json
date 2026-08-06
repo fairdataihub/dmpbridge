@@ -12,12 +12,12 @@
           "order": 1,
           "question": [
             {
-              "text": "",
+              "text": "• Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and\ncompares well construction patterns before and after the establishment of regulatory controls.\n• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)\nyearly (2016-2021) at the field scale.\n• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic\nSciences Workshops.",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "• Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and\ncompares well construction patterns before and after the establishment of regulatory controls.\n• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)\nyearly (2016-2021) at the field scale.\n• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic\nSciences Workshops.",
+                  "answer": "",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -43,14 +43,21 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "title": "Input data:",
+          "description": "",
+          "order": 3,
+          "question": [
             {
-              "text": "Input data:",
-              "order": 2,
+              "text": "Available data will be systematically reviewed and downloaded. These data are likely",
+              "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Available data will be systematically reviewed and downloaded. These data are likely\navailable in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be adopted and will likely evolve as new datasets provide for challenging formats and organization.",
+                  "answer": "available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be adopted and will likely evolve as new datasets provide for challenging formats and organization.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -62,15 +69,15 @@
         {
           "title": "Produced Data:",
           "description": "",
-          "order": 3,
+          "order": 4,
           "question": [
             {
-              "text": "",
+              "text": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be\nformatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+                  "answer": "formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -82,7 +89,7 @@
         {
           "title": "DATA AND METADATA STANDARDS",
           "description": "",
-          "order": 4,
+          "order": 5,
           "question": [
             {
               "text": "",
@@ -102,7 +109,7 @@
         {
           "title": "POLICIES FOR ACCESS AND SHARING",
           "description": "",
-          "order": 5,
+          "order": 6,
           "question": [
             {
               "text": "Raw data:",
@@ -116,10 +123,17 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "title": "Scripts and code for analyses:",
+          "description": "",
+          "order": 7,
+          "question": [
             {
-              "text": "Scripts and code for analyses:",
-              "order": 2,
+              "text": "",
+              "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -129,27 +143,41 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "title": "Scientist spotlight:",
+          "description": "",
+          "order": 8,
+          "question": [
             {
-              "text": "Scientist spotlight:",
-              "order": 3,
+              "text": "All scientist spotlight biographies, assignments, and open-access readings will be",
+              "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "All scientist spotlight biographies, assignments, and open-access readings will be\nposted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
+                  "answer": "posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "title": "Workshop frameworks:",
+          "description": "",
+          "order": 9,
+          "question": [
             {
-              "text": "Workshop frameworks:",
-              "order": 4,
+              "text": "Workshop material will be shared with UCSB’s Diversity Committee through",
+              "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Workshop material will be shared with UCSB’s Diversity Committee through\nGoogle Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.\nThe PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist faculty in paying for open access journals.",
+                  "answer": "Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.\nThe PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist faculty in paying for open access journals.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -161,7 +189,7 @@
         {
           "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
           "description": "",
-          "order": 6,
+          "order": 10,
           "question": [
             {
               "text": "",
@@ -181,7 +209,7 @@
         {
           "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
           "description": "",
-          "order": 7,
+          "order": 11,
           "question": [
             {
               "text": "",

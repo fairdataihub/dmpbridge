@@ -13,7 +13,7 @@
     ],
     "is_bold": true,
     "is_italic": false,
-    "label": "title",
+    "label": "section.title",
     "confidence": 0.9
   },
   {
@@ -31,7 +31,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.8
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -48,6 +48,6 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.7
+    "confidence": 0.9
   }
 ]

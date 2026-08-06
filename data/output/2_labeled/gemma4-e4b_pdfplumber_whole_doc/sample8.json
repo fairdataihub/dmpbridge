@@ -48,8 +48,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "section.description",
+    "confidence": 1.0
   },
   {
     "page": 1,
@@ -65,8 +65,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "question.text",
+    "confidence": 0.9
   },
   {
     "page": 1,
@@ -83,7 +83,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.8
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -99,8 +99,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "section.description",
+    "confidence": 1.0
   },
   {
     "page": 1,
@@ -117,8 +117,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "section.description",
+    "confidence": 1.0
   },
   {
     "page": 1,
@@ -135,8 +135,8 @@
     ],
     "is_bold": false,
     "is_italic": true,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "section.description",
+    "confidence": 1.0
   },
   {
     "page": 1,
@@ -169,8 +169,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "section.description",
+    "confidence": 1.0
   },
   {
     "page": 1,
@@ -186,8 +186,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "question.text",
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -203,8 +203,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "question.text",
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -220,8 +220,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "section.description",
+    "confidence": 1.0
   },
   {
     "page": 1,
@@ -238,7 +238,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.8
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -271,8 +271,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "section.description",
+    "confidence": 1.0
   },
   {
     "page": 1,
@@ -305,8 +305,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "section.description",
+    "confidence": 1.0
   },
   {
     "page": 2,
@@ -323,7 +323,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.8
+    "confidence": 0.95
   },
   {
     "page": 2,
@@ -357,8 +357,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "question.text",
+    "confidence": 0.9
   },
   {
     "page": 2,
@@ -375,8 +375,8 @@
     ],
     "is_bold": false,
     "is_italic": true,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "question.text",
+    "confidence": 0.9
   },
   {
     "page": 2,
@@ -393,8 +393,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "question.text",
+    "confidence": 0.9
   },
   {
     "page": 2,
@@ -411,8 +411,8 @@
     ],
     "is_bold": false,
     "is_italic": true,
-    "label": "answer.text",
-    "confidence": 0.8
+    "label": "question.text",
+    "confidence": 0.9
   },
   {
     "page": 2,
@@ -429,7 +429,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.8
+    "confidence": 0.85
   },
   {
     "page": 2,
@@ -463,6 +463,6 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.8
+    "confidence": 0.9
   }
 ]

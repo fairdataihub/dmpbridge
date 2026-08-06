@@ -12,7 +12,7 @@
           "order": 1,
           "question": [
             {
-              "text": "1. Policy and Practice",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -32,7 +32,7 @@
           "order": 2,
           "question": [
             {
-              "text": "2. Scope",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -52,7 +52,7 @@
           "order": 3,
           "question": [
             {
-              "text": "3. Data and Metadata Format and Contents",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -72,7 +72,7 @@
           "order": 4,
           "question": [
             {
-              "text": "4. Accessibility and Data Protection",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
@@ -92,12 +92,25 @@
           "order": 5,
           "question": [
             {
-              "text": "5. Derivative Products",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based\nupon work supported by the National Science Foundation under Grant No. (NSF grant number).”\nAdditionally, materials will contain a disclaimer that “any opinions, findings, and conclusions or\nrecommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.” In keeping with standard ethical practices, it is expected that\nsubsequent users of the data will acknowledge the source.",
+                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based\nupon work supported by the National Science Foundation under Grant No. (NSF grant number).”",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            },
+            {
+              "text": "Additionally, materials will contain a disclaimer that “any opinions, findings, and conclusions or\nrecommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.” In keeping with standard ethical practices, it is expected that",
+              "order": 2,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "subsequent users of the data will acknowledge the source.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -112,7 +125,7 @@
           "order": 6,
           "question": [
             {
-              "text": "6. Archiving and Access",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
