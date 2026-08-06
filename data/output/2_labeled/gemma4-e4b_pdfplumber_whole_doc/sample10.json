@@ -48,7 +48,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -83,7 +83,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.98
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -117,7 +117,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.92
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -134,7 +134,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -185,7 +185,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.98
+    "confidence": 0.95
   },
   {
     "page": 2,
@@ -219,7 +219,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.95
   },
   {
     "page": 2,
@@ -270,8 +270,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "question.text",
-    "confidence": 0.8
+    "label": "answer.text",
+    "confidence": 0.95
   },
   {
     "page": 2,
@@ -289,7 +289,7 @@
     "is_bold": false,
     "is_italic": true,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.95
   },
   {
     "page": 2,
@@ -306,8 +306,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "question.text",
-    "confidence": 0.85
+    "label": "answer.text",
+    "confidence": 0.95
   },
   {
     "page": 2,
@@ -342,7 +342,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 0.95
   },
   {
     "page": 2,
@@ -376,6 +376,6 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.98
+    "confidence": 0.95
   }
 ]

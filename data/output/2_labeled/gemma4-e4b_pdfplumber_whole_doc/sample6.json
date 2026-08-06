@@ -31,7 +31,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "section.title",
-    "confidence": 0.9
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -66,7 +66,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "section.title",
-    "confidence": 0.9
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -84,7 +84,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.98
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -100,8 +100,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "question.text",
-    "confidence": 0.92
+    "label": "section.title",
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -135,7 +135,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "section.title",
-    "confidence": 0.9
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -152,7 +152,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.98
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -169,8 +169,8 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "question.text",
-    "confidence": 0.92
+    "label": "section.title",
+    "confidence": 0.95
   },
   {
     "page": 1,
@@ -204,7 +204,7 @@
     ],
     "is_bold": false,
     "is_italic": false,
-    "label": "section.title",
+    "label": "question.text",
     "confidence": 0.8
   }
 ]

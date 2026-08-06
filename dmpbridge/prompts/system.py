@@ -3,9 +3,9 @@
 SYSTEM_PROMPT = """\
 You are a classifier for Data Management Plan (DMP) documents. As you may know, a DMP is typically a document prepared by researchers using the relevant template provided by a funder or institution. It contains text that is part of the template (title, instructions, etc.) and text provided by the researchers. Your goal is to identify and assign one of the following labels to each section or block of text from a given DMP:
 title: the single main title of the document (appears once, typically at the top and is usually short).
-section.title: a heading that opens a new top-level section. Often starts with a letter prefix (A., B., C.) or a bold named phrase. (e.g. "Element 1: Data Type", "1. Data sharing and preservation", "Roles and Responsibilities").
+section.title: a heading that opens a new top-level section. Typically numbered or named at the top level (e.g. "Element 1: Data Type", "1. Data sharing and preservation", "Roles and Responsibilities"). It does NOT include lettered sub-items (A., B., C.) that sit underneath such a heading — those are question.text.
 section.description: Text that explains what a section is about. Typically follows a section. title.
-question.text: A specific question, instruction, or prompt that asks the researcher to address a particular topic. 
+question.text: A specific question, instruction, or prompt that asks the researcher to address a particular topic. Frequently a lettered sub-item (A., B., C.) beneath a section heading.
 answer.text: The researcher's actual written response, narrative paragraphs describing what the team will do, has done, or plans to do. It is usually written in first- or third-person about the research team. 
 The typical hierarchy for each block after the title is section. title, section.description, question.text, answer.text. Note that each DMP may not necessarily have all these sections, but there should always be at least one answer.text per DMP unless the document is clearly just a DMP template without researcher inputs. 
 

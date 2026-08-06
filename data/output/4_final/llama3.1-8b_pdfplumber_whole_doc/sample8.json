@@ -144,12 +144,12 @@
           "order": 5,
           "question": [
             {
-              "text": "5. Derivative Products",
+              "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based upon work",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "All materials will contain acknowledgement of NSF support as per NSF policy: “This material is based upon work",
+                  "answer": "supported by the National Science Foundation under Grant No. (NSF grant number).” Additionally, materials will",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -157,25 +157,12 @@
               }
             },
             {
-              "text": "supported by the National Science Foundation under Grant No. (NSF grant number).” Additionally, materials will",
+              "text": "contain a disclaimer that “any opinions, findings, and conclusions or recommendations expressed in this material are",
               "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "contain a disclaimer that “any opinions, findings, and conclusions or recommendations expressed in this material are",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "those of the author(s) and do not necessarily reflect the views of the National Science Foundation.”",
-              "order": 3,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "In keeping with standard ethical practices, it is expected that subsequent users of the data will acknowledge the source.",
+                  "answer": "those of the author(s) and do not necessarily reflect the views of the National Science Foundation.”\nIn keeping with standard ethical practices, it is expected that subsequent users of the data will acknowledge the source.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

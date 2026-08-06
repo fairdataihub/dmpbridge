@@ -128,32 +128,25 @@
         },
         {
           "title": "3. Data management resources",
-          "description": "",
+          "description": "Data management plans should consult and reference available information about data management resources to be used in the course of the proposed research. In particular, DMPs tht explicitly or implicitly commit data management resources at a facility beyond what is conventionally made available to approved users should be accompanied by written approval from that facility. In determining the resources available for data management at DOE Scientific User Facilities, researchers should consult the published description of data management resources and practices at that facility and reference it in the DMP. Information about other Office of Science facilities can be found in the additional guidance from the sponsporing program.\nDMPs should consult and reference available information about data management resources to be used in the course of the proposed research. In particular, DMPs that explicitly or implicitly commit data management resources at a facility beyond what is conventionally made available to approved users should be accompanied by written approval from that facility. In determining the resources available for data management at Office of Science User Facilities, researchers should consult the published description of data management resources and practices at that facility and reference it in the DMP. Information about other Office of Science facilities can be found in the additional guidance from the sponsoring program.",
           "order": 7,
           "question": [
             {
-              "text": "Data management plans should consult and reference available information about data management resources to be used in the course of the proposed research. In particular, DMPs tht explicitly or implicitly commit data management resources at a facility beyond what is conventionally made available to approved users should be accompanied by written approval from that facility. In determining the resources available for data management at DOE Scientific User Facilities, researchers should consult the published description of data management resources and practices at that facility and reference it in the DMP. Information about other Office of Science facilities can be found in the additional guidance from the sponsporing program.\nDMPs should consult and reference available information about data management resources to be used in the course of the proposed research. In particular, DMPs that explicitly or implicitly commit data management resources at a facility beyond what is conventionally made available to approved users should be accompanied by written approval from that facility. In determining the resources available for data management at Office of Science User Facilities, researchers should consult the published description of data management resources and practices at that facility and reference it in the DMP. Information about other Office of Science facilities can be found in the additional guidance from the sponsoring program.",
+              "text": "Data Repositories. Senior investigators typically archive relevant data using their own group servers.",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Data Repositories. Senior investigators typically archive relevant data using their own group servers.\nWhenever possible, investigators will be encouraged to also copy data to a centralized data server for CBES investigators. Additionally, researchers can archive data on repositories at their home institutions. For example, researchers at Northwestern are encouraged to deposit data into Northwestern Libraries’ institutional repository, Arch, upon publication (https://arch.library.northwestern.edu/). Arch assigns DOIs, making it easy to find the data. Necessary metadata and other resources to make the data accessible to future users will be submitted. Arch will preserve the data for future use.",
+                  "answer": "Whenever possible, investigators will be encouraged to also copy data to a centralized data server for CBES investigators. Additionally, researchers can archive data on repositories at their home institutions. For example, researchers at Northwestern are encouraged to deposit data into Northwestern Libraries’ institutional repository, Arch, upon publication (https://arch.library.northwestern.edu/). Arch assigns DOIs, making it easy to find the data. Necessary metadata and other resources to make the data accessible to future users will be submitted. Arch will preserve the data for future use.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "Data Volume. Generally, the volume of data generated by CBES researchers should not prohibit their",
-          "description": "",
-          "order": 8,
-          "question": [
+            },
             {
               "text": "Data Volume. Generally, the volume of data generated by CBES researchers should not prohibit their",
-              "order": 1,
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -169,7 +162,7 @@
         {
           "title": "4. Confidentiality, security and rights",
           "description": "Data management plans must protect confidentiality, personal privacy, Personally Identifiable Information and U.S. national, homeland, and economic security; recognize proprietary interests, business confidential information, and intellectual property rights; avoid significant negative impact on innovation and U.S. competitiveness; and otherwise be consistent with all applicable laws, regulations, agreement terms and conditions, and DOE orders and policies. There is no requirement to share proprietary data.",
-          "order": 9,
+          "order": 8,
           "question": [
             {
               "text": "4. Confidentiality, security and rights",

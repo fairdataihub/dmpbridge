@@ -23,17 +23,10 @@
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)",
-          "description": "",
-          "order": 2,
-          "question": [
+            },
             {
               "text": "• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)",
-              "order": 1,
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -46,40 +39,7 @@
             },
             {
               "text": "• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "Sciences Workshops.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "title": "TYPES OF DATA",
-          "description": "",
-          "order": 3,
-          "question": [
-            {
-              "text": "TYPES OF DATA",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "The project will result in new sets of data, code, and tools. These outputs include: (a) source code to quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and (c) sharable instructional materials (Scientist Spotlight activities and workshop materials).",
-              "order": 2,
+              "order": 3,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -93,13 +53,32 @@
           ]
         },
         {
-          "title": "Input data:",
+          "title": "Sciences Workshops.",
           "description": "",
-          "order": 4,
+          "order": 2,
+          "question": []
+        },
+        {
+          "title": "TYPES OF DATA",
+          "description": "",
+          "order": 3,
           "question": [
             {
-              "text": "Input data:",
+              "text": "TYPES OF DATA",
               "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing.\nThe project will result in new sets of data, code, and tools. These outputs include: (a) source code to quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and (c) sharable instructional materials (Scientist Spotlight activities and workshop materials).",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            },
+            {
+              "text": "Input data:",
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -115,7 +94,7 @@
         {
           "title": "Produced Data:",
           "description": "",
-          "order": 5,
+          "order": 4,
           "question": [
             {
               "text": "Produced Data:",
@@ -123,20 +102,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
+                  "answer": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be\nformatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -148,7 +114,7 @@
         {
           "title": "DATA AND METADATA STANDARDS",
           "description": "",
-          "order": 6,
+          "order": 5,
           "question": [
             {
               "text": "DATA AND METADATA STANDARDS",
@@ -168,7 +134,7 @@
         {
           "title": "POLICIES FOR ACCESS AND SHARING",
           "description": "",
-          "order": 7,
+          "order": 6,
           "question": [
             {
               "text": "Raw data:",
@@ -188,15 +154,15 @@
         {
           "title": "Scripts and code for analyses:",
           "description": "",
-          "order": 8,
+          "order": 7,
           "question": [
             {
-              "text": "All scripts and code will be archived in supplementary information",
+              "text": "Scripts and code for analyses:",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes.",
+                  "answer": "All scripts and code will be archived in supplementary information\nappendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -208,7 +174,7 @@
         {
           "title": "Scientist spotlight:",
           "description": "",
-          "order": 9,
+          "order": 8,
           "question": [
             {
               "text": "Scientist spotlight:",
@@ -216,20 +182,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "All scientist spotlight biographies, assignments, and open-access readings will be",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
+                  "answer": "All scientist spotlight biographies, assignments, and open-access readings will be\nposted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -241,7 +194,7 @@
         {
           "title": "Workshop frameworks:",
           "description": "",
-          "order": 10,
+          "order": 9,
           "question": [
             {
               "text": "Workshop frameworks:",
@@ -249,20 +202,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Workshop material will be shared with UCSB’s Diversity Committee through",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "The PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist faculty in paying for open access journals.",
+                  "answer": "Workshop material will be shared with UCSB’s Diversity Committee through\nGoogle Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.\nThe PI is committed to publishing in open access journals. The UC is currently leading initiatives to assist faculty in paying for open access journals.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -274,7 +214,7 @@
         {
           "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
           "description": "",
-          "order": 11,
+          "order": 10,
           "question": [
             {
               "text": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
@@ -294,15 +234,15 @@
         {
           "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
           "description": "",
-          "order": 12,
+          "order": 11,
           "question": [
             {
-              "text": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing. Box provides encryption of data at rest and in-transit, detailed logging of file actions, two-factor authentication, and access review of collaborators. Data will be accessed using Box Drive, which requires full disk encryption, firewall, and an antivirus software in order to install on a local computer.",
+              "text": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "At the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and code will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits submitted to Dryad are curated prior to public release to conform with quality standards and enable future reuse.\nThe source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved, stored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three planned publications. After the evaluation and refinement of the developed datasets and tools and once the research is completed and published, the final version of the tools and the documentation will be shared on the UCSB’s Dryad Data Repository. The final shareable instructional and teaching materials will also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive (workshop materials) and Dryad in pdf format.",
+                  "answer": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing. Box provides encryption of data at rest and in-transit, detailed logging of file actions, two-factor authentication, and access review of collaborators. Data will be accessed using Box Drive, which requires full disk encryption, firewall, and an antivirus software in order to install on a local computer.\nAt the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and code will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits submitted to Dryad are curated prior to public release to conform with quality standards and enable future reuse.\nThe source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved, stored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three planned publications. After the evaluation and refinement of the developed datasets and tools and once the research is completed and published, the final version of the tools and the documentation will be shared on the UCSB’s Dryad Data Repository. The final shareable instructional and teaching materials will also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive (workshop materials) and Dryad in pdf format.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

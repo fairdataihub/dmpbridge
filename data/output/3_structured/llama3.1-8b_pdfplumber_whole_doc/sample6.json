@@ -43,17 +43,10 @@
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "3. Policies for access and sharing. Interested parties will be able to request data and codes at",
-          "description": "",
-          "order": 3,
-          "question": [
+            },
             {
-              "text": "",
-              "order": 1,
+              "text": "3. Policies for access and sharing. Interested parties will be able to request data and codes at",
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -69,7 +62,7 @@
         {
           "title": "4. Policies and provisions for re-use, re-distribution. Simulation data will in essence grow to",
           "description": "",
-          "order": 4,
+          "order": 3,
           "question": [
             {
               "text": "",
@@ -83,17 +76,10 @@
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "5. Plans for archiving and preservation of access. Local data will be archived on the group’s",
-          "description": "",
-          "order": 5,
-          "question": [
+            },
             {
-              "text": "",
-              "order": 1,
+              "text": "5. Plans for archiving and preservation of access. Local data will be archived on the group’s",
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -103,21 +89,14 @@
                   }
                 }
               }
-            },
-            {
-              "text": "1",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
             }
           ]
+        },
+        {
+          "title": "1",
+          "description": "",
+          "order": 4,
+          "question": []
         }
       ]
     }

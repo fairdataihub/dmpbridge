@@ -12,34 +12,8 @@
           "order": 1,
           "question": [
             {
-              "text": "• Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and",
+              "text": "• Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and\ncompares well construction patterns before and after the establishment of regulatory controls.\n• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)\nyearly (2016-2021) at the field scale.\n• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic\nSciences Workshops.",
               "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "compares well construction patterns before and after the establishment of regulatory controls.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "• Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption)",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "yearly (2016-2021) at the field scale.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            },
-            {
-              "text": "• Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic",
-              "order": 3,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -53,18 +27,12 @@
           ]
         },
         {
-          "title": "Sciences Workshops.",
-          "description": "",
-          "order": 2,
-          "question": []
-        },
-        {
           "title": "TYPES OF DATA",
           "description": "",
-          "order": 3,
+          "order": 2,
           "question": [
             {
-              "text": "",
+              "text": "TYPES OF DATA",
               "order": 1,
               "answer": {
                 "json": {
@@ -75,14 +43,21 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "title": "Input data:",
+          "description": "",
+          "order": 3,
+          "question": [
             {
-              "text": "Input data:",
-              "order": 2,
+              "text": "Available data will be systematically reviewed and downloaded. These data are likely",
+              "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Available data will be systematically reviewed and downloaded. These data are likely\navailable in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be adopted and will likely evolve as new datasets provide for challenging formats and organization.",
+                  "answer": "available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files. A multi-tier storage and quality assurance methodology will be adopted and will likely evolve as new datasets provide for challenging formats and organization.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -97,12 +72,12 @@
           "order": 4,
           "question": [
             {
-              "text": "",
+              "text": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be\nformatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+                  "answer": "formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -117,7 +92,7 @@
           "order": 5,
           "question": [
             {
-              "text": "",
+              "text": "DATA AND METADATA STANDARDS",
               "order": 1,
               "answer": {
                 "json": {
@@ -148,17 +123,10 @@
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "Scripts and code for analyses:",
-          "description": "",
-          "order": 7,
-          "question": [
+            },
             {
-              "text": "",
-              "order": 1,
+              "text": "Scripts and code for analyses:",
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -168,17 +136,10 @@
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "Scientist spotlight:",
-          "description": "",
-          "order": 8,
-          "question": [
+            },
             {
-              "text": "",
-              "order": 1,
+              "text": "Scientist spotlight:",
+              "order": 3,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -188,17 +149,10 @@
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "Workshop frameworks:",
-          "description": "",
-          "order": 9,
-          "question": [
+            },
             {
-              "text": "",
-              "order": 1,
+              "text": "Workshop frameworks:",
+              "order": 4,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -214,10 +168,10 @@
         {
           "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
           "description": "",
-          "order": 10,
+          "order": 7,
           "question": [
             {
-              "text": "",
+              "text": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
               "order": 1,
               "answer": {
                 "json": {
@@ -234,10 +188,10 @@
         {
           "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
           "description": "",
-          "order": 11,
+          "order": 8,
           "question": [
             {
-              "text": "",
+              "text": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
               "order": 1,
               "answer": {
                 "json": {

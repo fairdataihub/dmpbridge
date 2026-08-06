@@ -25,8 +25,28 @@
               }
             },
             {
-              "text": "Types of data\nThe Data Management Plan should describe the types of data, samples, physical collections, software, curriculum materials, or other materials to be produced in the course of the project. It should then describe the expected types of data to be retained and shared, and the plans for doing so. The DMP should cover how data are to be managed and maintained during the project.",
+              "text": "Types of data",
               "order": 2,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "The Data Management Plan should describe the types of data, samples, physical collections, software, curriculum materials, or other materials to be produced in the course of the project. It should then describe the expected types of data to be retained and shared, and the plans for doing so. The DMP should cover how data are to be managed and maintained during the project.",
+          "description": "",
+          "order": 2,
+          "question": [
+            {
+              "text": "The Data Management Plan should describe the types of data, samples, physical collections, software, curriculum materials, or other materials to be produced in the course of the project. It should then describe the expected types of data to be retained and shared, and the plans for doing so. The DMP should cover how data are to be managed and maintained during the project.",
+              "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -39,7 +59,7 @@
             },
             {
               "text": "Our second type of data will be the code and results for all analyses completed on experimental data.",
-              "order": 3,
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
@@ -55,7 +75,7 @@
         {
           "title": "Policies for access and sharing and appropriate protection and privacy",
           "description": "The Data Management Plan should describe the period of time the data will be retained and shared; factors that limit the ability to manage and share data, e.g., legal and ethical restrictions on access to human subjects data; and provisions for appropriate protection of privacy, confidentiality, security, and intellectual property.",
-          "order": 2,
+          "order": 3,
           "question": [
             {
               "text": "Policies for access and sharing and appropriate protection and privacy",
@@ -63,7 +83,20 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Data will be made available upon request, after the conclusion of each of study. The availability of data (raw and analyzed) will be advertised on the project’s website. Access will be free, but the original data collector/creator/principal investigator retains the right to use the data for analysis before making it publicly available. No patient identifying information will be included in any of the available data files.\nSelect videos of the experiments will be distributed, with subject faces blurred so as to be unidentifiable. Experimental analyses results will be made available through peer-reviewed journal publications and conference presentations. The code needed to generate all published results will be documented clearly.\nSoftware generated under the project will be released under the GNU Public License, and available for free download on the labs’ websites. This includes code for each of our 3 experimental systems.\nWe commit to speaking with any qualified scientist who wishes to discuss our results or the technology employed to obtain our results.\nThere will be no copyright or licensing required for any of the data generated in this project.\nResearch records will be archived for a minimum of seven years after final reporting or publication of a project. If any questions regarding the research, including but not limited to research integrity allegations, are raised during the seven- year retention period, the PI will keep the records until such questions are fully resolved.",
+                  "answer": "Data will be made available upon request, after the conclusion of each of study. The availability of data (raw and analyzed) will be advertised on the project’s website. Access will be free, but the original data collector/creator/principal investigator retains the right to use the data for analysis before making it publicly available. No patient identifying information will be included in any of the available data files.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            },
+            {
+              "text": "Select videos of the experiments will be distributed, with subject faces blurred so as to be unidentifiable. Experimental analyses results will be made available through peer-reviewed journal publications and conference presentations. The code needed to generate all published results will be documented clearly.",
+              "order": 2,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Software generated under the project will be released under the GNU Public License, and available for free download on the labs’ websites. This includes code for each of our 3 experimental systems.\nWe commit to speaking with any qualified scientist who wishes to discuss our results or the technology employed to obtain our results.\nThere will be no copyright or licensing required for any of the data generated in this project.\nResearch records will be archived for a minimum of seven years after final reporting or publication of a project. If any questions regarding the research, including but not limited to research integrity allegations, are raised during the seven- year retention period, the PI will keep the records until such questions are fully resolved.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -75,7 +108,7 @@
         {
           "title": "Data storage and preservation of access",
           "description": "The Data Management Plan should describe the mechanisms and formats for storing data and making them accessible to others, which may include third party facilities and repositories; and other types of information that would be maintained and shared regarding data, e.g. the means by which it was generated, detailed analytical and procedural information required to reproduce experimental results, and other metadata.",
-          "order": 3,
+          "order": 4,
           "question": [
             {
               "text": "Data storage and preservation of access",
