@@ -458,7 +458,7 @@
     "is_bold": false,
     "is_italic": false,
     "label": "answer.text",
-    "confidence": 0.9
+    "confidence": 1.0
   },
   {
     "page": 2,
