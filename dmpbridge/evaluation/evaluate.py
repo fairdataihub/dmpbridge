@@ -59,8 +59,24 @@ def containment(block_tokens: set, gold_tokens: set) -> float:
 
 # ── Load manual labels ────────────────────────────────────────────────────────
 
-def extract_gold(path: Path) -> list[tuple[str, str]]:
-    """Read a structured DMP JSON (manual or model-predicted) and return a flat list of (text, label) pairs."""
+def extract_gold(path: Path, *, dedup_question_title: bool = True) -> list[tuple[str, str]]:
+    """Read a structured DMP JSON (manual or model-predicted) and return a flat list of (text, label) pairs.
+
+    Parameters
+    ----------
+    dedup_question_title:
+        When ``True`` (default), a ``question.text`` identical to its section
+        title is skipped, so the same string is not scored twice — once as the
+        heading and again as the question.
+
+        Path B must pass ``False``.  The annotation rules fill a blank question
+        *from* its section title, so under the default every item the rules
+        produce is discarded before scoring — 42 of the 44 they add — and the
+        new-version annotation loses 38 of its 56 questions the same way.  The
+        guard was written for Path A, where the old annotation contains no such
+        repeats and it only trims the prediction; applied to Path B it removes
+        the very thing that path exists to measure.
+    """
     data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, dict):
         raise ValueError(
@@ -85,7 +101,7 @@ def extract_gold(path: Path) -> list[tuple[str, str]]:
             q_text = question.get("text", "").strip()
             # PM rule: when section has no explicit sub-question, the section title is
             # repeated as question.text. Skip the duplicate to avoid double-counting.
-            if q_text and q_text != sec_title:
+            if q_text and not (dedup_question_title and q_text == sec_title):
                 pairs.append((q_text, "question.text"))
             ans = question.get("answer", {})
             ans_text = ""
@@ -115,7 +131,10 @@ def match(block_text: str, gold_pairs: list[tuple[str, str]]) -> str | None:
 # ── Evaluate one sample ───────────────────────────────────────────────────────
 
 def _match_structured(
-    pred_structured_path: Path, gold_pairs: list[tuple[str, str]]
+    pred_structured_path: Path,
+    gold_pairs: list[tuple[str, str]],
+    *,
+    dedup_question_title: bool = True,
 ) -> tuple[list[dict], list[tuple[str, str]]]:
     """Greedy gold-oriented matching between predicted and gold structured items.
 
@@ -134,7 +153,10 @@ def _match_structured(
         no_gold_pairs : (pred_text, pred_label) for predicted items claimed by no gold
                          item — spurious/hallucinated output.
     """
-    pred_pairs = extract_gold(pred_structured_path)
+    # The prediction is parsed the same way as the gold, so both sides of the
+    # comparison must use the same dedup setting or they measure different things.
+    pred_pairs = extract_gold(pred_structured_path,
+                              dedup_question_title=dedup_question_title)
     used: set[int] = set()
     records: list[dict] = []
 

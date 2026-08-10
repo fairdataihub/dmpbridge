@@ -221,8 +221,11 @@ def load_method_new(tag: str, exclude: list[int] | None = None):
         if n in _exclude:
             continue
         stem             = f"sample{n}"
-        gold             = extract_gold(resolve_new_gt_path(n))
-        records, no_gold = _match_structured(f, gold)
+        # dedup_question_title=False on both sides: the rules fill a blank question
+        # from its section title, so the default would discard the very items this
+        # path exists to score. See extract_gold's docstring.
+        gold             = extract_gold(resolve_new_gt_path(n), dedup_question_title=False)
+        records, no_gold = _match_structured(f, gold, dedup_question_title=False)
         conf             = _confusion_from_match(records, no_gold)
         add_confusion(conf_all, conf)
 
@@ -264,8 +267,9 @@ def run_single(final_path: Path) -> None:
         logger.error("%s", exc)
         return
 
-    gold             = extract_gold(gt_path)
-    records, no_gold = _match_structured(final_path, gold)
+    # Path B, so the dedup is off on both sides — see load_method_new().
+    gold             = extract_gold(gt_path, dedup_question_title=False)
+    records, no_gold = _match_structured(final_path, gold, dedup_question_title=False)
     confusion        = _confusion_from_match(records, no_gold)
     tp = sum(confusion.get(lbl, {}).get(lbl, 0) for lbl in LABELS)
     n_total = sum(sum(v.values()) for v in confusion.values())
