@@ -1,4 +1,4 @@
-"""Build notebooks/7-sample1-error-analysis.ipynb.
+"""Build notebooks/7-error-analysis.ipynb.
 
 The simplest possible telling: what is in the document, what the reader did,
 what each model did, and where the errors came from.
@@ -10,7 +10,7 @@ from pathlib import Path
 
 from dmpbridge.core import paths as P
 
-NB = Path("notebooks/7-sample1-error-analysis.ipynb")
+NB = Path("notebooks/7-error-analysis.ipynb")
 SAMPLE, EXTRACTOR = 1, "pdfplumber"
 MODELS = ["llama3.1:8b", "gemma4:e4b", "llama3.3:70b"]
 
@@ -144,23 +144,34 @@ cells = [
         "    print()",
     ]),
 
-    # ── verdict ─────────────────────────────────────────────────────────
-    md("verdict", [
-        "## The verdict",
+    # ── conclusion ──────────────────────────────────────────────────────
+    md("conclusion", [
+        "## Conclusion",
         "",
-        "| suspect | finding |",
-        "|---|---|",
-        "| **the reader** | innocent — read everything, invented nothing |",
-        "| **gemma4:e4b** | no mistakes at all |",
-        "| **llama3.3:70b** | one slip, on a short leftover piece of a split answer |",
-        "| **llama3.1:8b** | 11 mistakes — 8 of them are the *same* mistake |",
+        "**The errors come from the model, not from pdfplumber.**",
         "",
-        "llama3.1's repeated mistake: lines like `B. Scientific data that will be preserved…`",
-        "are **questions**, but they are short, bold and lettered — they *look* like headings,",
-        "and it calls them headings. The other two models get every one of these right.",
+        "The proof is simple: gemma4 received exactly the same blocks and labeled every",
+        "single one correctly. If the reader's output were the problem, nobody could have",
+        "scored 100% from it. Someone did.",
         "",
-        "So for this document: **the errors come from the model, not the reader** — and",
-        "mostly from one model, making one repeated judgement error.",
+        "llama3.1's 11 mistakes are of two kinds:",
+        "",
+        "- **8 are the same mistake on clean, whole lines.** `B. Scientific data that will be",
+        "  preserved…` is a question, but it is short, bold and lettered — it *looks* like a",
+        "  heading, and llama3.1 calls it one. pdfplumber played no part: it handed these",
+        "  lines over in one piece.",
+        "- **3 are slips on leftover pieces of split answers**, like `about other studies.` —",
+        "  the tail of a wrapped sentence. Here pdfplumber created the *difficulty* (a",
+        "  fragment that is unreadable alone), but the model committed the *error*: it judged",
+        "  the fragment in isolation instead of following the blocks around it. gemma4, given",
+        "  the same fragment, kept the label of the sentence it belongs to.",
+        "",
+        "Like a hard exam question: the exam made it hard, the student got it wrong — and",
+        "another student answered it correctly.",
+        "",
+        "*(One caution: this verdict is for this document. Sample 6 is different — its",
+        "headings are underlined, pdfplumber cannot see underlines, and there the reader",
+        "genuinely is at fault.)*",
     ]),
 ]
 
