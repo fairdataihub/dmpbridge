@@ -201,8 +201,8 @@ cells = [
         "m_a, m_b = micro_prf1(conf_a), micro_prf1(conf_b)",
         "sup_a, sup_b = m_a['tp'] + m_a['fn'], m_b['tp'] + m_b['fn']",
         "",
-        "print(f'{MODEL} — micro-averaged over 10 documents')",
-        "print()",
+        # No printed heading here: the markdown above already names the model and
+        # says the figures are micro-averaged.
         "print(f\"{'':<14}{'Path A':>10}{'Path B':>10}\")",
         "print('-' * 34)",
         "print(f\"{'items scored':<14}{sup_a:>10}{sup_b:>10}\")",
@@ -240,7 +240,8 @@ cells = [
         "    for side in ('top', 'right', 'left'):",
         "        ax.spines[side].set_visible(False)",
         "",
-        "fig.suptitle(f'{MODEL} — micro-averaged', fontweight='bold', y=1.06)",
+        "# The panels are labelled Path A / Path B; the model is named in the",
+        "# notebook title, so no figure-level title is needed.",
         "plt.tight_layout()",
         "plt.show()",
     ]),
