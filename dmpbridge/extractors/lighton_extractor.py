@@ -215,6 +215,5 @@ class LightOnExtractor(BaseExtractor):
                 "font_names":    [],
                 "is_bold":       bool(heading),
                 "is_italic":     False,
-                "label":         None,
             })
         return blocks

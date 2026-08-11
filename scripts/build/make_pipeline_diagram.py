@@ -89,7 +89,7 @@ text(CX + 1.5, 105.5, "choose one extraction backend", size=7.0,
      color=GREY, style="italic", ha="left")
 
 # ── Extractors ───────────────────────────────────────────────────────────
-for i, (label, sub) in enumerate((("pdfplumber", "+ line merge"),
+for i, (label, sub) in enumerate((("pdfplumber", "line-level"),
                                   ("Docling", "ML layout"),
                                   ("LightOnOCR", "vision OCR"))):
     x = SX + i * 21.3

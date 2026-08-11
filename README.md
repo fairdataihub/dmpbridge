@@ -129,14 +129,8 @@ Re-runs skip samples that already have output.
 | `docling` | `pip install -e ".[docling]"` | Complex layouts |
 | `lighton` | `pip install -e ".[lighton]"` | Scanned / image-based PDFs (OCR) |
 
-`pdfplumber` reads a PDF line by line, so a wrapped paragraph arrives as several blocks.
-Those are merged back into paragraphs before labeling — roughly 25 blocks per document
-instead of 74. To get the raw line-level blocks:
-
-```python
-from dmpbridge.extractors import get_extractor
-get_extractor("pdfplumber", merge_lines=False)
-```
+`pdfplumber` reads a PDF line by line, so a wrapped paragraph arrives as several blocks —
+roughly 74 per document. `docling` and `lighton` segment by paragraph instead.
 
 ---
 
@@ -167,7 +161,7 @@ dmpbridge-wholedoc --model gemma4:e4b --extractor lighton --no-rules   # skip st
 To read PDFs with no LLM involved at all:
 
 ```bash
-python scripts/extract_pdfplumber.py --both     # merged and raw, with a comparison
+python scripts/extract_pdfplumber.py
 ```
 
 ---

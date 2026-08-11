@@ -96,7 +96,6 @@ class DoclingExtractor(BaseExtractor):
                 "font_names":    [],
                 "is_bold":       is_heading,
                 "is_italic":     False,
-                "label":         None,
             })
 
         return blocks

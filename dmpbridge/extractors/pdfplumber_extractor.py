@@ -8,23 +8,12 @@ class PdfplumberExtractor(BaseExtractor):
     """Wrap the existing pdfplumber pipeline as a BaseExtractor.
 
     No additional dependencies — pdfplumber is already a core requirement.
-    Produces full bbox and font metadata for every line-level block.
+    Produces line-level blocks with full bbox and font metadata.
 
-    Parameters
-    ----------
-    merge_lines:
-        When ``True`` (default), wrapped lines are joined into paragraph-level
-        blocks before classification, matching the granularity Docling and
-        LightOnOCR produce natively.  Set ``False`` to get the raw line-level
-        blocks — useful for reproducing earlier results, or for A/B comparison.
+    Note that pdfplumber segments by *line*, so a wrapped paragraph arrives as
+    several blocks, unlike Docling and LightOnOCR which segment by paragraph.
     """
 
-    def __init__(self, merge_lines: bool = True) -> None:
-        self.merge_lines = merge_lines
-
     def extract(self, pdf_path: Path) -> list[dict]:
-        from ..preprocess import extract_blocks, merge_wrapped_lines
-        blocks = extract_blocks(pdf_path)
-        if self.merge_lines:
-            blocks = merge_wrapped_lines(blocks)
-        return blocks
+        from ..preprocess import extract_blocks
+        return extract_blocks(pdf_path)

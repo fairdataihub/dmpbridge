@@ -190,9 +190,8 @@ mono([
     "│   ├── lighton_extractor.py",
     "│   └── __init__.py            get_extractor() factory",
     "├── preprocess/",
-    "│   ├── pdfplumber_reader.py   extract_blocks() — line-level text + geometry",
-    "│   ├── line_merger.py         merge_wrapped_lines() — pdfplumber only",
-    "│   ├── text_cleaner.py        clean_blocks()",
+    "│   ├── pdfplumber_reader.py   extract_blocks() — one block per PDF line",
+    "│   ├── text_cleaner.py        clean_blocks() — rendering artefacts only",
     "│   └── page_images.py         page PNGs with bbox overlays",
     "├── strategies/",
     "│   ├── wholedoc.py            WholeDocStrategy — the only strategy",
@@ -351,45 +350,7 @@ table(["Backend", "Method", "Bbox / font", "Blocks/doc", "Requires"],
        ["LightOnOCR", "Vision OCR (2-1B model)", "No", "21.6", "GPU + .[lighton]"]],
       widths=[1.25, 2.0, 1.05, 1.05, 1.65])
 para("Block counts are the mean per document over all 10 samples, and are a property of the extractor rather "
-     "than a scored result. pdfplumber's figure is post-merge; see 4.4.", size=10, italic=True, color=GREY)
-
-h2("4.4 Line merging (pdfplumber only)")
-para("pdfplumber segments a PDF by line rather than by paragraph, so one answer paragraph arrives as several "
-     "blocks. Docling and LightOnOCR segment by paragraph natively; this stage brings pdfplumber into line "
-     "with them. It runs between extraction and classification and affects no other backend.")
-
-para("Why fragmentation is costly", bold=True, size=10, after=4)
-para("The classifier labels each block independently and is largely consistent — of 432 mid-sentence line "
-     "breaks, only 13 (3.0%) received an inconsistent label. The damage comes from short trailing fragments "
-     "such as \"published manuscripts.\" or \"and double checking work.\", which are easy to mislabel in "
-     "isolation. pdfplumber produced 68 such fragments across the corpus against 17 for Docling.")
-para("A single mislabelled fragment costs twice. The converter merges only neighbours that already share a "
-     "label, so the fragment cannot be reabsorbed: it becomes a spurious item (a false positive) while its "
-     "parent paragraph loses its ending, which can push the parent below the 0.75 containment threshold and "
-     "lose it as well (a false negative).")
-
-para("The rule", bold=True, size=10, after=4)
-para("Two lines are joined when a continuation cue is present — the next line opens lowercase, or this line "
-     "both looks unfinished and reaches the right margin — and page, font, weight and left edge all agree.")
-para("The decisive signal is the right margin, not punctuation. A wrapped line runs out to the edge of the "
-     "text column; a heading stops well short of it. On these documents wrapped lines end within ~35pt of the "
-     "margin while headings fall 300pt or more short. Without that test every heading reads as \"unfinished\" "
-     "— headings rarely end in a full stop — and gets welded onto the text beneath it. An early version of "
-     "the rule did exactly that, joining a document title to the section title below it.",
-     size=10, color=GREY)
-para("Merging across a page break is permitted but requires both cues, since the vertical-gap test is "
-     "meaningless there and running headers may intervene.", size=10, color=GREY)
-
-para("Effect on segmentation", bold=True, size=10, after=4)
-table(["Measure", "Before", "After"],
-      [["Blocks, 10 documents", "735", "251"],
-       ["Mean blocks per document", "73.5", "25.1"],
-       ["Short fragments (≤ 25 chars)", "68", "30"]],
-      widths=[2.6, 1.9, 1.9])
-para("A preliminary A/B on the previous 8-sample evaluation set indicated a substantial accuracy gain, "
-     "concentrated in precision as the mechanism above predicts. Those figures are not reproduced here because "
-     "they used the old denominator; the effect will be quantified properly by the run in section 8.",
-     size=10, italic=True, color=GREY)
+     "than a scored result.", size=10, italic=True, color=GREY)
 
 # ── 5 ────────────────────────────────────────────────────────────────────
 h1("5. Experiment Registry")
@@ -546,7 +507,6 @@ para("Line merging is set on the extractor rather than through process_pdf(). It
 mono([
     "from dmpbridge.extractors import get_extractor",
     "",
-    'raw = get_extractor("pdfplumber", merge_lines=False)   # 73.5 blocks/doc',
     'new = get_extractor("pdfplumber")                      # 25.1 blocks/doc (default)',
 ])
 
@@ -583,7 +543,7 @@ table(["Flag", "Effect"],
       widths=[1.5, 4.9], size=8.5)
 para("Extraction alone, with no model involved:", size=10, after=4)
 mono([
-    "python scripts/extract_pdfplumber.py            # merged (pipeline default)",
+    "python scripts/extract_pdfplumber.py",
     "python scripts/extract_pdfplumber.py --raw      # line-level, no merging",
     "python scripts/extract_pdfplumber.py --both     # both, with a comparison",
 ])
@@ -595,7 +555,7 @@ table(["Artifact", "Purpose"],
        ["notebooks/2-model_comparison_docling.ipynb", "Full evaluation, Docling"],
        ["notebooks/3-model_comparison_lighton.ipynb", "Full evaluation, LightOnOCR"],
        ["notebooks/annotation_conversion_test.ipynb", "Derivation of the Path B rule"],
-       ["tests/", "66 tests — converter, scoring engine, Path B rule, line merger, batch runner"]],
+       ["tests/", "tests — converter, scoring engine, Path B rule, batch runner, per-sample invariants"]],
       widths=[2.7, 3.7], size=8.5)
 mono(['pip install -e ".[dev]"', "pytest tests/"])
 para("The three comparison notebooks have had their stored outputs cleared, since those showed results from "
@@ -760,8 +720,6 @@ table(["Addition", "Detail"],
        ["LightOnOCR bold signal", "Markdown heading markers in OCR output set is_bold and are stripped from "
                                   "the text, giving the classifier the emphasis cue the other extractors take "
                                   "from font data"],
-       ["Line merging", "preprocess/line_merger.py, wired into PdfplumberExtractor behind merge_lines "
-                        "(default True), with 21 unit tests. See 4.3"],
        ["Four-stage output layout", "core/paths.py defines 1_extracted / 2_labeled / 3_structured / "
                                     "4_final. Stages 3 and 4 previously shared a directory with stage 2, "
                                     "distinguished only by a _structured filename suffix, and --apply-rules "

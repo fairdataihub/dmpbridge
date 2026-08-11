@@ -4,9 +4,7 @@ Writes one JSON file per sample containing the blocks exactly as the extractor
 produces them, which is what the classifier would receive as input.
 
 Usage:
-    python scripts/extract_pdfplumber.py                  # merged (pipeline default)
-    python scripts/extract_pdfplumber.py --raw            # line-level, no merging
-    python scripts/extract_pdfplumber.py --both           # write both, side by side
+    python scripts/extract_pdfplumber.py
     python scripts/extract_pdfplumber.py --start 3 --end 5
     python scripts/extract_pdfplumber.py --out-dir some/where
 """
@@ -55,38 +53,17 @@ def summarise(label: str, rows: list[dict]) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--raw", action="store_true",
-                    help="Disable line merging — one block per PDF line")
-    ap.add_argument("--both", action="store_true",
-                    help="Write merged and raw side by side for comparison")
     ap.add_argument("--start", type=int, default=1)
     ap.add_argument("--end",   type=int, default=10)
     ap.add_argument("--pdf-dir", type=Path, default=Path("data/input/pdfs"))
-    ap.add_argument("--out-dir", type=Path, default=Path("data/output/extracted"),
-                    help="Parent directory; a subfolder is created per variant")
+    ap.add_argument("--out-dir", type=Path, default=Path("data/output/extracted"))
     args = ap.parse_args()
 
-    variants = [("merged", True), ("raw", False)] if args.both \
-        else [("raw", False)] if args.raw else [("merged", True)]
-
-    results = {}
-    for name, merge in variants:
-        print(f"\n=== pdfplumber ({name}, merge_lines={merge}) ===")
-        extractor = get_extractor("pdfplumber", merge_lines=merge)
-        out_dir = args.out_dir / f"pdfplumber_{name}"
-        results[name] = extract_range(extractor, args.pdf_dir, out_dir,
-                                      args.start, args.end)
-        summarise(name, results[name])
-
-    if len(results) == 2:
-        m, r = results["merged"], results["raw"]
-        tm, tr = sum(x["blocks"] for x in m), sum(x["blocks"] for x in r)
-        print(f"\n=== merged vs raw ===")
-        print(f"  {'sample':<9}{'raw':>7}{'merged':>9}{'reduction':>12}")
-        for a, b in zip(r, m):
-            print(f"  {a['sample']:<9}{a['blocks']:>7}{b['blocks']:>9}"
-                  f"{1 - b['blocks'] / a['blocks']:>11.0%}")
-        print(f"  {'TOTAL':<9}{tr:>7}{tm:>9}{1 - tm / tr:>11.0%}")
+    print("=== pdfplumber ===")
+    extractor = get_extractor("pdfplumber")
+    rows = extract_range(extractor, args.pdf_dir, args.out_dir / "pdfplumber",
+                         args.start, args.end)
+    summarise("pdfplumber", rows)
 
 
 if __name__ == "__main__":
