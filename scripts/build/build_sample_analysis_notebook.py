@@ -181,6 +181,27 @@ cells = [
         "instead of bold.",
     ]),
     *sample_cells(6),
+    md("s6-md-4", [
+        "### Step 4 — What did the models do with the fused blocks?",
+        "",
+        "The blocks left out above are the interesting ones: each holds an underlined",
+        "heading glued to the start of its answer. No single label can be right for them —",
+        "but what did the models actually say?",
+    ]),
+    code("s6-step4", [
+        "fused = [i for i, t in enumerate(truth) if t is None",
+        "         and len(blocks[i]['text'].split()) > 4]",
+        "rows = [{**{m: labeled[m][i].get('label') for m in MODELS},",
+        "         'text': blocks[i]['text']} for i in fused]",
+        "display(pd.DataFrame(rows, index=[f'block {i}' for i in fused]))",
+    ]),
+    md("s6-md-4b", [
+        "**Every model says `section.title`, unanimously.** That is the sensible answer —",
+        "each block really does start with a heading. But the block also contains the",
+        "answer's first line, so the scoring can match it to neither item: the heading item",
+        "is missed *and* the answer loses its opening. The models did the best possible",
+        "thing with the input, and still lose twice.",
+    ]),
     md("s6-conclusion", [
         "### Conclusion for sample 6",
         "",
