@@ -1,7 +1,7 @@
 """Build notebooks/7-error-analysis.ipynb.
 
-The simplest possible telling: what is in the document, what the reader did,
-what each model did, and where the errors came from.
+The same three-step investigation run on two documents that reach opposite
+verdicts: sample 1 (the model's fault) and sample 6 (the reader's fault).
 
     python scripts/build/build_sample_analysis_notebook.py
 """
@@ -11,11 +11,11 @@ from pathlib import Path
 from dmpbridge.core import paths as P
 
 NB = Path("notebooks/7-error-analysis.ipynb")
-SAMPLE, EXTRACTOR = 1, "pdfplumber"
+EXTRACTOR = "pdfplumber"
 MODELS = ["llama3.1:8b", "gemma4:e4b", "llama3.3:70b"]
 
 AVAILABLE = [m for m in MODELS
-             if P.structured_path(P.make_tag(m, EXTRACTOR), SAMPLE).exists()]
+             if P.structured_path(P.make_tag(m, EXTRACTOR), 1).exists()]
 
 
 def md(cid, lines):
@@ -30,16 +30,67 @@ def code(cid, lines):
             "outputs": [], "source": [l + "\n" for l in lines]}
 
 
+def sample_cells(n):
+    """The three investigation steps for one sample. Conclusions are appended
+    separately, since the two documents reach different verdicts."""
+    return [
+        md(f"s{n}-md-1", [
+            f"### Step 1 — Did the reader damage sample {n}?",
+            "",
+            "Every block the reader produced is checked against the annotation: does its",
+            "text belong to **one** real item?",
+        ]),
+        code(f"s{n}-step1", [
+            f"gold, blocks, truth = load({n})",
+            "",
+            "lost = [i for i, t in enumerate(truth) if t is None]",
+            "print(f'the annotation has {len(gold)} items')",
+            "print(f'the reader produced {len(blocks)} blocks')",
+            "print(f'blocks whose text does not fit any single item: {len(lost)}')",
+            "for i in lost:",
+            "    print(f'   block {i:>2}: {blocks[i][\"text\"][:66]!r}')",
+        ]),
+        md(f"s{n}-md-2", [
+            "### Step 2 — How well did each model label the same blocks?",
+        ]),
+        code(f"s{n}-step2", [
+            f"labeled = {{m: load_labels(m, {n}) for m in MODELS}}",
+            "known = sum(1 for t in truth if t)",
+            "acc = pd.DataFrame([",
+            "    {'model': m,",
+            "     'correct': sum(1 for t, b in zip(truth, labeled[m]) if t and b.get('label') == t),",
+            "     'wrong': sum(1 for t, b in zip(truth, labeled[m]) if t and b.get('label') != t),",
+            "     'accuracy': sum(1 for t, b in zip(truth, labeled[m]) if t and b.get('label') == t) / known}",
+            "    for m in MODELS]).set_index('model')",
+            "display(acc.style.background_gradient(cmap='Greens', subset=['accuracy'])",
+            "        .format({'accuracy': '{:.0%}'}))",
+        ]),
+        md(f"s{n}-md-3", [
+            "### Step 3 — The wrong blocks, one by one",
+        ]),
+        code(f"s{n}-step3", [
+            "for m in MODELS:",
+            "    bad = [{'true label': t, 'model said': b.get('label'), 'text': b['text']}",
+            "           for t, b in zip(truth, labeled[m]) if t and b.get('label') != t]",
+            "    print(f'{m}: {len(bad)} wrong')",
+            "    if bad:",
+            "        display(pd.DataFrame(bad))",
+            "    print()",
+        ]),
+    ]
+
+
 cells = [
     md("title", [
-        f"# Sample {SAMPLE} — where do the errors come from?",
+        "# Where do the errors come from?",
         "",
         "Two suspects:",
         "",
         "1. **the reader** (pdfplumber) — did it damage the document?",
         "2. **the models** — did they label it wrong?",
         "",
-        "Three steps, one verdict.",
+        "The same three-step check is run on two documents — and they reach **opposite",
+        "verdicts**.",
     ]),
 
     code("setup", [
@@ -58,95 +109,44 @@ cells = [
         "    containment, extract_gold, resolve_old_gt_path, tokenize,",
         ")",
         "",
-        f"SAMPLE, EXTRACTOR = {SAMPLE}, {EXTRACTOR!r}",
+        f"EXTRACTOR = {EXTRACTOR!r}",
         f"MODELS = {AVAILABLE!r}",
         "pd.set_option('display.max_colwidth', 80)",
         "",
-        "# The human annotation: the correct answer for this document.",
-        "gold = extract_gold(resolve_old_gt_path(SAMPLE))",
-        "# What pdfplumber read from the PDF.",
-        "blocks = json.loads((P.EXTRACTED_DIR / EXTRACTOR / f'sample{SAMPLE}.json')",
-        "                    .read_text(encoding='utf-8'))",
-        "# What each model labeled — the same blocks, one label per block.",
-        "labeled = {m: json.loads(P.labeled_path(P.make_tag(m, EXTRACTOR), SAMPLE)",
-        "                         .read_text(encoding='utf-8')) for m in MODELS}",
+        "",
+        "def load(n):",
+        "    \"\"\"Annotation, reader blocks, and each block's true label for sample n.",
+        "",
+        "    A block's true label is the label of the annotation item its text belongs",
+        "    to. A block that does not fit any single item gets None — that only",
+        "    happens when one block spans two items at once.",
+        "    \"\"\"",
+        "    gold = extract_gold(resolve_old_gt_path(n))",
+        "    blocks = json.loads((P.EXTRACTED_DIR / EXTRACTOR / f'sample{n}.json')",
+        "                        .read_text(encoding='utf-8'))",
+        "    truth = []",
+        "    for b in blocks:",
+        "        bt = tokenize(b['text'])",
+        "        best, lab = 0.0, None",
+        "        for gt, gl in gold:",
+        "            c = containment(bt, tokenize(gt))",
+        "            if c > best:",
+        "                best, lab = c, gl",
+        "        truth.append(lab if best >= 0.75 else None)",
+        "    return gold, blocks, truth",
+        "",
+        "",
+        "def load_labels(model, n):",
+        "    \"\"\"The same blocks after one model labeled them.\"\"\"",
+        "    return json.loads(P.labeled_path(P.make_tag(model, EXTRACTOR), n)",
+        "                      .read_text(encoding='utf-8'))",
     ]),
 
-    # ── 1 ───────────────────────────────────────────────────────────────
-    md("md-1", [
-        "## Step 1 — Did the reader damage the document?",
-        "",
-        "The human annotation says what is really in this document. We check every block the",
-        "reader produced: does its text belong to something in the annotation?",
-    ]),
-    code("step1", [
-        "# For each block, find the annotation item its text belongs to.",
-        "truth = []",
-        "for b in blocks:",
-        "    bt = tokenize(b['text'])",
-        "    best, lab = 0.0, None",
-        "    for gt, gl in gold:",
-        "        c = containment(bt, tokenize(gt))",
-        "        if c > best:",
-        "            best, lab = c, gl",
-        "    truth.append(lab if best >= 0.75 else None)",
-        "",
-        "lost = sum(1 for t in truth if t is None)",
-        "print(f'the annotation has {len(gold)} items')",
-        "print(f'the reader produced {len(blocks)} blocks')",
-        "print(f'blocks with text that is NOT in the annotation: {lost}')",
-    ]),
-    md("md-1b", [
-        "**Verdict on the reader: innocent.** Every block is real text from the document.",
-        "Nothing was lost, nothing was made up.",
-        "",
-        "The reader did one thing worth knowing: it reads **line by line**, so a long answer",
-        "arrives as several blocks instead of one. That is why there are 78 blocks for only",
-        "28 items. Splitting is not an error by itself — the pipeline glues neighbouring",
-        "blocks back together when they carry the same label.",
-    ]),
-
-    # ── 2 ───────────────────────────────────────────────────────────────
-    md("md-2", [
-        "## Step 2 — How well did each model label the same blocks?",
-        "",
-        "Every model received the identical blocks. Each block's correct label is known",
-        "(from the annotation). So this table is a pure test of the models:",
-    ]),
-    code("step2", [
-        "known = sum(1 for t in truth if t)",
-        "rows = []",
-        "for m in MODELS:",
-        "    ok = sum(1 for t, b in zip(truth, labeled[m]) if t and b.get('label') == t)",
-        "    rows.append({'model': m, 'blocks': known, 'correct': ok,",
-        "                 'wrong': known - ok, 'accuracy': ok / known})",
-        "acc = pd.DataFrame(rows).set_index('model')",
-        "display(acc.style.background_gradient(cmap='Greens', subset=['accuracy'])",
-        "        .format({'accuracy': '{:.0%}'}))",
-    ]),
-    md("md-2b", [
-        "One model labels **every block correctly** — from exactly the same input the others",
-        "got. That settles it: the input was good enough to score 100%. Any error below is",
-        "the model's.",
-    ]),
-
-    # ── 3 ───────────────────────────────────────────────────────────────
-    md("md-3", [
-        "## Step 3 — The wrong blocks, one by one",
-    ]),
-    code("step3", [
-        "for m in MODELS:",
-        "    bad = [{'true label': t, 'model said': b.get('label'), 'text': b['text']}",
-        "           for t, b in zip(truth, labeled[m]) if t and b.get('label') != t]",
-        "    print(f'{m}: {len(bad)} wrong')",
-        "    if bad:",
-        "        display(pd.DataFrame(bad))",
-        "    print()",
-    ]),
-
-    # ── conclusion ──────────────────────────────────────────────────────
-    md("conclusion", [
-        "## Conclusion",
+    # ── sample 1 ────────────────────────────────────────────────────────
+    md("s1-head", ["## Sample 1"]),
+    *sample_cells(1),
+    md("s1-conclusion", [
+        "### Conclusion for sample 1",
         "",
         "**The errors come from the model, not from pdfplumber.**",
         "",
@@ -161,17 +161,50 @@ cells = [
         "  heading, and llama3.1 calls it one. pdfplumber played no part: it handed these",
         "  lines over in one piece.",
         "- **3 are slips on leftover pieces of split answers**, like `about other studies.` —",
-        "  the tail of a wrapped sentence. Here pdfplumber created the *difficulty* (a",
-        "  fragment that is unreadable alone), but the model committed the *error*: it judged",
-        "  the fragment in isolation instead of following the blocks around it. gemma4, given",
-        "  the same fragment, kept the label of the sentence it belongs to.",
+        "  the tail of a wrapped sentence. pdfplumber created the *difficulty* (a fragment",
+        "  that is unreadable alone), but the model committed the *error*: it judged the",
+        "  fragment in isolation instead of following the blocks around it. gemma4, given the",
+        "  same fragment, kept the label of the sentence it belongs to.",
         "",
         "Like a hard exam question: the exam made it hard, the student got it wrong — and",
         "another student answered it correctly.",
+    ]),
+
+    # ── sample 6 ────────────────────────────────────────────────────────
+    md("s6-head", [
+        "## Sample 6 — the opposite case",
         "",
-        "*(One caution: this verdict is for this document. Sample 6 is different — its",
-        "headings are underlined, pdfplumber cannot see underlines, and there the reader",
-        "genuinely is at fault.)*",
+        "Same check, different document. This one's section headings are **underlined**",
+        "instead of bold.",
+    ]),
+    *sample_cells(6),
+    md("s6-conclusion", [
+        "### Conclusion for sample 6",
+        "",
+        "**Here the reader is at fault — and no model can fix it.**",
+        "",
+        "Step 1 already shows the damage: blocks like",
+        "",
+        "> `2. Data and metadata standards. The PI's research group will adopt the…`",
+        "",
+        "hold a **heading and its answer glued into one block**. The annotation has them as",
+        "two separate items, but an underline in a PDF is a drawn line, not a font property —",
+        "pdfplumber cannot see it, so it never splits the heading off. One block can carry",
+        "only one label, so whichever the model picks, the other item is lost.",
+        "",
+        "Step 2 confirms it: **every model struggles here, including the one that was perfect",
+        "on sample 1.** When all models fail on the same blocks from the same input, the",
+        "problem sits before the models.",
+        "",
+        "### The overall lesson",
+        "",
+        "| document | who is at fault | how you can tell |",
+        "|---|---|---|",
+        "| sample 1 | the model | one model scored 100% from the same input |",
+        "| sample 6 | the reader | every model fails on the same fused blocks |",
+        "",
+        "The test is always the same: **if any model can solve the input perfectly, errors",
+        "belong to the models; if no model can, the input itself is broken.**",
     ]),
 ]
 
