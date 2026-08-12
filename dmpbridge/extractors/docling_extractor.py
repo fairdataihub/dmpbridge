@@ -5,31 +5,7 @@ markdown string, so each block keeps real page/bbox provenance *and* carries
 markdown heading/list syntax (``#``/``##``/``- ``) directly in its text — a
 stronger signal to the labeling model than a bare boolean flag.
 
-Heading detection is Docling's layout model alone (``TITLE`` /
-``SECTION_HEADER`` labels) — no lexical pattern-matching layered on top. An
-earlier version added regex rules to split "run-in" headings (a heading
-bolded but typed on the same line as its paragraph, e.g. "1. Types of data.
-The bulk of the data generated..."), which Docling's layout model emits as a
-single TEXT item. Those rules worked and were checked for false positives,
-but only against this project's fixed 10-document corpus — the same data
-they were designed against, not an independent test of whether they
-generalize to a DMP nobody has looked at yet. Removed rather than kept on
-the strength of "passed the checks I could run": a rule tuned and validated
-on the same small set it will also be applied to is not evidence it holds up
-elsewhere. If that gap needs closing again, it should be with an independent
-document to test against, not more pattern-tuning on these 10.
 
-The practical effect: a heading typed on the same line as its own paragraph
-stays one block, one label. Documents where that happens (known here: sample
-6, and part of sample 2) will still get a lower score than documents without
-that layout — a real, disclosed limitation of the source PDF, not something
-this extractor works around anymore.
-
-Every block carries a ``section`` field — the most recent heading Docling
-itself detected — so blocks can be grouped by section without collapsing
-them into one large per-section block. Coarser, section-level chunking was
-considered and rejected: this pipeline labels one block at a time, and a
-block spanning two DMP fields (e.g. a description and the answer that
 follows it) cannot be given two labels.
 
 Install:

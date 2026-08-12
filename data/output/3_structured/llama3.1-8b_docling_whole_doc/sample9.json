@@ -8,23 +8,9 @@
       "section": [
         {
           "title": "## Products of Research",
-          "description": "",
+          "description": "Battery material samples will be synthesized in powder form and identified through a consistent and systematic labeling procedure, which will include sample composition, name of researcher and date. Experimental data generated over the course of the research will include synthesis procedures and results from characterization of battery electrode samples. Digital characterization data in tabular form will be produced by electrochemical testing, X-ray diffraction, solid-state NMR spectroscopy, EPR spectroscopy, magnetometry, impedance spectroscopy, X-ray photoelectron and absorption spectroscopy, and Mossbauer spectroscopy measurements. Rietveld refinements of scattering data work and optimization of NMR experimental procedures will be documented in lab notebooks and generate physical data. The Van der Ven group's CASM software will be extended to enable the simulation of finite temperature NMR spectra of paramagnetic materials. First principles and Monte Carlo simulations will produce text files, density of states plots and two-dimensional charge density maps. Educational and outreach materials, and assessment results, will be digitized.",
           "order": 1,
-          "question": [
-            {
-              "text": "",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "Battery material samples will be synthesized in powder form and identified through a consistent and systematic labeling procedure, which will include sample composition, name of researcher and date. Experimental data generated over the course of the research will include synthesis procedures and results from characterization of battery electrode samples. Digital characterization data in tabular form will be produced by electrochemical testing, X-ray diffraction, solid-state NMR spectroscopy, EPR spectroscopy, magnetometry, impedance spectroscopy, X-ray photoelectron and absorption spectroscopy, and Mossbauer spectroscopy measurements. Rietveld refinements of scattering data work and optimization of NMR experimental procedures will be documented in lab notebooks and generate physical data. The Van der Ven group's CASM software will be extended to enable the simulation of finite temperature NMR spectra of paramagnetic materials. First principles and Monte Carlo simulations will produce text files, density of states plots and two-dimensional charge density maps. Educational and outreach materials, and assessment results, will be digitized.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
+          "question": []
         },
         {
           "title": "## Data FormatStandards",
