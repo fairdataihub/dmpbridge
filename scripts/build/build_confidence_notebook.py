@@ -1,13 +1,17 @@
-"""Build notebooks/8-confidence-analysis.ipynb.
+"""Build notebooks/5-confidence-analysis.ipynb.
 
 Four steps, one table, one example per case, one chart.
 
     python scripts/build/build_confidence_notebook.py
+
+The notebook was numbered 8 until 2026-08-12. If it is renumbered again, change
+NB below — otherwise a rebuild silently recreates the old filename and leaves
+the notebook you are reading untouched.
 """
 import json
 from pathlib import Path
 
-NB = Path("notebooks/8-confidence-analysis.ipynb")
+NB = Path("notebooks/5-confidence-analysis.ipynb")
 
 
 def md(cid, lines):
