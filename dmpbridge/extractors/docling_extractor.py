@@ -1,12 +1,8 @@
-"""Docling-backed extractor — section-aware, OCR, markdown-structured.
+"""Docling-backed extractor — ML layout analysis for PDF understanding.
 
-Walks Docling's own item tree (``iterate_items()``) rather than its flattened
-markdown string, so each block keeps real page/bbox provenance *and* carries
-markdown heading/list syntax (``#``/``##``/``- ``) directly in its text — a
-stronger signal to the labeling model than a bare boolean flag.
-
-
-follows it) cannot be given two labels.
+Docling (https://github.com/DS4SD/docling) uses deep-learning layout models
+to identify headings, paragraphs, tables, lists, and captions — giving
+richer structure than rule-based pdfplumber extraction.
 
 Install:
     pip install dmpbridge[docling]
@@ -17,18 +13,18 @@ from pathlib import Path
 
 from .base import BaseExtractor
 
-_SKIP_LABELS = {"page_header", "page_footer"}
-_HEADING_LABELS = {"title", "section_header"}
-_HEADING_HASHES = {"title": "#", "section_header": "##"}
+# DocItemLabel values that we treat as visually bold / heading blocks.
+_HEADING_LABEL_NAMES = {"title", "section_header", "page_header"}
 
 
 class DoclingExtractor(BaseExtractor):
-    """Convert a PDF to blocks using Docling's own layout model, OCR, and
-    its table structure recognition — no lexical rules on top.
+    """Convert a PDF to blocks using Docling's DocumentConverter.
 
-    OCR runs on every page (``force_full_page_ocr=True``) rather than only on
-    pages without a text layer — treated as a robustness setting to test
-    deliberately, not a scanned-page fallback.
+    The Docling document is flattened to the same block schema used by
+    pdfplumber so that the downstream WholedocStrategy is unaffected.
+
+    Bold detection is derived from the item label (TITLE / SECTION_HEADER)
+    rather than font inspection, which is unavailable after ML extraction.
     """
 
     def __init__(self) -> None:
@@ -39,7 +35,6 @@ class DoclingExtractor(BaseExtractor):
                 PdfPipelineOptions,
                 AcceleratorOptions,
                 AcceleratorDevice,
-                OcrAutoOptions,
             )
         except ImportError as exc:
             raise ImportError(
@@ -51,13 +46,10 @@ class DoclingExtractor(BaseExtractor):
         logging.getLogger("docling").setLevel(logging.WARNING)
 
         pipeline_options = PdfPipelineOptions(
-            do_ocr=True,
-            ocr_options=OcrAutoOptions(force_full_page_ocr=True),
-            do_table_structure=True,
             accelerator_options=AcceleratorOptions(
-                device=AcceleratorDevice.AUTO,
+                device=AcceleratorDevice.CUDA,
                 num_threads=4,
-            ),
+            )
         )
         self._converter = DocumentConverter(
             format_options={
@@ -74,56 +66,37 @@ class DoclingExtractor(BaseExtractor):
     # ── Internal ──────────────────────────────────────────────────────────────
 
     def _document_to_blocks(self, doc) -> list[dict]:
-        from docling_core.types.doc.document import TableItem
-
         blocks: list[dict] = []
-        section = "(preamble)"
 
         for item, _level in doc.iterate_items():
-            label = getattr(getattr(item, "label", None), "name", "").lower()
-            if label in _SKIP_LABELS:
+            text = getattr(item, "text", None)
+            if not text or not text.strip():
                 continue
 
-            if isinstance(item, TableItem):
-                text = item.export_to_markdown(doc=doc).strip()
-                if not text:
-                    continue
-                self._append(blocks, item, text, is_heading=False, section=section)
-                continue
+            prov = item.prov[0] if getattr(item, "prov", None) else None
+            page_no = prov.page_no if prov else 1
+            bbox    = prov.bbox   if prov else None
 
-            text = (getattr(item, "text", "") or "").strip()
-            if not text:
-                continue
+            label_name = (
+                item.label.name.lower()
+                if hasattr(getattr(item, "label", None), "name")
+                else ""
+            )
+            is_heading = label_name in _HEADING_LABEL_NAMES
 
-            if label in _HEADING_LABELS:
-                section = text
-                hashes = _HEADING_HASHES.get(label, "##")
-                self._append(blocks, item, f"{hashes} {text}", is_heading=True,
-                             section=section)
-                continue
-
-            prefix = "- " if label == "list_item" else ""
-            self._append(blocks, item, f"{prefix}{text}", is_heading=False,
-                         section=section)
+            blocks.append({
+                "page":          page_no,
+                "line_order":    len(blocks),
+                "text":          text.strip(),
+                "x0":            float(bbox.l) if bbox else None,
+                "top":           float(bbox.t) if bbox else None,
+                "x1":            float(bbox.r) if bbox else None,
+                "bottom":        float(bbox.b) if bbox else None,
+                "avg_font_size": None,
+                "font_names":    [],
+                "is_bold":       is_heading,
+                "is_italic":     False,
+                "label":         None,
+            })
 
         return blocks
-
-    @staticmethod
-    def _append(blocks: list[dict], item, text: str, *, is_heading: bool,
-                section: str | None = None) -> None:
-        prov = item.prov[0] if getattr(item, "prov", None) else None
-        bbox = prov.bbox if prov else None
-        blocks.append({
-            "page":          prov.page_no if prov else 1,
-            "line_order":    len(blocks),
-            "text":          text,
-            "section":       section,
-            "x0":            float(bbox.l) if bbox else None,
-            "top":           float(bbox.t) if bbox else None,
-            "x1":            float(bbox.r) if bbox else None,
-            "bottom":        float(bbox.b) if bbox else None,
-            "avg_font_size": None,
-            "font_names":    [],
-            "is_bold":       is_heading,
-            "is_italic":     False,
-        })
