@@ -8,10 +8,19 @@ Models that have not been run are skipped, so this is safe to build mid-sweep.
 
     python scripts/build/build_comparison_notebook.py
 """
+import argparse
 import json
 from pathlib import Path
 
-NB = Path("notebooks/6-model-comparison-pdfplumber.ipynb")
+ap = argparse.ArgumentParser(description=__doc__)
+ap.add_argument("--threshold", type=float, default=None,
+                help="containment required for a match (default: the project's 0.75)")
+ap.add_argument("--out", type=Path,
+                default=Path("notebooks/6-model-comparison-pdfplumber.ipynb"))
+args = ap.parse_args()
+
+NB = args.out
+THRESHOLD = args.threshold
 
 
 def md(cid, lines):
@@ -35,7 +44,13 @@ cells = [
         "",
         "Because stage 1 is cached per extractor, every model here received **identical",
         "blocks** — so any difference below is the model.",
-    ]),
+    ] + ([] if THRESHOLD is None else [
+        "",
+        f"> **Scored at {THRESHOLD:.0%} overlap.** A predicted item counts as matching a",
+        "> reference item only when **every one of its words** appears in that reference",
+        "> item — no partial credit. The project default is 75%, so these figures are",
+        "> stricter than the ones in the other notebooks and are not comparable with them.",
+    ])),
 
     code("setup", [
         "import os",
@@ -58,6 +73,7 @@ cells = [
         ")",
         "",
         "MODELS, EXTRACTOR, SAMPLES = ['llama3.1:8b', 'gemma4:e4b', 'llama3.3:70b'], 'pdfplumber', range(1, 11)",
+        f"THRESHOLD = {THRESHOLD!r}   # None = the project default (0.75)",
         "",
         "# Reference categorical palette, slots 1-3 — one hue per model, held",
         "# constant in every chart below.",
@@ -80,8 +96,8 @@ cells = [
         "        print('not yet run, skipped:', m)",
         "        continue",
         "    available.append(m)",
-        "    CONF[m] = {'A': load_method(tag, exclude=[])[1],",
-        "               'B': load_method_new(tag, exclude=[])[1]}",
+        f"    CONF[m] = {{'A': load_method(tag, exclude=[], threshold=THRESHOLD)[1],",
+        f"               'B': load_method_new(tag, exclude=[], threshold=THRESHOLD)[1]}}",
         "",
         "COLOUR = dict(zip(available, COLOURS))",
         "print('comparing:', ', '.join(available))",
@@ -400,7 +416,8 @@ cells = [
         "    cbar.set_ticklabels(['0%', '25%', '50%', '75%', '100%'])",
         "    fig.suptitle(f'{PATH_NAMES[path]}  ·  % of each true class',",
         "                 fontweight='bold', y=1.00)",
-        "    out = Path(f'Report-doc/confusion_path{path}_pdfplumber.png')",
+        f"    suffix = '' if THRESHOLD is None else f'_{int(THRESHOLD * 100)}pct'",
+        "    out = Path(f'Report-doc/confusion_path{path}_pdfplumber{suffix}.png')",
         "    out.parent.mkdir(parents=True, exist_ok=True)",
         "    fig.savefig(out, dpi=200, bbox_inches='tight', facecolor=SURFACE)",
         "    print(f'saved -> {out}')",

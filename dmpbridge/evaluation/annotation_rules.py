@@ -190,7 +190,8 @@ def convert_tag_to_final(tag: str) -> int:
 
 # ── Step 2: evaluate final JSON against the new-version ground truth ────────
 
-def load_method_new(tag: str, exclude: list[int] | None = None):
+def load_method_new(tag: str, exclude: list[int] | None = None,
+                    threshold: float | None = None):
     """Evaluate every final-JSON sample for *tag* against the new-version ground truth.
 
     Mirrors ``evaluate.load_method()``, but reads FINAL_DIR predictions and
@@ -225,7 +226,8 @@ def load_method_new(tag: str, exclude: list[int] | None = None):
         # from its section title, so the default would discard the very items this
         # path exists to score. See extract_gold's docstring.
         gold             = extract_gold(resolve_new_gt_path(n), dedup_question_title=False)
-        records, no_gold = _match_structured(f, gold, dedup_question_title=False)
+        records, no_gold = _match_structured(f, gold, dedup_question_title=False,
+                                             threshold=threshold)
         conf             = _confusion_from_match(records, no_gold)
         add_confusion(conf_all, conf)
 

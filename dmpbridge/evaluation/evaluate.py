@@ -50,6 +50,13 @@ def tokenize(text: str) -> set[str]:
     return set(re.sub(r"[^a-z0-9]", " ", text.lower()).split())
 
 
+# How much of a predicted item's text must sit inside a reference item for the
+# two to be considered the same thing. 0.75 is the project default; the value is
+# a parameter so a run can be re-scored at a different strictness without
+# touching any other code.
+CONTAINMENT_THRESHOLD = 0.75
+
+
 def containment(block_tokens: set, gold_tokens: set) -> float:
     """Fraction of block tokens that appear in the gold text."""
     if not block_tokens:
@@ -115,8 +122,9 @@ def extract_gold(path: Path, *, dedup_question_title: bool = True) -> list[tuple
 
 # ── Match a block to the best gold label ──────────────────────────────────────
 
-def match(block_text: str, gold_pairs: list[tuple[str, str]]) -> str | None:
-    """Return the gold label for this block, or None if containment < 0.75."""
+def match(block_text: str, gold_pairs: list[tuple[str, str]],
+          threshold: float | None = None) -> str | None:
+    """Return the gold label for this block, or None below *threshold*."""
     btok = tokenize(block_text)
     if not btok:
         return None
@@ -125,7 +133,8 @@ def match(block_text: str, gold_pairs: list[tuple[str, str]]) -> str | None:
         score = containment(btok, tokenize(gold_text))
         if score > best_score:
             best_score, best_label = score, gold_label
-    return best_label if best_score >= 0.75 else None
+    thr = CONTAINMENT_THRESHOLD if threshold is None else threshold
+    return best_label if best_score >= thr else None
 
 
 # ── Evaluate one sample ───────────────────────────────────────────────────────
@@ -135,10 +144,12 @@ def _match_structured(
     gold_pairs: list[tuple[str, str]],
     *,
     dedup_question_title: bool = True,
+    threshold: float | None = None,
 ) -> tuple[list[dict], list[tuple[str, str]]]:
     """Greedy gold-oriented matching between predicted and gold structured items.
 
-    Each gold item claims the best unused predicted item (containment >= 0.75);
+    Each gold item claims the best unused predicted item (containment >=
+    *threshold*, default CONTAINMENT_THRESHOLD);
     once claimed, a predicted item cannot be reused for another gold item. This
     is the single source of truth for matching — every other function that
     reports matches, mismatches, or misses derives from it, so the confusion
@@ -155,6 +166,7 @@ def _match_structured(
     """
     # The prediction is parsed the same way as the gold, so both sides of the
     # comparison must use the same dedup setting or they measure different things.
+    thr = CONTAINMENT_THRESHOLD if threshold is None else threshold
     pred_pairs = extract_gold(pred_structured_path,
                               dedup_question_title=dedup_question_title)
     used: set[int] = set()
@@ -169,7 +181,7 @@ def _match_structured(
             s = containment(tokenize(pred_text), g_tok)
             if s > best_s:
                 best_s, best_j, best_pl, best_pt = s, j, pred_label, pred_text
-        if best_j is not None and best_s >= 0.75:
+        if best_j is not None and best_s >= thr:
             used.add(best_j)
             records.append({
                 "gold_text": gold_text, "gold_label": gold_label,
@@ -206,7 +218,7 @@ def evaluate_structured_sample(pred_structured_path: Path, gold_pairs: list[tupl
     """Evaluate a structured DMP JSON prediction against gold pairs.
 
     Gold-oriented matching: each gold item is matched to the best unused
-    predicted item (containment >= 0.75). Unmatched predicted items are
+    predicted item (containment >= CONTAINMENT_THRESHOLD). Unmatched items are
     counted as false positives under the key '__no_gold__' so precision
     is penalised for spurious labels the model invented.
     """
@@ -371,7 +383,8 @@ def confusion_matrix_df(confusion: dict):
     return pd.DataFrame(data, index=SHORT, columns=cols)
 
 
-def load_method(tag: str, exclude: list[int] | None = None):
+def load_method(tag: str, exclude: list[int] | None = None,
+                threshold: float | None = None):
     """Load and evaluate all samples for a given file tag.
 
     Uses stage 3 ``sampleN.json`` (DMP template format) as the prediction
@@ -415,7 +428,7 @@ def load_method(tag: str, exclude: list[int] | None = None):
             logger.warning("SKIP %s — no %s", stem, pp.name)
             continue
         gold             = extract_gold(mp)
-        records, no_gold = _match_structured(pp, gold)
+        records, no_gold = _match_structured(pp, gold, threshold=threshold)
         conf             = _confusion_from_match(records, no_gold)
         add_confusion(conf_all, conf)
 
