@@ -353,7 +353,7 @@ cells = [
         "of 4 is trivial in one row and half the class in another. As percentages every row",
         "reads on the same scale, and **the diagonal cell is that class's recall**.",
         "",
-        "**The last column, `(not produced)`, is annotation items the model produced nothing",
+        "**The last column, `(not labeled)`, is annotation items the model produced nothing",
         "for at all** — no predicted item matched them. It is separated by a rule because it",
         "is not a label the model chose; it is the absence of one. With it included every row",
         "sums to 100%.",
@@ -368,7 +368,7 @@ cells = [
     code("matrix", [
         "# The five labels, plus one extra column for annotation items the model",
         "# produced nothing for. Without that column the rows do not add up to 100%.",
-        "COLS = list(LABELS) + ['(not produced)']",
+        "COLS = list(LABELS) + ['(not labeled)']",
         "KEYS = list(LABELS) + ['__missed__']",
         "",
         "",
@@ -539,7 +539,7 @@ cells = [
 
     # ── 4 ───────────────────────────────────────────────────────────────
     md("md-4", [
-        "## 4. The missing items — what is in the `(not produced)` column",
+        "## 4. The missing items — what is in the `(not labeled)` column",
         "",
         "The last column of every matrix is a percentage. This section opens it up: **which**",
         "annotation items got nothing, not just how many.",
@@ -581,11 +581,11 @@ cells = [
         "            n_missing = int((miss['label'] == lab).sum()) if len(miss) else 0",
         "            if total:",
         "                summary.append({'model': m, 'path': path, 'label': lab,",
-        "                                'not produced': n_missing, 'of total': total,",
+        "                                'not labeled': n_missing, 'of total': total,",
         "                                '%': n_missing / total})",
         "",
         "summary = pd.DataFrame(summary)",
-        "display(summary[summary['not produced'] > 0]",
+        "display(summary[summary['not labeled'] > 0]",
         "        .pivot_table(index=['model', 'path'], columns='label', values='%')",
         "        .style.format('{:.0%}', na_rep='—')",
         "        .background_gradient(cmap='Reds', vmin=0, vmax=1))",
@@ -596,7 +596,7 @@ cells = [
         "Checked directly against the raw confusion counts, not assumed.",
     ]),
     code("verify-100", [
-        "print('row = (each predicted label) + (not produced), as a share of the row total\\n')",
+        "print('row = (each predicted label) + (not labeled), as a share of the row total\\n')",
         "all_ok = True",
         "for m in available:",
         "    for path in ('A', 'B'):",
@@ -618,7 +618,7 @@ cells = [
     md("md-4a2", [
         "### 4b. Which sample each missing item comes from",
         "",
-        "The `(not produced)` share is not spread evenly across the 10 documents — most of it",
+        "The `(not labeled)` share is not spread evenly across the 10 documents — most of it",
         "comes from one or two. Pooling every model together, by sample:",
     ]),
     code("by-sample", [
@@ -638,17 +638,17 @@ cells = [
     ]),
     md("md-4a3", [
         "**It is not spread across the corpus — it is two documents.** Samples 2 and 6 alone",
-        "hold the large majority of every model's `(not produced)` items. Every model loses its",
+        "hold the large majority of every model's `(not labeled)` items. Every model loses its",
         "`section.title` items in sample 6 specifically (the underlined-heading problem, walked",
         "through below); sample 2's bold run-in headings and long answers cause the rest.",
         "",
         "The other eight documents contribute almost nothing to this column — so the",
-        "`(not produced)` percentage in the matrix is not a diffuse property of the model, it is",
+        "`(not labeled)` percentage in the matrix is not a diffuse property of the model, it is",
         "concentrated in the two documents whose headings the extractor cannot separate from",
         "their answers.",
     ]),
     md("md-4b", [
-        "Every figure above is the `(not produced)` cell of the matching matrix cell, so the",
+        "Every figure above is the `(not labeled)` cell of the matching matrix cell, so the",
         "two agree by construction. Now the items themselves:",
     ]),
     code("missing-list", [
@@ -700,7 +700,7 @@ cells = [
         "for s, pt, pl in scored[:3]:",
         "    print(f'    {s:5.0%}  [{pl:<19}] {pt[:52]}')",
         "print(f'\\n    best is {scored[0][0]:.0%}, the threshold is {thr:.0%}'",
-        "      ' -> nothing claims it -> (not produced)')",
+        "      ' -> nothing claims it -> (not labeled)')",
     ]),
     md("md-4e", [
         "The heading's words are not missing from the document — so where did they go?",
@@ -732,7 +732,7 @@ cells = [
         "- scored against the **answer**, nearly all of its words are inside — so it claims that.",
         "",
         "One block, two annotation items, one label. The answer is matched and the heading is",
-        "counted as not produced. No label the model could have chosen would avoid this, which",
+        "counted as not labeled. No label the model could have chosen would avoid this, which",
         "is why sample 6 is scored as the extractor's failure rather than the model's.",
     ]),
 ]
