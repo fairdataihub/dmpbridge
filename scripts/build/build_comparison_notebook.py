@@ -416,7 +416,7 @@ cells = [
         "    cbar.set_ticklabels(['0%', '25%', '50%', '75%', '100%'])",
         "    fig.suptitle(f'{PATH_NAMES[path]}  ·  % of each true class',",
         "                 fontweight='bold', y=1.00)",
-        f"    suffix = '' if THRESHOLD is None else f'_{int(THRESHOLD * 100)}pct'",
+        "    suffix = '' if THRESHOLD is None else f'_{int(THRESHOLD * 100)}pct'",
         "    out = Path(f'Report-doc/confusion_path{path}_pdfplumber{suffix}.png')",
         "    out.parent.mkdir(parents=True, exist_ok=True)",
         "    fig.savefig(out, dpi=200, bbox_inches='tight', facecolor=SURFACE)",
