@@ -148,13 +148,12 @@ cells = [
         "     'lines in': sum(len(v) for v in raw[m].values()),",
         "     'items out': sum(len(v) for v in items[m].values())}",
         "    for m in MODELS]).set_index('model')",
-        "shrink['lines per item'] = shrink['lines in'] / shrink['items out']",
-        "display(shrink.style.format({'lines per item': '{:.1f}'}))",
+        "display(shrink)",
     ]),
     md("md-2b", [
         "A model that keeps the same label through a paragraph produces **few, long** items.",
-        "One that changes its mind mid-paragraph leaves the paragraph in pieces — more items,",
-        "shorter ones. That shows up directly in the `lines per item` column.",
+        "One that changes its mind mid-paragraph leaves the paragraph in pieces — many more",
+        "items, from the very same lines.",
     ]),
 
     # ── 3 ───────────────────────────────────────────────────────────────
