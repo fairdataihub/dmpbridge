@@ -1,30 +1,41 @@
-"""Docling-backed extractor — ML layout analysis for PDF understanding.
+"""Docling-backed extractor — OCR + markdown-structured PDF understanding.
 
-Docling (https://github.com/DS4SD/docling) uses deep-learning layout models
-to identify headings, paragraphs, tables, lists, and captions — giving
-richer structure than rule-based pdfplumber extraction.
+Docling (https://github.com/DS4SD/docling) runs full-page OCR and a
+deep-learning layout model, then exports each page as markdown: headings
+carry ``#``/``##`` prefixes, list items carry ``- ``. Those markers are kept
+verbatim in block text — a stronger, human-readable heading signal than a
+bare ``is_bold`` flag, visible directly to the labeling model.
 
 Install:
     pip install dmpbridge[docling]
     # or directly:
     pip install docling
 """
+import re
 from pathlib import Path
 
 from .base import BaseExtractor
 
-# DocItemLabel values that we treat as visually bold / heading blocks.
-_HEADING_LABEL_NAMES = {"title", "section_header", "page_header"}
+_HEADING_RE = re.compile(r"^(#{1,6})\s+(.*)$")
+_IMAGE_PLACEHOLDER = "<!-- image -->"
 
 
 class DoclingExtractor(BaseExtractor):
-    """Convert a PDF to blocks using Docling's DocumentConverter.
+    """Convert a PDF to blocks via Docling's markdown export.
 
-    The Docling document is flattened to the same block schema used by
-    pdfplumber so that the downstream WholedocStrategy is unaffected.
+    OCR runs on every page (``force_full_page_ocr=True``) rather than only on
+    pages without a text layer — this project treats OCR as a robustness
+    setting to test deliberately, not a scanned-page fallback.
 
-    Bold detection is derived from the item label (TITLE / SECTION_HEADER)
-    rather than font inspection, which is unavailable after ML extraction.
+    Each page's markdown is split first on blank lines (its paragraph/element
+    boundary), then each resulting piece is split again on single newlines.
+    The second split matters: Docling sometimes serialises a run of list
+    items (e.g. a numbered set of section headings) as one blank-line-
+    delimited chunk with the items joined by single ``\\n`` rather than each
+    getting its own bullet — verified on sample 6, where five numbered
+    headings would otherwise collapse into one block. Plain wrapped prose has
+    no internal single-newline breaks in Docling's export, so the second
+    split does not fragment ordinary paragraphs.
     """
 
     def __init__(self) -> None:
@@ -35,6 +46,7 @@ class DoclingExtractor(BaseExtractor):
                 PdfPipelineOptions,
                 AcceleratorOptions,
                 AcceleratorDevice,
+                OcrAutoOptions,
             )
         except ImportError as exc:
             raise ImportError(
@@ -46,10 +58,12 @@ class DoclingExtractor(BaseExtractor):
         logging.getLogger("docling").setLevel(logging.WARNING)
 
         pipeline_options = PdfPipelineOptions(
+            do_ocr=True,
+            ocr_options=OcrAutoOptions(force_full_page_ocr=True),
             accelerator_options=AcceleratorOptions(
                 device=AcceleratorDevice.AUTO,
                 num_threads=4,
-            )
+            ),
         )
         self._converter = DocumentConverter(
             format_options={
@@ -68,34 +82,35 @@ class DoclingExtractor(BaseExtractor):
     def _document_to_blocks(self, doc) -> list[dict]:
         blocks: list[dict] = []
 
-        for item, _level in doc.iterate_items():
-            text = getattr(item, "text", None)
-            if not text or not text.strip():
-                continue
-
-            prov = item.prov[0] if getattr(item, "prov", None) else None
-            page_no = prov.page_no if prov else 1
-            bbox    = prov.bbox   if prov else None
-
-            label_name = (
-                item.label.name.lower()
-                if hasattr(getattr(item, "label", None), "name")
-                else ""
+        for page_no in sorted(doc.pages.keys()):
+            md = doc.export_to_markdown(
+                page_no=page_no, escape_html=False, escape_underscores=False,
             )
-            is_heading = label_name in _HEADING_LABEL_NAMES
+            for chunk in md.split("\n\n"):
+                for line in chunk.split("\n"):
+                    line = line.strip()
+                    if not line or line == _IMAGE_PLACEHOLDER:
+                        continue
 
-            blocks.append({
-                "page":          page_no,
-                "line_order":    len(blocks),
-                "text":          text.strip(),
-                "x0":            float(bbox.l) if bbox else None,
-                "top":           float(bbox.t) if bbox else None,
-                "x1":            float(bbox.r) if bbox else None,
-                "bottom":        float(bbox.b) if bbox else None,
-                "avg_font_size": None,
-                "font_names":    [],
-                "is_bold":       is_heading,
-                "is_italic":     False,
-            })
+                    # The markdown marker stays in `text` itself — not stripped —
+                    # so the labeling model sees "## Heading" directly rather than
+                    # relying only on the separate `is_bold` field to know it.
+                    heading = _HEADING_RE.match(line)
+                    is_heading = bool(heading)
+                    text = line
+
+                    blocks.append({
+                        "page":          page_no,
+                        "line_order":    len(blocks),
+                        "text":          text,
+                        "x0":            None,
+                        "top":           None,
+                        "x1":            None,
+                        "bottom":        None,
+                        "avg_font_size": None,
+                        "font_names":    [],
+                        "is_bold":       is_heading,
+                        "is_italic":     False,
+                    })
 
         return blocks
