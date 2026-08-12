@@ -51,10 +51,15 @@ def tokenize(text: str) -> set[str]:
 
 
 # How much of a predicted item's text must sit inside a reference item for the
-# two to be considered the same thing. 0.75 is the project default; the value is
-# a parameter so a run can be re-scored at a different strictness without
-# touching any other code.
-CONTAINMENT_THRESHOLD = 0.75
+# two to be considered the same thing.
+#
+# 1.0 = exact containment: EVERY word of the predicted item must appear in the
+# reference item, no partial credit. The project ran at 0.75 until 2026-08-12;
+# anything scored before that date used the looser rule and is not comparable
+# with figures produced now.
+#
+# Callers may still pass threshold=0.75 explicitly to reproduce the old scoring.
+CONTAINMENT_THRESHOLD = 1.0
 
 
 def containment(block_tokens: set, gold_tokens: set) -> float:
