@@ -123,7 +123,7 @@ cells = [
         "                    best, true_label = c, gl",
         "            if best < 0.75:",
         "                continue                 # matches no paragraph — nothing to check",
-        "            rows.append({'model': m, 'sample': n,",
+        "            rows.append({'model': m, 'sample': n, 'lines': it['lines'],",
         "                         'true label': true_label,",
         "                         'model said': it['label'],",
         "                         'confidence': it['confidence'],",
@@ -136,9 +136,51 @@ cells = [
 
     # ── 1 ───────────────────────────────────────────────────────────────
     md("md-1", [
-        "## Step 1 — One item, all three models, complete certainty, all wrong",
+        "## Step 1 — The worst case: review one document",
+        "",
+        "Rather than a summary, take the single document where confidence misleads most —",
+        "the one with the largest number of **wrong items that still claim 0.9 or higher** —",
+        "and look at what actually happened in it.",
     ]),
-    code("step1", [
+    code("step1-pick", [
+        "per_doc = (df[~df['correct']].groupby('sample')",
+        "           .agg(wrong_items=('correct', 'size'),",
+        "                confident_mistakes=('confidence', lambda s: (s >= 0.9).sum()))",
+        "           .sort_values('confident_mistakes', ascending=False))",
+        "WORST = per_doc.index[0]",
+        "display(per_doc.style.background_gradient(cmap='Reds',",
+        "                                          subset=['confident_mistakes']))",
+        "print(f'worst case: sample{WORST}')",
+    ]),
+    md("md-1b", [
+        "### Inside that document",
+        "",
+        "Every wrong item, with the confidence the model attached to it. The `lines` column",
+        "shows how many PDF lines were joined to form the item.",
+    ]),
+    code("step1-review", [
+        "for m in MODELS:",
+        "    bad = (df[(df['sample'] == WORST) & (df['model'] == m) & (~df['correct'])]",
+        "           .sort_values('confidence', ascending=False)",
+        "           [['confidence', 'true label', 'model said', 'lines', 'text']]",
+        "           .reset_index(drop=True))",
+        "    n_ok = ((df['sample'] == WORST) & (df['model'] == m) & df['correct']).sum()",
+        "    print(f'{m} — {n_ok} right, {len(bad)} wrong')",
+        "    if len(bad):",
+        "        display(bad.head(8).style",
+        "                .background_gradient(cmap='Reds', subset=['confidence'],",
+        "                                     vmin=0.5, vmax=1.0)",
+        "                .format({'confidence': '{:.2f}'}))",
+        "    print()",
+    ]),
+    md("md-1c", [
+        "Read the `confidence` column down the page. These are the model's **mistakes**, and",
+        "most of them are claimed with near-total certainty — the same numbers it attaches to",
+        "the items it gets right.",
+        "",
+        "**The single sharpest example in the whole corpus** sits in a different document:",
+    ]),
+    code("step1-single", [
         "# Items every model got wrong, ranked by the lowest confidence any of them gave.",
         "g = (df.groupby(['sample', 'text'])",
         "       .agg(wrong=('correct', lambda s: (~s).sum()), n=('correct', 'size'),",
@@ -162,14 +204,13 @@ cells = [
         "                                   vmin=0.5, vmax=1.0)",
         "        .format({'confidence': '{:.2f}'}))",
     ]),
-    md("md-1b", [
-        "Every model calls it a section heading; the annotation says it is a question — and",
-        "all three are **completely certain**.",
+    md("md-1d", [
+        "All three models call it a section heading; the annotation says it is a question —",
+        "and all three are **completely certain**.",
         "",
-        "What makes this the sharpest possible example: this sentence is written into the",
-        "system prompt **as the example of what a question looks like**. The models were",
-        "shown it with the right label in their instructions, and still got it wrong at full",
-        "confidence.",
+        "This sentence is written into the system prompt **as the example of what a question",
+        "looks like**. The models were shown it with the right label in their instructions,",
+        "and still got it wrong at full confidence.",
     ]),
 
     # ── 2 ───────────────────────────────────────────────────────────────
