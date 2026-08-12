@@ -5,20 +5,29 @@ markdown string, so each block keeps real page/bbox provenance *and* carries
 markdown heading/list syntax (``#``/``##``/``- ``) directly in its text — a
 stronger signal to the labeling model than a bare boolean flag.
 
-Docling's layout model is the primary heading signal (``TITLE`` /
-``SECTION_HEADER`` labels). It is not the only one: DMP section headings are
-often "run-in" — bolded but typed on the same line as the paragraph they
-introduce ("1. Types of data. The bulk of the data generated...", or with no
-number at all: "Roles & Responsibilities. For the proposed research...").
-Docling's layout model emits that as a single TEXT item, so a lexical
-fallback (below) splits it into a heading block and a body block. Both
-regexes were validated against every block already extracted across this
-project's 10 documents, checking for false positives, not assumed correct —
-see ``_NUMBERED_RUN_IN`` and ``_BARE_RUN_IN`` for what was found.
+Heading detection is Docling's layout model alone (``TITLE`` /
+``SECTION_HEADER`` labels) — no lexical pattern-matching layered on top. An
+earlier version added regex rules to split "run-in" headings (a heading
+bolded but typed on the same line as its paragraph, e.g. "1. Types of data.
+The bulk of the data generated..."), which Docling's layout model emits as a
+single TEXT item. Those rules worked and were checked for false positives,
+but only against this project's fixed 10-document corpus — the same data
+they were designed against, not an independent test of whether they
+generalize to a DMP nobody has looked at yet. Removed rather than kept on
+the strength of "passed the checks I could run": a rule tuned and validated
+on the same small set it will also be applied to is not evidence it holds up
+elsewhere. If that gap needs closing again, it should be with an independent
+document to test against, not more pattern-tuning on these 10.
 
-Every block also carries a ``section`` field — the heading text most
-recently seen — so blocks can be grouped by section without collapsing them
-into one large per-section block. Coarser, section-level chunking was
+The practical effect: a heading typed on the same line as its own paragraph
+stays one block, one label. Documents where that happens (known here: sample
+6, and part of sample 2) will still get a lower score than documents without
+that layout — a real, disclosed limitation of the source PDF, not something
+this extractor works around anymore.
+
+Every block carries a ``section`` field — the most recent heading Docling
+itself detected — so blocks can be grouped by section without collapsing
+them into one large per-section block. Coarser, section-level chunking was
 considered and rejected: this pipeline labels one block at a time, and a
 block spanning two DMP fields (e.g. a description and the answer that
 follows it) cannot be given two labels.
@@ -28,7 +37,6 @@ Install:
     # or directly:
     pip install docling
 """
-import re
 from pathlib import Path
 
 from .base import BaseExtractor
@@ -37,66 +45,10 @@ _SKIP_LABELS = {"page_header", "page_footer"}
 _HEADING_LABELS = {"title", "section_header"}
 _HEADING_HASHES = {"title": "#", "section_header": "##"}
 
-# A heading given its own line, with no body run into it — "1. Types of data"
-# or "IV. Roles and Responsibilities" with nothing else on the line.
-_NUMBERED_STANDALONE = re.compile(
-    r"""^\s*(?:\d+(?:\.\d+)*|[IVXLC]+|[A-Z])\s*[.\):]\s+
-        [A-Z(\"'“].{2,110}$""",
-    re.VERBOSE,
-)
-
-# A numbered/lettered heading run into its own body on one line — verified
-# against all 10 documents' extracted output: matches only the 5 genuine
-# fused headings in sample 6 (each "N. Heading. Body..."), zero elsewhere.
-_NUMBERED_RUN_IN = re.compile(
-    r"""^\s*
-    (?P<title>(?:\d+(?:\.\d+)*|[IVXLC]+|[A-Z])\s*[.\):]\s+[A-Z][^.]{2,110}?)
-    \s*[.:]\s+
-    (?P<body>[A-Z"'“(].+)$""",
-    re.VERBOSE | re.DOTALL,
-)
-
-# A bare heading phrase (no number) run into its body — "Roles &
-# Responsibilities. For the proposed research..." Every real DMP heading in
-# this corpus is a Title-Case phrase of 2+ words; requiring that excludes
-# abbreviations like "Prof. Leahey's work..." (a false positive at 1 word,
-# fixed by requiring at least 2). One accepted false-positive risk remains —
-# "Produced Data: Datasets will be..." in sample 5 also matches this
-# pattern and may not be a real heading; splitting it is a safe default
-# since the labeling model still assigns the final label either way.
-_BARE_RUN_IN = re.compile(
-    r"""^\s*
-    (?P<title>[A-Z][\w']*(?:[ \t]+(?:&|and|of|for|in|to|the|or)?[ \t]*
-               [A-Z][\w']*){1,7})
-    \s*[.:]\s+
-    (?P<body>[A-Z"'“(].{20,})$""",
-    re.VERBOSE | re.DOTALL,
-)
-
-# List items are Docling's other run-in-heading source, and need a separate,
-# looser pattern: Docling strips a list item's own "1."/"IV." marker out of
-# ``item.text`` (its markdown renderer re-adds it later), so the number this
-# extractor would otherwise require is simply not there to match on — and
-# these particular headings turn out to be plain sentence case, not Title
-# Case, so `_BARE_RUN_IN` above does not catch them either. The only signal
-# left is structural: Docling already told us this item is an enumerated
-# list entry, which is itself real evidence, so the per-word-capitalisation
-# check is dropped for this pattern alone. Checked against every list item
-# extracted across all 10 documents: matches exactly the 5 genuine fused
-# headings in sample 6 and none of the other 15 (ordinary list entries start
-# lowercase, mid-sentence, or have no second sentence to split off at all).
-_LIST_ITEM_RUN_IN = re.compile(
-    r"""^\s*
-    (?P<title>[A-Z][^.]{2,90}?)
-    \s*[.:]\s+
-    (?P<body>[A-Z"'“(].{20,})$""",
-    re.VERBOSE | re.DOTALL,
-)
-
 
 class DoclingExtractor(BaseExtractor):
-    """Convert a PDF to blocks using Docling's layout model, OCR, and a
-    lexical run-in-heading fallback.
+    """Convert a PDF to blocks using Docling's own layout model, OCR, and
+    its table structure recognition — no lexical rules on top.
 
     OCR runs on every page (``force_full_page_ocr=True``) rather than only on
     pages without a text layer — treated as a robustness setting to test
@@ -160,7 +112,7 @@ class DoclingExtractor(BaseExtractor):
                 text = item.export_to_markdown(doc=doc).strip()
                 if not text:
                     continue
-                self._append(blocks, item, text, is_heading=False)
+                self._append(blocks, item, text, is_heading=False, section=section)
                 continue
 
             text = (getattr(item, "text", "") or "").strip()
@@ -172,28 +124,6 @@ class DoclingExtractor(BaseExtractor):
                 hashes = _HEADING_HASHES.get(label, "##")
                 self._append(blocks, item, f"{hashes} {text}", is_heading=True,
                              section=section)
-                continue
-
-            # Layout model called this body text — check whether it is
-            # really a heading (standalone or run into its own body) before
-            # accepting that.
-            if _NUMBERED_STANDALONE.match(text):
-                section = text
-                self._append(blocks, item, f"## {text}", is_heading=True,
-                             section=section)
-                continue
-
-            if label == "list_item":
-                run_in = _LIST_ITEM_RUN_IN.match(text)
-            else:
-                run_in = _NUMBERED_RUN_IN.match(text) or _BARE_RUN_IN.match(text)
-
-            if run_in:
-                section = run_in.group("title").strip()
-                self._append(blocks, item, f"## {section}", is_heading=True,
-                             section=section)
-                self._append(blocks, item, run_in.group("body").strip(),
-                             is_heading=False, section=section)
                 continue
 
             prefix = "- " if label == "list_item" else ""
