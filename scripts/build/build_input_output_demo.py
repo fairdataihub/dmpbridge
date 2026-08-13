@@ -34,7 +34,13 @@ cells = [
         "look like\".",
     ]),
 
-    md("md-settings", ["## Pick a sample"]),
+    md("md-settings", [
+        "## Pick a sample",
+        "",
+        "`dmpbridge` is installed as a real Python package (`pip install -e .`) —",
+        "importable from any directory, not just this project folder. Everything below",
+        "is imported from it, the same as any other installed library.",
+    ]),
     code("settings", [
         "import os",
         "from pathlib import Path",
@@ -43,6 +49,10 @@ cells = [
         "    os.chdir(Path.cwd().parent)",
         "",
         "import json",
+        "",
+        "import dmpbridge",
+        "print(f'dmpbridge {dmpbridge.__version__}, installed at {Path(dmpbridge.__file__).parent}')",
+        "",
         "from dmpbridge.core import paths as P",
         "",
         "SAMPLE    = 1                  # <- change this to look at a different document",
