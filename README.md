@@ -8,6 +8,11 @@ it will be stored and shared. They arrive as PDFs, which makes them hard to sear
 compare at scale. DMPBridge reads one, works out what each piece of text *is* — a section
 heading, a question, an answer — and outputs structured JSON.
 
+> **This is an active research project — things change often.** Extractors, scoring
+> rules, and notebooks are all still being revised, sometimes day to day. Numbers and file
+> names here are correct as of the last update to this file, not a stable spec.
+> `Report-doc/worklog/` has the day-by-day detail if something here looks out of date.
+
 ---
 
 ## How it works
