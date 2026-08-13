@@ -7,18 +7,18 @@
       "version": "v1",
       "section": [
         {
-          "title": "## CPS 2015",
+          "title": "CPS 2015",
           "description": "",
           "order": 1,
           "question": []
         },
         {
-          "title": "## Roles and responsibilities",
+          "title": "Roles and responsibilities",
           "description": "",
           "order": 2,
           "question": [
             {
-              "text": "## Roles and responsibilities",
+              "text": "Roles and responsibilities",
               "order": 1,
               "answer": {
                 "json": {
@@ -33,12 +33,12 @@
           ]
         },
         {
-          "title": "## Types of data",
+          "title": "Types of data",
           "description": "",
           "order": 3,
           "question": [
             {
-              "text": "## Types of data",
+              "text": "Types of data",
               "order": 1,
               "answer": {
                 "json": {
@@ -53,12 +53,12 @@
           ]
         },
         {
-          "title": "## Policies for access and sharing and appropriate protection and privacy",
+          "title": "Policies for access and sharing and appropriate protection and privacy",
           "description": "",
           "order": 4,
           "question": [
             {
-              "text": "## Policies for access and sharing and appropriate protection and privacy",
+              "text": "Policies for access and sharing and appropriate protection and privacy",
               "order": 1,
               "answer": {
                 "json": {
@@ -73,18 +73,18 @@
           ]
         },
         {
-          "title": "## Data storage and preservation of access",
+          "title": "Data storage and preservation of access",
           "description": "The Data Management Plan should describe the mechanisms and formats for storing data and making them accessible to others, which may include third party facilities and repositories; and other types of information that would be maintained and shared regarding data, e.g. the means by which it was generated, detailed analytical and procedural",
           "order": 5,
           "question": []
         },
         {
-          "title": "## information required to reproduce experimental results, and other metadata.",
+          "title": "information required to reproduce experimental results, and other metadata.",
           "description": "",
           "order": 6,
           "question": [
             {
-              "text": "## information required to reproduce experimental results, and other metadata.",
+              "text": "information required to reproduce experimental results, and other metadata.",
               "order": 1,
               "answer": {
                 "json": {

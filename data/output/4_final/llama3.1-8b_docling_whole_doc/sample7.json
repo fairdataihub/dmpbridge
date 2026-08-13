@@ -2,7 +2,7 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "## Resource/Data Sharing Plan",
+      "title": "Resource/Data Sharing Plan",
       "description": "",
       "version": "v1",
       "section": [
@@ -12,7 +12,7 @@
           "order": 1,
           "question": [
             {
-              "text": "## Resource/Data Sharing Plan",
+              "text": "Resource/Data Sharing Plan",
               "order": 1,
               "answer": {
                 "json": {

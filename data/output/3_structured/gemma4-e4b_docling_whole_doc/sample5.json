@@ -7,19 +7,19 @@
       "version": "v1",
       "section": [
         {
-          "title": "## DATA MANAGEMENT PLAN",
+          "title": "DATA MANAGEMENT PLAN",
           "description": "",
           "order": 1,
           "question": []
         },
         {
-          "title": "## REVIEW OF PROPOSAL COMPONENTS",
-          "description": "The proposal is separated into three sections.\n\n- Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls.\n- Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale.\n- Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops.",
+          "title": "REVIEW OF PROPOSAL COMPONENTS",
+          "description": "The proposal is separated into three sections.\n\nSection 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls.\nSection 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale.\nSection 2.3 integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops.",
           "order": 2,
           "question": []
         },
         {
-          "title": "## TYPES OF DATA",
+          "title": "TYPES OF DATA",
           "description": "",
           "order": 3,
           "question": [
@@ -39,7 +39,7 @@
           ]
         },
         {
-          "title": "## DATA AND METADATA STANDARDS",
+          "title": "DATA AND METADATA STANDARDS",
           "description": "",
           "order": 4,
           "question": [
@@ -59,7 +59,7 @@
           ]
         },
         {
-          "title": "## POLICIES FOR ACCESS AND SHARING",
+          "title": "POLICIES FOR ACCESS AND SHARING",
           "description": "",
           "order": 5,
           "question": [
@@ -79,7 +79,7 @@
           ]
         },
         {
-          "title": "## POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
+          "title": "POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION",
           "description": "",
           "order": 6,
           "question": [
@@ -99,7 +99,7 @@
           ]
         },
         {
-          "title": "## PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
+          "title": "PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS",
           "description": "",
           "order": 7,
           "question": [

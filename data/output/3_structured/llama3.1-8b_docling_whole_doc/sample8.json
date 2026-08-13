@@ -2,7 +2,7 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "## 1. Policy and Practice",
+      "title": "1. Policy and Practice",
       "description": "",
       "version": "v1",
       "section": [
@@ -27,7 +27,7 @@
           ]
         },
         {
-          "title": "## 2. Scope",
+          "title": "2. Scope",
           "description": "",
           "order": 2,
           "question": [
@@ -47,7 +47,7 @@
           ]
         },
         {
-          "title": "## 3. Data and Metadata Format and Content",
+          "title": "3. Data and Metadata Format and Content",
           "description": "",
           "order": 3,
           "question": [
@@ -67,7 +67,7 @@
           ]
         },
         {
-          "title": "## 4. Accessibility and Data Protection",
+          "title": "4. Accessibility and Data Protection",
           "description": "",
           "order": 4,
           "question": [
@@ -77,7 +77,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar. As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property. Confidential material will be handled according to policies and protocols for human subjects, FERPA, and any other applicable regulations and restrictions.\n## Univ. of California, Riverside Data Management Plan\nStored materials are downloadable but not editable, and they are backed up to assure no loss of data. All uploads are approved by a curator before they are published.",
+                  "answer": "Materials will be searchable through a number of databases and search engines, including Google and Google Scholar. As noted in Section 2 (Scope), data will be made available only after appropriate steps have been taken to protect intellectual property. Confidential material will be handled according to policies and protocols for human subjects, FERPA, and any other applicable regulations and restrictions.\nUniv. of California, Riverside Data Management Plan\nStored materials are downloadable but not editable, and they are backed up to assure no loss of data. All uploads are approved by a curator before they are published.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -87,7 +87,7 @@
           ]
         },
         {
-          "title": "## 5. Derivative Products",
+          "title": "5. Derivative Products",
           "description": "",
           "order": 5,
           "question": [
@@ -107,7 +107,7 @@
           ]
         },
         {
-          "title": "## 6. Archiving and Access",
+          "title": "6. Archiving and Access",
           "description": "",
           "order": 6,
           "question": [

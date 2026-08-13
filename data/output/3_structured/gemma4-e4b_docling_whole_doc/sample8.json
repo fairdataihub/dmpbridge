@@ -7,7 +7,7 @@
       "version": "v1",
       "section": [
         {
-          "title": "## 1. Policy and Practice",
+          "title": "1. Policy and Practice",
           "description": "",
           "order": 1,
           "question": [
@@ -27,7 +27,7 @@
           ]
         },
         {
-          "title": "## 2. Scope",
+          "title": "2. Scope",
           "description": "",
           "order": 2,
           "question": [
@@ -47,7 +47,7 @@
           ]
         },
         {
-          "title": "## 3. Data and Metadata Format and Content",
+          "title": "3. Data and Metadata Format and Content",
           "description": "",
           "order": 3,
           "question": [
@@ -67,7 +67,7 @@
           ]
         },
         {
-          "title": "## 4. Accessibility and Data Protection",
+          "title": "4. Accessibility and Data Protection",
           "description": "",
           "order": 4,
           "question": [
@@ -87,7 +87,7 @@
           ]
         },
         {
-          "title": "## Univ. of California, Riverside Data Management Plan",
+          "title": "Univ. of California, Riverside Data Management Plan",
           "description": "",
           "order": 5,
           "question": [
@@ -107,7 +107,7 @@
           ]
         },
         {
-          "title": "## 5. Derivative Products",
+          "title": "5. Derivative Products",
           "description": "",
           "order": 6,
           "question": [
@@ -127,7 +127,7 @@
           ]
         },
         {
-          "title": "## 6. Archiving and Access",
+          "title": "6. Archiving and Access",
           "description": "",
           "order": 7,
           "question": [

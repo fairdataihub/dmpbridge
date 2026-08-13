@@ -2,12 +2,12 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "## Element 1: Data Type:",
+      "title": "Element 1: Data Type:",
       "description": "",
       "version": "v1",
       "section": [
         {
-          "title": "## A. Types and amount of scientific data expected to be generated in the project:",
+          "title": "A. Types and amount of scientific data expected to be generated in the project:",
           "description": "",
           "order": 1,
           "question": [
@@ -27,7 +27,7 @@
           ]
         },
         {
-          "title": "## B. Scientific data that will be preserved and shared, and the rationale for doing so:",
+          "title": "B. Scientific data that will be preserved and shared, and the rationale for doing so:",
           "description": "",
           "order": 2,
           "question": [
@@ -37,7 +37,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library Repository sitting behavior metrics or analysis that were created in this project from the following UCSDbased study datasets:\n\n- (i) The RISE study\n- (ii) The iWATCH study\n- (iii) NHANES cohorts\n\nSufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only. Please see Element 5 for data access information about other studies.",
+                  "answer": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library Repository sitting behavior metrics or analysis that were created in this project from the following UCSDbased study datasets:\n\n(i) The RISE study\n(ii) The iWATCH study\n(iii) NHANES cohorts\n\nSufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only. Please see Element 5 for data access information about other studies.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -47,7 +47,7 @@
           ]
         },
         {
-          "title": "## C. Metadata, other relevant data, and associated documentation:",
+          "title": "C. Metadata, other relevant data, and associated documentation:",
           "description": "",
           "order": 3,
           "question": [
@@ -67,7 +67,7 @@
           ]
         },
         {
-          "title": "## Element 2: Related Tools, Software and/or Code:",
+          "title": "Element 2: Related Tools, Software and/or Code:",
           "description": "",
           "order": 4,
           "question": [
@@ -87,7 +87,7 @@
           ]
         },
         {
-          "title": "## Element 3: Standards:",
+          "title": "Element 3: Standards:",
           "description": "",
           "order": 5,
           "question": [
@@ -107,13 +107,13 @@
           ]
         },
         {
-          "title": "## Element 4: Data Preservation, Access, and Associated Timelines:",
+          "title": "Element 4: Data Preservation, Access, and Associated Timelines:",
           "description": "",
           "order": 6,
           "question": []
         },
         {
-          "title": "## A. Repository where scientific data and metadata will be archived:",
+          "title": "A. Repository where scientific data and metadata will be archived:",
           "description": "",
           "order": 7,
           "question": [
@@ -133,7 +133,7 @@
           ]
         },
         {
-          "title": "## B. How scientific data will be findable and identifiable:",
+          "title": "B. How scientific data will be findable and identifiable:",
           "description": "",
           "order": 8,
           "question": [
@@ -153,7 +153,7 @@
           ]
         },
         {
-          "title": "## C. When and how long the scientific data will be made available:",
+          "title": "C. When and how long the scientific data will be made available:",
           "description": "",
           "order": 9,
           "question": [
@@ -163,7 +163,7 @@
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The research community will have access to data when the main outcome manuscript has been published. $2,500 in years 2-5 of the project has been budgeted for preparing the data that is able to be stored in the\n## DATA MANAGEMENT AND SHARING PLAN\nrepository (the RISE study, the iWATCH study, and NHANES) and for data storage on the University of California San Diego Library repository. We anticipate data being available for the foreseeable future (minimum of at least 5 years) after the study has been completed. The University of California San Diego Library repository does not currently have a limit on how long data can be stored.",
+                  "answer": "The research community will have access to data when the main outcome manuscript has been published. $2,500 in years 2-5 of the project has been budgeted for preparing the data that is able to be stored in the\nDATA MANAGEMENT AND SHARING PLAN\nrepository (the RISE study, the iWATCH study, and NHANES) and for data storage on the University of California San Diego Library repository. We anticipate data being available for the foreseeable future (minimum of at least 5 years) after the study has been completed. The University of California San Diego Library repository does not currently have a limit on how long data can be stored.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -173,12 +173,12 @@
           ]
         },
         {
-          "title": "## Element 5: Access, Distribution, or Reuse Considerations:",
+          "title": "Element 5: Access, Distribution, or Reuse Considerations:",
           "description": "",
           "order": 10,
           "question": [
             {
-              "text": "## A. Factors affecting subsequent access, distribution, or reuse of scientific data:",
+              "text": "A. Factors affecting subsequent access, distribution, or reuse of scientific data:",
               "order": 1,
               "answer": {
                 "json": {
@@ -191,7 +191,7 @@
               }
             },
             {
-              "text": "## B. Whether access to scientific data will be controlled:",
+              "text": "B. Whether access to scientific data will be controlled:",
               "order": 2,
               "answer": {
                 "json": {
@@ -206,7 +206,7 @@
           ]
         },
         {
-          "title": "## Protections for privacy, rights, and confidentiality of human research participants:",
+          "title": "Protections for privacy, rights, and confidentiality of human research participants:",
           "description": "",
           "order": 11,
           "question": [
@@ -226,7 +226,7 @@
           ]
         },
         {
-          "title": "## Element 6: Oversight of Data Management and Sharing:",
+          "title": "Element 6: Oversight of Data Management and Sharing:",
           "description": "",
           "order": 12,
           "question": [

@@ -7,12 +7,12 @@
       "version": "v1",
       "section": [
         {
-          "title": "## Resource/Data Sharing Plan",
+          "title": "Resource/Data Sharing Plan",
           "description": "",
           "order": 1,
           "question": [
             {
-              "text": "## Resource/Data Sharing Plan",
+              "text": "Resource/Data Sharing Plan",
               "order": 1,
               "answer": {
                 "json": {

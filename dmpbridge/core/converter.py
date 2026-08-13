@@ -10,8 +10,22 @@
 #   Step 7 — return the fully nested JSON: narrative → template → section[] → question[] → answer
 
 import json
+import re
 from pathlib import Path
 from typing import Union
+
+# Some extractors (docling) keep markdown markers in block text as a signal
+# for the labeling model — "## Heading", "- item". That signal has no
+# business surviving into the structured document: DMP Tool's title,
+# section title, question, and answer fields are meant to hold plain text,
+# not markdown source. Matched per line (not just at the very start of the
+# whole block) because a joined multi-line body can carry a "- " list
+# marker on any of its lines, not only the first.
+_MD_LINE_MARKER = re.compile(r"^(#{1,6}\s+|-\s+)")
+
+
+def _strip_markdown(text: str) -> str:
+    return "\n".join(_MD_LINE_MARKER.sub("", line) for line in text.split("\n"))
 
 
 def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
@@ -56,7 +70,7 @@ def to_structured(blocks: list[dict], pdf_url: str = "") -> dict:
 
     for block in blocks:
         label = block.get("label", "answer.text")
-        text = block.get("text", "").strip()
+        text = _strip_markdown(block.get("text", "").strip())
         if not text:
             continue
 

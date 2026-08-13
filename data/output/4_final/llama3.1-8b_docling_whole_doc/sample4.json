@@ -2,7 +2,7 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "## DATA MANAGEMENT PLAN",
+      "title": "DATA MANAGEMENT PLAN",
       "description": "",
       "version": "v1",
       "section": [
@@ -12,7 +12,7 @@
           "order": 1,
           "question": [
             {
-              "text": "## DATA MANAGEMENT PLAN",
+              "text": "DATA MANAGEMENT PLAN",
               "order": 1,
               "answer": {
                 "json": {

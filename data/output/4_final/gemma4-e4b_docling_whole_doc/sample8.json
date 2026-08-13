@@ -7,12 +7,12 @@
       "version": "v1",
       "section": [
         {
-          "title": "## 1. Policy and Practice",
+          "title": "1. Policy and Practice",
           "description": "",
           "order": 1,
           "question": [
             {
-              "text": "## 1. Policy and Practice",
+              "text": "1. Policy and Practice",
               "order": 1,
               "answer": {
                 "json": {
@@ -27,12 +27,12 @@
           ]
         },
         {
-          "title": "## 2. Scope",
+          "title": "2. Scope",
           "description": "",
           "order": 2,
           "question": [
             {
-              "text": "## 2. Scope",
+              "text": "2. Scope",
               "order": 1,
               "answer": {
                 "json": {
@@ -47,12 +47,12 @@
           ]
         },
         {
-          "title": "## 3. Data and Metadata Format and Content",
+          "title": "3. Data and Metadata Format and Content",
           "description": "",
           "order": 3,
           "question": [
             {
-              "text": "## 3. Data and Metadata Format and Content",
+              "text": "3. Data and Metadata Format and Content",
               "order": 1,
               "answer": {
                 "json": {
@@ -67,12 +67,12 @@
           ]
         },
         {
-          "title": "## 4. Accessibility and Data Protection",
+          "title": "4. Accessibility and Data Protection",
           "description": "",
           "order": 4,
           "question": [
             {
-              "text": "## 4. Accessibility and Data Protection",
+              "text": "4. Accessibility and Data Protection",
               "order": 1,
               "answer": {
                 "json": {
@@ -87,12 +87,12 @@
           ]
         },
         {
-          "title": "## Univ. of California, Riverside Data Management Plan",
+          "title": "Univ. of California, Riverside Data Management Plan",
           "description": "",
           "order": 5,
           "question": [
             {
-              "text": "## Univ. of California, Riverside Data Management Plan",
+              "text": "Univ. of California, Riverside Data Management Plan",
               "order": 1,
               "answer": {
                 "json": {
@@ -107,12 +107,12 @@
           ]
         },
         {
-          "title": "## 5. Derivative Products",
+          "title": "5. Derivative Products",
           "description": "",
           "order": 6,
           "question": [
             {
-              "text": "## 5. Derivative Products",
+              "text": "5. Derivative Products",
               "order": 1,
               "answer": {
                 "json": {
@@ -127,12 +127,12 @@
           ]
         },
         {
-          "title": "## 6. Archiving and Access",
+          "title": "6. Archiving and Access",
           "description": "",
           "order": 7,
           "question": [
             {
-              "text": "## 6. Archiving and Access",
+              "text": "6. Archiving and Access",
               "order": 1,
               "answer": {
                 "json": {
