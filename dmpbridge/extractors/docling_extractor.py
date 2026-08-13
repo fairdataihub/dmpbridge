@@ -120,7 +120,23 @@ class DoclingExtractor(BaseExtractor):
         # default left that unconverted in every block ("stored for &gt; 10
         # years" instead of "> 10 years").
         markdown = result.document.export_to_markdown(escape_html=False)
+        self._save_markdown(pdf_path, markdown)
         return self._sections_to_blocks(_split_into_sections(markdown))
+
+    @staticmethod
+    def _save_markdown(pdf_path: Path, markdown: str) -> None:
+        """Write the whole-document Markdown next to the cached block JSON,
+        so it can be opened and read as an actual ``.md`` file rather than
+        only reconstructed from block text. Best-effort: extraction must not
+        fail just because this side artifact could not be written.
+        """
+        try:
+            from dmpbridge.core.paths import EXTRACTED_DIR
+            out = EXTRACTED_DIR / "docling" / f"{pdf_path.stem}.md"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(markdown, encoding="utf-8")
+        except OSError:
+            pass
 
     # ── Internal ──────────────────────────────────────────────────────────────
 
