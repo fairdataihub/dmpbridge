@@ -259,18 +259,26 @@ def test_load_method_scores_final_json_against_resolved_gold(tmp_path, monkeypat
                        title="Doc", section_title="Sec 1",
                        question_text="Sec 1", answer="The answer text.")
 
-    def fake_resolve(n):
-        gold_path = tmp_path / f"gold{n}.json"
-        gold_path.write_text(json.dumps({"narrative": {"template": {
-            "title": "Doc",
-            "section": [{
-                "title": "Sec 1",
-                "question": [{"text": "Sec 1", "answer": {"json": {"answer": "The answer text."}}}],
-            }],
-        }}}), encoding="utf-8")
-        return gold_path
+    # load_method_new drives from PATH_B.annotation_dir (a real, listable
+    # directory — this is what makes an EvaluationPath declarable as plain
+    # data, e.g. from YAML), not from a per-sample resolver function. So the
+    # gold file is written directly, and PATH_B is repointed at tmp_path.
+    gold_path = tmp_path / "gold1.json"
+    gold_path.write_text(json.dumps({"narrative": {"template": {
+        "title": "Doc",
+        "section": [{
+            "title": "Sec 1",
+            "question": [{"text": "Sec 1", "answer": {"json": {"answer": "The answer text."}}}],
+        }],
+    }}}), encoding="utf-8")
 
-    monkeypatch.setattr(ar, "resolve_new_gt_path", fake_resolve)
+    # Both fields need overriding: PATH_B.predicted_dir was already snapshotted
+    # to the real FINAL_DIR value when evaluate.py was first imported, so
+    # monkeypatching the *name* FINAL_DIR above does not retroactively change it.
+    monkeypatch.setattr(
+        ar, "PATH_B",
+        ar.replace(ar.PATH_B, annotation_dir=tmp_path, predicted_dir=final_dir),
+    )
 
     df, conf, errors = ar.load_method_new("my-tag")
 

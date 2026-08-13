@@ -54,12 +54,14 @@ from .evaluate import (
     LABELS,
     LLM_DIR,
     NEW_MANUAL_DIR,
+    PATH_B,
     _confusion_from_match,
     _match_structured,
     _snum,
     add_confusion,
     compute_f1_rows,
     confusion_matrix_df,
+    evaluate_path,
     extract_gold,
     gold_metrics,
     list_tags,
@@ -69,6 +71,7 @@ from .evaluate import (
     print_micro_prf1,
     print_missed,
 )
+from dataclasses import replace
 
 logger = get_logger(__name__)
 
@@ -192,72 +195,22 @@ def convert_tag_to_final(tag: str) -> int:
 
 def load_method_new(tag: str, exclude: list[int] | None = None,
                     threshold: float | None = None):
-    """Evaluate every final-JSON sample for *tag* against the new-version ground truth.
+    """Evaluate every final-JSON sample for *tag* against the new-version ground truth — Path B.
 
-    Mirrors ``evaluate.load_method()``, but reads FINAL_DIR predictions and
-    resolves gold via ``resolve_new_gt_path()`` instead of the fixed
-    old-annotation pair.
+    A thin wrapper over ``evaluate.evaluate_path()`` with :data:`evaluate.PATH_B`;
+    kept as its own function because it is the name every notebook and script
+    in this project already imports. ``dedup_question_title=False`` is fixed
+    on ``PATH_B`` itself, not passed here — the rules fill a blank question
+    from its section title, so the default would discard the very items this
+    path exists to score (see ``extract_gold``'s docstring, and the
+    2026-08-10 worklog for what happened the one time this was gotten wrong).
 
     Returns
     -------
     tuple[pd.DataFrame, dict, pd.DataFrame] | tuple[None, None, None]
     """
-    import pandas as pd
-
-    _exclude = set(exclude or [])
-    tag_dir  = FINAL_DIR / tag
-    if not tag_dir.exists():
-        return None, None, None
-
-    files = sorted(tag_dir.glob("sample*.json"), key=_snum)
-    found = [f for f in files if _snum(f) not in _exclude]
-    if not found:
-        return None, None, None
-
-    conf_all: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
-    rows, errors = [], []
-
-    for f in files:
-        n = _snum(f)
-        if n in _exclude:
-            continue
-        stem             = f"sample{n}"
-        # dedup_question_title=False on both sides: the rules fill a blank question
-        # from its section title, so the default would discard the very items this
-        # path exists to score. See extract_gold's docstring.
-        gold             = extract_gold(resolve_new_gt_path(n), dedup_question_title=False)
-        records, no_gold = _match_structured(f, gold, dedup_question_title=False,
-                                             threshold=threshold)
-        conf             = _confusion_from_match(records, no_gold)
-        add_confusion(conf_all, conf)
-
-        for r in records:
-            if r["pred_label"] is not None and r["pred_label"] != r["gold_label"]:
-                errors.append({
-                    "sample": stem,
-                    "text":   r["pred_text"][:120],
-                    "true":   r["gold_label"],
-                    "pred":   r["pred_label"],
-                })
-        for pred_text, pred_label in no_gold:
-            errors.append({
-                "sample": stem,
-                "text":   pred_text[:120],
-                "true":   "no_gold_match",
-                "pred":   pred_label,
-            })
-
-        correct, _, total = gold_metrics(conf)
-        rows.append({
-            "sample":   stem,
-            "total":    total,
-            "correct":  correct,
-            "errors":   total - correct,
-            "accuracy": correct / total if total else 0,
-            "formula":  f"{correct}/{total}",
-        })
-
-    return pd.DataFrame(rows), conf_all, pd.DataFrame(errors)
+    path = PATH_B if threshold is None else replace(PATH_B, threshold=threshold)
+    return evaluate_path(tag, path, exclude=exclude)
 
 
 def run_single(final_path: Path) -> None:

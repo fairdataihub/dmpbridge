@@ -18,6 +18,7 @@ import json
 import re
 import sys
 from collections import defaultdict
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 from ..prompts import LABELS
@@ -40,7 +41,8 @@ NEW_MANUAL_DIR  = _ROOT / "data/input/ground_truth_new_version"
 from ..core import paths as _paths          # noqa: E402  (after _ROOT is defined)
 
 LLM_DIR         = _paths.LABELED_DIR        # stage 2 — labeled blocks
-STRUCTURED_DIR  = _paths.STRUCTURED_DIR     # stage 3 — what this module scores
+STRUCTURED_DIR  = _paths.STRUCTURED_DIR     # stage 3 — what Path A scores
+FINAL_DIR       = _paths.FINAL_DIR          # stage 4 — what Path B scores
 
 
 # ── Text helpers ──────────────────────────────────────────────────────────────
@@ -371,6 +373,164 @@ def old_gt_samples() -> list[tuple[int, Path]]:
     return sorted(out)
 
 
+@dataclass
+class EvaluationPath:
+    """One named way of scoring predictions against a reference annotation.
+
+    This is the unit a new "Path C" adds — a new ``EvaluationPath`` instance,
+    not a new copy of the scoring loop. ``load_method()`` (Path A) and
+    ``load_method_new()`` (Path B, in ``annotation_rules.py``) used to be two
+    hand-written, near-identical functions; they diverged once already (see
+    the 2026-08-10 worklog: Path B's dedup guard silently deleted 42 of its
+    44 rule-added questions), specifically because a second copy of the loop
+    could drift from the first without anything catching it. Both are now
+    thin wrappers around :func:`evaluate_path`, driven by this config.
+
+    Attributes
+    ----------
+    name:
+        Label shown in reports — ``"A"``, ``"B"``, ...
+    predicted_dir:
+        Stage directory holding ``<tag>/sample{n}.json`` predictions
+        (e.g. ``STRUCTURED_DIR`` for Path A, ``FINAL_DIR`` for Path B).
+    annotation_dir:
+        Directory of reference JSON files. Matched to a predicted sample by
+        the digits in the filename (via :func:`_annotation_samples`), not a
+        fixed naming pattern — this project's annotation filenames have
+        changed more than once, and probably will again.
+    dedup_question_title:
+        Passed through to :func:`extract_gold` on both sides of the match.
+        Path A's original annotation has no items where the question
+        repeats its section title, so this is safe to leave ``True``. Path B
+        exists specifically to score those rule-filled repeats, so it must
+        be ``False`` — leaving it ``True`` reproduces the 2026-08-10 bug.
+    threshold:
+        Containment fraction required for a match. ``None`` defers to
+        ``CONTAINMENT_THRESHOLD``.
+    """
+    name:                  str
+    predicted_dir:         Path
+    annotation_dir:        Path
+    dedup_question_title:  bool = True
+    threshold:             float | None = None
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "EvaluationPath":
+        """Build a path from a plain dict — the YAML-loading side of this
+        schema. A new Path C is a new dict, not new code."""
+        return cls(
+            name=d["name"],
+            predicted_dir=Path(d["predicted_dir"]),
+            annotation_dir=Path(d["annotation_dir"]),
+            dedup_question_title=bool(d.get("dedup_question_title", True)),
+            threshold=d.get("threshold"),
+        )
+
+    def to_dict(self) -> dict:
+        return {
+            "name": self.name,
+            "predicted_dir": str(self.predicted_dir),
+            "annotation_dir": str(self.annotation_dir),
+            "dedup_question_title": self.dedup_question_title,
+            "threshold": self.threshold,
+        }
+
+
+def _annotation_samples(annotation_dir: Path) -> list[tuple[int, Path]]:
+    """(sample_number, path) for every reference file in *annotation_dir*,
+    matched by the digits in its filename — tolerant of any naming scheme,
+    the same pattern :func:`old_gt_samples` already uses for the one
+    hardcoded to ``MANUAL_DIR``."""
+    out = []
+    for p in annotation_dir.glob("*.json"):
+        m = re.fullmatch(r"\D*(\d+)\D*", p.stem)
+        if m:
+            out.append((int(m.group(1)), p))
+    return sorted(out)
+
+
+def evaluate_path(tag: str, path: "EvaluationPath",
+                  exclude: list[int] | None = None):
+    """Score every sample for *tag* under one :class:`EvaluationPath`.
+
+    The single implementation behind every named path. Driven from the
+    annotation side — a sample with no prediction is skipped with a
+    warning, not an error, so an incomplete run (or a dataset where not
+    every reference item has a matching prediction yet) degrades gracefully
+    instead of crashing the whole evaluation.
+
+    Returns
+    -------
+    tuple[pd.DataFrame, dict, pd.DataFrame] | tuple[None, None, None]
+        ``(accuracy_df, confusion_dict, errors_df)``, or all ``None`` if the
+        annotation directory has no matching samples at all.
+    """
+    import pandas as pd
+
+    _exclude = set(exclude or [])
+    samples = _annotation_samples(path.annotation_dir)
+    if not samples:
+        return None, None, None
+
+    conf_all: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    rows, errors = [], []
+
+    for n, gt_path in samples:
+        if n in _exclude:
+            continue
+        stem = f"sample{n}"
+        pp = path.predicted_dir / tag / f"{stem}.json"
+        if not pp.exists():
+            logger.warning("SKIP %s — no %s", stem, pp.name)
+            continue
+
+        gold = extract_gold(gt_path, dedup_question_title=path.dedup_question_title)
+        records, no_gold = _match_structured(
+            pp, gold, dedup_question_title=path.dedup_question_title,
+            threshold=path.threshold,
+        )
+        conf = _confusion_from_match(records, no_gold)
+        add_confusion(conf_all, conf)
+
+        for r in records:
+            if r["pred_label"] is not None and r["pred_label"] != r["gold_label"]:
+                errors.append({
+                    "sample": stem, "text": r["pred_text"][:120],
+                    "true":   r["gold_label"], "pred": r["pred_label"],
+                })
+        for pred_text, pred_label in no_gold:
+            errors.append({
+                "sample": stem, "text": pred_text[:120],
+                "true":   "no_gold_match", "pred": pred_label,
+            })
+
+        correct, _, total = gold_metrics(conf)
+        rows.append({
+            "sample":   stem,
+            "total":    total,
+            "correct":  correct,
+            "errors":   total - correct,
+            "accuracy": correct / total if total else 0,
+            "formula":  f"{correct}/{total}",
+        })
+
+    if not rows:
+        return None, None, None
+    return pd.DataFrame(rows), conf_all, pd.DataFrame(errors)
+
+
+# Standard paths this project scores today. A hypothetical Path C is a third
+# EvaluationPath, constructed the same way — nothing above it needs to change.
+PATH_A = EvaluationPath(
+    name="A", predicted_dir=STRUCTURED_DIR, annotation_dir=MANUAL_DIR,
+    dedup_question_title=True,
+)
+PATH_B = EvaluationPath(
+    name="B", predicted_dir=FINAL_DIR, annotation_dir=NEW_MANUAL_DIR,
+    dedup_question_title=False,
+)
+
+
 def confusion_matrix_df(confusion: dict):
     """Return a tidy DataFrame of the confusion matrix for display or heatmap plotting.
 
@@ -390,11 +550,17 @@ def confusion_matrix_df(confusion: dict):
 
 def load_method(tag: str, exclude: list[int] | None = None,
                 threshold: float | None = None):
-    """Load and evaluate all samples for a given file tag.
+    """Load and evaluate all samples for a given file tag — Path A.
 
     Uses stage 3 ``sampleN.json`` (DMP template format) as the prediction
     so the comparison against the gold is at the same semantic granularity
     (sections / questions / answers rather than individual PDF lines).
+
+    A thin wrapper over :func:`evaluate_path` with :data:`PATH_A`; kept as
+    its own function because it is the name every notebook and script in
+    this project already imports. Add a new path by constructing a new
+    :class:`EvaluationPath` and calling :func:`evaluate_path` directly —
+    not by writing a third version of this function.
 
     Parameters
     ----------
@@ -410,62 +576,8 @@ def load_method(tag: str, exclude: list[int] | None = None,
         ``(accuracy_df, confusion_dict, errors_df)`` or ``(None, None, None)``
         if no output files are found.
     """
-    import pandas as pd
-
-    _exclude = set(exclude or [])
-
-    samples = old_gt_samples()
-    found = [(n, mp) for n, mp in samples
-             if (STRUCTURED_DIR / tag / f"sample{n}.json").exists()
-             and n not in _exclude]
-    if not found:
-        return None, None, None
-
-    conf_all: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
-    rows, errors = [], []
-
-    for n, mp in samples:
-        stem = f"sample{n}"
-        if n in _exclude:
-            continue
-        pp = STRUCTURED_DIR / tag / f"{stem}.json"
-        if not pp.exists():
-            logger.warning("SKIP %s — no %s", stem, pp.name)
-            continue
-        gold             = extract_gold(mp)
-        records, no_gold = _match_structured(pp, gold, threshold=threshold)
-        conf             = _confusion_from_match(records, no_gold)
-        add_confusion(conf_all, conf)
-
-        # Collect mislabeled/spurious pairs for the error table, from the same
-        # matching used to build `conf` above (so the two can never disagree).
-        for r in records:
-            if r["pred_label"] is not None and r["pred_label"] != r["gold_label"]:
-                errors.append({
-                    "sample": stem,
-                    "text":   r["pred_text"][:120],
-                    "true":   r["gold_label"],
-                    "pred":   r["pred_label"],
-                })
-        for pred_text, pred_label in no_gold:
-            errors.append({
-                "sample": stem,
-                "text":   pred_text[:120],
-                "true":   "no_gold_match",
-                "pred":   pred_label,
-            })
-
-        correct, _, total = gold_metrics(conf)
-        rows.append({
-            "sample":   stem,
-            "total":    total,
-            "correct":  correct,
-            "errors":   total - correct,
-            "accuracy": correct / total if total else 0,
-            "formula":  f"{correct}/{total}",
-        })
-
-    return pd.DataFrame(rows), conf_all, pd.DataFrame(errors)
+    path = PATH_A if threshold is None else replace(PATH_A, threshold=threshold)
+    return evaluate_path(tag, path, exclude=exclude)
 
 
 # ── Confidence analysis ───────────────────────────────────────────────────────
