@@ -232,48 +232,6 @@ A new annotation source ("Path C") doesn't need new code — it's a new entry in
 
 ---
 
-## Notebooks
-
-**Per-model results** — same layout, so any two can be opened side by side:
-
-| Notebook | Model | Extractor |
-|---|---|---|
-| `1-llama31-8b-results-pdfplumber.ipynb` | llama3.1:8b | pdfplumber |
-| `2-gemma4-e4b-results-pdfplumber.ipynb` | gemma4:e4b | pdfplumber |
-| `3-llama33-70b-results-pdfplumber.ipynb` | llama3.3:70b | pdfplumber |
-| `7-llama31-8b-results-docling.ipynb` | llama3.1:8b | docling |
-| `8-gemma4-e4b-results-docling.ipynb` | gemma4:e4b | docling |
-
-Each has a classification report and two confusion matrices per path (percentage and raw
-counts, both including a `(not labeled)` column so every row sums to 100%).
-
-**Comparing models, and other analysis:**
-
-| Notebook | What it shows |
-|---|---|
-| `4-model-comparison-pdfplumber-*.ipynb` | All three pdfplumber models side by side, at 75% and 100% overlap |
-| `5-confidence-analysis.ipynb` | Whether the model's own confidence score predicts a correct label (it mostly doesn't) |
-| `6-threshold-comparison.ipynb` | What changes when the match threshold moves from 75% to 100% |
-| `9-input-output-demo.ipynb` | The smallest possible example: one PDF's raw blocks in, final document out |
-| `10-demo-from-yaml.ipynb` | Same idea, driven by `demo/config.yaml` instead of settings in the notebook |
-| `annotation_conversion_test.ipynb` | How the annotation rules fill blank questions, and whether they are right |
-
-All are generated from `scripts/build/build_*.py` — edit the builder and re-run rather
-than hand-editing a notebook, or the two will drift apart.
-
----
-
-## Documentation
-
-| | |
-|---|---|
-| [docs/pipeline.md](docs/pipeline.md) | The pipeline in more detail |
-| [docs/DIAGRAMS.md](docs/DIAGRAMS.md) | How to edit the diagrams |
-| `Report-doc/project_report.docx` | Full technical report |
-| `Report-doc/worklog/` | Daily notes — what changed, what was measured, what did not work |
-
----
-
 ## Tests
 
 ```bash
