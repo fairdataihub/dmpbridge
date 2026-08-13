@@ -1,0 +1,17 @@
+# Edit this file, then run:
+#   python scripts/run_demo.py
+#
+# Results (the final labeled DMP document, one JSON per sample) are written
+# into demo/output/ when it finishes.
+
+name: Demo run
+strategy: wholedoc
+provider: ollama
+host: http://localhost:11434
+
+model: llama3.1:8b          # any model already pulled in Ollama
+extractor: pdfplumber       # pdfplumber | docling | lighton
+
+pdf_dir: data/input/pdfs    # expects sample1.pdf, sample2.pdf, ...
+sample_start: 1
+sample_end: 3                # keep this small for a quick demo run
