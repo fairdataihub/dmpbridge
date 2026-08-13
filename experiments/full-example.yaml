@@ -1,0 +1,77 @@
+# Reference config — every option this project's pipeline supports, in one
+# file, with what each one does. Not meant to be run as-is for a real
+# experiment (three models at once is slow); copy the fields you need into
+# a real experiment file instead. See llama3.1-8b-wholedoc.yaml for a
+# minimal, actually-run example.
+
+# ── Identity ──────────────────────────────────────────────────────────────
+name: Full reference example
+strategy: wholedoc          # the only strategy implemented today
+
+# ── What to run: every (model x extractor) combination is run and scored ──
+models:
+  - llama3.1:8b
+  - gemma4:e4b
+  - llama3.3:70b
+extractors:
+  - pdfplumber               # line-level, real bbox/font data
+  - docling                  # section-level, OCR, no bbox data
+  # - lighton                 # vision-LLM OCR, for scanned/complex PDFs
+
+provider: ollama
+host: http://localhost:11434
+prompt: default              # reserved for future prompt A/B testing
+
+# ── Input / where results get written ──────────────────────────────────────
+pdf_dir: data/input/pdfs     # expects sample1.pdf ... sampleN.pdf
+sample_start: 1
+sample_end: 10
+# out_dir is accepted for backward compatibility with older experiment
+# files but no longer used: stage 2/3/4 output always goes to the shared
+# data/output/{2_labeled,3_structured,4_final}/<tag>/ layout every other
+# tool in this project (dmpbridge-wholedoc, every notebook) also reads —
+# writing anywhere else meant Path B could never find anything to score
+# from a YAML-driven run, only from a tag the CLI had separately populated.
+out_dir: data/output/labeled
+
+# ── Evaluation: which annotation source(s) to score predictions against ───
+# Omit this whole section entirely (or leave it as `evaluation: []`) to get
+# the project's standard Path A + Path B — every experiment file written
+# before this feature existed still behaves exactly as it did. Everything
+# below is spelled out explicitly only so every field is visible in one
+# place.
+#
+#   name:                  shown in reports — "A", "B", "C", ...
+#   predicted_dir:         directory holding <tag>/sample{n}.json
+#                          predictions to score
+#   annotation_dir:        directory of reference JSON files, matched to a
+#                          predicted sample by the digits in its filename —
+#                          tolerant of inconsistent naming, not a fixed
+#                          pattern (this project's annotation filenames
+#                          have changed more than once)
+#   dedup_question_title:  True unless this path scores questions that were
+#                          filled in from their section title (Path B) —
+#                          see EvaluationPath's docstring in evaluate.py for
+#                          why getting this backwards silently deletes most
+#                          of what the path exists to measure
+#   threshold:             containment fraction required for a match, or
+#                          `null` for the project default
+evaluation:
+  - name: A
+    predicted_dir: data/output/3_structured
+    annotation_dir: data/input/ground_truth_old_version
+    dedup_question_title: true
+    threshold: null
+  - name: B
+    predicted_dir: data/output/4_final
+    annotation_dir: data/input/ground_truth_new_version
+    dedup_question_title: false
+    threshold: null
+  # A hypothetical Path C — a third annotation source scored at a stricter
+  # threshold. This is the entire cost of adding one: a dict, no code
+  # change in experiment.py or evaluate.py.
+  # - name: C
+  #   predicted_dir: data/output/3_structured
+  #   annotation_dir: data/input/some_other_annotation_set
+  #   dedup_question_title: true
+  #   threshold: 0.9

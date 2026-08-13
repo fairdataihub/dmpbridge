@@ -88,6 +88,24 @@ class ExperimentConfig:
     sample_start: int = 1
     sample_end:   int = 10
 
+    # Which annotation sources to score against, and how. Empty list = fall
+    # back to the project's standard Path A / Path B (evaluate.PATH_A,
+    # evaluate.PATH_B) for full backward compatibility with existing YAML
+    # files that predate this field. A "Path C" is one more dict here — no
+    # code change, in either this file or evaluate.py, is needed to add one.
+    #
+    # Each entry:
+    #   name:                  str   — shown in reports, e.g. "A", "B", "C"
+    #   predicted_dir:         str   — directory holding <tag>/sample{n}.json
+    #                                  predictions, e.g. "data/output/3_structured"
+    #   annotation_dir:        str   — directory of reference JSON files
+    #   dedup_question_title:  bool  — see EvaluationPath's docstring; True
+    #                                  unless this path scores rule-filled
+    #                                  questions that repeat their section title
+    #   threshold:             float | null — containment cutoff; null = the
+    #                                  project default (CONTAINMENT_THRESHOLD)
+    evaluation: list = field(default_factory=list)
+
     # ── Derived properties ────────────────────────────────────────────────────
 
     def tag_for(self, model: str, extractor: str) -> str:
@@ -113,6 +131,20 @@ class ExperimentConfig:
     def sample_range(self) -> range:
         """Range of sample indices to process."""
         return range(self.sample_start, self.sample_end + 1)
+
+    @property
+    def evaluation_paths(self) -> list:
+        """Resolved EvaluationPath objects for this config.
+
+        Empty ``evaluation:`` in the YAML (or an old YAML that predates this
+        field entirely) resolves to the project's standard Path A / Path B —
+        so every experiment file written before this feature existed still
+        behaves exactly as it did.
+        """
+        from .evaluate import EvaluationPath, PATH_A, PATH_B
+        if not self.evaluation:
+            return [PATH_A, PATH_B]
+        return [EvaluationPath.from_dict(p) for p in self.evaluation]
 
     # ── Serialisation ─────────────────────────────────────────────────────────
 
@@ -203,19 +235,31 @@ class Experiment:
         return self._strategies[key]
 
     def _run_combination(self, model: str, extractor: str) -> list[Path]:
-        """Run all samples for one (model, extractor) pair."""
+        """Run all samples for one (model, extractor) pair.
+
+        Writes stages 2, 3, *and* 4 to the same ``data/output/{2,3,4}_*/<tag>/``
+        layout ``dmpbridge-wholedoc`` uses (``dmpbridge.core.paths``) — not the
+        ``out_dir``-relative layout this used to write to. That old layout
+        never wrote stage 4 at all, so ``Experiment.evaluate()``'s Path B
+        could never find anything to score from a YAML-driven run, only from
+        a tag that had separately been produced by the CLI. Writing to the
+        one shared layout is what makes ``run()`` and ``evaluate()`` (and
+        every notebook, which also reads this layout) agree on the same data.
+        """
+        from ..core import paths as p
+
         strategy = self._get_strategy(model, extractor)
         cfg      = self.config
-        out_dir  = Path(cfg.out_dir) / cfg.tag_for(model, extractor)
-        out_dir.mkdir(parents=True, exist_ok=True)
+        tag      = cfg.tag_for(model, extractor)
 
         outputs: list[Path] = []
 
         for i in cfg.sample_range:
             label       = f"[sample{i}]"
             pdf_path    = Path(cfg.pdf_dir) / f"sample{i}.pdf"
-            out_path    = out_dir / f"sample{i}.json"
-            struct_path = out_dir / f"sample{i}_structured.json"
+            out_path    = p.labeled_path(tag, i)
+            struct_path = p.structured_path(tag, i)
+            final_path  = p.final_path(tag, i)
 
             if out_path.exists():
                 logger.info("%s already exists — skipping", label)
@@ -223,7 +267,8 @@ class Experiment:
                 continue
 
             logger.info("%s running [%s / %s] …", label, model, extractor)
-            blocks = run_and_save(strategy, pdf_path, out_path, struct_path)
+            blocks = run_and_save(strategy, pdf_path, out_path, struct_path,
+                                  final_path=final_path)
 
             if blocks is None:
                 logger.warning("%s PDF not found: %s", label, pdf_path)
@@ -231,6 +276,7 @@ class Experiment:
 
             logger.info("%s %d blocks → %s", label, len(blocks), out_path.name)
             logger.info("%s structured JSON → %s", label, struct_path.name)
+            logger.info("%s final (rules-applied) JSON → %s", label, final_path.name)
             outputs.append(out_path)
 
         logger.info(
@@ -258,37 +304,50 @@ class Experiment:
             for m in cfg.models
         }
 
-    def evaluate(self) -> dict[str, dict[str, tuple]]:
-        """Evaluate results for every (model, extractor) pair against manual labels.
+    def evaluate(self) -> dict[str, dict[str, dict[str, tuple]]]:
+        """Evaluate results for every (model, extractor) pair against every
+        configured evaluation path — ``config.evaluation_paths`` (Path A and
+        B by default; see :attr:`ExperimentConfig.evaluation`).
+
+        Previously this only ever ran Path A, hardcoded — Path B was not
+        reachable from a YAML-driven run at all, only by calling
+        ``evaluate.load_method_new()`` directly. Every path configured now
+        runs through the same :func:`evaluate.evaluate_path`.
 
         Returns
         -------
-        dict[str, dict[str, tuple]]
-            ``{model: {extractor: (accuracy_df, confusion_dict, errors_df)}}``
+        dict[str, dict[str, dict[str, tuple]]]
+            ``{model: {extractor: {path_name: (accuracy_df, confusion_dict, errors_df)}}}``
         """
-        from .evaluate import load_method
+        from .evaluate import evaluate_path
         cfg = self.config
+        paths = cfg.evaluation_paths
         return {
-            m: {e: load_method(cfg.tag_for(m, e)) for e in cfg.extractors}
+            m: {
+                e: {path.name: evaluate_path(cfg.tag_for(m, e), path) for path in paths}
+                for e in cfg.extractors
+            }
             for m in cfg.models
         }
 
-    def run_and_evaluate(self) -> dict[str, dict[str, tuple]]:
+    def run_and_evaluate(self) -> dict[str, dict[str, dict[str, tuple]]]:
         """Run the experiment then evaluate.  Convenience wrapper."""
         self.run()
         return self.evaluate()
 
     def summary(self) -> None:
-        """Print one accuracy line per (model, extractor) combination."""
+        """Print one accuracy line per (model, extractor, path) combination."""
         for model, ext_results in self.evaluate().items():
-            for extractor, (df, _, _) in ext_results.items():
+            for extractor, path_results in ext_results.items():
                 tag = self.config.tag_for(model, extractor)
-                if df is None:
-                    print(f"  [{model} / {extractor}]  no results — run first")
-                    continue
-                tc = int(df["correct"].sum())
-                tn = int(df["total"].sum())
-                print(f"  [{model} / {extractor}]  {tc}/{tn}  ({tc/tn*100:.1f}%)  tag={tag!r}")
+                for path_name, (df, _, _) in path_results.items():
+                    label = f"[{model} / {extractor} / Path {path_name}]"
+                    if df is None:
+                        print(f"  {label}  no results — run first")
+                        continue
+                    tc = int(df["correct"].sum())
+                    tn = int(df["total"].sum())
+                    print(f"  {label}  {tc}/{tn}  ({tc/tn*100:.1f}%)  tag={tag!r}")
 
     def __repr__(self) -> str:
         return f"Experiment({self.config})"
