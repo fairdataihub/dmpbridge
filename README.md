@@ -64,24 +64,39 @@ Every block gets one of five labels:
 
 Research code — results are provisional and the evaluation set is small.
 
-**Scored on 10 hand-annotated documents**, three models, all using pdfplumber:
+**Scored on 10 hand-annotated documents**, three models, pdfplumber:
 
-| Model | F1 | Time for 10 documents |
-|---|---|---|
-| llama3.1:8b | 61.9% | 74 s |
-| **gemma4:e4b** | **74.3%** | **74 s** |
-| llama3.3:70b | 76.0% | 22 min |
+| Model | Path A F1 | Path B F1 | Time for 10 documents |
+|---|---|---|---|
+| llama3.1:8b | 28.7% | 31.3% | 74 s |
+| **gemma4:e4b** | **65.6%** | **66.5%** | **74 s** |
+| llama3.3:70b | 71.7% | 72.1% | 22 min |
 
-**gemma4:e4b is the practical choice** — within 2 points of the 70B at a fraction of the
-runtime.
+**gemma4:e4b is the practical choice** — within 6 points of the 70B at a fraction of the
+runtime. (Path A scores the model's raw output against the original annotation; Path B
+scores it after `Rules.xlsx` fills in blank questions, against the revised annotation —
+see [Scoring](#scoring).)
 
 Two caveats worth knowing before relying on these numbers:
 
-- Repeating an identical run moves the score by roughly **3 points**, so gemma4:e4b and
-  llama3.3:70b cannot currently be told apart. Measuring that variation properly is the
-  next job.
-- **3 of 9 planned configurations are done.** Docling and LightOnOCR have not been run
-  since the last prompt change.
+- **Run-to-run noise is ±0.002 F1**, measured by running one configuration three times
+  and comparing every count — not the ~3-point figure an earlier version of this file
+  assumed but never measured. Differences smaller than ~0.005 are not meaningful; the
+  gaps above are.
+- **5 of 9 planned configurations are done** — all three models on pdfplumber, plus
+  llama3.1:8b and gemma4:e4b on Docling (below). llama3.3:70b on Docling and all three
+  on LightOnOCR are still outstanding.
+
+**Docling, tried three separate ways this project has documented**, currently scores
+*above* pdfplumber for both models tested:
+
+| Model | Path A F1 | Path B F1 |
+|---|---|---|
+| llama3.1:8b | 60.0% | 62.7% |
+| gemma4:e4b | 68.9% | 70.1% |
+
+Provisional — see [Choosing an extractor](#choosing-an-extractor) for the trade-off this
+result comes with.
 
 ---
 
@@ -119,18 +134,39 @@ dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --start 1 --end 10
 
 Re-runs skip samples that already have output.
 
+**Or the smallest possible example** — edit [`demo/config.yaml`](demo/config.yaml) (just
+a model, extractor, and sample range) and run:
+
+```bash
+python scripts/run_demo.py
+```
+
+which writes each stage's result into `demo/output/{labeled,structured,final}/`. The same
+config also drives [`notebooks/10-demo-from-yaml.ipynb`](notebooks/10-demo-from-yaml.ipynb),
+which shows the YAML as input and the final document as output side by side.
+
 ---
 
 ## Choosing an extractor
 
 | Extractor | Install | Best for |
 |---|---|---|
-| `pdfplumber` | included | Most PDFs |
-| `docling` | `pip install -e ".[docling]"` | Complex layouts |
+| `pdfplumber` | included | Most PDFs — real bounding boxes and font data |
+| `docling` | `pip install -e ".[docling]"` | Complex layouts, OCR-capable |
 | `lighton` | `pip install -e ".[lighton]"` | Scanned / image-based PDFs (OCR) |
 
 `pdfplumber` reads a PDF line by line, so a wrapped paragraph arrives as several blocks —
-roughly 74 per document. `docling` and `lighton` segment by paragraph instead.
+roughly 74 per document, each with a real position and font size.
+
+`docling` reads the whole document, then splits it at each section heading — one heading
+block plus **one block for everything under it**, roughly 2–29 per document depending on
+how many headings the source has. That's deliberately coarser than pdfplumber: if a
+section contains both a question and its answer, they land in the same block and can only
+get one label. In exchange it currently scores higher (see above) — the trade-off is real
+and unresolved, not a strict improvement. No bounding boxes or font data; OCR runs only on
+pages without a usable text layer (none of the 10 sample PDFs need it, so OCR itself is
+untested here). A `.md` file with the raw Docling export is saved alongside the cached
+block JSON in `data/output/1_extracted/docling/` for inspection.
 
 ---
 
@@ -174,25 +210,56 @@ changed partway through the project, so everything is scored twice:
 - **Path A** — the structured output against the original annotation
 - **Path B** — after filling blank questions using `data/input/Rules.xlsx`, against the newer one
 
-Both use the same scoring: match on shared words, then precision, recall and F1.
+Both use the same scoring: a predicted item matches a reference item when enough of its
+words are contained in it (**100% by default** — every word, no partial credit; pass
+`threshold=0.75` to relax it), then precision, recall and F1 as usual.
 
 ```bash
 dmpbridge-evaluate      gemma4-e4b_pdfplumber_whole_doc    # Path A
 dmpbridge-evaluate-new  gemma4-e4b_pdfplumber_whole_doc    # Path B
 ```
 
+Both paths are also driven from one YAML file, which is what the numbers table above is
+built from:
+
+```bash
+dmpbridge-experiment experiments/llama3.1-8b-wholedoc.yaml --evaluate
+```
+
+A new annotation source ("Path C") doesn't need new code — it's a new entry in an
+`evaluation:` list in the YAML (`experiments/full-example.yaml` shows every field). See
+`EvaluationPath` in `dmpbridge/evaluation/evaluate.py`.
+
 ---
 
 ## Notebooks
 
+**Per-model results** — same layout, so any two can be opened side by side:
+
+| Notebook | Model | Extractor |
+|---|---|---|
+| `1-llama31-8b-results-pdfplumber.ipynb` | llama3.1:8b | pdfplumber |
+| `2-gemma4-e4b-results-pdfplumber.ipynb` | gemma4:e4b | pdfplumber |
+| `3-llama33-70b-results-pdfplumber.ipynb` | llama3.3:70b | pdfplumber |
+| `7-llama31-8b-results-docling.ipynb` | llama3.1:8b | docling |
+| `8-gemma4-e4b-results-docling.ipynb` | gemma4:e4b | docling |
+
+Each has a classification report and two confusion matrices per path (percentage and raw
+counts, both including a `(not labeled)` column so every row sums to 100%).
+
+**Comparing models, and other analysis:**
+
 | Notebook | What it shows |
 |---|---|
-| `1-llama31-8b-results-pdfplumber.ipynb` | Results for llama3.1:8b, and a walkthrough of how the score is worked out |
-| `2-gemma4-e4b-results-pdfplumber.ipynb` | Results for gemma4:e4b |
-| `3-llama33-70b-results-pdfplumber.ipynb` | Results for llama3.3:70b |
+| `4-model-comparison-pdfplumber-*.ipynb` | All three pdfplumber models side by side, at 75% and 100% overlap |
+| `5-confidence-analysis.ipynb` | Whether the model's own confidence score predicts a correct label (it mostly doesn't) |
+| `6-threshold-comparison.ipynb` | What changes when the match threshold moves from 75% to 100% |
+| `9-input-output-demo.ipynb` | The smallest possible example: one PDF's raw blocks in, final document out |
+| `10-demo-from-yaml.ipynb` | Same idea, driven by `demo/config.yaml` instead of settings in the notebook |
 | `annotation_conversion_test.ipynb` | How the annotation rules fill blank questions, and whether they are right |
 
-All four follow the same layout, so you can open two side by side and compare.
+All are generated from `scripts/build/build_*.py` — edit the builder and re-run rather
+than hand-editing a notebook, or the two will drift apart.
 
 ---
 
@@ -219,11 +286,17 @@ pytest tests/
 ## Running on multiple GPUs
 
 Ollama may pick the Vulkan backend over CUDA, which is unstable across several cards and
-ignores `CUDA_VISIBLE_DEVICES`. Start the server like this:
+ignores `CUDA_VISIBLE_DEVICES`. **`gemma4:e4b`** — the recommended model above — also
+crashes on load under recent Ollama versions unless one more flag is set, since it's
+multimodal and the crash is in fitting its vision projector, not a GPU problem. Start the
+server with all of these, killing any running instance first (env vars only apply to a
+freshly started process):
 
 ```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 OLLAMA_VULKAN=0 OLLAMA_SCHED_SPREAD=0 ollama serve
+CUDA_VISIBLE_DEVICES=0,1,2,3 OLLAMA_VULKAN=0 OLLAMA_SCHED_SPREAD=0 \
+OLLAMA_KEEP_ALIVE=-1 LLAMA_ARG_FIT=off ollama serve
 ```
 
 Then check `ollama ps` reports **100% GPU**. Anything less means part of the model spilled
-to CPU, and a large model will take hours instead of minutes.
+to CPU, and a large model will take hours instead of minutes. Full context on why each
+flag exists is in `CLAUDE.md`.
