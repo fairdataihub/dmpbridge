@@ -6,13 +6,17 @@ Three sections, each covering BOTH evaluation paths:
     2. Classification report (per class)
     3. Confusion matrix
 
-    python build_nb_std.py <notebook> <MODEL> <TAG> <EXTRACTOR>
+    python build_nb_std.py <notebook> <MODEL> <TAG> <EXTRACTOR> [THRESHOLD]
+
+THRESHOLD is optional — a containment fraction like 0.75. Omit it to use
+the project default (dmpbridge.evaluation.evaluate.CONTAINMENT_THRESHOLD).
 """
 import json
 import sys
 from pathlib import Path
 
 NB, MODEL, TAG, EXTRACTOR = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+THRESHOLD = float(sys.argv[5]) if len(sys.argv) > 5 else None
 
 
 def md(cid, lines):
@@ -36,7 +40,13 @@ cells = [
         "",
         "Both evaluation paths are reported throughout: **Path A** scores the model's raw",
         "structured output, **Path B** scores it after the annotation rules are applied.",
-    ]),
+    ] + ([] if THRESHOLD is None else [
+        "",
+        f"> **Scored at {THRESHOLD:.0%} overlap**, not the project default. A predicted item",
+        "> counts as matching a reference item only when at least this share of its words",
+        "> appears in that reference item. Figures here are not directly comparable to a",
+        "> notebook scored at a different threshold.",
+    ])),
 
     md("pipeline", [
         "## The pipeline",
@@ -93,6 +103,7 @@ cells = [
         ")",
         "",
         f"MODEL, TAG = {MODEL!r}, {TAG!r}",
+        f"THRESHOLD = {THRESHOLD!r}   # None = the project default",
         "",
         "# Reference categorical palette, slots 1-3 — the set validated for all pairs.",
         "# One hue per metric, held constant across every chart and both paths.",
@@ -109,14 +120,14 @@ cells = [
         "})",
         "",
         "# Path A — structured output vs the original annotation.",
-        "df_a, conf_a, err_a = load_method_old(TAG, exclude=[])",
+        "df_a, conf_a, err_a = load_method_old(TAG, exclude=[], threshold=THRESHOLD)",
         "",
         "# Path B — rules applied, vs the revised annotation. Stage 4 is derived from",
         "# stage 3, so build it if this tag has not been converted yet.",
-        "res_b = load_method_new(TAG, exclude=[])",
+        "res_b = load_method_new(TAG, exclude=[], threshold=THRESHOLD)",
         "if res_b[0] is None:",
         "    convert_tag_to_final(TAG)",
-        "    res_b = load_method_new(TAG, exclude=[])",
+        "    res_b = load_method_new(TAG, exclude=[], threshold=THRESHOLD)",
         "df_b, conf_b, err_b = res_b",
         "",
         "PATHS = (('Path A', conf_a), ('Path B', conf_b))",
