@@ -1,41 +1,96 @@
-"""Docling-backed extractor — ML layout analysis for PDF understanding.
+"""Docling-backed extractor — OCR, full Markdown export, section-by-section.
 
-Docling (https://github.com/DS4SD/docling) uses deep-learning layout models
-to identify headings, paragraphs, tables, lists, and captions — giving
-richer structure than rule-based pdfplumber extraction.
+Adapted from a standalone ``test_docling.py`` script: OCR is enabled so
+scanned/image-only PDFs still produce text, the whole document is exported
+to Markdown (headings, tables, and lists preserved), and that Markdown is
+split into sections at each heading line rather than read line by line.
+
+**Known, accepted limitation — read before debugging a bad label.** A
+section becomes exactly two blocks: the heading, and *everything* under it
+up to the next heading, joined into one body block. If a DMP section
+contains both a question and its answer, both end up in that single body
+block, which can only be given one label. This is not a bug to fix here —
+it is the deliberate trade-off of grouping by section rather than by
+paragraph/list item, chosen in preference to finer-grained splitting.
+
+**Page numbers are not available.** The Markdown export flattens the whole
+document into one string with no per-line page marker, so unlike the
+pdfplumber extractor this one cannot report which page a block came from —
+every block is recorded as page 1, which is a placeholder, not a
+measurement.
 
 Install:
     pip install dmpbridge[docling]
     # or directly:
     pip install docling
 """
+import re
 from pathlib import Path
 
 from .base import BaseExtractor
 
-# DocItemLabel values that we treat as visually bold / heading blocks.
-_HEADING_LABEL_NAMES = {"title", "section_header", "page_header"}
+# OCR reconstructs word spacing inexactly, so runs of 2+ spaces/tabs show up
+# mid-sentence ("Types  of  data") where the source had one. Collapsing them
+# only touches horizontal whitespace of length 2+, so it cannot affect the
+# single newlines this module relies on to keep numbered items on separate
+# lines, or the single space after a markdown "#"/"-" marker.
+_EXTRA_SPACES = re.compile(r"[ \t]{2,}")
+
+
+def _clean_text(text: str) -> str:
+    return _EXTRA_SPACES.sub(" ", text)
+
+
+def _split_into_sections(markdown: str) -> list[tuple[str, str, str]]:
+    """Group Markdown into (heading_markdown, heading_clean, body) triples.
+
+    A new section starts at every line beginning with ``#``. Everything
+    between one heading and the next — however many paragraphs, list items,
+    or table rows — is joined into that section's single body string.
+
+    ``heading_markdown`` keeps the ``#``/``##`` prefix verbatim, so a block
+    built from it reads as actual markdown rather than a bare label —
+    stripping it out (as an earlier version of this function did) meant the
+    output looked nothing like the ``.md`` file it was exported from.
+    ``heading_clean`` has the prefix removed and exists only for the
+    ``section`` grouping key, which is meant to be a readable name, not
+    markdown.
+    """
+    sections: list[tuple[str, str, str]] = []
+    heading_md, heading_clean = "(preamble)", "(preamble)"
+    lines: list[str] = []
+
+    for line in markdown.splitlines():
+        stripped = line.lstrip()
+        if stripped.startswith("#"):
+            if lines or heading_clean != "(preamble)":
+                body = _clean_text("\n".join(lines).strip())
+                sections.append((heading_md, heading_clean, body))
+            heading_md = _clean_text(stripped)
+            heading_clean = _clean_text(stripped.lstrip("#").strip()) or "(untitled)"
+            lines = []
+        else:
+            lines.append(line)
+
+    if lines or heading_clean != "(preamble)":
+        body = _clean_text("\n".join(lines).strip())
+        sections.append((heading_md, heading_clean, body))
+    return sections
 
 
 class DoclingExtractor(BaseExtractor):
-    """Convert a PDF to blocks using Docling's DocumentConverter.
+    """Convert a PDF to one heading block + one body block per section.
 
-    The Docling document is flattened to the same block schema used by
-    pdfplumber so that the downstream WholedocStrategy is unaffected.
-
-    Bold detection is derived from the item label (TITLE / SECTION_HEADER)
-    rather than font inspection, which is unavailable after ML extraction.
+    OCR runs via Docling's default auto mode (``do_ocr=True``) — pages with
+    a usable text layer are read directly, OCR only fires on pages that
+    need it. Table structure recovery is enabled.
     """
 
     def __init__(self) -> None:
         try:
             from docling.document_converter import DocumentConverter, PdfFormatOption
             from docling.datamodel.base_models import InputFormat
-            from docling.datamodel.pipeline_options import (
-                PdfPipelineOptions,
-                AcceleratorOptions,
-                AcceleratorDevice,
-            )
+            from docling.datamodel.pipeline_options import PdfPipelineOptions
         except ImportError as exc:
             raise ImportError(
                 "Docling is not installed.\n"
@@ -45,12 +100,11 @@ class DoclingExtractor(BaseExtractor):
         import logging
         logging.getLogger("docling").setLevel(logging.WARNING)
 
-        pipeline_options = PdfPipelineOptions(
-            accelerator_options=AcceleratorOptions(
-                device=AcceleratorDevice.CUDA,
-                num_threads=4,
-            )
-        )
+        pipeline_options = PdfPipelineOptions()
+        pipeline_options.do_ocr = True
+        pipeline_options.do_table_structure = True
+        pipeline_options.table_structure_options.do_cell_matching = True
+
         self._converter = DocumentConverter(
             format_options={
                 InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_options)
@@ -61,42 +115,38 @@ class DoclingExtractor(BaseExtractor):
 
     def extract(self, pdf_path: Path) -> list[dict]:
         result = self._converter.convert(str(pdf_path))
-        return self._document_to_blocks(result.document)
+        # escape_html=False: this text goes to an LLM prompt, not a browser,
+        # so there is no reason to turn a literal ">" into "&gt;" — the
+        # default left that unconverted in every block ("stored for &gt; 10
+        # years" instead of "> 10 years").
+        markdown = result.document.export_to_markdown(escape_html=False)
+        return self._sections_to_blocks(_split_into_sections(markdown))
 
     # ── Internal ──────────────────────────────────────────────────────────────
 
-    def _document_to_blocks(self, doc) -> list[dict]:
+    def _sections_to_blocks(self, sections: list[tuple[str, str, str]]) -> list[dict]:
         blocks: list[dict] = []
-
-        for item, _level in doc.iterate_items():
-            text = getattr(item, "text", None)
-            if not text or not text.strip():
-                continue
-
-            prov = item.prov[0] if getattr(item, "prov", None) else None
-            page_no = prov.page_no if prov else 1
-            bbox    = prov.bbox   if prov else None
-
-            label_name = (
-                item.label.name.lower()
-                if hasattr(getattr(item, "label", None), "name")
-                else ""
-            )
-            is_heading = label_name in _HEADING_LABEL_NAMES
-
-            blocks.append({
-                "page":          page_no,
-                "line_order":    len(blocks),
-                "text":          text.strip(),
-                "x0":            float(bbox.l) if bbox else None,
-                "top":           float(bbox.t) if bbox else None,
-                "x1":            float(bbox.r) if bbox else None,
-                "bottom":        float(bbox.b) if bbox else None,
-                "avg_font_size": None,
-                "font_names":    [],
-                "is_bold":       is_heading,
-                "is_italic":     False,
-                "label":         None,
-            })
-
+        for heading_md, heading_clean, body in sections:
+            if heading_clean != "(preamble)":
+                self._append(blocks, heading_md, is_heading=True, section=heading_clean)
+            if body:
+                self._append(blocks, body, is_heading=False, section=heading_clean)
         return blocks
+
+    @staticmethod
+    def _append(blocks: list[dict], text: str, *, is_heading: bool,
+                section: str) -> None:
+        blocks.append({
+            "page":          1,
+            "line_order":    len(blocks),
+            "text":          text,
+            "section":       section,
+            "x0":            None,
+            "top":           None,
+            "x1":            None,
+            "bottom":        None,
+            "avg_font_size": None,
+            "font_names":    [],
+            "is_bold":       is_heading,
+            "is_italic":     False,
+        })

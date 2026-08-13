@@ -6,12 +6,13 @@ Three sections, each covering BOTH evaluation paths:
     2. Classification report (per class)
     3. Confusion matrix
 
-    python build_nb_std.py <notebook> <MODEL> <TAG>
+    python build_nb_std.py <notebook> <MODEL> <TAG> <EXTRACTOR>
 """
 import json
 import sys
+from pathlib import Path
 
-NB, MODEL, TAG = sys.argv[1], sys.argv[2], sys.argv[3]
+NB, MODEL, TAG, EXTRACTOR = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 
 
 def md(cid, lines):
@@ -31,7 +32,7 @@ cells = [
         f"# {MODEL} — evaluation",
         "",
         "Text-block classification into five classes, evaluated against a manually annotated",
-        "reference set of 10 Data Management Plans. PDF text extracted with pdfplumber.",
+        f"reference set of 10 Data Management Plans. PDF text extracted with {EXTRACTOR}.",
         "",
         "Both evaluation paths are reported throughout: **Path A** scores the model's raw",
         "structured output, **Path B** scores it after the annotation rules are applied.",
@@ -312,7 +313,15 @@ cells = [
     ]),
 ]
 
-nb = json.load(open(NB, encoding="utf-8"))
+nb_path = Path(NB)
+if nb_path.exists():
+    nb = json.loads(nb_path.read_text(encoding="utf-8"))
+else:
+    nb = {"metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
+                                      "name": "python3"},
+                       "language_info": {"name": "python"}},
+          "nbformat": 4, "nbformat_minor": 5}
 nb["cells"] = cells
-json.dump(nb, open(NB, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
-print(f"rebuilt {NB}: {len(cells)} cells")
+nb_path.parent.mkdir(parents=True, exist_ok=True)
+nb_path.write_text(json.dumps(nb, indent=1, ensure_ascii=False), encoding="utf-8")
+print(f"built {NB}: {len(cells)} cells")
