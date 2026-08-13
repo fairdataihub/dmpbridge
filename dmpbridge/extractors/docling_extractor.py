@@ -152,17 +152,22 @@ class DoclingExtractor(BaseExtractor):
     @staticmethod
     def _append(blocks: list[dict], text: str, *, is_heading: bool,
                 section: str) -> None:
+        # No x0/top/x1/bottom/avg_font_size/font_names: this extractor works
+        # from Docling's flattened whole-document markdown export, which has
+        # no per-block geometry or font data to report — putting null/[] in
+        # every block for fields that can never be populated just added
+        # noise. Confirmed safe to omit: page_images.py already guards bbox
+        # access with `b.get("x0") is None`, which treats a missing key the
+        # same as a null one, and nothing else in the pipeline reads these
+        # fields at all. `page` and `is_bold` stay — both are read directly
+        # (`b["page"]`, `b["is_bold"]`) elsewhere and would break if absent,
+        # even though `page` here is a placeholder (always 1), not a
+        # measurement.
         blocks.append({
             "page":          1,
             "line_order":    len(blocks),
             "text":          text,
             "section":       section,
-            "x0":            None,
-            "top":           None,
-            "x1":            None,
-            "bottom":        None,
-            "avg_font_size": None,
-            "font_names":    [],
             "is_bold":       is_heading,
             "is_italic":     False,
         })
