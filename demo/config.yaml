@@ -14,4 +14,4 @@ extractor: pdfplumber       # pdfplumber | docling | lighton
 
 pdf_dir: data/input/pdfs    # expects sample1.pdf, sample2.pdf, ...
 sample_start: 1
-sample_end: 3                # keep this small for a quick demo run
+sample_end: 1                # keep this small for a quick demo run
