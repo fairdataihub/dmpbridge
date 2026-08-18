@@ -31,6 +31,14 @@ only match when ``section.title`` is itself empty (the sheet's `E` in that
 column), so this only ever fills a blank section title, never overwrites one.
 Every other row leaves ``section.title`` and the document title untouched.
 
+**Known, disclosed tension:** the real hand-annotated reference data (samples
+4 and 7) leaves ``section.title`` empty in exactly the pattern row 9 matches —
+this rule disagrees with 2 of 10 real documents' ground truth. Kept anyway,
+since the spreadsheet is the specification and this module executes it
+literally rather than second-guessing it (see the module intro above); if
+that disagreement needs resolving, it is the reference files or the sheet
+that need revisiting, not a silent divergence introduced here.
+
 A pattern seen in the ground truth but NOT covered by the table — merging several
 same-section sub-questions (e.g. "Raw data:", "Scripts and code for analyses:")
 into one with their answers concatenated — remains unimplemented.  It is real
