@@ -35,8 +35,14 @@ class OllamaModel:
         self.num_ctx = num_ctx
         self._verify_connection()
 
-    def complete(self, system: str, prompt: str) -> str:
-        """Send *system* + *prompt* to Ollama and return the raw text response."""
+    def complete(self, system: str, prompt: str, *, schema: dict | None = None) -> str:
+        """Send *system* + *prompt* to Ollama and return the raw text response.
+
+        *schema* overrides the default id-based ``OUTPUT_SCHEMA`` for callers
+        with a different output shape (e.g. pdfplumber's whole-document,
+        id-less ``[{"text": ..., "label": ...}]`` array). ``temperature`` stays
+        pinned at ``0.0`` regardless — this is what makes runs reproducible.
+        """
         resp = requests.post(
             f"{self.host}/api/generate",
             json={
@@ -44,7 +50,7 @@ class OllamaModel:
                 "system":     system,
                 "prompt":     prompt,
                 "stream":     False,
-                "format":     OUTPUT_SCHEMA,
+                "format":     schema if schema is not None else OUTPUT_SCHEMA,
                 "keep_alive": -1,   # keep model in VRAM indefinitely
                 "options": {
                     "temperature": 0.0,

@@ -16,6 +16,7 @@ Example
     blocks   = strategy.run(Path("document.pdf"))
 """
 import json
+import re
 from pathlib import Path
 from typing import Optional
 
@@ -23,7 +24,7 @@ from ..core import config
 from ..extractors import get_extractor
 from ..models import get_model
 from ..parsers import parse_llm_json
-from ..prompts import LABELS, SYSTEM_PROMPT
+from ..prompts import LABELS, SYSTEM_PROMPT, VISUAL_SIGNAL_SCHEMA, VISUAL_SIGNAL_SYSTEM_PROMPT
 from ..utils import ConfigurationError, get_logger
 
 logger = get_logger(__name__)
@@ -35,6 +36,25 @@ def _build_wholedoc_prompt(payload: list[dict]) -> str:
         f"one per block, in the same order:\n"
         + json.dumps(payload, ensure_ascii=False)
     )
+
+
+def _clean_visual_signal_output(parsed: list[dict], pdf_stem: str = "") -> list[dict]:
+    """Drop empty entries and normalize whitespace in the model's text values.
+
+    Ported from the notebook's clean_labeled_output() as-is: only text
+    emptiness is checked, not whether label is one of the five known
+    values — same as the notebook. The notebook's ``print()`` on drop
+    becomes ``logger.info()`` here to match this module's own convention.
+    """
+    cleaned = []
+    for item in parsed:
+        normalized = re.sub(r"\s+", " ", item.get("text", "")).strip()
+        if normalized:
+            cleaned.append({"text": normalized, "label": item.get("label")})
+        else:
+            logger.info("[wholedoc] %s dropped empty entry with label: %s",
+                        pdf_stem, item.get("label"))
+    return cleaned
 
 
 def _build_payload(blocks: list[dict]) -> list[dict]:
@@ -151,6 +171,9 @@ class WholeDocStrategy:
             logger.warning("[wholedoc] no blocks found in %s", pdf_path.name)
             return []
 
+        if self.extractor_name == "pdfplumber":
+            return self._run_pdfplumber_visual(pdf_path, blocks)
+
         payload = _build_payload(blocks)
         prompt  = _build_wholedoc_prompt(payload)
 
@@ -159,3 +182,23 @@ class WholeDocStrategy:
         raw    = self._backend.complete(SYSTEM_PROMPT, prompt)
         parsed = parse_llm_json(raw, label=pdf_path.stem)
         return _apply_labels(blocks, parsed)
+
+    def _run_pdfplumber_visual(self, pdf_path: Path, blocks: list[dict]) -> list[dict]:
+        """pdfplumber's own path: one whole-document call, no ids.
+
+        Extraction already produced the whole document as a single text
+        blob with **bold**/_italic_ markers (see PdfplumberExtractor); this
+        classifies it in one call and returns ``[{"text", "label"}]``
+        directly — no block ids, confidence, page, or bbox fields, unlike
+        every other extractor's path through this strategy.
+        """
+        full_text = blocks[0]["text"]
+        prompt = f"Classify the following text into the required JSON format:\n\n{full_text}"
+
+        logger.info("[wholedoc] sending whole document (%d chars) to %s / %s …",
+                    len(full_text), self.provider, self.model)
+        raw    = self._backend.complete(
+            VISUAL_SIGNAL_SYSTEM_PROMPT, prompt, schema=VISUAL_SIGNAL_SCHEMA,
+        )
+        parsed = parse_llm_json(raw, label=pdf_path.stem)
+        return _clean_visual_signal_output(parsed, pdf_stem=pdf_path.stem)

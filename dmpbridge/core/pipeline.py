@@ -169,8 +169,11 @@ def process_pdf(
     if not blocks:
         logger.warning("No text blocks found in %s", pdf_path.name)
         return []
-    pages = len({b["page"] for b in blocks})
-    logger.info("  → %d blocks across %d page(s)", len(blocks), pages)
+    pages = len({b["page"] for b in blocks if b.get("page") is not None})
+    if pages:
+        logger.info("  → %d blocks across %d page(s)", len(blocks), pages)
+    else:
+        logger.info("  → %d labeled entr%s", len(blocks), "y" if len(blocks) == 1 else "ies")
 
     # ── Optional: save raw extracted blocks ───────────────────────────────────
     if raw_dir is not None:

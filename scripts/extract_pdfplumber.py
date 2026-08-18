@@ -1,7 +1,12 @@
-"""Extract text blocks from the sample PDFs with pdfplumber — no LLM, no labeling.
+"""Extract text from the sample PDFs with pdfplumber — no LLM, no labeling.
 
-Writes one JSON file per sample containing the blocks exactly as the extractor
-produces them, which is what the classifier would receive as input.
+Writes one JSON file per sample containing the extractor's raw output. For
+pdfplumber this is a single ``{"text": "..."}`` entry — the whole document
+as one string with **bold**/_italic_ visual-signal markers — since
+pdfplumber fuses extraction and labeling into one whole-document model
+call rather than producing separate per-line blocks (see
+PdfplumberExtractor). It is still LLM-free: this script only runs the
+extraction half.
 
 Usage:
     python scripts/extract_pdfplumber.py
@@ -31,23 +36,21 @@ def extract_range(extractor, pdf_dir: Path, out_dir: Path, start: int, end: int)
             json.dumps(blocks, indent=2, ensure_ascii=False), encoding="utf-8"
         )
 
-        pages = len({b["page"] for b in blocks}) if blocks else 0
-        short = sum(1 for b in blocks if len(b["text"].strip()) <= 25)
-        bold  = sum(1 for b in blocks if b.get("is_bold"))
-        rows.append({"sample": i, "blocks": len(blocks), "pages": pages,
-                     "short": short, "bold": bold})
-        print(f"  sample{i:<3} {len(blocks):>4} blocks  {pages} page(s)  "
-              f"{short:>3} short  {bold:>3} bold  -> {out_path}")
+        chars = sum(len(b.get("text", "")) for b in blocks)
+        bold  = sum(b.get("text", "").count("**") // 2 for b in blocks)
+        ital  = sum(b.get("text", "").count("_") // 2 for b in blocks)
+        rows.append({"sample": i, "chars": chars, "bold": bold, "italic": ital})
+        print(f"  sample{i:<3} {chars:>6} chars  {bold:>3} bold run(s)  "
+              f"{ital:>3} italic run(s)  -> {out_path}")
     return rows
 
 
 def summarise(label: str, rows: list[dict]) -> None:
     if not rows:
         return
-    total = sum(r["blocks"] for r in rows)
-    print(f"\n  {label}: {total} blocks across {len(rows)} document(s), "
-          f"mean {total / len(rows):.1f} per document, "
-          f"{sum(r['short'] for r in rows)} short fragments (<= 25 chars)")
+    total = sum(r["chars"] for r in rows)
+    print(f"\n  {label}: {total} chars across {len(rows)} document(s), "
+          f"mean {total / len(rows):.0f} chars per document")
 
 
 def main() -> None:

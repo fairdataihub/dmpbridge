@@ -43,7 +43,7 @@ def save_page_images(
     saved: list[Path] = []
     with pdfplumber.open(pdf_path) as pdf:
         for page_num, page in enumerate(pdf.pages, start=1):
-            page_blocks = [b for b in blocks if b["page"] == page_num]
+            page_blocks = [b for b in blocks if b.get("page") == page_num]
 
             try:
                 im = page.to_image(resolution=resolution)
