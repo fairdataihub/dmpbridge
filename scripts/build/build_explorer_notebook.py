@@ -1,14 +1,17 @@
-"""Build notebooks/4-pipeline-explorer.ipynb — the interactive walkthrough.
+"""Build notebooks/demo-pipeline-explorer.ipynb — the interactive walkthrough.
 
 One settings cell at the top chooses the input, model and extractor; every stage
 below shows its real output as a DataFrame and explains what it did.
+
+Not currently built to disk — this script exists but its output has not been
+saved under notebooks/ as of 2026-08-18; run it if you want the file back.
 
     python scripts/build/build_explorer_notebook.py
 """
 import json
 from pathlib import Path
 
-NB = Path("notebooks/4-pipeline-explorer.ipynb")
+NB = Path("notebooks/demo-pipeline-explorer.ipynb")
 
 
 def md(cid, lines):

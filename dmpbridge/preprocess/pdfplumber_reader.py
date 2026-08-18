@@ -1,6 +1,6 @@
 """Extract a whole-document text blob from a PDF, with visual-signal markers.
 
-Ported from ``notebooks/with-pdfplumber-visual-signals.ipynb``. Unlike the
+Ported from ``notebooks/prototype-pdfplumber-visual-signals.ipynb``. Unlike the
 line-by-line, per-block extraction this module used to do, this reads the
 entire PDF and returns one text string per document: each word visually
 emphasized relative to the document's own body-text baseline (a different,

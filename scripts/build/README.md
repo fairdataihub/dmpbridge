@@ -34,21 +34,23 @@ installed.
 ## The notebooks
 
 ```bash
-# one per model
-python scripts/build/rebuild_results_notebook.py \
-    notebooks/1-llama31-8b-results-pdfplumber.ipynb "llama3.1:8b" llama3.1-8b_pdfplumber_whole_doc
+# one per model — build_results_notebook.py is the one actually in use;
+# rebuild_results_notebook.py is an alternate/simpler-language draft, not
+# what produces the current notebooks
+python scripts/build/build_results_notebook.py \
+    notebooks/results-llama31-8b-pdfplumber.ipynb "llama3.1:8b" llama3.1-8b_pdfplumber_whole_doc pdfplumber
 
-python scripts/build/rebuild_rules_notebook.py     # annotation_conversion_test.ipynb
+python scripts/build/rebuild_rules_notebook.py     # notebooks/annotation_conversion_test.ipynb — currently missing from disk, not yet rebuilt
 ```
 
 These **replace every cell**, so any manual edit to a notebook is lost on the next run. That
-is deliberate — the three results notebooks are meant to stay identical in structure so they
-can be compared side by side. Change the script, not the notebook.
+is deliberate — the per-model results notebooks are meant to stay identical in structure so
+they can be compared side by side. Change the script, not the notebook.
 
 After rebuilding, execute them to populate the outputs:
 
 ```bash
-jupyter nbconvert --to notebook --execute --inplace notebooks/1-llama31-8b-results-pdfplumber.ipynb
+jupyter nbconvert --to notebook --execute --inplace notebooks/results-llama31-8b-pdfplumber.ipynb
 ```
 
 ## Why these are tracked

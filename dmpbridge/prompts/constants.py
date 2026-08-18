@@ -1,7 +1,7 @@
 """Label definitions and pdfplumber's own SYSTEM_PROMPT/schema.
 
 Their names are copied verbatim, name for name, from
-``notebooks/with-pdfplumber-visual-signals.ipynb``, so access them via the
+``notebooks/prototype-pdfplumber-visual-signals.ipynb``, so access them via the
 module (``from dmpbridge.prompts import constants`` then
 ``constants.SYSTEM_PROMPT`` / ``constants.schema``) rather than a bare import.
 """

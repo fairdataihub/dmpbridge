@@ -1,13 +1,15 @@
-"""Build notebooks/5-error-sources.ipynb — why two models score differently.
+"""Build notebooks/analysis-error-sources.ipynb — why two models score differently.
 
 Three steps: the puzzle, the mechanism, what it means. Kept deliberately short.
+
+Not currently built to disk as of 2026-08-18; run it if you want the file back.
 
     python scripts/build/build_error_analysis_notebook.py
 """
 import json
 from pathlib import Path
 
-NB = Path("notebooks/5-error-sources.ipynb")
+NB = Path("notebooks/analysis-error-sources.ipynb")
 
 
 def md(cid, lines):

@@ -1,4 +1,5 @@
-"""Build notebooks/6-model-comparison-pdfplumber.ipynb.
+"""Build notebooks/comparison-4models-pdfplumber-75pct-overlap.ipynb (or
+whatever --out and --threshold are set to).
 
 Same three sections as the single-model notebooks — metrics, classification
 report, confusion matrix — but every table and chart compares the models
@@ -6,7 +7,7 @@ against each other instead of showing one.
 
 Models that have not been run are skipped, so this is safe to build mid-sweep.
 
-    python scripts/build/build_comparison_notebook.py
+    python scripts/build/build_comparison_notebook.py --threshold 0.75 --out notebooks/comparison-4models-pdfplumber-75pct-overlap.ipynb
 """
 import argparse
 import json
@@ -14,9 +15,9 @@ from pathlib import Path
 
 ap = argparse.ArgumentParser(description=__doc__)
 ap.add_argument("--threshold", type=float, default=None,
-                help="containment required for a match (default: the project's 0.75)")
+                help="containment required for a match (default: the project's 1.0/100%)")
 ap.add_argument("--out", type=Path,
-                default=Path("notebooks/6-model-comparison-pdfplumber.ipynb"))
+                default=Path("notebooks/comparison-4models-pdfplumber.ipynb"))
 args = ap.parse_args()
 
 NB = args.out

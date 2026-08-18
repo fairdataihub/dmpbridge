@@ -135,9 +135,9 @@ r.font.color.rgb = SUB_BLUE
 for line in [
     "Date: 18 August 2026",
     "Dataset: 10 manually labeled DMP documents (23 pages) · all 10 scored",
-    "Models: Llama 3.3 70B · Gemma 4 e4b · Llama 3.1 8B (via Ollama, free/local)",
+    "Models: Gemma 4 e4b · Qwen 2.5 14B · Llama 3.3 70B · Llama 3.1 8B (via Ollama, free/local)",
     "Extractors: pdfplumber (the only one implemented)",
-    "Experiments: 3 of 3 complete under the current pipeline",
+    "Experiments: 4 of 4 complete under the current pipeline",
 ]:
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(1)
@@ -146,9 +146,9 @@ for line in [
     r.font.size = Pt(11)
 
 para("Results in section 6 are the first produced under pdfplumber's rewritten whole-document pipeline "
-     "(section 3.3), all three models complete. Section 4.1's inference-parameters table (format: "
-     "OUTPUT_SCHEMA, and its 'nine configurations' framing) describes the pre-rewrite, id-based design "
-     "and has not been updated to "
+     "(section 3.3), all four models complete, character-level deduplication fixed (6.1a). Section 4.1's "
+     "inference-parameters table (format: OUTPUT_SCHEMA, and its 'nine configurations' framing) describes "
+     "the pre-rewrite, id-based design and has not been updated to "
      "match — pdfplumber no longer uses OUTPUT_SCHEMA at all; treat that table as historical.",
      size=9.5, italic=True, color=RUST, after=10)
 
@@ -365,53 +365,77 @@ para("All three are marked complete against the previous pdfplumber implementati
 # ── 6 ────────────────────────────────────────────────────────────────────
 h1("6. Results")
 para("All ten samples, pdfplumber's whole-document visual-signal pipeline (section 4), current annotation "
-     "rules. Produced 18 August 2026 — the first real numbers under this pipeline; every pdfplumber figure "
-     "elsewhere in this report (and the removed section 6 table this replaces) predates the rewrite and is "
-     "not comparable to what follows.", size=10, italic=True, color=RUST)
+     "rules, corrected character-level deduplication (section 6.1a). Produced 18 August 2026 — the first "
+     "real numbers under this pipeline; every pdfplumber figure elsewhere in this report predates the "
+     "rewrite and is not comparable to what follows.", size=10, italic=True, color=RUST)
 para("Scored at the project default containment threshold — 100% (CONTAINMENT_THRESHOLD = 1.0 in "
      "evaluate.py) — every predicted word must be contained for a match, no partial credit.",
      size=9.5, italic=True, color=GREY)
 
 h2("6.1 Headline")
 table(["Model","Path A F1","Path B F1","Runtime (10 docs)"],
-      [["gemma4:e4b","80.6%","76.8%","157 s"],
-       ["llama3.3:70b","55.1%","51.1%","~40+ min (see 6.4)"],
-       ["llama3.1:8b","53.5%","49.7%","149 s"]],
+      [["gemma4:e4b","87.2%","84.5%","157 s"],
+       ["qwen2.5:14b","76.3%","76.8%","235 s"],
+       ["llama3.3:70b","66.0%","62.2%","~40+ min (see 6.4)"],
+       ["llama3.1:8b","60.1%","57.5%","149 s"]],
       widths=[1.35,1.05,1.05,2.6])
-para("All three score above the old line-by-line pdfplumber pipeline (llama3.1:8b was 28.7%/31.3%, "
-     "gemma4:e4b was 65.6%/66.5%, llama3.3:70b was 71.7%/72.1%), but the ranking has changed in a way worth "
-     "stating plainly: gemma4:e4b is now the clear best model, and llama3.3:70b — the largest, and previously "
-     "the strongest — is roughly tied with llama3.1:8b rather than ahead of it. That is a real reversal, not "
+para("All four score above the old line-by-line pdfplumber pipeline (llama3.1:8b was 28.7%/31.3%, "
+     "gemma4:e4b was 65.6%/66.5%, llama3.3:70b was 71.7%/72.1%; qwen2.5:14b was never run under the old "
+     "pipeline). The ranking has changed in a way worth stating plainly: gemma4:e4b is now the clear best "
+     "model; qwen2.5:14b — added 18 August, the model the pdfplumber visual-signal approach was originally "
+     "developed against — lands a clear second; llama3.3:70b, the largest model and previously the "
+     "strongest, is now roughly tied with llama3.1:8b rather than ahead of it. That is a real reversal, not "
      "a rounding difference.", size=10, color=GREY)
-para("The cause traces to how the models segment the document, not raw capability. llama3.3:70b produces "
-     "noticeably more, smaller items per document than the other two models (e.g. sample3: 51 items vs "
-     "gemma4:e4b's and llama3.1:8b's roughly 15-20) — over-segmentation that increases the chance any given "
-     "predicted item misses or splits a reference item, dragging precision down. This is a plausible, "
+para("The llama3.3:70b/llama3.1:8b tie traces to how the models segment the document, not raw capability. "
+     "llama3.3:70b produces noticeably more, smaller items per document than the other models (e.g. "
+     "sample3: 51 items vs roughly 15-20 for the others) — over-segmentation that increases the chance any "
+     "given predicted item misses or splits a reference item, dragging precision down. This is a plausible, "
      "evidence-based explanation, not yet a confirmed root cause.", size=10, italic=True, color=RUST)
-para("Path B scoring below Path A on all three models is a reversal from the historical pattern, where Path B "
+para("Path B scoring below Path A on every model is a reversal from the historical pattern, where Path B "
      "(rules-filled) was usually flat or slightly ahead. A Rules.xlsx change (rows 3 and 9 also fill a blank "
      "section.title, confirmed against the spreadsheet on 18 August) is a plausible contributor but not the "
      "whole story — it disagrees with the real annotation on only 2 of 10 documents, kept anyway per this "
      "module's own stated design: the spreadsheet is the specification, not something this code second-guesses.",
      size=10, italic=True, color=RUST)
 
-h2("6.2 Per-label F1")
-table(["Label","gemma4:e4b (A/B)","llama3.3:70b (A/B)","llama3.1:8b (A/B)","Gold (A/B)"],
-      [["title","80.0/80.0%","73.7/73.7%","80.0/80.0%","10/10"],
-       ["section.title","78.6/75.9%","62.9/62.2%","50.0/49.5%","43/43"],
-       ["section.description","70.6/70.6%","15.8/15.8%","10.0/10.0%","8/8"],
-       ["question.text","81.2/71.0%","64.9/45.5%","0.0/31.3%","16/56"],
-       ["answer.text","83.8/83.8%","56.0/56.0%","70.2/70.2%","55/55"]],
-      widths=[1.55,1.35,1.35,1.35,1.0], size=9)
-para("question.text at 0.0% for llama3.1:8b on Path A, recovering on Path B, is the annotation rules working "
-     "as designed — Path A scores against the original annotation, which leaves many questions blank; Path B "
-     "fills them first. Not a regression. llama3.3:70b's section.description at 15.8% (base of 8 items) is "
-     "its weakest label by far — small enough that one or two documents account for most of the gap.",
+h2("6.1a Character-level deduplication — a real fix, not cosmetic")
+para("Some PDFs render text twice in offset layers (a fake-bold trick), which pdfplumber reports as every "
+     "character doubled — samples 3 and 9 both do this (sample9's title extracted as "
+     "\"CCAARREEEERR:: HHIIGGHH-...\" instead of \"CAREER: HIGH-...\"). Word-level deduplication (repeated "
+     "whole words) was restored earlier in this project's rewrite; character-level deduplication was not, "
+     "and stayed silently broken until caught by inspecting real sample9 output directly. Fixed by "
+     "collapsing doubled characters per word before **bold**/_italic_ markers are inserted — doing it after "
+     "would let the collapsing regex eat a marker pair like \"**\" down to a single \"*\".",
      size=10, color=GREY)
+table(["Model", "Path A F1, before fix", "Path A F1, after fix", "Change"],
+      [["gemma4:e4b", "80.6%", "87.2%", "+6.6pp"],
+       ["qwen2.5:14b", "70.8%", "76.3%", "+5.5pp"],
+       ["llama3.3:70b", "55.1%", "66.0%", "+10.9pp"],
+       ["llama3.1:8b", "53.5%", "60.1%", "+6.6pp"]],
+      widths=[1.35,1.5,1.4,1.0])
+para("Every model gained real ground, llama3.3:70b most of all — consistent with garbled text being "
+     "exactly the kind of input a model has to work hardest to parse correctly. Only samples 3 and 9 were "
+     "re-run for all four models to produce this table; the other 8 samples were unaffected by the fix.",
+     size=10, italic=True, color=RUST)
+
+h2("6.2 Per-label F1")
+table(["Label","gemma4:e4b (A/B)","qwen2.5:14b (A/B)","llama3.3:70b (A/B)","llama3.1:8b (A/B)","Gold (A/B)"],
+      [["title","100/100%","100/100%","94.7/94.7%","94.7/94.7%","10/10"],
+       ["section.title","90.5/87.4%","86.9/86.0%","86.4/85.4%","68.5/67.9%","43/43"],
+       ["section.description","70.6/70.6%","58.3/58.3%","36.8/36.8%","11.8/11.8%","8/8"],
+       ["question.text","83.9/80.4%","54.5/74.1%","64.9/53.5%","0.0/38.6%","16/56"],
+       ["answer.text","85.7/85.7%","73.0/71.3%","54.0/54.0%","67.3/67.3%","55/55"]],
+      widths=[1.4,1.15,1.15,1.15,1.15,0.85], size=8.5)
+para("question.text at 0.0% for llama3.1:8b on Path A, recovering on Path B, is the annotation rules "
+     "working as designed — Path A scores against the original annotation, which leaves many questions "
+     "blank; Path B fills them first. Not a regression. section.description is every model's weakest label "
+     "by a wide margin (11.8-70.6%, base of only 8 gold items) — the smallest, noisiest label in the "
+     "schema.", size=10, color=GREY)
 
 h2("6.3 Path A versus Path B")
-para("Path B now trails Path A on every model — 3.8pp (llama3.1:8b), 3.8pp (gemma4:e4b), 4.0pp (llama3.3:70b) "
-     "— versus the pre-rewrite pipeline, where the two paths scored within 0.3 points of each other. See 6.1.")
+para("Path B now trails Path A on every model — 3.8pp (llama3.1:8b), 2.7pp (gemma4:e4b), 3.8pp "
+     "(llama3.3:70b), and roughly flat on qwen2.5:14b (+0.5pp) — versus the pre-rewrite pipeline, where the "
+     "two paths scored within 0.3 points of each other for every model. See 6.1.")
 
 h2("6.4 Runtime — why the new pipeline runs slower")
 para("pdfplumber's extraction and labeling were rewritten (section 3.3) to match a whole-document, "
@@ -421,6 +445,7 @@ para("pdfplumber's extraction and labeling were rewritten (section 3.3) to match
 table(["Model", "Old pipeline, 10 docs", "New pipeline, 10 docs", "Change"],
       [["llama3.1:8b", "74 s", "149 s", "2.0×"],
        ["gemma4:e4b", "74 s", "157 s", "2.1×"],
+       ["qwen2.5:14b", "n/a — new to this pipeline", "235 s", "—"],
        ["llama3.3:70b", "~20 min (documented)", "~40+ min", "~2×"]],
       widths=[1.3, 1.6, 1.8, 1.0])
 para("The cause is architectural, not incidental. The old pipeline's output was terse — one "
@@ -428,39 +453,12 @@ para("The cause is architectural, not incidental. The old pipeline's output was 
      "actual text. The new pipeline's output includes the classified text itself for every item, so the "
      "model must reproduce the full source content as output tokens, not just short labels. LLM generation "
      "speed is bottlenecked by output token count far more than by input size, so this is a real, roughly "
-     "twofold increase in generation work per document, consistent across all three models — not GPU "
+     "twofold increase in generation work per document, consistent across every model measured — not GPU "
      "contention, and not specific to one document.", size=10, color=GREY)
 para("One document-level effect compounded this on llama3.3:70b specifically during this run: sample2's "
      "extracted text is 14,898 characters, more than double every other sample in the set. On a 70B model, "
      "where per-token latency is already far higher than the smaller models, an unusually long document adds "
      "directly to an already-slower-per-document baseline.", size=10, italic=True, color=GREY)
-para("Practical consequence: the ~112 s/sample, ~20-minute figure for llama3.3:70b recorded in the "
-     "project's own operating notes was measured under the old, pre-rewrite pipeline and is now stale for "
-     "the same architectural reason the old score table was — expect roughly double that under the current "
-     "pipeline going forward.", size=10, italic=True, color=RUST)
-
-h2("6.4 Runtime — why the new pipeline runs slower")
-para("pdfplumber's extraction and labeling were rewritten (section 3.3) to match a whole-document, "
-     "visual-signal design: the model reads the entire document as one text string with **bold**/_italic_ "
-     "markers standing in for visual emphasis, and returns a flat [{\"text\", \"label\"}] array directly, "
-     "rather than being handed a pre-segmented list of blocks and asked to classify each by id.")
-table(["Model", "Old pipeline, 10 docs", "New pipeline, 10 docs", "Change"],
-      [["llama3.1:8b", "74 s", "149 s", "2.0×"],
-       ["gemma4:e4b", "74 s", "157 s", "2.1×"],
-       ["llama3.3:70b", "~20 min (documented)", "running — on pace for longer", "—"]],
-      widths=[1.3, 1.6, 1.8, 1.0])
-para("The cause is architectural, not incidental. The old pipeline's output was terse — one "
-     "{id, label, confidence} triple per block, with the model never regenerating any of the document's "
-     "actual text. The new pipeline's output includes the classified text itself for every item, so the "
-     "model must reproduce the full source content as output tokens, not just short labels. LLM generation "
-     "speed is bottlenecked by output token count far more than by input size, so this is a real, roughly "
-     "twofold increase in generation work per document, consistent across both models measured so far — not "
-     "GPU contention, and not specific to one document.", size=10, color=GREY)
-para("One document-level effect compounds this on llama3.3:70b specifically: sample2's extracted text is "
-     "14,898 characters, more than double every other sample in the set (next largest: 9,738; mean of the "
-     "rest: ~6,200). On a 70B model, where per-token latency is already far higher than the smaller models, "
-     "an unusually long document adds directly to an already-slower-per-document baseline.",
-     size=10, italic=True, color=GREY)
 para("Practical consequence: the ~112 s/sample, ~20-minute figure for llama3.3:70b recorded in the "
      "project's own operating notes was measured under the old, pre-rewrite pipeline and is now stale for "
      "the same architectural reason the old score table was — expect roughly double that under the current "

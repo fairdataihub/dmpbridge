@@ -1,7 +1,9 @@
-"""Build notebooks/7-error-analysis.ipynb.
+"""Build notebooks/analysis-sample-errors.ipynb.
 
 The same three-step investigation run on two documents that reach opposite
 verdicts: sample 1 (the model's fault) and sample 6 (the reader's fault).
+
+Not currently built to disk as of 2026-08-18; run it if you want the file back.
 
     python scripts/build/build_sample_analysis_notebook.py
 """
@@ -10,7 +12,7 @@ from pathlib import Path
 
 from dmpbridge.core import paths as P
 
-NB = Path("notebooks/7-error-analysis.ipynb")
+NB = Path("notebooks/analysis-sample-errors.ipynb")
 EXTRACTOR = "pdfplumber"
 MODELS = ["llama3.1:8b", "gemma4:e4b", "llama3.3:70b"]
 

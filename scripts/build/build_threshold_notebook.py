@@ -1,4 +1,4 @@
-"""Build notebooks/6-threshold-comparison.ipynb.
+"""Build notebooks/analysis-threshold-comparison.ipynb.
 
 What changes when a match must be 100% of the predicted words instead of 75%,
 and which items are lost when it does.
@@ -8,7 +8,7 @@ and which items are lost when it does.
 import json
 from pathlib import Path
 
-NB = Path("notebooks/6-threshold-comparison.ipynb")
+NB = Path("notebooks/analysis-threshold-comparison.ipynb")
 
 
 def md(cid, lines):

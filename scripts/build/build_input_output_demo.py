@@ -1,4 +1,4 @@
-"""Build notebooks/9-input-output-demo.ipynb.
+"""Build notebooks/demo-input-output.ipynb.
 
 The smallest possible notebook: pick one sample, show what goes in, show
 what comes out. No evaluation, no charts, no scores — just input and
@@ -9,7 +9,7 @@ output, for someone who has never seen this pipeline before.
 import json
 from pathlib import Path
 
-NB = Path("notebooks/9-input-output-demo.ipynb")
+NB = Path("notebooks/demo-input-output.ipynb")
 
 
 def md(cid, lines):

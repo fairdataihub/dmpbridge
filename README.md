@@ -125,7 +125,7 @@ python scripts/run_demo.py
 ```
 
 which writes each stage's result into `demo/output/{labeled,structured,final}/`. The same
-config also drives [`notebooks/10-demo-from-yaml.ipynb`](notebooks/10-demo-from-yaml.ipynb),
+config also drives [`notebooks/demo-from-yaml-config.ipynb`](notebooks/demo-from-yaml-config.ipynb),
 which shows the YAML as input and the final document as output side by side.
 
 ---

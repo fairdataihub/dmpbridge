@@ -1,4 +1,4 @@
-"""Build notebooks/10-demo-from-yaml.ipynb.
+"""Build notebooks/demo-from-yaml-config.ipynb.
 
 The notebook version of scripts/run_demo.py: read demo/config.yaml as the
 input, run it, show the final JSON at the end. Edit demo/config.yaml, not
@@ -9,7 +9,7 @@ this notebook, to point it at a different model/extractor/sample range.
 import json
 from pathlib import Path
 
-NB = Path("notebooks/10-demo-from-yaml.ipynb")
+NB = Path("notebooks/demo-from-yaml-config.ipynb")
 
 
 def md(cid, lines):
