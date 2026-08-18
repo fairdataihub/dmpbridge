@@ -1,4 +1,4 @@
-"""Build notebooks/comparison-4models-pdfplumber-75pct-overlap.ipynb (or
+"""Build notebooks/comparison-4models-pdfplumber-100pct-overlap.ipynb (or
 whatever --out and --threshold are set to).
 
 Same three sections as the single-model notebooks — metrics, classification
@@ -7,7 +7,12 @@ against each other instead of showing one.
 
 Models that have not been run are skipped, so this is safe to build mid-sweep.
 
-    python scripts/build/build_comparison_notebook.py --threshold 0.75 --out notebooks/comparison-4models-pdfplumber-75pct-overlap.ipynb
+100% overlap is the project default and the only threshold this project
+currently publishes a comparison notebook for — the 75pct-overlap variant
+was removed 2026-08-18 once 100% was confirmed as the standing default.
+`--threshold` still works if you need a one-off looser comparison.
+
+    python scripts/build/build_comparison_notebook.py --out notebooks/comparison-4models-pdfplumber-100pct-overlap.ipynb
 """
 import argparse
 import json
@@ -40,17 +45,19 @@ cells = [
     md("title", [
         "# Model comparison — pdfplumber",
         "",
-        "Three models on the same 10 Data Management Plans, the same extraction, and the",
+        "Four models on the same 10 Data Management Plans, the same extraction, and the",
         "same prompt. Text-block classification into five classes.",
         "",
         "Because stage 1 is cached per extractor, every model here received **identical",
-        "blocks** — so any difference below is the model.",
+        "text** — so any difference below is the model.",
     ] + ([] if THRESHOLD is None else [
         "",
         f"> **Scored at {THRESHOLD:.0%} overlap.** A predicted item counts as matching a",
         "> reference item only when **every one of its words** appears in that reference",
-        "> item — no partial credit. The project default is 75%, so these figures are",
-        "> stricter than the ones in the other notebooks and are not comparable with them.",
+        "> item — no partial credit. The project default is 100%, so unless this notebook",
+        "> was built with an explicit --threshold, these figures ARE the standard ones —",
+        "> only a non-default threshold here would make them not comparable with the",
+        "> other notebooks.",
     ])),
 
     code("setup", [
@@ -75,7 +82,7 @@ cells = [
         ")",
         "",
         "MODELS, EXTRACTOR, SAMPLES = ['llama3.1:8b', 'gemma4:e4b', 'llama3.3:70b', 'qwen2.5:14b'], 'pdfplumber', range(1, 11)",
-        f"THRESHOLD = {THRESHOLD!r}   # None = the project default (0.75)",
+        f"THRESHOLD = {THRESHOLD!r}   # None = the project default (1.0 / 100%)",
         "",
         "# Reference categorical palette, slots 1-3-5 — one hue per model, held",
         "# constant in every chart below. Slot 4 (yellow) is skipped: the palette's",
