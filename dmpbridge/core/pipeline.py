@@ -137,8 +137,8 @@ def process_pdf(
     provider, model, host:
         LLM backend settings — ignored when *strategy* is given.
     extractor:
-        PDF extraction backend: ``"pdfplumber"`` (default), ``"docling"``,
-        or ``"lighton"``.  Ignored when *strategy* is given.
+        PDF extraction backend: ``"pdfplumber"`` (default) or ``"lighton"``.
+        Ignored when *strategy* is given.
     apply_rules:
         When ``True``, apply the new-annotation rules (backfill empty
         question texts from section titles) to the structured JSON before

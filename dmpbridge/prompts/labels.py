@@ -2,8 +2,8 @@
 pdfplumber's own SYSTEM_PROMPT/schema.
 
 pdfplumber's SYSTEM_PROMPT/schema live here rather than in system.py because
-system.py already defines a SYSTEM_PROMPT for docling/lighton's id-based
-per-block payload — a second module-level variable with the same name in
+system.py already defines a SYSTEM_PROMPT for lighton's id-based per-block
+payload — a second module-level variable with the same name in
 that file would silently overwrite it. Their names are copied verbatim,
 name for name, from ``notebooks/with-pdfplumber-visual-signals.ipynb``, so
 access them via the module (``from dmpbridge.prompts import labels`` then

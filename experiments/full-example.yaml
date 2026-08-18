@@ -14,8 +14,7 @@ models:
   - gemma4:e4b
   - llama3.3:70b
 extractors:
-  - pdfplumber               # line-level, real bbox/font data
-  - docling                  # section-level, OCR, no bbox data
+  - pdfplumber               # whole-document, extraction+labeling fused, no bbox data
   # - lighton                 # vision-LLM OCR, for scanned/complex PDFs
 
 provider: ollama

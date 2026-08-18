@@ -1,6 +1,6 @@
 ﻿name: Llama 3.3 70B Whole-doc
 strategy: wholedoc
-extractors: [pdfplumber, docling, lighton]
+extractors: [pdfplumber, lighton]
 models: [llama3.3:70b]
 provider: ollama
 host: http://localhost:11434

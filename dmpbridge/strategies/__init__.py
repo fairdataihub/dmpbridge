@@ -72,8 +72,7 @@ def get_strategy(
     host:
         Ollama base URL.  Falls back to ``config.HOST`` when omitted.
     extractor:
-        PDF extraction backend — ``"pdfplumber"`` (default), ``"docling"``,
-        or ``"lighton"``.
+        PDF extraction backend — ``"pdfplumber"`` (default) or ``"lighton"``.
     """
     from ..core import config as _cfg
     from .wholedoc import WholeDocStrategy

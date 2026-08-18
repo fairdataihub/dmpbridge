@@ -17,7 +17,7 @@ heading, a question, an answer — and outputs structured JSON.
 flowchart TD
     PDF["<b>DMP PDF</b>"]
 
-    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · Docling · LightOnOCR</small>"]
+    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · LightOnOCR</small>"]
     READ --> S1["<b>1. Text blocks</b>"]
     S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
@@ -65,39 +65,21 @@ Every block gets one of five labels:
 
 Research code — results are provisional and the evaluation set is small.
 
-**Scored on 10 hand-annotated documents**, three models, pdfplumber:
+> **Scores pending re-evaluation.** pdfplumber's extraction+labeling was rewritten to a
+> whole-document, visual-signal-marker approach (see [Choosing an extractor](#choosing-an-extractor))
+> after the last F1 numbers were measured, so the old table is no longer accurate for the
+> current code and has been removed rather than shown stale. Re-run
+> `dmpbridge-experiment experiments/<model>-wholedoc.yaml --evaluate` per model to get
+> current numbers.
 
-| Model | Path A F1 | Path B F1 | Time for 10 documents |
-|---|---|---|---|
-| llama3.1:8b | 28.7% | 31.3% | 74 s |
-| **gemma4:e4b** | **65.6%** | **66.5%** | **74 s** |
-| llama3.3:70b | 71.7% | 72.1% | 22 min |
+Docling has been removed from the pipeline. Two extractors remain: `pdfplumber` (default)
+and `lighton`. That's 6 planned (model × extractor) configurations, 0 currently
+re-evaluated under the current pdfplumber implementation.
 
-**gemma4:e4b is the practical choice** — within 6 points of the 70B at a fraction of the
-runtime. (Path A scores the model's raw output against the original annotation; Path B
-scores it after `Rules.xlsx` fills in blank questions, against the revised annotation —
-see [Scoring](#scoring).)
-
-Two caveats worth knowing before relying on these numbers:
-
-- **Run-to-run noise is ±0.002 F1**, measured by running one configuration three times
-  and comparing every count — not the ~3-point figure an earlier version of this file
-  assumed but never measured. Differences smaller than ~0.005 are not meaningful; the
-  gaps above are.
-- **5 of 9 planned configurations are done** — all three models on pdfplumber, plus
-  llama3.1:8b and gemma4:e4b on Docling (below). llama3.3:70b on Docling and all three
-  on LightOnOCR are still outstanding.
-
-**Docling, tried three separate ways this project has documented**, currently scores
-*above* pdfplumber for both models tested:
-
-| Model | Path A F1 | Path B F1 |
-|---|---|---|
-| llama3.1:8b | 60.0% | 62.7% |
-| gemma4:e4b | 68.9% | 70.1% |
-
-Provisional — see [Choosing an extractor](#choosing-an-extractor) for the trade-off this
-result comes with.
+Run-to-run noise, last measured against the previous pdfplumber implementation, was
+±0.002 F1 (one configuration run three times, every count identical) — not the ~3-point
+figure an earlier version of this file assumed but never measured. Differences smaller
+than ~0.005 are not meaningful.
 
 ---
 
@@ -152,22 +134,18 @@ which shows the YAML as input and the final document as output side by side.
 
 | Extractor | Install | Best for |
 |---|---|---|
-| `pdfplumber` | included | Most PDFs — real bounding boxes and font data |
-| `docling` | `pip install -e ".[docling]"` | Complex layouts, OCR-capable |
+| `pdfplumber` | included | Most PDFs — no GPU needed |
 | `lighton` | `pip install -e ".[lighton]"` | Scanned / image-based PDFs (OCR) |
 
-`pdfplumber` reads a PDF line by line, so a wrapped paragraph arrives as several blocks —
-roughly 74 per document, each with a real position and font size.
+`pdfplumber` reads the whole document at once and sends it to the model in a single call.
+Words visually emphasized relative to the document's own body-text font (bold, or a
+larger size) are wrapped in `**markers**`, and italic words in `_markers_`, so the model
+gets the PDF's own visual structure as a signal without needing bounding-box or font-size
+fields — extraction and labeling are fused into one step, unlike `lighton`, which segments
+into blocks first and labels them in a separate call.
 
-`docling` reads the whole document, then splits it at each section heading — one heading
-block plus **one block for everything under it**, roughly 2–29 per document depending on
-how many headings the source has. That's deliberately coarser than pdfplumber: if a
-section contains both a question and its answer, they land in the same block and can only
-get one label. In exchange it currently scores higher (see above) — the trade-off is real
-and unresolved, not a strict improvement. No bounding boxes or font data; OCR runs only on
-pages without a usable text layer (none of the 10 sample PDFs need it, so OCR itself is
-untested here). A `.md` file with the raw Docling export is saved alongside the cached
-block JSON in `data/output/1_extracted/docling/` for inspection.
+`lighton` (LightOnOCR-2-1B) segments by paragraph and handles pages with no usable text
+layer via OCR — needed for scanned/image-based PDFs, at the cost of requiring a GPU.
 
 ---
 

@@ -6,7 +6,7 @@ from pathlib import Path
 class BaseExtractor(ABC):
     """Extract text blocks from a PDF file.
 
-    Docling and LightOnOCR must produce a flat list of block dicts that
+    LightOnOCR must produce a flat list of block dicts that
     conform to the shared schema expected by WholeDocStrategy's default,
     id-based classification path:
 

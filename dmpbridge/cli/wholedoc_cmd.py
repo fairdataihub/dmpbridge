@@ -6,7 +6,7 @@ JSON file per sample.
 Usage:
     dmpbridge-wholedoc
     dmpbridge-wholedoc --model llama3.3:70b
-    dmpbridge-wholedoc --model gemma4:e4b --extractor docling
+    dmpbridge-wholedoc --model gemma4:e4b --extractor lighton
     dmpbridge-wholedoc --start 3 --end 6
 """
 import argparse
@@ -66,7 +66,7 @@ def main() -> None:
                     help="Ollama host URL (default: %(default)s)")
     ap.add_argument(
         "--extractor", default="pdfplumber",
-        choices=["pdfplumber", "docling", "lighton"],
+        choices=["pdfplumber", "lighton"],
         help="PDF extraction backend (default: %(default)s)",
     )
     ap.add_argument("--pdf-dir", default="data/input/pdfs", type=Path)

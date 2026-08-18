@@ -1,7 +1,7 @@
 """pdfplumber utilities — whole-document text extraction and page image rendering.
 
 These modules are used by :class:`~dmpbridge.extractors.PdfplumberExtractor`
-and by visualisation tools.  Docling and LightOnOCR extraction live in
+and by visualisation tools.  LightOnOCR extraction lives in
 ``dmpbridge/extractors/`` instead.
 
 Sub-modules

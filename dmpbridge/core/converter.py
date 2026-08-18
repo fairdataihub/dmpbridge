@@ -14,8 +14,8 @@ import re
 from pathlib import Path
 from typing import Union
 
-# Some extractors (docling) keep markdown markers in block text as a signal
-# for the labeling model — "## Heading", "- item". That signal has no
+# LightOnOCR keeps markdown markers in block text as a signal for the
+# labeling model — "## Heading", "- item". That signal has no
 # business surviving into the structured document: DMP Tool's title,
 # section title, question, and answer fields are meant to hold plain text,
 # not markdown source. Matched per line (not just at the very start of the

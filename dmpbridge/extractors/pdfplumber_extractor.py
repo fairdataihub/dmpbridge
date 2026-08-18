@@ -9,7 +9,7 @@ class PdfplumberExtractor(BaseExtractor):
 
     No additional dependencies — pdfplumber is already a core requirement.
 
-    Unlike Docling and LightOnOCR, this does not segment the document into
+    Unlike LightOnOCR, this does not segment the document into
     blocks at extraction time: it returns the whole document as a single
     text string (wrapped in a one-item list so the return shape still
     matches :class:`BaseExtractor`), with words visually emphasized relative

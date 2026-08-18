@@ -1,6 +1,6 @@
 ﻿name: Gemma 4 E4B Whole-doc
 strategy: wholedoc
-extractors: [pdfplumber, docling, lighton]
+extractors: [pdfplumber, lighton]
 models: [gemma4:e4b]
 provider: ollama
 host: http://localhost:11434

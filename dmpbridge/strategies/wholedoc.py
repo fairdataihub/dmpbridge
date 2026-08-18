@@ -4,15 +4,15 @@ All blocks are sent to the model in one request so it sees the full document
 at once, improving structural continuity at the cost of higher token usage.
 
 The extraction step is handled by a :class:`~dmpbridge.extractors.BaseExtractor`
-so the pipeline can compare pdfplumber, Docling, and LightOnOCR side-by-side
-without changing any other code.
+so the pipeline can compare pdfplumber and LightOnOCR side-by-side without
+changing any other code.
 
 Example
 -------
     from pathlib import Path
     from dmpbridge.strategies.wholedoc import WholeDocStrategy
 
-    strategy = WholeDocStrategy(model="llama3.3:70b", extractor="docling")
+    strategy = WholeDocStrategy(model="llama3.3:70b", extractor="lighton")
     blocks   = strategy.run(Path("document.pdf"))
 """
 import json
@@ -95,8 +95,8 @@ class WholeDocStrategy:
     """Extract blocks from a PDF then classify them in a single model call.
 
     The extraction step is delegated to a :class:`~dmpbridge.extractors.BaseExtractor`
-    so that pdfplumber, Docling, and LightOnOCR can be swapped in without
-    touching the prompt or evaluation code.
+    so that pdfplumber and LightOnOCR can be swapped in without touching the
+    prompt or evaluation code.
 
     Parameters
     ----------
@@ -107,8 +107,7 @@ class WholeDocStrategy:
     host:
         Ollama base URL.
     extractor:
-        PDF extraction backend — ``"pdfplumber"`` (default), ``"docling"``,
-        or ``"lighton"``.
+        PDF extraction backend — ``"pdfplumber"`` (default) or ``"lighton"``.
     """
 
     def __init__(

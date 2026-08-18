@@ -3,8 +3,10 @@
 Two modes:
 - render_pages()      — clean page renders saved to disk; reusable across extractors.
 - save_page_images()  — page PNGs with per-label bounding-box overlays.
-                        Blocks without bbox data (Docling partial, LightOnOCR)
-                        are silently skipped — the page image is still rendered.
+                        Blocks without bbox data (pdfplumber, LightOnOCR — neither
+                        carries bbox coordinates) are silently skipped, so no boxes
+                        are drawn for either current extractor; the page image is
+                        still rendered.
 """
 from collections import defaultdict
 from pathlib import Path
@@ -54,8 +56,9 @@ def save_page_images(
                     f"Details: {exc}"
                 ) from exc
 
-            # Only draw boxes for blocks that carry bbox data (pdfplumber / Docling).
-            # LightOnOCR blocks have None coords — skip them silently.
+            # Only draw boxes for blocks that carry bbox data. Neither current
+            # extractor does (pdfplumber's whole-document output has no bbox;
+            # LightOnOCR's coords are always None) — skip silently either way.
             by_label: dict[str, list[dict]] = defaultdict(list)
             for b in page_blocks:
                 if b.get("x0") is None:

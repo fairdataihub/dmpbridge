@@ -89,7 +89,6 @@ Several arrows into one box:
 ```mermaid
 flowchart TD
     P["pdfplumber"] --> S1["Stage 1"]
-    D["Docling"] --> S1
     L["LightOnOCR"] --> S1
 ```
 
@@ -248,8 +247,7 @@ gantt
     title Experiment sweep
     dateFormat YYYY-MM-DD
     pdfplumber runs  :done,    p1, 2026-08-06, 1d
-    docling runs     :active,  p2, after p1, 1d
-    lighton runs     :         p3, after p2, 1d
+    lighton runs     :active,  p2, after p1, 1d
 ```
 ````
 
