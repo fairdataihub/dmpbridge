@@ -231,5 +231,4 @@ OLLAMA_KEEP_ALIVE=-1 LLAMA_ARG_FIT=off ollama serve
 ```
 
 Then check `ollama ps` reports **100% GPU**. Anything less means part of the model spilled
-to CPU, and a large model will take hours instead of minutes. Full context on why each
-flag exists is in `CLAUDE.md`.
+to CPU, and a large model will take hours instead of minutes. 
