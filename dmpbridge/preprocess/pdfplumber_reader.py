@@ -10,9 +10,11 @@ this way even without an explicit "is this a heading" rule, so the marker
 is passed to the LLM as supporting evidence rather than encoded as a
 separate ``is_bold``/``is_italic`` field the way the old per-line blocks did.
 
-This is a known trade-off, not an oversight: a PDF that renders text twice
-in offset layers (some PDFs' fake-bold trick) will still double characters
-here, since no char-level deduplication runs on this path.
+Word-level and character-level deduplication both run here (see
+``_dedup_consecutive_words`` and ``_deduplicate_chars`` below) to undo two
+separate PDF rendering artefacts — a whole word rendered twice, and a single
+word rendered with every character doubled (some PDFs' fake-bold trick,
+confirmed on samples 3 and 9: "CCAARREEEERR" instead of "CAREER").
 """
 import re
 from collections import Counter
@@ -103,6 +105,28 @@ def _dedup_consecutive_words(words: list[dict]) -> list[dict]:
     return deduped
 
 
+def _deduplicate_chars(word_text: str) -> str:
+    """Fix doubled characters caused by layered PDF text rendering.
+
+    Some PDFs render text twice (bold shadow over regular), so pdfplumber
+    reports a word's own text as e.g. "CCAARREEEERR" instead of "CAREER".
+    Ported from the pipeline's older text_cleaner, but — like
+    ``_dedup_consecutive_words`` above — run here on each word's raw text
+    *before* markers are inserted around it: applying the collapsing regex to
+    an already-marked-up line would just as happily eat a "**" marker pair
+    down to a single "*".
+    """
+    if len(word_text) < 4:
+        return word_text
+    pairs = sum(
+        1 for i in range(0, len(word_text) - 1, 2)
+        if word_text[i] == word_text[i + 1]
+    )
+    if pairs / (len(word_text) / 2) > 0.7:
+        return re.sub(r"(.)\1", r"\1", word_text)
+    return word_text
+
+
 def _extract_page_lines(page, body_size, body_font):
     """Rebuild each line of the page from character-level data, wrapping
     emphasized runs in **...** and italic runs in _..._ so the LLM can use
@@ -163,7 +187,7 @@ def _extract_page_lines(page, body_size, body_font):
                 rendered.append("_")
                 open_italic = True
 
-            rendered.append(w["text"])
+            rendered.append(_deduplicate_chars(w["text"]))
 
         if open_italic:
             rendered.append("_")

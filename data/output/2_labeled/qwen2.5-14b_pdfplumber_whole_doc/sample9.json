@@ -1,14 +1,14 @@
 [
   {
-    "text": "CCAARREERR HHIIGGHH--RR FFOORR PPAARRAAMMAAGGNNEETTIICC SSOODDIIUUMM",
+    "text": "** CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM **",
+    "label": "title"
+  },
+  {
+    "text": "** ELECTRODES **",
     "label": "section.title"
   },
   {
-    "text": "EELLEECCTTRROODDEESS",
-    "label": "section.title"
-  },
-  {
-    "text": "PPrroodduuccttss ooff RReesseeaarrcchh",
+    "text": "** Products of Research **",
     "label": "section.title"
   },
   {
@@ -16,7 +16,7 @@
     "label": "answer.text"
   },
   {
-    "text": "DDaattaa FFoorrmmaatt SSttaannddaarrddss",
+    "text": "** Data Format Standards **",
     "label": "section.title"
   },
   {
@@ -24,7 +24,7 @@
     "label": "answer.text"
   },
   {
-    "text": "AAcccceessss aanndd sshhaarriinngg",
+    "text": "** Access and sharing **",
     "label": "section.title"
   },
   {
@@ -40,7 +40,7 @@
     "label": "answer.text"
   },
   {
-    "text": "PPoolliicciieess aanndd pprroovviissiioonnss ffoorr rree--uussee,, rree--ddiissttrriibbuuttiioonn,, aanndd pprroodduuccttiioonn ooff ddeerriivvaattiivveess",
+    "text": "** Policies and provisions for re-use, re-distribution, and production of derivatives **",
     "label": "section.title"
   },
   {
@@ -48,7 +48,7 @@
     "label": "answer.text"
   },
   {
-    "text": "AArrcchhiivviinngg ooff DDaattaa,, SSaammpplleess,, aanndd OOtthheerr RReelleevvaanntt RReesseeaarrcchh PPrroodduuccttss",
+    "text": "** Archiving of Data, Samples, and Other Relevant Research Products **",
     "label": "section.title"
   },
   {

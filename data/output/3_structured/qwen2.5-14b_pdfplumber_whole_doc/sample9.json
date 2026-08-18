@@ -2,26 +2,20 @@
   "narrative": {
     "download_url": "",
     "template": {
-      "title": "",
+      "title": "** CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM **",
       "description": "",
       "version": "v1",
       "section": [
         {
-          "title": "CCAARREERR HHIIGGHH--RR FFOORR PPAARRAAMMAAGGNNEETTIICC SSOODDIIUUMM",
+          "title": "** ELECTRODES **",
           "description": "",
           "order": 1,
           "question": []
         },
         {
-          "title": "EELLEECCTTRROODDEESS",
+          "title": "** Products of Research **",
           "description": "",
           "order": 2,
-          "question": []
-        },
-        {
-          "title": "PPrroodduuccttss ooff RReesseeaarrcchh",
-          "description": "",
-          "order": 3,
           "question": [
             {
               "text": "",
@@ -39,9 +33,9 @@
           ]
         },
         {
-          "title": "DDaattaa FFoorrmmaatt SSttaannddaarrddss",
+          "title": "** Data Format Standards **",
           "description": "",
-          "order": 4,
+          "order": 3,
           "question": [
             {
               "text": "",
@@ -59,9 +53,9 @@
           ]
         },
         {
-          "title": "AAcccceessss aanndd sshhaarriinngg",
+          "title": "** Access and sharing **",
           "description": "",
-          "order": 5,
+          "order": 4,
           "question": [
             {
               "text": "",
@@ -79,9 +73,9 @@
           ]
         },
         {
-          "title": "PPoolliicciieess aanndd pprroovviissiioonnss ffoorr rree--uussee,, rree--ddiissttrriibbuuttiioonn,, aanndd pprroodduuccttiioonn ooff ddeerriivvaattiivveess",
+          "title": "** Policies and provisions for re-use, re-distribution, and production of derivatives **",
           "description": "",
-          "order": 6,
+          "order": 5,
           "question": [
             {
               "text": "",
@@ -99,9 +93,9 @@
           ]
         },
         {
-          "title": "AArrcchhiivviinngg ooff DDaattaa,, SSaammpplleess,, aanndd OOtthheerr RReelleevvaanntt RReesseeaarrcchh PPrroodduuccttss",
+          "title": "** Archiving of Data, Samples, and Other Relevant Research Products **",
           "description": "",
-          "order": 7,
+          "order": 6,
           "question": [
             {
               "text": "",
