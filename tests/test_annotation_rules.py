@@ -44,11 +44,24 @@ def test_rules_table_matches_the_spreadsheet():
     for row in sheet.iter_rows(min_row=2, max_row=17, values_only=True):
         n, action = row[0], row[5]
         key = tuple(row[1:5])
-        m = re.search(r'Copy "?([\w.]+)"? into "?([\w.]+)"?', action or "")
-        expected = (m.group(1), m.group(2)) if m else None
+        expected = _parse_action(action)
         assert ar._RULES[key] == expected, f"row {n}: sheet says {expected}, code has {ar._RULES[key]}"
         seen += 1
     assert seen == 16, "expected 16 rule rows in the spreadsheet"
+
+
+def _parse_action(action):
+    """Parse one Action cell into the same shape as an _RULES value.
+
+    Handles both a single target ('Copy "X" into "Y"') and multiple targets
+    joined with "and" ('Copy "X" into "Y" and "Z"'), which rows 3 and 9 use.
+    """
+    m = re.search(r'Copy "?([\w.]+)"?\s+into\s+(.+)', action or "")
+    if not m:
+        return None
+    source = m.group(1)
+    targets = [t.strip().strip('"').rstrip(".") for t in re.split(r"\s+and\s+", m.group(2))]
+    return tuple((source, target) for target in targets)
 
 
 def test_every_emptiness_combination_is_covered():
@@ -86,13 +99,20 @@ def test_row_1_leaves_the_question_empty_when_nothing_is_available():
     assert (sec_title, q_text) == ("", "")
 
 
-def test_rows_3_and_11_fall_through_to_the_description():
-    """E/E/N/E and N/E/N/E — no section title, so the description fills the question."""
-    for title in ("", "Doc Title"):
-        _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
-            _doc(title=title, sec_title="", sec_desc="Funder guidance", q_text="")))
-        assert q_text == "Funder guidance"
-        assert sec_title == ""
+def test_row_3_fills_both_question_and_section_title_from_the_description():
+    """E/E/N/E — no section title, so the description fills question.text AND section.title."""
+    _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
+        _doc(title="", sec_title="", sec_desc="Funder guidance", q_text="")))
+    assert q_text == "Funder guidance"
+    assert sec_title == "Funder guidance"
+
+
+def test_row_11_fills_only_the_question_from_the_description():
+    """N/E/N/E — same as row 3 but with a document title present; section.title stays empty."""
+    _, sec_title, q_text = _fields(ar.apply_new_annotation_rules(
+        _doc(title="Doc Title", sec_title="", sec_desc="Funder guidance", q_text="")))
+    assert q_text == "Funder guidance"
+    assert sec_title == ""
 
 
 def test_rows_5_7_13_15_prefer_the_section_title():
@@ -106,11 +126,12 @@ def test_rows_5_7_13_15_prefer_the_section_title():
 
 
 def test_row_9_falls_through_to_the_document_title():
-    """N/E/E/E — the only row that reads the document title."""
+    """N/E/E/E — the only row that reads the document title, filling both question.text
+    and the blank section.title."""
     title, sec_title, q_text = _fields(ar.apply_new_annotation_rules(_doc(title="Doc Title")))
     assert q_text == "Doc Title"
-    assert sec_title == ""          # no row writes to section.title
-    assert title == "Doc Title"     # the title itself is never modified
+    assert sec_title == "Doc Title"   # row 9 also fills the blank section title
+    assert title == "Doc Title"       # the document title field itself is never modified
 
 
 def test_section_title_outranks_description_and_document_title():
@@ -146,9 +167,16 @@ def test_existing_question_text_is_never_touched():
 
 # ── Invariants across the whole table ────────────────────────────────────────
 
-def test_section_title_is_never_written():
-    """No row in this revision targets section.title."""
-    assert all(a is None or a[1] != "section.title" for a in ar._RULES.values())
+def test_section_title_is_only_ever_filled_when_blank():
+    """Rows 3 and 9 target section.title — and only because it is itself empty (E)
+    in both. No rule may overwrite a section.title that already has text.
+    """
+    idx = ar.RULE_FIELDS.index("section.title")
+    writers = [key for key, actions in ar._RULES.items()
+               if actions and any(target == "section.title" for _, target in actions)]
+    assert len(writers) == 2, f"expected exactly rows 3 and 9 to write section.title, got {writers}"
+    for key in writers:
+        assert key[idx] == "E", f"{key}: section.title must be empty for this rule to fire"
 
 
 def test_document_title_is_never_modified():

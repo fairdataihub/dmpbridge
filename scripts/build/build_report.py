@@ -200,7 +200,7 @@ mono([
     "├── parsers/json_parser.py     parse_llm_json()",
     "├── prompts/",
     "│   ├── system.py              SYSTEM_PROMPT — lighton, id-based",
-    "│   └── labels.py              LABELS + OUTPUT_SCHEMA + pdfplumber's own SYSTEM_PROMPT/schema",
+    "│   └── constants.py           LABELS + OUTPUT_SCHEMA + pdfplumber's own SYSTEM_PROMPT/schema",
     "├── evaluation/",
     "│   ├── evaluate.py            Path A — scoring vs old annotation",
     "│   ├── annotation_rules.py    Path B — rule conversion + scoring vs new",

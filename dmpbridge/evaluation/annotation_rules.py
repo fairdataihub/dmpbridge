@@ -26,8 +26,10 @@ The sixteen rows express one rule in two halves:
   description; row 9 falls all the way through to the document title; row 1 has
   nothing to copy and leaves the question empty.
 
-``question.text`` is the only field this module ever assigns — neither
-``section.title`` nor the document title is modified.
+Rows 3 and 9 additionally copy their source into ``section.title`` — both rows
+only match when ``section.title`` is itself empty (the sheet's `E` in that
+column), so this only ever fills a blank section title, never overwrites one.
+Every other row leaves ``section.title`` and the document title untouched.
 
 A pattern seen in the ground truth but NOT covered by the table — merging several
 same-section sub-questions (e.g. "Raw data:", "Scripts and code for analyses:")
@@ -83,32 +85,34 @@ FINAL_DIR = _paths.FINAL_DIR   # stage 4 — rule-converted output
 # ── The rule table ────────────────────────────────────────────────────────────
 
 # Direct transcription of data/input/Rules.xlsx.  Key is the emptiness pattern
-# in the sheet's own column order — see RULE_FIELDS — and the value is
-# (source_field, target_field) or None for "leave it unchanged".
+# in the sheet's own column order — see RULE_FIELDS — and the value is a tuple
+# of (source_field, target_field) actions (almost always one; rows 3 and 9
+# carry two) or None for "leave it unchanged".
 #
 # Keep this aligned with the spreadsheet row for row.  Do not "fix" a row here —
 # if a row looks wrong, correct the sheet and re-transcribe, so the two cannot
 # drift apart.  test_rules_table_matches_the_spreadsheet enforces this.
 RULE_FIELDS = ("title", "section.title", "section.description", "question.text")
 
-_RULES: dict[tuple[str, str, str, str], tuple[str, str] | None] = {
-    # row  title sec.title sec.desc q.text     action
-    ("E", "E", "E", "E"): None,                                        # 1
-    ("E", "E", "E", "N"): None,                                        # 2
-    ("E", "E", "N", "E"): ("section.description", "question.text"),    # 3
-    ("E", "E", "N", "N"): None,                                        # 4
-    ("E", "N", "E", "E"): ("section.title", "question.text"),          # 5
-    ("E", "N", "E", "N"): None,                                        # 6
-    ("E", "N", "N", "E"): ("section.title", "question.text"),          # 7
-    ("E", "N", "N", "N"): None,                                        # 8
-    ("N", "E", "E", "E"): ("title", "question.text"),                  # 9
-    ("N", "E", "E", "N"): None,                                        # 10
-    ("N", "E", "N", "E"): ("section.description", "question.text"),    # 11
-    ("N", "E", "N", "N"): None,                                        # 12
-    ("N", "N", "E", "E"): ("section.title", "question.text"),          # 13
-    ("N", "N", "E", "N"): None,                                        # 14
-    ("N", "N", "N", "E"): ("section.title", "question.text"),          # 15
-    ("N", "N", "N", "N"): None,                                        # 16
+_RULES: dict[tuple[str, str, str, str], tuple[tuple[str, str], ...] | None] = {
+    # row  title sec.title sec.desc q.text     action(s)
+    ("E", "E", "E", "E"): None,                                                                       # 1
+    ("E", "E", "E", "N"): None,                                                                        # 2
+    ("E", "E", "N", "E"): (("section.description", "question.text"),
+                            ("section.description", "section.title")),                                 # 3
+    ("E", "E", "N", "N"): None,                                                                        # 4
+    ("E", "N", "E", "E"): (("section.title", "question.text"),),                                       # 5
+    ("E", "N", "E", "N"): None,                                                                        # 6
+    ("E", "N", "N", "E"): (("section.title", "question.text"),),                                       # 7
+    ("E", "N", "N", "N"): None,                                                                        # 8
+    ("N", "E", "E", "E"): (("title", "question.text"), ("title", "section.title")),                    # 9
+    ("N", "E", "E", "N"): None,                                                                        # 10
+    ("N", "E", "N", "E"): (("section.description", "question.text"),),                                 # 11
+    ("N", "E", "N", "N"): None,                                                                        # 12
+    ("N", "N", "E", "E"): (("section.title", "question.text"),),                                       # 13
+    ("N", "N", "E", "N"): None,                                                                        # 14
+    ("N", "N", "N", "E"): (("section.title", "question.text"),),                                       # 15
+    ("N", "N", "N", "N"): None,                                                                        # 16
 }
 
 
@@ -120,9 +124,12 @@ def _state(value: str) -> str:
 def apply_new_annotation_rules(data: dict) -> dict:
     """Return a copy of *data* with the Rules.xlsx truth table applied.
 
-    One row of ``_RULES`` matches each question; its action is carried out
-    exactly as the spreadsheet states it.  The spreadsheet is the specification
-    — this function does not second-guess it.
+    One row of ``_RULES`` matches each question; every action it lists is
+    carried out exactly as the spreadsheet states it, all reading from the
+    field values as they were *before* any action in the row ran, so a row
+    with two actions (rows 3, 9) fills both targets from the same original
+    source rather than the second action seeing the first's output. The
+    spreadsheet is the specification — this function does not second-guess it.
     """
     data     = copy.deepcopy(data)
     root     = data.get("narrative", data)
@@ -137,19 +144,19 @@ def apply_new_annotation_rules(data: dict) -> dict:
                 "section.description": (section.get("description") or "").strip(),
                 "question.text":       (question.get("text") or "").strip(),
             }
-            action = _RULES[tuple(_state(values[f]) for f in RULE_FIELDS)]
-            if action is None:
+            actions = _RULES[tuple(_state(values[f]) for f in RULE_FIELDS)]
+            if actions is None:
                 continue
 
-            source, target = action
-            if target == "question.text":
-                question["text"] = values[source]
-            elif target == "section.title":
-                section["title"] = values[source]
-            elif target == "section.description":
-                section["description"] = values[source]
-            else:                                   # pragma: no cover
-                raise ValueError(f"Rules.xlsx: unknown target field {target!r}")
+            for source, target in actions:
+                if target == "question.text":
+                    question["text"] = values[source]
+                elif target == "section.title":
+                    section["title"] = values[source]
+                elif target == "section.description":
+                    section["description"] = values[source]
+                else:                                   # pragma: no cover
+                    raise ValueError(f"Rules.xlsx: unknown target field {target!r}")
 
     return data
 

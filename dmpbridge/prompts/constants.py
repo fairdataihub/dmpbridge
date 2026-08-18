@@ -1,13 +1,14 @@
 """Label definitions, the shared Ollama structured-output schema, and
-pdfplumber's own SYSTEM_PROMPT/schema.
+pdfplumber's own SYSTEM_PROMPT/schema — grouped here, under a deliberately
+generic name, because neither belongs in system.py.
 
 pdfplumber's SYSTEM_PROMPT/schema live here rather than in system.py because
 system.py already defines a SYSTEM_PROMPT for lighton's id-based per-block
 payload — a second module-level variable with the same name in
 that file would silently overwrite it. Their names are copied verbatim,
 name for name, from ``notebooks/with-pdfplumber-visual-signals.ipynb``, so
-access them via the module (``from dmpbridge.prompts import labels`` then
-``labels.SYSTEM_PROMPT`` / ``labels.schema``) rather than a bare import.
+access them via the module (``from dmpbridge.prompts import constants`` then
+``constants.SYSTEM_PROMPT`` / ``constants.schema``) rather than a bare import.
 """
 
 LABELS = ("title", "section.title", "section.description", "question.text", "answer.text")

@@ -24,7 +24,7 @@ from ..core import config
 from ..extractors import get_extractor
 from ..models import get_model
 from ..parsers import parse_llm_json
-from ..prompts import LABELS, SYSTEM_PROMPT, labels as prompt_labels
+from ..prompts import LABELS, SYSTEM_PROMPT, constants
 from ..utils import ConfigurationError, get_logger
 
 logger = get_logger(__name__)
@@ -206,7 +206,7 @@ class WholeDocStrategy:
 
         prompt = f"Classify the following text into the required JSON format:\n\n{full_text}"
         raw = self._backend.complete(
-            prompt_labels.SYSTEM_PROMPT, prompt, schema=prompt_labels.schema,
+            constants.SYSTEM_PROMPT, prompt, schema=constants.schema,
         )
 
         result = parse_llm_json(raw)
