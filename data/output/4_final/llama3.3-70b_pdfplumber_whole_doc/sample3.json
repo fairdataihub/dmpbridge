@@ -1,0 +1,98 @@
+{
+  "narrative": {
+    "download_url": "",
+    "template": {
+      "title": "CCPPSS 22001155",
+      "description": "",
+      "version": "v1",
+      "section": [
+        {
+          "title": "RRoolleess aanndd rreessppoonnssiibbiilliittiieess",
+          "description": "TThhee DDaattaa MMaannaaggeemmeenntt PPllaann sshhoouulldd cclleeaarrllyy aarrttiiccuullaattee hhooww tthhee PPII aanndd ccoo--PPIIss ppllaann ttoo mmaannaaggee aanndd ddiisssseemmiinnaattee ddaattaa ggeenneerraatteedd bbyy tthhee pprroojjeecctt.\nTThhee ppllaann sshhoouulldd oouuttlliinnee tthhee rriigghhttss aanndd oobblliiggaattiioonnss ooff aallll ppaarrttiieess aass ttoo tthheeiirr rroolleess aanndd rreessppoonnssiibbiilliittiieess iinn tthhee mmaannaaggeemmeenntt aanndd rreetteennttiioonn ooff rreesseeaarrcchh ddaattaa,\naanndd ccoonnssiiddeerr cchhaannggeess tthhaatt wwoouulldd ooccccuurr sshhoouuldd aa PPII oorr ccoo--PPII lleeaavvee tthhee iinnssttiittuuttiioonn oorr pprroojjeecctt.\nAAnnyy ccoossttss sshhoouulldd bbee eexxppllaaiinneedd iinn tthhee BBuuddggeett JJuussttiiffiiccaattiioonn ppaaggeess.",
+          "order": 1,
+          "question": [
+            {
+              "text": "RRoolleess aanndd rreessppoonnssiibbiilliittiieess",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Data will be generated at each of our institutional sites. The PI at each institution will be responsible for following the data management guidelines described below, and for saving the data to the RIC servers. This process of transferring all data to a central location will be facilitated by our research project coordinator. Our data management guidelines will be reviewed at the kickoff meeting for the project, and revisited briefly at each of our quarterly meetings with the PIs.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "TTyyppeess ooff ddaattaa",
+          "description": "TThhee DDaattaa MMaannaaggeemmeenntt PPllaann sshhoouulldd ddeessccrriibbee tthhee ttyyppeess ooff ddaattaa,\nssaammpplleess, pphhyyssiiccaall ccoolllleeccttiioonnss, ssooffttwwaarree, ccuurrrriiccuulluumm mmaatteerriiaallss, oorr ootthheerr mmaatteerriiaallss ttoo bbee pprroodduceedd iinn tthhee ccoouurrssee ooff tthhee pprroojjeecctt.\nIItt sshhoouulldd tthheenn ddeessccrriibbee tthhee eexxppeecctteedd ttyyppeess ooff ddaattaa ttoo bbee rreettaaiinneedd aanndd sshhaarreedd,\naanndd tthhee ppllaannss ffoorr ddooiinngg ssoo.\nTThhee DDMMPP sshhoouulldd ccoovveerr hhooww ddaattaa aarree ttoo bbee mmaannaaggeedd aanndd mmaaiinnttaaiinneedd dduurriinngg tthhee pprroojjeecctt.",
+          "order": 2,
+          "question": [
+            {
+              "text": "TTyyppeess ooff ddaattaa",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "We will manage all scientific and technical content generated from this proposal. Our products will include 3 broad types of data.\nFirst, we will have data related to each of our proposed experiments. These will include the detailed protocols used for each experiment, the raw data collected from each experiment, and the experimental code used to collect those data.\nThe relevant code will include both the data acquisition code, and the code for the controllers used in the experiment. Together, this information will be sufficient for recreating the circumstances of each data collection session.\nOur second type of data will be the code and results for all analyses completed on experimental data.\nSpecifically, we store all code necessary to recreate figures, tables, and other results reported in all published manuscripts.\nThe proposed foundational developments will produce substantial simulation code for controller development and testing. These and the outputs relevant to all key findings will also be managed.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "PPoolliicciieess ffoorr aacccceessss aanndd sshhaarriinngg aanndd aapppprroopprriiaattee pprrootteeccttiioonn aanndd pprriivvaaccyy",
+          "description": "TThhee DDaattaa MMaannaaggeemmeenntt PPllaann sshhoouulldd ddeessccrriibbee tthhee ppeerriioodd ooff ttiimmee tthhee ddaattaa wwiillll bbee rreettaaiinneedd aanndd sshhaarreedd;\nffaaccttoorrss tthhaatt lliimmiitt tthhee aabbiilliittyy ttoo mmaannaaggee aanndd sshhaarree ddaattaa,\nee..gg.., lleeggaall aanndd eetthhiiccaall rreessttrriiccttiioonnss oonn aacccceessss ttoo hhuummaann ssuubbjjeeccttss ddaattaa;\naanndd pprroovviissiioonnss ffoorr aapppprroopprriiaattee pprrootteeccttiioonn ooff pprriivvaaccyy, ccoonnffiiddeennttiiaalliittyy, sseeccuurriittyy, aanndd iinntteelllleeccttuuaall pprrooppeerrttyy.",
+          "order": 3,
+          "question": [
+            {
+              "text": "PPoolliicciieess ffoorr aacccceessss aanndd sshhaarriinngg aanndd aapppprroopprriiaattee pprrootteeccttiioonn aanndd pprriivvaaccyy",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Data will be made available upon request, after the conclusion of each of study. The availability of data (raw and analyzed) will be advertised on the project’s website.\nAccess will be free, but the original data collector/creator/principal investigator retains the right to use the data for analysis before making it publicly available.\nNo patient identifying information will be included in any of the available data files.\nSelect videos of the experiments will be distributed, with subject faces blurred so as to be unidentifiable.\nExperimental analyses results will be made available through peer-reviewed journal publications and conference presentations.\nThe code needed to generate all published results will be documented clearly.\nSoftware generated under the project will be released under the GNU Public License, and available for free download on the labs’ websites.\nThis includes code for each of our 3 experimental systems.\nWe commit to speaking with any qualified scientist who wishes to discuss our results or the technology employed to obtain our results.\nThere will be no copyright or licensing required for any of the data generated in this project.\nResearch records will be archived for a minimum of seven years after final reporting or publication of a project.\nIf any questions regarding the research, including but not limited to research integrity allegations, are raised during the seven- year retention period, the PI will keep the records until such questions are fully resolved.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "DDaattaa ssttoorraaggee aanndd pprreesseerrvvaattiioonn ooff aacccceessss",
+          "description": "TThhee DDaattaa MMaannaaggeemmeenntt PPllaann sshhoouulldd ddeessccrriibbee tthhee mmeecchhaanniissmmss aanndd ffoorrmmaattss ffoorr ssttoorriinngg ddaattaa\naanndd mmaakkiinngg tthheemm aacccceessssiibbllee ttoo ootthheerrss,\nwwhhiicchh mmaayy iinncclluuddee tthhiirrdd ppaarrttyy ffaacciilliittiieess aanndd rreeppoossiittoorriieess;\naanndd ootthheerr ttyyppeess ooff iinnffoorrmmaattiioonn tthhaatt wwoouulldd bbee mmaaiinnttaaiinneedd aanndd sshhaarreedd rreeggaarrddiinngg ddaattaa,\nee..gg.., tthhee mmeeaannss bbyy wwhhiicchh iitt wwaass ggeenneerraatteedd,\nddeettaaiilleedd aannaallyyttiiccaall aanndd pprroocceedduurraall iinnffoorrmmaattiioonn rreeqquuiirreedd ttoo rreepprroodduuccee eexxppeerriimmeennttaall rreessuullttss,\naanndd ootthheerr mmeettaaddaattaa.",
+          "order": 4,
+          "question": [
+            {
+              "text": "DDaattaa ssttoorraaggee aanndd pprreesseerrvvaattiioonn ooff aacccceessss",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "The servers at the Rehabilitation Institute of Chicago will serve as the central repository for all collected data.\nRaw data files will be saved in either Matlab or comma-separated value (CSV) format.\nCode for converting between these formats will also be provided to ensure easy access.\nThe contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.\nAll raw data will be de-identified to ensure subject anonynimity.\nUpon request, data will be made available through the project's website, hosted on an archived server run by the RIC IT Team.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "AAddddiittiioonnaall ppoossssiibbllee ddaattaa mmaannaaggeemmeenntt rreeqquuiirreemmeennttss",
+          "description": "",
+          "order": 5,
+          "question": []
+        }
+      ]
+    }
+  }
+}
