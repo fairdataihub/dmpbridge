@@ -24,7 +24,7 @@ from ..core import config
 from ..extractors import get_extractor
 from ..models import get_model
 from ..parsers import parse_llm_json
-from ..prompts import LABELS, SYSTEM_PROMPT, VISUAL_SIGNAL_SCHEMA, VISUAL_SIGNAL_SYSTEM_PROMPT
+from ..prompts import LABELS, SYSTEM_PROMPT, pdfplumber_visual
 from ..utils import ConfigurationError, get_logger
 
 logger = get_logger(__name__)
@@ -38,22 +38,26 @@ def _build_wholedoc_prompt(payload: list[dict]) -> str:
     )
 
 
-def _clean_visual_signal_output(parsed: list[dict], pdf_stem: str = "") -> list[dict]:
-    """Drop empty entries and normalize whitespace in the model's text values.
+def clean_labeled_output(labeled_data, verbose=True):
+    """Remove empty entries and normalize whitespace (strip \\n, \\t, extra spaces).
 
-    Ported from the notebook's clean_labeled_output() as-is: only text
-    emptiness is checked, not whether label is one of the five known
-    values — same as the notebook. The notebook's ``print()`` on drop
-    becomes ``logger.info()`` here to match this module's own convention.
+    Name, signature and logic copied verbatim from the notebook's
+    clean_labeled_output() — including that it does not check whether
+    ``label`` is one of the five known values, only that ``text`` is
+    non-empty after normalizing.
     """
     cleaned = []
-    for item in parsed:
-        normalized = re.sub(r"\s+", " ", item.get("text", "")).strip()
+    for item in labeled_data:
+        text = item.get("text", "")
+        normalized = re.sub(r"\s+", " ", text).strip()
+
         if normalized:
             cleaned.append({"text": normalized, "label": item.get("label")})
-        else:
-            logger.info("[wholedoc] %s dropped empty entry with label: %s",
-                        pdf_stem, item.get("label"))
+        elif verbose:
+            print(
+                f"Dropped empty entry with label: {item.get('label')}"
+            )  # just to check what it drops
+
     return cleaned
 
 
@@ -172,7 +176,8 @@ class WholeDocStrategy:
             return []
 
         if self.extractor_name == "pdfplumber":
-            return self._run_pdfplumber_visual(pdf_path, blocks)
+            full_text = blocks[0]["text"]
+            return self.classify_entire_document(full_text)
 
         payload = _build_payload(blocks)
         prompt  = _build_wholedoc_prompt(payload)
@@ -183,22 +188,27 @@ class WholeDocStrategy:
         parsed = parse_llm_json(raw, label=pdf_path.stem)
         return _apply_labels(blocks, parsed)
 
-    def _run_pdfplumber_visual(self, pdf_path: Path, blocks: list[dict]) -> list[dict]:
-        """pdfplumber's own path: one whole-document call, no ids.
+    def classify_entire_document(self, full_text):
+        """Classify a whole document's text in one call — pdfplumber's own path.
 
-        Extraction already produced the whole document as a single text
-        blob with **bold**/_italic_ markers (see PdfplumberExtractor); this
-        classifies it in one call and returns ``[{"text", "label"}]``
-        directly — no block ids, confidence, page, or bbox fields, unlike
-        every other extractor's path through this strategy.
+        Name and structure copied from the notebook's classify_entire_document():
+        same system prompt, same schema, same "one call, whole document" shape,
+        returning ``[{"text", "label"}]`` with no block ids, confidence, page,
+        or bbox fields, unlike every other extractor's path through this
+        strategy. The two differences from the notebook, both intentional:
+        ``model`` is this strategy's configured ``self.model`` instead of a
+        hardcoded ``"qwen2.5:14b"``, and the call goes through this project's
+        own OllamaModel backend (deterministic, temperature=0.0) rather than
+        the notebook's raw ``ollama.chat()`` (which had no temperature set and
+        measurably varied run to run).
         """
-        full_text = blocks[0]["text"]
-        prompt = f"Classify the following text into the required JSON format:\n\n{full_text}"
+        model = self.model
+        print(f"Sending full text to {model}")
 
-        logger.info("[wholedoc] sending whole document (%d chars) to %s / %s …",
-                    len(full_text), self.provider, self.model)
-        raw    = self._backend.complete(
-            VISUAL_SIGNAL_SYSTEM_PROMPT, prompt, schema=VISUAL_SIGNAL_SCHEMA,
+        prompt = f"Classify the following text into the required JSON format:\n\n{full_text}"
+        raw = self._backend.complete(
+            pdfplumber_visual.SYSTEM_PROMPT, prompt, schema=pdfplumber_visual.schema,
         )
-        parsed = parse_llm_json(raw, label=pdf_path.stem)
-        return _clean_visual_signal_output(parsed, pdf_stem=pdf_path.stem)
+
+        result = parse_llm_json(raw)
+        return clean_labeled_output(result)
