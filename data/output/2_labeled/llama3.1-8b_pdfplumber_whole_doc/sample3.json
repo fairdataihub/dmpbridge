@@ -1,0 +1,166 @@
+[
+  {
+    "text": "** CCPPSS 22001155 **",
+    "label": "title"
+  },
+  {
+    "text": "** RRoolleess aanndd rreessppoonnssiibbiilliittiieess **",
+    "label": "section.title"
+  },
+  {
+    "text": "** TThhee DDaattaa MMaannaaggeemmeenntt PPllaann sshhoouulldd cclleeaarrllyy aarrttiiccuullaattee hhooww tthhee PPII aanndd ccoo--PPIIss ppllaann ttoo mmaannaaggee **",
+    "label": "section.description"
+  },
+  {
+    "text": "** aanndd ddiisssseemmiinnaattee ddaattaa ggeenneerraatteedd bbyy tthhee pprroojjeecctt.. TThhee ppllaann sshhoouulldd oouuttlliinnee tthhee rriigghhttss aanndd **",
+    "label": "section.description"
+  },
+  {
+    "text": "** oobblliiggaattiioonnss ooff aallll ppaarrttiieess aass ttoo tthheeiirr rroolleess aanndd rreessppoonnssiibbiilliittiieess iinn tthhee mmaannaaggeemmeenntt aanndd **",
+    "label": "section.description"
+  },
+  {
+    "text": "** rreetteennttiioonn ooff rreesseeaarrcchh ddaattaa,, aanndd ccoonnssiiddeerr cchhaannggeess tthhaatt wwoouulldd ooccccuurr sshhoouulldd aa PPII oorr ccoo--PPII **",
+    "label": "section.description"
+  },
+  {
+    "text": "** lleeaavvee tthhee iinnssttiittuuttiioonn oorr pprroojjeecctt.. AAnnyy ccoossttss sshhoouulldd bbee eexxppllaaiinneedd iinn tthhee BBuuddggeett JJuussttiiffiiccaattiioonn **",
+    "label": "section.description"
+  },
+  {
+    "text": "** ppaaggeess.. **",
+    "label": "section.description"
+  },
+  {
+    "text": "Data will be generated at each of our institutional sites. The PI at each institution will be responsible for following the data management guidelines described below, and for saving the data to the RIC servers.",
+    "label": "answer.text"
+  },
+  {
+    "text": "This process of transferring all data to a central location will be facilitated by our research project coordinator.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Our data management guidelines will be reviewed at the kickoff meeting for the project, and revisited briefly at each of our quarterly meetings with the PIs.",
+    "label": "answer.text"
+  },
+  {
+    "text": "** TTyyppeess ooff ddaattaa **",
+    "label": "section.title"
+  },
+  {
+    "text": "** TThhee DDaattaa MMaannaaggeemmeenntt PPllaann sshhoouulldd ddeessccrriibbee tthhee ttyyppeess ooff ddaattaa,, ssaammpplleess,, pphhyyssiiccaall **",
+    "label": "section.description"
+  },
+  {
+    "text": "** ccoolllleeccttiioonnss,, ssooffttwwaarree,, ccuurrrriiccuulluumm mmaatteerriiaallss,, oorr ootthheerr mmaatteerriiaallss ttoo bbee pprroodduuccceedd iinn tthhee ccoouurrssee **",
+    "label": "section.description"
+  },
+  {
+    "text": "** ooff tthhee pprroojjeecctt.. IItt sshhoouulldd tthheenn ddeessccrriibbee tthhee eexxppeecctteedd ttyyppeess ooff ddaattaa ttoo bbee rreettaaiinneedd aanndd sshhaarreedd,, **",
+    "label": "section.description"
+  },
+  {
+    "text": "** aanndd tthhee ppllaannss ffoorr ddooiinngg ssoo.. TThhee DDMMPP sshhoouulldd ccoovveerr hhooww ddaattaa aarree ttoo bbee mmaannaaggeedd aanndd **",
+    "label": "section.description"
+  },
+  {
+    "text": "** mmaaiinnttaaiinneedd dduurriinngg tthhee pprroojjeecctt.. **",
+    "label": "section.description"
+  },
+  {
+    "text": "We will manage all scientific and technical content generated from this proposal.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Our products will include 3 broad types of data.",
+    "label": "answer.text"
+  },
+  {
+    "text": "First, we will have data related to each of our proposed experiments. These will include the detailed protocols used for each experiment, the raw data collected from each experiment, and the experimental code used to collect those data.",
+    "label": "answer.text"
+  },
+  {
+    "text": "The relevant code will include both the data acquisition code, and the code for the controllers used in the experiment.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Together, this information will be sufficient for recreating the circumstances of each data collection session.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Our second type of data will be the code and results for all analyses completed on experimental data.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Specifically, we store all code necessary to recreate figures, tables, and other results reported in all published manuscripts.",
+    "label": "answer.text"
+  },
+  {
+    "text": "The proposed foundational developments will produce substantial simulation code for controller development and testing.",
+    "label": "answer.text"
+  },
+  {
+    "text": "** PPoolliicciieess ffoorr aacccceessss aanndd sshhaarriinngg aanndd aapppprroopprriiaattee pprrootteeccttiioonn aanndd pprriivvaaccyy **",
+    "label": "section.title"
+  },
+  {
+    "text": "** TThhee DDaattaa MMaannaaggeemmeenntt PPllaann sshhoouulldd ddeessccrriibbee tthhee ppeerriioodd ooff ttiimmee tthhee ddaattaa wwiillll bbee rreettaaiinneedd **",
+    "label": "section.description"
+  },
+  {
+    "text": "** aanndd sshhaarreedd;; ffaaccttoorrss tthhaatt lliimmiitt tthhee aabbiilliittyy ttoo mmaannaaggee aanndd sshhaarree ddaattaa,, ee..gg..,, lleeggaall aanndd eetthhiiccaall **",
+    "label": "section.description"
+  },
+  {
+    "text": "** rreessttrriiccttiioonnss oonn aacccceessss ttoo hhuummaann ssuubbjjeeccttss ddaattaa;; aanndd pprroovviissiioonnss ffoorr aapppprroopprriiaattee pprrootteeccttiioonn ooff **",
+    "label": "section.description"
+  },
+  {
+    "text": "** pprriivvaaccyy,, ccoonnffiiddeennttiiaalliittyy,, sseeccuurriittyy,, aanndd iinntteelllleeccttuuaall pprrooppeerrttyy.. **",
+    "label": "section.description"
+  },
+  {
+    "text": "Data will be made available upon request, after the conclusion of each of study.",
+    "label": "answer.text"
+  },
+  {
+    "text": "The availability of data (raw and analyzed) will be advertised on the project’s website.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Access will be free, but the original data collector/creator/principal investigator retains the right to use the data for analysis before making it publicly available.",
+    "label": "answer.text"
+  },
+  {
+    "text": "No patient identifying information will be included in any of the available data files.",
+    "label": "answer.text"
+  },
+  {
+    "text": "** iinnffoorrmmaattiioonn rreeqquuiirreedd ttoo rreepprroodduuccee eexxppeerriimmeennttaall rreessuullttss,, aanndd ootthheerr mmeettaaddaattaa.. **",
+    "label": "section.title"
+  },
+  {
+    "text": "The servers at the Rehabilitation Institute of Chicago will serve as the central repository for all collected data.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Raw data files will be saved in either Matlab or comma-separated value (CSV) format.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Code for converting between these formats will also be provided to ensure easy access.",
+    "label": "answer.text"
+  },
+  {
+    "text": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
+    "label": "answer.text"
+  },
+  {
+    "text": "All raw data will be de-identified to ensure subject anonynimity.",
+    "label": "answer.text"
+  },
+  {
+    "text": "** AAddddiittiioonnaall ppoossssiibbllee ddaattaa mmaannaaggeemmeenntt rreeqquuiirreemmeennttss **",
+    "label": "section.title"
+  }
+]

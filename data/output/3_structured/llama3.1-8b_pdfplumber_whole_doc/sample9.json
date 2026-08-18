@@ -1,0 +1,132 @@
+{
+  "narrative": {
+    "download_url": "",
+    "template": {
+      "title": "** CCAARREEEERR:: HHIIGGHH--RREESSOOLLUUTTIIOONN NNMMRR FFOORR PPAARRAAMMAAGGNNEETTIICC SSOODDIIUUMM **",
+      "description": "",
+      "version": "v1",
+      "section": [
+        {
+          "title": "** EELLEECCTTRROODDEESS **",
+          "description": "",
+          "order": 1,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Battery material samples will be synthesized in powder form and identified through a consistent and systematic labeling procedure, which will include sample composition, name of researcher and date.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** PPrroodduuccttss ooff RReesseeaarrcchh **",
+          "description": "",
+          "order": 2,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Experimental data generated over the course of the research will include synthesis procedures and results from characterization of battery electrode samples.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** DDaattaa FFoorrmmaatt SSttaannddaarrddss **",
+          "description": "",
+          "order": 3,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "In order to allow for interoperability, reproducibility, and reuse, all data will be stored and saved in standard and open formats.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** AAcccceessss aanndd sshhaarriinngg **",
+          "description": "",
+          "order": 4,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in partnership with Jamboree Housing (JH) will be uploaded to JH’s filesharing system for broad and free dissemination to their different centers and partners in California.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** PPoolliicciieess aanndd pprroovviissiioonnss ffoorr rree--uussee,, rree--ddiissttrriibbuuttiioonn,, aanndd pprroodduuccttiioonn ooff ddeerriivvaattiivveess **",
+          "description": "",
+          "order": 5,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "All data will be stored in Dryad and will be available under a public domain, creative commons license (CC0).",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** AArrcchhiivviinngg ooff DDaattaa,, SSaammpplleess,, aanndd OOtthheerr RReelleevvaanntt RReesseeaarrcchh PPrroodduuccttss **",
+          "description": "",
+          "order": 6,
+          "question": [
+            {
+              "text": "",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Laboratory notebooks and samples will be retained for a minimum of 5 years following the conclusion of the program and will remain the property of UC Santa Barbara and kept on campus after students graduate.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
