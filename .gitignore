@@ -9,18 +9,9 @@ data/pdfplumber_extracted_blocks/
 data/pdfplumber_extracted_blocks_debug/
 data/pdfplumber_extracted_markdown/
 data/pdfplumber_extracted_text/
-# The report and its diagram are build artefacts — binary, no useful diff, and
-# reproducible from scripts/build/. The worklogs are not: they hold reasoning that
-# git history cannot reconstruct, so they stay tracked.
-#
-# Excluding the whole Report-doc/ directory would make that impossible — git cannot
-# re-include a file whose parent directory is excluded — so the artefacts are
-# excluded by pattern instead.
-*.docx
-Report-doc/*.png
-# Copies of pipeline output made by scripts/rerun.py before it overwrites a tag.
-# Recoverable data, not source — and large.
-Report-doc/backups/
+# Report-doc/ is kept out of the public repo entirely, worklogs included —
+# not published to GitHub.
+Report-doc/
 
 *.log
 logs/
