@@ -133,11 +133,11 @@ r.font.size = Pt(13)
 r.font.color.rgb = SUB_BLUE
 
 for line in [
-    "Date: 6 August 2026",
+    "Date: 18 August 2026",
     "Dataset: 10 manually labeled DMP documents (23 pages) · all 10 scored",
     "Models: Llama 3.3 70B · Gemma 4 e4b · Llama 3.1 8B (via Ollama, free/local)",
     "Extractors: pdfplumber (the only one implemented)",
-    "Experiments: 3 of 3 complete — all three models on pdfplumber",
+    "Experiments: 2 of 3 complete under the current pipeline — llama3.3:70b running",
 ]:
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(1)
@@ -145,9 +145,11 @@ for line in [
     r.bold = True
     r.font.size = Pt(11)
 
-para("Results in section 6 cover the three pdfplumber configurations, all produced on 6 August under the "
-     "current prompt, annotation rules and 10-sample evaluation set. pdfplumber's own extraction+labeling "
-     "was rewritten since, so these numbers are themselves stale pending re-evaluation.",
+para("Results in section 6 are the first produced under pdfplumber's rewritten whole-document pipeline "
+     "(section 3.3) — llama3.1:8b and gemma4:e4b are done, llama3.3:70b was still running when this report "
+     "was built. Section 4.1's inference-parameters table (format: OUTPUT_SCHEMA, and its 'nine "
+     "configurations' framing) describes the pre-rewrite, id-based design and has not been updated to "
+     "match — pdfplumber no longer uses OUTPUT_SCHEMA at all; treat that table as historical.",
      size=9.5, italic=True, color=RUST, after=10)
 
 # ── 1 ────────────────────────────────────────────────────────────────────
@@ -362,49 +364,76 @@ para("All three are marked complete against the previous pdfplumber implementati
 
 # ── 6 ────────────────────────────────────────────────────────────────────
 h1("6. Results")
-para("All ten samples, whole-document strategy, pdfplumber with line merging, current annotation rules. "
-     "Produced 6 August 2026.", size=10, italic=True, color=GREY)
-para("These figures use the prompt as it stood after the section 4.2 correction, which is the only wording "
-     "run on all three models. The later variants explored in 4.2 have been measured on llama3.1:8b and "
-     "gemma4:e4b only, and are reported there rather than here, because a prompt that has not been run on "
-     "every model cannot produce a comparable table.", size=9.5, italic=True, color=RUST)
+para("All ten samples, pdfplumber's whole-document visual-signal pipeline (section 4), current annotation "
+     "rules. Produced 18 August 2026 — the first real numbers under this pipeline; every pdfplumber figure "
+     "elsewhere in this report (and the removed section 6 table this replaces) predates the rewrite and is "
+     "not comparable to what follows.", size=10, italic=True, color=RUST)
+para("Scored at the project default containment threshold — 100% (CONTAINMENT_THRESHOLD = 1.0 in "
+     "evaluate.py) — every predicted word must be contained for a match, no partial credit.",
+     size=9.5, italic=True, color=GREY)
 
 h2("6.1 Headline")
-table(["Model","Precision","Recall","Path A F1","Path B F1","Runtime (10 docs)"],
-      [["llama3.3:70b","72.1%","80.3%","76.0%","76.1%","22 min"],
-       ["gemma4:e4b","68.6%","81.1%","74.3%","74.4%","74 s"],
-       ["llama3.1:8b","53.9%","72.7%","61.9%","61.8%","74 s"]],
-      widths=[1.35,1.05,0.95,1.05,1.05,1.35])
-para("The 70B leads, and gemma4:e4b is 1.7 points behind at one-eighteenth the runtime. With the noise floor "
-     "now measured at +/-0.002 F1 (section 4.2), that 1.7-point gap is real rather than noise — but it is "
-     "small enough that gemma4:e4b remains the better practical choice, being roughly eighteen times faster "
-     "for 98% of the score. llama3.1:8b is clearly behind on both paths.")
-para("Earlier drafts stated that the top two could not be separated because runs varied by roughly 3 points. "
-     "That figure was assumed rather than measured, and the measurement on 6 August withdrew it. The ranking "
-     "above is therefore stable, and the practical argument for gemma4:e4b rests on runtime, not on doubt "
-     "about the ordering.", size=10, italic=True, color=GREY)
+table(["Model","Path A F1","Path B F1","Runtime (10 docs)"],
+      [["llama3.3:70b","pending","pending","running — not complete when this report was built"],
+       ["gemma4:e4b","80.6%","76.8%","157 s"],
+       ["llama3.1:8b","53.5%","49.7%","149 s"]],
+      widths=[1.35,1.05,1.05,2.6])
+para("Both completed models score well above the old line-by-line pdfplumber pipeline: llama3.1:8b was "
+     "28.7%/31.3% (Path A/B), gemma4:e4b was 65.6%/66.5%. That is +24.8pp and +15.0pp on Path A respectively "
+     "— consistent across both models measured so far, not a single outlier, though each is one run and the "
+     "±0.002 F1 noise floor in the project's memory was measured against the old pipeline, not re-verified "
+     "for this one.", size=10, color=GREY)
+para("Path B scoring below Path A on both models is a reversal from the historical pattern, where Path B "
+     "(rules-filled) was usually flat or slightly ahead. Not yet root-caused; plausibly connected to an "
+     "unresolved change to two Rules.xlsx rows (see the 2026-08-18 worklog) that is implemented in code but "
+     "not yet confirmed against the real annotation data — flagged as a hypothesis, not a finding.",
+     size=10, italic=True, color=RUST)
 
 h2("6.2 Per-label F1")
-table(["Label","llama3.3:70b","gemma4:e4b","llama3.1:8b","Gold items"],
-      [["title","90.0%","84.2%","90.0%","10"],
-       ["section.title","79.1%","81.3%","68.6%","43"],
-       ["section.description","53.3%","80.0%","75.0%","8"],
-       ["question.text","47.4%","41.9%","4.2%","16"],
-       ["answer.text","83.5%","78.3%","72.6%","55"]],
-      widths=[1.75,1.25,1.15,1.15,1.1])
-para("question.text separates the models most sharply and tracks capability closely — it is the label the "
-     "prompt correction in 4.2 targeted. It was unmeasurable before the evaluation set widened to ten samples "
-     "(see 7.4); it now has 16 gold items on the old annotation and 18 on the new, which is workable but thin.")
-para("section.description is the one label where the 70B is worst (53.3% against gemma4's 80.0%), on a base of "
-     "8 items — small enough that one document accounts for the gap.", size=10, color=GREY)
+table(["Label","gemma4:e4b (A / B)","llama3.1:8b (A / B)","Gold items (A / B)"],
+      [["title","80.0% / 80.0%","80.0% / 80.0%","10 / 10"],
+       ["section.title","78.6% / 75.9%","50.0% / 49.5%","43 / 43"],
+       ["section.description","70.6% / 70.6%","10.0% / 10.0%","8 / 8"],
+       ["question.text","81.2% / 71.0%","0.0% / 31.3%","16 / 56"],
+       ["answer.text","83.8% / 83.8%","70.2% / 70.2%","55 / 55"]],
+      widths=[1.75,1.55,1.55,1.4])
+para("question.text at 0.0% for llama3.1:8b on Path A, recovering to 31.3% on Path B, is the annotation "
+     "rules working as designed — Path A scores against the original annotation, which leaves many questions "
+     "blank; Path B fills them first. Not a regression.", size=10, color=GREY)
+para("llama3.3:70b's per-label breakdown will be added once its run completes.",
+     size=9.5, italic=True, color=GREY)
 
 h2("6.3 Path A versus Path B")
-para("The two paths score almost identically for every model — at most 0.3 points apart. That is expected "
-     "rather than surprising: extract_gold() drops a question.text equal to its section title to avoid "
-     "counting the same text twice, and most of what the rules fill comes from the section title, so the "
-     "additions largely are not counted as separate items.")
-para("The visible difference is confined to question.text, where Path B gains a few points by filling "
-     "questions the model left empty.")
+para("Unlike the pre-rewrite pipeline (where the two paths scored within 0.3 points of each other), Path B "
+     "now trails Path A by 3.8pp (llama3.1:8b) and 3.8pp (gemma4:e4b) on the whole-document pipeline. See "
+     "6.1 — this is under active investigation, not yet explained.")
+
+h2("6.4 Runtime — why the new pipeline runs slower")
+para("pdfplumber's extraction and labeling were rewritten (section 3.3) to match a whole-document, "
+     "visual-signal design: the model reads the entire document as one text string with **bold**/_italic_ "
+     "markers standing in for visual emphasis, and returns a flat [{\"text\", \"label\"}] array directly, "
+     "rather than being handed a pre-segmented list of blocks and asked to classify each by id.")
+table(["Model", "Old pipeline, 10 docs", "New pipeline, 10 docs", "Change"],
+      [["llama3.1:8b", "74 s", "149 s", "2.0×"],
+       ["gemma4:e4b", "74 s", "157 s", "2.1×"],
+       ["llama3.3:70b", "~20 min (documented)", "running — on pace for longer", "—"]],
+      widths=[1.3, 1.6, 1.8, 1.0])
+para("The cause is architectural, not incidental. The old pipeline's output was terse — one "
+     "{id, label, confidence} triple per block, with the model never regenerating any of the document's "
+     "actual text. The new pipeline's output includes the classified text itself for every item, so the "
+     "model must reproduce the full source content as output tokens, not just short labels. LLM generation "
+     "speed is bottlenecked by output token count far more than by input size, so this is a real, roughly "
+     "twofold increase in generation work per document, consistent across both models measured so far — not "
+     "GPU contention, and not specific to one document.", size=10, color=GREY)
+para("One document-level effect compounds this on llama3.3:70b specifically: sample2's extracted text is "
+     "14,898 characters, more than double every other sample in the set (next largest: 9,738; mean of the "
+     "rest: ~6,200). On a 70B model, where per-token latency is already far higher than the smaller models, "
+     "an unusually long document adds directly to an already-slower-per-document baseline.",
+     size=10, italic=True, color=GREY)
+para("Practical consequence: the ~112 s/sample, ~20-minute figure for llama3.3:70b recorded in the "
+     "project's own operating notes was measured under the old, pre-rewrite pipeline and is now stale for "
+     "the same architectural reason the old score table was — expect roughly double that under the current "
+     "pipeline going forward.", size=10, italic=True, color=RUST)
 
 # ── 7 ────────────────────────────────────────────────────────────────────
 h1("7. Evaluation Methodology")
