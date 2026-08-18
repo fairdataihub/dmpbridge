@@ -12,8 +12,7 @@ stage can be inspected, diffed or re-run without touching the others::
 ``<tag>`` is ``<model-slug>_<extractor>_whole_doc``; ``<extractor>`` alone keys
 stage 1, because extraction does not depend on the model.  That is the point of
 splitting it out: extracting a document once and labeling it with three models
-costs one extraction rather than three — worth roughly 15 minutes per full
-sweep with LightOnOCR, which spends ~31 s per document on OCR.
+costs one extraction rather than three.
 
 Stages 3 and 4 previously shared a directory with stage 2, distinguished only by
 a ``_structured`` filename suffix.  Filenames are now identical across stages so

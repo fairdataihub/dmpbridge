@@ -25,3 +25,6 @@ Report-doc/backups/
 *.log
 logs/
 tests/
+
+# Local Claude Code project instructions — not published to GitHub.
+CLAUDE.md

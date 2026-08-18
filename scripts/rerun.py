@@ -7,7 +7,7 @@ model), or deleting results with no copy kept.
 
     python scripts/rerun.py --model llama3.1:8b
     python scripts/rerun.py --all                       # all three models
-    python scripts/rerun.py --all --extractor lighton
+    python scripts/rerun.py --all --extractor pdfplumber
     python scripts/rerun.py --model gemma4:e4b --dry-run
 
 Stage 1 is never touched. Existing stages 2-4 are copied under
@@ -62,7 +62,7 @@ def main() -> None:
     g.add_argument("--model", action="append", help="model to re-run (repeatable)")
     g.add_argument("--all", action="store_true", help=f"re-run {', '.join(MODELS)}")
     ap.add_argument("--extractor", default="pdfplumber",
-                    choices=["pdfplumber", "lighton"])
+                    choices=["pdfplumber"])
     ap.add_argument("--start", type=int, default=1)
     ap.add_argument("--end", type=int, default=10)
     ap.add_argument("--no-backup", action="store_true", help="skip the backup copy")

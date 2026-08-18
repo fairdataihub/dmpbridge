@@ -17,7 +17,7 @@ heading, a question, an answer — and outputs structured JSON.
 flowchart TD
     PDF["<b>DMP PDF</b>"]
 
-    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · LightOnOCR</small>"]
+    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber</small>"]
     READ --> S1["<b>1. Text blocks</b>"]
     S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
@@ -72,9 +72,9 @@ Research code — results are provisional and the evaluation set is small.
 > `dmpbridge-experiment experiments/<model>-wholedoc.yaml --evaluate` per model to get
 > current numbers.
 
-Docling has been removed from the pipeline. Two extractors remain: `pdfplumber` (default)
-and `lighton`. That's 6 planned (model × extractor) configurations, 0 currently
-re-evaluated under the current pdfplumber implementation.
+`pdfplumber` is the only extractor in the pipeline now — Docling and LightOnOCR have both
+been removed. That's 3 planned (one per model) configurations, 0 currently re-evaluated
+under the current pdfplumber implementation.
 
 Run-to-run noise, last measured against the previous pdfplumber implementation, was
 ±0.002 F1 (one configuration run three times, every count identical) — not the ~3-point
@@ -130,22 +130,18 @@ which shows the YAML as input and the final document as output side by side.
 
 ---
 
-## Choosing an extractor
+## How extraction works
 
-| Extractor | Install | Best for |
-|---|---|---|
-| `pdfplumber` | included | Most PDFs — no GPU needed |
-| `lighton` | `pip install -e ".[lighton]"` | Scanned / image-based PDFs (OCR) |
+`pdfplumber` is the only extractor implemented — no GPU needed, no extra install. It reads
+the whole document at once and sends it to the model in a single call. Words visually
+emphasized relative to the document's own body-text font (bold, or a larger size) are
+wrapped in `**markers**`, and italic words in `_markers_`, so the model gets the PDF's own
+visual structure as a signal without needing bounding-box or font-size fields — extraction
+and labeling are fused into one step rather than separate segment-then-classify calls.
 
-`pdfplumber` reads the whole document at once and sends it to the model in a single call.
-Words visually emphasized relative to the document's own body-text font (bold, or a
-larger size) are wrapped in `**markers**`, and italic words in `_markers_`, so the model
-gets the PDF's own visual structure as a signal without needing bounding-box or font-size
-fields — extraction and labeling are fused into one step, unlike `lighton`, which segments
-into blocks first and labels them in a separate call.
-
-`lighton` (LightOnOCR-2-1B) segments by paragraph and handles pages with no usable text
-layer via OCR — needed for scanned/image-based PDFs, at the cost of requiring a GPU.
+It assumes a text layer exists (not a scanned/image-only PDF). Docling and LightOnOCR —
+an OCR-capable alternative for scanned documents — were both tried in this project and
+removed. If a scanned-PDF use case comes up, that capability would need to be rebuilt.
 
 ---
 
@@ -166,11 +162,11 @@ can open `sampleN.json` in each folder and follow one document through.
 depend on which LLM labels it. Labeling with three models costs one read, not three:
 
 ```bash
-dmpbridge-wholedoc --model llama3.1:8b --extractor lighton   # reads and caches
-dmpbridge-wholedoc --model gemma4:e4b  --extractor lighton   # reuses the cache
+dmpbridge-wholedoc --model llama3.1:8b   # reads and caches
+dmpbridge-wholedoc --model gemma4:e4b    # reuses the cache
 
-dmpbridge-wholedoc --model gemma4:e4b --extractor lighton --no-cache   # force re-read
-dmpbridge-wholedoc --model gemma4:e4b --extractor lighton --no-rules   # skip stage 4
+dmpbridge-wholedoc --model gemma4:e4b --no-cache   # force re-read
+dmpbridge-wholedoc --model gemma4:e4b --no-rules   # skip stage 4
 ```
 
 To read PDFs with no LLM involved at all:

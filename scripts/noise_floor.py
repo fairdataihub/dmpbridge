@@ -26,7 +26,7 @@ def main() -> None:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--model", default="llama3.1:8b")
     ap.add_argument("--extractor", default="pdfplumber",
-                    choices=["pdfplumber", "lighton"])
+                    choices=["pdfplumber"])
     ap.add_argument("--runs", type=int, default=3)
     ap.add_argument("--start", type=int, default=1)
     ap.add_argument("--end", type=int, default=10)

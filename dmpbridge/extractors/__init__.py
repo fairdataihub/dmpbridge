@@ -7,14 +7,13 @@ the downstream strategy and evaluation code are unaffected by the choice.
 Supported extractors
 --------------------
 ``"pdfplumber"`` — whole-document text with **bold**/_italic_ visual-signal
-                  markers, extraction and labeling fused into one call (default).
-``"lighton"``    — LightOnOCR-2-1B vision-LLM, handles scanned / complex PDFs
+                  markers, extraction and labeling fused into one call.
 
 Usage
 -----
     from dmpbridge.extractors import get_extractor
 
-    extractor = get_extractor("lighton")
+    extractor = get_extractor("pdfplumber")
     blocks    = extractor.extract(Path("document.pdf"))
 """
 from .base import BaseExtractor
@@ -26,22 +25,17 @@ def get_extractor(name: str, **kwargs) -> BaseExtractor:
     Parameters
     ----------
     name:
-        ``"pdfplumber"`` | ``"lighton"``
+        ``"pdfplumber"`` — the only extractor currently implemented.
     **kwargs:
         Passed through to the extractor constructor.
-        Recognised by ``"lighton"``: ``model_id``, ``max_new_tokens``.
     """
     if name == "pdfplumber":
         from .pdfplumber_extractor import PdfplumberExtractor
         return PdfplumberExtractor(**kwargs)
 
-    if name == "lighton":
-        from .lighton_extractor import LightOnExtractor
-        return LightOnExtractor(**kwargs)
-
     raise ValueError(
         f"Unknown extractor {name!r}. "
-        "Supported values: 'pdfplumber', 'lighton'."
+        "Supported values: 'pdfplumber'."
     )
 
 

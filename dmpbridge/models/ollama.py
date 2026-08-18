@@ -1,7 +1,6 @@
 """Ollama model backend."""
 import requests
 
-from ..prompts import OUTPUT_SCHEMA
 from ..utils import ProviderConnectionError, get_logger
 
 logger = get_logger(__name__)
@@ -10,8 +9,9 @@ logger = get_logger(__name__)
 class OllamaModel:
     """Call a locally running Ollama server.
 
-    Uses ``format=OUTPUT_SCHEMA`` on every request so Ollama grammar-enforces
-    valid JSON output — no need for separate JSON repair on the caller side.
+    Every call must pass a ``schema`` — Ollama grammar-enforces the response
+    against it, so there is no need for separate JSON repair on the caller
+    side.
 
     Parameters
     ----------
@@ -35,13 +35,11 @@ class OllamaModel:
         self.num_ctx = num_ctx
         self._verify_connection()
 
-    def complete(self, system: str, prompt: str, *, schema: dict | None = None) -> str:
+    def complete(self, system: str, prompt: str, *, schema: dict) -> str:
         """Send *system* + *prompt* to Ollama and return the raw text response.
 
-        *schema* overrides the default id-based ``OUTPUT_SCHEMA`` for callers
-        with a different output shape (e.g. pdfplumber's whole-document,
-        id-less ``[{"text": ..., "label": ...}]`` array). ``temperature`` stays
-        pinned at ``0.0`` regardless — this is what makes runs reproducible.
+        ``temperature`` stays pinned at ``0.0`` regardless of caller — this is
+        what makes runs reproducible.
         """
         resp = requests.post(
             f"{self.host}/api/generate",
@@ -50,7 +48,7 @@ class OllamaModel:
                 "system":     system,
                 "prompt":     prompt,
                 "stream":     False,
-                "format":     schema if schema is not None else OUTPUT_SCHEMA,
+                "format":     schema,
                 "keep_alive": -1,   # keep model in VRAM indefinitely
                 "options": {
                     "temperature": 0.0,

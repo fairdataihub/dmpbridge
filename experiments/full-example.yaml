@@ -14,8 +14,7 @@ models:
   - gemma4:e4b
   - llama3.3:70b
 extractors:
-  - pdfplumber               # whole-document, extraction+labeling fused, no bbox data
-  # - lighton                 # vision-LLM OCR, for scanned/complex PDFs
+  - pdfplumber               # the only extractor — whole-document, extraction+labeling fused
 
 provider: ollama
 host: http://localhost:11434

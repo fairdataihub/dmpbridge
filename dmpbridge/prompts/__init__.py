@@ -2,16 +2,12 @@
 
 Sub-modules
 -----------
-constants   LABELS tuple, OUTPUT_SCHEMA (lighton's id-based schema), and
-            pdfplumber's own SYSTEM_PROMPT / schema (whole-document, id-less —
-            kept here, not re-exported, since bare SYSTEM_PROMPT would collide
-            with system.SYSTEM_PROMPT below; access via
+constants   LABELS tuple, and pdfplumber's own SYSTEM_PROMPT / schema
+            (whole-document, id-less) — access via
             ``from dmpbridge.prompts import constants`` then
-            ``constants.SYSTEM_PROMPT`` / ``constants.schema``)
-system      SYSTEM_PROMPT shared by lighton's id-based per-block payload
+            ``constants.SYSTEM_PROMPT`` / ``constants.schema``
 """
 from . import constants
-from .constants import LABELS, OUTPUT_SCHEMA
-from .system import SYSTEM_PROMPT
+from .constants import LABELS
 
-__all__ = ["LABELS", "OUTPUT_SCHEMA", "SYSTEM_PROMPT", "constants"]
+__all__ = ["LABELS", "constants"]

@@ -4,7 +4,7 @@
 flowchart TD
     PDF["<b>DMP PDF</b>"]
 
-    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · LightOnOCR</small>"]
+    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber</small>"]
     READ --> S1["<b>1. Text blocks</b>"]
     S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
@@ -50,7 +50,7 @@ steps that produce each one.
 
 | Step | What it does | Choices |
 |---|---|---|
-| Read the PDF | pdfplumber: whole document in one call; LightOnOCR: per-page OCR | `pdfplumber`, `LightOnOCR` |
+| Read the PDF | whole document in one call, extraction+labeling fused | `pdfplumber` |
 | Label each block | one LLM call per document | `llama3.1:8b`, `gemma4:e4b`, `llama3.3:70b` |
 | Build the structure | nest into sections → questions → answers | — |
 | Apply the rules | fill blank questions | `data/input/Rules.xlsx` |

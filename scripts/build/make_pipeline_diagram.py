@@ -85,17 +85,12 @@ box(SX + 8, 108, SW - 16, 7, face=NAVY, edge=NAVY)
 text(CX, 111.5, "DMP PDF   ·   10 documents, 23 pages", size=9.4,
      color="white", weight="bold")
 arrow(CX, 108, CX, 103)
-text(CX + 1.5, 105.5, "choose one extraction backend", size=7.0,
-     color=GREY, style="italic", ha="left")
 
-# ── Extractors ───────────────────────────────────────────────────────────
-for i, (label, sub) in enumerate((("pdfplumber", "whole-document"),
-                                  ("LightOnOCR", "vision OCR"))):
-    x = SX + i * 21.3
-    box(x, 94, 19.4, 8.4, edge=BLUE, lw=1.3)
-    text(x + 9.7, 99.6, label, size=8.5, weight="bold", color=BLUE)
-    text(x + 9.7, 96.2, sub, size=6.9, color=GREY)
-    ax.plot([x + 9.7, x + 9.7, CX], [94, 91.6, 91.6], color=BLUE, lw=1.1, zorder=3)
+# ── Extractor ────────────────────────────────────────────────────────────
+box(SX, 94, 19.4, 8.4, edge=BLUE, lw=1.3)
+text(SX + 9.7, 99.6, "pdfplumber", size=8.5, weight="bold", color=BLUE)
+text(SX + 9.7, 96.2, "whole-document", size=6.9, color=GREY)
+ax.plot([SX + 9.7, SX + 9.7, CX], [94, 91.6, 91.6], color=BLUE, lw=1.1, zorder=3)
 arrow(CX, 91.6, CX, 88.5, color=BLUE, lw=1.3)
 
 # ── Stage 1 ──────────────────────────────────────────────────────────────

@@ -25,7 +25,7 @@ class ModelBackend(Protocol):
     multiple :meth:`complete` calls without side effects.
     """
 
-    def complete(self, system: str, prompt: str, *, schema: dict | None = None) -> str:
+    def complete(self, system: str, prompt: str, *, schema: dict) -> str:
         """Call the model and return its raw text response.
 
         Parameters
@@ -35,8 +35,7 @@ class ModelBackend(Protocol):
         prompt:
             User-facing prompt (the content to classify).
         schema:
-            Optional structured-output schema override. Backends that ignore
-            this may fall back to their own default schema.
+            Structured-output schema the response must conform to.
 
         Returns
         -------

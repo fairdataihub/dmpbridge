@@ -137,7 +137,7 @@ def process_pdf(
     provider, model, host:
         LLM backend settings — ignored when *strategy* is given.
     extractor:
-        PDF extraction backend: ``"pdfplumber"`` (default) or ``"lighton"``.
+        PDF extraction backend — ``"pdfplumber"`` is the only one implemented.
         Ignored when *strategy* is given.
     apply_rules:
         When ``True``, apply the new-annotation rules (backfill empty

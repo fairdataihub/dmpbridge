@@ -88,8 +88,9 @@ Several arrows into one box:
 
 ```mermaid
 flowchart TD
-    P["pdfplumber"] --> S1["Stage 1"]
-    L["LightOnOCR"] --> S1
+    A["llama3.1:8b"] --> S2["Stage 2"]
+    B["gemma4:e4b"] --> S2
+    C["llama3.3:70b"] --> S2
 ```
 
 ---
@@ -151,31 +152,24 @@ models, amber marks everything the annotation rules touch.
 
 ## 5. Worked example — adding a box
 
-Say you add a fourth extractor. In `pipeline.md`, find:
+Say you add a second extractor. `pipeline.md`'s current diagram names the extractor inside
+the "Read the PDF" node's own label rather than as a separate box per extractor — find:
 
 ```
-    PDF --> OCR["<b>LightOnOCR</b><br/><small>vision OCR</small>"]
+    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber</small>"]
 ```
 
-Add a line below it:
+and extend the `<small>` list:
 
 ```
-    PDF --> NEW["<b>MyExtractor</b><br/><small>what it does</small>"]
+    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · MyExtractor</small>"]
 ```
 
-Connect it to stage 1 — find the `OCR --> S1` line and add:
-
-```
-    NEW --> S1
-```
-
-Give it the same styling as the others — find `class PLUMB,DOC,OCR extr` and make it:
-
-```
-    class PLUMB,DOC,OCR,NEW extr
-```
-
-Three small edits. Mermaid handles the layout.
+One edit for a name-only addition. If the new extractor's behavior is different enough to
+be worth its own box (the way LightOnOCR briefly was, before it — and the id-based
+classification path it needed — were removed), split `READ` back into one node per
+extractor, each with its own arrow into stage 1, and style them together with a shared
+mermaid `class`.
 
 ---
 
@@ -246,8 +240,8 @@ sequenceDiagram
 gantt
     title Experiment sweep
     dateFormat YYYY-MM-DD
-    pdfplumber runs  :done,    p1, 2026-08-06, 1d
-    lighton runs     :active,  p2, after p1, 1d
+    llama3.1:8b runs  :done,    p1, 2026-08-06, 1d
+    gemma4:e4b runs   :active,  p2, after p1, 1d
 ```
 ````
 

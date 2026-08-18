@@ -85,7 +85,7 @@ def fork(y_from, x_from, y_to, x_to, color=NAVY):
 # ── The chain, down to stage 3 ───────────────────────────────────────────
 chain = [
     ("DMP PDF",             None,                                      NAVY,      NAVY,  "#FFFFFF"),
-    ("Read the PDF",        "pdfplumber · LightOnOCR",                 LIGHT,     SLATE, INK),
+    ("Read the PDF",        "pdfplumber",                              LIGHT,     SLATE, INK),
     ("1. Text blocks",      None,                                      "#FFFFFF", TEAL,  "#141414"),
     ("Label each block",    "llama3.1:8b · gemma4:e4b · llama3.3:70b", LIGHT,     SLATE, INK),
     ("2. Labeled blocks",   None,                                      "#FFFFFF", NAVY,  "#141414"),

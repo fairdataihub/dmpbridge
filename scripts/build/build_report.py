@@ -136,8 +136,8 @@ for line in [
     "Date: 6 August 2026",
     "Dataset: 10 manually labeled DMP documents (23 pages) · all 10 scored",
     "Models: Llama 3.3 70B · Gemma 4 e4b · Llama 3.1 8B (via Ollama, free/local)",
-    "Extractors: pdfplumber · LightOnOCR-2-1B",
-    "Experiments: 3 of 6 complete — all three models on pdfplumber",
+    "Extractors: pdfplumber (the only one implemented)",
+    "Experiments: 3 of 3 complete — all three models on pdfplumber",
 ]:
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(1)
@@ -146,8 +146,8 @@ for line in [
     r.font.size = Pt(11)
 
 para("Results in section 6 cover the three pdfplumber configurations, all produced on 6 August under the "
-     "current prompt, annotation rules and 10-sample evaluation set. The three LightOnOCR "
-     "configurations have not been run since those changes and are outstanding.",
+     "current prompt, annotation rules and 10-sample evaluation set. pdfplumber's own extraction+labeling "
+     "was rewritten since, so these numbers are themselves stale pending re-evaluation.",
      size=9.5, italic=True, color=RUST, after=10)
 
 # ── 1 ────────────────────────────────────────────────────────────────────
@@ -185,8 +185,7 @@ mono([
     "│   └── config.py              defaults",
     "├── extractors/                pluggable PDF → blocks layer",
     "│   ├── base.py                BaseExtractor protocol",
-    "│   ├── pdfplumber_extractor.py",
-    "│   ├── lighton_extractor.py",
+    "│   ├── pdfplumber_extractor.py  — the only extractor implemented",
     "│   └── __init__.py            get_extractor() factory",
     "├── preprocess/",
     "│   ├── pdfplumber_reader.py   extract_text_for_llm() — whole doc, **bold**/_italic_ markers",
@@ -199,8 +198,7 @@ mono([
     "│   └── __init__.py            get_model() factory",
     "├── parsers/json_parser.py     parse_llm_json()",
     "├── prompts/",
-    "│   ├── system.py              SYSTEM_PROMPT — lighton, id-based",
-    "│   └── constants.py           LABELS + OUTPUT_SCHEMA + pdfplumber's own SYSTEM_PROMPT/schema",
+    "│   └── constants.py           LABELS + pdfplumber's own SYSTEM_PROMPT/schema",
     "├── evaluation/",
     "│   ├── evaluate.py            Path A — scoring vs old annotation",
     "│   ├── annotation_rules.py    Path B — rule conversion + scoring vs new",
@@ -233,8 +231,7 @@ if _img.exists():
 
 para("Two design points are worth drawing out of the diagram.")
 bullet("Extraction does not depend on which model labels the blocks, so stage 1 is keyed by extractor and "
-       "cached. Labeling a corpus with three models costs one extraction rather than three — several minutes "
-       "per sweep with LightOnOCR, which runs a vision model over every page.",
+       "cached. Labeling a corpus with three models costs one extraction rather than three.",
        prefix="Stage 1 is shared. ")
 bullet("Path A scores stage 3 against the original annotation; Path B scores stage 4, after the Rules.xlsx "
        "conversion, against the newer one. Both stages are always written, so the converted and unconverted "
@@ -243,15 +240,14 @@ bullet("Path A scores stage 3 against the original annotation; Path B scores sta
        prefix="The paths diverge at stage 3. ")
 
 h2("3.3 Block Schema")
+para("Extraction stage 1 output — one entry, the whole document:", size=9.5, italic=True, color=GREY)
 table(["Field", "Type", "Description"],
-      [["text", "str", "Cleaned text content"],
-       ["page", "int", "1-based page number"],
-       ["x0 / x1", "float | None", "Left / right x-coordinate (None for lighton)"],
-       ["top / bottom", "float | None", "Top / bottom y-coordinate (None for lighton)"],
-       ["avg_font_size", "float | None", "Mean character font size (pdfplumber only)"],
-       ["is_bold / is_italic", "bool", "Font properties; from heading markers for lighton"],
-       ["label", "str | None", "Null until filled by the strategy"],
-       ["confidence", "float", "Model-reported confidence, 0–1"]],
+      [["text", "str", "Whole document, with **bold**/_italic_ visual-signal markers embedded"]],
+      widths=[1.4, 1.2, 3.9])
+para("Classification stage 2 output — one entry per classified item:", size=9.5, italic=True, color=GREY)
+table(["Field", "Type", "Description"],
+      [["text", "str", "Verbatim source text, markers stripped"],
+       ["label", "str", "One of the five labels"]],
       widths=[1.4, 1.2, 3.9])
 
 # ── 4 ────────────────────────────────────────────────────────────────────
@@ -343,26 +339,26 @@ para("One result has survived every variant: across eight runs and four prompts,
 
 h2("4.3 Extraction backends")
 table(["Backend", "Method", "Bbox / font", "Blocks/doc", "Requires"],
-      [["pdfplumber", "Whole-document text, extraction+labeling fused", "No", "1", "nothing (bundled)"],
-       ["LightOnOCR", "Vision OCR (2-1B model)", "No", "21.6", "GPU + .[lighton]"]],
+      [["pdfplumber", "Whole-document text, extraction+labeling fused", "No", "1", "nothing (bundled)"]],
       widths=[1.25, 2.0, 1.05, 1.05, 1.65])
-para("Block counts are the mean per document over all 10 samples, and are a property of the extractor rather "
-     "than a scored result.", size=10, italic=True, color=GREY)
+para("pdfplumber is the only extractor implemented — Docling and LightOnOCR were both tried in this project "
+     "and removed.", size=10, italic=True, color=GREY)
 
 # ── 5 ────────────────────────────────────────────────────────────────────
 h1("5. Experiment Registry")
-para("Nine configurations: three models by three extractors, all whole-document strategy, scored on all ten "
-     "samples through both evaluation paths.")
+para("Three configurations: three models, the one implemented extractor, whole-document strategy, scored on "
+     "all ten samples through both evaluation paths.")
 rows=[]; eid=1
 DONE={("llama3.3:70b","pdfplumber"),("gemma4:e4b","pdfplumber"),("llama3.1:8b","pdfplumber")}
 for mo, slug in (("llama3.3:70b","llama3.3-70b"),("gemma4:e4b","gemma4-e4b"),("llama3.1:8b","llama3.1-8b")):
-    for ex in ("pdfplumber","lighton"):
+    for ex in ("pdfplumber",):
         rows.append([f"E{eid:02d}", mo, ex, f"{slug}_{ex}_whole_doc",
                      "complete" if (mo,ex) in DONE else "pending"])
         eid+=1
 table(["ID","Model","Extractor","Output tag","Status"], rows, widths=[0.5,1.3,1.1,2.6,0.85])
-para("The six outstanding configurations predate the prompt correction in 4.2 and the annotation rules in "
-     "7.3, so they must be run rather than recovered.", size=9.5, italic=True, color=GREY)
+para("All three are marked complete against the previous pdfplumber implementation; pdfplumber's own "
+     "extraction+labeling has since been rewritten, so re-running is needed for current numbers.",
+     size=9.5, italic=True, color=GREY)
 
 # ── 6 ────────────────────────────────────────────────────────────────────
 h1("6. Results")
@@ -485,7 +481,7 @@ mono([
     "blocks = dmpbridge.process_pdf(",
     '    "document.pdf",',
     '    model="gemma4:e4b",        # any Ollama tag',
-    '    extractor="lighton",       # pdfplumber | lighton',
+    '    extractor="pdfplumber",    # the only extractor implemented',
     "    apply_rules=True,          # apply Path B conversion to structured output",
     '    output="labeled.json",',
     '    structured_output="structured.json",',
@@ -507,10 +503,10 @@ mono([
     'new = get_extractor("pdfplumber")                      # 25.1 blocks/doc (default)',
 ])
 
-h2("8.2 Full run — all six configurations")
+h2("8.2 Full run — all three configurations")
 mono([
     "python -m venv venv && venv\\Scripts\\activate",
-    'pip install -e ".[lighton]"',
+    "pip install -e .",
     "",
     "ollama pull llama3.3:70b",
     "ollama pull gemma4:e4b",
@@ -519,16 +515,14 @@ mono([
     "# start the server — on multi-GPU hosts see section 9 first",
     "CUDA_VISIBLE_DEVICES=0,1 OLLAMA_VULKAN=0 OLLAMA_SCHED_SPREAD=0 ollama serve",
     "",
-    "# six runs; LightOnOCR needs its own GPU (section 9.5)",
+    "# three runs, one per model",
     "for M in llama3.3:70b gemma4:e4b llama3.1:8b; do",
-    "  for X in pdfplumber lighton; do",
-    "    dmpbridge-wholedoc --model $M --extractor $X --start 1 --end 10",
-    "  done",
+    "    dmpbridge-wholedoc --model $M --start 1 --end 10",
     "done",
     "",
     "# evaluate (all 10 samples — no --exclude)",
-    "dmpbridge-evaluate      gemma4-e4b_lighton_whole_doc   # Path A, reads stage 3",
-    "dmpbridge-evaluate-new  gemma4-e4b_lighton_whole_doc   # Path B, reads stage 4",
+    "dmpbridge-evaluate      gemma4-e4b_pdfplumber_whole_doc   # Path A, reads stage 3",
+    "dmpbridge-evaluate-new  gemma4-e4b_pdfplumber_whole_doc   # Path B, reads stage 4",
 ])
 para("Existing output is skipped, so data/output/2_labeled/<tag>/ must be empty for a configuration to "
      "re-run. Stage 1 is cached separately and is reused unless --no-cache is passed. No API keys are "
@@ -549,13 +543,10 @@ h2("8.3 Notebooks and tests")
 table(["Artifact", "Purpose"],
       [["notebooks/01-run_pipeline.ipynb", "Run the pipeline on one PDF and inspect the structured output"],
        ["notebooks/1-model_comparison_pdfplumber.ipynb", "Full evaluation, pdfplumber"],
-       ["notebooks/3-model_comparison_lighton.ipynb", "Full evaluation, LightOnOCR"],
        ["notebooks/annotation_conversion_test.ipynb", "Derivation of the Path B rule"],
        ["tests/", "tests — converter, scoring engine, Path B rule, batch runner, per-sample invariants"]],
       widths=[2.7, 3.7], size=8.5)
 mono(['pip install -e ".[dev]"', "pytest tests/"])
-para("The three comparison notebooks have had their stored outputs cleared, since those showed results from "
-     "the superseded configuration.", size=10, italic=True, color=GREY)
 
 # ── 9 ────────────────────────────────────────────────────────────────────
 h1("9. GPU Configuration")
@@ -621,19 +612,14 @@ para("Also check ollama ps once the model has loaded. It must report 100% GPU �
      size=10, color=GREY)
 
 h2("9.5 Allocation across components")
-para("Two components want a GPU. Keeping them on separate cards avoids contention and memory pressure:")
+para("Only one component wants a GPU now — Ollama. pdfplumber, the only extractor, is CPU-only, so there is "
+     "no contention to manage between extraction and labeling the way there was when LightOnOCR was still "
+     "in the pipeline.")
 table(["Component", "GPUs", "How it is set", "Notes"],
       [["Ollama (LLM)", "0, 1", "CUDA_VISIBLE_DEVICES on the server process",
         "70B needs both; smaller models fit on one"],
-       ["LightOnOCR", "2", "CUDA_VISIBLE_DEVICES on the pipeline process",
-        "~12 GB; loads in bfloat16 on a single card"],
        ["pdfplumber", "—", "n/a", "CPU only"]],
       widths=[1.3, 0.7, 2.3, 2.1], size=8.5)
-mono(["set CUDA_VISIBLE_DEVICES=2",
-      "dmpbridge-wholedoc --model gemma4:e4b --extractor lighton --start 1 --end 10"])
-para("Note that this variable means different things to the two processes — it selects the cards Ollama serves "
-     "from when set on the server, and the card LightOnOCR loads onto when set on the client. They are "
-     "separate processes and must be set separately.", size=10, italic=True, color=GREY)
 
 h2("9.6 Troubleshooting")
 table(["Symptom", "Cause", "Fix"],
@@ -748,13 +734,10 @@ table(["Item","Description"],
         "Prompt effects do not transfer between models, and the prompt is whitespace-significant — three blank "
         "lines moved cost 1.9 points of F1 with no wording change. A partial re-run produces figures that "
         "cannot be compared."],
-       ["Complete the sweep",
-        "Three configurations remain: LightOnOCR across all three models. They predate the prompt "
-        "correction and the current rules, so they must be run rather than recovered. Roughly 20 minutes, "
-        "mostly the 70B."],
-       ["Re-test the prompt fix on other extractors",
-        "The lettered-sub-item correction was measured on pdfplumber only. LightOnOCR already "
-        "segments by paragraph, so the error may present differently."],
+       ["Re-run the sweep",
+        "pdfplumber is now the only extractor, and its own extraction+labeling was rewritten after the "
+        "numbers in section 6 were measured, so all three model configurations need re-running against "
+        "current code before those numbers can be trusted."],
        ["Consider dropping llama3.1:8b",
         "14 points behind gemma4:e4b at identical runtime, and unable to act on the prompt correction that "
         "both other models benefit from."],

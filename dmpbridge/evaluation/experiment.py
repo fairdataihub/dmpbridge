@@ -115,7 +115,6 @@ class ExperimentConfig:
         used everywhere else in the pipeline (e.g. ``dmpbridge-wholedoc``)::
 
             llama3.1-8b_pdfplumber_whole_doc
-            llama3.1-8b_lighton_whole_doc
         """
         model_slug = model.replace(":", "-")
         suffix     = "whole_doc" if self.strategy == "wholedoc" else self.strategy
