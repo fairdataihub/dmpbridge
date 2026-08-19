@@ -179,7 +179,35 @@ def _dedup_consecutive_words(words: list[dict]) -> list[dict]:
     return deduped
 
 
-def _deduplicate_chars(word_text: str) -> str:
+def _looks_doubled(word_text: str) -> bool:
+    """Structural check, no length gate: does every character in this word
+    repeat immediately after itself? Used both as the fix condition for
+    words long enough to trust on their own, and to detect whether an entire
+    line is affected (see ``_line_is_affected``)."""
+    if len(word_text) < 2:
+        return False
+    pairs = sum(
+        1 for i in range(0, len(word_text) - 1, 2)
+        if word_text[i] == word_text[i + 1]
+    )
+    return pairs / (len(word_text) / 2) > 0.7
+
+
+def _line_is_affected(line_words: list[dict]) -> bool:
+    """True if this line shows the character-doubling artifact broadly,
+    judged only from its words of 4+ characters — long enough that the
+    doubling pattern can't plausibly be a coincidence on its own. Used to
+    license collapsing *shorter* words too (see ``_deduplicate_chars``),
+    which are too ambiguous to decide from their own text alone.
+    """
+    long_words = [w["text"] for w in line_words if len(w["text"]) >= 4]
+    if not long_words:
+        return False
+    doubled = sum(1 for t in long_words if _looks_doubled(t))
+    return doubled / len(long_words) > 0.5
+
+
+def _deduplicate_chars(word_text: str, line_is_affected: bool = False) -> str:
     """Fix doubled characters caused by layered PDF text rendering.
 
     Some PDFs render text twice (bold shadow over regular), so pdfplumber
@@ -189,14 +217,18 @@ def _deduplicate_chars(word_text: str) -> str:
     *before* markers are inserted around it: applying the collapsing regex to
     an already-marked-up line would just as happily eat a "**" marker pair
     down to a single "*".
+
+    A word shorter than 4 characters is only collapsed when
+    ``line_is_affected`` says the surrounding line shows the same pattern —
+    confirmed directly: sample3's "aa" (should be "a") sits amid
+    "ooccccuurr", "sshhoouulldd", "PPII" — a whole affected run — while
+    sample2's "XX" (a genuine "less than XX GB" placeholder, not an
+    artifact) stands alone with no doubled neighbors. Collapsing "XX" on its
+    own text alone would have been a real regression, not a fix.
     """
-    if len(word_text) < 4:
+    if len(word_text) < 4 and not line_is_affected:
         return word_text
-    pairs = sum(
-        1 for i in range(0, len(word_text) - 1, 2)
-        if word_text[i] == word_text[i + 1]
-    )
-    if pairs / (len(word_text) / 2) > 0.7:
+    if _looks_doubled(word_text):
         return re.sub(r"(.)\1", r"\1", word_text)
     return word_text
 
@@ -238,6 +270,7 @@ def _extract_page_lines(page, body_size, body_font):
     for top_key in sorted(lines_map.keys()):
         line_words = sorted(lines_map[top_key], key=lambda w: w["x0"])
         line_words = _dedup_consecutive_words(line_words)
+        line_is_affected = _line_is_affected(line_words)
         rendered = []
         open_bold, open_italic, open_underline = False, False, False
 
@@ -269,7 +302,7 @@ def _extract_page_lines(page, body_size, body_font):
                 rendered.append("++")
                 open_underline = True
 
-            rendered.append(_deduplicate_chars(w["text"]))
+            rendered.append(_deduplicate_chars(w["text"], line_is_affected))
 
         if open_underline:
             rendered.append("++")
