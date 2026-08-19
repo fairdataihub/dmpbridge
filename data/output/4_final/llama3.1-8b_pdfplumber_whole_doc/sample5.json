@@ -1,0 +1,324 @@
+{
+  "narrative": {
+    "download_url": "",
+    "template": {
+      "title": "** DATA MANAGEMENT PLAN **",
+      "description": "",
+      "version": "v1",
+      "section": [
+        {
+          "title": "** REVIEW OF PROPOSAL COMPONENTS **",
+          "description": "",
+          "order": 1,
+          "question": [
+            {
+              "text": "** REVIEW OF PROPOSAL COMPONENTS **",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "The proposal is separated into three sections.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** Section 2.1 ** characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls.",
+          "description": "",
+          "order": 2,
+          "question": [
+            {
+              "text": "** Section 2.1 ** characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls.",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "• compares well construction patterns before and after the establishment of regulatory controls.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** Section 2.2 ** estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale.",
+          "description": "",
+          "order": 3,
+          "question": [
+            {
+              "text": "** Section 2.2 ** estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale.",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "• estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** Section 2.3 ** integrates research and education through the _ Scientist Spotlight _ and _ Hydrologic _ Sciences Workshops.",
+          "description": "",
+          "order": 4,
+          "question": [
+            {
+              "text": "** Section 2.3 ** integrates research and education through the _ Scientist Spotlight _ and _ Hydrologic _ Sciences Workshops.",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "• integrates research and education through the _ Scientist Spotlight _ and _ Hydrologic _ Sciences Workshops.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** TYPES OF DATA **",
+          "description": "",
+          "order": 5,
+          "question": [
+            {
+              "text": "** TYPES OF DATA **",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** Input data: ** Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files.",
+          "description": "",
+          "order": 6,
+          "question": [
+            {
+              "text": "** Input data: ** Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files.",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** Produced Data: ** Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+          "description": "",
+          "order": 7,
+          "question": [
+            {
+              "text": "** Produced Data: ** Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** DATA AND METADATA STANDARDS **",
+          "description": "",
+          "order": 8,
+          "question": [
+            {
+              "text": "** DATA AND METADATA STANDARDS **",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "The data will be shared along with a README.txt, which will describe all files, their relationships, naming conventions, etc.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** Scripts and code for analyses: ** All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes.",
+          "description": "",
+          "order": 9,
+          "question": [
+            {
+              "text": "** Scripts and code for analyses: ** All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes.",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** Raw data: ** Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors.",
+          "description": "",
+          "order": 10,
+          "question": [
+            {
+              "text": "** Raw data: ** Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors.",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** POLICIES FOR ACCESS AND SHARING **",
+          "description": "",
+          "order": 11,
+          "question": []
+        },
+        {
+          "title": "** Raw data: ** Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors.",
+          "description": "",
+          "order": 12,
+          "question": [
+            {
+              "text": "** Raw data: ** Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors.",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** Scripts and code for analyses: ** All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes.",
+          "description": "",
+          "order": 13,
+          "question": []
+        },
+        {
+          "title": "** Scientist spotlight: ** All scientist spotlight biographies, assignments, and open-access readings will be posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
+          "description": "",
+          "order": 14,
+          "question": [
+            {
+              "text": "** Scientist spotlight: ** All scientist spotlight biographies, assignments, and open-access readings will be posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "All scientist spotlight biographies, assignments, and open-access readings will be posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** Workshop frameworks: ** Workshop material will be shared with UCSB’s Diversity Committee through Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.",
+          "description": "",
+          "order": 15,
+          "question": [
+            {
+              "text": "** Workshop frameworks: ** Workshop material will be shared with UCSB’s Diversity Committee through Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Workshop material will be shared with UCSB’s Diversity Committee through Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION **",
+          "description": "",
+          "order": 16,
+          "question": [
+            {
+              "text": "** POLICIES AND PROVISIONS FOR RE-USE, RE-DISTRIBUTION **",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may freely build upon, enhance and reuse the works for any purposes without restriction under copyright or database law.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "** PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS **",
+          "description": "",
+          "order": 17,
+          "question": [
+            {
+              "text": "** PLANS FOR ARCHIVING AND PRESERVATION OF ACCESS **",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
