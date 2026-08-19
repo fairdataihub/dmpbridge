@@ -101,16 +101,17 @@ def test_match_returns_label_when_fully_contained():
     assert match("the quick brown fox", gold_pairs) == "answer.text"
 
 
-def test_partial_overlap_needs_an_explicit_looser_threshold():
+def test_partial_overlap_matches_under_the_default_needs_exact_threshold_explicitly():
     """4 of 5 words in common is 0.8 containment.
 
-    That matched under the project's old 0.75 default and does not under the
-    current 1.0 one — so the looser rule must now be asked for by name. Pinning
-    both here means neither can change silently again.
+    That matches under the project's current 0.75 default; it does not match
+    under an explicit stricter 1.0 (exact containment, no partial credit) —
+    so the stricter rule must now be asked for by name. Pinning both here
+    means neither can change silently again.
     """
     gold_pairs = [("the quick brown fox", "answer.text")]
-    assert match("the quick brown fox jumps", gold_pairs) is None
-    assert match("the quick brown fox jumps", gold_pairs, threshold=0.75) == "answer.text"
+    assert match("the quick brown fox jumps", gold_pairs) == "answer.text"
+    assert match("the quick brown fox jumps", gold_pairs, threshold=1.0) is None
 
 
 def test_match_returns_none_below_threshold():

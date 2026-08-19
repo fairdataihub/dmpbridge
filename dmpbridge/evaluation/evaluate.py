@@ -55,13 +55,14 @@ def tokenize(text: str) -> set[str]:
 # How much of a predicted item's text must sit inside a reference item for the
 # two to be considered the same thing.
 #
-# 1.0 = exact containment: EVERY word of the predicted item must appear in the
-# reference item, no partial credit. The project ran at 0.75 until 2026-08-12;
-# anything scored before that date used the looser rule and is not comparable
-# with figures produced now.
+# 0.75 = a predicted item matches once 75% of its words appear in the reference
+# item — partial credit for a near-miss. The project ran at 1.0 (exact
+# containment, no partial credit) from 2026-08-12 to 2026-08-19; anything
+# scored during that window used the stricter rule and is not directly
+# comparable with figures produced now.
 #
-# Callers may still pass threshold=0.75 explicitly to reproduce the old scoring.
-CONTAINMENT_THRESHOLD = 1.0
+# Callers may still pass threshold=1.0 explicitly to reproduce the exact-match scoring.
+CONTAINMENT_THRESHOLD = 0.75
 
 
 def containment(block_tokens: set, gold_tokens: set) -> float:
