@@ -8,6 +8,27 @@
 #   Step 5 — consecutive question.text blocks with no answer yet → merged into one question
 #   Step 6 — answer.text → appended to the current question's answer
 #   Step 7 — return the fully nested JSON: narrative → template → section[] → question[] → answer
+#
+# Known, disclosed gap: a section.title block with NOTHING after it (no
+# description, no question, no answer) gets a `"question": []` section —
+# no question object is ever created here, since one is only ever created in
+# response to a question.text/answer.text block actually arriving. When this
+# is the very LAST section.title in the whole document (checked directly:
+# sample3, all four models — the source PDF genuinely ends right after this
+# heading), the revised annotation still expects a question.text copied from
+# the heading, so this reads as a missed item downstream even though nothing
+# is actually broken. Deliberately NOT auto-filled: a blank placeholder
+# question here would let Rules.xlsx's existing title-fallback rule fill it
+# automatically, which is correct for that trailing-heading case — but the
+# same empty-question symptom also shows up mid-document for two different,
+# NOT-safe-to-treat-the-same reasons (checked directly against real corpus
+# output, not assumed): content the model mislabeled as section.description
+# instead of question/answer (llama3.3:70b, sample9), and back-to-back
+# headings where the answer key deliberately expects no question at all
+# (llama3.1:8b sample1, "Element 4"/"Element 5" — confirmed against the real
+# answer key). Position (last section vs. mid-document) is the only signal
+# that reliably tells these apart, so a fix would need to check that
+# specifically rather than acting on every empty `question: []`.
 
 import json
 from pathlib import Path
