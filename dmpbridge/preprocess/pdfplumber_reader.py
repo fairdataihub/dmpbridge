@@ -5,10 +5,18 @@ line-by-line, per-block extraction this module used to do, this reads the
 entire PDF and returns one text string per document: each word visually
 emphasized relative to the document's own body-text baseline (a different,
 non-italic font, or a meaningfully larger size) is wrapped in ``**...**``,
-and each italic word in ``_..._``. Headings and questions typically show up
-this way even without an explicit "is this a heading" rule, so the marker
-is passed to the LLM as supporting evidence rather than encoded as a
-separate ``is_bold``/``is_italic`` field the way the old per-line blocks did.
+each italic word in ``_..._``, and each underlined word in ``++...++``.
+Headings and questions typically show up this way even without an explicit
+"is this a heading" rule, so the marker is passed to the LLM as supporting
+evidence rather than encoded as a separate ``is_bold``/``is_italic`` field
+the way the old per-line blocks did.
+
+Underline is detected differently from bold/italic: it is a drawn shape
+(``page.rects``), not a font attribute, so it can't be read from character
+font/size data the way bold and italic are (see ``_word_is_underlined``).
+Confirmed directly on sample6: its section headings are underlined and carry
+no other visual signal at all, so without this, the extracted text has
+nothing marking them as headings whatsoever.
 
 Word-level and character-level deduplication both run here (see
 ``_dedup_consecutive_words`` and ``_deduplicate_chars`` below) to undo two
@@ -105,6 +113,29 @@ def _word_is_italic(word_chars, body_font):
     return sum(flags) > len(flags) / 2
 
 
+def _word_is_underlined(word, rects):
+    """True if a thin, horizontal drawn line sits right beneath this word.
+
+    Underline in a PDF is normally an actual drawn shape, not a font
+    attribute — pdfplumber's char-level font/size data (used for bold and
+    italic above) has no way to see it at all. Confirmed directly: sample6's
+    section headings are underlined and carry no other visual signal
+    whatsoever, so the whole-document extraction previously had nothing
+    marking them as headings whatsoever. ``rects`` is the page's drawn
+    shapes; a real underline is thin (<=2pt tall) and sits right at the
+    word's baseline, which is a few points above its bounding-box bottom
+    (the bottom includes descender depth, e.g. the tail of a 'p' or 'y').
+    """
+    for r in rects:
+        if (r["bottom"] - r["top"]) > 2.0 or (r["x1"] - r["x0"]) <= 5:
+            continue
+        if not (word["bottom"] - 4 <= r["top"] <= word["bottom"] + 3):
+            continue
+        if word["x1"] > r["x0"] + 1 and word["x0"] < r["x1"] - 1:
+            return True
+    return False
+
+
 def _dedup_consecutive_words(words: list[dict]) -> list[dict]:
     """Drop a word that repeats the immediately preceding word on the same
     line, ignoring case and punctuation.
@@ -151,8 +182,8 @@ def _deduplicate_chars(word_text: str) -> str:
 
 def _extract_page_lines(page, body_size, body_font):
     """Rebuild each line of the page from character-level data, wrapping
-    emphasized runs in **...** and italic runs in _..._ so the LLM can use
-    them as classification signals downstream.
+    emphasized runs in **...**, italic runs in _..._, and underlined runs
+    in ++...++ so the LLM can use them as classification signals downstream.
     """
     chars = page.chars
     if not chars:
@@ -162,6 +193,7 @@ def _extract_page_lines(page, body_size, body_font):
     # correct spacing/boundaries, then map each word back to its chars
     # (by matching x0/top) to evaluate emphasis per word.
     words = page.extract_words(extra_attrs=["fontname", "size"])
+    rects = page.rects
 
     # Build a lookup of chars by rounded (top) position for fast grouping
     # into lines; pdfplumber words already carry "top" for this purpose.
@@ -186,14 +218,18 @@ def _extract_page_lines(page, body_size, body_font):
         line_words = sorted(lines_map[top_key], key=lambda w: w["x0"])
         line_words = _dedup_consecutive_words(line_words)
         rendered = []
-        open_bold, open_italic = False, False
+        open_bold, open_italic, open_underline = False, False, False
 
         for w in line_words:
             wchars = chars_for_word(w)
             emph = _word_is_emphasized(wchars, body_size, body_font)
             ital = _word_is_italic(wchars, body_font)
+            under = _word_is_underlined(w, rects)
 
             # close markers that no longer apply
+            if open_underline and not under:
+                rendered.append("++")
+                open_underline = False
             if open_italic and not ital:
                 rendered.append("_")
                 open_italic = False
@@ -208,9 +244,14 @@ def _extract_page_lines(page, body_size, body_font):
             if ital and not open_italic:
                 rendered.append("_")
                 open_italic = True
+            if under and not open_underline:
+                rendered.append("++")
+                open_underline = True
 
             rendered.append(_deduplicate_chars(w["text"]))
 
+        if open_underline:
+            rendered.append("++")
         if open_italic:
             rendered.append("_")
         if open_bold:
@@ -218,7 +259,7 @@ def _extract_page_lines(page, body_size, body_font):
 
         line_text = " ".join(rendered)
         # clean up marker artifacts from consecutive open/close with no content between
-        line_text = line_text.replace("** **", " ").replace("_ _", " ")
+        line_text = line_text.replace("** **", " ").replace("_ _", " ").replace("++ ++", " ")
         output_lines.append(line_text)
 
     return output_lines
