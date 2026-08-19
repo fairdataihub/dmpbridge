@@ -18,12 +18,12 @@
           "order": 2,
           "question": [
             {
-              "text": "compares well construction patterns before and after the establishment of regulatory controls.",
+              "text": "Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "",
+                  "answer": "compares well construction patterns before and after the establishment of regulatory controls.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

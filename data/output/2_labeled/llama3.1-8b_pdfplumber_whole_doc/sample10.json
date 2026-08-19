@@ -92,11 +92,15 @@
     "label": "section.title"
   },
   {
-    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “_ This material is based _ upon work supported by the National Science Foundation under Grant No. (NSF grant number). _ ”",
+    "text": "All materials will contain acknowledgement of NSF support as per NSF policy: “_ This material is based _ upon work supported by the National Science Foundation under Grant No. (NSF grant number). _”",
     "label": "answer.text"
   },
   {
-    "text": "Additionally, materials will contain a disclaimer that “_ any opinions, findings, and conclusions or _ recommendations expressed in this material are those of the author(s) and do not necessarily reflect the _ views of the National Science Foundation _ .” In keeping with standard ethical practices, it is expected that subsequent users of the data will acknowledge the source.",
+    "text": "Additionally, materials will contain a disclaimer that “_ any opinions, findings, and conclusions or _ recommendations expressed in this material are those of the author(s) and do not necessarily reflect the _ views of the National Science Foundation _ .”",
+    "label": "answer.text"
+  },
+  {
+    "text": "In keeping with standard ethical practices, it is expected that subsequent users of the data will acknowledge the source.",
     "label": "answer.text"
   },
   {

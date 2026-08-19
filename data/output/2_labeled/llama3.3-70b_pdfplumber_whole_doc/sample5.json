@@ -13,27 +13,27 @@
   },
   {
     "text": "Section 2.1",
-    "label": "question.text"
+    "label": "section.title"
   },
   {
     "text": "characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls.",
-    "label": "answer.text"
+    "label": "section.description"
   },
   {
     "text": "Section 2.2",
-    "label": "question.text"
+    "label": "section.title"
   },
   {
     "text": "estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale.",
-    "label": "answer.text"
+    "label": "section.description"
   },
   {
     "text": "Section 2.3",
-    "label": "question.text"
+    "label": "section.title"
   },
   {
     "text": "integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops.",
-    "label": "answer.text"
+    "label": "section.description"
   },
   {
     "text": "TYPES OF DATA",

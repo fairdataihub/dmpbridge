@@ -23,21 +23,14 @@
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "title": "** A. Types and amount of scientific data expected to be generated in the project: **",
-          "description": "",
-          "order": 2,
-          "question": [
+            },
             {
               "text": "** A. Types and amount of scientific data expected to be generated in the project: **",
-              "order": 1,
+              "order": 2,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts (wrist NHANES 2011-2014; hip/counts-NHANES 2003-2006). The studies include (i) the RISE Study, (ii) the SOL-VIDA Study, (iii) the iWATCH Study, (iv) the MOCA Study, (v) the PHASE Study, (vi) the AusDiab Study, (vii) the ACT Study, and (viii) the WHISH accelerometer sub-study.",
+                  "answer": "",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -49,7 +42,7 @@
         {
           "title": "** B. Scientific data that will be preserved and shared, and the rationale for doing so: **",
           "description": "",
-          "order": 3,
+          "order": 2,
           "question": [
             {
               "text": "** B. Scientific data that will be preserved and shared, and the rationale for doing so: **",
@@ -69,7 +62,7 @@
         {
           "title": "** C. Metadata, other relevant data, and associated documentation: **",
           "description": "",
-          "order": 4,
+          "order": 3,
           "question": [
             {
               "text": "** C. Metadata, other relevant data, and associated documentation: **",
@@ -89,7 +82,7 @@
         {
           "title": "** Element 2: Related Tools, Software and/or Code: **",
           "description": "",
-          "order": 5,
+          "order": 4,
           "question": [
             {
               "text": "** Element 2: Related Tools, Software and/or Code: **",
@@ -109,15 +102,15 @@
         {
           "title": "** Element 3: Standards: **",
           "description": "",
-          "order": 6,
+          "order": 5,
           "question": [
             {
-              "text": "** Element 3: Standards: **",
+              "text": "The following data will be created as a result of this project:",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "The following data will be created as a result of this project:",
+                  "answer": "",
                   "meta": {
                     "schemaVersion": "1.0"
                   }
@@ -129,13 +122,13 @@
         {
           "title": "** Element 4: Data Preservation, Access, and Associated Timelines: **",
           "description": "",
-          "order": 7,
+          "order": 6,
           "question": []
         },
         {
           "title": "** A. Repository where scientific data and metadata will be archived: **",
           "description": "",
-          "order": 8,
+          "order": 7,
           "question": [
             {
               "text": "** A. Repository where scientific data and metadata will be archived: **",
@@ -155,7 +148,7 @@
         {
           "title": "** B. How scientific data will be findable and identifiable: **",
           "description": "",
-          "order": 9,
+          "order": 8,
           "question": [
             {
               "text": "** B. How scientific data will be findable and identifiable: **",
@@ -175,7 +168,7 @@
         {
           "title": "** C. When and how long the scientific data will be made available: **",
           "description": "",
-          "order": 10,
+          "order": 9,
           "question": [
             {
               "text": "** C. When and how long the scientific data will be made available: **",
@@ -195,13 +188,13 @@
         {
           "title": "** Element 5: Access, Distribution, or Reuse Considerations: **",
           "description": "",
-          "order": 11,
+          "order": 10,
           "question": []
         },
         {
           "title": "** A. Factors affecting subsequent access, distribution, or reuse of scientific data: **",
           "description": "",
-          "order": 12,
+          "order": 11,
           "question": [
             {
               "text": "** A. Factors affecting subsequent access, distribution, or reuse of scientific data: **",
@@ -215,26 +208,13 @@
                   }
                 }
               }
-            },
-            {
-              "text": "** : **",
-              "order": 2,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "(i) the SOL-VIDA Study – Data requests may be made by following instructions on the Hispanic Community Health Study/ of Latinos dbGap page.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
             }
           ]
         },
         {
           "title": "** B. Whether access to scientific data will be controlled: **",
           "description": "",
-          "order": 13,
+          "order": 12,
           "question": [
             {
               "text": "** B. Whether access to scientific data will be controlled: **",
@@ -254,7 +234,7 @@
         {
           "title": "** Protections for privacy, rights, and confidentiality of human research participants: **",
           "description": "",
-          "order": 14,
+          "order": 13,
           "question": [
             {
               "text": "** Protections for privacy, rights, and confidentiality of human research participants: **",
@@ -274,7 +254,7 @@
         {
           "title": "** Element 6: Oversight of Data Management and Sharing: **",
           "description": "",
-          "order": 15,
+          "order": 14,
           "question": [
             {
               "text": "** Element 6: Oversight of Data Management and Sharing: **",

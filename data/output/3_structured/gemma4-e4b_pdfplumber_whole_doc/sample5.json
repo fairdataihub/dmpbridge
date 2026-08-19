@@ -18,12 +18,12 @@
           "order": 2,
           "question": [
             {
-              "text": "compares well construction patterns before and after the establishment of regulatory controls.",
+              "text": "",
               "order": 1,
               "answer": {
                 "json": {
                   "type": "textArea",
-                  "answer": "",
+                  "answer": "compares well construction patterns before and after the establishment of regulatory controls.",
                   "meta": {
                     "schemaVersion": "1.0"
                   }

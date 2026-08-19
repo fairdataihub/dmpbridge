@@ -13,11 +13,7 @@
   },
   {
     "text": "** A. Types and amount of scientific data expected to be generated in the project: **",
-    "label": "section.title"
-  },
-  {
-    "text": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts (wrist NHANES 2011-2014; hip/counts-NHANES 2003-2006). The studies include (i) the RISE Study, (ii) the SOL-VIDA Study, (iii) the iWATCH Study, (iv) the MOCA Study, (v) the PHASE Study, (vi) the AusDiab Study, (vii) the ACT Study, and (viii) the WHISH accelerometer sub-study.",
-    "label": "answer.text"
+    "label": "question.text"
   },
   {
     "text": "** B. Scientific data that will be preserved and shared, and the rationale for doing so: **",
@@ -49,7 +45,7 @@
   },
   {
     "text": "The following data will be created as a result of this project:",
-    "label": "answer.text"
+    "label": "question.text"
   },
   {
     "text": "** Element 4: Data Preservation, Access, and Associated Timelines: **",
@@ -89,14 +85,6 @@
   },
   {
     "text": "The following studies have independent data use agreement & approved paper proposal processes for use of their data that are specific to each institution that collected the data:",
-    "label": "answer.text"
-  },
-  {
-    "text": "** : **",
-    "label": "question.text"
-  },
-  {
-    "text": "(i) the SOL-VIDA Study – Data requests may be made by following instructions on the Hispanic Community Health Study/ of Latinos dbGap page.",
     "label": "answer.text"
   },
   {

@@ -68,11 +68,33 @@ def is_italic(char, body_font):
     )
 
 
+_BOLD_TAGS = ("Bold", "Black", "Heavy", "Semibold", "bold", "black", "heavy", "semibold")
+
+
 def _word_is_emphasized(word_chars, body_size, body_font):
-    """A word counts as emphasized if a majority of its characters are."""
+    """A word counts as emphasized if a majority of its characters are.
+
+    For a word made entirely of punctuation (e.g. a lone colon), a font swap
+    alone is not trusted as bold evidence — PDFs commonly pull a punctuation
+    glyph from a different embedded font with no real styling change at all
+    (confirmed directly: sample1's mid-sentence colon renders in Calibri
+    while the rest of the document is Arial, and is not actually bold in the
+    source). Instead, the substituted font's own name has to say so (e.g.
+    "Tinos-Bold"), the same signal already used for italic below — this
+    still catches a genuinely bold ampersand or dash (confirmed on sample2's
+    "Roles & Responsibilities", where '&' renders in "Tinos-Bold"). A
+    punctuation mark that's simply bigger than body text still counts too.
+    """
     if not word_chars:
         return False
-    flags = [is_emphasized(c, body_size, body_font) for c in word_chars]
+    word_text = "".join(c["text"] for c in word_chars)
+    if not any(ch.isalnum() for ch in word_text):
+        flags = [
+            any(tag in c["fontname"] for tag in _BOLD_TAGS) or c["size"] > body_size + 0.5
+            for c in word_chars
+        ]
+    else:
+        flags = [is_emphasized(c, body_size, body_font) for c in word_chars]
     return sum(flags) > len(flags) / 2
 
 

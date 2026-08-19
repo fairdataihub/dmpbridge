@@ -40,7 +40,7 @@
     "label": "section.title"
   },
   {
-    "text": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing.",
+    "text": "The PI and PhD student will be responsible for all data-related activities including: collection, documentation and metadata description, quality control, storage and backup, archiving, and sharing. The project will result in new sets of data, code, and tools. These outputs include: (a) source code to quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and (c) sharable instructional materials (Scientist Spotlight activities and workshop materials).",
     "label": "answer.text"
   },
   {
@@ -108,7 +108,7 @@
     "label": "section.title"
   },
   {
-    "text": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may freely build upon, enhance and reuse the works for any purposes without restriction under copyright or database law.",
+    "text": "All data deposited at Dryad will be publicly available under a CC0 license, meaning that others may freely build upon, enhance and reuse the works for any purposes without restriction under copyright or database law. CC0 does not exempt those who reuse the data from following community norms for scholarly communication, i.e., reusing the data in a way that is mindful of its limitations and citing the original data authors.",
     "label": "answer.text"
   },
   {
@@ -116,7 +116,19 @@
     "label": "section.title"
   },
   {
-    "text": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing.",
+    "text": "UCSB Box will be used as the primary means to store and back up all collected input, generated output data sets and code, and educational materials over the course of the project and prior to data sharing. Data will be accessed using Box Drive, which requires full disk encryption, firewall, and an antivirus software in order to install on a local computer.",
+    "label": "answer.text"
+  },
+  {
+    "text": "At the end of the project, all shareable data accompanied by the appropriate documentation, metadata, and code will be deposited into Dryad for long-term storage, preservation and accessibility. Deposits submitted to Dryad are curated prior to public release to conform with quality standards and enable future reuse.",
+    "label": "answer.text"
+  },
+  {
+    "text": "The source code for the research and education components (Sections 2.1, 2.2., and 2.3) will be saved, stored, and backed up on the UCSB Box. A copy of the code will also be submitted with each of the three planned publications.",
+    "label": "answer.text"
+  },
+  {
+    "text": "After the evaluation and refinement of the developed datasets and tools and once the research is completed and published, the final version of the tools and the documentation will be shared on the UCSB’s Dryad Data Repository. The final shareable instructional and teaching materials will also be shared via on a publicly accessible webpage (Scientist Spotlight) and UCSB Google Drive (workshop materials) and Dryad in pdf format.",
     "label": "answer.text"
   }
 ]
