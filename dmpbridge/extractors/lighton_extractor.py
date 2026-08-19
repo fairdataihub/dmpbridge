@@ -1,12 +1,20 @@
-"""LightOnOCR-2-1B extractor — vision-LLM OCR pipeline.
+"""LightOnOCR-2-1B extractor — whole-document vision-LLM OCR.
 
 Each PDF page is rendered as an image (via PyMuPDF), then passed through
-the LightOnOCR-2-1B model (HuggingFace transformers) to produce OCR text.
-The text is segmented line-by-line into block dicts.
+the LightOnOCR-2-1B model (HuggingFace transformers) to transcribe it.
+Unlike the old per-block LightOnOCR extractor, this returns the whole
+document as a single text string (wrapped in a one-item list, matching
+:class:`~dmpbridge.extractors.pdfplumber_extractor.PdfplumberExtractor`),
+with the same **bold**/_italic_/++underline++ markers pdfplumber produces —
+so :class:`~dmpbridge.strategies.wholedoc.WholeDocStrategy` can classify
+either extractor's output with the exact same system prompt, unchanged.
 
-OCR output carries no bbox metadata, so spatial fields are None for all
-blocks. The model transcribes into markdown, so heading markers stand in for
-font emphasis and set is_bold.
+The model is prompted directly to use these markers rather than its own
+default markdown conventions (headings, plain **bold**) — validated
+directly: without this, the model reliably marks emphasis as **bold** even
+when the source is genuinely underlined, never using a distinct underline
+marker of its own (confirmed on sample6, where all 5 underlined headings
+came back bold-marked, not underline-marked).
 
 Install:
     pip install dmpbridge[lighton]
@@ -15,12 +23,10 @@ Install:
 """
 from __future__ import annotations
 
-import re
 from pathlib import Path
+from typing import Union
 
 from .base import BaseExtractor
-
-_MD_HEADING_RE = re.compile(r"^#{1,6}\s+(?P<text>.*)$")
 
 DEFAULT_MODEL_ID = "lightonai/LightOnOCR-2-1B"
 _RENDER_DPI = 150   # 150 DPI keeps images small enough for 1B model inference
@@ -37,6 +43,18 @@ _KEY_RENAMES = (
     ("model.vision_projection.", "model.multi_modal_projector."),
 )
 
+# Same marker convention pdfplumber_reader.py produces, so the two extractors'
+# output is interchangeable to the classifier without any prompt change.
+_TRANSCRIBE_PROMPT = (
+    "Transcribe all text on this document page exactly as it appears, "
+    "in reading order. Preserve the source formatting using these "
+    "markers: wrap visually emphasized text (bold or larger than the "
+    "body text) in **double asterisks**, italic text in _underscores_, "
+    "and underlined text in ++double plus signs++. Do not use these "
+    "markers for anything that isn't actually formatted that way in "
+    "the source."
+)
+
 
 def _remap_key(key: str) -> str:
     """Rename a checkpoint weight key to its transformers equivalent."""
@@ -47,7 +65,7 @@ def _remap_key(key: str) -> str:
 
 
 class LightOnExtractor(BaseExtractor):
-    """Run LightOnOCR-2-1B on every PDF page and segment output into blocks.
+    """Run LightOnOCR-2-1B on every PDF page and join into one document string.
 
     Parameters
     ----------
@@ -70,12 +88,9 @@ class LightOnExtractor(BaseExtractor):
     # ── BaseExtractor protocol ────────────────────────────────────────────────
 
     def extract(self, pdf_path: Path) -> list[dict]:
-        pages  = self._render_pages(pdf_path)
-        blocks: list[dict] = []
-        for page_num, image in enumerate(pages, start=1):
-            text = self._ocr_image(image)
-            blocks.extend(self._text_to_blocks(text, page_num, len(blocks)))
-        return blocks
+        pages = self._render_pages(pdf_path)
+        page_texts = [self._ocr_image(image) for image in pages]
+        return [{"text": "\n\n".join(page_texts)}]
 
     # ── Internal — setup ─────────────────────────────────────────────────────
 
@@ -150,7 +165,7 @@ class LightOnExtractor(BaseExtractor):
     # ── Internal — inference ─────────────────────────────────────────────────
 
     @staticmethod
-    def _render_pages(pdf_path: Path):
+    def _render_pages(pdf_path: Union[str, Path]):
         """Render every page to a PIL Image at _RENDER_DPI."""
         import fitz
         from PIL import Image
@@ -172,7 +187,7 @@ class LightOnExtractor(BaseExtractor):
                 "role": "user",
                 "content": [
                     {"type": "image"},
-                    {"type": "text", "text": "Transcribe all text in this document page exactly as it appears."},
+                    {"type": "text", "text": _TRANSCRIBE_PROMPT},
                 ],
             }
         ]
@@ -190,30 +205,3 @@ class LightOnExtractor(BaseExtractor):
         # Slice off the prompt tokens — keep only generated text
         generated = output_ids[:, inputs["input_ids"].shape[-1]:]
         return self._processor.decode(generated[0], skip_special_tokens=True)
-
-    @staticmethod
-    def _text_to_blocks(text: str, page_num: int, offset: int) -> list[dict]:
-        blocks: list[dict] = []
-        for line in (ln.strip() for ln in text.splitlines() if ln.strip()):
-            # The model transcribes into markdown, so a heading marker is the only
-            # emphasis signal available — treat it the way the other extractors
-            # treat a bold font run, then drop the marker from the text itself.
-            heading = _MD_HEADING_RE.match(line)
-            if heading:
-                line = heading.group("text").strip()
-                if not line:
-                    continue
-            blocks.append({
-                "page":          page_num,
-                "line_order":    offset + len(blocks),
-                "text":          line,
-                "x0":            None,
-                "top":           None,
-                "x1":            None,
-                "bottom":        None,
-                "avg_font_size": None,
-                "font_names":    [],
-                "is_bold":       bool(heading),
-                "is_italic":     False,
-            })
-        return blocks

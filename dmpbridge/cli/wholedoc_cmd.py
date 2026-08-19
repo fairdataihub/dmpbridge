@@ -66,7 +66,7 @@ def main() -> None:
                     help="Ollama host URL (default: %(default)s)")
     ap.add_argument(
         "--extractor", default="pdfplumber",
-        choices=["pdfplumber"],
+        choices=["pdfplumber", "lightonocr"],
         help="PDF extraction backend (default: %(default)s)",
     )
     ap.add_argument("--pdf-dir", default="data/input/pdfs", type=Path)
