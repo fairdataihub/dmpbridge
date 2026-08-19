@@ -446,7 +446,7 @@ cells = [
         "detail = matrix_detail_rows()",
         "print(f'Path B: {len(detail)} item(s) off the diagonal (matrix total minus the diagonal)')",
         "if len(detail):",
-        "    display(detail.sort_values(['true label', 'sample']).style.hide(axis='index'))",
+        "    display(detail.sort_values(['sample', 'true label']).style.hide(axis='index'))",
     ]),
     md("md-3f", [
         "**Why this can't be gotten from the matrix alone:** the matrix tells you *how many*",
