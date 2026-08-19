@@ -113,6 +113,25 @@ def _word_is_italic(word_chars, body_font):
     return sum(flags) > len(flags) / 2
 
 
+_URL_TAGS = ("http:", "https:", "www.")
+
+
+def _looks_like_url(word_text: str) -> bool:
+    """True for a word that's a hyperlink rather than real content.
+
+    Word processors auto-underline URLs with no relation to the document's
+    own heading/emphasis styling — confirmed directly on samples 2, 5, 8, 10,
+    where every underlined URL is exactly this, never a heading. Marking one
+    as emphasized gives the classifier a signal that means nothing here, so
+    it's excluded rather than passed through like a real underline. A
+    substring check, not a prefix check — a citation often wraps the URL in
+    parentheses (confirmed on sample8: the actual token pdfplumber returns is
+    ``'(http://escholarship.org/uc/bcoe)'``, not a bare URL).
+    """
+    lower = word_text.lower()
+    return any(tag in lower for tag in _URL_TAGS)
+
+
 def _word_is_underlined(word, rects):
     """True if a thin, horizontal drawn line sits right beneath this word.
 
@@ -126,6 +145,8 @@ def _word_is_underlined(word, rects):
     word's baseline, which is a few points above its bounding-box bottom
     (the bottom includes descender depth, e.g. the tail of a 'p' or 'y').
     """
+    if _looks_like_url(word["text"]):
+        return False
     for r in rects:
         if (r["bottom"] - r["top"]) > 2.0 or (r["x1"] - r["x0"]) <= 5:
             continue
