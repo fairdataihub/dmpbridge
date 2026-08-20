@@ -133,10 +133,10 @@ r.font.size = Pt(13)
 r.font.color.rgb = SUB_BLUE
 
 for line in [
-    "Date: 18 August 2026",
+    "Date: 19 August 2026",
     "Dataset: 10 manually labeled DMP documents (23 pages) · all 10 scored",
     "Models: Gemma 4 e4b · Qwen 2.5 14B · Llama 3.3 70B · Llama 3.1 8B (via Ollama, free/local)",
-    "Extractors: pdfplumber (the only one implemented)",
+    "Extractors: pdfplumber (default) · LightOnOCR-2-1B (alternative, gemma4:e4b only — see 6.1a)",
     "Experiments: 4 of 4 complete under the current pipeline",
 ]:
     p = doc.add_paragraph()
@@ -145,11 +145,11 @@ for line in [
     r.bold = True
     r.font.size = Pt(11)
 
-para("Results in section 6 are the first produced under pdfplumber's rewritten whole-document pipeline "
-     "(section 3.3), all four models complete, character-level deduplication fixed (6.1a). Section 4.1's "
-     "inference-parameters table (format: OUTPUT_SCHEMA, and its 'nine configurations' framing) describes "
-     "the pre-rewrite, id-based design and has not been updated to "
-     "match — pdfplumber no longer uses OUTPUT_SCHEMA at all; treat that table as historical.",
+para("Results in section 6 reflect every fix through 19 August 2026 (section 6.1a), all four models "
+     "complete under pdfplumber's whole-document pipeline (section 3.3), scored at the project's 75% "
+     "partial-credit containment default. Section 4.1's inference-parameters table (format: OUTPUT_SCHEMA, "
+     "and its 'nine configurations' framing) describes the pre-rewrite, id-based design and has not been "
+     "updated to match — pdfplumber no longer uses OUTPUT_SCHEMA at all; treat that table as historical.",
      size=9.5, italic=True, color=RUST, after=10)
 
 # ── 1 ────────────────────────────────────────────────────────────────────
@@ -341,101 +341,119 @@ para("One result has survived every variant: across eight runs and four prompts,
 
 h2("4.3 Extraction backends")
 table(["Backend", "Method", "Bbox / font", "Blocks/doc", "Requires"],
-      [["pdfplumber", "Whole-document text, extraction+labeling fused", "No", "1", "nothing (bundled)"]],
+      [["pdfplumber", "Whole-document text, extraction+labeling fused", "No", "1", "nothing (bundled)"],
+       ["LightOnOCR-2-1B", "Vision-LLM OCR, same marker convention as pdfplumber", "No", "1",
+        "CUDA GPU, torch/transformers (dmpbridge[lighton])"]],
       widths=[1.25, 2.0, 1.05, 1.05, 1.65])
-para("pdfplumber is the only extractor implemented — Docling and LightOnOCR were both tried in this project "
-     "and removed.", size=10, italic=True, color=GREY)
+para("Docling was tried in this project and removed. LightOnOCR was tried, removed, then re-added "
+     "19 August 2026 as a working, non-default alternative — see 6.1a for the current pdfplumber-vs-"
+     "LightOnOCR comparison. pdfplumber remains the default given both its accuracy and speed advantage.",
+     size=10, italic=True, color=GREY)
 
 # ── 5 ────────────────────────────────────────────────────────────────────
 h1("5. Experiment Registry")
-para("Three configurations: three models, the one implemented extractor, whole-document strategy, scored on "
+para("Five configurations: four models against pdfplumber (the default), plus gemma4:e4b against "
+     "LightOnOCR-2-1B (the alternative extractor, section 4.3/6.1a), whole-document strategy, scored on "
      "all ten samples through both evaluation paths.")
 rows=[]; eid=1
-DONE={("llama3.3:70b","pdfplumber"),("gemma4:e4b","pdfplumber"),("llama3.1:8b","pdfplumber")}
-for mo, slug in (("llama3.3:70b","llama3.3-70b"),("gemma4:e4b","gemma4-e4b"),("llama3.1:8b","llama3.1-8b")):
-    for ex in ("pdfplumber",):
-        rows.append([f"E{eid:02d}", mo, ex, f"{slug}_{ex}_whole_doc",
-                     "complete" if (mo,ex) in DONE else "pending"])
-        eid+=1
+DONE={("llama3.3:70b","pdfplumber"),("gemma4:e4b","pdfplumber"),("llama3.1:8b","pdfplumber"),
+      ("qwen2.5:14b","pdfplumber"),("gemma4:e4b","lightonocr")}
+CONFIGS = [("llama3.3:70b","llama3.3-70b","pdfplumber"),
+           ("gemma4:e4b","gemma4-e4b","pdfplumber"),
+           ("llama3.1:8b","llama3.1-8b","pdfplumber"),
+           ("qwen2.5:14b","qwen2.5-14b","pdfplumber"),
+           ("gemma4:e4b","gemma4-e4b","lightonocr")]
+for mo, slug, ex in CONFIGS:
+    rows.append([f"E{eid:02d}", mo, ex, f"{slug}_{ex}_whole_doc",
+                 "complete" if (mo,ex) in DONE else "pending"])
+    eid+=1
 table(["ID","Model","Extractor","Output tag","Status"], rows, widths=[0.5,1.3,1.1,2.6,0.85])
-para("All three are marked complete against the previous pdfplumber implementation; pdfplumber's own "
-     "extraction+labeling has since been rewritten, so re-running is needed for current numbers.",
+para("All five configurations are complete under the current pipeline as of 19 August 2026.",
      size=9.5, italic=True, color=GREY)
 
 # ── 6 ────────────────────────────────────────────────────────────────────
 h1("6. Results")
 para("All ten samples, pdfplumber's whole-document visual-signal pipeline (section 4), current annotation "
-     "rules, corrected character-level deduplication (section 6.1a). Produced 18 August 2026 — the first "
-     "real numbers under this pipeline; every pdfplumber figure elsewhere in this report predates the "
-     "rewrite and is not comparable to what follows.", size=10, italic=True, color=RUST)
-para("Scored at the project default containment threshold — 100% (CONTAINMENT_THRESHOLD = 1.0 in "
-     "evaluate.py) — every predicted word must be contained for a match, no partial credit.",
-     size=9.5, italic=True, color=GREY)
+     "rules, all fixes through 19 August 2026 (section 6.1a). Produced 19 August 2026 — supersedes every "
+     "earlier results table in this report, including the 18 August figures previously here.",
+     size=10, italic=True, color=RUST)
+para("Scored at the project default containment threshold — 75% (CONTAINMENT_THRESHOLD = 0.75 in "
+     "evaluate.py) — a predicted item matches once at least 75% of its words appear in the reference item, "
+     "partial credit allowed. The project ran at an exact-match 100% threshold from 12 August to 19 August "
+     "2026; any figure elsewhere describing a \"100%\" or \"exact containment\" default predates this and is "
+     "not directly comparable to what follows.", size=9.5, italic=True, color=GREY)
 
 h2("6.1 Headline")
-table(["Model","Path A F1","Path B F1","Runtime (10 docs)"],
-      [["gemma4:e4b","87.2%","84.5%","157 s"],
-       ["qwen2.5:14b","76.3%","76.8%","235 s"],
-       ["llama3.3:70b","66.0%","62.2%","~40+ min (see 6.4)"],
-       ["llama3.1:8b","60.1%","57.5%","149 s"]],
-      widths=[1.35,1.05,1.05,2.6])
-para("All four score above the old line-by-line pdfplumber pipeline (llama3.1:8b was 28.7%/31.3%, "
-     "gemma4:e4b was 65.6%/66.5%, llama3.3:70b was 71.7%/72.1%; qwen2.5:14b was never run under the old "
-     "pipeline). The ranking has changed in a way worth stating plainly: gemma4:e4b is now the clear best "
-     "model; qwen2.5:14b — added 18 August, the model the pdfplumber visual-signal approach was originally "
-     "developed against — lands a clear second; llama3.3:70b, the largest model and previously the "
-     "strongest, is now roughly tied with llama3.1:8b rather than ahead of it. That is a real reversal, not "
-     "a rounding difference.", size=10, color=GREY)
-para("The llama3.3:70b/llama3.1:8b tie traces to how the models segment the document, not raw capability. "
-     "llama3.3:70b produces noticeably more, smaller items per document than the other models (e.g. "
-     "sample3: 51 items vs roughly 15-20 for the others) — over-segmentation that increases the chance any "
-     "given predicted item misses or splits a reference item, dragging precision down. This is a plausible, "
-     "evidence-based explanation, not yet a confirmed root cause.", size=10, italic=True, color=RUST)
-para("Path B scoring below Path A on every model is a reversal from the historical pattern, where Path B "
-     "(rules-filled) was usually flat or slightly ahead. A Rules.xlsx change (rows 3 and 9 also fill a blank "
-     "section.title, confirmed against the spreadsheet on 18 August) is a plausible contributor but not the "
-     "whole story — it disagrees with the real annotation on only 2 of 10 documents, kept anyway per this "
-     "module's own stated design: the spreadsheet is the specification, not something this code second-guesses.",
+table(["Model","Path A F1","Path B F1"],
+      [["gemma4:e4b","94.6%","94.8%"],
+       ["llama3.3:70b","77.9%","76.4%"],
+       ["qwen2.5:14b","74.8%","74.7%"],
+       ["llama3.1:8b","67.8%","66.7%"]],
+      widths=[1.35,1.35,1.35])
+para("gemma4:e4b remains the clear best model, now scoring above 94% on both paths. Ranking below it has "
+     "reordered since 18 August: llama3.3:70b is now a clear second (77.9%/76.4%, helped substantially by "
+     "the fixes in 6.1a), qwen2.5:14b third, llama3.1:8b last — llama3.3:70b's earlier apparent tie with "
+     "llama3.1:8b (18 August) has not held up under corrected extraction and a broader set of fixes.",
+     size=10, color=GREY)
+para("Path A and Path B are now close on every model — within 1.5 percentage points, either direction — "
+     "a marked change from 18 August, where Path B trailed Path A by 2.7-3.8pp across the board. See 6.3.",
      size=10, italic=True, color=RUST)
 
-h2("6.1a Character-level deduplication — a real fix, not cosmetic")
-para("Some PDFs render text twice in offset layers (a fake-bold trick), which pdfplumber reports as every "
-     "character doubled — samples 3 and 9 both do this (sample9's title extracted as "
-     "\"CCAARREEEERR:: HHIIGGHH-...\" instead of \"CAREER: HIGH-...\"). Word-level deduplication (repeated "
-     "whole words) was restored earlier in this project's rewrite; character-level deduplication was not, "
-     "and stayed silently broken until caught by inspecting real sample9 output directly. Fixed by "
-     "collapsing doubled characters per word before **bold**/_italic_ markers are inserted — doing it after "
-     "would let the collapsing regex eat a marker pair like \"**\" down to a single \"*\".",
-     size=10, color=GREY)
-table(["Model", "Path A F1, before fix", "Path A F1, after fix", "Change"],
-      [["gemma4:e4b", "80.6%", "87.2%", "+6.6pp"],
-       ["qwen2.5:14b", "70.8%", "76.3%", "+5.5pp"],
-       ["llama3.3:70b", "55.1%", "66.0%", "+10.9pp"],
-       ["llama3.1:8b", "53.5%", "60.1%", "+6.6pp"]],
-      widths=[1.35,1.5,1.4,1.0])
-para("Every model gained real ground, llama3.3:70b most of all — consistent with garbled text being "
-     "exactly the kind of input a model has to work hardest to parse correctly. Only samples 3 and 9 were "
-     "re-run for all four models to produce this table; the other 8 samples were unaffected by the fix.",
-     size=10, italic=True, color=RUST)
+h2("6.1a What changed since 18 August")
+para("Five separate, real fixes, each found via a direct user-reported discrepancy and root-caused before "
+     "being applied — not guessed at. Full detail: Report-doc/worklog/2026-08-19.md (not published; kept "
+     "locally only).", size=10, color=GREY)
+bullet("a PDF-authoring artifact (a colon rendered in a different font than its own sentence, with no real "
+       "bold styling) was being flagged as emphasized text, corrupting sample1's structure. Fixed by "
+       "requiring a punctuation-only word's substituted font to actually be bold-named, not just different.",
+       prefix="Font-mismatch false positive — ")
+bullet("sample6's five section headings are underlined in the source PDF, which font-based bold/italic "
+       "detection cannot see at all (underline is a drawn shape, not a font attribute). Added detection "
+       "against the page's drawn rectangles and a new ++underline++ marker.",
+       prefix="Underline detection — ")
+bullet("the underline fix's first version also marked hyperlinks and incidental emphasis as \"underlined\" "
+       "across five other samples, destabilizing gemma's whole-document generation on unrelated content "
+       "(sample2 dropped 0.769 to 0.522). Excluding URL-shaped text from underline detection not only cut "
+       "the noise but fully recovered sample2 to its original score.",
+       prefix="URL exclusion — ")
+bullet("a character-doubling rendering artifact (\"aa\" instead of \"a\") was too short to trigger the "
+       "existing char-dedup fix, cascading into two separate scoring errors on sample3. Fixed with a "
+       "context-aware check — a short word is only collapsed when its line's longer words show the same "
+       "doubling pattern, which correctly leaves sample2's genuine \"XX\" placeholder text untouched.",
+       prefix="Character-dedup gap — ")
+bullet("CONTAINMENT_THRESHOLD reverted from the exact-match 100% (in effect 12-19 August) back to the "
+       "original 75% partial-credit default, by direct decision.",
+       prefix="Threshold — ")
+para("A vision-based OCR extractor (LightOnOCR-2-1B) was also fully integrated as an alternative to "
+     "pdfplumber and tested against gemma4:e4b across all 10 samples: it independently confirms sample6's "
+     "underline fix (also scores a perfect 1.000 there, via a different mechanism), but scores lower "
+     "overall (81.3% vs. pdfplumber's 90.7% pooled F1, both at the time compared) and runs roughly 14x "
+     "slower. Kept as a working, non-default extractor rather than adopted — "
+     "notebooks/comparison-gemma-pdfplumber-vs-lightonocr.ipynb has the full comparison.",
+     size=10, italic=True, color=GREY)
 
 h2("6.2 Per-label F1")
 table(["Label","gemma4:e4b (A/B)","qwen2.5:14b (A/B)","llama3.3:70b (A/B)","llama3.1:8b (A/B)","Gold (A/B)"],
-      [["title","100/100%","100/100%","94.7/94.7%","94.7/94.7%","10/10"],
-       ["section.title","90.5/87.4%","86.9/86.0%","86.4/85.4%","68.5/67.9%","43/43"],
-       ["section.description","70.6/70.6%","58.3/58.3%","36.8/36.8%","11.8/11.8%","8/8"],
-       ["question.text","83.9/80.4%","54.5/74.1%","64.9/53.5%","0.0/38.6%","16/56"],
-       ["answer.text","85.7/85.7%","73.0/71.3%","54.0/54.0%","67.3/67.3%","55/55"]],
+      [["title","100/100%","100/100%","100/100%","100/100%","10/10"],
+       ["section.title","100/100%","88.7/88.0%","95.6/94.6%","77.8/77.5%","43/45"],
+       ["section.description","88.9/88.9%","58.3/58.3%","45.7/45.7%","18.2/18.2%","8/8"],
+       ["question.text","82.8/91.7%","42.1/67.2%","70.6/70.6%","6.5/48.8%","16/56"],
+       ["answer.text","93.5/93.5%","73.0/69.6%","71.3/71.3%","73.8/73.8%","55/55"]],
       widths=[1.4,1.15,1.15,1.15,1.15,0.85], size=8.5)
-para("question.text at 0.0% for llama3.1:8b on Path A, recovering on Path B, is the annotation rules "
-     "working as designed — Path A scores against the original annotation, which leaves many questions "
-     "blank; Path B fills them first. Not a regression. section.description is every model's weakest label "
-     "by a wide margin (11.8-70.6%, base of only 8 gold items) — the smallest, noisiest label in the "
-     "schema.", size=10, color=GREY)
+para("question.text recovering sharply from Path A to Path B for every model except llama3.3:70b (flat) "
+     "and qwen2.5:14b's answer.text dipping slightly on Path B are the annotation rules working as "
+     "designed — Path A scores against the original annotation, which leaves many questions blank; Path B "
+     "fills them first. section.description remains every model's weakest label by a wide margin "
+     "(18.2-88.9%, base of only 8 gold items) — the smallest, noisiest label in the schema, unchanged "
+     "since 18 August.", size=10, color=GREY)
 
 h2("6.3 Path A versus Path B")
-para("Path B now trails Path A on every model — 3.8pp (llama3.1:8b), 2.7pp (gemma4:e4b), 3.8pp "
-     "(llama3.3:70b), and roughly flat on qwen2.5:14b (+0.5pp) — versus the pre-rewrite pipeline, where the "
-     "two paths scored within 0.3 points of each other for every model. See 6.1.")
+para("Path A and Path B are now close on every model: llama3.1:8b -1.1pp, gemma4:e4b +0.2pp, "
+     "llama3.3:70b -1.5pp, qwen2.5:14b -0.1pp — a real change from 18 August, where Path B trailed Path A "
+     "by 2.7-3.8pp on every model with no exception. The gap has not fully closed and is not expected to "
+     "(Path A and Path B are scored against two separately-annotated reference sets, not the same answer "
+     "key scored twice — see 7.3), but it is now small and mixed in direction rather than a one-sided, "
+     "every-model pattern.", size=10, color=GREY)
 
 h2("6.4 Runtime — why the new pipeline runs slower")
 para("pdfplumber's extraction and labeling were rewritten (section 3.3) to match a whole-document, "
@@ -463,6 +481,13 @@ para("Practical consequence: the ~112 s/sample, ~20-minute figure for llama3.3:7
      "project's own operating notes was measured under the old, pre-rewrite pipeline and is now stale for "
      "the same architectural reason the old score table was — expect roughly double that under the current "
      "pipeline going forward.", size=10, italic=True, color=RUST)
+para("A separate, operational cause of slow runs was found and fixed 19 August: the Ollama server process "
+     "itself had been running continuously for 7 days (since 12 August) across every model swap in that "
+     "window, and had silently degraded — one sample took 226s against an established ~15s baseline, with "
+     "no architectural explanation. Restarting Ollama cleanly (with the environment flags this project's "
+     "own operating notes already specify) restored the baseline immediately. Not a pipeline defect — a "
+     "reminder that a long-lived Ollama process should be restarted periodically, not just when a model "
+     "swap seems to be failing.", size=10, italic=True, color=GREY)
 
 # ── 7 ────────────────────────────────────────────────────────────────────
 h1("7. Evaluation Methodology")
@@ -670,9 +695,10 @@ para("Also check ollama ps once the model has loaded. It must report 100% GPU �
      size=10, color=GREY)
 
 h2("9.5 Allocation across components")
-para("Only one component wants a GPU now — Ollama. pdfplumber, the only extractor, is CPU-only, so there is "
-     "no contention to manage between extraction and labeling the way there was when LightOnOCR was still "
-     "in the pipeline.")
+para("pdfplumber, the default extractor, is CPU-only, so there is no GPU contention to manage between "
+     "extraction and labeling when using it. LightOnOCR-2-1B (re-added 19 August 2026, section 4.3) does "
+     "need a GPU for its own inference (via torch/transformers, separate from Ollama's), and should be "
+     "unloaded between uses the same way an idle Ollama model should be — see 9.6.")
 table(["Component", "GPUs", "How it is set", "Notes"],
       [["Ollama (LLM)", "0, 1", "CUDA_VISIBLE_DEVICES on the server process",
         "70B needs both; smaller models fit on one"],
@@ -792,10 +818,11 @@ table(["Item","Description"],
         "Prompt effects do not transfer between models, and the prompt is whitespace-significant — three blank "
         "lines moved cost 1.9 points of F1 with no wording change. A partial re-run produces figures that "
         "cannot be compared."],
-       ["Re-run the sweep",
-        "pdfplumber is now the only extractor, and its own extraction+labeling was rewritten after the "
-        "numbers in section 6 were measured, so all three model configurations need re-running against "
-        "current code before those numbers can be trusted."],
+       ["Investigate recurring data loss (new, 19 August)",
+        "An entire model's pipeline output has vanished from disk without this session deleting it, four "
+        "separate times across two days (13 and 19 August) — most recently gemma4:e4b's full output "
+        "mid-session. Root cause not found; something outside this session appears to have write/delete "
+        "access to the working tree. Needs a direct investigation, not another re-run to paper over it."],
        ["Consider dropping llama3.1:8b",
         "14 points behind gemma4:e4b at identical runtime, and unable to act on the prompt correction that "
         "both other models benefit from."],
