@@ -90,7 +90,21 @@
           "title": "** Additional possible data management requirements **",
           "description": "",
           "order": 5,
-          "question": []
+          "question": [
+            {
+              "text": "Additional possible data management requirements",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
         }
       ]
     }
