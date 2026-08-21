@@ -17,7 +17,7 @@ heading, a question, an answer — and outputs structured JSON.
 flowchart TD
     PDF["<b>DMP PDF</b>"]
 
-    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber</small>"]
+    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · LightOnOCR</small>"]
     READ --> S1["<b>1. Text blocks</b>"]
     S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b · qwen2.5:14b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
