@@ -19,7 +19,7 @@ flowchart TD
 
     PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber</small>"]
     READ --> S1["<b>1. Text blocks</b>"]
-    S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b</small>"]
+    S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b · qwen2.5:14b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
     S2 --> BUILD["<b>Build the structure</b>"]
     BUILD --> S3["<b>3. Structured JSON</b>"]
@@ -65,21 +65,13 @@ Every block gets one of five labels:
 
 Research code — results are provisional and the evaluation set is small.
 
-> **Scores pending re-evaluation.** pdfplumber's extraction+labeling was rewritten to a
-> whole-document, visual-signal-marker approach (see [Choosing an extractor](#choosing-an-extractor))
-> after the last F1 numbers were measured, so the old table is no longer accurate for the
-> current code and has been removed rather than shown stale. Re-run
-> `dmpbridge-experiment experiments/<model>-wholedoc.yaml --evaluate` per model to get
-> current numbers.
+All four models are fully evaluated under the current pipeline (`pdfplumber`, whole-document,
+both scoring paths). Numbers change often enough that this file doesn't hardcode a table —
+see `notebooks/results-<model>-pdfplumber.ipynb` for one model, or
+`notebooks/comparison-4models-pdfplumber-75pct-overlap.ipynb` for all four side by side.
 
-`pdfplumber` is the only extractor in the pipeline now — Docling and LightOnOCR have both
-been removed. That's 3 planned (one per model) configurations, 0 currently re-evaluated
-under the current pdfplumber implementation.
-
-Run-to-run noise, last measured against the previous pdfplumber implementation, was
-±0.002 F1 (one configuration run three times, every count identical) — not the ~3-point
-figure an earlier version of this file assumed but never measured. Differences smaller
-than ~0.005 are not meaningful.
+Run-to-run noise is ±0.002 F1 (one configuration run three times, every count identical) —
+differences smaller than ~0.005 are not meaningful.
 
 ---
 
@@ -132,16 +124,19 @@ which shows the YAML as input and the final document as output side by side.
 
 ## How extraction works
 
-`pdfplumber` is the only extractor implemented — no GPU needed, no extra install. It reads
-the whole document at once and sends it to the model in a single call. Words visually
-emphasized relative to the document's own body-text font (bold, or a larger size) are
-wrapped in `**markers**`, and italic words in `_markers_`, so the model gets the PDF's own
-visual structure as a signal without needing bounding-box or font-size fields — extraction
-and labeling are fused into one step rather than separate segment-then-classify calls.
+**`pdfplumber` (default)** — no GPU needed, no extra install. It reads the whole document at
+once and sends it to the model in a single call. Words visually emphasized relative to the
+document's own body-text font (bold, larger, or underlined) are wrapped in `**bold**`,
+`_italic_`, or `++underline++` markers, so the model gets the PDF's own visual structure as
+a signal without needing bounding-box or font-size fields — extraction and labeling are
+fused into one step rather than separate segment-then-classify calls. It assumes a text
+layer exists (not a scanned/image-only PDF).
 
-It assumes a text layer exists (not a scanned/image-only PDF). Docling and LightOnOCR —
-an OCR-capable alternative for scanned documents — were both tried in this project and
-removed. If a scanned-PDF use case comes up, that capability would need to be rebuilt.
+**`lightonocr` (alternative)** — a vision-LLM (LightOnOCR-2-1B) that reads each page as an
+image instead, using the same marker convention. Needs a CUDA GPU and
+`pip install dmpbridge[lighton]`. Scores lower and runs slower than pdfplumber on this
+project's documents so far, but works on scanned/image-only PDFs pdfplumber can't read at
+all — see `notebooks/comparison-gemma-pdfplumber-vs-lightonocr.ipynb`.
 
 ---
 
@@ -159,7 +154,7 @@ data/output/
 can open `sampleN.json` in each folder and follow one document through.
 
 **Stage 1 is keyed by extractor, not by model**, and is cached — reading a PDF doesn't
-depend on which LLM labels it. Labeling with three models costs one read, not three:
+depend on which LLM labels it. Labeling with four models costs one read, not four:
 
 ```bash
 dmpbridge-wholedoc --model llama3.1:8b   # reads and caches
@@ -186,8 +181,8 @@ changed partway through the project, so everything is scored twice:
 - **Path B** — after filling blank questions using `data/input/Rules.xlsx`, against the newer one
 
 Both use the same scoring: a predicted item matches a reference item when enough of its
-words are contained in it (**100% by default** — every word, no partial credit; pass
-`threshold=0.75` to relax it), then precision, recall and F1 as usual.
+words are contained in it (**75% by default** — partial credit allowed; pass
+`threshold=1.0` to require an exact match instead), then precision, recall and F1 as usual.
 
 ```bash
 dmpbridge-evaluate      gemma4-e4b_pdfplumber_whole_doc    # Path A

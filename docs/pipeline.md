@@ -6,7 +6,7 @@ flowchart TD
 
     PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber</small>"]
     READ --> S1["<b>1. Text blocks</b>"]
-    S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b</small>"]
+    S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b · qwen2.5:14b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
     S2 --> BUILD["<b>Build the structure</b>"]
     BUILD --> S3["<b>3. Structured JSON</b>"]
@@ -39,7 +39,7 @@ steps that produce each one.
 **Two things worth noticing:**
 
 - **Step 1 is shared.** Reading the PDF doesn't depend on which model does the labeling, so
-  it is done once and reused. Labeling with three models costs one read, not three.
+  it is done once and reused. Labeling with four models costs one read, not four.
 - **The two scores branch at step 3.** Path A scores the structure as the model produced it.
   Path B first fills in blank questions using the rules, then scores that. Both are kept, so
   you can compare them.
@@ -50,8 +50,8 @@ steps that produce each one.
 
 | Step | What it does | Choices |
 |---|---|---|
-| Read the PDF | whole document in one call, extraction+labeling fused | `pdfplumber` |
-| Label each block | one LLM call per document | `llama3.1:8b`, `gemma4:e4b`, `llama3.3:70b` |
+| Read the PDF | whole document in one call, extraction+labeling fused | `pdfplumber` (default), `lightonocr` |
+| Label each block | one LLM call per document | `llama3.1:8b`, `gemma4:e4b`, `llama3.3:70b`, `qwen2.5:14b` |
 | Build the structure | nest into sections → questions → answers | — |
 | Apply the rules | fill blank questions | `data/input/Rules.xlsx` |
 
