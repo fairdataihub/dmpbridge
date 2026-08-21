@@ -35,17 +35,9 @@ cells = [
     md("title", [
         f"# pdfplumber vs LightOnOCR-2-1B — {MODEL} only",
         "",
-        "**Scope, read this first:** this is not a 4-model comparison. LightOnOCR-2-1B",
-        f"(a vision-based OCR model, run via HuggingFace `transformers`) has only been tested",
-        f"against **{MODEL}** so far, as an exploratory check on one specific question: can a",
-        "vision-based extractor recognize document structure — especially sample6's underlined",
-        "headings — that pdfplumber's font-attribute-based signal detection cannot see at all?",
-        "",
-        "Both extractors are scored the same way: classified by the same model, converted to",
-        "structured JSON, the same annotation rules applied, then scored against the same",
-        "revised answer key. **This compares one scoring path (\"Path B\"), not Path A vs Path",
-        "B** — the LightOnOCR run only kept the post-rules output, so there is no pre-rules",
-        "copy to compare separately the way the pdfplumber notebooks do.",
+        f"Two ways of reading the PDF, compared for one model ({MODEL}): pdfplumber (reads text",
+        "and fonts) vs LightOnOCR (reads the page as an image). Both are scored the same way,",
+        "and only the final, fixed-up output is compared here.",
     ]),
 
     code("setup", [
@@ -158,10 +150,9 @@ cells = [
     ]),
 
     md("md-3", [
-        "## 3. Per-sample — where the two extractors actually disagree",
+        "## 3. Per-sample — where the two extractors disagree",
         "",
-        "The headline number can hide a lot: two extractors can land on the same overall score",
-        "for completely different reasons. This breaks it down document by document.",
+        "One overall score can hide a lot. This breaks it down document by document.",
     ]),
     code("per-sample", [
         "def sample_f1(name, n):",
@@ -185,12 +176,11 @@ cells = [
     ]),
 
     md("md-4", [
-        "## 4. Sample6 — the case this comparison was actually run to check",
+        "## 4. Sample6 — the reason this comparison exists",
         "",
-        "pdfplumber cannot see sample6's underlined headings at all (underline is a drawn line,",
-        "not a font attribute), until a dedicated fix was added to detect it via the page's",
-        "drawn shapes. LightOnOCR reads the page as an image, so it can physically see the",
-        "underline the way a person would — the question was whether it actually uses that.",
+        "Sample6's headings are underlined, not bold. pdfplumber needed a special fix to see",
+        "that. LightOnOCR reads the page as an image, so it can see an underline the way a",
+        "person would — this checks whether it actually does.",
     ]),
     code("sample6", [
         "for name in available:",
@@ -198,13 +188,9 @@ cells = [
         "    print(f'{name:<12} sample6 f1 = {f1:.3f}')",
     ]),
     md("md-4b", [
-        "If both extractors score sample6 well, that's not a redundant result — it shows two",
-        "independent routes to the same fix: pdfplumber via an explicit underline-rect detector,",
-        "LightOnOCR via genuinely seeing the page, even though the actual marker it used to",
-        "represent the emphasis was `**bold**` rather than `++underline++` — the classifier's",
-        "own heuristic (\"a short emphasized phrase followed by longer text is likely a heading\")",
-        "doesn't care which marker style was used, so it didn't need to distinguish them",
-        "correctly to get the split right.",
+        "Both extractors get this document right — but by different routes. pdfplumber uses its",
+        "explicit underline fix; LightOnOCR marked the headings **bold** instead of underlined,",
+        "but that was still enough for the model to recognize them as headings.",
     ]),
 ]
 
