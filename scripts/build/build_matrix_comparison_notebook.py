@@ -53,7 +53,7 @@ cells = [
         "SAMPLES = range(1, 11)",
         "PANELS = {",
         "    'Pdfplumber+Gemma':  P.make_tag(MODEL, 'pdfplumber'),",
-        f"    'LighOnOCR+Gemma':   '{MODEL.replace(':', '-').replace('.', '')}_lightonocr_whole_doc',",
+        f"    'LightOnOCR+Gemma':  '{MODEL.replace(':', '-').replace('.', '')}_lightonocr_whole_doc',",
         "}",
         "",
         "INK, SURFACE = '#0b0b0b', '#fcfcfb'",
