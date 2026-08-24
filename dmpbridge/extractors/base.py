@@ -6,10 +6,10 @@ from pathlib import Path
 class BaseExtractor(ABC):
     """Extract text from a PDF file, returned as a flat list of block dicts.
 
-    pdfplumber — the only extractor currently implemented — returns the
-    whole document as a single ``[{"text": "..."}]`` entry, with **bold**/
-    _italic_ visual-signal markers embedded in the text rather than as
-    separate fields; see
+    Every extractor implemented so far (pdfplumber, LightOnOCR, Docling)
+    returns the whole document as a single ``[{"text": "..."}]`` entry, with
+    **bold**/_italic_/++underline++ visual-signal markers embedded in the
+    text rather than as separate fields; see
     :class:`~dmpbridge.extractors.pdfplumber_extractor.PdfplumberExtractor`.
     There is no shared multi-block schema to conform to beyond that — a
     future extractor is free to define its own block shape, as long as

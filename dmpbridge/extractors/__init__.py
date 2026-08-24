@@ -19,6 +19,14 @@ Supported extractors
                    slower — kept as an available alternative extractor, not the
                    default, since it occasionally does better on a specific
                    document (see notebooks/comparison-gemma-pdfplumber-vs-lightonocr.ipynb).
+``"docling"``     — same whole-document, same marker convention, read by
+                   Docling's layout model and exported via Markdown. Headings
+                   are found from page layout rather than font metadata, so
+                   they become ``** … **`` markers even when set in the body
+                   font; bold/italic/underline are *not* recovered (Docling
+                   leaves ``formatting`` empty on this corpus). CPU-capable,
+                   0.1–3 s per document, requires the ``dmpbridge[docling]``
+                   extra.
 
 Usage
 -----
@@ -32,6 +40,7 @@ from .base import BaseExtractor
 _EXTRACTORS = {
     "pdfplumber": ("pdfplumber_extractor", "PdfplumberExtractor"),
     "lightonocr": ("lighton_extractor",    "LightOnExtractor"),
+    "docling":    ("docling_extractor",    "DoclingExtractor"),
 }
 
 
@@ -41,7 +50,7 @@ def get_extractor(name: str, **kwargs) -> BaseExtractor:
     Parameters
     ----------
     name:
-        ``"pdfplumber"`` or ``"lightonocr"``.
+        ``"pdfplumber"``, ``"lightonocr"`` or ``"docling"``.
     **kwargs:
         Passed through to the extractor constructor.
     """

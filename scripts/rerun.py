@@ -62,7 +62,7 @@ def main() -> None:
     g.add_argument("--model", action="append", help="model to re-run (repeatable)")
     g.add_argument("--all", action="store_true", help=f"re-run {', '.join(MODELS)}")
     ap.add_argument("--extractor", default="pdfplumber",
-                    choices=["pdfplumber"])
+                    choices=["pdfplumber", "lightonocr", "docling"])
     ap.add_argument("--start", type=int, default=1)
     ap.add_argument("--end", type=int, default=10)
     ap.add_argument("--no-backup", action="store_true", help="skip the backup copy")

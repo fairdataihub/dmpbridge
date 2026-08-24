@@ -17,7 +17,7 @@ heading, a question, an answer — and outputs structured JSON.
 flowchart TD
     PDF["<b>DMP PDF</b>"]
 
-    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · LightOnOCR</small>"]
+    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · LightOnOCR · Docling</small>"]
     READ --> S1["<b>1. Text blocks</b>"]
     S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b · qwen2.5:14b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
@@ -137,6 +137,13 @@ image instead, using the same marker convention. Needs a CUDA GPU and
 `pip install dmpbridge[lighton]`. Scores lower and runs slower than pdfplumber on this
 project's documents so far, but works on scanned/image-only PDFs pdfplumber can't read at
 all — see `notebooks/comparison-gemma-pdfplumber-vs-lightonocr.ipynb`.
+
+**`docling` (alternative)** — Docling's layout model reads each page and exports Markdown,
+which is translated into the same marker convention: section headings become `** … **`.
+Headings are found from page layout rather than font metadata, but bold/italic/underline
+are not recovered, so the model gets less emphasis signal than from pdfplumber. Runs on
+CPU in 0.1–3 s per document; needs `pip install dmpbridge[docling]`. Docling's untranslated
+Markdown is kept alongside stage 1 as `1_extracted/docling/sampleN.md`.
 
 ---
 

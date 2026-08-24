@@ -39,6 +39,9 @@ lighton = [
     "safetensors>=0.4",
     "pillow>=10.0",
 ]
+docling = [
+    "docling>=2.0",
+]
 dev = [
     "pytest>=8.0",
 ]

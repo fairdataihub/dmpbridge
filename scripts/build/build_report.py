@@ -343,11 +343,16 @@ h2("4.3 Extraction backends")
 table(["Backend", "Method", "Bbox / font", "Blocks/doc", "Requires"],
       [["pdfplumber", "Whole-document text, extraction+labeling fused", "No", "1", "nothing (bundled)"],
        ["LightOnOCR-2-1B", "Vision-LLM OCR, same marker convention as pdfplumber", "No", "1",
-        "CUDA GPU, torch/transformers (dmpbridge[lighton])"]],
+        "CUDA GPU, torch/transformers (dmpbridge[lighton])"],
+       ["Docling", "Layout-model Markdown export, headings translated to the same markers", "No", "1",
+        "docling (dmpbridge[docling]), CPU-capable"]],
       widths=[1.25, 2.0, 1.05, 1.05, 1.65])
-para("Docling was tried in this project and removed. LightOnOCR was tried, removed, then re-added "
-     "19 August 2026 as a working, non-default alternative — see 6.1a for the current pdfplumber-vs-"
-     "LightOnOCR comparison. pdfplumber remains the default given both its accuracy and speed advantage.",
+para("Docling was tried, removed, and re-added 24 August 2026 in whole-document form; it recovers "
+     "headings from page layout but no bold/italic/underline, and scores 0.769 Path A / 0.742 Path B "
+     "with gemma4:e4b — below LightOnOCR (0.817/0.827) and pdfplumber (0.946/0.951). LightOnOCR was tried, "
+     "removed, then re-added 19 August 2026 as a working, non-default alternative — see 6.1a for the "
+     "current pdfplumber-vs-LightOnOCR comparison. pdfplumber remains the default given both its accuracy "
+     "and speed advantage.",
      size=10, italic=True, color=GREY)
 
 # ── 5 ────────────────────────────────────────────────────────────────────
