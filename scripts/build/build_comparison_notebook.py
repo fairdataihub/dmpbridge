@@ -12,6 +12,11 @@ exact-match default that stood 2026-08-12 through 2026-08-19). `--threshold`
 still works if you need a one-off stricter or looser comparison.
 
     python scripts/build/build_comparison_notebook.py --out notebooks/comparison-4models-pdfplumber-75pct-overlap.ipynb
+
+`--models` picks which models are compared (default: all four); the title and
+every chart follow the list, so a three-model build needs no other change:
+
+    python scripts/build/build_comparison_notebook.py --models llama3.1:8b gemma4:e4b llama3.3:70b --out notebooks/comparison-3models-pdfplumber-75pct-overlap.ipynb
 """
 import argparse
 import json
@@ -22,10 +27,15 @@ ap.add_argument("--threshold", type=float, default=None,
                 help="containment required for a match (default: the project's 0.75/75%)")
 ap.add_argument("--out", type=Path,
                 default=Path("notebooks/comparison-4models-pdfplumber.ipynb"))
+ap.add_argument("--models", nargs="+",
+                default=["llama3.1:8b", "gemma4:e4b", "llama3.3:70b", "qwen2.5:14b"],
+                help="Ollama model tags to compare, in display order (default: all four)")
 args = ap.parse_args()
 
 NB = args.out
 THRESHOLD = args.threshold
+MODELS = args.models
+COUNT_WORD = {2: "Two", 3: "Three", 4: "Four", 5: "Five"}.get(len(MODELS), str(len(MODELS)))
 
 
 def md(cid, lines):
@@ -44,7 +54,7 @@ cells = [
     md("title", [
         "# Model comparison — pdfplumber",
         "",
-        "Four models on the same 10 Data Management Plans, the same extraction, and the",
+        f"{COUNT_WORD} models on the same 10 Data Management Plans, the same extraction, and the",
         "same prompt. Text-block classification into five classes.",
         "",
         "Because stage 1 is cached per extractor, every model here received **identical",
@@ -80,7 +90,7 @@ cells = [
         "    micro_prf1, resolve_old_gt_path, tokenize,",
         ")",
         "",
-        "MODELS, EXTRACTOR, SAMPLES = ['llama3.1:8b', 'gemma4:e4b', 'llama3.3:70b', 'qwen2.5:14b'], 'pdfplumber', range(1, 11)",
+        f"MODELS, EXTRACTOR, SAMPLES = {MODELS!r}, 'pdfplumber', range(1, 11)",
         f"THRESHOLD = {THRESHOLD!r}   # None = the project default (0.75 / 75%)",
         "",
         "# Reference categorical palette, slots 1-3-5 — one hue per model, held",
