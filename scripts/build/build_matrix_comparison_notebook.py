@@ -6,12 +6,24 @@ per-sample breakdown — those already live in
 comparison-gemma-pdfplumber-vs-lightonocr.ipynb. This is the focused,
 one-picture version.
 
-    python scripts/build/build_matrix_comparison_notebook.py
+    python scripts/build/build_matrix_comparison_notebook.py                       # vs LightOnOCR
+    python scripts/build/build_matrix_comparison_notebook.py --extractor docling   # vs Docling
 """
+import argparse
 import json
 from pathlib import Path
 
-NB = Path("notebooks/comparison-matrix-pdfplumber-vs-lightonocr.ipynb")
+# The alternative extractor's tag name -> how it is written in titles and labels.
+DISPLAY = {"lightonocr": "LightOnOCR", "docling": "Docling"}
+
+ap = argparse.ArgumentParser(description=__doc__)
+ap.add_argument("--extractor", default="lightonocr", choices=sorted(DISPLAY),
+                help="the extractor compared against pdfplumber (default: %(default)s)")
+args = ap.parse_args()
+
+EXTRACTOR = args.extractor
+ALT = DISPLAY[EXTRACTOR]
+NB = Path(f"notebooks/comparison-matrix-pdfplumber-vs-{EXTRACTOR}.ipynb")
 MODEL = "gemma4:e4b"
 
 
@@ -28,7 +40,7 @@ def code(cid, lines):
 
 cells = [
     md("title", [
-        f"# Confusion matrix — pdfplumber vs LightOnOCR, {MODEL}",
+        f"# Confusion matrix — pdfplumber vs {ALT}, {MODEL}",
         "",
         "Path B only (the final, rules-applied output), one matrix per extractor, same model.",
     ]),
@@ -53,7 +65,7 @@ cells = [
         "SAMPLES = range(1, 11)",
         "PANELS = {",
         "    'Pdfplumber+Gemma':  P.make_tag(MODEL, 'pdfplumber'),",
-        f"    'LightOnOCR+Gemma':  '{MODEL.replace(':', '-').replace('.', '')}_lightonocr_whole_doc',",
+        f"    '{ALT}+Gemma':  '{MODEL.replace(':', '-').replace('.', '')}_{EXTRACTOR}_whole_doc',",
         "}",
         "",
         "INK, SURFACE = '#0b0b0b', '#fcfcfb'",
