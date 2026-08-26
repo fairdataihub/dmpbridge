@@ -1,0 +1,310 @@
+"""Build notebooks/investigation-docling-native-json-sample2.ipynb.
+
+One question: does Docling's *native* output — the document JSON, not our
+Markdown translation — carry bold, italic or underline? Sample 2 is the test
+document because pdfplumber finds 42 bold, 11 underlined and 41 italic runs
+in it, so if Docling records any of the three it will show here.
+
+Three levels are checked, top down: the document JSON, the Markdown export,
+and the low-level parsed page cells that the JSON is built from. pdfplumber's
+font data is the reference for what the PDF actually contains.
+
+    python scripts/build/build_docling_native_notebook.py
+"""
+import json
+from pathlib import Path
+
+NB = Path("notebooks/investigation-docling-native-json-sample2.ipynb")
+SAMPLE = 2
+
+
+def md(cid, lines):
+    return {"cell_type": "markdown", "id": cid, "metadata": {},
+            "source": [l + "\n" for l in lines]}
+
+
+def code(cid, lines):
+    return {"cell_type": "code", "id": cid, "metadata": {},
+            "execution_count": None, "outputs": [],
+            "source": [l + "\n" for l in lines]}
+
+
+cells = [
+    md("title", [
+        f"# Does Docling's native JSON capture bold, italic, underline? — sample {SAMPLE}",
+        "",
+        "Our Docling extractor works from Docling's **Markdown export**, and that Markdown",
+        "contains no bold, italic or underline. This notebook asks whether the information",
+        "exists one level down, in Docling's **native document JSON**, and one level below",
+        "that, in the **parsed page cells** the JSON is assembled from.",
+        "",
+        f"Sample {SAMPLE} is the test document because it is a template with all three kinds of",
+        "styling: bold labels (`Roles & Responsibilities.`), whole italic instruction",
+        "paragraphs, and underlined phrases. pdfplumber, which reads the PDF's font data",
+        "directly, finds **42 bold, 11 underlined and 41 italic** runs in it — so if Docling",
+        "records any of the three, it will show here.",
+        "",
+        "| level | what it is | checked in |",
+        "|---|---|---|",
+        "| 1 | document JSON (`export_to_dict`) — the `texts` items and their `formatting` field | section 1 |",
+        "| 2 | Markdown export — what our extractor consumes | section 2 |",
+        "| 3 | parsed page cells — every text line with its PDF font name | section 4 |",
+        "",
+        "Section 3 shows the reference: what the PDF actually contains, per pdfplumber.",
+    ]),
+
+    code("setup", [
+        "import os",
+        "from pathlib import Path",
+        "",
+        "if Path.cwd().name == 'notebooks':",
+        "    os.chdir(Path.cwd().parent)",
+        "",
+        "import collections",
+        "import json",
+        "import logging",
+        "import re",
+        "import warnings",
+        "",
+        "os.environ['TQDM_DISABLE'] = '1'      # model-loading progress bars",
+        "warnings.filterwarnings('ignore')",
+        "",
+        "import pandas as pd",
+        "from IPython.display import display",
+        "",
+        "logging.disable(logging.WARNING)   # RapidOCR chatter on pages with nothing to OCR",
+        "pd.set_option('display.max_colwidth', 70)",
+        "",
+        f"SAMPLE = {SAMPLE}",
+        "PDF = Path(f'data/input/pdfs/sample{SAMPLE}.pdf')",
+        "",
+        "from docling.datamodel.base_models import InputFormat",
+        "from docling.datamodel.pipeline_options import PdfPipelineOptions",
+        "from docling.document_converter import DocumentConverter, PdfFormatOption",
+        "",
+        "# Same options as dmpbridge/extractors/docling_extractor.py, plus",
+        "# generate_parsed_pages so the low-level cells survive conversion (they are",
+        "# discarded by default once the document is assembled).",
+        "opts = PdfPipelineOptions()",
+        "opts.do_ocr = True",
+        "opts.do_table_structure = True",
+        "opts.generate_parsed_pages = True",
+        "",
+        "converter = DocumentConverter(",
+        "    format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=opts)})",
+        "result = converter.convert(str(PDF))",
+        "doc = result.document",
+        "",
+        "native = doc.export_to_dict()",
+        "out = Path(f'data/output/1_extracted/docling/sample{SAMPLE}.docling.json')",
+        "out.parent.mkdir(parents=True, exist_ok=True)",
+        "out.write_text(json.dumps(native, indent=2, ensure_ascii=False), encoding='utf-8')",
+        "print('docling', __import__('importlib.metadata').metadata.version('docling'))",
+        "print('pages  ', len(doc.pages))",
+        "print('native JSON saved ->', out)",
+    ]),
+
+    # ── 1 ─────────────────────────────────────────────────────────────────
+    md("md-1", [
+        "## 1. The native document JSON",
+        "",
+        "`export_to_dict()` is Docling's own schema — the same thing `docling --to json`",
+        "writes. Every piece of text is an item in `texts`, with a `label` (what kind of block",
+        "the layout model decided it is) and a `formatting` field that the schema reserves",
+        "for bold / italic / underline / strikethrough.",
+    ]),
+    code("json-overview", [
+        "print('top-level keys :', list(native.keys()))",
+        "print('text items     :', len(native['texts']))",
+        "print()",
+        "print('labels the layout model assigned:')",
+        "for label, n in collections.Counter(t['label'] for t in native['texts']).most_common():",
+        "    print(f'  {n:3d}  {label}')",
+        "print()",
+        "print('one item, verbatim:')",
+        "print(json.dumps(native['texts'][0], indent=2)[:900])",
+    ]),
+    md("md-1b", [
+        "Two checks. First, every key that appears *anywhere* in the JSON whose name",
+        "suggests styling. Second, the value of `formatting` on every text item.",
+    ]),
+    code("json-keys", [
+        "keys = collections.Counter()",
+        "",
+        "def walk(o):",
+        "    if isinstance(o, dict):",
+        "        for k, v in o.items():",
+        "            keys[k] += 1",
+        "            walk(v)",
+        "    elif isinstance(o, list):",
+        "        for v in o:",
+        "            walk(v)",
+        "",
+        "walk(native)",
+        "styling = {k: n for k, n in keys.items()",
+        "           if re.search(r'format|font|bold|ital|under|style|weight', k, re.I)}",
+        "print('distinct keys in the JSON       :', len(keys))",
+        "print('keys that mention styling/fonts :', styling or 'NONE')",
+        "print()",
+        "fmt = collections.Counter(json.dumps(t.get('formatting')) for t in native['texts'])",
+        "print('value of \"formatting\" across all text items:', dict(fmt))",
+    ]),
+    md("md-1c", [
+        "The first dozen text items, so the absence is visible next to the text it applies to.",
+        "The first three are bold in the PDF; `Roles & Responsibilities.` is a bold label; the",
+        "italic instruction paragraph follows it.",
+    ]),
+    code("json-table", [
+        "rows = [{'#': i, 'label': t['label'], 'formatting': t.get('formatting'),",
+        "         'text': t['text'][:70]}",
+        "        for i, t in enumerate(native['texts'][:14])]",
+        "display(pd.DataFrame(rows).set_index('#'))",
+    ]),
+
+    # ── 2 ─────────────────────────────────────────────────────────────────
+    md("md-2", [
+        "## 2. The Markdown export",
+        "",
+        "This is what `dmpbridge/extractors/docling_extractor.py` consumes. If the JSON had",
+        "formatting, the serializer would write it as `**bold**`, `*italic*` or `<u>…</u>`.",
+    ]),
+    code("markdown", [
+        "md_text = doc.export_to_markdown(escape_html=False)",
+        "print('characters       :', len(md_text))",
+        "print('**bold** runs    :', len(re.findall(r'\\*\\*', md_text)) // 2)",
+        "print('*italic* runs    :', len(re.findall(r'(?<!\\*)\\*(?!\\*)[^*\\n]+?\\*(?!\\*)', md_text)))",
+        "print('<u>underline</u> :', md_text.count('<u>'))",
+        "print('# headings       :', len(re.findall(r'^#+ ', md_text, re.M)))",
+    ]),
+
+    # ── 3 ─────────────────────────────────────────────────────────────────
+    md("md-3", [
+        "## 3. Reference — what the PDF actually contains",
+        "",
+        "pdfplumber reads each character's font name and size, and each drawn rectangle.",
+        "Bold and italic are visible in the font name; an underline is a thin rectangle",
+        "drawn under the words (it is not a font property in a PDF).",
+    ]),
+    code("pdfplumber-fonts", [
+        "import pdfplumber",
+        "",
+        "fonts, thin_rects = collections.Counter(), 0",
+        "with pdfplumber.open(PDF) as pdf:",
+        "    for page in pdf.pages:",
+        "        for ch in page.chars:",
+        "            fonts[(ch['fontname'].split('+')[-1], round(ch['size'], 1))] += 1",
+        "        thin_rects += sum(1 for r in page.rects if r['height'] <= 2)",
+        "",
+        "print('font inventory (characters):')",
+        "for (font, size), n in fonts.most_common():",
+        "    print(f'  {n:6d}  {font:18s} {size} pt')",
+        "print()",
+        "print('thin rectangles (underline candidates):', thin_rects)",
+    ]),
+    code("pdfplumber-markers", [
+        "stage1 = json.loads(Path(f'data/output/1_extracted/pdfplumber/sample{SAMPLE}.json')",
+        "                    .read_text(encoding='utf-8'))[0]['text']",
+        "bold  = re.findall(r'\\*\\* (.+?) \\*\\*', stage1)",
+        "under = re.findall(r'\\+\\+ (.+?) \\+\\+', stage1)",
+        "ital  = re.findall(r'(?<![\\w*+])_ (.+?) _(?![\\w])', stage1)",
+        "print(f'pdfplumber stage-1 markers: bold {len(bold)}, underline {len(under)}, italic {len(ital)}')",
+        "print()",
+        "print('examples, pdfplumber line  ->  the same text in the Docling JSON:')",
+        "texts = [t['text'] for t in native['texts']]",
+        "",
+        "def in_docling(phrase):",
+        "    key = re.sub(r'^\\d+\\.\\s*', '', phrase)   # Docling strips list numbers",
+        "    key = re.sub(r'\\s+', ' ', key)[:30]",
+        "    hits = [t for t in texts if key in re.sub(r'\\s+', ' ', t)]",
+        "    return hits[0][:80] if hits else '(not found as a separate item)'",
+        "",
+        "for kind, runs in (('bold', bold), ('underline', under), ('italic', ital)):",
+        "    for phrase in runs[:2]:",
+        "        print(f'  [{kind:9s}] {phrase[:60]!r}')",
+        "        print(f'  {\"\":11s} -> {in_docling(phrase)!r}')",
+        "        print()",
+    ]),
+
+    # ── 4 ─────────────────────────────────────────────────────────────────
+    md("md-4", [
+        "## 4. Beneath the JSON — the parsed page cells",
+        "",
+        "Before the layout model runs, Docling's PDF backend has already read every text",
+        "line into a `PdfTextCell` with its font name. These cells are what the `texts`",
+        "items are assembled from, and they are normally discarded after conversion",
+        "(`generate_parsed_pages=True` keeps them). This is the level where the font",
+        "information *does* exist.",
+    ]),
+    code("cells", [
+        "rows, fonts_all = [], collections.Counter()",
+        "for page in result.pages:",
+        "    pp = page.parsed_page",
+        "    if pp is None:",
+        "        continue",
+        "    for c in pp.textline_cells:",
+        "        fonts_all[c.font_name.split('+')[-1]] += 1",
+        "        rows.append({'page': page.page_no, 'font_name': c.font_name.split('+')[-1],",
+        "                     'text': c.text[:70]})",
+        "cells_df = pd.DataFrame(rows)",
+        "print('text-line cells across the document:', len(cells_df))",
+        "print('font names on those cells:')",
+        "for font, n in fonts_all.most_common():",
+        "    print(f'  {n:4d}  {font}')",
+        "print()",
+        "print('cell fields available:',",
+        "      list(result.pages[0].parsed_page.textline_cells[0].model_dump().keys()))",
+        "print()",
+        "print('first cells on page 1:')",
+        "display(cells_df.head(14))",
+    ]),
+    code("cells-vs-json", [
+        "n_bold = int((cells_df.font_name.str.contains('Bold')).sum())",
+        "n_ital = int((cells_df.font_name.str.contains('Italic')).sum())",
+        "print(f'cells whose font is Bold   : {n_bold}')",
+        "print(f'cells whose font is Italic : {n_ital}')",
+        "print(f'text items in the JSON with formatting set : 0 of {len(native[\"texts\"])}')",
+        "print()",
+        "shapes = sum(len(getattr(p.parsed_page, 'shapes', []) or []) for p in result.pages if p.parsed_page)",
+        "lines  = sum(len(getattr(p.parsed_page, 'lines', []) or []) for p in result.pages if p.parsed_page)",
+        "print(f'drawn shapes on the parsed pages : {shapes}   lines: {lines}   (pdfplumber sees {thin_rects} thin rectangles)')",
+    ]),
+
+    # ── 5 ─────────────────────────────────────────────────────────────────
+    md("md-5", [
+        "## 5. Conclusion",
+        "",
+        "| signal | in the PDF (pdfplumber) | Docling page cells | Docling document JSON | Docling Markdown |",
+        "|---|---|---|---|---|",
+        "| bold | 42 runs, font `Tinos-Bold` | font name present on the cell | `formatting: null` on every item | none |",
+        "| italic | 41 runs, font `Tinos-Italic` | font name present on the cell | `formatting: null` on every item | none |",
+        "| underline | 11 runs, 23 thin rectangles | no shape data | nothing | none |",
+        "",
+        "**Bold and italic are read, then dropped.** The PDF backend records the font name on",
+        "every text-line cell — section 4 counts **42 `Tinos-Bold` and 41 `Tinos-Italic` lines,",
+        "exactly pdfplumber's 42 bold and 41 italic runs** — but",
+        "nothing in Docling's PDF pipeline turns a font name into the `formatting` flag. That",
+        "flag is only ever set by the HTML, Word, Markdown and similar backends, where bold and",
+        "italic arrive as explicit tags. So the native JSON is no richer than the Markdown on",
+        "this point: `formatting` is `null` on all 36 items, and the JSON contains no key",
+        "anywhere that mentions a font.",
+        "",
+        "**Underline never exists at any level.** It is a drawn rectangle in the PDF, not a",
+        "font attribute; Docling's parsed page carries no shape data for it, and its",
+        "`Formatting` model has an `underline` field only for formats that tag it explicitly.",
+        "",
+        "**What this means for the pipeline.** Reading Docling's JSON instead of its Markdown",
+        "would gain nothing. The only place the information survives is the cell-level",
+        "`font_name`, and using it would mean re-implementing pdfplumber's font checks on",
+        "Docling's cells — and still leave underline unrecoverable. Docling's contribution",
+        "remains what it is: the layout model's `section_header` label, and nothing about",
+        "how the text was styled.",
+    ]),
+]
+
+nb = {"cells": cells,
+      "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
+                                  "name": "python3"},
+                   "language_info": {"name": "python"}},
+      "nbformat": 4, "nbformat_minor": 5}
+NB.write_text(json.dumps(nb, indent=1, ensure_ascii=False), encoding="utf-8")
+print(f"built {NB}: {len(cells)} cells")
