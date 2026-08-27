@@ -95,13 +95,10 @@ cells = [
         "result = converter.convert(str(PDF))",
         "doc = result.document",
         "",
-        "native = doc.export_to_dict()",
-        "out = Path(f'data/output/1_extracted/docling/sample{SAMPLE}.docling.json')",
-        "out.parent.mkdir(parents=True, exist_ok=True)",
-        "out.write_text(json.dumps(native, indent=2, ensure_ascii=False), encoding='utf-8')",
+        "native = doc.export_to_dict()   # kept in memory only; the full native result is",
+        "                                 # in data/output/1_extracted/docling/sample2.native.json",
         "print('docling', __import__('importlib.metadata').metadata.version('docling'))",
         "print('pages  ', len(doc.pages))",
-        "print('native JSON saved ->', out)",
     ]),
 
     # ── 1 ─────────────────────────────────────────────────────────────────
