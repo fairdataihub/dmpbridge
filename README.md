@@ -147,7 +147,9 @@ and matches them on 8 of 10 documents. With gemma4:e4b it scores 0.924 Path A / 
 against pdfplumber's 0.946 / 0.951: ahead on samples 2 and 5, level on seven, and behind only
 on sample 6, whose headings are drawn underlines with no link behind them — Docling has no
 shape data for those at any level. Runs on CPU in 0.1–3 s per document; needs
-`pip install dmpbridge[docling]`.
+`pip install dmpbridge[docling]`. All three extractors side by side — markers per document,
+both scoring paths, per class, per document, confusion matrices — are in
+`notebooks/comparison-gemma-extractors.ipynb`.
 
 Two side files sit next to stage 1 in `1_extracted/docling/`: `sampleN.md`, Docling's own
 Markdown, and `sampleN.native.json`, Docling's full native result (parsed page cells with
