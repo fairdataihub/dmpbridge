@@ -344,12 +344,17 @@ table(["Backend", "Method", "Bbox / font", "Blocks/doc", "Requires"],
       [["pdfplumber", "Whole-document text, extraction+labeling fused", "No", "1", "nothing (bundled)"],
        ["LightOnOCR-2-1B", "Vision-LLM OCR, same marker convention as pdfplumber", "No", "1",
         "CUDA GPU, torch/transformers (dmpbridge[lighton])"],
-       ["Docling", "Layout-model Markdown export, headings translated to the same markers", "No", "1",
+       ["Docling", "Layout model + native page cells: pdfplumber's font rules on Docling's words, "
+                   "hyperlinks as underline, headings from layout", "No", "1",
         "docling (dmpbridge[docling]), CPU-capable"]],
       widths=[1.25, 2.0, 1.05, 1.05, 1.65])
-para("Docling was tried, removed, and re-added 24 August 2026 in whole-document form; it recovers "
-     "headings from page layout but no bold/italic/underline, and scores 0.769 Path A / 0.742 Path B "
-     "with gemma4:e4b — below LightOnOCR (0.817/0.827) and pdfplumber (0.946/0.951). LightOnOCR was tried, "
+para("Docling was tried, removed, and re-added 24 August 2026 in whole-document form. Its first "
+     "version worked from Docling's Markdown export, which carries no bold/italic/underline, and scored "
+     "0.767 Path A / 0.757 Path B with gemma4:e4b. On 27 August it was rebuilt to read Docling's native "
+     "page cells (font names, sizes, hyperlink rectangles) with the same rules pdfplumber applies to its "
+     "characters: markers now match pdfplumber's on 8 of 10 documents and it scores 0.924 / 0.910 — "
+     "ahead of pdfplumber on samples 2 and 5, level on seven, behind only on sample 6, whose drawn "
+     "underlines Docling has no shape data for. LightOnOCR was tried, "
      "removed, then re-added 19 August 2026 as a working, non-default alternative — see 6.1a for the "
      "current pdfplumber-vs-LightOnOCR comparison. pdfplumber remains the default given both its accuracy "
      "and speed advantage.",
