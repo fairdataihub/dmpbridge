@@ -52,7 +52,7 @@ def main() -> None:
     ap.add_argument("sample", type=int)
     ap.add_argument("--model", default="llama3.1:8b")
     ap.add_argument("--extractor", default="pdfplumber",
-                    choices=["pdfplumber", "lightonocr", "docling"])
+                    choices=["pdfplumber", "lightonocr", "docling", "docling-native"])
     ap.add_argument("--rerun", action="store_true",
                     help="clear and re-label this sample before inspecting")
     ap.add_argument("--blocks", action="store_true", help="list every block")

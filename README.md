@@ -151,6 +151,16 @@ to `dmpbridge-wholedoc --extractor docling` and it is written for every sample i
 lacks one, cached or already labeled; `scripts/docling_native_dump.py` does the same for all
 samples without touching the model stages.
 
+**`docling-native` (alternative)** — the same Docling conversion, but the text is built from
+those native page cells instead of the Markdown: pdfplumber's bold/italic rules applied to the
+cells' font names and sizes, hyperlink rectangles as `++underline++`, and Docling's own
+headings emphasised where the font marks nothing. On sample 2 it reproduces pdfplumber's
+markers exactly (42 bold, 41 italic, 11 underlined) and matches them on 8 of 10 documents.
+With gemma4:e4b it scores 0.924 Path A / 0.910 Path B against pdfplumber's 0.946 / 0.951:
+ahead on samples 2 and 5, level on seven, and behind only on sample 6, whose headings are
+drawn underlines with no link behind them — Docling has no shape data for those at any level.
+Own stage-1 cache under `1_extracted/docling-native/`.
+
 ---
 
 ## Where the output goes

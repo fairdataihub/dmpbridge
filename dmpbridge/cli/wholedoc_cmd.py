@@ -66,7 +66,7 @@ def main() -> None:
                     help="Ollama host URL (default: %(default)s)")
     ap.add_argument(
         "--extractor", default="pdfplumber",
-        choices=["pdfplumber", "lightonocr", "docling"],
+        choices=["pdfplumber", "lightonocr", "docling", "docling-native"],
         help="PDF extraction backend (default: %(default)s)",
     )
     ap.add_argument("--pdf-dir", default="data/input/pdfs", type=Path)
@@ -82,8 +82,8 @@ def main() -> None:
                          "layout clusters, page images) for every sample in range that "
                          "does not have one yet — even samples already labeled or cached")
     args = ap.parse_args()
-    if args.save_native and args.extractor != "docling":
-        ap.error("--save-native only applies to --extractor docling")
+    if args.save_native and not args.extractor.startswith("docling"):
+        ap.error("--save-native only applies to --extractor docling / docling-native")
 
     n_samples = args.end - args.start + 1
     tag       = paths.make_tag(args.model, args.extractor)

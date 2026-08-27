@@ -27,6 +27,11 @@ Supported extractors
                    leaves ``formatting`` empty on this corpus). CPU-capable,
                    0.1–3 s per document, requires the ``dmpbridge[docling]``
                    extra.
+``"docling-native"`` — Docling again, but the text is built from its native
+                   page cells (font name, size, hyperlinks) with pdfplumber's
+                   rules instead of from its Markdown, so bold/italic/link-
+                   underline markers are recovered; Docling's headings are
+                   emphasised on top. Drawn underlines remain invisible.
 
 Usage
 -----
@@ -41,6 +46,7 @@ _EXTRACTORS = {
     "pdfplumber": ("pdfplumber_extractor", "PdfplumberExtractor"),
     "lightonocr": ("lighton_extractor",    "LightOnExtractor"),
     "docling":    ("docling_extractor",    "DoclingExtractor"),
+    "docling-native": ("docling_extractor", "DoclingNativeExtractor"),
 }
 
 

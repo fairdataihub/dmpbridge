@@ -1,0 +1,54 @@
+[
+  {
+    "text": "DATA MANAGEMENT PLAN",
+    "label": "title"
+  },
+  {
+    "text": "The P.I. has completed human subjects training. The research assistants will be required to complete human subjects training through the UCR Office of Research and Economic Development. The project will be submitted to the campus Institutional Review Board and requested revisions to the project based on feedback from the IRB will be incorporated prior to data collection. The researchers will ask all respondents to sign informed consent forms prior to interviews, as well as in connection with the collection of survey data. These consent forms will include information about how confidentiality of responses will be protected.",
+    "label": "answer.text"
+  },
+  {
+    "text": "The longevity analysis will collect data on the length of time clusters have operated (including the length of time between first hires and closures for those that have disbanded). We will collect data from a minimum of 36 institutions, attempting to find dates of operation for all clusters authorized at those institutions. The total number of clusters cannot be estimated at this time but is likely to encompass as many as 150-200.",
+    "label": "answer.text"
+  },
+  {
+    "text": "The comparative analysis will collect data on performance and attitudes from cluster participants. The performance data will include publications, citations, research grants, patents, licenses, and start-ups founded by members of interdisciplinary cluster hires, as well as those of a matched sample of faculty hired through normal departmental mechanisms. The survey data will include responses to five-page surveys from members of the interdisciplinary clusters. The P.I. will also collect interview data from cluster leads and university administrators. Performance and survey responses will be collected from a minimum of 72 individuals affiliated with interdisciplinary clusters (at least three individuals from four institutions each in six fields), and a matched sample of at least 72 individuals hired through normal departmental channels. Interview data will be collected from a minimum of 24 cluster leads and four administrators. If fields are drawn from multiple institutions, the number of interviews with cluster leads will reflect the number of institutions and the number of fields included in the sample. The number of interviews with university administrators will reflect the number of institutions included in the sample.",
+    "label": "answer.text"
+  },
+  {
+    "text": "The members of the project team will spot check coding on a 10 percent sample of individuals hired through cluster programs and a 10 percent sample of individual hired through normal departmental procedures. If problems arise in the validation of coding, more extensive checks will be conducted. Coders will be instructed on the requirements for producing high quality data, including meticulousness, conscientiousness, asking questions where uncertainties exist, and double checking work.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Data will be backed up on a weekly basis on a hard drive kept in a locked cabinet in the project office. The data will be preserved exclusively on the two project computers and the back-up hard drive.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Performance and survey data will be coded into STATA data files, including numeric",
+    "label": "answer.text"
+  },
+  {
+    "text": "Prof. Leahey's work is focused on support for interdisciplinary activities on university campuses and includes evidence on university investments in interdisciplinary activities. In previous work, Prof. Leahey has collected data on publication rates and publication prominence of scholars working in interdisciplinary teams relative to scholars who are not working in such teams. We see little overlap in these data and the data the research team intends to collect. A robust study of interdisciplinary activity has been conducted at Stanford University by Prof. Daniel MacFarland. Although these data are relevant to our work, they are not exclusively or primarily focused on cluster hires. We do not intend to integrate either of these databases with the data we collect.",
+    "label": "answer.text"
+  },
+  {
+    "text": "All data will be coded and saved on password-protected computers in the project office. No data will be removed from the project office during the period of the project. The only individuals with access to the collected data will be the P.I. and research assistants. New research assistants will be advised of the essential care that must be taken with data collected for this project. Any research assistants found to be handling data in a careless way will be immediately removed from the project staff.",
+    "label": "answer.text"
+  },
+  {
+    "text": "No names of individuals or institutions will be used in papers prepared by the project team without the explicit consent of the individuals and institutions.",
+    "label": "answer.text"
+  },
+  {
+    "text": "Data from the project will be preserved in data files stripped of individual and institutional names. These data files will include a small number of variables that will allow researchers to categorize the institutions. These variables include institutional size, Carnegie category, control (private, non-profit or public), and regional location. Following the completion of the project, the data archive will be made available on the project website to researchers who are interested in pursuing questions related to cluster hiring. The preservation format will be platform-independent. Following the end of the project, we will contact the Inter-University Consortium for Political and Social Research (ICPSR) at the University of Michigan about archiving the data on a permanent basis. We do not anticipate additional costs for preparing data and documentation for archiving. Potential secondary users of the data include institutional researchers, policy analysts, and higher education scholars.",
+    "label": "answer.text"
+  },
+  {
+    "text": "We do not intend to generate metadata from this project. We do not anticipate holding intellectual property rights to these data.",
+    "label": "answer.text"
+  },
+  {
+    "text": "The P.I., Professor Steven Brint, will be responsible for all data collection and precautions for the security and confidentiality of the data.",
+    "label": "answer.text"
+  }
+]

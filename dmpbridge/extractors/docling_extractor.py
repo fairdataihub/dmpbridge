@@ -108,6 +108,196 @@ def native_result_dict(result) -> dict:
     return ordered
 
 
+# ── Native source: build the marked text from Docling's page cells ─────────────
+#
+# The same three rules pdfplumber_reader applies to pdfplumber's characters,
+# applied to Docling's word cells, which carry the same font names and sizes:
+#   emphasised  = font differs from the body font and is not an italic variant,
+#                 or the word is set larger than the body size (+0.5 pt)
+#   italic      = font name says Italic / Oblique
+#   underlined  = the word sits inside a hyperlink rectangle (Docling reports
+#                 links; it has no drawn-shape data, so a plain drawn underline
+#                 is not recoverable) — URLs excluded, as pdfplumber excludes them
+# Plus one signal pdfplumber cannot give: a Docling ``section_header`` block is
+# emphasised as a whole, even when its font does not say so.
+
+_BOLD_TAGS = ("Bold", "Black", "Heavy", "Semibold", "bold", "black", "heavy", "semibold")
+_ITALIC_TAGS = ("Italic", "Oblique", "italic", "oblique")
+_URL_TAGS = ("http:", "https:", "www.")
+
+
+def _looks_like_url(text: str) -> bool:
+    lower = text.lower()
+    return any(tag in lower for tag in _URL_TAGS)
+
+
+def _word_flags(text: str, font: str, height: float, body_font: str, body_size: float,
+                in_link: bool) -> tuple[bool, bool, bool]:
+    """(emphasised, italic, underlined) for one word — pdfplumber's rules.
+
+    One adaptation: pdfplumber compares font *sizes*; Docling's cells only give
+    the glyph rectangle's height, which differs between faces at the same size
+    (sample 10: BoldItalic headings measure 12.2 against a 9.0 body, all 11 pt in
+    the PDF). So the size test applies only within the body face — where a
+    taller rectangle really is a larger size (samples 3 and 9 set headings in
+    the body face at 12.6–13.2 against 11.4).
+    """
+    italic = any(tag in font for tag in _ITALIC_TAGS)
+    bigger = font == body_font and height > body_size + 0.5
+    if any(ch.isalnum() for ch in text):
+        emph = (font != body_font and not italic) or bigger
+    else:
+        # punctuation: a font swap alone is not bold evidence (see pdfplumber_reader)
+        emph = any(tag in font for tag in _BOLD_TAGS) or bigger
+    under = in_link and not _looks_like_url(text)
+    return emph, italic, under
+
+
+def _render_line(words: list[tuple[str, bool, bool, bool]]) -> str:
+    """Join (text, emph, italic, under) words into one line with **, _, ++ markers,
+    opening and closing runs exactly as pdfplumber_reader._extract_page_lines does."""
+    rendered: list[str] = []
+    open_bold = open_italic = open_under = False
+    for text, emph, ital, under in words:
+        if open_under and not under:
+            rendered.append("++"); open_under = False
+        if open_italic and not ital:
+            rendered.append("_"); open_italic = False
+        if open_bold and not emph:
+            rendered.append("**"); open_bold = False
+        if emph and not open_bold:
+            rendered.append("**"); open_bold = True
+        if ital and not open_italic:
+            rendered.append("_"); open_italic = True
+        if under and not open_under:
+            rendered.append("++"); open_under = True
+        rendered.append(text)
+    if open_under:
+        rendered.append("++")
+    if open_italic:
+        rendered.append("_")
+    if open_bold:
+        rendered.append("**")
+    line = " ".join(rendered)
+    return line.replace("** **", " ").replace("_ _", " ").replace("++ ++", " ")
+
+
+def native_marked_text(result) -> str:
+    """Build the annotated text blob from a Docling ConversionResult's native data.
+
+    Takes the document's blocks (body layer only) in page order, top to bottom
+    — not Docling's reading order, which places a title set in the page-header
+    region *after* the first section (samples 1 and 8); pdfplumber reads top
+    to bottom, and these documents are single-column. For each block takes the
+    word cells inside its box on the page, groups them into lines, flags each
+    word from its font, size and hyperlink membership, and renders the lines
+    with the project's markers. Lines and blocks are joined with single
+    newlines, as pdfplumber's blob is — blank lines between blocks were tried
+    first and cost points on samples 5 and 8. A Docling ``section_header``
+    is emphasised as a whole only when its font marks nothing; a heading the
+    font already sets italic stays ``_…_`` like pdfplumber's. Requires the
+    converter to have been run with ``generate_parsed_pages=True``.
+    """
+    from collections import Counter
+
+    pages = {p.page_no: p for p in result.pages}
+    # body font profile, weighted by characters like pdfplumber's
+    sizes: Counter = Counter()
+    fonts: Counter = Counter()
+    for p in pages.values():
+        for w in p.parsed_page.word_cells:
+            n = len(w.text)
+            sizes[round(w.rect.height, 1)] += n
+            fonts[w.font_name] += n
+    if not sizes:
+        return ""
+    body_size = sizes.most_common(1)[0][0]
+    body_font = fonts.most_common(1)[0][0]
+
+    # per page: words with top-left boxes, and the hyperlink rectangles
+    page_words: dict[int, list] = {}
+    page_links: dict[int, list] = {}
+    for no, p in pages.items():
+        H = p.size.height
+        page_words[no] = [(w, w.rect.to_bounding_box().to_top_left_origin(page_height=H))
+                          for w in p.parsed_page.word_cells]
+        page_links[no] = [h.rect.to_bounding_box().to_top_left_origin(page_height=H)
+                          for h in p.parsed_page.hyperlinks]
+
+    def in_link(b, links) -> bool:
+        cx, cy = (b.l + b.r) / 2, (b.t + b.b) / 2
+        return any(lb.l - 1 <= cx <= lb.r + 1 and lb.t - 1 <= cy <= lb.b + 1 for lb in links)
+
+    from docling_core.types.doc.document import ContentLayer
+
+    items, furniture = [], []
+    for item, _ in result.document.iterate_items(
+            included_content_layers={ContentLayer.BODY, ContentLayer.FURNITURE}):
+        if not hasattr(item, "text") or not item.prov:
+            continue
+        prov = item.prov[0]
+        page = pages.get(prov.page_no)
+        if page is None:
+            continue
+        box = prov.bbox.to_top_left_origin(page_height=page.size.height)
+        entry = (prov.page_no, box.t, box.l, item, box)
+        if str(getattr(item, "content_layer", "")).lower().endswith("furniture"):
+            furniture.append(entry)
+        else:
+            items.append(entry)
+
+    # Docling files a document title set in the page-header region as furniture
+    # (sample 10: 'DATA MANAGEMENT' -> page_header) alongside real running
+    # headers and page numbers. Keep a page-1 header that sits above the first
+    # body block and whose text recurs on no other page; drop the rest.
+    body_top_p1 = min((t for pno, t, _, _, _ in items if pno == 1), default=None)
+    seen_elsewhere = {re.sub(r"\s+", " ", it.text).strip().lower()
+                      for pno, _, _, it, _ in furniture if pno != 1}
+    for entry in furniture:
+        pno, top, _, it, _ = entry
+        if (pno == 1 and str(it.label) == "page_header" and body_top_p1 is not None
+                and top < body_top_p1
+                and re.sub(r"\s+", " ", it.text).strip().lower() not in seen_elsewhere):
+            items.append(entry)
+    items.sort(key=lambda t: (t[0], round(t[1]), t[2]))
+
+    blocks: list[str] = []
+    for page_no, _, _, item, box in items:
+        prov = item.prov[0]
+        inside = [(w, b) for w, b in page_words[prov.page_no]
+                  if b.l >= box.l - 1 and b.r <= box.r + 1 and b.t >= box.t - 1 and b.b <= box.b + 1]
+        if not inside:
+            blocks.append(re.sub(r"[ \t]{2,}", " ", item.text).strip())
+            continue
+        is_heading = str(item.label) == "section_header"
+        # group into lines by vertical position, left to right within a line
+        inside.sort(key=lambda wb: (round(wb[1].t), wb[1].l))
+        lines: list[list] = []
+        for w, b in inside:
+            if lines and abs(b.t - lines[-1][0][1].t) <= 2.0:
+                lines[-1].append((w, b))
+            else:
+                lines.append([(w, b)])
+        flagged = []
+        for line in lines:
+            line.sort(key=lambda wb: wb[1].l)
+            flagged.append([(w.text, *_word_flags(w.text, w.font_name, w.rect.height,
+                                                   body_font, body_size,
+                                                   in_link(b, page_links[prov.page_no])))
+                            for w, b in line])
+        # Docling's heading label is a layout signal the fonts may not carry
+        # (samples 3, 9 mark headings by size, which the size rule catches; a
+        # heading in the body font gets nothing). Add it only in that case.
+        font_says_nothing = not any(e or i for ln in flagged for _, e, i, _ in ln)
+        if is_heading and font_says_nothing:
+            flagged = [[(t, True, i, u) for t, _, i, u in ln] for ln in flagged]
+        blocks.append("\n".join(_render_line(ln) for ln in flagged))
+
+    text = "\n".join(b for b in blocks if b)
+    text = re.sub(r"[ \t]{2,}", " ", text)
+    return text.strip()
+
+
 class DoclingExtractor(BaseExtractor):
     """Convert a PDF with Docling and return it as one marked-up text block.
 
@@ -136,6 +326,10 @@ class DoclingExtractor(BaseExtractor):
         used when ``save_native`` is on.
     """
 
+    name = "docling"          # stage-1 directory the side files go to
+    source = "markdown"       # "markdown": translate export_to_markdown();
+                              # "native": build the text from the page cells
+
     def __init__(self, save_native: bool = False, native_images: bool = True) -> None:
         try:
             from docling.datamodel.base_models import InputFormat
@@ -156,10 +350,11 @@ class DoclingExtractor(BaseExtractor):
         pipeline_options.do_ocr = True
         pipeline_options.do_table_structure = True
         pipeline_options.table_structure_options.do_cell_matching = True
-        if save_native:
+        if save_native or self.source == "native":
             # Docling discards the parsed pages (cells, fonts, links) once the
             # document is assembled unless told to keep them.
             pipeline_options.generate_parsed_pages = True
+        if save_native:
             pipeline_options.generate_page_images = native_images
         self._save_native = save_native
 
@@ -184,19 +379,38 @@ class DoclingExtractor(BaseExtractor):
             self._save_side_file(pdf_path, "native.json",
                                  json.dumps(native_result_dict(result), indent=2,
                                             ensure_ascii=False))
+        if self.source == "native":
+            return [{"text": native_marked_text(result)}]
         return [{"text": markdown_to_marked_text(markdown)}]
 
     # ── Internal ──────────────────────────────────────────────────────────────
 
-    @staticmethod
-    def _save_side_file(pdf_path: Path, suffix: str, content: str) -> None:
+    def _save_side_file(self, pdf_path: Path, suffix: str, content: str) -> None:
         """Write ``<stem>.<suffix>`` next to the cached stage-1 JSON. Best-effort:
         extraction must not fail because a side artifact could not be written."""
         try:
             from ..core.paths import EXTRACTED_DIR
-            out = EXTRACTED_DIR / "docling" / f"{pdf_path.stem}.{suffix}"
+            out = EXTRACTED_DIR / self.name / f"{pdf_path.stem}.{suffix}"
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(content, encoding="utf-8")
         except OSError:
             pass
+
+
+class DoclingNativeExtractor(DoclingExtractor):
+    """Docling, with the text built from its native page cells, not its Markdown.
+
+    Same Docling conversion, same block boundaries and reading order — but the
+    words come from the parsed page with their fonts, sizes and hyperlinks, so
+    the blob carries ``**bold**`` / ``_italic_`` / ``++underline++`` markers
+    derived by pdfplumber's rules (see :func:`native_marked_text`), plus
+    Docling's headings emphasised as a whole. Registered as ``"docling-native"``
+    with its own stage-1 cache under ``1_extracted/docling-native/``.
+
+    Known limit: a drawn underline with no hyperlink behind it (sample 6's
+    headings) is not in Docling's data at any level and is not marked.
+    """
+
+    name = "docling-native"
+    source = "native"
 
