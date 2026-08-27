@@ -150,11 +150,17 @@ shape data for those at any level. Runs on CPU in 0.1–3 s per document; needs
 `pip install dmpbridge[docling]`.
 
 Two side files sit next to stage 1 in `1_extracted/docling/`: `sampleN.md`, Docling's own
-Markdown, and — with `--save-native` on `dmpbridge-wholedoc`, or via
-`scripts/docling_native_dump.py` — `sampleN.native.json`, Docling's full native result
-(parsed page cells with fonts, sizes and hyperlinks, layout clusters with confidences, page
-images). `--save-native` writes it for every sample in range that lacks one, cached or
-already labeled.
+Markdown, and `sampleN.native.json`, Docling's full native result (parsed page cells with
+fonts, sizes and hyperlinks, layout clusters with confidences, page images).
+
+**Native dumps for both extractors.** `sampleN.native.json` is the extractor's raw reading
+of the PDF before any marker rule — for pdfplumber, every word with its font name, size and
+box, the drawn rectangles and lines that underline detection works from, and hyperlinks with
+their URIs, in `1_extracted/pdfplumber/`. It never changes the stage-1 text; it is there so a
+marker can be traced back to what produced it. Off by default: `--save-native` on
+`dmpbridge-wholedoc` writes it for every sample in range that lacks one (cached or already
+labeled), and `python scripts/native_dump.py --extractor pdfplumber|docling` does the same
+for all samples without touching the model stages.
 
 ---
 

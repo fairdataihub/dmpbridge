@@ -77,13 +77,15 @@ def main() -> None:
     ap.add_argument("--no-cache", action="store_true",
                     help="Re-extract even when stage 1 already holds this sample")
     ap.add_argument("--save-native", action="store_true",
-                    help="docling only: also write Docling's full native result as "
-                         "1_extracted/docling/sampleN.native.json (fonts, sizes, hyperlinks, "
-                         "layout clusters, page images) for every sample in range that "
-                         "does not have one yet — even samples already labeled or cached")
+                    help="docling / pdfplumber: also write the extractor's raw native reading of "
+                         "each PDF as 1_extracted/<extractor>/sampleN.native.json (docling: page "
+                         "cells with fonts, hyperlinks, layout clusters, page images; pdfplumber: "
+                         "words with fonts and sizes, rectangles, lines, hyperlinks) for every "
+                         "sample in range that does not have one yet — even samples already "
+                         "labeled or cached")
     args = ap.parse_args()
-    if args.save_native and args.extractor != "docling":
-        ap.error("--save-native only applies to --extractor docling")
+    if args.save_native and args.extractor not in ("docling", "pdfplumber"):
+        ap.error("--save-native only applies to --extractor docling or pdfplumber")
 
     n_samples = args.end - args.start + 1
     tag       = paths.make_tag(args.model, args.extractor)

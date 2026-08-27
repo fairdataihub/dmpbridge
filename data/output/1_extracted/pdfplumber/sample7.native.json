@@ -1,0 +1,2585 @@
+{
+  "tool": "pdfplumber",
+  "version": "0.11.10",
+  "file": "sample7.pdf",
+  "body_font": {
+    "size": 11.0,
+    "fontname": "FLHITM+ArialMT"
+  },
+  "pages": [
+    {
+      "page_no": 1,
+      "size": {
+        "width": 612.0,
+        "height": 792.0
+      },
+      "words": [
+        {
+          "text": "Resource/Data",
+          "fontname": "PPZODK+Arial-BoldMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 232.34,
+          "x1": 309.41,
+          "top": 37.62,
+          "bottom": 48.66
+        },
+        {
+          "text": "Sharing",
+          "fontname": "PPZODK+Arial-BoldMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 312.43,
+          "x1": 353.4,
+          "top": 37.62,
+          "bottom": 48.66
+        },
+        {
+          "text": "Plan",
+          "fontname": "PPZODK+Arial-BoldMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 356.43,
+          "x1": 379.69,
+          "top": 37.62,
+          "bottom": 48.66
+        },
+        {
+          "text": "The",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 54.98,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "study",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 58.02,
+          "x1": 84.34,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "investigators",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 87.38,
+          "x1": 149.18,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "are",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 152.22,
+          "x1": 168.14,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "committed",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 171.18,
+          "x1": 221.94,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "to",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 224.98,
+          "x1": 234.17,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 237.21,
+          "x1": 252.53,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "open",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 255.56,
+          "x1": 280.07,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 283.11,
+          "x1": 301.49,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "timely",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 304.53,
+          "x1": 333.28,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "dissemination",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 336.32,
+          "x1": 403.63,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "of",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 406.67,
+          "x1": 415.86,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "study",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 418.9,
+          "x1": 445.22,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "data.",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 448.26,
+          "x1": 472.75,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "The",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 475.62,
+          "x1": 494.6,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "final",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 497.64,
+          "x1": 517.83,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "datasets",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 520.88,
+          "x1": 562.47,
+          "top": 56.1,
+          "bottom": 67.14
+        },
+        {
+          "text": "will",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 51.29,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "include",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 54.34,
+          "x1": 89.24,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "demographic",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 92.28,
+          "x1": 155.93,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 158.9,
+          "x1": 177.27,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "clinical",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 180.31,
+          "x1": 213.32,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "assessment",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 216.37,
+          "x1": 275.08,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "data",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 278.12,
+          "x1": 299.55,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "obtained",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 302.58,
+          "x1": 344.81,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "from",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 347.85,
+          "x1": 369.87,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "interviews,",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 372.9,
+          "x1": 424.87,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "questionnaires,",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 427.93,
+          "x1": 502.55,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 505.61,
+          "x1": 523.98,
+          "top": 68.82,
+          "bottom": 79.86
+        },
+        {
+          "text": "behavioral",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 86.76,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "tasks",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 89.81,
+          "x1": 115.5,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "collected",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 118.54,
+          "x1": 161.98,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "from",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 165.02,
+          "x1": 187.04,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "human",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 190.07,
+          "x1": 223.73,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "subjects.",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 226.77,
+          "x1": 270.18,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "The",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 273.23,
+          "x1": 292.21,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "investigators",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 295.24,
+          "x1": 357.05,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "will",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 360.09,
+          "x1": 375.37,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "be",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 378.42,
+          "x1": 390.68,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "fully",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 393.72,
+          "x1": 413.31,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "compliant",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 416.35,
+          "x1": 463.47,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "to",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 466.5,
+          "x1": 475.7,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 478.73,
+          "x1": 494.05,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "NIMH",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 497.09,
+          "x1": 525.22,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "Data",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 528.24,
+          "x1": 551.5,
+          "top": 81.54,
+          "bottom": 92.58
+        },
+        {
+          "text": "Archive",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 72.71,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "(NDA)",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 75.75,
+          "x1": 106.32,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "Data",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 109.35,
+          "x1": 132.61,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "Sharing",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 135.65,
+          "x1": 173.6,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "Terms",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 176.64,
+          "x1": 207.82,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 210.86,
+          "x1": 229.24,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "Conditions,",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 232.28,
+          "x1": 287.36,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "including",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 290.4,
+          "x1": 333.87,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "submitting",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 336.91,
+          "x1": 387.08,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 390.12,
+          "x1": 408.5,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "harmonizing",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 411.54,
+          "x1": 471.51,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "all",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 474.55,
+          "x1": 485.57,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "descriptive/raw",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 488.62,
+          "x1": 562.04,
+          "top": 94.26,
+          "bottom": 105.3
+        },
+        {
+          "text": "data",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 57.43,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 60.47,
+          "x1": 78.84,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "analyzed",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 81.88,
+          "x1": 125.93,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "data",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 128.97,
+          "x1": 150.4,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "at",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 153.44,
+          "x1": 162.62,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 165.67,
+          "x1": 180.99,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "item",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 184.02,
+          "x1": 204.84,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 207.87,
+          "x1": 226.24,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "subject-level",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 229.28,
+          "x1": 290.41,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "to",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 293.45,
+          "x1": 302.64,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 305.67,
+          "x1": 320.99,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "National",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 324.02,
+          "x1": 364.4,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "Database",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 367.44,
+          "x1": 414.56,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "for",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 417.59,
+          "x1": 430.44,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "Clinical",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 433.48,
+          "x1": 468.95,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "Trials",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 471.99,
+          "x1": 498.9,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "(NDCT)",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 501.93,
+          "x1": 539.82,
+          "top": 106.74,
+          "bottom": 117.78
+        },
+        {
+          "text": "according",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 83.71,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "to",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 86.75,
+          "x1": 95.95,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 98.99,
+          "x1": 114.3,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "expected",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 117.34,
+          "x1": 162.0,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "timeline",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 165.04,
+          "x1": 202.96,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "(semi-annually,",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 206.0,
+          "x1": 280.58,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "at",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 283.63,
+          "x1": 292.81,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 295.86,
+          "x1": 311.18,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "end",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 314.21,
+          "x1": 332.59,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "of",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 335.63,
+          "x1": 344.81,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 347.86,
+          "x1": 363.18,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "grant",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 366.21,
+          "x1": 391.3,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "or",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 394.35,
+          "x1": 404.14,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "at",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 407.19,
+          "x1": 416.38,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 419.43,
+          "x1": 434.74,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "time",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 437.78,
+          "x1": 458.58,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "of",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 461.62,
+          "x1": 470.81,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "publication,",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 473.86,
+          "x1": 529.51,
+          "top": 119.46,
+          "bottom": 130.5
+        },
+        {
+          "text": "whichever",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 85.57,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "occurs",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 88.61,
+          "x1": 121.04,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "first).",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 124.08,
+          "x1": 148.53,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "The",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 151.57,
+          "x1": 170.55,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "investigators",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 173.58,
+          "x1": 235.39,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "will",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 238.43,
+          "x1": 253.72,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "include",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 256.76,
+          "x1": 291.67,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "appropriate",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 294.59,
+          "x1": 350.27,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "language",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 353.3,
+          "x1": 398.59,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "in",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 401.63,
+          "x1": 410.2,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "participant",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 413.24,
+          "x1": 464.0,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "consent",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 467.05,
+          "x1": 505.59,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "documents",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 508.64,
+          "x1": 562.46,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "to",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 565.5,
+          "x1": 574.7,
+          "top": 132.18,
+          "bottom": 143.22
+        },
+        {
+          "text": "allow",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 61.09,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "for",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 64.11,
+          "x1": 76.97,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 80.02,
+          "x1": 95.33,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "data",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 98.37,
+          "x1": 119.8,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "sharing",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 122.84,
+          "x1": 158.94,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "through",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 161.97,
+          "x1": 199.31,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "NDA,",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 202.35,
+          "x1": 228.62,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 231.67,
+          "x1": 250.05,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "complete",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 253.08,
+          "x1": 297.74,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "all",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 300.78,
+          "x1": 311.78,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "required",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 314.83,
+          "x1": 355.21,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "paperwork",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 358.25,
+          "x1": 409.63,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "related",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 412.67,
+          "x1": 446.33,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "to",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 449.36,
+          "x1": 458.56,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 461.6,
+          "x1": 476.91,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "submission",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 479.95,
+          "x1": 534.99,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 538.02,
+          "x1": 556.4,
+          "top": 144.66,
+          "bottom": 155.7
+        },
+        {
+          "text": "sharing.",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 75.15,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "The",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 78.2,
+          "x1": 97.17,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "investigators",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 100.22,
+          "x1": 162.0,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "will",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 165.04,
+          "x1": 180.31,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "certify",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 183.37,
+          "x1": 212.73,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 215.78,
+          "x1": 231.09,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "quality",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 234.13,
+          "x1": 265.95,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "of",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 268.99,
+          "x1": 278.18,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "all",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 281.23,
+          "x1": 292.24,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "data",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 295.29,
+          "x1": 316.73,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "prior",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 319.77,
+          "x1": 341.79,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "to",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 344.84,
+          "x1": 354.04,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "submission",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 357.08,
+          "x1": 412.13,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 415.17,
+          "x1": 433.54,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "review",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 436.58,
+          "x1": 468.4,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 471.43,
+          "x1": 486.75,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "data",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 489.79,
+          "x1": 511.22,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "for",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 514.26,
+          "x1": 527.12,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "accuracy",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 530.17,
+          "x1": 574.21,
+          "top": 157.38,
+          "bottom": 168.42
+        },
+        {
+          "text": "after",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 58.03,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "submission.",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 61.08,
+          "x1": 119.16,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "The",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 122.21,
+          "x1": 141.18,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "investigators",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 144.22,
+          "x1": 205.98,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "will",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 209.02,
+          "x1": 224.3,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "also",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 227.34,
+          "x1": 247.55,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "associate",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 250.58,
+          "x1": 297.08,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 300.12,
+          "x1": 315.43,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "submitted",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 318.46,
+          "x1": 366.18,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "data",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 369.21,
+          "x1": 390.64,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "in",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 393.68,
+          "x1": 402.26,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "NDA",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 405.29,
+          "x1": 428.54,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "with",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 431.57,
+          "x1": 451.14,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 454.18,
+          "x1": 469.49,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "findings/publications",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 472.52,
+          "x1": 571.63,
+          "top": 170.1,
+          "bottom": 181.14
+        },
+        {
+          "text": "(both",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 61.09,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "positive",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 64.12,
+          "x1": 101.43,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 104.46,
+          "x1": 122.83,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "negative)",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 125.86,
+          "x1": 171.1,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "using",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 174.15,
+          "x1": 200.46,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "NDA-provided",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 203.49,
+          "x1": 272.65,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "features.",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 275.69,
+          "x1": 318.51,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "All",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 321.56,
+          "x1": 333.79,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "submitted",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 336.83,
+          "x1": 384.55,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "data",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 387.59,
+          "x1": 409.02,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "will",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 412.06,
+          "x1": 427.33,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "include",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 430.38,
+          "x1": 465.25,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "an",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 468.29,
+          "x1": 480.54,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "NDA",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 483.58,
+          "x1": 506.82,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "Global",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 509.85,
+          "x1": 541.65,
+          "top": 182.58,
+          "bottom": 193.62
+        },
+        {
+          "text": "Unique",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 70.9,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "Identifier",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 73.94,
+          "x1": 116.16,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "(GUID)",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 119.2,
+          "x1": 154.03,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 157.06,
+          "x1": 175.45,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "will",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 178.49,
+          "x1": 193.77,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "not",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 196.82,
+          "x1": 212.14,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "include",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 215.18,
+          "x1": 250.08,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "personally",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 253.12,
+          "x1": 303.31,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "identifiable",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 306.35,
+          "x1": 358.86,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "information",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 361.89,
+          "x1": 416.33,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "(PII).",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 419.36,
+          "x1": 443.19,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "The",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 446.25,
+          "x1": 465.23,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "exception",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 468.27,
+          "x1": 515.41,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "to",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 518.44,
+          "x1": 527.64,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 530.67,
+          "x1": 545.99,
+          "top": 195.3,
+          "bottom": 206.34
+        },
+        {
+          "text": "above",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 65.99,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "is",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 69.03,
+          "x1": 76.99,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 80.03,
+          "x1": 95.34,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "audio",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 98.38,
+          "x1": 125.31,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "recordings",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 128.35,
+          "x1": 179.73,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "of",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 182.77,
+          "x1": 191.95,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 195.0,
+          "x1": 210.32,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "treatment",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 213.35,
+          "x1": 259.84,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "sessions.",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 262.89,
+          "x1": 308.75,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "Even",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 311.77,
+          "x1": 336.87,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "with",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 339.91,
+          "x1": 359.49,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 362.53,
+          "x1": 377.84,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "removal",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 380.88,
+          "x1": 420.03,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "of",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 423.08,
+          "x1": 432.27,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "all",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 435.31,
+          "x1": 446.33,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "identifiers,",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 449.38,
+          "x1": 499.55,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "we",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 502.59,
+          "x1": 516.67,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "believe",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 519.71,
+          "x1": 554.61,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "that",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 557.65,
+          "x1": 576.02,
+          "top": 208.02,
+          "bottom": 219.06
+        },
+        {
+          "text": "it",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 41.51,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "would",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 44.55,
+          "x1": 73.31,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "be",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 76.35,
+          "x1": 88.61,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "difficult",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 91.64,
+          "x1": 125.89,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "if",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 128.92,
+          "x1": 134.43,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "not",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 137.47,
+          "x1": 152.78,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "impossible",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 155.81,
+          "x1": 207.82,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "to",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 210.85,
+          "x1": 220.04,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "protect",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 223.08,
+          "x1": 256.72,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 259.75,
+          "x1": 275.06,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "identities",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 278.1,
+          "x1": 321.53,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "of",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 324.57,
+          "x1": 333.76,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "participants",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 336.79,
+          "x1": 393.07,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "given",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 396.1,
+          "x1": 422.43,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 425.46,
+          "x1": 440.77,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "voice",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 443.8,
+          "x1": 469.51,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "characteristics",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 472.57,
+          "x1": 542.9,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "of",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 545.94,
+          "x1": 555.13,
+          "top": 220.74,
+          "bottom": 231.78
+        },
+        {
+          "text": "participants",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 92.27,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "will",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 95.31,
+          "x1": 110.58,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "be",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 113.63,
+          "x1": 125.89,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "readily",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 128.92,
+          "x1": 161.34,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "available",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 164.38,
+          "x1": 207.81,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "and",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 210.85,
+          "x1": 229.22,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 232.26,
+          "x1": 247.58,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "relatively",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 250.61,
+          "x1": 294.03,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "restricted",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 297.07,
+          "x1": 342.33,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "area",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 345.37,
+          "x1": 367.41,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "from",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 370.45,
+          "x1": 392.49,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "which",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 395.52,
+          "x1": 423.65,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "we",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 426.69,
+          "x1": 440.77,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "are",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 443.8,
+          "x1": 459.73,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "recruiting",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 462.76,
+          "x1": 508.03,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "participants.",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 511.07,
+          "x1": 570.39,
+          "top": 233.22,
+          "bottom": 244.26
+        },
+        {
+          "text": "Therefore,",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 36.0,
+          "x1": 86.78,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "we",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 89.82,
+          "x1": 103.9,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "are",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 106.94,
+          "x1": 122.86,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "not",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 125.9,
+          "x1": 141.21,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "planning",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 144.25,
+          "x1": 185.89,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "to",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 188.93,
+          "x1": 198.12,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "share",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 201.16,
+          "x1": 228.71,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "this",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 231.75,
+          "x1": 248.89,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "part",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 251.93,
+          "x1": 270.91,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "of",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 273.95,
+          "x1": 283.14,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "the",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 286.18,
+          "x1": 301.49,
+          "top": 245.94,
+          "bottom": 256.98
+        },
+        {
+          "text": "data.",
+          "fontname": "FLHITM+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 304.53,
+          "x1": 329.02,
+          "top": 245.94,
+          "bottom": 256.98
+        }
+      ],
+      "rects": [],
+      "lines": [],
+      "curves": 0,
+      "images": 0,
+      "hyperlinks": []
+    }
+  ]
+}
