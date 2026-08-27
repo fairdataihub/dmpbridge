@@ -19,19 +19,15 @@ Supported extractors
                    slower — kept as an available alternative extractor, not the
                    default, since it occasionally does better on a specific
                    document (see notebooks/comparison-gemma-pdfplumber-vs-lightonocr.ipynb).
-``"docling"``     — same whole-document, same marker convention, read by
-                   Docling's layout model and exported via Markdown. Headings
-                   are found from page layout rather than font metadata, so
-                   they become ``** … **`` markers even when set in the body
-                   font; bold/italic/underline are *not* recovered (Docling
-                   leaves ``formatting`` empty on this corpus). CPU-capable,
-                   0.1–3 s per document, requires the ``dmpbridge[docling]``
-                   extra.
-``"docling-native"`` — Docling again, but the text is built from its native
-                   page cells (font name, size, hyperlinks) with pdfplumber's
-                   rules instead of from its Markdown, so bold/italic/link-
-                   underline markers are recovered; Docling's headings are
-                   emphasised on top. Drawn underlines remain invisible.
+``"docling"``     — same whole-document, same marker convention, built from
+                   Docling's *native* page cells: pdfplumber's bold/italic
+                   rules on each word's font name and size, hyperlink
+                   rectangles as underline, and Docling's own heading label
+                   where the font marks nothing. Markers match pdfplumber's
+                   on 8 of 10 documents; 0.924 F1 vs pdfplumber's 0.946 with
+                   gemma4:e4b, the gap being sample 6's drawn underlines,
+                   which Docling has no shape data for. CPU-capable, 0.1–3 s
+                   per document, requires the ``dmpbridge[docling]`` extra.
 
 Usage
 -----
@@ -46,7 +42,6 @@ _EXTRACTORS = {
     "pdfplumber": ("pdfplumber_extractor", "PdfplumberExtractor"),
     "lightonocr": ("lighton_extractor",    "LightOnExtractor"),
     "docling":    ("docling_extractor",    "DoclingExtractor"),
-    "docling-native": ("docling_extractor", "DoclingNativeExtractor"),
 }
 
 

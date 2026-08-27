@@ -362,7 +362,7 @@ cells = [
         "   (0.767 with gemma, 0.709 with rules) was measured on the exports. An extractor",
         "   that builds the annotated blob from the native data instead — fonts for `**`",
         "   and `_`, hyperlink rectangles for `++`, word fonts to split the inline labels,",
-        "   blocks in page order — now exists as `--extractor docling-native`. On this",
+        "   blocks in page order — is now what `--extractor docling` does. On this",
         "   document it reproduces pdfplumber's markers exactly, and across the ten it",
         "   scores **0.924 / 0.910** with gemma4:e4b against pdfplumber's 0.946 / 0.951:",
         "   ahead on samples 2 and 5, level on seven, behind only on sample 6 — the drawn",

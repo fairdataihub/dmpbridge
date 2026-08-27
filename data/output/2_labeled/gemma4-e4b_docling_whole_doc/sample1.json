@@ -12,7 +12,7 @@
     "label": "question.text"
   },
   {
-    "text": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts (wrist NHANES 2011-2014; hip/counts-NHANES 2003-2006). The studies include (i) the RISE Study, (ii) the SOL-VIDA Study, (iii) the iWATCH Study, (iv) the MOCA Study, (v) the PHASE Study, (vi) the AusDiab Study, (vii) the ACT Study, and (viii) the WHISH accelerometer substudy.",
+    "text": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts (wrist NHANES 2011-2014; hip/counts-NHANES 2003-2006). The studies include (i) the RISE Study, (ii) the SOL-VIDA Study, (iii) the iWATCH Study, (iv) the MOCA Study, (v) the PHASE Study, (vi) the AusDiab Study, (vii) the ACT Study, and (viii) the WHISH accelerometer sub- study.",
     "label": "answer.text"
   },
   {
@@ -20,7 +20,7 @@
     "label": "question.text"
   },
   {
-    "text": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library Repository sitting behavior metrics or analysis that were created in this project from the following UCSDbased study datasets: - (i) The RISE study - (ii) The iWATCH study - (iii) NHANES cohorts Sufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only. Please see Element 5 for data access information about other studies.",
+    "text": "As this is a secondary data analysis project, we will only be able to publicly share in the UC San Diego Library Repository sitting behavior metrics or analysis that were created in this project from the following UCSD- based study datasets: (i) The RISE study (ii) The iWATCH study (iii) NHANES cohorts Sufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only. Please see Element 5 for data access information about other studies.",
     "label": "answer.text"
   },
   {
@@ -44,7 +44,7 @@
     "label": "section.title"
   },
   {
-    "text": "The following data will be created as a result of this project: Objective sedentary behavior metrics no existing standards",
+    "text": "The following data will be created as a result of this project: Objective sedentary behavior metrics - no existing standards",
     "label": "answer.text"
   },
   {
@@ -72,7 +72,7 @@
     "label": "question.text"
   },
   {
-    "text": "The research community will have access to data when the main outcome manuscript has been published. $2,500 in years 2-5 of the project has been budgeted for preparing the data that is able to be stored in repository (the RISE study, the iWATCH study, and NHANES) and for data storage on the University of California San Diego Library repository. We anticipate data being available for the foreseeable future (minimum of at least 5 years) after the study has been completed. The University of California San Diego Library repository does not currently have a limit on how long data can be stored.",
+    "text": "The research community will have access to data when the main outcome manuscript has been published. $2,500 in years 2-5 of the project has been budgeted for preparing the data that is able to be stored in the repository (the RISE study, the iWATCH study, and NHANES) and for data storage on the University of California San Diego Library repository. We anticipate data being available for the foreseeable future (minimum of at least 5 years) after the study has been completed. The University of California San Diego Library repository does not currently have a limit on how long data can be stored.",
     "label": "answer.text"
   },
   {

@@ -138,28 +138,23 @@ image instead, using the same marker convention. Needs a CUDA GPU and
 project's documents so far, but works on scanned/image-only PDFs pdfplumber can't read at
 all — see `notebooks/comparison-gemma-pdfplumber-vs-lightonocr.ipynb`.
 
-**`docling` (alternative)** — Docling's layout model reads each page and exports Markdown,
-which is translated into the same marker convention: section headings become `** … **`.
-Headings are found from page layout rather than font metadata, but bold/italic/underline
-are not recovered, so the model gets less emphasis signal than from pdfplumber. Runs on
-CPU in 0.1–3 s per document; needs `pip install dmpbridge[docling]`. Docling's untranslated
-Markdown is kept alongside stage 1 as `1_extracted/docling/sampleN.md`. A third file,
-`sampleN.native.json`, holds Docling's full native result — the parsed page cells with
-font names, sizes and hyperlinks, the layout clusters with confidences, and the page
-images — none of which survive into the Markdown. It is off by default: add `--save-native`
-to `dmpbridge-wholedoc --extractor docling` and it is written for every sample in range that
-lacks one, cached or already labeled; `scripts/docling_native_dump.py` does the same for all
-samples without touching the model stages.
+**`docling` (alternative)** — Docling's layout model reads each page, and the text is built
+from Docling's *native* page cells rather than its Markdown export (which drops every font):
+pdfplumber's bold/italic rules applied to each word's font name and size, hyperlink
+rectangles as `++underline++`, and Docling's own heading label where the font marks nothing.
+On sample 2 it reproduces pdfplumber's markers exactly (42 bold, 41 italic, 11 underlined)
+and matches them on 8 of 10 documents. With gemma4:e4b it scores 0.924 Path A / 0.910 Path B
+against pdfplumber's 0.946 / 0.951: ahead on samples 2 and 5, level on seven, and behind only
+on sample 6, whose headings are drawn underlines with no link behind them — Docling has no
+shape data for those at any level. Runs on CPU in 0.1–3 s per document; needs
+`pip install dmpbridge[docling]`.
 
-**`docling-native` (alternative)** — the same Docling conversion, but the text is built from
-those native page cells instead of the Markdown: pdfplumber's bold/italic rules applied to the
-cells' font names and sizes, hyperlink rectangles as `++underline++`, and Docling's own
-headings emphasised where the font marks nothing. On sample 2 it reproduces pdfplumber's
-markers exactly (42 bold, 41 italic, 11 underlined) and matches them on 8 of 10 documents.
-With gemma4:e4b it scores 0.924 Path A / 0.910 Path B against pdfplumber's 0.946 / 0.951:
-ahead on samples 2 and 5, level on seven, and behind only on sample 6, whose headings are
-drawn underlines with no link behind them — Docling has no shape data for those at any level.
-Own stage-1 cache under `1_extracted/docling-native/`.
+Two side files sit next to stage 1 in `1_extracted/docling/`: `sampleN.md`, Docling's own
+Markdown, and — with `--save-native` on `dmpbridge-wholedoc`, or via
+`scripts/docling_native_dump.py` — `sampleN.native.json`, Docling's full native result
+(parsed page cells with fonts, sizes and hyperlinks, layout clusters with confidences, page
+images). `--save-native` writes it for every sample in range that lacks one, cached or
+already labeled.
 
 ---
 

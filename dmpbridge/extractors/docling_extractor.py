@@ -1,34 +1,35 @@
-"""Docling-backed extractor — whole-document text with visual-signal markers.
+"""Docling-backed extractor — whole-document text with visual-signal markers,
+built from Docling's *native* page cells.
 
-Docling runs a layout model over each page and exports the document as
-Markdown: section headings come out as ``## …`` lines, paragraphs as text,
-bullets as ``- `` items, tables as pipe tables. That Markdown is then
-translated into the same marker convention
-:class:`~dmpbridge.extractors.pdfplumber_extractor.PdfplumberExtractor`
-produces — headings wrapped in ``** … **``, italic in ``_…_`` — and returned
-as one whole-document string, so
-:class:`~dmpbridge.strategies.wholedoc.WholeDocStrategy` classifies it with
-the exact same system prompt, unchanged.
+Docling runs a layout model over each page and assembles a document of typed
+blocks. Its Markdown and JSON exports keep only the blocks' text and labels;
+the fonts, sizes and hyperlinks it read from the PDF are discarded once the
+document is assembled — Docling's PDF pipeline never sets ``formatting`` on a
+block. This extractor keeps the parsed pages (``generate_parsed_pages=True``)
+and builds the annotated blob from them with the same rules
+:mod:`~dmpbridge.preprocess.pdfplumber_reader` applies to pdfplumber's
+characters — bold from the font name, size within the body face, italic from
+the font name, underline from hyperlink rectangles — plus Docling's own
+heading label where the font marks nothing. See :func:`native_marked_text`.
+The result uses the same ``**bold**`` / ``_italic_`` / ``++underline++``
+convention as :class:`~dmpbridge.extractors.pdfplumber_extractor.PdfplumberExtractor`,
+so :class:`~dmpbridge.strategies.wholedoc.WholeDocStrategy` classifies it
+with the exact same system prompt, unchanged.
 
-What Docling adds over pdfplumber, and what it does not
--------------------------------------------------------
-Docling decides what is a heading from page *layout* (a trained layout
-model), not from font metadata, so a heading set in the body font but on its
-own line can still be recognised. It does **not** read bold/italic/underline
-from the PDF: on this corpus ``item.formatting`` is ``None`` for every text
-item (checked 2026-08-24 on samples 1, 3 and 6, docling 2.117), so the only
-emphasis signal it contributes is the heading itself. In particular the
-underlined headings in sample 6 are *not* detected — Docling returns that
-document as one heading plus five list items.
+Measured 2026-08-27 (gemma4:e4b, samples 1–10): markers identical to
+pdfplumber's on 8 of 10 documents; F1 0.924 Path A / 0.910 Path B against
+pdfplumber's 0.946 / 0.951 — ahead on samples 2 and 5, level on seven, behind
+only on sample 6. The earlier Markdown-based version of this extractor
+(``markdown_to_marked_text``, kept here as ``source="markdown"``) scored 0.767.
 
-Text coverage matches pdfplumber: the same probe found 0–1 words present in
-one extractor's output and not the other's, per document. Reading *order*
-can differ, though: sample 1's document title sits in the page-header
-region, and Docling emits it after the rest of page 1 (line 45 of the
-Markdown) rather than first. Nothing is lost, but a block the annotation
-calls ``title`` arrives mid-document. Docling's own OCR
-(RapidOCR) is enabled in auto mode, so it only fires on pages with no text
-layer; on this corpus every page has one and conversion takes 0.1–3 s.
+What Docling cannot give
+------------------------
+A drawn underline with no hyperlink behind it. Docling's parsed page reports
+hyperlink rectangles but no drawn shapes, so sample 6's underlined headings
+are invisible at every level (pdfplumber reads them from the page's
+rectangles). Docling's own OCR (RapidOCR) is enabled in auto mode, so it only
+fires on pages with no text layer; on this corpus every page has one and
+conversion takes 0.1–3 s.
 
 Install:
     pip install dmpbridge[docling]
@@ -327,8 +328,9 @@ class DoclingExtractor(BaseExtractor):
     """
 
     name = "docling"          # stage-1 directory the side files go to
-    source = "markdown"       # "markdown": translate export_to_markdown();
-                              # "native": build the text from the page cells
+    source = "native"         # "native": build the text from the page cells;
+                              # "markdown": translate export_to_markdown() (the
+                              # earlier, weaker version — kept for comparison)
 
     def __init__(self, save_native: bool = False, native_images: bool = True) -> None:
         try:
@@ -395,22 +397,4 @@ class DoclingExtractor(BaseExtractor):
             out.write_text(content, encoding="utf-8")
         except OSError:
             pass
-
-
-class DoclingNativeExtractor(DoclingExtractor):
-    """Docling, with the text built from its native page cells, not its Markdown.
-
-    Same Docling conversion, same block boundaries and reading order — but the
-    words come from the parsed page with their fonts, sizes and hyperlinks, so
-    the blob carries ``**bold**`` / ``_italic_`` / ``++underline++`` markers
-    derived by pdfplumber's rules (see :func:`native_marked_text`), plus
-    Docling's headings emphasised as a whole. Registered as ``"docling-native"``
-    with its own stage-1 cache under ``1_extracted/docling-native/``.
-
-    Known limit: a drawn underline with no hyperlink behind it (sample 6's
-    headings) is not in Docling's data at any level and is not marked.
-    """
-
-    name = "docling-native"
-    source = "native"
 
