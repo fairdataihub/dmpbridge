@@ -76,7 +76,14 @@ def main() -> None:
                     help="Skip stage 4 — do not write the rule-converted final JSON")
     ap.add_argument("--no-cache", action="store_true",
                     help="Re-extract even when stage 1 already holds this sample")
+    ap.add_argument("--save-native", action="store_true",
+                    help="docling only: also write Docling's full native result as "
+                         "1_extracted/docling/sampleN.native.json (fonts, sizes, hyperlinks, "
+                         "layout clusters, page images) for every sample in range that "
+                         "does not have one yet — even samples already labeled or cached")
     args = ap.parse_args()
+    if args.save_native and args.extractor != "docling":
+        ap.error("--save-native only applies to --extractor docling")
 
     n_samples = args.end - args.start + 1
     tag       = paths.make_tag(args.model, args.extractor)
@@ -99,6 +106,7 @@ def main() -> None:
         host=args.host,
         extractor=args.extractor,
         cache_dir=cache_dir,
+        extractor_kwargs={"save_native": True} if args.save_native else None,
     )
 
     run_start   = time.perf_counter()
@@ -111,6 +119,14 @@ def main() -> None:
         out_path    = paths.labeled_path(tag, i)
         struct_path = paths.structured_path(tag, i)
         final_path  = None if args.no_rules else paths.final_path(tag, i)
+
+        if args.save_native:
+            # The native file is a side artifact of extraction, which the stage-1
+            # cache and the skip below would otherwise prevent from ever running.
+            native_path = paths.EXTRACTED_DIR / args.extractor / f"sample{i}.native.json"
+            if not native_path.exists() and pdf_path.exists():
+                strategy.extract_uncached(pdf_path)
+                logger.info("%s native file written -> %s", label, native_path)
 
         if out_path.exists():
             logger.info("%s already exists — skipping", label)

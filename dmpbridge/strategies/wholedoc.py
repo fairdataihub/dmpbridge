@@ -68,7 +68,11 @@ class WholeDocStrategy:
     host:
         Ollama base URL.
     extractor:
-        PDF extraction backend — ``"pdfplumber"`` is the only one implemented.
+        PDF extraction backend — ``"pdfplumber"`` (default), ``"lightonocr"``
+        or ``"docling"``.
+    extractor_kwargs:
+        Passed through to the extractor's constructor, e.g.
+        ``{"save_native": True}`` for Docling.
     """
 
     def __init__(
@@ -78,6 +82,7 @@ class WholeDocStrategy:
         host:       str = config.HOST,
         extractor:  str = "pdfplumber",
         cache_dir:  Optional[Path] = None,
+        extractor_kwargs: Optional[dict] = None,
     ) -> None:
         if provider != "ollama":
             raise ConfigurationError(
@@ -87,7 +92,7 @@ class WholeDocStrategy:
         self.model          = model
         self.extractor_name = extractor
         self.cache_dir      = Path(cache_dir) if cache_dir else None
-        self._extractor     = get_extractor(extractor)
+        self._extractor     = get_extractor(extractor, **(extractor_kwargs or {}))
         self._backend       = get_model(
             provider,
             model,
@@ -124,6 +129,15 @@ class WholeDocStrategy:
                           encoding="utf-8")
         logger.info("[wholedoc] extracted blocks cached -> %s", cached)
         return blocks
+
+    def extract_uncached(self, pdf_path: Path) -> list[dict]:
+        """Run the extractor on *pdf_path* regardless of the stage-1 cache.
+
+        For side artifacts the extractor writes on its own (Docling's ``.md``
+        and ``.native.json``): they are only produced when extraction actually
+        runs, which the cache normally prevents.
+        """
+        return self._extractor.extract(pdf_path)
 
     # ── Strategy protocol ──────────────────────────────────────────────────────
 

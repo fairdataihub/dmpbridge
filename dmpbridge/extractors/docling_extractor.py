@@ -37,6 +37,7 @@ Install:
 """
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
@@ -79,6 +80,34 @@ def markdown_to_marked_text(markdown: str) -> str:
     return text.strip()
 
 
+_NATIVE_PART_ORDER = ("version", "status", "timestamp", "timings", "errors",
+                      "confidence", "document", "pages")
+
+
+def native_result_dict(result) -> dict:
+    """Docling's full native conversion result as one dict.
+
+    ``ConversionResult.save()`` is Docling's own serialisation of everything it
+    computed — document, per-page layout predictions, parsed page cells, page
+    images, confidence — but it writes a zip of JSON parts. This merges the
+    parts into a single dict, document first, pages last, so it can be written
+    as one file. Requires the converter to have been run with
+    ``generate_parsed_pages=True``; otherwise every ``parsed_page`` is null.
+    """
+    import tempfile
+    import zipfile
+
+    with tempfile.TemporaryDirectory() as tmp:
+        bundle = Path(tmp) / "native.zip"
+        result.save(filename=bundle)
+        with zipfile.ZipFile(bundle) as z:
+            parts = {name[:-5]: json.loads(z.read(name).decode("utf-8"))
+                     for name in z.namelist() if name.endswith(".json")}
+    ordered = {k: parts[k] for k in _NATIVE_PART_ORDER if k in parts}
+    ordered.update({k: v for k, v in parts.items() if k not in ordered})
+    return ordered
+
+
 class DoclingExtractor(BaseExtractor):
     """Convert a PDF with Docling and return it as one marked-up text block.
 
@@ -90,9 +119,24 @@ class DoclingExtractor(BaseExtractor):
     text layer are read directly, OCR only fires on pages that need it.
     Table structure recovery is enabled so tables come through as pipe
     tables rather than as a jumble of cells.
+
+    Parameters
+    ----------
+    save_native:
+        Also write Docling's full native result as
+        ``1_extracted/docling/<stem>.native.json`` — the parsed page cells
+        (font name, size, position per line and word), hyperlinks, the layout
+        model's clusters with confidences, and the page images. None of that
+        survives into the Markdown; see
+        ``notebooks/exploration-docling-native-format.ipynb``. Off by default:
+        it makes Docling keep the parsed pages in memory and costs ~2–5 MB per
+        document on disk. Does not change the extracted text.
+    native_images:
+        Include the page renders in the native file (most of its size). Only
+        used when ``save_native`` is on.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, save_native: bool = False, native_images: bool = True) -> None:
         try:
             from docling.datamodel.base_models import InputFormat
             from docling.datamodel.pipeline_options import PdfPipelineOptions
@@ -112,6 +156,12 @@ class DoclingExtractor(BaseExtractor):
         pipeline_options.do_ocr = True
         pipeline_options.do_table_structure = True
         pipeline_options.table_structure_options.do_cell_matching = True
+        if save_native:
+            # Docling discards the parsed pages (cells, fonts, links) once the
+            # document is assembled unless told to keep them.
+            pipeline_options.generate_parsed_pages = True
+            pipeline_options.generate_page_images = native_images
+        self._save_native = save_native
 
         self._converter = DocumentConverter(
             format_options={
@@ -127,23 +177,26 @@ class DoclingExtractor(BaseExtractor):
         # so a literal ">" must stay ">" ("stored for > 10 years"), not
         # become "&gt;".
         markdown = result.document.export_to_markdown(escape_html=False)
-        self._save_markdown(pdf_path, markdown)
+        # Keep the untranslated Markdown next to the cached stage-1 JSON: when a
+        # label looks wrong, the .md shows what Docling saw before translation.
+        self._save_side_file(pdf_path, "md", markdown)
+        if self._save_native:
+            self._save_side_file(pdf_path, "native.json",
+                                 json.dumps(native_result_dict(result), indent=2,
+                                            ensure_ascii=False))
         return [{"text": markdown_to_marked_text(markdown)}]
 
     # ── Internal ──────────────────────────────────────────────────────────────
 
     @staticmethod
-    def _save_markdown(pdf_path: Path, markdown: str) -> None:
-        """Keep Docling's untranslated Markdown next to the cached stage-1 JSON.
-
-        Useful when a label looks wrong: the ``.md`` shows what Docling
-        actually saw before the marker translation. Best-effort — extraction
-        must not fail because this side artifact could not be written.
-        """
+    def _save_side_file(pdf_path: Path, suffix: str, content: str) -> None:
+        """Write ``<stem>.<suffix>`` next to the cached stage-1 JSON. Best-effort:
+        extraction must not fail because a side artifact could not be written."""
         try:
             from ..core.paths import EXTRACTED_DIR
-            out = EXTRACTED_DIR / "docling" / f"{pdf_path.stem}.md"
+            out = EXTRACTED_DIR / "docling" / f"{pdf_path.stem}.{suffix}"
             out.parent.mkdir(parents=True, exist_ok=True)
-            out.write_text(markdown, encoding="utf-8")
+            out.write_text(content, encoding="utf-8")
         except OSError:
             pass
+

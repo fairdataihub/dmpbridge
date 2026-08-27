@@ -143,7 +143,13 @@ which is translated into the same marker convention: section headings become `**
 Headings are found from page layout rather than font metadata, but bold/italic/underline
 are not recovered, so the model gets less emphasis signal than from pdfplumber. Runs on
 CPU in 0.1–3 s per document; needs `pip install dmpbridge[docling]`. Docling's untranslated
-Markdown is kept alongside stage 1 as `1_extracted/docling/sampleN.md`.
+Markdown is kept alongside stage 1 as `1_extracted/docling/sampleN.md`. A third file,
+`sampleN.native.json`, holds Docling's full native result — the parsed page cells with
+font names, sizes and hyperlinks, the layout clusters with confidences, and the page
+images — none of which survive into the Markdown. It is off by default: add `--save-native`
+to `dmpbridge-wholedoc --extractor docling` and it is written for every sample in range that
+lacks one, cached or already labeled; `scripts/docling_native_dump.py` does the same for all
+samples without touching the model stages.
 
 ---
 
