@@ -133,11 +133,11 @@ r.font.size = Pt(13)
 r.font.color.rgb = SUB_BLUE
 
 for line in [
-    "Date: 19 August 2026",
+    "Date: 28 August 2026",
     "Dataset: 10 manually labeled DMP documents (23 pages) · all 10 scored",
     "Models: Gemma 4 e4b · Qwen 2.5 14B · Llama 3.3 70B · Llama 3.1 8B (via Ollama, free/local)",
-    "Extractors: pdfplumber (default) · LightOnOCR-2-1B (alternative, gemma4:e4b only — see 6.1a)",
-    "Experiments: 4 of 4 complete under the current pipeline",
+    "Extractors: pdfplumber (default) · LightOnOCR-2-1B · Docling, native cells (alternatives, gemma4:e4b only — see 6.1b)",
+    "Experiments: 6 of 6 complete under the current pipeline",
 ]:
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(1)
@@ -147,7 +147,8 @@ for line in [
 
 para("Results in section 6 reflect every fix through 19 August 2026 (section 6.1a), all four models "
      "complete under pdfplumber's whole-document pipeline (section 3.3), scored at the project's 75% "
-     "partial-credit containment default. Section 4.1's inference-parameters table (format: OUTPUT_SCHEMA, "
+     "partial-credit containment default, plus the extractor comparison added 27 August 2026 (section 6.1b: "
+     "the Docling extractor rebuilt to read Docling's native page cells). Section 4.1's inference-parameters table (format: OUTPUT_SCHEMA, "
      "and its 'nine configurations' framing) describes the pre-rewrite, id-based design and has not been "
      "updated to match — pdfplumber no longer uses OUTPUT_SCHEMA at all; treat that table as historical.",
      size=9.5, italic=True, color=RUST, after=10)
@@ -187,7 +188,9 @@ mono([
     "│   └── config.py              defaults",
     "├── extractors/                pluggable PDF → blocks layer",
     "│   ├── base.py                BaseExtractor protocol",
-    "│   ├── pdfplumber_extractor.py  — the only extractor implemented",
+    "│   ├── pdfplumber_extractor.py  default — fonts and drawn shapes → markers",
+    "│   ├── lighton_extractor.py   LightOnOCR-2-1B vision model, page images → markers",
+    "│   ├── docling_extractor.py   Docling layout model + native page cells → markers",
     "│   └── __init__.py            get_extractor() factory",
     "├── preprocess/",
     "│   ├── pdfplumber_reader.py   extract_text_for_llm() — whole doc, **bold**/_italic_ markers",
@@ -362,23 +365,25 @@ para("Docling was tried, removed, and re-added 24 August 2026 in whole-document 
 
 # ── 5 ────────────────────────────────────────────────────────────────────
 h1("5. Experiment Registry")
-para("Five configurations: four models against pdfplumber (the default), plus gemma4:e4b against "
-     "LightOnOCR-2-1B (the alternative extractor, section 4.3/6.1a), whole-document strategy, scored on "
-     "all ten samples through both evaluation paths.")
+para("Six configurations: four models against pdfplumber (the default), plus gemma4:e4b against the two "
+     "alternative extractors, LightOnOCR-2-1B and Docling (section 4.3/6.1b), whole-document strategy, "
+     "scored on all ten samples through both evaluation paths.")
 rows=[]; eid=1
 DONE={("llama3.3:70b","pdfplumber"),("gemma4:e4b","pdfplumber"),("llama3.1:8b","pdfplumber"),
-      ("qwen2.5:14b","pdfplumber"),("gemma4:e4b","lightonocr")}
+      ("qwen2.5:14b","pdfplumber"),("gemma4:e4b","lightonocr"),("gemma4:e4b","docling")}
 CONFIGS = [("llama3.3:70b","llama3.3-70b","pdfplumber"),
            ("gemma4:e4b","gemma4-e4b","pdfplumber"),
            ("llama3.1:8b","llama3.1-8b","pdfplumber"),
            ("qwen2.5:14b","qwen2.5-14b","pdfplumber"),
-           ("gemma4:e4b","gemma4-e4b","lightonocr")]
+           ("gemma4:e4b","gemma4-e4b","lightonocr"),
+           ("gemma4:e4b","gemma4-e4b","docling")]
 for mo, slug, ex in CONFIGS:
     rows.append([f"E{eid:02d}", mo, ex, f"{slug}_{ex}_whole_doc",
                  "complete" if (mo,ex) in DONE else "pending"])
     eid+=1
 table(["ID","Model","Extractor","Output tag","Status"], rows, widths=[0.5,1.3,1.1,2.6,0.85])
-para("All five configurations are complete under the current pipeline as of 19 August 2026.",
+para("All six configurations are complete as of 27 August 2026. E06's tag held the Markdown-based Docling "
+     "run until 27 August; that run's outputs are kept under Report-doc/backups/2026-08-27_133835_docling-markdown/.",
      size=9.5, italic=True, color=GREY)
 
 # ── 6 ────────────────────────────────────────────────────────────────────
@@ -441,6 +446,51 @@ para("A vision-based OCR extractor (LightOnOCR-2-1B) was also fully integrated a
      "slower. Kept as a working, non-default extractor rather than adopted — "
      "notebooks/comparison-gemma-pdfplumber-vs-lightonocr.ipynb has the full comparison.",
      size=10, italic=True, color=GREY)
+
+h2("6.1b Extractors — pdfplumber, LightOnOCR, Docling (27 August)")
+para("The model never sees the PDF; it sees one string per document with the formatting marked in it "
+     "(**bold**, _italic_, ++underline++) and cuts that string into labelled pieces. The three extractors "
+     "differ only in how that string is made. gemma4:e4b on all ten samples, both paths:", size=10)
+table(["Extractor","How it reads the page","Precision","Recall","Path A F1","Path B F1"],
+      [["pdfplumber","the PDF's characters and drawn shapes; font name/size per character, a thin rectangle under a word",
+        "0.961","0.932","0.946","0.951"],
+       ["Docling (native cells)","a layout model groups the PDF's characters into blocks; the same font rules applied to Docling's word cells, hyperlink rectangles as underline, heading label from layout",
+        "0.975","0.879","0.924","0.910"],
+       ["LightOnOCR-2-1B","a picture of the page read by a vision model; markers are the model's judgement while transcribing",
+        "0.823","0.811","0.817","0.827"]],
+      widths=[1.2,2.9,0.6,0.6,0.55,0.55], size=8.5)
+para("pdfplumber and Docling now read the same fonts and produce identical markers on 8 of 10 documents "
+     "(sample 2: 42 bold, 41 italic, 11 underlined for both). Per document Docling is ahead on samples 2 "
+     "(0.870 vs 0.818) and 5 (0.923 vs 0.786), level at 1.000 on seven, and collapses on sample 6 (0.154): "
+     "its five headings are underlined with a drawn line and nothing else, pdfplumber sees the line as a "
+     "rectangle, and Docling exposes no drawn shapes at any level of its output — the one signal it "
+     "structurally cannot get. That single document is the whole gap. Docling finds 13 of the 16 real "
+     "question.text items to pdfplumber's 12 and leads on section.description (0.941 vs 0.889); it trails on "
+     "section.title and answer.text, both entirely sample 6. LightOnOCR guesses the markers from the image: "
+     "it never writes an underline marker, marks few italics, and is 13 points back.", size=10, color=GREY)
+para("History: the Docling extractor's first version (24-25 August) worked from Docling's Markdown export, "
+     "which drops every font, and scored 0.767 / 0.757. Docling reads bold, italic and size into its page "
+     "cells and hyperlinks into its page model, then discards them when it assembles the document; keeping "
+     "the parsed pages (generate_parsed_pages=True) and applying pdfplumber's rules to them is worth 16 "
+     "points. Five conventions had to match pdfplumber's before that showed: blocks in page top-to-bottom "
+     "order (Docling's reading order places a header-region title after the first section), single "
+     "newlines between blocks (blank lines cost points on samples 5 and 8), heading emphasis only where the "
+     "font marks nothing, a page-1 page-header kept as the title, and the size rule applied only within the "
+     "body face (Docling's rectangle height is glyph extent, not font size). Details: "
+     "Report-doc/worklog/2026-08-27.md; notebooks/comparison-gemma-extractors.ipynb has the full comparison.",
+     size=10, italic=True, color=GREY)
+para("Caveat: the pdfplumber and LightOnOCR runs (21 and 24 August) and the Docling runs (25 August onward) "
+     "were produced under different versions of the system prompt — one added sentence and a doubled bullet "
+     "dash in the FORMATTING MARKERS line, committed 25 August. By this project's own measurement, prompt "
+     "whitespace alone has moved F1 by 1.9 points, so the extractor table is not a single-prompt comparison "
+     "until pdfplumber and LightOnOCR are re-run (section 11). The marker counts above do not depend on the "
+     "prompt.", size=10, italic=True, color=RUST)
+para("Native dumps: both extractors can write their raw reading of a PDF beside stage 1 as "
+     "sampleN.native.json (pdfplumber: every word with font, size and box, rectangles, lines, hyperlinks; "
+     "Docling: its full conversion result — document, layout clusters with confidences, page cells, "
+     "hyperlinks, page images). Off by default; --save-native on dmpbridge-wholedoc or "
+     "scripts/native_dump.py. Never changes the extracted text — it exists so a marker can be traced back "
+     "to what produced it.", size=10, color=GREY)
 
 h2("6.2 Per-label F1")
 table(["Label","gemma4:e4b (A/B)","qwen2.5:14b (A/B)","llama3.3:70b (A/B)","llama3.1:8b (A/B)","Gold (A/B)"],
@@ -574,7 +624,7 @@ mono([
     "blocks = dmpbridge.process_pdf(",
     '    "document.pdf",',
     '    model="gemma4:e4b",        # any Ollama tag',
-    '    extractor="pdfplumber",    # the only extractor implemented',
+    '    extractor="pdfplumber",    # or "lightonocr", "docling"',
     "    apply_rules=True,          # apply Path B conversion to structured output",
     '    output="labeled.json",',
     '    structured_output="structured.json",',
@@ -582,7 +632,7 @@ mono([
     ")",
 ])
 table(["Parameter", "Default", "Effect"],
-      [["extractor", '"pdfplumber"', "Selects the extraction backend"],
+      [["extractor", '"pdfplumber"', 'Selects the extraction backend: "pdfplumber", "lightonocr" or "docling"'],
        ["apply_rules", "False", "Applies apply_new_annotation_rules() before writing structured output"],
        ["strategy", "None", "Pass a prebuilt Strategy; other model kwargs are then ignored"],
        ["raw_dir", '"data/output/extracted"', "Where pre-label blocks are saved; None to skip"],
@@ -634,10 +684,13 @@ mono([
 
 h2("8.3 Notebooks and tests")
 table(["Artifact", "Purpose"],
-      [["notebooks/01-run_pipeline.ipynb", "Run the pipeline on one PDF and inspect the structured output"],
-       ["notebooks/1-model_comparison_pdfplumber.ipynb", "Full evaluation, pdfplumber"],
-       ["notebooks/annotation_conversion_test.ipynb", "Derivation of the Path B rule"],
-       ["tests/", "tests — converter, scoring engine, Path B rule, batch runner, per-sample invariants"]],
+      [["notebooks/results-<model>-<extractor>.ipynb", "One configuration: both paths, per-label report, confusion matrix (six notebooks)"],
+       ["notebooks/comparison-4models-pdfplumber-75pct-overlap.ipynb", "Four models on pdfplumber, side by side (3-model variant alongside)"],
+       ["notebooks/comparison-gemma-extractors.ipynb", "pdfplumber vs LightOnOCR vs Docling on gemma4:e4b: markers per document, both paths, per class, per document, confusion matrices"],
+       ["notebooks/comparison-gemma-pdfplumber-vs-lightonocr.ipynb, comparison-matrix-pdfplumber-vs-*.ipynb", "Two-way extractor comparisons"],
+       ["notebooks/demo-*.ipynb, analysis-*.ipynb, prototype-*.ipynb", "Pipeline demos; confidence and threshold analyses; the underline prototype"],
+       ["scripts/build/", "Every notebook above is generated — edit the builder, rebuild, then execute with nbconvert"],
+       ["tests/", "tests — converter, scoring engine, Path B rule, batch runner, per-sample invariants, extractor marker rules"]],
       widths=[2.7, 3.7], size=8.5)
 mono(['pip install -e ".[dev]"', "pytest tests/"])
 
@@ -798,7 +851,23 @@ table(["Addition", "Detail"],
                                     "overwrote stage 3 in place so the converted and unconverted forms could "
                                     "not both exist. Both are now always written"],
        ["Extraction cache", "Stage 1 is keyed by extractor, so it is computed once and reused across models "
-                            "rather than repeated per run"]],
+                            "rather than repeated per run"],
+       ["Docling extractor (24-27 August)", "--extractor docling. DoclingExtractor(source=\"native\") builds the "
+                                            "blob from Docling's parsed page cells with pdfplumber's marker "
+                                            "rules (native_marked_text); source=\"markdown\" keeps the earlier, "
+                                            "weaker translation of Docling's Markdown for comparison"],
+       ["Native dumps", "save_native=True on the pdfplumber and Docling extractors writes "
+                        "1_extracted/<extractor>/sampleN.native.json — the extractor's raw reading of the "
+                        "PDF (words with fonts and sizes, rectangles, hyperlinks; for Docling the full "
+                        "ConversionResult). --save-native on dmpbridge-wholedoc writes it for every sample in "
+                        "range that lacks one, even cached or already-labeled ones; scripts/native_dump.py does "
+                        "all samples without the model"],
+       ["extractor_kwargs", "WholeDocStrategy passes a dict through to the extractor constructor; "
+                            "extract_uncached() runs the extractor regardless of the stage-1 cache, for side "
+                            "artifacts the cache would otherwise prevent"],
+       ["Builder options", "build_comparison_notebook.py --models (any subset of the four); "
+                           "build_matrix_comparison_notebook.py --extractor lightonocr|docling; "
+                           "inspect_sample.py and rerun.py accept every registered extractor"]],
       widths=[1.55, 4.85], size=8.5)
 
 h2("10.4 Duplicated system prompt — resolved")
@@ -820,7 +889,21 @@ para("The duplication existed only in the working file and was never committed, 
 # ── 11 ───────────────────────────────────────────────────────────────────
 h1("11. Open Questions and Next Steps")
 table(["Item","Description"],
-      [["Decide the prompt  (first)",
+      [["Re-run pdfplumber and LightOnOCR under the current prompt  (first)",
+        "The Docling figures in 6.1b were produced under the 25 August prompt; the pdfplumber and LightOnOCR "
+        "figures under the 24 August one. Until gemma4:e4b + pdfplumber (~75 s) and + LightOnOCR are re-run, "
+        "the extractor comparison is across two prompts. Decide first whether the doubled bullet dash in the "
+        "FORMATTING MARKERS line is intended."],
+       ["Sample 3 rules failure (since at least 21 August)",
+        "tests/test_pipeline_samples.py::test_rules_touch_only_question_text[3] — the annotation rules add a "
+        "question in section 4 that stage 3 does not have. Either a rules regression or an invariant that no "
+        "longer holds; every Path B figure is suspect until it is explained."],
+       ["Docling and drawn underlines — decided, no action",
+        "Docling exposes no drawn shapes, so sample 6's underlined headings are unreachable from its data. The "
+        "only fix would feed pdfplumber's rectangles into the Docling extractor, which answers nothing about "
+        "Docling. pdfplumber + gemma4:e4b remains the recommendation; Docling is a close second whose value is "
+        "block boundaries, positions and per-block confidence, not the score."],
+       ["Decide the prompt  (first)",
         "The best llama3.1:8b wording is the worst gemma4:e4b wording — the same edit gained 0.6 points on one "
         "and cost 4.0 on the other (section 4.2). Either accept a per-model prompt, or optimise for gemma4:e4b "
         "and llama3.3:70b and drop the 8B. Every result in section 6 depends on which is chosen."],
