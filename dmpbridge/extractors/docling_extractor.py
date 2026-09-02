@@ -202,14 +202,25 @@ def native_marked_text(result) -> str:
     from collections import Counter
 
     pages = {p.page_no: p for p in result.pages}
+
+    def units(p):
+        """Word cells, or line cells where OCR produced no word level.
+
+        Full-page OCR (force_ocr) fills ``textline_cells`` but leaves
+        ``word_cells`` empty; without this fallback the whole text came back
+        empty and the model hallucinated a document (seen on sample 11).
+        """
+        return p.parsed_page.word_cells or p.parsed_page.textline_cells
+
     # body font profile, weighted by characters like pdfplumber's
     sizes: Counter = Counter()
     fonts: Counter = Counter()
     for p in pages.values():
-        for w in p.parsed_page.word_cells:
+        for w in units(p):
             n = len(w.text)
             sizes[round(w.rect.height, 1)] += n
-            fonts[w.font_name] += n
+            # OCR cells are plain TextCells with no font attribute
+            fonts[getattr(w, "font_name", "")] += n
     if not sizes:
         return ""
     body_size = sizes.most_common(1)[0][0]
@@ -221,7 +232,7 @@ def native_marked_text(result) -> str:
     for no, p in pages.items():
         H = p.size.height
         page_words[no] = [(w, w.rect.to_bounding_box().to_top_left_origin(page_height=H))
-                          for w in p.parsed_page.word_cells]
+                          for w in units(p)]
         page_links[no] = [h.rect.to_bounding_box().to_top_left_origin(page_height=H)
                           for h in p.parsed_page.hyperlinks]
 
@@ -282,8 +293,8 @@ def native_marked_text(result) -> str:
         flagged = []
         for line in lines:
             line.sort(key=lambda wb: wb[1].l)
-            flagged.append([(w.text, *_word_flags(w.text, w.font_name, w.rect.height,
-                                                   body_font, body_size,
+            flagged.append([(w.text, *_word_flags(w.text, getattr(w, "font_name", ""),
+                                                   w.rect.height, body_font, body_size,
                                                    in_link(b, page_links[prov.page_no])))
                             for w, b in line])
         # Docling's heading label is a layout signal the fonts may not carry
@@ -325,6 +336,15 @@ class DoclingExtractor(BaseExtractor):
     native_images:
         Include the page renders in the native file (most of its size). Only
         used when ``save_native`` is on.
+    force_ocr:
+        OCR every page (``OcrMode.FULL_PAGE``) instead of trusting the PDF's
+        text layer. Needed for documents whose embedded fonts carry no
+        character-to-text mapping — sample 11's text layer extracts as
+        ``(cid:…)`` garbage while its pages read fine — because Docling's
+        auto mode only OCRs pages with *no* text layer, and a garbage layer
+        counts as one. Slower (~10 s/page) and OCR loses the font names the
+        native text builder uses, so bold/italic markers largely disappear;
+        use it when the text layer is broken, not by default.
     """
 
     name = "docling"          # stage-1 directory the side files go to
@@ -332,7 +352,8 @@ class DoclingExtractor(BaseExtractor):
                               # "markdown": translate export_to_markdown() (the
                               # earlier, weaker version — kept for comparison)
 
-    def __init__(self, save_native: bool = False, native_images: bool = True) -> None:
+    def __init__(self, save_native: bool = False, native_images: bool = True,
+                 force_ocr: bool = False) -> None:
         try:
             from docling.datamodel.base_models import InputFormat
             from docling.datamodel.pipeline_options import PdfPipelineOptions
@@ -352,6 +373,9 @@ class DoclingExtractor(BaseExtractor):
         pipeline_options.do_ocr = True
         pipeline_options.do_table_structure = True
         pipeline_options.table_structure_options.do_cell_matching = True
+        if force_ocr:
+            from docling.datamodel.pipeline_options import OcrMode
+            pipeline_options.ocr_options.mode = OcrMode.FULL_PAGE
         if save_native or self.source == "native":
             # Docling discards the parsed pages (cells, fonts, links) once the
             # document is assembled unless told to keep them.

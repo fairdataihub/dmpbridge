@@ -97,6 +97,7 @@ blocks = dmpbridge.process_pdf(
     "document.pdf",
     model="gemma4:e4b",
     extractor="pdfplumber",
+    fallback="auto",     # scanned / broken text layer -> docling-OCR, then lightonocr
     structured_output="structured.json",
 )
 ```
@@ -159,10 +160,32 @@ fonts, sizes and hyperlinks, layout clusters with confidences, page images).
 of the PDF before any marker rule — for pdfplumber, every word with its font name, size and
 box, the drawn rectangles and lines that underline detection works from, and hyperlinks with
 their URIs, in `1_extracted/pdfplumber/`. It never changes the stage-1 text; it is there so a
-marker can be traced back to what produced it. Off by default: `--save-native` on
-`dmpbridge-wholedoc` writes it for every sample in range that lacks one (cached or already
-labeled), and `python scripts/native_dump.py --extractor pdfplumber|docling` does the same
-for all samples without touching the model stages.
+marker can be traced back to what produced it. `dmpbridge-wholedoc` writes it **by default** for pdfplumber and docling
+runs, for every sample in range that lacks one (cached or already labeled) — pass
+`--no-save-native` to skip; `python scripts/native_dump.py --extractor pdfplumber|docling`
+does the same for all samples without touching the model stages.
+
+**Broken or scanned PDFs.** A PDF can have a text layer whose fonts carry no
+character-to-text mapping — extraction then *succeeds* as garbage (`(cid:NN)` tokens or
+mojibake) and the model hallucinates a fluent document from it (observed on sample 11).
+The pipeline now checks every stage-1 text and logs a loud warning when it does not look
+like readable language. When that fires, or for scanned/image-only PDFs:
+
+1. `--extractor lightonocr` — reads the page image; unaffected by the text layer.
+2. `--extractor docling --force-ocr` — OCRs every page (`OcrMode.FULL_PAGE`) instead of
+   trusting the text layer. Slower, and bold/italic markers are mostly lost with the fonts,
+   so use it per document, not as a default. The stage-1 cache is keyed by extractor only,
+   so clear the cached `sampleN.json` (or pass `--no-cache`) or the garbage text is reused.
+3. `pdfplumber` has no fallback — it can only read the text layer.
+
+The warning is a guard, not a gate: by default the run still proceeds, so check the log
+before trusting output for a new document. To handle it automatically, add
+`--fallback lightonocr` (or `docling`, or `auto` = docling then lightonocr): a document
+whose text fails the check is re-extracted with the fallback and labeled from that text
+instead — per document, opt-in, clean documents untouched, and the primary extractor's
+stage-1 cache is never overwritten with fallback text. The Python API takes the same
+option — `process_pdf(..., fallback="auto")` (or a name, or an ordered list) — so an
+application embedding the package gets the same behaviour without the CLI.
 
 ---
 

@@ -76,16 +76,40 @@ def main() -> None:
                     help="Skip stage 4 — do not write the rule-converted final JSON")
     ap.add_argument("--no-cache", action="store_true",
                     help="Re-extract even when stage 1 already holds this sample")
-    ap.add_argument("--save-native", action="store_true",
-                    help="docling / pdfplumber: also write the extractor's raw native reading of "
+    ap.add_argument("--save-native", action="store_true", default=None,
+                    help="docling / pdfplumber: write the extractor's raw native reading of "
                          "each PDF as 1_extracted/<extractor>/sampleN.native.json (docling: page "
                          "cells with fonts, hyperlinks, layout clusters, page images; pdfplumber: "
                          "words with fonts and sizes, rectangles, lines, hyperlinks) for every "
                          "sample in range that does not have one yet — even samples already "
-                         "labeled or cached")
+                         "labeled or cached. ON by default for those two extractors; "
+                         "--no-save-native turns it off")
+    ap.add_argument("--no-save-native", dest="save_native", action="store_false",
+                    help=argparse.SUPPRESS)
+    ap.add_argument("--force-ocr", action="store_true",
+                    help="docling only: OCR every page instead of trusting the PDF's text layer. "
+                         "For documents whose text layer extracts as garbage (raw (cid:NN) tokens "
+                         "or mojibake); slower, and bold/italic markers are mostly lost, so use it "
+                         "per-document, not by default. The stage-1 cache is keyed by extractor "
+                         "only, so combine with --no-cache or delete the cached sampleN.json first")
+    ap.add_argument("--fallback", choices=["docling", "lightonocr", "auto"], default=None,
+                    help="if a document's extracted text fails the garbled-text check, re-extract "
+                         "it with this extractor instead (per document; clean documents are "
+                         "untouched). 'docling' means docling with forced full-page OCR; 'auto' "
+                         "tries docling then lightonocr. The fallback text is used for labeling "
+                         "but never written into the primary extractor's stage-1 cache")
     args = ap.parse_args()
     if args.save_native and args.extractor not in ("docling", "pdfplumber"):
         ap.error("--save-native only applies to --extractor docling or pdfplumber")
+    if args.save_native is None:
+        # default: on wherever it is supported, silently off elsewhere
+        args.save_native = args.extractor in ("docling", "pdfplumber")
+    if args.force_ocr and args.extractor != "docling":
+        ap.error("--force-ocr only applies to --extractor docling")
+    from ..core.pipeline import normalize_fallbacks
+    fallbacks = normalize_fallbacks(args.fallback, args.extractor)
+    if args.fallback and not fallbacks:
+        ap.error("--fallback must name a different extractor than --extractor")
 
     n_samples = args.end - args.start + 1
     tag       = paths.make_tag(args.model, args.extractor)
@@ -108,7 +132,11 @@ def main() -> None:
         host=args.host,
         extractor=args.extractor,
         cache_dir=cache_dir,
-        extractor_kwargs={"save_native": True} if args.save_native else None,
+        extractor_kwargs=(
+            ({"save_native": True} if args.save_native else {})
+            | ({"force_ocr": True} if args.force_ocr else {})
+        ) or None,
+        fallback_extractors=fallbacks,
     )
 
     run_start   = time.perf_counter()

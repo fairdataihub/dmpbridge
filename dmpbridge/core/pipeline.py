@@ -111,6 +111,25 @@ def run_and_save(
     return blocks
 
 
+def normalize_fallbacks(fallback, extractor: str) -> Optional[list[str]]:
+    """Turn the ``fallback`` argument into an ordered extractor list.
+
+    ``"auto"`` means docling (with forced OCR) then lightonocr; a string is a
+    single fallback; a list is used as given. The primary extractor is
+    filtered out. Returns ``None`` when nothing usable remains.
+    """
+    if not fallback:
+        return None
+    if fallback == "auto":
+        names = ["docling", "lightonocr"]
+    elif isinstance(fallback, str):
+        names = [fallback]
+    else:
+        names = list(fallback)
+    names = [n for n in names if n != extractor]
+    return names or None
+
+
 def process_pdf(
     pdf_path: Union[str, Path],
     *,
@@ -119,6 +138,7 @@ def process_pdf(
     model: str = DEFAULT_MODEL,
     host: str = DEFAULT_HOST,
     extractor: str = "pdfplumber",
+    fallback: Union[str, list[str], None] = None,
     apply_rules: bool = False,
     output: Optional[Union[str, Path]] = None,
     structured_output: Optional[Union[str, Path]] = None,
@@ -137,8 +157,18 @@ def process_pdf(
     provider, model, host:
         LLM backend settings — ignored when *strategy* is given.
     extractor:
-        PDF extraction backend — ``"pdfplumber"`` is the only one implemented.
-        Ignored when *strategy* is given.
+        PDF extraction backend — ``"pdfplumber"`` (default), ``"lightonocr"``
+        or ``"docling"``.  Ignored when *strategy* is given.
+    fallback:
+        What to do when the PDF's text layer is unreadable (scanned pages, or
+        fonts with no character-to-text mapping — extraction then "succeeds"
+        as garbage and the model hallucinates). ``"auto"`` tries docling with
+        forced full-page OCR, then LightOnOCR; a name tries that one
+        extractor; a list is tried in order. Applies per document, only when
+        the extracted text fails the garbled-text check; the primary
+        extractor's stage-1 cache is never overwritten. Default ``None``:
+        no fallback, a warning is logged instead. Ignored when *strategy*
+        is given (pass ``fallback_extractors`` to the strategy directly).
     apply_rules:
         When ``True``, apply the new-annotation rules (backfill empty
         question texts from section titles) to the structured JSON before
@@ -161,7 +191,9 @@ def process_pdf(
     # ── Resolve strategy ──────────────────────────────────────────────────────
     if strategy is None:
         from ..strategies.wholedoc import WholeDocStrategy
-        strategy = WholeDocStrategy(provider=provider, model=model, host=host, extractor=extractor)
+        strategy = WholeDocStrategy(provider=provider, model=model, host=host,
+                                    extractor=extractor,
+                                    fallback_extractors=normalize_fallbacks(fallback, extractor))
 
     # ── Extract + classify (delegated to strategy) ────────────────────────────
     logger.info("Running strategy %s on %s …", type(strategy).__name__, pdf_path.name)

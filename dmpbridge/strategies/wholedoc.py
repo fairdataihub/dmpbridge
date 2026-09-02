@@ -73,6 +73,15 @@ class WholeDocStrategy:
     extractor_kwargs:
         Passed through to the extractor's constructor, e.g.
         ``{"save_native": True}`` for Docling.
+    fallback_extractors:
+        Optional list of extractor names to try, in order, for a document
+        whose extracted text fails the garbled-text check (a PDF with a
+        broken text layer extracts "successfully" as garbage and the model
+        then hallucinates — see sample 11). Applies per document; clean
+        documents are untouched. A ``"docling"`` fallback is constructed
+        with ``force_ocr=True``, since a garbage text layer is exactly the
+        case its auto OCR does not catch. ``None`` (default): no fallback,
+        only the warning.
     """
 
     def __init__(
@@ -83,6 +92,7 @@ class WholeDocStrategy:
         extractor:  str = "pdfplumber",
         cache_dir:  Optional[Path] = None,
         extractor_kwargs: Optional[dict] = None,
+        fallback_extractors: Optional[list[str]] = None,
     ) -> None:
         if provider != "ollama":
             raise ConfigurationError(
@@ -92,6 +102,7 @@ class WholeDocStrategy:
         self.model          = model
         self.extractor_name = extractor
         self.cache_dir      = Path(cache_dir) if cache_dir else None
+        self._fallbacks     = list(fallback_extractors or [])
         self._extractor     = get_extractor(extractor, **(extractor_kwargs or {}))
         self._backend       = get_model(
             provider,
@@ -149,7 +160,56 @@ class WholeDocStrategy:
             return []
 
         full_text = blocks[0]["text"]
+
+        # A broken text layer extracts "successfully" as garbage, and the model
+        # then hallucinates a fluent document (seen on sample 11). Warn loudly
+        # before spending the model call — the output will not be the input.
+        from ..preprocess.text_quality import looks_garbled
+        reason = looks_garbled(full_text)
+        if reason and self._fallbacks:
+            full_text, reason = self._try_fallbacks(pdf_path, reason)
+        if reason:
+            logger.warning(
+                "[wholedoc] %s: extracted text does not look readable (%s). "
+                "The model's output will likely be hallucinated. For a broken "
+                "text layer use --extractor lightonocr, or docling with "
+                "force_ocr (--force-ocr), or pass --fallback.", pdf_path.name, reason)
+
         return self.classify_entire_document(full_text)
+
+    def _try_fallbacks(self, pdf_path: Path, reason: str) -> tuple[str, Optional[str]]:
+        """Re-extract *pdf_path* with each fallback extractor until one yields
+        readable text. Returns (text, None) on success, or ("", the last
+        reason) if every fallback also produced garbage.
+
+        The fallback text is used for this document's labeling but is NOT
+        written into the primary extractor's stage-1 cache — the cache keeps
+        what that extractor actually read. A fallback's own stage-1 cache is
+        reused when it already holds readable text for this document.
+        """
+        from ..core.paths import EXTRACTED_DIR
+        from ..preprocess.text_quality import looks_garbled
+        logger.warning("[wholedoc] %s: %s extraction is unreadable (%s) — trying "
+                       "fallback extractor(s): %s", pdf_path.name,
+                       self.extractor_name, reason, ", ".join(self._fallbacks))
+        for name in self._fallbacks:
+            cached = EXTRACTED_DIR / name / f"{pdf_path.stem}.json"
+            text = ""
+            if cached.exists():
+                text = json.loads(cached.read_text(encoding="utf-8"))[0]["text"]
+            if not text or looks_garbled(text):
+                kwargs = {"force_ocr": True} if name == "docling" else {}
+                blocks = get_extractor(name, **kwargs).extract(pdf_path)
+                text = blocks[0]["text"] if blocks else ""
+            bad = looks_garbled(text)
+            if not bad:
+                logger.warning("[wholedoc] %s: using %s text for this document "
+                               "(the %s output for it is not trustworthy)",
+                               pdf_path.name, name, self.extractor_name)
+                return text, None
+            logger.warning("[wholedoc] %s: fallback %s also unreadable (%s)",
+                           pdf_path.name, name, bad)
+        return "", reason
 
     def classify_entire_document(self, full_text):
         """Classify a whole document's text in one call.

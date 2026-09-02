@@ -1,0 +1,1589 @@
+{
+  "tool": "pdfplumber",
+  "version": "0.11.10",
+  "file": "sample11.pdf",
+  "body_font": {
+    "size": 10.6,
+    "fontname": "CMNDNL+ArialMT"
+  },
+  "pages": [
+    {
+      "page_no": 1,
+      "size": {
+        "width": 612.0,
+        "height": 792.0
+      },
+      "words": [
+        {
+          "text": "(cid:20)",
+          "fontname": "CMNFLC+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 303.04,
+          "x1": 308.91,
+          "top": 745.54,
+          "bottom": 756.1
+        },
+        {
+          "text": "(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 308.91,
+          "x1": 311.85,
+          "top": 744.91,
+          "bottom": 755.47
+        },
+        {
+          "text": "(cid:15)(cid:5)(cid:19)(cid:17)(cid:22)(cid:12)(cid:1)(cid:1)(cid:25)(cid:39)(cid:29)(cid:41)(cid:1)(cid:34)(cid:42)(cid:44)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)(cid:1)(cid:22)(cid:29)(cid:41)(cid:29)(cid:35)(cid:33)(cid:40)(cid:33)(cid:41)(cid:46)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 248.15,
+          "top": 73.39,
+          "bottom": 83.95
+        },
+        {
+          "text": "(cid:24)(cid:48)(cid:33)(cid:44)(cid:48)(cid:37)(cid:33)(cid:49)(cid:6)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 124.44,
+          "top": 93.79,
+          "bottom": 104.35
+        },
+        {
+          "text": "(cid:32)(cid:43)(cid:44)(cid:54)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 124.41,
+          "x1": 144.28,
+          "top": 93.79,
+          "bottom": 104.35
+        },
+        {
+          "text": "(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 144.24,
+          "x1": 147.18,
+          "top": 93.79,
+          "bottom": 104.35
+        },
+        {
+          "text": "(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:26)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:29)(cid:47)(cid:36)(cid:49)(cid:1)(cid:43)(cid:36)(cid:54)(cid:1)(cid:37)(cid:40)(cid:40)(cid:49)(cid:1)(cid:51)(cid:53)(cid:40)(cid:51)(cid:36)(cid:53)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:53)(cid:39)(cid:36)(cid:49)(cid:38)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:42)(cid:56)(cid:44)(cid:39)(cid:40)(cid:47)(cid:44)(cid:49)(cid:40)(cid:54)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 147.16,
+          "x1": 532.92,
+          "top": 93.79,
+          "bottom": 104.35
+        },
+        {
+          "text": "(cid:27)(cid:31)(cid:21)(cid:1)(cid:19)(cid:44)(cid:57)(cid:44)(cid:54)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:1)(cid:18)(cid:43)(cid:40)(cid:48)(cid:44)(cid:54)(cid:55)(cid:53)(cid:60)(cid:4)(cid:1)(cid:62)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 203.75,
+          "top": 107.71,
+          "bottom": 118.27
+        },
+        {
+          "text": "(cid:3)(cid:10)(cid:20)(cid:13)(cid:9)(cid:11)(cid:1)(cid:19)(cid:17)(cid:1)(cid:7)(cid:5)(cid:18)(cid:1)(cid:17)(cid:16)(cid:1)(cid:4)(cid:8)(cid:19)(cid:8)(cid:1)(cid:6)(cid:8)(cid:16)(cid:8)(cid:12)(cid:11)(cid:15)(cid:11)(cid:16)(cid:19)(cid:1)(cid:7)(cid:14)(cid:8)(cid:16)(cid:18)(cid:2)",
+          "fontname": "CMNDNN+Arial-ItalicMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 203.74,
+          "x1": 401.06,
+          "top": 107.71,
+          "bottom": 118.27
+        },
+        {
+          "text": "(cid:63)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:44)(cid:54)(cid:1)(cid:38)(cid:50)(cid:49)(cid:54)(cid:44)(cid:54)(cid:55)(cid:40)(cid:49)(cid:55)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 401.01,
+          "x1": 527.69,
+          "top": 107.71,
+          "bottom": 118.27
+        },
+        {
+          "text": "(cid:27)(cid:31)(cid:21)(cid:1)(cid:29)(cid:50)(cid:47)(cid:44)(cid:38)(cid:60)(cid:1)(cid:50)(cid:49)(cid:1)(cid:19)(cid:44)(cid:54)(cid:54)(cid:40)(cid:48)(cid:44)(cid:49)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:31)(cid:43)(cid:36)(cid:53)(cid:44)(cid:49)(cid:42)(cid:1)(cid:50)(cid:41)(cid:1)(cid:30)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:1)(cid:30)(cid:40)(cid:54)(cid:56)(cid:47)(cid:55)(cid:54)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 370.08,
+          "top": 121.63,
+          "bottom": 132.19
+        },
+        {
+          "text": "(cid:16)(cid:29)(cid:46)(cid:29)(cid:1)(cid:27)(cid:36)(cid:29)(cid:44)(cid:37)(cid:41)(cid:35)(cid:1)(cid:13)(cid:31)(cid:44)(cid:42)(cid:45)(cid:45)(cid:1)(cid:28)(cid:33)(cid:29)(cid:40)(cid:45)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 211.36,
+          "top": 135.54,
+          "bottom": 146.1
+        },
+        {
+          "text": "(cid:6)(cid:1)(cid:32)(cid:43)(cid:40)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:55)(cid:40)(cid:36)(cid:48)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:54)(cid:55)(cid:50)(cid:53)(cid:40)(cid:4)(cid:1)(cid:54)(cid:43)(cid:36)(cid:53)(cid:40)(cid:4)(cid:1)(cid:39)(cid:44)(cid:54)(cid:54)(cid:40)(cid:48)(cid:44)(cid:49)(cid:36)(cid:55)(cid:40)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:36)(cid:53)(cid:38)(cid:43)(cid:44)(cid:57)(cid:40)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 211.35,
+          "x1": 523.69,
+          "top": 135.54,
+          "bottom": 146.1
+        },
+        {
+          "text": "(cid:41)(cid:50)(cid:47)(cid:47)(cid:50)(cid:58)(cid:44)(cid:49)(cid:42)(cid:1)(cid:58)(cid:40)(cid:47)(cid:47)(cid:5)(cid:40)(cid:54)(cid:55)(cid:36)(cid:37)(cid:47)(cid:44)(cid:54)(cid:43)(cid:40)(cid:39)(cid:4)(cid:1)(cid:50)(cid:51)(cid:40)(cid:49)(cid:4)(cid:1)(cid:40)(cid:41)(cid:41)(cid:40)(cid:38)(cid:55)(cid:44)(cid:57)(cid:40)(cid:4)(cid:1)(cid:54)(cid:40)(cid:38)(cid:56)(cid:53)(cid:40)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:55)(cid:44)(cid:48)(cid:40)(cid:47)(cid:60)(cid:1)(cid:51)(cid:53)(cid:50)(cid:38)(cid:40)(cid:54)(cid:54)(cid:40)(cid:54)(cid:6)(cid:1)(cid:16)(cid:55)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:38)(cid:50)(cid:53)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)(cid:50)(cid:56)(cid:53)(cid:1)(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.87,
+          "x1": 520.7,
+          "top": 149.46,
+          "bottom": 160.02
+        },
+        {
+          "text": "(cid:26)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:54)(cid:55)(cid:53)(cid:36)(cid:55)(cid:40)(cid:42)(cid:60)(cid:1)(cid:44)(cid:54)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:4)(cid:1)(cid:36)(cid:1)(cid:54)(cid:40)(cid:55)(cid:1)(cid:50)(cid:41)(cid:1)(cid:58)(cid:40)(cid:37)(cid:1)(cid:55)(cid:50)(cid:50)(cid:47)(cid:54)(cid:1)(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:54)(cid:56)(cid:51)(cid:51)(cid:50)(cid:53)(cid:55)(cid:1)(cid:57)(cid:44)(cid:53)(cid:55)(cid:56)(cid:36)(cid:47)(cid:1)(cid:55)(cid:40)(cid:36)(cid:48)(cid:58)(cid:50)(cid:53)(cid:46)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 463.46,
+          "top": 163.38,
+          "bottom": 173.94
+        },
+        {
+          "text": "(cid:20)(cid:13)(cid:8)",
+          "fontname": "CMNDNN+Arial-ItalicMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 463.45,
+          "x1": 476.9,
+          "top": 163.38,
+          "bottom": 173.94
+        },
+        {
+          "text": "(cid:1)(cid:36)(cid:1)(cid:22)(cid:50)(cid:50)(cid:42)(cid:47)(cid:40)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 476.87,
+          "x1": 525.33,
+          "top": 163.38,
+          "bottom": 173.94
+        },
+        {
+          "text": "(cid:32)(cid:40)(cid:36)(cid:48)(cid:1)(cid:19)(cid:53)(cid:44)(cid:57)(cid:40)(cid:1)(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:51)(cid:53)(cid:50)(cid:57)(cid:44)(cid:39)(cid:40)(cid:54)(cid:1)(cid:56)(cid:49)(cid:47)(cid:44)(cid:48)(cid:44)(cid:55)(cid:40)(cid:39)(cid:1)(cid:54)(cid:55)(cid:50)(cid:53)(cid:36)(cid:42)(cid:40)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:51)(cid:53)(cid:40)(cid:54)(cid:40)(cid:49)(cid:55)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:4)(cid:1)(cid:39)(cid:50)(cid:38)(cid:56)(cid:48)(cid:40)(cid:49)(cid:55)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:50)(cid:55)(cid:43)(cid:40)(cid:53)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:4)(cid:1)(cid:44)(cid:49)(cid:38)(cid:47)(cid:56)(cid:39)(cid:44)(cid:49)(cid:42)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.86,
+          "x1": 534.13,
+          "top": 177.3,
+          "bottom": 187.86
+        },
+        {
+          "text": "(cid:55)(cid:43)(cid:40)(cid:1)(cid:56)(cid:49)(cid:39)(cid:40)(cid:53)(cid:47)(cid:60)(cid:44)(cid:49)(cid:42)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:54)(cid:55)(cid:50)(cid:53)(cid:36)(cid:42)(cid:40)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:50)(cid:56)(cid:53)(cid:1)(cid:38)(cid:56)(cid:54)(cid:55)(cid:50)(cid:48)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:48)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:36)(cid:51)(cid:51)(cid:54)(cid:6)(cid:1)(cid:32)(cid:43)(cid:40)(cid:54)(cid:40)(cid:1)(cid:38)(cid:56)(cid:54)(cid:55)(cid:50)(cid:48)(cid:1)(cid:36)(cid:51)(cid:51)(cid:54)(cid:1)(cid:44)(cid:49)(cid:38)(cid:47)(cid:56)(cid:39)(cid:40)(cid:14)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.86,
+          "x1": 521.84,
+          "top": 190.97,
+          "bottom": 201.53
+        },
+        {
+          "text": "(cid:27)(cid:46)(cid:44)(cid:29)(cid:37)(cid:41)(cid:45)(cid:4)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.84,
+          "x1": 110.36,
+          "top": 204.89,
+          "bottom": 215.45
+        },
+        {
+          "text": "(cid:1)(cid:58)(cid:43)(cid:44)(cid:38)(cid:43)(cid:1)(cid:55)(cid:53)(cid:36)(cid:38)(cid:46)(cid:54)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:44)(cid:39)(cid:40)(cid:49)(cid:55)(cid:44)(cid:55)(cid:60)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:55)(cid:53)(cid:36)(cid:49)(cid:54)(cid:41)(cid:40)(cid:53)(cid:1)(cid:50)(cid:41)(cid:1)(cid:54)(cid:55)(cid:53)(cid:36)(cid:44)(cid:49)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:51)(cid:47)(cid:36)(cid:54)(cid:48)(cid:44)(cid:39)(cid:54)(cid:15)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 110.35,
+          "x1": 399.84,
+          "top": 204.89,
+          "bottom": 215.45
+        },
+        {
+          "text": "(cid:25)(cid:44)(cid:42)(cid:46)(cid:42)(cid:31)(cid:42)(cid:39)(cid:45)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 399.81,
+          "x1": 448.27,
+          "top": 204.89,
+          "bottom": 215.45
+        },
+        {
+          "text": "(cid:4)(cid:1)(cid:58)(cid:43)(cid:44)(cid:38)(cid:43)(cid:1)(cid:39)(cid:50)(cid:38)(cid:56)(cid:48)(cid:40)(cid:49)(cid:55)(cid:54)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 448.24,
+          "x1": 538.16,
+          "top": 204.89,
+          "bottom": 215.45
+        },
+        {
+          "text": "(cid:50)(cid:56)(cid:53)(cid:1)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:50)(cid:53)(cid:60)(cid:1)(cid:51)(cid:53)(cid:50)(cid:38)(cid:40)(cid:39)(cid:56)(cid:53)(cid:40)(cid:54)(cid:15)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.84,
+          "x1": 218.3,
+          "top": 218.81,
+          "bottom": 229.37
+        },
+        {
+          "text": "(cid:22)(cid:42)(cid:39)(cid:33)(cid:31)(cid:47)(cid:39)(cid:33)(cid:45)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 218.34,
+          "x1": 269.15,
+          "top": 218.81,
+          "bottom": 229.37
+        },
+        {
+          "text": "(cid:1)(cid:2)(cid:44)(cid:49)(cid:1)(cid:51)(cid:53)(cid:50)(cid:42)(cid:53)(cid:40)(cid:54)(cid:54)(cid:3)(cid:4)(cid:1)(cid:58)(cid:43)(cid:44)(cid:38)(cid:43)(cid:1)(cid:43)(cid:50)(cid:56)(cid:54)(cid:40)(cid:54)(cid:1)(cid:44)(cid:49)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:54)(cid:55)(cid:53)(cid:56)(cid:38)(cid:55)(cid:56)(cid:53)(cid:40)(cid:54)(cid:4)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 269.1,
+          "x1": 542.22,
+          "top": 218.81,
+          "bottom": 229.37
+        },
+        {
+          "text": "(cid:54)(cid:60)(cid:49)(cid:55)(cid:43)(cid:40)(cid:54)(cid:44)(cid:54)(cid:4)(cid:1)(cid:38)(cid:43)(cid:36)(cid:53)(cid:36)(cid:38)(cid:55)(cid:40)(cid:53)(cid:44)(cid:61)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:55)(cid:40)(cid:36)(cid:48)(cid:1)(cid:56)(cid:54)(cid:36)(cid:42)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:48)(cid:50)(cid:49)(cid:50)(cid:48)(cid:40)(cid:53)(cid:54)(cid:6)(cid:1)(cid:21)(cid:56)(cid:55)(cid:56)(cid:53)(cid:40)(cid:1)(cid:58)(cid:50)(cid:53)(cid:46)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:44)(cid:49)(cid:38)(cid:50)(cid:53)(cid:51)(cid:50)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:36)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.83,
+          "x1": 524.76,
+          "top": 232.73,
+          "bottom": 243.29
+        },
+        {
+          "text": "(cid:62)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:1)(cid:37)(cid:60)(cid:1)(cid:54)(cid:55)(cid:53)(cid:56)(cid:38)(cid:55)(cid:56)(cid:53)(cid:40)(cid:63)(cid:1)(cid:38)(cid:36)(cid:51)(cid:36)(cid:37)(cid:44)(cid:47)(cid:44)(cid:55)(cid:60)(cid:1)(cid:55)(cid:50)(cid:1)(cid:43)(cid:40)(cid:47)(cid:51)(cid:1)(cid:56)(cid:54)(cid:40)(cid:53)(cid:54)(cid:1)(cid:41)(cid:44)(cid:49)(cid:39)(cid:1)(cid:48)(cid:50)(cid:49)(cid:50)(cid:48)(cid:40)(cid:53)(cid:54)(cid:1)(cid:52)(cid:56)(cid:44)(cid:38)(cid:46)(cid:47)(cid:60)(cid:1)(cid:40)(cid:57)(cid:40)(cid:49)(cid:1)(cid:58)(cid:43)(cid:40)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:36)(cid:53)(cid:38)(cid:43)(cid:44)(cid:57)(cid:40)(cid:1)(cid:54)(cid:38)(cid:36)(cid:47)(cid:40)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.82,
+          "x1": 540.58,
+          "top": 246.65,
+          "bottom": 257.21
+        },
+        {
+          "text": "(cid:55)(cid:43)(cid:50)(cid:56)(cid:54)(cid:36)(cid:49)(cid:39)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:40)(cid:49)(cid:55)(cid:53)(cid:44)(cid:40)(cid:54)(cid:6)(cid:1)(cid:34)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:36)(cid:47)(cid:54)(cid:50)(cid:1)(cid:39)(cid:40)(cid:57)(cid:40)(cid:47)(cid:50)(cid:51)(cid:1)(cid:36)(cid:1)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:36)(cid:53)(cid:38)(cid:43)(cid:44)(cid:57)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.81,
+          "x1": 381.89,
+          "top": 260.57,
+          "bottom": 271.13
+        },
+        {
+          "text": "(cid:19)(cid:17)(cid:22)(cid:5)(cid:23)(cid:17)(cid:28)(cid:1)(cid:21)(cid:29)(cid:30)(cid:42)(cid:44)(cid:29)(cid:46)(cid:42)(cid:44)(cid:51)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 381.73,
+          "x1": 490.87,
+          "top": 260.57,
+          "bottom": 271.13
+        },
+        {
+          "text": "(cid:23)(cid:42)(cid:46)(cid:33)(cid:30)(cid:42)(cid:42)(cid:38)(cid:45)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.81,
+          "x1": 129.01,
+          "top": 274.48,
+          "bottom": 285.04
+        },
+        {
+          "text": "(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:39)(cid:50)(cid:38)(cid:56)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:53)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:38)(cid:36)(cid:49)(cid:1)(cid:37)(cid:40)(cid:1)(cid:36)(cid:54)(cid:54)(cid:50)(cid:38)(cid:44)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:54)(cid:51)(cid:40)(cid:38)(cid:44)(cid:41)(cid:44)(cid:38)(cid:1)(cid:53)(cid:40)(cid:38)(cid:50)(cid:53)(cid:39)(cid:54)(cid:1)(cid:44)(cid:49)(cid:1)(cid:50)(cid:56)(cid:53)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 128.99,
+          "x1": 476.85,
+          "top": 274.48,
+          "bottom": 285.04
+        },
+        {
+          "text": "(cid:25)(cid:44)(cid:42)(cid:46)(cid:42)(cid:31)(cid:42)(cid:39)(cid:45)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 476.83,
+          "x1": 525.29,
+          "top": 274.48,
+          "bottom": 285.04
+        },
+        {
+          "text": "(cid:4)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 525.26,
+          "x1": 531.12,
+          "top": 274.48,
+          "bottom": 285.04
+        },
+        {
+          "text": "(cid:27)(cid:46)(cid:44)(cid:29)(cid:37)(cid:41)(cid:45)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.81,
+          "x1": 107.45,
+          "top": 288.16,
+          "bottom": 298.72
+        },
+        {
+          "text": "(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 107.41,
+          "x1": 133.7,
+          "top": 288.16,
+          "bottom": 298.72
+        },
+        {
+          "text": "(cid:22)(cid:42)(cid:39)(cid:33)(cid:31)(cid:47)(cid:39)(cid:33)(cid:45)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 133.69,
+          "x1": 184.5,
+          "top": 288.16,
+          "bottom": 298.72
+        },
+        {
+          "text": "(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:37)(cid:36)(cid:54)(cid:40)(cid:54)(cid:6)(cid:1)(cid:16)(cid:47)(cid:47)(cid:1)(cid:49)(cid:40)(cid:58)(cid:1)(cid:55)(cid:40)(cid:36)(cid:48)(cid:1)(cid:48)(cid:40)(cid:48)(cid:37)(cid:40)(cid:53)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:53)(cid:40)(cid:38)(cid:40)(cid:44)(cid:57)(cid:40)(cid:1)(cid:36)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:50)(cid:53)(cid:44)(cid:40)(cid:49)(cid:55)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:55)(cid:50)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 184.45,
+          "x1": 529.34,
+          "top": 288.16,
+          "bottom": 298.72
+        },
+        {
+          "text": "(cid:43)(cid:40)(cid:47)(cid:51)(cid:1)(cid:55)(cid:43)(cid:40)(cid:48)(cid:1)(cid:37)(cid:40)(cid:38)(cid:50)(cid:48)(cid:40)(cid:1)(cid:53)(cid:36)(cid:51)(cid:44)(cid:39)(cid:47)(cid:60)(cid:1)(cid:51)(cid:53)(cid:50)(cid:41)(cid:44)(cid:38)(cid:44)(cid:40)(cid:49)(cid:55)(cid:1)(cid:44)(cid:49)(cid:1)(cid:40)(cid:36)(cid:38)(cid:43)(cid:1)(cid:50)(cid:41)(cid:1)(cid:55)(cid:43)(cid:40)(cid:54)(cid:40)(cid:1)(cid:55)(cid:50)(cid:50)(cid:47)(cid:54)(cid:6)(cid:1)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.81,
+          "x1": 348.45,
+          "top": 302.08,
+          "bottom": 312.64
+        },
+        {
+          "text": "(cid:7)(cid:6)(cid:15)(cid:5)(cid:19)(cid:17)(cid:22)(cid:1)(cid:26)(cid:33)(cid:45)(cid:33)(cid:29)(cid:44)(cid:31)(cid:36)(cid:1)(cid:25)(cid:44)(cid:42)(cid:32)(cid:47)(cid:31)(cid:46)(cid:45)(cid:6)(cid:1)(cid:2)(cid:13)(cid:3)(cid:1)(cid:22)(cid:29)(cid:46)(cid:33)(cid:44)(cid:37)(cid:29)(cid:39)(cid:45)(cid:6)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.81,
+          "x1": 288.88,
+          "top": 322.72,
+          "bottom": 333.28
+        },
+        {
+          "text": "(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:54)(cid:38)(cid:44)(cid:40)(cid:49)(cid:55)(cid:44)(cid:54)(cid:55)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:51)(cid:53)(cid:50)(cid:39)(cid:56)(cid:38)(cid:40)(cid:1)(cid:49)(cid:40)(cid:58)(cid:1)(cid:38)(cid:43)(cid:40)(cid:48)(cid:44)(cid:38)(cid:36)(cid:47)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 288.87,
+          "x1": 497.76,
+          "top": 322.72,
+          "bottom": 333.28
+        },
+        {
+          "text": "(cid:38)(cid:50)(cid:48)(cid:51)(cid:50)(cid:56)(cid:49)(cid:39)(cid:54)(cid:4)(cid:1)(cid:49)(cid:40)(cid:58)(cid:1)(cid:37)(cid:44)(cid:50)(cid:47)(cid:50)(cid:42)(cid:44)(cid:38)(cid:36)(cid:47)(cid:1)(cid:53)(cid:40)(cid:36)(cid:42)(cid:40)(cid:49)(cid:55)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:49)(cid:40)(cid:58)(cid:1)(cid:37)(cid:36)(cid:38)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:1)(cid:54)(cid:55)(cid:53)(cid:36)(cid:44)(cid:49)(cid:54)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.81,
+          "x1": 369.46,
+          "top": 336.4,
+          "bottom": 346.96
+        },
+        {
+          "text": "(cid:2)(cid:14)(cid:3)(cid:1)(cid:17)(cid:50)(cid:43)(cid:33)(cid:44)(cid:37)(cid:40)(cid:33)(cid:41)(cid:46)(cid:29)(cid:39)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)(cid:6)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 369.49,
+          "x1": 484.45,
+          "top": 336.4,
+          "bottom": 346.96
+        },
+        {
+          "text": "(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 484.42,
+          "x1": 538.72,
+          "top": 336.4,
+          "bottom": 346.96
+        },
+        {
+          "text": "(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:40)(cid:39)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:38)(cid:43)(cid:40)(cid:48)(cid:44)(cid:38)(cid:36)(cid:47)(cid:1)(cid:54)(cid:60)(cid:49)(cid:55)(cid:43)(cid:40)(cid:54)(cid:44)(cid:54)(cid:1)(cid:51)(cid:53)(cid:50)(cid:38)(cid:40)(cid:39)(cid:56)(cid:53)(cid:40)(cid:54)(cid:4)(cid:1)(cid:37)(cid:44)(cid:50)(cid:38)(cid:43)(cid:40)(cid:48)(cid:44)(cid:38)(cid:36)(cid:47)(cid:4)(cid:1)(cid:54)(cid:55)(cid:53)(cid:56)(cid:38)(cid:55)(cid:56)(cid:53)(cid:36)(cid:47)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:48)(cid:50)(cid:47)(cid:40)(cid:38)(cid:56)(cid:47)(cid:36)(cid:53)(cid:1)(cid:37)(cid:44)(cid:50)(cid:47)(cid:50)(cid:42)(cid:60)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.8,
+          "x1": 502.12,
+          "top": 350.32,
+          "bottom": 360.91
+        },
+        {
+          "text": "(cid:40)(cid:59)(cid:51)(cid:40)(cid:53)(cid:44)(cid:48)(cid:40)(cid:49)(cid:55)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:54)(cid:55)(cid:53)(cid:56)(cid:38)(cid:55)(cid:56)(cid:53)(cid:36)(cid:47)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:41)(cid:56)(cid:49)(cid:38)(cid:55)(cid:44)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:38)(cid:43)(cid:36)(cid:53)(cid:36)(cid:38)(cid:55)(cid:40)(cid:53)(cid:44)(cid:61)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:51)(cid:50)(cid:47)(cid:60)(cid:48)(cid:40)(cid:53)(cid:54)(cid:6)(cid:1)(cid:31)(cid:56)(cid:38)(cid:43)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:44)(cid:49)(cid:38)(cid:47)(cid:56)(cid:39)(cid:40)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 528.28,
+          "top": 364.27,
+          "bottom": 374.83
+        },
+        {
+          "text": "(cid:54)(cid:51)(cid:40)(cid:38)(cid:55)(cid:53)(cid:36)(cid:4)(cid:1)(cid:38)(cid:43)(cid:53)(cid:50)(cid:48)(cid:36)(cid:55)(cid:50)(cid:42)(cid:53)(cid:36)(cid:48)(cid:54)(cid:4)(cid:1)(cid:39)(cid:44)(cid:41)(cid:41)(cid:53)(cid:36)(cid:38)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:4)(cid:1)(cid:44)(cid:48)(cid:36)(cid:42)(cid:40)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:53)(cid:40)(cid:54)(cid:56)(cid:47)(cid:55)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:51)(cid:53)(cid:50)(cid:51)(cid:40)(cid:53)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:36)(cid:49)(cid:36)(cid:47)(cid:60)(cid:54)(cid:44)(cid:54)(cid:6)(cid:1)(cid:26)(cid:40)(cid:55)(cid:36)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 525.95,
+          "top": 378.19,
+          "bottom": 388.75
+        },
+        {
+          "text": "(cid:37)(cid:40)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:39)(cid:40)(cid:54)(cid:38)(cid:53)(cid:44)(cid:37)(cid:44)(cid:49)(cid:42)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:54)(cid:55)(cid:50)(cid:53)(cid:36)(cid:42)(cid:40)(cid:1)(cid:47)(cid:50)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:38)(cid:43)(cid:40)(cid:48)(cid:44)(cid:38)(cid:36)(cid:47)(cid:1)(cid:38)(cid:50)(cid:48)(cid:51)(cid:50)(cid:56)(cid:49)(cid:39)(cid:54)(cid:4)(cid:1)(cid:51)(cid:47)(cid:36)(cid:54)(cid:48)(cid:44)(cid:39)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:37)(cid:36)(cid:38)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 510.69,
+          "top": 392.11,
+          "bottom": 402.67
+        },
+        {
+          "text": "(cid:54)(cid:55)(cid:53)(cid:36)(cid:44)(cid:49)(cid:54)(cid:6)(cid:1)(cid:34)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:36)(cid:47)(cid:54)(cid:50)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:36)(cid:49)(cid:49)(cid:50)(cid:55)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:57)(cid:36)(cid:53)(cid:44)(cid:50)(cid:56)(cid:54)(cid:1)(cid:54)(cid:40)(cid:52)(cid:56)(cid:40)(cid:49)(cid:38)(cid:40)(cid:1)(cid:44)(cid:49)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:2)(cid:51)(cid:50)(cid:47)(cid:60)(cid:48)(cid:40)(cid:53)(cid:54)(cid:4)(cid:1)(cid:51)(cid:53)(cid:50)(cid:55)(cid:40)(cid:44)(cid:49)(cid:54)(cid:4)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.87,
+          "x1": 512.45,
+          "top": 406.03,
+          "bottom": 416.59
+        },
+        {
+          "text": "(cid:19)(cid:27)(cid:16)(cid:3)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.87,
+          "x1": 103.39,
+          "top": 419.94,
+          "bottom": 430.5
+        },
+        {
+          "text": "(cid:2)(cid:15)(cid:3)(cid:1)(cid:27)(cid:42)(cid:34)(cid:46)(cid:49)(cid:29)(cid:44)(cid:33)(cid:6)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 103.37,
+          "x1": 168.13,
+          "top": 419.94,
+          "bottom": 430.5
+        },
+        {
+          "text": "(cid:1)(cid:34)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:54)(cid:50)(cid:41)(cid:55)(cid:58)(cid:36)(cid:53)(cid:40)(cid:1)(cid:44)(cid:49)(cid:38)(cid:47)(cid:56)(cid:39)(cid:44)(cid:49)(cid:42)(cid:1)(cid:38)(cid:56)(cid:54)(cid:55)(cid:50)(cid:48)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:36)(cid:51)(cid:51)(cid:54)(cid:1)(cid:58)(cid:53)(cid:44)(cid:55)(cid:55)(cid:40)(cid:49)(cid:1)(cid:44)(cid:49)(cid:1)(cid:29)(cid:60)(cid:55)(cid:43)(cid:50)(cid:49)(cid:4)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 168.12,
+          "x1": 532.88,
+          "top": 419.94,
+          "bottom": 430.51
+        },
+        {
+          "text": "(cid:36)(cid:47)(cid:42)(cid:50)(cid:53)(cid:44)(cid:55)(cid:43)(cid:48)(cid:54)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:30)(cid:50)(cid:54)(cid:40)(cid:55)(cid:55)(cid:36)(cid:1)(cid:48)(cid:50)(cid:47)(cid:40)(cid:38)(cid:56)(cid:47)(cid:36)(cid:53)(cid:1)(cid:48)(cid:50)(cid:39)(cid:40)(cid:47)(cid:44)(cid:49)(cid:42)(cid:1)(cid:54)(cid:50)(cid:41)(cid:55)(cid:58)(cid:36)(cid:53)(cid:40)(cid:1)(cid:54)(cid:56)(cid:44)(cid:55)(cid:40)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:54)(cid:44)(cid:48)(cid:56)(cid:47)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:51)(cid:53)(cid:50)(cid:42)(cid:53)(cid:36)(cid:48)(cid:54)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 480.39,
+          "top": 433.63,
+          "bottom": 444.19
+        },
+        {
+          "text": "(cid:2)(cid:16)(cid:3)(cid:1)(cid:24)(cid:46)(cid:36)(cid:33)(cid:44)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 480.39,
+          "x1": 525.91,
+          "top": 433.63,
+          "bottom": 444.19
+        },
+        {
+          "text": "(cid:25)(cid:44)(cid:42)(cid:32)(cid:47)(cid:31)(cid:46)(cid:45)(cid:6)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 123.24,
+          "top": 447.55,
+          "bottom": 458.11
+        },
+        {
+          "text": "(cid:34)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:40)(cid:59)(cid:51)(cid:40)(cid:53)(cid:44)(cid:48)(cid:40)(cid:49)(cid:55)(cid:36)(cid:47)(cid:1)(cid:51)(cid:53)(cid:50)(cid:55)(cid:50)(cid:38)(cid:50)(cid:47)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:50)(cid:49)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:56)(cid:54)(cid:36)(cid:42)(cid:40)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 123.22,
+          "x1": 507.27,
+          "top": 447.55,
+          "bottom": 458.11
+        },
+        {
+          "text": "(cid:38)(cid:50)(cid:48)(cid:51)(cid:50)(cid:49)(cid:40)(cid:49)(cid:55)(cid:1)(cid:54)(cid:40)(cid:53)(cid:57)(cid:44)(cid:38)(cid:40)(cid:54)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.86,
+          "x1": 171.1,
+          "top": 461.47,
+          "bottom": 472.03
+        },
+        {
+          "text": "(cid:2)(cid:17)(cid:3)(cid:1)(cid:17)(cid:32)(cid:47)(cid:31)(cid:29)(cid:46)(cid:37)(cid:42)(cid:41)(cid:1)(cid:29)(cid:41)(cid:32)(cid:1)(cid:24)(cid:47)(cid:46)(cid:44)(cid:33)(cid:29)(cid:31)(cid:36)(cid:1)(cid:22)(cid:29)(cid:46)(cid:33)(cid:44)(cid:37)(cid:29)(cid:39)(cid:45)(cid:6)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 171.08,
+          "x1": 360.7,
+          "top": 461.47,
+          "bottom": 472.03
+        },
+        {
+          "text": "(cid:1)(cid:28)(cid:56)(cid:53)(cid:1)(cid:37)(cid:53)(cid:50)(cid:36)(cid:39)(cid:40)(cid:53)(cid:1)(cid:44)(cid:48)(cid:51)(cid:36)(cid:38)(cid:55)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 360.7,
+          "x1": 510.15,
+          "top": 461.47,
+          "bottom": 472.03
+        },
+        {
+          "text": "(cid:40)(cid:49)(cid:42)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:36)(cid:38)(cid:55)(cid:44)(cid:57)(cid:44)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:40)(cid:39)(cid:56)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:54)(cid:1)(cid:2)(cid:54)(cid:60)(cid:47)(cid:47)(cid:36)(cid:37)(cid:44)(cid:4)(cid:1)(cid:47)(cid:40)(cid:38)(cid:55)(cid:56)(cid:53)(cid:40)(cid:54)(cid:4)(cid:1)(cid:39)(cid:40)(cid:48)(cid:50)(cid:49)(cid:54)(cid:55)(cid:53)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:4)(cid:1)(cid:43)(cid:36)(cid:49)(cid:39)(cid:54)(cid:5)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 531.21,
+          "top": 475.39,
+          "bottom": 485.95
+        },
+        {
+          "text": "(cid:50)(cid:49)(cid:1)(cid:36)(cid:38)(cid:55)(cid:44)(cid:57)(cid:44)(cid:55)(cid:44)(cid:40)(cid:54)(cid:3)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:50)(cid:49)(cid:47)(cid:44)(cid:49)(cid:40)(cid:1)(cid:38)(cid:50)(cid:49)(cid:55)(cid:40)(cid:49)(cid:55)(cid:1)(cid:2)(cid:57)(cid:44)(cid:39)(cid:40)(cid:50)(cid:54)(cid:4)(cid:1)(cid:37)(cid:47)(cid:50)(cid:42)(cid:1)(cid:51)(cid:50)(cid:54)(cid:55)(cid:54)(cid:4)(cid:1)(cid:51)(cid:50)(cid:39)(cid:38)(cid:36)(cid:54)(cid:55)(cid:54)(cid:3)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 366.65,
+          "top": 489.31,
+          "bottom": 499.87
+        },
+        {
+          "text": "(cid:2)(cid:18)(cid:3)(cid:1)(cid:17)(cid:48)(cid:29)(cid:39)(cid:47)(cid:29)(cid:46)(cid:37)(cid:42)(cid:41)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)(cid:6)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 366.63,
+          "x1": 464.65,
+          "top": 489.31,
+          "bottom": 499.87
+        },
+        {
+          "text": "(cid:1)(cid:28)(cid:56)(cid:53)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 464.64,
+          "x1": 485.08,
+          "top": 489.31,
+          "bottom": 499.87
+        },
+        {
+          "text": "(cid:48)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:37)(cid:53)(cid:50)(cid:36)(cid:39)(cid:40)(cid:53)(cid:1)(cid:44)(cid:48)(cid:51)(cid:36)(cid:38)(cid:55)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 229.53,
+          "top": 503.71,
+          "bottom": 514.27
+        },
+        {
+          "text": "(cid:36)(cid:38)(cid:55)(cid:44)(cid:57)(cid:44)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:42)(cid:40)(cid:49)(cid:40)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:36)(cid:54)(cid:54)(cid:40)(cid:54)(cid:54)(cid:48)(cid:40)(cid:49)(cid:55)(cid:54)(cid:4)(cid:1)(cid:49)(cid:36)(cid:53)(cid:53)(cid:36)(cid:55)(cid:44)(cid:57)(cid:40)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 229.47,
+          "x1": 482.6,
+          "top": 503.33,
+          "bottom": 514.37
+        },
+        {
+          "text": "(cid:36)(cid:42)(cid:42)(cid:53)(cid:40)(cid:42)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:36)(cid:37)(cid:50)(cid:56)(cid:55)(cid:1)(cid:51)(cid:36)(cid:53)(cid:55)(cid:44)(cid:38)(cid:44)(cid:51)(cid:36)(cid:49)(cid:55)(cid:54)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 11.04,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 274.94,
+          "top": 517.73,
+          "bottom": 528.77
+        },
+        {
+          "text": "(cid:6)(cid:1)(cid:23)(cid:56)(cid:48)(cid:36)(cid:49)(cid:1)(cid:54)(cid:56)(cid:37)(cid:45)(cid:40)(cid:38)(cid:55)(cid:1)(cid:51)(cid:53)(cid:50)(cid:55)(cid:50)(cid:38)(cid:50)(cid:47)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:39)(cid:40)(cid:57)(cid:40)(cid:47)(cid:50)(cid:51)(cid:40)(cid:39)(cid:1)(cid:36)(cid:49)(cid:39)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 274.9,
+          "x1": 500.24,
+          "top": 518.11,
+          "bottom": 528.67
+        },
+        {
+          "text": "(cid:54)(cid:56)(cid:37)(cid:48)(cid:44)(cid:55)(cid:55)(cid:40)(cid:39)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:24)(cid:30)(cid:17)(cid:1)(cid:53)(cid:40)(cid:57)(cid:44)(cid:40)(cid:58)(cid:7)(cid:36)(cid:51)(cid:51)(cid:53)(cid:50)(cid:57)(cid:36)(cid:47)(cid:1)(cid:36)(cid:55)(cid:1)(cid:40)(cid:36)(cid:38)(cid:43)(cid:1)(cid:44)(cid:49)(cid:54)(cid:55)(cid:44)(cid:55)(cid:56)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:51)(cid:40)(cid:49)(cid:39)(cid:44)(cid:49)(cid:42)(cid:1)(cid:49)(cid:50)(cid:55)(cid:44)(cid:38)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)(cid:36)(cid:58)(cid:36)(cid:53)(cid:39)(cid:6)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 431.4,
+          "top": 532.27,
+          "bottom": 542.83
+        },
+        {
+          "text": "(cid:8)(cid:6)(cid:16)(cid:29)(cid:46)(cid:29)(cid:1)(cid:18)(cid:42)(cid:44)(cid:40)(cid:29)(cid:46)(cid:6)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 150.64,
+          "top": 552.67,
+          "bottom": 563.23
+        },
+        {
+          "text": "(cid:18)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:40)(cid:39)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:55)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:54)(cid:40)(cid:57)(cid:40)(cid:53)(cid:36)(cid:47)(cid:1)(cid:58)(cid:36)(cid:60)(cid:54)(cid:14)(cid:1)(cid:2)(cid:16)(cid:3)(cid:1)(cid:44)(cid:48)(cid:36)(cid:42)(cid:40)(cid:54)(cid:1)(cid:36)(cid:54)(cid:1)(cid:6)(cid:55)(cid:44)(cid:41)(cid:41)(cid:1)(cid:41)(cid:44)(cid:47)(cid:40)(cid:54)(cid:15)(cid:1)(cid:2)(cid:17)(cid:3)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 150.64,
+          "x1": 500.8,
+          "top": 552.67,
+          "bottom": 563.23
+        },
+        {
+          "text": "(cid:40)(cid:59)(cid:51)(cid:40)(cid:53)(cid:44)(cid:48)(cid:40)(cid:49)(cid:55)(cid:36)(cid:47)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:36)(cid:54)(cid:1)(cid:38)(cid:54)(cid:57)(cid:7)(cid:20)(cid:59)(cid:38)(cid:40)(cid:47)(cid:1)(cid:41)(cid:44)(cid:47)(cid:40)(cid:54)(cid:1)(cid:50)(cid:53)(cid:1)(cid:48)(cid:50)(cid:53)(cid:40)(cid:1)(cid:54)(cid:51)(cid:40)(cid:38)(cid:44)(cid:36)(cid:47)(cid:44)(cid:61)(cid:40)(cid:39)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:54)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:50)(cid:56)(cid:55)(cid:51)(cid:56)(cid:55)(cid:1)(cid:50)(cid:41)(cid:1)(cid:21)(cid:16)(cid:18)(cid:31)(cid:4)(cid:1)(cid:25)(cid:18)(cid:5)(cid:26)(cid:31)(cid:4)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 527.66,
+          "top": 566.59,
+          "bottom": 577.15
+        },
+        {
+          "text": "(cid:38)(cid:53)(cid:60)(cid:50)(cid:5)(cid:20)(cid:26)(cid:4)(cid:1)(cid:40)(cid:55)(cid:38)(cid:6)(cid:15)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:2)(cid:18)(cid:3)(cid:1)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:50)(cid:53)(cid:60)(cid:1)(cid:51)(cid:53)(cid:50)(cid:55)(cid:50)(cid:38)(cid:50)(cid:47)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:49)(cid:50)(cid:55)(cid:40)(cid:54)(cid:4)(cid:1)(cid:44)(cid:49)(cid:44)(cid:55)(cid:44)(cid:36)(cid:47)(cid:47)(cid:60)(cid:1)(cid:36)(cid:54)(cid:1)(cid:51)(cid:39)(cid:41)(cid:54)(cid:1)(cid:50)(cid:53)(cid:1)(cid:44)(cid:48)(cid:36)(cid:42)(cid:40)(cid:54)(cid:1)(cid:54)(cid:38)(cid:36)(cid:49)(cid:49)(cid:40)(cid:39)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:47)(cid:36)(cid:37)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 525.46,
+          "top": 580.51,
+          "bottom": 591.07
+        },
+        {
+          "text": "(cid:49)(cid:50)(cid:55)(cid:40)(cid:37)(cid:50)(cid:50)(cid:46)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:55)(cid:43)(cid:40)(cid:49)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:1)(cid:38)(cid:50)(cid:48)(cid:48)(cid:50)(cid:49)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:27)(cid:50)(cid:55)(cid:40)(cid:37)(cid:50)(cid:50)(cid:46)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:6)(cid:1)(cid:34)(cid:43)(cid:40)(cid:49)(cid:40)(cid:57)(cid:40)(cid:53)(cid:1)(cid:51)(cid:50)(cid:54)(cid:54)(cid:44)(cid:37)(cid:47)(cid:40)(cid:4)(cid:1)(cid:58)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:54)(cid:36)(cid:57)(cid:40)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 519.01,
+          "top": 594.42,
+          "bottom": 604.98
+        },
+        {
+          "text": "(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:44)(cid:49)(cid:1)(cid:48)(cid:36)(cid:38)(cid:43)(cid:44)(cid:49)(cid:40)(cid:5)(cid:53)(cid:40)(cid:36)(cid:39)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:49)(cid:50)(cid:49)(cid:5)(cid:51)(cid:53)(cid:50)(cid:51)(cid:53)(cid:44)(cid:40)(cid:55)(cid:36)(cid:53)(cid:60)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:54)(cid:15)(cid:1)(cid:44)(cid:49)(cid:1)(cid:38)(cid:36)(cid:54)(cid:40)(cid:54)(cid:1)(cid:58)(cid:43)(cid:40)(cid:53)(cid:40)(cid:1)(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:44)(cid:54)(cid:1)(cid:49)(cid:50)(cid:55)(cid:1)(cid:51)(cid:50)(cid:54)(cid:54)(cid:44)(cid:37)(cid:47)(cid:40)(cid:4)(cid:1)(cid:58)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 504.92,
+          "top": 608.34,
+          "bottom": 618.9
+        },
+        {
+          "text": "(cid:51)(cid:53)(cid:50)(cid:57)(cid:44)(cid:39)(cid:40)(cid:1)(cid:44)(cid:48)(cid:36)(cid:42)(cid:40)(cid:54)(cid:1)(cid:50)(cid:53)(cid:1)(cid:40)(cid:59)(cid:55)(cid:53)(cid:36)(cid:38)(cid:55)(cid:40)(cid:39)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:55)(cid:50)(cid:1)(cid:44)(cid:49)(cid:55)(cid:40)(cid:53)(cid:40)(cid:54)(cid:55)(cid:40)(cid:39)(cid:1)(cid:51)(cid:36)(cid:53)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:56)(cid:51)(cid:50)(cid:49)(cid:1)(cid:53)(cid:40)(cid:52)(cid:56)(cid:40)(cid:54)(cid:55)(cid:6)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 387.07,
+          "top": 622.26,
+          "bottom": 632.82
+        },
+        {
+          "text": "(cid:9)(cid:6)(cid:13)(cid:31)(cid:31)(cid:33)(cid:45)(cid:45)(cid:1)(cid:46)(cid:42)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)(cid:1)(cid:29)(cid:41)(cid:32)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)(cid:1)(cid:27)(cid:36)(cid:29)(cid:44)(cid:37)(cid:41)(cid:35)(cid:1)(cid:25)(cid:44)(cid:29)(cid:31)(cid:46)(cid:37)(cid:31)(cid:33)(cid:45)(cid:1)(cid:29)(cid:41)(cid:32)(cid:1)(cid:25)(cid:42)(cid:39)(cid:37)(cid:31)(cid:37)(cid:33)(cid:45)(cid:6)(cid:1)(cid:2)(cid:13)(cid:3)(cid:1)(cid:20)(cid:41)(cid:46)(cid:33)(cid:39)(cid:39)(cid:33)(cid:31)(cid:46)(cid:47)(cid:29)(cid:39)(cid:1)(cid:25)(cid:44)(cid:42)(cid:43)(cid:33)(cid:44)(cid:46)(cid:51)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 486.21,
+          "top": 642.66,
+          "bottom": 653.22
+        },
+        {
+          "text": "(cid:4)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 486.18,
+          "x1": 489.12,
+          "top": 642.67,
+          "bottom": 653.23
+        },
+        {
+          "text": "(cid:38)(cid:50)(cid:51)(cid:60)(cid:53)(cid:44)(cid:42)(cid:43)(cid:55)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:36)(cid:39)(cid:48)(cid:44)(cid:49)(cid:44)(cid:54)(cid:55)(cid:40)(cid:53)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:53)(cid:39)(cid:36)(cid:49)(cid:38)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:51)(cid:50)(cid:47)(cid:44)(cid:38)(cid:44)(cid:40)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:27)(cid:31)(cid:21)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:55)(cid:43)(cid:40)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 480.55,
+          "top": 656.59,
+          "bottom": 667.15
+        },
+        {
+          "text": "(cid:51)(cid:36)(cid:53)(cid:55)(cid:44)(cid:38)(cid:44)(cid:51)(cid:36)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)(cid:44)(cid:49)(cid:54)(cid:55)(cid:44)(cid:55)(cid:56)(cid:55)(cid:44)(cid:50)(cid:49)(cid:2)(cid:54)(cid:3)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:38)(cid:50)(cid:39)(cid:44)(cid:41)(cid:44)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:18)(cid:50)(cid:47)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:16)(cid:42)(cid:53)(cid:40)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:6)(cid:1)(cid:34)(cid:40)(cid:1)(cid:40)(cid:59)(cid:51)(cid:40)(cid:38)(cid:55)(cid:1)(cid:36)(cid:47)(cid:47)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 502.0,
+          "top": 670.51,
+          "bottom": 681.07
+        },
+        {
+          "text": "(cid:53)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:40)(cid:53)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)(cid:53)(cid:40)(cid:54)(cid:51)(cid:40)(cid:38)(cid:55)(cid:1)(cid:55)(cid:43)(cid:40)(cid:44)(cid:53)(cid:1)(cid:53)(cid:40)(cid:54)(cid:51)(cid:50)(cid:49)(cid:54)(cid:44)(cid:37)(cid:44)(cid:47)(cid:44)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:38)(cid:43)(cid:40)(cid:48)(cid:44)(cid:38)(cid:36)(cid:47)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:37)(cid:53)(cid:50)(cid:36)(cid:39)(cid:40)(cid:53)(cid:1)(cid:54)(cid:38)(cid:44)(cid:40)(cid:49)(cid:55)(cid:44)(cid:41)(cid:44)(cid:38)(cid:1)(cid:38)(cid:50)(cid:48)(cid:48)(cid:56)(cid:49)(cid:44)(cid:55)(cid:44)(cid:40)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.87,
+          "x1": 530.14,
+          "top": 684.43,
+          "bottom": 694.99
+        },
+        {
+          "text": "(cid:51)(cid:53)(cid:50)(cid:57)(cid:44)(cid:39)(cid:40)(cid:1)(cid:55)(cid:43)(cid:40)(cid:44)(cid:53)(cid:1)(cid:53)(cid:40)(cid:54)(cid:56)(cid:47)(cid:55)(cid:54)(cid:4)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)(cid:50)(cid:55)(cid:43)(cid:40)(cid:53)(cid:1)(cid:53)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:40)(cid:53)(cid:54)(cid:1)(cid:56)(cid:51)(cid:50)(cid:49)(cid:1)(cid:53)(cid:40)(cid:52)(cid:56)(cid:40)(cid:54)(cid:55)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:53)(cid:39)(cid:36)(cid:49)(cid:38)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.87,
+          "x1": 536.47,
+          "top": 698.1,
+          "bottom": 708.66
+        }
+      ],
+      "rects": [],
+      "lines": [],
+      "curves": 0,
+      "images": 0,
+      "hyperlinks": []
+    },
+    {
+      "page_no": 2,
+      "size": {
+        "width": 612.0,
+        "height": 792.0
+      },
+      "words": [
+        {
+          "text": "(cid:21)",
+          "fontname": "CMNFLC+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 303.04,
+          "x1": 308.91,
+          "top": 745.54,
+          "bottom": 756.1
+        },
+        {
+          "text": "(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 308.91,
+          "x1": 311.85,
+          "top": 744.91,
+          "bottom": 755.47
+        },
+        {
+          "text": "(cid:36)(cid:47)(cid:47)(cid:1)(cid:56)(cid:49)(cid:44)(cid:57)(cid:40)(cid:53)(cid:54)(cid:44)(cid:55)(cid:60)(cid:1)(cid:42)(cid:56)(cid:44)(cid:39)(cid:40)(cid:47)(cid:44)(cid:49)(cid:40)(cid:54)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 185.66,
+          "top": 73.39,
+          "bottom": 83.95
+        },
+        {
+          "text": "(cid:2)(cid:14)(cid:3)(cid:1)(cid:22)(cid:29)(cid:46)(cid:33)(cid:44)(cid:37)(cid:29)(cid:39)(cid:45)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 185.69,
+          "x1": 251.63,
+          "top": 73.39,
+          "bottom": 83.95
+        },
+        {
+          "text": "(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:39)(cid:44)(cid:54)(cid:54)(cid:40)(cid:48)(cid:44)(cid:49)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:53)(cid:39)(cid:36)(cid:49)(cid:38)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:51)(cid:36)(cid:53)(cid:55)(cid:44)(cid:38)(cid:44)(cid:51)(cid:36)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 251.62,
+          "x1": 497.94,
+          "top": 73.39,
+          "bottom": 83.95
+        },
+        {
+          "text": "(cid:44)(cid:49)(cid:54)(cid:55)(cid:44)(cid:55)(cid:56)(cid:55)(cid:44)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:27)(cid:31)(cid:21)(cid:1)(cid:51)(cid:50)(cid:47)(cid:44)(cid:38)(cid:44)(cid:40)(cid:54)(cid:6)(cid:1)(cid:19)(cid:40)(cid:51)(cid:40)(cid:49)(cid:39)(cid:44)(cid:49)(cid:42)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:55)(cid:40)(cid:53)(cid:48)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:55)(cid:43)(cid:50)(cid:54)(cid:40)(cid:1)(cid:51)(cid:50)(cid:47)(cid:44)(cid:38)(cid:44)(cid:40)(cid:54)(cid:4)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:54)(cid:1)(cid:48)(cid:36)(cid:60)(cid:1)(cid:37)(cid:40)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 491.45,
+          "top": 87.31,
+          "bottom": 97.87
+        },
+        {
+          "text": "(cid:55)(cid:53)(cid:36)(cid:49)(cid:54)(cid:41)(cid:40)(cid:53)(cid:53)(cid:40)(cid:39)(cid:1)(cid:55)(cid:50)(cid:1)(cid:50)(cid:55)(cid:43)(cid:40)(cid:53)(cid:54)(cid:1)(cid:56)(cid:49)(cid:39)(cid:40)(cid:53)(cid:1)(cid:26)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:1)(cid:32)(cid:53)(cid:36)(cid:49)(cid:54)(cid:41)(cid:40)(cid:53)(cid:1)(cid:16)(cid:42)(cid:53)(cid:40)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:54)(cid:1)(cid:2)(cid:26)(cid:32)(cid:16)(cid:54)(cid:3)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 381.18,
+          "top": 101.22,
+          "bottom": 111.78
+        },
+        {
+          "text": "(cid:2)(cid:15)(cid:3)(cid:1)(cid:26)(cid:33)(cid:45)(cid:33)(cid:29)(cid:44)(cid:31)(cid:36)(cid:1)(cid:16)(cid:29)(cid:46)(cid:29)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 381.16,
+          "x1": 471.63,
+          "top": 101.22,
+          "bottom": 111.78
+        },
+        {
+          "text": "(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:48)(cid:36)(cid:39)(cid:40)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 471.61,
+          "x1": 535.82,
+          "top": 101.22,
+          "bottom": 111.78
+        },
+        {
+          "text": "(cid:36)(cid:57)(cid:36)(cid:44)(cid:47)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:36)(cid:41)(cid:55)(cid:40)(cid:53)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:41)(cid:44)(cid:49)(cid:39)(cid:44)(cid:49)(cid:42)(cid:54)(cid:1)(cid:43)(cid:36)(cid:57)(cid:40)(cid:1)(cid:37)(cid:40)(cid:40)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:51)(cid:55)(cid:40)(cid:39)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:6)(cid:1)(cid:30)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:1)(cid:51)(cid:53)(cid:50)(cid:39)(cid:56)(cid:38)(cid:55)(cid:54)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 453.64,
+          "top": 115.14,
+          "bottom": 125.7
+        },
+        {
+          "text": "(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 453.62,
+          "x1": 456.56,
+          "top": 115.14,
+          "bottom": 125.7
+        },
+        {
+          "text": "(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:51)(cid:53)(cid:40)(cid:54)(cid:40)(cid:53)(cid:57)(cid:40)(cid:39)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 456.54,
+          "x1": 538.25,
+          "top": 115.14,
+          "bottom": 125.7
+        },
+        {
+          "text": "(cid:41)(cid:50)(cid:53)(cid:1)(cid:50)(cid:51)(cid:40)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:1)(cid:58)(cid:43)(cid:40)(cid:53)(cid:40)(cid:57)(cid:40)(cid:53)(cid:1)(cid:51)(cid:50)(cid:54)(cid:54)(cid:44)(cid:37)(cid:47)(cid:40)(cid:6)(cid:1)(cid:31)(cid:55)(cid:53)(cid:56)(cid:38)(cid:55)(cid:56)(cid:53)(cid:36)(cid:47)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:39)(cid:40)(cid:51)(cid:50)(cid:54)(cid:44)(cid:55)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:36)(cid:51)(cid:51)(cid:53)(cid:50)(cid:51)(cid:53)(cid:44)(cid:36)(cid:55)(cid:40)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:37)(cid:36)(cid:54)(cid:40)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 521.82,
+          "top": 128.82,
+          "bottom": 139.38
+        },
+        {
+          "text": "(cid:56)(cid:51)(cid:50)(cid:49)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:4)(cid:1)(cid:41)(cid:50)(cid:47)(cid:47)(cid:50)(cid:58)(cid:44)(cid:49)(cid:42)(cid:1)(cid:54)(cid:55)(cid:36)(cid:49)(cid:39)(cid:36)(cid:53)(cid:39)(cid:1)(cid:51)(cid:53)(cid:36)(cid:38)(cid:55)(cid:44)(cid:38)(cid:40)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 284.36,
+          "top": 142.74,
+          "bottom": 153.3
+        },
+        {
+          "text": "(cid:2)(cid:16)(cid:3)(cid:1)(cid:27)(cid:42)(cid:34)(cid:46)(cid:49)(cid:29)(cid:44)(cid:33)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 284.35,
+          "x1": 346.21,
+          "top": 142.74,
+          "bottom": 153.3
+        },
+        {
+          "text": "(cid:6)(cid:1)(cid:31)(cid:50)(cid:56)(cid:53)(cid:38)(cid:40)(cid:1)(cid:38)(cid:50)(cid:39)(cid:40)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:38)(cid:56)(cid:54)(cid:55)(cid:50)(cid:48)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 346.19,
+          "x1": 517.17,
+          "top": 142.74,
+          "bottom": 153.3
+        },
+        {
+          "text": "(cid:36)(cid:51)(cid:51)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:39)(cid:44)(cid:54)(cid:55)(cid:53)(cid:44)(cid:37)(cid:56)(cid:55)(cid:40)(cid:39)(cid:1)(cid:55)(cid:43)(cid:53)(cid:50)(cid:56)(cid:42)(cid:43)(cid:1)(cid:22)(cid:44)(cid:55)(cid:23)(cid:56)(cid:37)(cid:6)(cid:1)(cid:30)(cid:50)(cid:54)(cid:40)(cid:55)(cid:55)(cid:36)(cid:1)(cid:36)(cid:47)(cid:42)(cid:50)(cid:53)(cid:44)(cid:55)(cid:43)(cid:48)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:48)(cid:36)(cid:39)(cid:40)(cid:1)(cid:36)(cid:57)(cid:36)(cid:44)(cid:47)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:30)(cid:50)(cid:54)(cid:40)(cid:55)(cid:55)(cid:36)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 525.38,
+          "top": 156.65,
+          "bottom": 167.21
+        },
+        {
+          "text": "(cid:18)(cid:50)(cid:48)(cid:48)(cid:50)(cid:49)(cid:54)(cid:6)(cid:1)(cid:32)(cid:43)(cid:40)(cid:1)(cid:31)(cid:18)(cid:16)(cid:11)(cid:30)(cid:27)(cid:16)(cid:1)(cid:36)(cid:47)(cid:42)(cid:50)(cid:53)(cid:44)(cid:55)(cid:43)(cid:48)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:48)(cid:36)(cid:39)(cid:40)(cid:1)(cid:36)(cid:57)(cid:36)(cid:44)(cid:47)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:58)(cid:40)(cid:37)(cid:54)(cid:44)(cid:55)(cid:40)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 462.32,
+          "top": 170.57,
+          "bottom": 181.13
+        },
+        {
+          "text": "(cid:2)(cid:17)(cid:3)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 462.28,
+          "x1": 479.22,
+          "top": 170.57,
+          "bottom": 181.13
+        },
+        {
+          "text": "(cid:25)(cid:47)(cid:30)(cid:39)(cid:37)(cid:31)(cid:29)(cid:46)(cid:37)(cid:42)(cid:41)(cid:45)(cid:6)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 137.25,
+          "top": 184.49,
+          "bottom": 195.05
+        },
+        {
+          "text": "(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:44)(cid:49)(cid:57)(cid:40)(cid:54)(cid:55)(cid:44)(cid:42)(cid:36)(cid:55)(cid:50)(cid:53)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:51)(cid:53)(cid:50)(cid:48)(cid:51)(cid:55)(cid:47)(cid:60)(cid:1)(cid:51)(cid:53)(cid:40)(cid:51)(cid:36)(cid:53)(cid:40)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:54)(cid:56)(cid:37)(cid:48)(cid:44)(cid:55)(cid:1)(cid:48)(cid:36)(cid:49)(cid:56)(cid:54)(cid:38)(cid:53)(cid:44)(cid:51)(cid:55)(cid:54)(cid:1)(cid:53)(cid:40)(cid:54)(cid:56)(cid:47)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 137.23,
+          "x1": 519.95,
+          "top": 184.49,
+          "bottom": 195.05
+        },
+        {
+          "text": "(cid:27)(cid:31)(cid:21)(cid:1)(cid:54)(cid:56)(cid:51)(cid:51)(cid:50)(cid:53)(cid:55)(cid:4)(cid:1)(cid:36)(cid:54)(cid:54)(cid:44)(cid:42)(cid:49)(cid:1)(cid:36)(cid:56)(cid:55)(cid:43)(cid:50)(cid:53)(cid:54)(cid:43)(cid:44)(cid:51)(cid:1)(cid:55)(cid:50)(cid:1)(cid:36)(cid:38)(cid:38)(cid:56)(cid:53)(cid:36)(cid:55)(cid:40)(cid:47)(cid:60)(cid:1)(cid:53)(cid:40)(cid:41)(cid:47)(cid:40)(cid:38)(cid:55)(cid:1)(cid:38)(cid:50)(cid:49)(cid:55)(cid:53)(cid:44)(cid:37)(cid:56)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:36)(cid:38)(cid:46)(cid:49)(cid:50)(cid:58)(cid:47)(cid:40)(cid:39)(cid:42)(cid:40)(cid:1)(cid:41)(cid:56)(cid:49)(cid:39)(cid:44)(cid:49)(cid:42)(cid:1)(cid:54)(cid:56)(cid:51)(cid:51)(cid:50)(cid:53)(cid:55)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.87,
+          "x1": 541.21,
+          "top": 198.41,
+          "bottom": 208.97
+        },
+        {
+          "text": "(cid:44)(cid:49)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:53)(cid:39)(cid:36)(cid:49)(cid:38)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:36)(cid:42)(cid:40)(cid:49)(cid:38)(cid:60)(cid:1)(cid:51)(cid:50)(cid:47)(cid:44)(cid:38)(cid:44)(cid:40)(cid:54)(cid:6)(cid:1)(cid:28)(cid:56)(cid:53)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.87,
+          "x1": 259.8,
+          "top": 212.33,
+          "bottom": 222.89
+        },
+        {
+          "text": "(cid:15)(cid:42)(cid:32)(cid:33)(cid:1)(cid:42)(cid:34)(cid:1)(cid:15)(cid:42)(cid:41)(cid:32)(cid:47)(cid:31)(cid:46)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 259.8,
+          "x1": 344.38,
+          "top": 212.33,
+          "bottom": 222.89
+        },
+        {
+          "text": "(cid:1)(cid:40)(cid:49)(cid:38)(cid:50)(cid:56)(cid:53)(cid:36)(cid:42)(cid:40)(cid:54)(cid:1)(cid:54)(cid:56)(cid:37)(cid:48)(cid:44)(cid:54)(cid:54)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:1)(cid:51)(cid:53)(cid:40)(cid:5)(cid:51)(cid:53)(cid:44)(cid:49)(cid:55)(cid:54)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 344.36,
+          "x1": 519.44,
+          "top": 212.33,
+          "bottom": 222.89
+        },
+        {
+          "text": "(cid:51)(cid:53)(cid:44)(cid:50)(cid:53)(cid:1)(cid:55)(cid:50)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:6)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.86,
+          "x1": 160.59,
+          "top": 226.0,
+          "bottom": 236.56
+        },
+        {
+          "text": "(cid:1)(cid:2)(cid:18)(cid:3)(cid:1)(cid:17)(cid:46)(cid:33)(cid:26)(cid:23)(cid:13)(cid:6)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 160.57,
+          "x1": 224.75,
+          "top": 226.0,
+          "bottom": 236.56
+        },
+        {
+          "text": "(cid:18)(cid:44)(cid:55)(cid:44)(cid:61)(cid:40)(cid:49)(cid:1)(cid:54)(cid:38)(cid:44)(cid:40)(cid:49)(cid:55)(cid:44)(cid:54)(cid:55)(cid:54)(cid:1)(cid:58)(cid:43)(cid:50)(cid:1)(cid:40)(cid:49)(cid:42)(cid:36)(cid:42)(cid:40)(cid:1)(cid:44)(cid:49)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:64)(cid:20)(cid:55)(cid:40)(cid:30)(cid:27)(cid:16)(cid:1)(cid:39)(cid:40)(cid:54)(cid:44)(cid:42)(cid:49)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 224.74,
+          "x1": 492.88,
+          "top": 226.0,
+          "bottom": 236.56
+        },
+        {
+          "text": "(cid:38)(cid:43)(cid:36)(cid:47)(cid:47)(cid:40)(cid:49)(cid:42)(cid:40)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:1)(cid:51)(cid:53)(cid:50)(cid:45)(cid:40)(cid:38)(cid:55)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:44)(cid:49)(cid:1)(cid:36)(cid:1)(cid:38)(cid:50)(cid:49)(cid:57)(cid:40)(cid:49)(cid:44)(cid:40)(cid:49)(cid:55)(cid:4)(cid:1)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:36)(cid:55)(cid:1)(cid:55)(cid:43)(cid:53)(cid:50)(cid:56)(cid:42)(cid:43)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:20)(cid:55)(cid:40)(cid:30)(cid:27)(cid:16)(cid:1)(cid:47)(cid:36)(cid:37)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.85,
+          "x1": 513.02,
+          "top": 239.92,
+          "bottom": 250.48
+        },
+        {
+          "text": "(cid:57)(cid:44)(cid:54)(cid:56)(cid:36)(cid:47)(cid:44)(cid:61)(cid:40)(cid:53)(cid:1)(cid:36)(cid:41)(cid:55)(cid:40)(cid:53)(cid:1)(cid:53)(cid:40)(cid:42)(cid:44)(cid:54)(cid:55)(cid:53)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:2)(cid:41)(cid:53)(cid:40)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)(cid:38)(cid:43)(cid:36)(cid:53)(cid:42)(cid:40)(cid:3)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:20)(cid:55)(cid:40)(cid:30)(cid:27)(cid:16)(cid:1)(cid:51)(cid:53)(cid:50)(cid:45)(cid:40)(cid:38)(cid:55)(cid:1)(cid:2)(cid:43)(cid:55)(cid:55)(cid:51)(cid:14)(cid:7)(cid:7)(cid:40)(cid:55)(cid:40)(cid:53)(cid:49)(cid:36)(cid:42)(cid:36)(cid:48)(cid:40)(cid:6)(cid:50)(cid:53)(cid:42)(cid:3)(cid:6)(cid:1)(cid:33)(cid:49)(cid:39)(cid:40)(cid:53)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.85,
+          "x1": 531.15,
+          "top": 253.84,
+          "bottom": 264.4
+        },
+        {
+          "text": "(cid:55)(cid:43)(cid:40)(cid:1)(cid:20)(cid:55)(cid:40)(cid:30)(cid:27)(cid:16)(cid:1)(cid:33)(cid:54)(cid:40)(cid:53)(cid:1)(cid:16)(cid:42)(cid:53)(cid:40)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:4)(cid:1)(cid:51)(cid:47)(cid:36)(cid:60)(cid:40)(cid:53)(cid:54)(cid:1)(cid:53)(cid:40)(cid:47)(cid:44)(cid:49)(cid:52)(cid:56)(cid:44)(cid:54)(cid:43)(cid:1)(cid:36)(cid:49)(cid:60)(cid:1)(cid:24)(cid:29)(cid:1)(cid:38)(cid:47)(cid:36)(cid:44)(cid:48)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:38)(cid:50)(cid:49)(cid:54)(cid:40)(cid:49)(cid:55)(cid:1)(cid:55)(cid:50)(cid:1)(cid:54)(cid:43)(cid:36)(cid:53)(cid:44)(cid:49)(cid:42)(cid:1)(cid:55)(cid:43)(cid:40)(cid:44)(cid:53)(cid:1)(cid:39)(cid:40)(cid:54)(cid:44)(cid:42)(cid:49)(cid:54)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 534.23,
+          "top": 267.79,
+          "bottom": 278.35
+        },
+        {
+          "text": "(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:50)(cid:53)(cid:54)(cid:6)(cid:1)(cid:32)(cid:43)(cid:40)(cid:1)(cid:20)(cid:55)(cid:40)(cid:30)(cid:27)(cid:16)(cid:1)(cid:51)(cid:53)(cid:50)(cid:45)(cid:40)(cid:38)(cid:55)(cid:1)(cid:2)(cid:36)(cid:49)(cid:39)(cid:1)(cid:44)(cid:49)(cid:39)(cid:44)(cid:57)(cid:44)(cid:39)(cid:56)(cid:36)(cid:47)(cid:1)(cid:51)(cid:47)(cid:36)(cid:60)(cid:40)(cid:53)(cid:54)(cid:4)(cid:1)(cid:58)(cid:43)(cid:40)(cid:49)(cid:1)(cid:36)(cid:51)(cid:51)(cid:53)(cid:50)(cid:51)(cid:53)(cid:44)(cid:36)(cid:55)(cid:40)(cid:3)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:53)(cid:40)(cid:38)(cid:40)(cid:44)(cid:57)(cid:40)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 507.86,
+          "top": 281.71,
+          "bottom": 292.27
+        },
+        {
+          "text": "(cid:36)(cid:56)(cid:55)(cid:43)(cid:50)(cid:53)(cid:54)(cid:43)(cid:44)(cid:51)(cid:1)(cid:36)(cid:49)(cid:39)(cid:7)(cid:50)(cid:53)(cid:1)(cid:36)(cid:38)(cid:46)(cid:49)(cid:50)(cid:58)(cid:47)(cid:40)(cid:39)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:50)(cid:49)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:1)(cid:41)(cid:50)(cid:47)(cid:47)(cid:50)(cid:58)(cid:44)(cid:49)(cid:42)(cid:1)(cid:40)(cid:54)(cid:55)(cid:36)(cid:37)(cid:47)(cid:44)(cid:54)(cid:43)(cid:40)(cid:39)(cid:1)(cid:49)(cid:50)(cid:53)(cid:48)(cid:54)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 489.78,
+          "top": 295.62,
+          "bottom": 306.18
+        },
+        {
+          "text": "(cid:10)(cid:6)(cid:25)(cid:42)(cid:39)(cid:37)(cid:31)(cid:37)(cid:33)(cid:45)(cid:1)(cid:34)(cid:42)(cid:44)(cid:1)(cid:26)(cid:33)(cid:5)(cid:47)(cid:45)(cid:33)(cid:4)(cid:1)(cid:26)(cid:33)(cid:5)(cid:32)(cid:37)(cid:45)(cid:46)(cid:44)(cid:37)(cid:30)(cid:47)(cid:46)(cid:37)(cid:42)(cid:41)(cid:4)(cid:1)(cid:29)(cid:41)(cid:32)(cid:1)(cid:25)(cid:44)(cid:42)(cid:32)(cid:47)(cid:31)(cid:46)(cid:37)(cid:42)(cid:41)(cid:1)(cid:42)(cid:34)(cid:1)(cid:16)(cid:33)(cid:44)(cid:37)(cid:48)(cid:29)(cid:46)(cid:37)(cid:48)(cid:33)(cid:45)(cid:6)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 419.03,
+          "top": 316.03,
+          "bottom": 326.59
+        },
+        {
+          "text": "(cid:32)(cid:43)(cid:40)(cid:1)(cid:19)(cid:44)(cid:53)(cid:40)(cid:38)(cid:55)(cid:50)(cid:53)(cid:1)(cid:43)(cid:36)(cid:54)(cid:1)(cid:50)(cid:57)(cid:40)(cid:53)(cid:36)(cid:47)(cid:47)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 419.02,
+          "x1": 530.48,
+          "top": 316.03,
+          "bottom": 326.59
+        },
+        {
+          "text": "(cid:53)(cid:40)(cid:54)(cid:51)(cid:50)(cid:49)(cid:54)(cid:44)(cid:37)(cid:44)(cid:47)(cid:44)(cid:55)(cid:60)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:37)(cid:50)(cid:55)(cid:43)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:48)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:39)(cid:44)(cid:54)(cid:54)(cid:40)(cid:48)(cid:44)(cid:49)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:6)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:24)(cid:49)(cid:57)(cid:40)(cid:54)(cid:55)(cid:44)(cid:42)(cid:36)(cid:55)(cid:50)(cid:53)(cid:54)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:54)(cid:43)(cid:36)(cid:53)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.87,
+          "x1": 517.8,
+          "top": 329.94,
+          "bottom": 340.51
+        },
+        {
+          "text": "(cid:50)(cid:55)(cid:43)(cid:40)(cid:53)(cid:1)(cid:53)(cid:40)(cid:54)(cid:40)(cid:36)(cid:53)(cid:38)(cid:43)(cid:40)(cid:53)(cid:54)(cid:4)(cid:1)(cid:36)(cid:55)(cid:1)(cid:49)(cid:50)(cid:1)(cid:48)(cid:50)(cid:53)(cid:40)(cid:1)(cid:55)(cid:43)(cid:36)(cid:49)(cid:1)(cid:44)(cid:49)(cid:38)(cid:53)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:36)(cid:47)(cid:1)(cid:38)(cid:50)(cid:54)(cid:55)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:44)(cid:49)(cid:1)(cid:53)(cid:40)(cid:36)(cid:54)(cid:50)(cid:49)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:55)(cid:44)(cid:48)(cid:40)(cid:4)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:51)(cid:53)(cid:44)(cid:48)(cid:36)(cid:53)(cid:60)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:4)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 525.28,
+          "top": 343.87,
+          "bottom": 354.43
+        },
+        {
+          "text": "(cid:54)(cid:36)(cid:48)(cid:51)(cid:47)(cid:40)(cid:54)(cid:4)(cid:1)(cid:51)(cid:43)(cid:60)(cid:54)(cid:44)(cid:38)(cid:36)(cid:47)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:4)(cid:1)(cid:54)(cid:50)(cid:41)(cid:55)(cid:58)(cid:36)(cid:53)(cid:40)(cid:4)(cid:1)(cid:38)(cid:56)(cid:53)(cid:53)(cid:44)(cid:38)(cid:56)(cid:47)(cid:56)(cid:48)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:54)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:50)(cid:55)(cid:43)(cid:40)(cid:53)(cid:1)(cid:54)(cid:56)(cid:51)(cid:51)(cid:50)(cid:53)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:54)(cid:1)(cid:38)(cid:53)(cid:40)(cid:36)(cid:55)(cid:40)(cid:39)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 537.73,
+          "top": 357.79,
+          "bottom": 368.35
+        },
+        {
+          "text": "(cid:50)(cid:53)(cid:1)(cid:42)(cid:36)(cid:55)(cid:43)(cid:40)(cid:53)(cid:40)(cid:39)(cid:1)(cid:44)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:38)(cid:50)(cid:56)(cid:53)(cid:54)(cid:40)(cid:1)(cid:50)(cid:41)(cid:1)(cid:27)(cid:31)(cid:21)(cid:5)(cid:41)(cid:56)(cid:49)(cid:39)(cid:40)(cid:39)(cid:1)(cid:58)(cid:50)(cid:53)(cid:46)(cid:6)(cid:1)(cid:20)(cid:36)(cid:38)(cid:43)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:50)(cid:53)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:54)(cid:44)(cid:42)(cid:49)(cid:1)(cid:36)(cid:1)(cid:18)(cid:50)(cid:47)(cid:47)(cid:36)(cid:37)(cid:50)(cid:53)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 485.72,
+          "top": 371.47,
+          "bottom": 382.03
+        },
+        {
+          "text": "(cid:16)(cid:42)(cid:53)(cid:40)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:51)(cid:47)(cid:40)(cid:39)(cid:42)(cid:44)(cid:49)(cid:42)(cid:1)(cid:55)(cid:50)(cid:1)(cid:36)(cid:37)(cid:44)(cid:39)(cid:40)(cid:1)(cid:37)(cid:60)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:55)(cid:40)(cid:53)(cid:48)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:55)(cid:43)(cid:44)(cid:54)(cid:1)(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:26)(cid:36)(cid:49)(cid:36)(cid:42)(cid:40)(cid:48)(cid:40)(cid:49)(cid:55)(cid:1)(cid:29)(cid:47)(cid:36)(cid:49)(cid:6)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 414.02,
+          "top": 385.39,
+          "bottom": 395.95
+        },
+        {
+          "text": "(cid:1)(cid:2)(cid:13)(cid:3)(cid:1)(cid:27)(cid:33)(cid:41)(cid:45)(cid:37)(cid:46)(cid:37)(cid:48)(cid:33)(cid:1)(cid:32)(cid:29)(cid:46)(cid:29)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 413.92,
+          "x1": 504.97,
+          "top": 385.39,
+          "bottom": 395.95
+        },
+        {
+          "text": "(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 504.94,
+          "x1": 537.07,
+          "top": 385.39,
+          "bottom": 395.95
+        },
+        {
+          "text": "(cid:48)(cid:36)(cid:39)(cid:40)(cid:1)(cid:36)(cid:57)(cid:36)(cid:44)(cid:47)(cid:36)(cid:37)(cid:47)(cid:40)(cid:1)(cid:55)(cid:50)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:19)(cid:44)(cid:53)(cid:40)(cid:38)(cid:55)(cid:50)(cid:53)(cid:4)(cid:1)(cid:18)(cid:40)(cid:49)(cid:55)(cid:40)(cid:53)(cid:1)(cid:54)(cid:55)(cid:36)(cid:41)(cid:41)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:54)(cid:40)(cid:47)(cid:40)(cid:38)(cid:55)(cid:1)(cid:48)(cid:40)(cid:48)(cid:37)(cid:40)(cid:53)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:20)(cid:59)(cid:55)(cid:40)(cid:53)(cid:49)(cid:36)(cid:47)(cid:1)(cid:16)(cid:39)(cid:57)(cid:44)(cid:54)(cid:50)(cid:53)(cid:60)(cid:1)(cid:17)(cid:50)(cid:36)(cid:53)(cid:39)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 538.4,
+          "top": 399.31,
+          "bottom": 409.87
+        },
+        {
+          "text": "(cid:53)(cid:40)(cid:47)(cid:40)(cid:57)(cid:36)(cid:49)(cid:55)(cid:1)(cid:40)(cid:59)(cid:51)(cid:40)(cid:53)(cid:55)(cid:44)(cid:54)(cid:40)(cid:6)(cid:1)(cid:29)(cid:53)(cid:44)(cid:57)(cid:36)(cid:38)(cid:60)(cid:4)(cid:1)(cid:38)(cid:50)(cid:49)(cid:41)(cid:44)(cid:39)(cid:40)(cid:49)(cid:55)(cid:44)(cid:36)(cid:47)(cid:44)(cid:55)(cid:60)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:54)(cid:40)(cid:38)(cid:56)(cid:53)(cid:44)(cid:55)(cid:60)(cid:1)(cid:50)(cid:41)(cid:1)(cid:51)(cid:40)(cid:53)(cid:54)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:40)(cid:39)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:40)(cid:57)(cid:36)(cid:47)(cid:56)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 532.86,
+          "top": 413.23,
+          "bottom": 423.79
+        },
+        {
+          "text": "(cid:37)(cid:40)(cid:1)(cid:40)(cid:49)(cid:54)(cid:56)(cid:53)(cid:40)(cid:39)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 127.35,
+          "top": 427.14,
+          "bottom": 437.7
+        },
+        {
+          "text": "(cid:20)(cid:13)(cid:8)",
+          "fontname": "CMNDNN+Arial-ItalicMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 127.33,
+          "x1": 140.79,
+          "top": 427.14,
+          "bottom": 437.7
+        },
+        {
+          "text": "(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:41)(cid:50)(cid:47)(cid:47)(cid:50)(cid:58)(cid:44)(cid:49)(cid:42)(cid:1)(cid:54)(cid:55)(cid:36)(cid:49)(cid:39)(cid:36)(cid:53)(cid:39)(cid:1)(cid:51)(cid:53)(cid:36)(cid:38)(cid:55)(cid:44)(cid:38)(cid:40)(cid:54)(cid:14)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:36)(cid:49)(cid:50)(cid:49)(cid:60)(cid:48)(cid:50)(cid:56)(cid:54)(cid:47)(cid:60)(cid:1)(cid:2)(cid:55)(cid:43)(cid:53)(cid:50)(cid:56)(cid:42)(cid:43)(cid:1)(cid:22)(cid:50)(cid:50)(cid:42)(cid:47)(cid:40)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 140.75,
+          "x1": 507.5,
+          "top": 427.14,
+          "bottom": 437.7
+        },
+        {
+          "text": "(cid:21)(cid:50)(cid:53)(cid:48)(cid:54)(cid:3)(cid:15)(cid:1)(cid:53)(cid:40)(cid:41)(cid:53)(cid:36)(cid:44)(cid:49)(cid:44)(cid:49)(cid:42)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:38)(cid:50)(cid:47)(cid:47)(cid:40)(cid:38)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:1)(cid:39)(cid:40)(cid:48)(cid:50)(cid:42)(cid:53)(cid:36)(cid:51)(cid:43)(cid:44)(cid:38)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:38)(cid:50)(cid:56)(cid:47)(cid:39)(cid:1)(cid:53)(cid:40)(cid:49)(cid:39)(cid:40)(cid:53)(cid:1)(cid:44)(cid:49)(cid:39)(cid:44)(cid:57)(cid:44)(cid:39)(cid:56)(cid:36)(cid:47)(cid:54)(cid:1)(cid:44)(cid:39)(cid:40)(cid:49)(cid:55)(cid:44)(cid:41)(cid:44)(cid:36)(cid:37)(cid:47)(cid:40)(cid:15)(cid:1)(cid:36)(cid:49)(cid:39)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.87,
+          "x1": 534.16,
+          "top": 441.06,
+          "bottom": 451.63
+        },
+        {
+          "text": "(cid:54)(cid:55)(cid:50)(cid:53)(cid:44)(cid:49)(cid:42)(cid:1)(cid:54)(cid:40)(cid:49)(cid:54)(cid:44)(cid:55)(cid:44)(cid:57)(cid:40)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:50)(cid:49)(cid:1)(cid:36)(cid:1)(cid:54)(cid:40)(cid:51)(cid:36)(cid:53)(cid:36)(cid:55)(cid:40)(cid:1)(cid:51)(cid:36)(cid:54)(cid:54)(cid:58)(cid:50)(cid:53)(cid:39)(cid:5)(cid:1)(cid:51)(cid:53)(cid:50)(cid:55)(cid:40)(cid:38)(cid:55)(cid:40)(cid:39)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:32)(cid:40)(cid:36)(cid:48)(cid:1)(cid:19)(cid:53)(cid:44)(cid:57)(cid:40)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:47)(cid:44)(cid:48)(cid:44)(cid:55)(cid:40)(cid:39)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:6)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 537.57,
+          "top": 454.99,
+          "bottom": 465.55
+        },
+        {
+          "text": "(cid:2)(cid:14)(cid:3)(cid:22)(cid:29)(cid:46)(cid:33)(cid:44)(cid:37)(cid:29)(cid:39)(cid:45)(cid:1)(cid:34)(cid:42)(cid:44)(cid:1)(cid:35)(cid:33)(cid:41)(cid:33)(cid:44)(cid:29)(cid:39)(cid:1)(cid:29)(cid:31)(cid:31)(cid:33)(cid:45)(cid:45)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 230.05,
+          "top": 468.67,
+          "bottom": 479.23
+        },
+        {
+          "text": "(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:54)(cid:43)(cid:36)(cid:53)(cid:40)(cid:39)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:58)(cid:40)(cid:37)(cid:54)(cid:44)(cid:55)(cid:40)(cid:1)(cid:2)(cid:40)(cid:39)(cid:56)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:54)(cid:4)(cid:1)(cid:37)(cid:47)(cid:50)(cid:42)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 230.03,
+          "x1": 537.08,
+          "top": 468.67,
+          "bottom": 479.23
+        },
+        {
+          "text": "(cid:51)(cid:50)(cid:54)(cid:55)(cid:54)(cid:4)(cid:1)(cid:53)(cid:40)(cid:54)(cid:50)(cid:56)(cid:53)(cid:38)(cid:40)(cid:54)(cid:3)(cid:1)(cid:56)(cid:49)(cid:39)(cid:40)(cid:53)(cid:1)(cid:36)(cid:1)(cid:18)(cid:18)(cid:1)(cid:17)(cid:35)(cid:5)(cid:27)(cid:18)(cid:5)(cid:31)(cid:16)(cid:1)(cid:10)(cid:6)(cid:8)(cid:1)(cid:47)(cid:44)(cid:38)(cid:40)(cid:49)(cid:54)(cid:40)(cid:1)(cid:55)(cid:43)(cid:36)(cid:55)(cid:1)(cid:36)(cid:47)(cid:47)(cid:50)(cid:58)(cid:54)(cid:1)(cid:56)(cid:54)(cid:40)(cid:53)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)(cid:54)(cid:43)(cid:36)(cid:53)(cid:40)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:36)(cid:39)(cid:36)(cid:51)(cid:55)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.89,
+          "x1": 527.1,
+          "top": 482.59,
+          "bottom": 493.15
+        },
+        {
+          "text": "(cid:41)(cid:50)(cid:53)(cid:1)(cid:49)(cid:50)(cid:49)(cid:38)(cid:50)(cid:48)(cid:48)(cid:40)(cid:53)(cid:38)(cid:44)(cid:36)(cid:47)(cid:1)(cid:56)(cid:54)(cid:40)(cid:4)(cid:1)(cid:53)(cid:40)(cid:52)(cid:56)(cid:44)(cid:53)(cid:40)(cid:54)(cid:1)(cid:36)(cid:55)(cid:55)(cid:53)(cid:44)(cid:37)(cid:56)(cid:55)(cid:44)(cid:50)(cid:49)(cid:4)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:53)(cid:40)(cid:52)(cid:56)(cid:44)(cid:53)(cid:40)(cid:54)(cid:1)(cid:36)(cid:49)(cid:60)(cid:1)(cid:49)(cid:40)(cid:58)(cid:1)(cid:48)(cid:36)(cid:55)(cid:40)(cid:53)(cid:44)(cid:36)(cid:47)(cid:1)(cid:38)(cid:53)(cid:40)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:55)(cid:50)(cid:1)(cid:37)(cid:40)(cid:1)(cid:39)(cid:44)(cid:54)(cid:55)(cid:53)(cid:44)(cid:37)(cid:56)(cid:55)(cid:40)(cid:39)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.9,
+          "x1": 533.01,
+          "top": 496.51,
+          "bottom": 507.07
+        },
+        {
+          "text": "(cid:56)(cid:49)(cid:39)(cid:40)(cid:53)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:54)(cid:36)(cid:48)(cid:40)(cid:1)(cid:55)(cid:40)(cid:53)(cid:48)(cid:54)(cid:6)(cid:1)(cid:29)(cid:50)(cid:39)(cid:38)(cid:36)(cid:54)(cid:55)(cid:54)(cid:1)(cid:36)(cid:53)(cid:40)(cid:1)(cid:39)(cid:44)(cid:54)(cid:54)(cid:40)(cid:48)(cid:44)(cid:49)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:55)(cid:43)(cid:53)(cid:50)(cid:56)(cid:42)(cid:43)(cid:1)(cid:35)(cid:36)(cid:47)(cid:40)(cid:1)(cid:33)(cid:49)(cid:44)(cid:57)(cid:40)(cid:53)(cid:54)(cid:44)(cid:55)(cid:60)(cid:1)(cid:50)(cid:49)(cid:1)(cid:16)(cid:51)(cid:51)(cid:47)(cid:40)(cid:1)(cid:29)(cid:50)(cid:39)(cid:38)(cid:36)(cid:54)(cid:55)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.9,
+          "x1": 528.43,
+          "top": 510.43,
+          "bottom": 520.99
+        },
+        {
+          "text": "(cid:31)(cid:50)(cid:56)(cid:49)(cid:39)(cid:18)(cid:47)(cid:50)(cid:56)(cid:39)(cid:1)(cid:2)(cid:18)(cid:18)(cid:1)(cid:17)(cid:35)(cid:5)(cid:27)(cid:18)(cid:5)(cid:31)(cid:16)(cid:1)(cid:10)(cid:6)(cid:8)(cid:1)(cid:47)(cid:44)(cid:38)(cid:40)(cid:49)(cid:54)(cid:40)(cid:3)(cid:6)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.9,
+          "x1": 263.89,
+          "top": 524.34,
+          "bottom": 534.9
+        },
+        {
+          "text": "(cid:11)(cid:6)(cid:13)(cid:44)(cid:31)(cid:36)(cid:37)(cid:48)(cid:29)(cid:39)(cid:1)(cid:27)(cid:46)(cid:42)(cid:44)(cid:29)(cid:35)(cid:33)(cid:1)(cid:27)(cid:46)(cid:29)(cid:41)(cid:32)(cid:29)(cid:44)(cid:32)(cid:45)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.89,
+          "x1": 221.28,
+          "top": 544.75,
+          "bottom": 555.31
+        },
+        {
+          "text": "(cid:6)(cid:1)(cid:29)(cid:53)(cid:40)(cid:47)(cid:44)(cid:48)(cid:44)(cid:49)(cid:36)(cid:53)(cid:60)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:54)(cid:55)(cid:50)(cid:53)(cid:40)(cid:39)(cid:1)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:41)(cid:44)(cid:38)(cid:40)(cid:1)(cid:38)(cid:50)(cid:48)(cid:51)(cid:56)(cid:55)(cid:40)(cid:53)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:47)(cid:50)(cid:38)(cid:36)(cid:47)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 221.26,
+          "x1": 530.18,
+          "top": 544.75,
+          "bottom": 555.31
+        },
+        {
+          "text": "(cid:54)(cid:60)(cid:54)(cid:55)(cid:40)(cid:48)(cid:54)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:44)(cid:37)(cid:47)(cid:40)(cid:1)(cid:41)(cid:53)(cid:50)(cid:48)(cid:1)(cid:58)(cid:50)(cid:53)(cid:46)(cid:54)(cid:55)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:54)(cid:1)(cid:36)(cid:54)(cid:54)(cid:50)(cid:38)(cid:44)(cid:36)(cid:55)(cid:40)(cid:39)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:40)(cid:36)(cid:38)(cid:43)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:24)(cid:49)(cid:57)(cid:40)(cid:54)(cid:55)(cid:44)(cid:42)(cid:36)(cid:55)(cid:50)(cid:53)(cid:6)(cid:1)(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:44)(cid:49)(cid:1)(cid:49)(cid:50)(cid:49)(cid:5)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.87,
+          "x1": 506.04,
+          "top": 558.66,
+          "bottom": 569.22
+        },
+        {
+          "text": "(cid:40)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:50)(cid:49)(cid:44)(cid:38)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:38)(cid:50)(cid:49)(cid:57)(cid:40)(cid:53)(cid:55)(cid:40)(cid:39)(cid:1)(cid:55)(cid:50)(cid:1)(cid:39)(cid:44)(cid:42)(cid:44)(cid:55)(cid:36)(cid:47)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:51)(cid:53)(cid:40)(cid:54)(cid:40)(cid:53)(cid:57)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:6)(cid:1)(cid:21)(cid:44)(cid:49)(cid:36)(cid:47)(cid:1)(cid:53)(cid:40)(cid:54)(cid:51)(cid:50)(cid:49)(cid:54)(cid:44)(cid:37)(cid:44)(cid:47)(cid:44)(cid:55)(cid:60)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:36)(cid:53)(cid:38)(cid:43)(cid:44)(cid:57)(cid:44)(cid:49)(cid:42)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.85,
+          "x1": 539.32,
+          "top": 572.58,
+          "bottom": 583.14
+        },
+        {
+          "text": "(cid:36)(cid:49)(cid:39)(cid:1)(cid:51)(cid:53)(cid:40)(cid:54)(cid:40)(cid:53)(cid:57)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:47)(cid:44)(cid:40)(cid:54)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:40)(cid:36)(cid:38)(cid:43)(cid:1)(cid:24)(cid:49)(cid:57)(cid:40)(cid:54)(cid:55)(cid:44)(cid:42)(cid:36)(cid:55)(cid:50)(cid:53)(cid:6)(cid:1)(cid:16)(cid:55)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:38)(cid:50)(cid:49)(cid:38)(cid:47)(cid:56)(cid:54)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:41)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:42)(cid:53)(cid:36)(cid:49)(cid:55)(cid:4)(cid:1)(cid:39)(cid:36)(cid:55)(cid:36)(cid:1)(cid:38)(cid:36)(cid:49)(cid:1)(cid:37)(cid:40)(cid:1)(cid:48)(cid:36)(cid:44)(cid:49)(cid:55)(cid:36)(cid:44)(cid:49)(cid:40)(cid:39)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.85,
+          "x1": 530.04,
+          "top": 586.5,
+          "bottom": 597.07
+        },
+        {
+          "text": "(cid:44)(cid:49)(cid:39)(cid:40)(cid:41)(cid:44)(cid:49)(cid:44)(cid:55)(cid:40)(cid:47)(cid:60)(cid:1)(cid:50)(cid:49)(cid:1)(cid:47)(cid:50)(cid:38)(cid:36)(cid:47)(cid:1)(cid:37)(cid:36)(cid:38)(cid:46)(cid:56)(cid:51)(cid:54)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:36)(cid:47)(cid:54)(cid:50)(cid:4)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:36)(cid:54)(cid:1)(cid:47)(cid:50)(cid:49)(cid:42)(cid:1)(cid:36)(cid:54)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:40)(cid:59)(cid:44)(cid:54)(cid:55)(cid:54)(cid:1)(cid:36)(cid:54)(cid:1)(cid:36)(cid:49)(cid:1)(cid:40)(cid:39)(cid:56)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:36)(cid:47)(cid:1)(cid:40)(cid:49)(cid:55)(cid:44)(cid:55)(cid:60)(cid:4)(cid:1)(cid:50)(cid:49)(cid:1)(cid:55)(cid:43)(cid:40)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 530.16,
+          "top": 600.43,
+          "bottom": 610.99
+        },
+        {
+          "text": "(cid:32)(cid:40)(cid:36)(cid:48)(cid:1)(cid:19)(cid:53)(cid:44)(cid:57)(cid:40)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 131.99,
+          "top": 614.35,
+          "bottom": 624.91
+        },
+        {
+          "text": "(cid:2)(cid:13)(cid:3)(cid:1)(cid:28)(cid:37)(cid:40)(cid:37)(cid:41)(cid:35)(cid:6)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 131.97,
+          "x1": 186.81,
+          "top": 614.35,
+          "bottom": 624.91
+        },
+        {
+          "text": "(cid:1)(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:36)(cid:53)(cid:38)(cid:43)(cid:44)(cid:57)(cid:40)(cid:39)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:44)(cid:49)(cid:1)(cid:9)(cid:1)(cid:48)(cid:50)(cid:49)(cid:55)(cid:43)(cid:1)(cid:50)(cid:41)(cid:1)(cid:57)(cid:36)(cid:47)(cid:44)(cid:39)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:1)(cid:50)(cid:53)(cid:1)(cid:56)(cid:51)(cid:50)(cid:49)(cid:1)(cid:51)(cid:56)(cid:37)(cid:47)(cid:44)(cid:38)(cid:36)(cid:55)(cid:44)(cid:50)(cid:49)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 186.79,
+          "x1": 513.68,
+          "top": 614.35,
+          "bottom": 624.91
+        },
+        {
+          "text": "(cid:2)(cid:14)(cid:3)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 513.65,
+          "x1": 528.25,
+          "top": 614.35,
+          "bottom": 624.91
+        },
+        {
+          "text": "(cid:22)(cid:33)(cid:46)(cid:36)(cid:42)(cid:32)(cid:1)(cid:42)(cid:34)(cid:1)(cid:13)(cid:44)(cid:31)(cid:36)(cid:37)(cid:48)(cid:37)(cid:41)(cid:35)(cid:6)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 179.26,
+          "top": 628.03,
+          "bottom": 638.59
+        },
+        {
+          "text": "(cid:19)(cid:36)(cid:55)(cid:36)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)(cid:1)(cid:56)(cid:51)(cid:47)(cid:50)(cid:36)(cid:39)(cid:40)(cid:39)(cid:1)(cid:55)(cid:50)(cid:1)(cid:36)(cid:1)(cid:62)(cid:19)(cid:36)(cid:55)(cid:36)(cid:63)(cid:1)(cid:32)(cid:40)(cid:36)(cid:48)(cid:1)(cid:19)(cid:53)(cid:44)(cid:57)(cid:40)(cid:4)(cid:1)(cid:55)(cid:43)(cid:40)(cid:1)(cid:38)(cid:50)(cid:49)(cid:55)(cid:40)(cid:49)(cid:55)(cid:54)(cid:1)(cid:50)(cid:41)(cid:1)(cid:58)(cid:43)(cid:44)(cid:38)(cid:43)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:37)(cid:40)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 179.21,
+          "x1": 525.92,
+          "top": 628.03,
+          "bottom": 638.59
+        },
+        {
+          "text": "(cid:37)(cid:36)(cid:38)(cid:46)(cid:40)(cid:39)(cid:1)(cid:56)(cid:51)(cid:1)(cid:58)(cid:40)(cid:40)(cid:46)(cid:47)(cid:60)(cid:1)(cid:55)(cid:50)(cid:1)(cid:36)(cid:1)(cid:47)(cid:50)(cid:38)(cid:36)(cid:47)(cid:1)(cid:54)(cid:40)(cid:53)(cid:57)(cid:40)(cid:53)(cid:1)(cid:36)(cid:55)(cid:1)(cid:33)(cid:18)(cid:5)(cid:17)(cid:40)(cid:53)(cid:46)(cid:40)(cid:47)(cid:40)(cid:60)(cid:6)(cid:1)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.89,
+          "x1": 312.34,
+          "top": 641.95,
+          "bottom": 652.51
+        },
+        {
+          "text": "(cid:2)(cid:15)(cid:3)(cid:1)(cid:25)(cid:44)(cid:33)(cid:45)(cid:33)(cid:44)(cid:48)(cid:29)(cid:46)(cid:37)(cid:42)(cid:41)(cid:1)(cid:42)(cid:34)(cid:1)(cid:13)(cid:31)(cid:31)(cid:33)(cid:45)(cid:45)(cid:6)(cid:1)",
+          "fontname": "CMNDNM+Arial-BoldMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 312.32,
+          "x1": 451.79,
+          "top": 641.95,
+          "bottom": 652.51
+        },
+        {
+          "text": "(cid:16)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:1)(cid:55)(cid:50)(cid:1)(cid:32)(cid:40)(cid:36)(cid:48)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 451.79,
+          "x1": 527.12,
+          "top": 641.95,
+          "bottom": 652.51
+        },
+        {
+          "text": "(cid:19)(cid:53)(cid:44)(cid:57)(cid:40)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:1)(cid:36)(cid:51)(cid:51)(cid:54)(cid:1)(cid:44)(cid:54)(cid:1)(cid:51)(cid:53)(cid:50)(cid:57)(cid:44)(cid:54)(cid:44)(cid:50)(cid:49)(cid:40)(cid:39)(cid:1)(cid:55)(cid:50)(cid:1)(cid:44)(cid:49)(cid:39)(cid:44)(cid:57)(cid:44)(cid:39)(cid:56)(cid:36)(cid:47)(cid:1)(cid:42)(cid:50)(cid:50)(cid:42)(cid:47)(cid:40)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:56)(cid:49)(cid:55)(cid:54)(cid:6)(cid:1)(cid:34)(cid:40)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:56)(cid:54)(cid:40)(cid:1)(cid:22)(cid:50)(cid:50)(cid:42)(cid:47)(cid:40)(cid:1)(cid:22)(cid:53)(cid:50)(cid:56)(cid:51)(cid:54)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 531.78,
+          "top": 655.87,
+          "bottom": 666.43
+        },
+        {
+          "text": "(cid:41)(cid:50)(cid:53)(cid:1)(cid:36)(cid:38)(cid:38)(cid:40)(cid:54)(cid:54)(cid:1)(cid:38)(cid:50)(cid:49)(cid:55)(cid:53)(cid:50)(cid:47)(cid:1)(cid:36)(cid:49)(cid:39)(cid:1)(cid:58)(cid:44)(cid:47)(cid:47)(cid:1)(cid:38)(cid:53)(cid:40)(cid:36)(cid:55)(cid:40)(cid:1)(cid:36)(cid:49)(cid:1)(cid:62)(cid:36)(cid:47)(cid:56)(cid:48)(cid:49)(cid:44)(cid:63)(cid:1)(cid:42)(cid:53)(cid:50)(cid:56)(cid:51)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:41)(cid:50)(cid:53)(cid:48)(cid:40)(cid:53)(cid:1)(cid:18)(cid:5)(cid:22)(cid:20)(cid:26)(cid:1)(cid:48)(cid:40)(cid:48)(cid:37)(cid:40)(cid:53)(cid:54)(cid:1)(cid:58)(cid:44)(cid:55)(cid:43)(cid:1)(cid:53)(cid:40)(cid:36)(cid:39)(cid:5)(cid:50)(cid:49)(cid:47)(cid:60)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 510.72,
+          "top": 669.79,
+          "bottom": 680.35
+        },
+        {
+          "text": "(cid:51)(cid:40)(cid:53)(cid:48)(cid:44)(cid:54)(cid:54)(cid:44)(cid:50)(cid:49)(cid:54)(cid:6)(cid:1)(cid:24)(cid:41)(cid:1)(cid:49)(cid:40)(cid:38)(cid:40)(cid:54)(cid:54)(cid:36)(cid:53)(cid:60)(cid:4)(cid:1)(cid:58)(cid:40)(cid:1)(cid:38)(cid:36)(cid:49)(cid:1)(cid:38)(cid:53)(cid:40)(cid:36)(cid:55)(cid:40)(cid:1)(cid:22)(cid:20)(cid:26)(cid:5)(cid:27)(cid:20)(cid:32)(cid:6)(cid:49)(cid:40)(cid:55)(cid:1)(cid:22)(cid:50)(cid:50)(cid:42)(cid:47)(cid:40)(cid:1)(cid:36)(cid:38)(cid:38)(cid:50)(cid:56)(cid:49)(cid:55)(cid:54)(cid:1)(cid:41)(cid:50)(cid:53)(cid:1)(cid:39)(cid:40)(cid:51)(cid:36)(cid:53)(cid:55)(cid:44)(cid:49)(cid:42)(cid:1)(cid:48)(cid:40)(cid:48)(cid:37)(cid:40)(cid:53)(cid:54)(cid:6)",
+          "fontname": "CMNDNL+ArialMT",
+          "size": 10.56,
+          "upright": true,
+          "x0": 71.88,
+          "x1": 523.66,
+          "top": 683.71,
+          "bottom": 694.27
+        }
+      ],
+      "rects": [
+        {
+          "x0": 389.88,
+          "x1": 490.44,
+          "top": 263.4,
+          "bottom": 264.12,
+          "height": 0.72,
+          "stroke": false,
+          "fill": true
+        }
+      ],
+      "lines": [],
+      "curves": 0,
+      "images": 0,
+      "hyperlinks": []
+    }
+  ]
+}
