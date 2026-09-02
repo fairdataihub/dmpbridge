@@ -198,9 +198,15 @@ class WholeDocStrategy:
             if cached.exists():
                 text = json.loads(cached.read_text(encoding="utf-8"))[0]["text"]
             if not text or looks_garbled(text):
-                kwargs = {"force_ocr": True} if name == "docling" else {}
-                blocks = get_extractor(name, **kwargs).extract(pdf_path)
-                text = blocks[0]["text"] if blocks else ""
+                try:
+                    kwargs = {"force_ocr": True} if name == "docling" else {}
+                    blocks = get_extractor(name, **kwargs).extract(pdf_path)
+                    text = blocks[0]["text"] if blocks else ""
+                except Exception as exc:  # a fallback must fail soft: no GPU /
+                    # missing extra installs should move on to the next one
+                    logger.warning("[wholedoc] %s: fallback %s unavailable (%s) — "
+                                   "trying next", pdf_path.name, name, exc)
+                    continue
             bad = looks_garbled(text)
             if not bad:
                 logger.warning("[wholedoc] %s: using %s text for this document "

@@ -171,16 +171,20 @@ mojibake) and the model hallucinates a fluent document from it (observed on samp
 The pipeline now checks every stage-1 text and logs a loud warning when it does not look
 like readable language. When that fires, or for scanned/image-only PDFs:
 
-1. `--extractor lightonocr` — reads the page image; unaffected by the text layer.
+1. `--extractor lightonocr` — reads the page image; unaffected by the text layer, and it
+   structures OCR'd documents far better than text OCR does (on the one broken PDF
+   measured, it produced proper sections/questions/answers where docling-OCR text
+   collapsed into a single fused question). Needs the CUDA GPU.
 2. `--extractor docling --force-ocr` — OCRs every page (`OcrMode.FULL_PAGE`) instead of
-   trusting the text layer. Slower, and bold/italic markers are mostly lost with the fonts,
-   so use it per document, not as a default. The stage-1 cache is keyed by extractor only,
-   so clear the cached `sampleN.json` (or pass `--no-cache`) or the garbage text is reused.
+   trusting the text layer. CPU-only net when no GPU is available; bold/italic markers are
+   mostly lost with the fonts, so structure suffers. The stage-1 cache is keyed by
+   extractor only, so clear the cached `sampleN.json` (or pass `--no-cache`) or the
+   garbage text is reused.
 3. `pdfplumber` has no fallback — it can only read the text layer.
 
 The warning is a guard, not a gate: by default the run still proceeds, so check the log
 before trusting output for a new document. To handle it automatically, add
-`--fallback lightonocr` (or `docling`, or `auto` = docling then lightonocr): a document
+`--fallback auto` (= lightonocr then docling-OCR; or name one): a document
 whose text fails the check is re-extracted with the fallback and labeled from that text
 instead — per document, opt-in, clean documents untouched, and the primary extractor's
 stage-1 cache is never overwritten with fallback text. The Python API takes the same

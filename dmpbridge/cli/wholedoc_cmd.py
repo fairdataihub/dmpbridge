@@ -96,8 +96,10 @@ def main() -> None:
                     help="if a document's extracted text fails the garbled-text check, re-extract "
                          "it with this extractor instead (per document; clean documents are "
                          "untouched). 'docling' means docling with forced full-page OCR; 'auto' "
-                         "tries docling then lightonocr. The fallback text is used for labeling "
-                         "but never written into the primary extractor's stage-1 cache")
+                         "tries lightonocr then docling (quality order — lightonocr structures "
+                         "OCR'd documents far better; docling is the CPU-only net if no GPU). "
+                         "The fallback text is used for labeling but never written into the "
+                         "primary extractor's stage-1 cache")
     args = ap.parse_args()
     if args.save_native and args.extractor not in ("docling", "pdfplumber"):
         ap.error("--save-native only applies to --extractor docling or pdfplumber")
