@@ -1,6 +1,6 @@
 {
   "tool": "pdfplumber",
-  "version": "0.11.9",
+  "version": "0.11.10",
   "file": "sample13.pdf",
   "body_font": {
     "size": 10.1,

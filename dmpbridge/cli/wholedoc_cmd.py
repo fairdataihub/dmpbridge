@@ -97,8 +97,9 @@ def main() -> None:
                          "it with this extractor instead (per document; clean documents are "
                          "untouched). 'auto' = lightonocr, the production fallback; 'docling' "
                          "(docling with forced full-page OCR) is experimental and only used when "
-                         "named explicitly. The fallback text is used for labeling but never "
-                         "written into the primary extractor's stage-1 cache")
+                         "named explicitly. The accepted rescue text is cached under the "
+                         "fallback extractor's own stage-1 directory; the primary's cache "
+                         "keeps what the primary really read")
     args = ap.parse_args()
     if args.save_native and args.extractor not in ("docling", "pdfplumber"):
         ap.error("--save-native only applies to --extractor docling or pdfplumber")

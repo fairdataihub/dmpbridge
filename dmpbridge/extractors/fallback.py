@@ -106,6 +106,32 @@ def _make_fallback(name: str) -> BaseExtractor:
     return get_extractor(name, **kwargs)
 
 
+def _default_cache_write(name: str, pdf_path: Path, text: str) -> None:
+    """Persist a successful fallback's text into that extractor's own stage-1
+    directory (``1_extracted/<name>/<stem>.json``), same shape as any other
+    stage-1 file.
+
+    Two reasons this exists: the rescued text is inspectable on disk like
+    every other extraction, and a rescued document becomes reproducible —
+    later runs reuse this file via ``cache_lookup`` instead of re-rolling the
+    OCR, whose output is only bit-stable within one machine state (observed
+    2026-09-08: two rescues of the same document hours apart structured it
+    differently, and the unstored morning text made the difference
+    unexplainable). Best-effort: never fails the extraction.
+    """
+    try:
+        import json
+        from ..core.paths import EXTRACTED_DIR
+        out = EXTRACTED_DIR / name / f"{pdf_path.stem}.json"
+        if not out.exists():
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(json.dumps([{"text": text}], indent=2, ensure_ascii=False),
+                           encoding="utf-8")
+            logger.warning("[fallback] %s: %s text cached -> %s", pdf_path.name, name, out)
+    except OSError:
+        pass
+
+
 def extract_with_fallback(
     pdf_path: Path,
     primary: BaseExtractor,
@@ -114,6 +140,7 @@ def extract_with_fallback(
     primary_text: Optional[str] = None,
     cache_lookup: Optional[Callable[[str], Optional[str]]] = None,
     make_extractor: Callable[[str], BaseExtractor] = _make_fallback,
+    cache_write: Callable[[str, Path, str], None] = _default_cache_write,
 ) -> ExtractionResult:
     """Run the conditional two-step flow for one document.
 
@@ -134,6 +161,10 @@ def extract_with_fallback(
         validated before use.
     make_extractor:
         Factory for fallback instances — injectable for tests.
+    cache_write:
+        Called with ``(name, pdf_path, text)`` when a fallback's text is
+        accepted; by default persists it into that extractor's stage-1
+        directory so the rescue is inspectable and reproducible.
     """
     attempts: list[FallbackAttempt] = []
     n_pages = _page_count(pdf_path)
@@ -175,6 +206,7 @@ def extract_with_fallback(
             logger.warning("[fallback] %s: using %s text for this document "
                            "(the %s output for it is not trustworthy)",
                            pdf_path.name, name, primary_name)
+            cache_write(name, pdf_path, alt_text)
             return ExtractionResult(alt_text, name, True, attempts=attempts)
         logger.warning("[fallback] %s: %s also unusable (%s)", pdf_path.name, name, bad)
 

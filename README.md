@@ -224,8 +224,11 @@ The warning is a guard, not a gate: by default the run still proceeds, so check 
 before trusting output for a new document. To handle it automatically, add
 `--fallback auto` (= lightonocr; docling-OCR only if named explicitly): a document
 whose text fails the check is re-extracted with the fallback and labeled from that text
-instead — per document, opt-in, clean documents untouched, and the primary extractor's
-stage-1 cache is never overwritten with fallback text. The Python API takes the same
+instead — per document, opt-in, clean documents untouched. The primary extractor's stage-1
+cache keeps what it really read (the garbage), while the accepted rescue text is cached
+under the **fallback's own** stage-1 directory (e.g. `1_extracted/lightonocr/sampleN.json`),
+so the rescue is inspectable on disk and later runs reuse it — making rescued documents
+reproducible instead of re-rolling the OCR each time. The Python API takes the same
 option — `process_pdf(..., fallback="auto")` (or a name, or an ordered list) — so an
 application embedding the package gets the same behaviour without the CLI.
 
