@@ -14,7 +14,7 @@ from pathlib import Path
 
 NB = Path("notebooks/export-labeled-results-to-excel.ipynb")
 TAG = "gemma4-e4b_pdfplumber_whole_doc"
-XLSX = "output_folder/pdfplumber_fallback_lightonocr_and_gemma.xlsx"
+XLSX = "data/output/pdfplumber_fallback_lightonocr_and_gemma.xlsx"
 
 
 def md(cid, lines):
