@@ -112,13 +112,24 @@ blocks = dmpbridge.process_pdf(
 )
 ```
 
-Or the whole sample set:
+Or run samples from the terminal — this is the recommended command:
 
 ```bash
-dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --start 1 --end 10
+# one sample
+dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 13 --end 13
+
+# the whole sample set
+dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 1 --end 13
 ```
 
-Re-runs skip samples that already have output.
+`--fallback auto` handles PDFs whose text layer is broken or missing (scanned pages, fonts
+with no character mapping): the extracted text is checked before the model sees it, and a
+document that fails the check is re-read from its page images by LightOnOCR — you'll see
+two `[fallback]` lines in the terminal saying why and what was used. Clean documents are
+untouched. The final JSON lands in `data/output/4_final/<model>_<extractor>_whole_doc/`.
+
+Re-runs skip samples that already have output — delete a sample's files under
+`data/output/` to run it again.
 
 **Or the smallest possible example** — edit [`demo/config.yaml`](demo/config.yaml) (just
 a model, extractor, and sample range) and run:
@@ -145,7 +156,20 @@ layer exists (not a scanned/image-only PDF).
 
 **`lightonocr` (alternative)** — a vision-LLM (LightOnOCR-2-1B) that reads each page as an
 image instead, using the same marker convention. Needs a CUDA GPU and
-`pip install dmpbridge[lighton]`. Scores lower and runs slower than pdfplumber on this
+`pip install dmpbridge[lighton]`. **On Windows, plain pip installs the CPU-only torch build,
+with which LightOnOCR cannot run** — and the `--fallback auto` rescue then fails soft and the
+run proceeds with unusable text (observed directly: two runs from a venv with CPU torch
+produced garbage output while the same command worked from an environment with CUDA torch).
+On a machine with a CUDA GPU, install the CUDA build explicitly:
+
+```bash
+pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 --index-url https://download.pytorch.org/whl/cu121
+```
+
+(torch and torchvision must be **matching builds** — a torchvision compiled for a different
+torch fails at import with `operator torchvision::nms does not exist`, surfacing as a
+misleading `Could not import module 'AutoProcessor'` from transformers). Check with
+`python -c "import torch; print(torch.cuda.is_available())"` — it must print `True`. Scores lower and runs slower than pdfplumber on this
 project's documents so far, but works on scanned/image-only PDFs pdfplumber can't read at
 all — see `notebooks/comparison-gemma-pdfplumber-vs-lightonocr.ipynb`.
 
