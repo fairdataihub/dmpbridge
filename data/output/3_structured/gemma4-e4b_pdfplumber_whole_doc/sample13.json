@@ -7,9 +7,15 @@
       "version": "v1",
       "section": [
         {
-          "title": "# DATA MANAGEMENT PLAN",
+          "title": "DATA MANAGEMENT PLAN",
           "description": "",
           "order": 1,
+          "question": []
+        },
+        {
+          "title": "PI Gu",
+          "description": "",
+          "order": 2,
           "question": [
             {
               "text": "",
@@ -28,8 +34,14 @@
         },
         {
           "title": "Proteomic Data",
-          "description": "This project will generate PL-LFQMS profiling data using 13 newly identified PNET proteins as well as KAKU4 and Nup188 as bait. In addition, we will perform substrate-trap PL-LFQMS profiling using two INM PNET proteins to identify potential candidates of PIIs.",
-          "order": 2,
+          "description": "Description\nThis project will generate PL-LFQMS profiling data using 13 newly identified PNET proteins as well as KAKU4 and Nup188 as bait. In addition, we will perform substrate-trap PL-LFQMS profiling using two INM PNET proteins to identify potential candidates of PIIs.",
+          "order": 3,
+          "question": []
+        },
+        {
+          "title": "Archiving and Dissemination",
+          "description": "",
+          "order": 4,
           "question": [
             {
               "text": "",
@@ -48,8 +60,14 @@
         },
         {
           "title": "Mutants, Transgenic Lines, and Plasmid Constructs",
-          "description": "This project will generate biological materials of use to the research community, including Arabidopsis transgenic lines expressing fluorescent protein- and proximity biotinylation enzyme-tagged NE proteins, Arabidopsis mutants in which NE-associated genes have been disrupted through CRISPR-based genome editing, as well as plasmid constructs for expression of NE-associated Arabidopsis genes.",
-          "order": 3,
+          "description": "Description\nThis project will generate biological materials of use to the research community, including Arabidopsis transgenic lines expressing fluorescent protein- and proximity biotinylation enzyme-tagged NE proteins, Arabidopsis mutants in which NE-associated genes have been disrupted through CRISPR-based genome editing, as well as plasmid constructs for expression of NE-associated Arabidopsis genes.",
+          "order": 5,
+          "question": []
+        },
+        {
+          "title": "Archiving and Dissemination",
+          "description": "",
+          "order": 6,
           "question": [
             {
               "text": "",
@@ -68,28 +86,14 @@
         },
         {
           "title": "Publications",
-          "description": "Data obtained in the project will be published promptly. We anticipate that publication of results obtained under this project will start at Year 4 and be completed within a year following the end of the supported period. All data will be made freely available upon request following their publication. There are no",
-          "order": 4,
-          "question": [
-            {
-              "text": "",
-              "order": 1,
-              "answer": {
-                "json": {
-                  "type": "textArea",
-                  "answer": "anticipated ethical or privacy issues, permission restrictions, or intellectual privacy issues associated with the data following their publication. The PI and the two main participants of this project are also expected to present their findings at two major scientific conferences and other local scientific events.",
-                  "meta": {
-                    "schemaVersion": "1.0"
-                  }
-                }
-              }
-            }
-          ]
+          "description": "Description\nData obtained in the project will be published promptly. We anticipate that publication of results obtained under this project will start at Year 4 and be completed within a year following the end of the supported period. All data will be made freely available upon request following their publication. There are no anticipated ethical or privacy issues, permission restrictions, or intellectual privacy issues associated with the data following their publication. The PI and the two main participants of this project are also expected to present their findings at two major scientific conferences and other local scientific events.",
+          "order": 7,
+          "question": []
         },
         {
           "title": "Archiving and Dissemination",
           "description": "",
-          "order": 5,
+          "order": 8,
           "question": [
             {
               "text": "",
@@ -108,8 +112,14 @@
         },
         {
           "title": "Teaching Curricula",
-          "description": "Lectures on the NE evolution, structure, composition, and function will be developed. In addition, URAP and SPUR student training plans will be generated.",
-          "order": 6,
+          "description": "Description\nLectures on the NE evolution, structure, composition, and function will be developed. In addition, URAP and SPUR student training plans will be generated.",
+          "order": 9,
+          "question": []
+        },
+        {
+          "title": "Archiving and Dissemination",
+          "description": "",
+          "order": 10,
           "question": [
             {
               "text": "",

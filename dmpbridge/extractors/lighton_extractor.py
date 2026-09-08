@@ -23,6 +23,7 @@ Install:
 """
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import Union
 
@@ -54,6 +55,53 @@ _TRANSCRIBE_PROMPT = (
     "markers for anything that isn't actually formatted that way in "
     "the source."
 )
+
+
+# Page furniture at a page's very edge: "1 of 2", "Page 3", a bare number.
+# Dropped because OCR-ing page by page puts these lines *between* the pages'
+# text — when a paragraph straddles the page turn, the footer lands in the
+# middle of its sentence (seen on sample 13).
+_PAGE_FURNITURE = re.compile(r"^\s*(?:page\s+)?\d+(?:\s+of\s+\d+)?\s*$", re.IGNORECASE)
+
+# Characters that end a sentence or a self-contained line; a page ending
+# without one of these, followed by a page starting lowercase, is one
+# paragraph split by the page turn.
+_TERMINAL_CHARS = ".!?:;\"'”’)]"
+
+
+def join_page_texts(page_texts: list[str]) -> str:
+    """Join per-page OCR texts into one document string, healing page turns.
+
+    Each page is OCR'd independently, so a paragraph that continues across a
+    page turn arrives as two paragraphs with the page footer between them.
+    This (1) strips page-furniture lines from each page's edges, and
+    (2) joins two pages with a space instead of a paragraph break when the
+    first ends mid-sentence (no terminal punctuation) and the next begins
+    lowercase — the same continuation cues pdfplumber's line merger uses.
+    Kept as a pure function so it is testable without the model.
+    """
+    cleaned = []
+    for text in page_texts:
+        lines = text.splitlines()
+        while lines and (not lines[0].strip() or _PAGE_FURNITURE.match(lines[0])):
+            lines.pop(0)
+        while lines and (not lines[-1].strip() or _PAGE_FURNITURE.match(lines[-1])):
+            lines.pop()
+        page = "\n".join(lines).strip()
+        if page:
+            cleaned.append(page)
+    if not cleaned:
+        return ""
+
+    out = cleaned[0]
+    for nxt in cleaned[1:]:
+        prev_last = out[-1]
+        next_first = nxt[0]
+        if next_first.islower() and prev_last not in _TERMINAL_CHARS:
+            out = out + " " + nxt        # one paragraph, split by the page turn
+        else:
+            out = out + "\n\n" + nxt
+    return out
 
 
 def _remap_key(key: str) -> str:
@@ -90,7 +138,7 @@ class LightOnExtractor(BaseExtractor):
     def extract(self, pdf_path: Path) -> list[dict]:
         pages = self._render_pages(pdf_path)
         page_texts = [self._ocr_image(image) for image in pages]
-        return [{"text": "\n\n".join(page_texts)}]
+        return [{"text": join_page_texts(page_texts)}]
 
     # ── Internal — setup ─────────────────────────────────────────────────────
 
