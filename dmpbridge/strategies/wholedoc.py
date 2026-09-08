@@ -162,12 +162,19 @@ class WholeDocStrategy:
         full_text = blocks[0]["text"]
 
         # A broken text layer extracts "successfully" as garbage, and the model
-        # then hallucinates a fluent document (seen on sample 11). Warn loudly
-        # before spending the model call — the output will not be the input.
+        # then hallucinates a fluent document (seen on sample 11). Validate
+        # before spending the model call; with fallbacks configured, the
+        # two-step flow in extractors/fallback.py handles the routing.
+        from ..extractors.fallback import extract_with_fallback
         from ..preprocess.text_quality import looks_garbled
-        reason = looks_garbled(full_text)
-        if reason and self._fallbacks:
-            full_text, reason = self._try_fallbacks(pdf_path, reason)
+        if self._fallbacks:
+            result = extract_with_fallback(
+                pdf_path, self._extractor, self._fallbacks,
+                primary_text=full_text,
+                cache_lookup=lambda name: self._cached_stage1_text(name, pdf_path))
+            full_text, reason = result.text, result.reason
+        else:
+            reason = looks_garbled(full_text)
         if reason:
             logger.warning(
                 "[wholedoc] %s: extracted text does not look readable (%s). "
@@ -177,45 +184,15 @@ class WholeDocStrategy:
 
         return self.classify_entire_document(full_text)
 
-    def _try_fallbacks(self, pdf_path: Path, reason: str) -> tuple[str, Optional[str]]:
-        """Re-extract *pdf_path* with each fallback extractor until one yields
-        readable text. Returns (text, None) on success, or ("", the last
-        reason) if every fallback also produced garbage.
-
-        The fallback text is used for this document's labeling but is NOT
-        written into the primary extractor's stage-1 cache — the cache keeps
-        what that extractor actually read. A fallback's own stage-1 cache is
-        reused when it already holds readable text for this document.
-        """
+    @staticmethod
+    def _cached_stage1_text(extractor_name: str, pdf_path: Path) -> Optional[str]:
+        """A fallback extractor's own cached stage-1 text, if it has one."""
         from ..core.paths import EXTRACTED_DIR
-        from ..preprocess.text_quality import looks_garbled
-        logger.warning("[wholedoc] %s: %s extraction is unreadable (%s) — trying "
-                       "fallback extractor(s): %s", pdf_path.name,
-                       self.extractor_name, reason, ", ".join(self._fallbacks))
-        for name in self._fallbacks:
-            cached = EXTRACTED_DIR / name / f"{pdf_path.stem}.json"
-            text = ""
-            if cached.exists():
-                text = json.loads(cached.read_text(encoding="utf-8"))[0]["text"]
-            if not text or looks_garbled(text):
-                try:
-                    kwargs = {"force_ocr": True} if name == "docling" else {}
-                    blocks = get_extractor(name, **kwargs).extract(pdf_path)
-                    text = blocks[0]["text"] if blocks else ""
-                except Exception as exc:  # a fallback must fail soft: no GPU /
-                    # missing extra installs should move on to the next one
-                    logger.warning("[wholedoc] %s: fallback %s unavailable (%s) — "
-                                   "trying next", pdf_path.name, name, exc)
-                    continue
-            bad = looks_garbled(text)
-            if not bad:
-                logger.warning("[wholedoc] %s: using %s text for this document "
-                               "(the %s output for it is not trustworthy)",
-                               pdf_path.name, name, self.extractor_name)
-                return text, None
-            logger.warning("[wholedoc] %s: fallback %s also unreadable (%s)",
-                           pdf_path.name, name, bad)
-        return "", reason
+        cached = EXTRACTED_DIR / extractor_name / f"{pdf_path.stem}.json"
+        if not cached.exists():
+            return None
+        blocks = json.loads(cached.read_text(encoding="utf-8"))
+        return blocks[0]["text"] if blocks else None
 
     def classify_entire_document(self, full_text):
         """Classify a whole document's text in one call.
