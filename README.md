@@ -18,9 +18,9 @@ flowchart TD
     PDF["<b>DMP PDF</b>"]
 
     PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber — text, fonts, underlines</small>"]
-    READ --> CHECK{"<b>Readable text?</b><br/><small>cid codes · mojibake · replacement chars · empty · too little text</small>"}
+    READ --> CHECK{"<b>Readable text?</b>"}
     CHECK -- yes --> S1["<b>1. Text blocks</b>"]
-    CHECK -- "no — fall back" --> OCR["<b>Read page images</b><br/><small>LightOnOCR (--fallback auto)</small>"]
+    CHECK -- "no — fall back" --> OCR["<b>Read page images</b><br/><small>LightOnOCR</small>"]
     OCR --> S1
     S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b · qwen2.5:14b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
