@@ -1,0 +1,4752 @@
+{
+  "tool": "pdfplumber",
+  "version": "0.11.9",
+  "file": "sample11.pdf",
+  "body_font": {
+    "size": 12.0,
+    "fontname": "BAAAAA+TimesNewRomanPSMT"
+  },
+  "pages": [
+    {
+      "page_no": 1,
+      "size": {
+        "width": 612.0,
+        "height": 792.0
+      },
+      "words": [
+        {
+          "text": "3.3.3",
+          "fontname": "AAAAAA+TimesNewRomanPS-BoldMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 96.0,
+          "top": 79.8,
+          "bottom": 91.8
+        },
+        {
+          "text": "Data",
+          "fontname": "AAAAAA+TimesNewRomanPS-BoldMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 99.0,
+          "x1": 123.66,
+          "top": 79.8,
+          "bottom": 91.8
+        },
+        {
+          "text": "Management",
+          "fontname": "AAAAAA+TimesNewRomanPS-BoldMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 126.66,
+          "x1": 193.98,
+          "top": 79.8,
+          "bottom": 91.8
+        },
+        {
+          "text": "Plan",
+          "fontname": "AAAAAA+TimesNewRomanPS-BoldMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 196.98,
+          "x1": 220.32,
+          "top": 79.8,
+          "bottom": 91.8
+        },
+        {
+          "text": "All",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 108.0,
+          "x1": 123.33,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "participants",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 130.9,
+          "x1": 186.88,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 194.45,
+          "x1": 203.78,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 211.34,
+          "x1": 226.0,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "proposed",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 233.57,
+          "x1": 277.56,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "project",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 285.13,
+          "x1": 318.44,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "with",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 326.01,
+          "x1": 347.34,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "access",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 354.91,
+          "x1": 385.55,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 393.12,
+          "x1": 402.45,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 410.02,
+          "x1": 424.68,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "numerical",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 432.24,
+          "x1": 480.22,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "codes",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 487.79,
+          "x1": 515.11,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 522.67,
+          "x1": 540.0,
+          "top": 99.6,
+          "bottom": 111.6
+        },
+        {
+          "text": "computational",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 140.65,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 146.35,
+          "x1": 166.33,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 172.03,
+          "x1": 190.7,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "conform",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 196.4,
+          "x1": 237.05,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "closely",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 242.75,
+          "x1": 276.74,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 282.44,
+          "x1": 291.78,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "NASA",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 297.48,
+          "x1": 330.15,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "policy",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 335.19,
+          "x1": 365.18,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "on",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 370.88,
+          "x1": 382.88,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "preserving",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 388.58,
+          "x1": 439.23,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 444.93,
+          "x1": 462.26,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "sharing",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 467.96,
+          "x1": 503.28,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 508.98,
+          "x1": 518.98,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 524.68,
+          "x1": 539.34,
+          "top": 113.4,
+          "bottom": 125.4
+        },
+        {
+          "text": "research",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 111.97,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 114.98,
+          "x1": 134.97,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 137.98,
+          "x1": 155.31,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "gathered",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 158.32,
+          "x1": 199.63,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 202.65,
+          "x1": 211.98,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 214.99,
+          "x1": 229.65,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "course",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 232.67,
+          "x1": 263.99,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 267.0,
+          "x1": 277.0,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 280.01,
+          "x1": 294.67,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "proposed",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 297.69,
+          "x1": 341.68,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "project.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 344.69,
+          "x1": 381.01,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "The",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 384.02,
+          "x1": 402.68,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 405.69,
+          "x1": 425.68,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "acquired",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 428.7,
+          "x1": 470.0,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 473.02,
+          "x1": 490.35,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "preserved",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 493.36,
+          "x1": 540.0,
+          "top": 127.2,
+          "bottom": 139.2
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 81.33,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 87.48,
+          "x1": 102.14,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "context",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 108.29,
+          "x1": 143.61,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 149.76,
+          "x1": 159.76,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "this",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 165.9,
+          "x1": 183.24,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "proposal",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 189.39,
+          "x1": 230.72,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 236.86,
+          "x1": 255.53,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 261.68,
+          "x1": 273.01,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "further",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 279.15,
+          "x1": 311.8,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "governed",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 317.95,
+          "x1": 362.6,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "by",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 368.75,
+          "x1": 380.75,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "UCSB’s",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 386.9,
+          "x1": 426.25,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "policies",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 432.4,
+          "x1": 469.72,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "pertaining",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 475.87,
+          "x1": 524.52,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 530.67,
+          "x1": 540.0,
+          "top": 140.99,
+          "bottom": 152.99
+        },
+        {
+          "text": "intellectual",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 125.31,
+          "top": 154.79,
+          "bottom": 166.79
+        },
+        {
+          "text": "property,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 128.31,
+          "x1": 171.18,
+          "top": 154.79,
+          "bottom": 166.79
+        },
+        {
+          "text": "record",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 174.18,
+          "x1": 204.83,
+          "top": 154.79,
+          "bottom": 166.79
+        },
+        {
+          "text": "retention,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 207.83,
+          "x1": 253.48,
+          "top": 154.79,
+          "bottom": 166.79
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 256.48,
+          "x1": 273.8,
+          "top": 154.79,
+          "bottom": 166.79
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 276.8,
+          "x1": 296.79,
+          "top": 154.79,
+          "bottom": 166.79
+        },
+        {
+          "text": "management.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 299.79,
+          "x1": 364.1,
+          "top": 154.79,
+          "bottom": 166.79
+        },
+        {
+          "text": "Digital",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 108.0,
+          "x1": 141.33,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "products",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 144.96,
+          "x1": 186.28,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "from",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 189.91,
+          "x1": 213.24,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "this",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 216.87,
+          "x1": 234.2,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "project",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 237.83,
+          "x1": 271.15,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "include:",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 274.78,
+          "x1": 313.43,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "1)",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 317.06,
+          "x1": 327.06,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "a",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 330.69,
+          "x1": 336.01,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "numerical",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 339.64,
+          "x1": 387.62,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "code",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 391.25,
+          "x1": 413.9,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "that",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 417.53,
+          "x1": 435.52,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "can",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 439.15,
+          "x1": 455.8,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "predict",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 459.43,
+          "x1": 492.75,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 496.38,
+          "x1": 511.04,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "ADR",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 514.66,
+          "x1": 540.0,
+          "top": 168.59,
+          "bottom": 180.59
+        },
+        {
+          "text": "performance",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 132.63,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 138.18,
+          "x1": 148.17,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "a",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 153.72,
+          "x1": 159.05,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "magnetic",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 164.59,
+          "x1": 208.57,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "refrigerant",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 214.12,
+          "x1": 264.75,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "based",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 270.3,
+          "x1": 297.62,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "on",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 303.17,
+          "x1": 315.17,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "DFT",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 320.72,
+          "x1": 343.39,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 348.72,
+          "x1": 366.05,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "DFPT",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 371.6,
+          "x1": 400.94,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "simulation",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 406.27,
+          "x1": 456.94,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 462.49,
+          "x1": 472.48,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "magnon",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 478.03,
+          "x1": 516.69,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 522.24,
+          "x1": 539.57,
+          "top": 182.39,
+          "bottom": 194.39
+        },
+        {
+          "text": "phonon",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 108.0,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "properties.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 111.55,
+          "x1": 162.53,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "The",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 166.08,
+          "x1": 184.73,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "computer",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 188.28,
+          "x1": 233.6,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "code",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 237.14,
+          "x1": 259.79,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 263.34,
+          "x1": 282.01,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 285.56,
+          "x1": 296.88,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "published",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 300.43,
+          "x1": 347.09,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "on",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 350.64,
+          "x1": 362.64,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 366.19,
+          "x1": 380.85,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "open-source",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 384.39,
+          "x1": 443.03,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "website",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 446.58,
+          "x1": 483.24,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "GitHub.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 486.78,
+          "x1": 525.78,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "PI",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 529.33,
+          "x1": 540.0,
+          "top": 196.19,
+          "bottom": 208.19
+        },
+        {
+          "text": "Liao",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 93.99,
+          "top": 209.99,
+          "bottom": 221.99
+        },
+        {
+          "text": "has",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 126.76,
+          "x1": 142.76,
+          "top": 209.99,
+          "bottom": 221.99
+        },
+        {
+          "text": "published",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 175.53,
+          "x1": 222.2,
+          "top": 209.99,
+          "bottom": 221.99
+        },
+        {
+          "text": "homemade",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 254.97,
+          "x1": 307.61,
+          "top": 209.99,
+          "bottom": 221.99
+        },
+        {
+          "text": "code",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 340.39,
+          "x1": 363.04,
+          "top": 209.99,
+          "bottom": 221.99
+        },
+        {
+          "text": "on",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 395.81,
+          "x1": 407.81,
+          "top": 209.99,
+          "bottom": 221.99
+        },
+        {
+          "text": "GitHub",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 440.58,
+          "x1": 476.58,
+          "top": 209.99,
+          "bottom": 221.99
+        },
+        {
+          "text": "before",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 509.36,
+          "x1": 540.0,
+          "top": 209.99,
+          "bottom": 221.99
+        },
+        {
+          "text": "(https://github.com/nanoengineering/EPW-nano).",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 309.29,
+          "top": 223.79,
+          "bottom": 235.79
+        },
+        {
+          "text": "2)",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 314.8,
+          "x1": 324.8,
+          "top": 223.79,
+          "bottom": 235.79
+        },
+        {
+          "text": "a",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 330.31,
+          "x1": 335.64,
+          "top": 223.79,
+          "bottom": 235.79
+        },
+        {
+          "text": "numerical",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 341.15,
+          "x1": 389.13,
+          "top": 223.79,
+          "bottom": 235.79
+        },
+        {
+          "text": "code",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 394.65,
+          "x1": 417.3,
+          "top": 223.79,
+          "bottom": 235.79
+        },
+        {
+          "text": "that",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 422.81,
+          "x1": 440.81,
+          "top": 223.79,
+          "bottom": 235.79
+        },
+        {
+          "text": "solves",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 446.32,
+          "x1": 476.32,
+          "top": 223.79,
+          "bottom": 235.79
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 481.84,
+          "x1": 496.5,
+          "top": 223.79,
+          "bottom": 235.79
+        },
+        {
+          "text": "coupled",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 502.01,
+          "x1": 540.0,
+          "top": 223.79,
+          "bottom": 235.79
+        },
+        {
+          "text": "magnon-phonon",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 150.66,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "Boltzmann",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 155.91,
+          "x1": 208.56,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "transport",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 213.81,
+          "x1": 256.47,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "equations.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 261.72,
+          "x1": 310.71,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "This",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 315.96,
+          "x1": 337.29,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "software",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 342.54,
+          "x1": 383.85,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 389.1,
+          "x1": 407.77,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 413.02,
+          "x1": 424.35,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "written",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 429.59,
+          "x1": 463.59,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 468.83,
+          "x1": 478.17,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "Python",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 483.42,
+          "x1": 517.42,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 522.67,
+          "x1": 540.0,
+          "top": 237.59,
+          "bottom": 249.59
+        },
+        {
+          "text": "published",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 118.66,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 123.13,
+          "x1": 140.46,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "regularly",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 144.92,
+          "x1": 188.24,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "maintained/updated",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 192.7,
+          "x1": 287.34,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "on",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 291.8,
+          "x1": 303.8,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 308.27,
+          "x1": 322.93,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "open-source",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 327.4,
+          "x1": 386.04,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "website",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 390.5,
+          "x1": 427.16,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "GitHub.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 431.63,
+          "x1": 470.63,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "3)",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 475.09,
+          "x1": 485.09,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "Data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 489.55,
+          "x1": 512.21,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "from",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 516.67,
+          "x1": 540.0,
+          "top": 251.38,
+          "bottom": 263.38
+        },
+        {
+          "text": "first-principles",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 142.65,
+          "top": 265.18,
+          "bottom": 277.18
+        },
+        {
+          "text": "simulations,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 149.58,
+          "x1": 207.92,
+          "top": 265.18,
+          "bottom": 277.18
+        },
+        {
+          "text": "including",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 214.85,
+          "x1": 260.18,
+          "top": 265.18,
+          "bottom": 277.18
+        },
+        {
+          "text": "magnon",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 267.12,
+          "x1": 305.78,
+          "top": 265.18,
+          "bottom": 277.18
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 312.72,
+          "x1": 330.04,
+          "top": 265.18,
+          "bottom": 277.18
+        },
+        {
+          "text": "phonon",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 336.98,
+          "x1": 372.98,
+          "top": 265.18,
+          "bottom": 277.18
+        },
+        {
+          "text": "transport",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 379.91,
+          "x1": 422.57,
+          "top": 265.18,
+          "bottom": 277.18
+        },
+        {
+          "text": "properties",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 429.51,
+          "x1": 477.49,
+          "top": 265.18,
+          "bottom": 277.18
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 484.43,
+          "x1": 494.42,
+          "top": 265.18,
+          "bottom": 277.18
+        },
+        {
+          "text": "selected",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 501.36,
+          "x1": 540.0,
+          "top": 265.18,
+          "bottom": 277.18
+        },
+        {
+          "text": "magnetic",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 115.98,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "materials.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 122.99,
+          "x1": 169.97,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "Metadata",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 176.99,
+          "x1": 221.63,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "that",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 228.64,
+          "x1": 246.64,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "describes",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 253.65,
+          "x1": 298.3,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "simulation",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 305.31,
+          "x1": 355.98,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "conditions",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 362.99,
+          "x1": 412.99,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 420.0,
+          "x1": 438.67,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "also",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 445.68,
+          "x1": 465.01,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 472.03,
+          "x1": 483.35,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "generated,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 490.37,
+          "x1": 540.0,
+          "top": 278.98,
+          "bottom": 290.98
+        },
+        {
+          "text": "indexed,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 112.99,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 116.67,
+          "x1": 133.99,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "archived",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 137.67,
+          "x1": 178.98,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "together",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 182.66,
+          "x1": 221.97,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "with",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 225.65,
+          "x1": 246.99,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 250.67,
+          "x1": 265.33,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "raw",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 269.0,
+          "x1": 286.99,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "data.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 290.67,
+          "x1": 313.66,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "Raw",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 317.34,
+          "x1": 339.33,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "simulation",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 343.01,
+          "x1": 393.68,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 397.36,
+          "x1": 417.34,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 421.02,
+          "x1": 439.69,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 443.37,
+          "x1": 454.7,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "carefully",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 458.37,
+          "x1": 501.01,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "curated",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 504.69,
+          "x1": 540.0,
+          "top": 292.78,
+          "bottom": 304.78
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 89.33,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "archived.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 93.72,
+          "x1": 138.03,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "The",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 142.42,
+          "x1": 161.07,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "team",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 165.47,
+          "x1": 188.79,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 193.18,
+          "x1": 211.84,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "archive",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 216.24,
+          "x1": 251.54,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "all",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 255.94,
+          "x1": 267.93,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 272.32,
+          "x1": 292.31,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 296.7,
+          "x1": 306.03,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "local",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 310.43,
+          "x1": 333.75,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "computers",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 338.14,
+          "x1": 388.12,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 392.51,
+          "x1": 409.84,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "a",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 414.23,
+          "x1": 419.56,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "centralized",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 423.95,
+          "x1": 476.58,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 480.97,
+          "x1": 500.96,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "storage",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 505.35,
+          "x1": 540.0,
+          "top": 306.58,
+          "bottom": 318.58
+        },
+        {
+          "text": "system",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 105.33,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "based",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 109.52,
+          "x1": 136.84,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "on",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 141.03,
+          "x1": 153.03,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "external",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 157.22,
+          "x1": 195.86,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "hard",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 200.05,
+          "x1": 221.37,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "drives,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 225.55,
+          "x1": 257.88,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "which",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 262.07,
+          "x1": 291.39,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "is",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 295.58,
+          "x1": 303.58,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "synchronized",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 307.77,
+          "x1": 371.75,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 375.94,
+          "x1": 385.27,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "cloud",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 389.46,
+          "x1": 416.12,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "storage",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 420.3,
+          "x1": 454.96,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "(UCSB",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 459.14,
+          "x1": 494.49,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "provides",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 498.67,
+          "x1": 540.0,
+          "top": 320.38,
+          "bottom": 332.38
+        },
+        {
+          "text": "unlimited",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 118.0,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "Google",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 123.19,
+          "x1": 158.52,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "Drive",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 163.71,
+          "x1": 191.03,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "storage",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 196.23,
+          "x1": 230.88,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "space",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 236.08,
+          "x1": 262.72,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 267.92,
+          "x1": 277.25,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "researchers).",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 282.45,
+          "x1": 343.4,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "Graduate",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 348.6,
+          "x1": 392.57,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "students",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 397.77,
+          "x1": 437.1,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "participating",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 442.29,
+          "x1": 502.94,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 508.13,
+          "x1": 517.47,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "this",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 522.66,
+          "x1": 540.0,
+          "top": 334.18,
+          "bottom": 346.18
+        },
+        {
+          "text": "project",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 105.32,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 109.02,
+          "x1": 127.69,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 131.39,
+          "x1": 142.71,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "directly",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 146.41,
+          "x1": 183.07,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "responsible",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 186.77,
+          "x1": 241.42,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "for",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 245.12,
+          "x1": 259.12,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "collecting,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 262.82,
+          "x1": 313.13,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "curating,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 316.83,
+          "x1": 359.15,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 362.85,
+          "x1": 380.18,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "archiving",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 383.88,
+          "x1": 429.2,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 432.9,
+          "x1": 447.56,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "data.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 451.26,
+          "x1": 474.25,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "They",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 477.95,
+          "x1": 502.6,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 506.3,
+          "x1": 524.97,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 528.67,
+          "x1": 540.0,
+          "top": 347.98,
+          "bottom": 359.98
+        },
+        {
+          "text": "trained",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 105.32,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "by",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 109.7,
+          "x1": 121.7,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "PI",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 126.08,
+          "x1": 136.75,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "Liao",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 141.13,
+          "x1": 163.12,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "before",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 167.5,
+          "x1": 198.15,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 202.53,
+          "x1": 217.19,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "start",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 221.57,
+          "x1": 242.23,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 246.61,
+          "x1": 256.61,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 260.99,
+          "x1": 275.65,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "project",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 280.03,
+          "x1": 313.35,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "on",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 317.73,
+          "x1": 329.73,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 334.11,
+          "x1": 348.77,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "proper",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 353.15,
+          "x1": 384.47,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "protocol",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 388.85,
+          "x1": 428.84,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 433.22,
+          "x1": 443.22,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "handling",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 447.6,
+          "x1": 489.59,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "data.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 493.98,
+          "x1": 516.96,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "The",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 521.34,
+          "x1": 540.0,
+          "top": 361.78,
+          "bottom": 373.78
+        },
+        {
+          "text": "stored",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 101.33,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 106.61,
+          "x1": 126.59,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 131.87,
+          "x1": 150.54,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 155.82,
+          "x1": 167.14,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "periodically",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 172.42,
+          "x1": 229.73,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "(at",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 235.01,
+          "x1": 247.67,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "least",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 252.95,
+          "x1": 274.94,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "monthly)",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 280.22,
+          "x1": 324.21,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "inspected",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 329.49,
+          "x1": 374.81,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "by",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 380.09,
+          "x1": 392.09,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "PI",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 397.37,
+          "x1": 408.04,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "Liao.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 413.32,
+          "x1": 438.31,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "In",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 443.59,
+          "x1": 453.58,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 458.86,
+          "x1": 473.52,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "event",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 478.8,
+          "x1": 504.79,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 510.06,
+          "x1": 520.06,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 525.34,
+          "x1": 540.0,
+          "top": 375.57,
+          "bottom": 387.57
+        },
+        {
+          "text": "departure",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 117.3,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 120.32,
+          "x1": 130.31,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "key",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 133.32,
+          "x1": 150.65,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "personnel,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 153.66,
+          "x1": 203.31,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "a",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 206.32,
+          "x1": 211.65,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "written",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 214.66,
+          "x1": 248.65,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "document",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 251.66,
+          "x1": 298.98,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "detailing",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 301.99,
+          "x1": 343.98,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 346.99,
+          "x1": 361.65,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "content",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 364.66,
+          "x1": 399.98,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 402.99,
+          "x1": 420.32,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 423.33,
+          "x1": 437.99,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "condition",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 441.0,
+          "x1": 486.33,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 489.34,
+          "x1": 499.33,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 502.34,
+          "x1": 517.0,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 520.01,
+          "x1": 540.0,
+          "top": 389.37,
+          "bottom": 401.37
+        },
+        {
+          "text": "that",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 89.99,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "they",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 96.34,
+          "x1": 117.0,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "are",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 123.34,
+          "x1": 137.99,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "responsible",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 144.33,
+          "x1": 198.99,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "for",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 205.33,
+          "x1": 219.33,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "should",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 225.67,
+          "x1": 257.67,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 264.02,
+          "x1": 275.34,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "prepared",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 281.69,
+          "x1": 323.66,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 330.0,
+          "x1": 347.33,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 353.67,
+          "x1": 373.66,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "transfer",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 380.0,
+          "x1": 416.65,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 422.99,
+          "x1": 440.31,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "training",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 446.66,
+          "x1": 483.98,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "should",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 490.33,
+          "x1": 522.33,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 528.67,
+          "x1": 540.0,
+          "top": 403.17,
+          "bottom": 415.17
+        },
+        {
+          "text": "conducted",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 121.31,
+          "top": 416.97,
+          "bottom": 428.97
+        },
+        {
+          "text": "before",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 124.31,
+          "x1": 154.96,
+          "top": 416.97,
+          "bottom": 428.97
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 157.96,
+          "x1": 172.62,
+          "top": 416.97,
+          "bottom": 428.97
+        },
+        {
+          "text": "departure.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 175.62,
+          "x1": 223.92,
+          "top": 416.97,
+          "bottom": 428.97
+        },
+        {
+          "text": "We",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 108.0,
+          "x1": 123.69,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 128.65,
+          "x1": 147.32,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "publish",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 152.29,
+          "x1": 187.62,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "primary",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 192.59,
+          "x1": 230.57,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "results",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 235.54,
+          "x1": 266.87,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "expeditiously",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 271.83,
+          "x1": 336.49,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 341.45,
+          "x1": 350.78,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "peer-reviewed",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 355.75,
+          "x1": 424.13,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "journals,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 429.09,
+          "x1": 470.75,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "supported",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 475.71,
+          "x1": 523.04,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "by",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 528.0,
+          "x1": 540.0,
+          "top": 430.77,
+          "bottom": 442.77
+        },
+        {
+          "text": "relevant",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 110.64,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 117.07,
+          "x1": 137.06,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 143.48,
+          "x1": 152.82,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 159.24,
+          "x1": 173.9,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "supplementary",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 180.33,
+          "x1": 250.98,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "documents",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 257.4,
+          "x1": 309.39,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "along",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 315.82,
+          "x1": 342.48,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "with",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 348.91,
+          "x1": 370.24,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 376.67,
+          "x1": 391.33,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "published",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 397.75,
+          "x1": 444.42,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "papers.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 450.85,
+          "x1": 485.16,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "Raw",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 491.59,
+          "x1": 513.59,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 520.01,
+          "x1": 540.0,
+          "top": 444.57,
+          "bottom": 456.57
+        },
+        {
+          "text": "supporting",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 123.33,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "published",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 126.68,
+          "x1": 173.34,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "papers",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 176.68,
+          "x1": 208.0,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 211.34,
+          "x1": 230.01,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 233.35,
+          "x1": 244.68,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "made",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 248.02,
+          "x1": 274.01,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "available",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 277.35,
+          "x1": 320.65,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 324.0,
+          "x1": 333.33,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 336.67,
+          "x1": 351.33,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "public",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 354.67,
+          "x1": 384.67,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "automatically",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 388.01,
+          "x1": 453.32,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "by",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 456.66,
+          "x1": 468.66,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "depositing",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 472.0,
+          "x1": 522.0,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 525.34,
+          "x1": 540.0,
+          "top": 458.37,
+          "bottom": 470.37
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 91.99,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 95.93,
+          "x1": 105.26,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 109.2,
+          "x1": 123.86,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "open-access",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 127.8,
+          "x1": 185.77,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "repository",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 189.71,
+          "x1": 238.37,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "Figshare,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 242.31,
+          "x1": 286.63,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 290.58,
+          "x1": 307.9,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 311.84,
+          "x1": 326.5,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "web",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 330.44,
+          "x1": 350.44,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "link",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 354.38,
+          "x1": 373.05,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 376.99,
+          "x1": 395.65,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 399.6,
+          "x1": 410.92,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "provided",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 414.86,
+          "x1": 457.52,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 461.46,
+          "x1": 470.79,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 474.73,
+          "x1": 489.39,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "published",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 493.34,
+          "x1": 540.0,
+          "top": 472.17,
+          "bottom": 484.17
+        },
+        {
+          "text": "paper.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 100.99,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "The",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 104.62,
+          "x1": 123.27,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "raw",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 126.91,
+          "x1": 144.9,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 148.53,
+          "x1": 168.51,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 172.15,
+          "x1": 190.81,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 194.45,
+          "x1": 205.77,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "properly",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 209.41,
+          "x1": 250.06,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "annotated",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 253.69,
+          "x1": 300.34,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 303.97,
+          "x1": 321.3,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "detailed",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 324.93,
+          "x1": 362.91,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "metadata",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 366.54,
+          "x1": 409.85,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "that",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 413.48,
+          "x1": 431.47,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "describes",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 435.11,
+          "x1": 479.75,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 483.39,
+          "x1": 498.05,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "content,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 501.68,
+          "x1": 540.0,
+          "top": 485.96,
+          "bottom": 497.96
+        },
+        {
+          "text": "format,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 106.99,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "organization",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 112.26,
+          "x1": 172.02,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 177.29,
+          "x1": 187.29,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 192.56,
+          "x1": 207.22,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "raw",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 212.5,
+          "x1": 230.48,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 235.76,
+          "x1": 255.74,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 261.02,
+          "x1": 279.69,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "also",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 284.96,
+          "x1": 304.29,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 309.56,
+          "x1": 320.89,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "provided",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 326.16,
+          "x1": 368.82,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 374.09,
+          "x1": 383.43,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "help",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 388.7,
+          "x1": 409.36,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "interpret",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 414.63,
+          "x1": 455.28,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 460.55,
+          "x1": 475.21,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "raw",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 480.49,
+          "x1": 498.47,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "data.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 503.75,
+          "x1": 526.73,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "If",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 532.01,
+          "x1": 540.0,
+          "top": 499.76,
+          "bottom": 511.76
+        },
+        {
+          "text": "processed",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 119.31,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 122.95,
+          "x1": 142.93,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "is",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 146.56,
+          "x1": 154.57,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "used",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 158.2,
+          "x1": 180.19,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 183.83,
+          "x1": 193.16,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 196.79,
+          "x1": 211.45,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "publication,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 215.08,
+          "x1": 272.07,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 275.7,
+          "x1": 290.36,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "processing",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 293.99,
+          "x1": 345.32,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "procedure",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 348.95,
+          "x1": 396.92,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 400.55,
+          "x1": 419.22,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "be",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 422.85,
+          "x1": 434.17,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "described",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 437.81,
+          "x1": 483.78,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 487.42,
+          "x1": 496.75,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "detail",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 500.38,
+          "x1": 527.03,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 530.67,
+          "x1": 540.0,
+          "top": 513.56,
+          "bottom": 525.56
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 86.66,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "paper.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 92.18,
+          "x1": 121.16,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "We",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 126.68,
+          "x1": 142.37,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 147.88,
+          "x1": 166.55,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "provide",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 172.07,
+          "x1": 208.72,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "full",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 214.24,
+          "x1": 230.9,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "assistance",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 236.42,
+          "x1": 284.4,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "in",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 289.92,
+          "x1": 299.25,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "terms",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 304.77,
+          "x1": 331.43,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "of",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 336.94,
+          "x1": 346.94,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "raw",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 352.45,
+          "x1": 370.44,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 375.96,
+          "x1": 395.94,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "availability,",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 401.46,
+          "x1": 457.66,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "data",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 463.18,
+          "x1": 483.16,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "processing",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 488.68,
+          "x1": 540.0,
+          "top": 527.36,
+          "bottom": 539.36
+        },
+        {
+          "text": "software",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 113.31,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 117.42,
+          "x1": 134.75,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "error",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 138.85,
+          "x1": 162.17,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "analysis",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 166.27,
+          "x1": 204.93,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "for",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 209.04,
+          "x1": 223.03,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "other",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 227.14,
+          "x1": 251.79,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "researchers",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 255.9,
+          "x1": 309.86,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 313.96,
+          "x1": 323.3,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "validate",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 327.4,
+          "x1": 365.38,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 369.49,
+          "x1": 386.81,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "reproduce",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 390.92,
+          "x1": 438.89,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "our",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 443.0,
+          "x1": 458.99,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "results.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 463.1,
+          "x1": 497.43,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "We",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 501.53,
+          "x1": 517.23,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "will",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 521.33,
+          "x1": 540.0,
+          "top": 541.16,
+          "bottom": 553.16
+        },
+        {
+          "text": "make",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 97.99,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "peer-reviewed",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 102.22,
+          "x1": 170.6,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "publications",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 174.83,
+          "x1": 233.49,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "from",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 237.73,
+          "x1": 261.05,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "this",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 265.29,
+          "x1": 282.63,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "project",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 286.86,
+          "x1": 320.18,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "all",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 324.41,
+          "x1": 336.41,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "available",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 340.64,
+          "x1": 383.95,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 388.18,
+          "x1": 397.51,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 401.75,
+          "x1": 416.41,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "public",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 420.64,
+          "x1": 450.64,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "by",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 454.87,
+          "x1": 466.87,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "depositing",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 471.11,
+          "x1": 521.11,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "the",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 525.34,
+          "x1": 540.0,
+          "top": 554.96,
+          "bottom": 566.96
+        },
+        {
+          "text": "accepted",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 72.0,
+          "x1": 113.96,
+          "top": 568.76,
+          "bottom": 580.76
+        },
+        {
+          "text": "manuscripts",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 116.96,
+          "x1": 174.96,
+          "top": 568.76,
+          "bottom": 580.76
+        },
+        {
+          "text": "to",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 177.96,
+          "x1": 187.29,
+          "top": 568.76,
+          "bottom": 580.76
+        },
+        {
+          "text": "depositories",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 190.29,
+          "x1": 248.28,
+          "top": 568.76,
+          "bottom": 580.76
+        },
+        {
+          "text": "like",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 251.28,
+          "x1": 269.27,
+          "top": 568.76,
+          "bottom": 580.76
+        },
+        {
+          "text": "arXiv",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 272.27,
+          "x1": 299.6,
+          "top": 568.76,
+          "bottom": 580.76
+        },
+        {
+          "text": "and",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 302.6,
+          "x1": 319.92,
+          "top": 568.76,
+          "bottom": 580.76
+        },
+        {
+          "text": "PubMed",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 322.92,
+          "x1": 363.59,
+          "top": 568.76,
+          "bottom": 580.76
+        },
+        {
+          "text": "Central.",
+          "fontname": "BAAAAA+TimesNewRomanPSMT",
+          "size": 12.0,
+          "upright": true,
+          "x0": 366.59,
+          "x1": 404.91,
+          "top": 568.76,
+          "bottom": 580.76
+        }
+      ],
+      "rects": [
+        {
+          "x0": 0.0,
+          "x1": 612.0,
+          "top": 0.0,
+          "bottom": 792.0,
+          "height": 792.0,
+          "stroke": false,
+          "fill": true
+        }
+      ],
+      "lines": [
+        {
+          "x0": 76.0,
+          "x1": 302.29,
+          "top": 234.99,
+          "bottom": 234.99
+        }
+      ],
+      "curves": 0,
+      "images": 0,
+      "hyperlinks": []
+    }
+  ]
+}

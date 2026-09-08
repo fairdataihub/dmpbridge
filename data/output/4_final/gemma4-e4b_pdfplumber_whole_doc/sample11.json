@@ -1,0 +1,32 @@
+{
+  "narrative": {
+    "download_url": "",
+    "template": {
+      "title": "",
+      "description": "",
+      "version": "v1",
+      "section": [
+        {
+          "title": "3.3.3 Data Management Plan",
+          "description": "All participants in the proposed project with access to the numerical codes and computational data will conform closely to NASA policy on preserving and sharing of the research data and gathered in the course of the proposed project. The data acquired and preserved in the context of this proposal will be further governed by UCSB’s policies pertaining to intellectual property, record retention, and data management.",
+          "order": 1,
+          "question": [
+            {
+              "text": "3.3.3 Data Management Plan",
+              "order": 1,
+              "answer": {
+                "json": {
+                  "type": "textArea",
+                  "answer": "Digital products from this project include: 1) a numerical code that can predict the ADR performance of a magnetic refrigerant based on DFT and DFPT simulation of magnon and phonon properties. The computer code will be published on the open-source website GitHub. PI Liao has published homemade code on GitHub before (https://github.com/nanoengineering/EPW-nano). 2) a numerical code that solves the coupled magnon-phonon Boltzmann transport equations. This software will be written in Python and published and regularly maintained/updated on the open-source website GitHub. 3) Data from first-principles simulations, including magnon and phonon transport properties of selected magnetic materials. Metadata that describes simulation conditions will also be generated, indexed, and archived together with the raw data. Raw simulation data will be carefully curated and archived. The team will archive all data in local computers and a centralized data storage system based on external hard drives, which is synchronized to cloud storage (UCSB provides unlimited Google Drive storage space to researchers). Graduate students participating in this project will be directly responsible for collecting, curating, and archiving the data. They will be trained by PI Liao before the start of the project on the proper protocol of handling data. The stored data will be periodically (at least monthly) inspected by PI Liao. In the event of the departure of key personnel, a written document detailing the content and the condition of the data that they are responsible for should be prepared and data transfer and training should be conducted before the departure.\nWe will publish primary results expeditiously in peer-reviewed journals, supported by relevant data in the supplementary documents along with the published papers. Raw data supporting published papers will be made available to the public automatically by depositing the data to the open-access repository Figshare, and the web link will be provided in the published paper. The raw data will be properly annotated and detailed metadata that describes the content, format, organization of the raw data will also be provided to help interpret the raw data. If processed data is used in the publication, the processing procedure will be described in detail in the paper. We will provide full assistance in terms of raw data availability, data processing software and error analysis for other researchers to validate and reproduce our results. We will make peer-reviewed publications from this project all available to the public by depositing the accepted manuscripts to depositories like arXiv and PubMed Central.",
+                  "meta": {
+                    "schemaVersion": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
