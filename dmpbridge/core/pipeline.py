@@ -114,21 +114,22 @@ def run_and_save(
 def normalize_fallbacks(fallback, extractor: str) -> Optional[list[str]]:
     """Turn the ``fallback`` argument into an ordered extractor list.
 
-    ``"auto"`` means LightOnOCR first, then docling with forced OCR. Quality
-    order, not cost order: on the one broken-text-layer document measured
-    (sample 11), LightOnOCR produced a properly structured result while
-    docling-OCR text collapsed into a single fused question with no answers —
-    and the fallback fires rarely enough that its GPU model load is
-    acceptable. Docling stays second as the CPU-only safety net (each
-    fallback attempt fails soft, so a machine without a CUDA GPU falls
-    through to it). A string is a single fallback; a list is used as given.
-    The primary extractor is filtered out. Returns ``None`` when nothing
-    usable remains.
+    ``"auto"`` means LightOnOCR — the production fallback path is
+    pdfplumber -> validate -> LightOnOCR and nothing else. Quality decided
+    that: on the one broken-text-layer document measured (sample 11),
+    LightOnOCR produced a properly structured result while docling-OCR text
+    collapsed into a single fused question with no answers. Docling remains
+    in the package as an *experimental* backend (``--extractor docling``,
+    ``--force-ocr``, the comparison notebooks) and can still be named
+    explicitly here — ``fallback="docling"`` or a list — it is just never
+    chosen implicitly. A string is a single fallback; a list is used as
+    given. The primary extractor is filtered out. Returns ``None`` when
+    nothing usable remains.
     """
     if not fallback:
         return None
     if fallback == "auto":
-        names = ["lightonocr", "docling"]
+        names = ["lightonocr"]
     elif isinstance(fallback, str):
         names = [fallback]
     else:

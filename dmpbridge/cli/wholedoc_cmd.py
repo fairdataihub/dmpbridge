@@ -95,11 +95,10 @@ def main() -> None:
     ap.add_argument("--fallback", choices=["docling", "lightonocr", "auto"], default=None,
                     help="if a document's extracted text fails the garbled-text check, re-extract "
                          "it with this extractor instead (per document; clean documents are "
-                         "untouched). 'docling' means docling with forced full-page OCR; 'auto' "
-                         "tries lightonocr then docling (quality order — lightonocr structures "
-                         "OCR'd documents far better; docling is the CPU-only net if no GPU). "
-                         "The fallback text is used for labeling but never written into the "
-                         "primary extractor's stage-1 cache")
+                         "untouched). 'auto' = lightonocr, the production fallback; 'docling' "
+                         "(docling with forced full-page OCR) is experimental and only used when "
+                         "named explicitly. The fallback text is used for labeling but never "
+                         "written into the primary extractor's stage-1 cache")
     args = ap.parse_args()
     if args.save_native and args.extractor not in ("docling", "pdfplumber"):
         ap.error("--save-native only applies to --extractor docling or pdfplumber")
