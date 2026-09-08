@@ -1,10 +1,16 @@
 """Build notebooks/export-labeled-results-to-excel.ipynb.
 
-A small review notebook: parse the model's raw labeled JSON for every sample
-under the ``gemma4-e4b_pdfplumber_whole_doc`` tag into a clean two-column
-(label, text) table, show it, and export everything to
-``output_folder/pdfplumber_fallback_lightonocr_and_gemma.xlsx`` — one sheet
-per sample plus a combined sheet with a ``sample`` column for filtering.
+Review export for the ``gemma4-e4b_pdfplumber_whole_doc`` pipeline: the FINAL
+structured JSON (stage 4 — what a user of the package receives, after
+structuring and the annotation rules) flattened into a clean two-column
+(label, text) table per sample, and written to
+``data/output/pdfplumber_fallback_lightonocr_and_gemma.xlsx`` — one sheet per
+sample plus a combined sheet with a ``sample`` column.
+
+An earlier version exported stage 2 (the model's raw labeled blocks); that
+disagreed with the final results users see — sample 13's final JSON has 10
+sections and 5 questions, while its raw output was 25 blocks — so the export
+now follows the final JSON.
 
     python scripts/build/build_excel_export_notebook.py
     jupyter nbconvert --to notebook --execute --inplace notebooks/export-labeled-results-to-excel.ipynb
@@ -30,21 +36,20 @@ def code(cid, lines):
 
 cells = [
     md("title", [
-        "# Export labeled results to Excel — gemma4:e4b + pdfplumber",
+        "# Export final results to Excel — gemma4:e4b + pdfplumber",
         "",
-        f"The model's raw output for every document under the `{TAG}` tag lives in",
-        "`data/output/2_labeled/` as JSON: a flat array of `{\"text\", \"label\"}` items.",
-        "This notebook parses each file into a clean two-column **(label, text)** table",
-        "for review, and writes them all to one Excel workbook:",
+        f"The pipeline's **final output** for every document under the `{TAG}` tag lives in",
+        "`data/output/4_final/` — the structured DMP JSON after the annotation rules, the",
+        "file a user of the package receives. This notebook flattens each one into a",
+        "two-column **(label, text)** table in document order and writes them all to one",
+        "Excel workbook:",
         "",
         f"- `{XLSX}`",
-        "- one sheet per sample, plus a `all_samples` sheet with a `sample` column",
-        "- consecutive rows with the same label are merged into one cell (section 1b),",
-        "  so a three-paragraph answer is one row, not three",
+        "- one sheet per sample",
         "",
-        "Note on the filename: the tag can include documents rescued by the LightOnOCR",
-        "fallback (a broken text layer is re-read from page images; the log records it).",
-        "Sample 11 in its current form is a clean PDF and needed no fallback.",
+        "Because this reads stage 4, every sheet matches the final JSON exactly —",
+        "including what the converter merged and what the rules filled in. (The model's",
+        "raw pre-structure blocks live in `2_labeled/` if those are ever needed instead.)",
     ]),
 
     code("setup", [
@@ -60,115 +65,87 @@ cells = [
         "from IPython.display import display",
         "",
         f"TAG = {TAG!r}",
-        "LABELED_DIR = Path('data/output/2_labeled') / TAG",
+        "FINAL_DIR = Path('data/output/4_final') / TAG",
         f"XLSX = Path({XLSX!r})",
         "",
         "pd.set_option('display.max_colwidth', 90)",
     ]),
 
     md("md-1", [
-        "## 1. The parsing function",
+        "## 1. The flattening function",
         "",
-        "One function, one job: raw JSON file in, tidy `(label, text)` DataFrame out.",
-        "It validates as it parses — a malformed file or an unknown label should be",
-        "seen at review time, not silently passed through.",
+        "One function, one job: a final structured JSON in, a tidy `(label, text)` table",
+        "out, rows in document order — the document title first, then each section's",
+        "title, description, questions and answers. Empty fields produce no row, so the",
+        "table holds exactly what the final JSON holds.",
     ]),
     code("parse", [
-        "KNOWN_LABELS = ('title', 'section.title', 'section.description',",
-        "                'question.text', 'answer.text')",
-        "",
-        "",
-        "def parse_labeled_json(path: Path) -> pd.DataFrame:",
-        "    \"\"\"Parse one raw model-output JSON into a two-column (label, text) table.",
-        "",
-        "    Raises ValueError if the file is not the expected flat array of",
-        "    {'text', 'label'} objects; prints a notice for any label outside the",
-        "    five known ones rather than dropping the row.",
-        "    \"\"\"",
-        "    raw = json.loads(path.read_text(encoding='utf-8'))",
-        "    if not isinstance(raw, list):",
-        "        raise ValueError(f'{path.name}: expected a JSON array, got {type(raw).__name__}')",
+        "def flatten_final_json(path: Path) -> pd.DataFrame:",
+        "    \"\"\"Flatten one final structured DMP JSON into a (label, text) table.\"\"\"",
+        "    data = json.loads(path.read_text(encoding='utf-8'))",
+        "    template = data.get('narrative', {}).get('template')",
+        "    if template is None:",
+        "        raise ValueError(f'{path.name}: not a structured DMP JSON (no narrative.template)')",
         "    rows = []",
-        "    for i, item in enumerate(raw):",
-        "        if not isinstance(item, dict) or 'text' not in item or 'label' not in item:",
-        "            raise ValueError(f'{path.name}[{i}]: expected {{text, label}}, got {item!r:.60}')",
-        "        if item['label'] not in KNOWN_LABELS:",
-        "            print(f'  note: {path.name}[{i}] has unknown label {item[\"label\"]!r}')",
-        "        rows.append({'label': item['label'], 'text': item['text'].strip()})",
+        "",
+        "    def add(label, text):",
+        "        if text and text.strip():",
+        "            rows.append({'label': label, 'text': text.strip()})",
+        "",
+        "    add('title', template.get('title', ''))",
+        "    for section in template.get('section', []):",
+        "        add('section.title', section.get('title', ''))",
+        "        add('section.description', section.get('description', ''))",
+        "        for q in section.get('question', []):",
+        "            add('question.text', q.get('text', ''))",
+        "            add('answer.text', q.get('answer', {}).get('json', {}).get('answer', ''))",
         "    return pd.DataFrame(rows, columns=['label', 'text'])",
     ]),
 
-    md("md-1b", [
-        "## 1b. Merge consecutive repeated labels",
-        "",
-        "The model often emits several blocks of the same label in a row — a multi-paragraph",
-        "answer arrives as three `answer.text` rows. For review, those read better as one",
-        "cell. The primary key here is **not** the label (a plain `groupby('label')` would",
-        "merge non-adjacent rows and destroy the document's reading order) but a *run id*:",
-        "`(label != label.shift()).cumsum()` increments every time the label changes, so each",
-        "unbroken run of one label becomes one group, aggregated in order.",
-    ]),
-    code("merge", [
-        "def merge_consecutive(df: pd.DataFrame) -> pd.DataFrame:",
-        "    \"\"\"Merge consecutive same-label rows into one, joining texts with a newline.",
-        "",
-        "    Order-preserving: only *adjacent* repeats merge, so 'answer, answer, title,",
-        "    answer' becomes three rows, not two.",
-        "    \"\"\"",
-        "    if df.empty:",
-        "        return df",
-        "    run_id = (df['label'] != df['label'].shift()).cumsum()",
-        "    return (df.groupby(run_id, sort=False)",
-        "              .agg(label=('label', 'first'), text=('text', '\\n'.join))",
-        "              .reset_index(drop=True))",
-    ]),
-
     md("md-2", [
-        "## 2. Parse every sample under the tag",
+        "## 2. Flatten every sample under the tag",
+        "",
+        "The summary shows, per document, how many rows the final JSON yields and how",
+        "they split across the five labels.",
     ]),
     code("load", [
-        "files = sorted(LABELED_DIR.glob('sample*.json'),",
+        "files = sorted(FINAL_DIR.glob('sample*.json'),",
         "               key=lambda p: int(p.stem.replace('sample', '')))",
-        "tables = {p.stem: merge_consecutive(parse_labeled_json(p)) for p in files}",
+        "tables = {p.stem: flatten_final_json(p) for p in files}",
         "",
         "summary = pd.DataFrame([",
-        "    {'sample': name, 'raw blocks': len(parse_labeled_json(LABELED_DIR / f'{name}.json')),",
-        "     'merged rows': len(df), **df['label'].value_counts().to_dict()}",
+        "    {'sample': name, 'rows': len(df), **df['label'].value_counts().to_dict()}",
         "    for name, df in tables.items()",
-        "]).fillna(0).astype({l: int for l in KNOWN_LABELS if any(True for _ in tables)}, errors='ignore')",
+        "]).fillna(0)",
+        "for col in summary.columns:",
+        "    if col not in ('sample',):",
+        "        summary[col] = summary[col].astype(int)",
         "display(summary.set_index('sample'))",
     ]),
     md("md-2b", [
         "One table up close — the format every sheet in the workbook uses.",
     ]),
     code("peek", [
-        "display(tables['sample1'].head(8))",
+        "display(tables['sample13'].head(10))",
     ]),
 
     md("md-3", [
         "## 3. Export to Excel",
         "",
-        "One sheet per sample (two columns), plus `all_samples` with a `sample` column",
-        "so the whole tag can be filtered in one view. Column widths are set so the",
-        "text is readable without resizing.",
+        "One sheet per sample, two columns each.",
     ]),
     code("export", [
         "XLSX.parent.mkdir(parents=True, exist_ok=True)",
         "",
         "with pd.ExcelWriter(XLSX, engine='openpyxl') as writer:",
-        "    combined = pd.concat(",
-        "        [df.assign(sample=name)[['sample', 'label', 'text']] for name, df in tables.items()],",
-        "        ignore_index=True)",
-        "    combined.to_excel(writer, sheet_name='all_samples', index=False)",
         "    for name, df in tables.items():",
         "        df.to_excel(writer, sheet_name=name, index=False)",
         "    for sheet in writer.sheets.values():",
-        "        widths = {'A': 14, 'B': 22, 'C': 120} if sheet.title == 'all_samples' else {'A': 22, 'B': 130}",
-        "        for col, w in widths.items():",
-        "            sheet.column_dimensions[col].width = w",
+        "        sheet.column_dimensions['A'].width = 22",
+        "        sheet.column_dimensions['B'].width = 130",
         "",
         "print(f'wrote {XLSX}  ({XLSX.stat().st_size / 1024:.0f} KB)')",
-        "print(f'{len(tables)} sample sheets + all_samples ({len(combined)} rows total)')",
+        "print(f'{len(tables)} sample sheets, {sum(len(df) for df in tables.values())} rows total')",
     ]),
 ]
 
