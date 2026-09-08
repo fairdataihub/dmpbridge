@@ -17,8 +17,11 @@ heading, a question, an answer — and outputs structured JSON.
 flowchart TD
     PDF["<b>DMP PDF</b>"]
 
-    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · LightOnOCR · Docling</small>"]
-    READ --> S1["<b>1. Text blocks</b>"]
+    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber — text, fonts, underlines</small>"]
+    READ --> CHECK{"<b>Readable text?</b><br/><small>cid codes · mojibake · empty</small>"}
+    CHECK -- yes --> S1["<b>1. Text blocks</b>"]
+    CHECK -- "no — fall back" --> OCR["<b>Read page images</b><br/><small>LightOnOCR (--fallback auto)</small>"]
+    OCR --> S1
     S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b · qwen2.5:14b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
     S2 --> BUILD["<b>Build the structure</b>"]
@@ -36,9 +39,11 @@ flowchart TD
     classDef rules  fill:#ffffff,stroke:#B45309,stroke-width:2px,color:#111
     classDef pathA  fill:#EDF3FA,stroke:#3C6FA8,stroke-width:2px,color:#111
     classDef pathB  fill:#FDF4E9,stroke:#B45309,stroke-width:2px,color:#111
+    classDef check  fill:#FDF4E9,stroke:#B45309,stroke-width:1px,color:#111
 
     class PDF input
-    class READ,LABEL,BUILD,RULES step
+    class READ,LABEL,BUILD,RULES,OCR step
+    class CHECK check
     class S1 cached
     class S2,S3 data
     class S4 rules
@@ -47,6 +52,11 @@ flowchart TD
 ```
 
 Each numbered box is written to disk, so any stage can be inspected on its own.
+The readability check catches PDFs whose text layer extracts as garbage (scanned pages,
+fonts with no character mapping) *before* the model sees them; with `--fallback auto`
+such a document is re-read from its page images by LightOnOCR — per document, clean
+documents untouched. A third extractor, Docling, stays available for experiments
+(`--extractor docling`) but is not part of this flow.
 More detail in **[docs/pipeline.md](docs/pipeline.md)**.
 
 Every block gets one of five labels:

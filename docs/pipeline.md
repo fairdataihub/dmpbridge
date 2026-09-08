@@ -4,8 +4,11 @@
 flowchart TD
     PDF["<b>DMP PDF</b>"]
 
-    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber · LightOnOCR · Docling</small>"]
-    READ --> S1["<b>1. Text blocks</b>"]
+    PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber — text, fonts, underlines</small>"]
+    READ --> CHECK{"<b>Readable text?</b><br/><small>cid codes · mojibake · empty</small>"}
+    CHECK -- yes --> S1["<b>1. Text blocks</b>"]
+    CHECK -- "no — fall back" --> OCR["<b>Read page images</b><br/><small>LightOnOCR (--fallback auto)</small>"]
+    OCR --> S1
     S1 --> LABEL["<b>Label each block</b><br/><small>llama3.1:8b · gemma4:e4b · llama3.3:70b · qwen2.5:14b</small>"]
     LABEL --> S2["<b>2. Labeled blocks</b>"]
     S2 --> BUILD["<b>Build the structure</b>"]
@@ -23,9 +26,11 @@ flowchart TD
     classDef rules  fill:#ffffff,stroke:#B45309,stroke-width:2px,color:#111
     classDef pathA  fill:#EDF3FA,stroke:#3C6FA8,stroke-width:2px,color:#111
     classDef pathB  fill:#FDF4E9,stroke:#B45309,stroke-width:2px,color:#111
+    classDef check  fill:#FDF4E9,stroke:#B45309,stroke-width:1px,color:#111
 
     class PDF input
-    class READ,LABEL,BUILD,RULES step
+    class READ,LABEL,BUILD,RULES,OCR step
+    class CHECK check
     class S1 cached
     class S2,S3 data
     class S4 rules
@@ -36,10 +41,16 @@ flowchart TD
 The numbered boxes are the four things written to disk. The grey boxes between them are the
 steps that produce each one.
 
-**Two things worth noticing:**
+**Three things worth noticing:**
 
 - **Step 1 is shared.** Reading the PDF doesn't depend on which model does the labeling, so
   it is done once and reused. Labeling with four models costs one read, not four.
+- **The extracted text is checked before the model sees it.** A broken text layer (scanned
+  pages, fonts with no character mapping) extracts "successfully" as garbage, and a model
+  given garbage hallucinates a document. The check catches that; with `--fallback auto` the
+  document is re-read from its page images by LightOnOCR — per document, and the primary
+  extractor's cache keeps what it really read. Docling remains available for experiments
+  (`--extractor docling`, `--force-ocr`) but is not part of this flow.
 - **The two scores branch at step 3.** Path A scores the structure as the model produced it.
   Path B first fills in blank questions using the rules, then scores that. Both are kept, so
   you can compare them.
@@ -50,7 +61,7 @@ steps that produce each one.
 
 | Step | What it does | Choices |
 |---|---|---|
-| Read the PDF | whole document in one call, extraction+labeling fused | `pdfplumber` (default), `lightonocr`, `docling` |
+| Read the PDF | whole document in one call, extraction+labeling fused; unreadable text falls back to page-image OCR | `pdfplumber` (default) → `lightonocr` (fallback); `docling` (experimental) |
 | Label each block | one LLM call per document | `llama3.1:8b`, `gemma4:e4b`, `llama3.3:70b`, `qwen2.5:14b` |
 | Build the structure | nest into sections → questions → answers | — |
 | Apply the rules | fill blank questions | `data/input/Rules.xlsx` |
