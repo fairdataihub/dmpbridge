@@ -5,7 +5,7 @@ flowchart TD
     PDF["<b>DMP PDF</b>"]
 
     PDF --> READ["<b>Read the PDF</b><br/><small>pdfplumber — text, fonts, underlines</small>"]
-    READ --> CHECK{"<b>Readable text?</b><br/><small>cid codes · mojibake · empty</small>"}
+    READ --> CHECK{"<b>Readable text?</b><br/><small>cid codes · mojibake · replacement chars · empty · too little text</small>"}
     CHECK -- yes --> S1["<b>1. Text blocks</b>"]
     CHECK -- "no — fall back" --> OCR["<b>Read page images</b><br/><small>LightOnOCR (--fallback auto)</small>"]
     OCR --> S1
@@ -49,7 +49,9 @@ steps that produce each one.
   pages, fonts with no character mapping) extracts "successfully" as garbage, and a model
   given garbage hallucinates a document. The check catches that; with `--fallback auto` the
   document is re-read from its page images by LightOnOCR — per document, and the primary
-  extractor's cache keeps what it really read. Docling remains available for experiments
+  extractor's cache keeps what it really read. If the rescue itself cannot run (e.g.
+  CPU-only torch), the run proceeds with a loud warning and unusable output — check the
+  log's `[fallback]` lines. Docling remains available for experiments
   (`--extractor docling`, `--force-ocr`) but is not part of this flow.
 - **The two scores branch at step 3.** Path A scores the structure as the model produced it.
   Path B first fills in blank questions using the rules, then scores that. Both are kept, so
