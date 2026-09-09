@@ -6,8 +6,6 @@
 [![License](https://img.shields.io/github/license/fairdataihub/dmpbridge?style=flat-square&color=1f6feb)](LICENSE)
 [![DOI](https://img.shields.io/badge/DOI-pending-9e9e9e?style=flat-square)](#how-to-cite)
 
-**Turn a Data Management Plan PDF into structured JSON — on your own machine, with a local
-model. Nothing is uploaded anywhere.**
 
 A Data Management Plan (DMP) describes how researchers will manage, preserve, and share
 project data in line with the Findable, Accessible, Interoperable, and Reusable (FAIR)
