@@ -1,6 +1,8 @@
 # DMPBridge
 
-A Data Management Plan (DMP) describes how researchers will manage, preserve, and share project data in line with the Findable, Accessible, Interoperable, and Reusable (FAIR) principles and other relevant disciplinary guidelines.1 DMPs are commonly required by funders with every grant proposal, but the formats and requirements imposed by each funder keep evolving, and no two funders' PDFs are structured the same way. DMP Bridge is an open-source (MIT License), Python-based pipeline that converts DMP PDFs from any funder format into DMP Tool JSON, combining a narrative portion that mirrors DMP Tool's internal structure with the RDA DMP Common Standard JSON for machine-actionable output.
+A Data Management Plan (DMP) describes how researchers will manage, preserve, and share project data in line with the Findable, Accessible, Interoperable, and Reusable (FAIR) principles and other relevant disciplinary guidelines.
+DMPs are commonly required by funders with every grant proposal, but the formats and requirements imposed by each funder keep evolving, and no two funders' PDFs are structured the same way. 
+DMP Bridge is an open-source (MIT License), Python-based pipeline that converts DMP PDFs from any funder format into DMP Tool JSON, combining a narrative portion that mirrors DMP Tool's internal structure with the RDA DMP Common Standard JSON for machine-actionable output.
 
 > **This is an active research project, things change often.** 
 ---
@@ -58,20 +60,6 @@ Every block gets one of five labels:
 
 ---
 
-## Where the project stands
-
-Research code — results are provisional and the evaluation set is small.
-
-All four models are fully evaluated under the current pipeline (`pdfplumber`, whole-document,
-both scoring paths). Numbers change often enough that this file doesn't hardcode a table —
-see `notebooks/results-<model>-pdfplumber.ipynb` for one model, or
-`notebooks/comparison-4models-pdfplumber-75pct-overlap.ipynb` for all four side by side.
-
-Run-to-run noise is ±0.002 F1 (one configuration run three times, every count identical) —
-differences smaller than ~0.005 are not meaningful.
-
----
-
 ## Quick start
 
 **Requirements:** Python 3.10+ · [Ollama](https://ollama.com) running locally
@@ -103,7 +91,7 @@ Or run samples from the terminal — this is the recommended command:
 
 ```bash
 # one sample
-dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 13 --end 13
+dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 1 --end 1
 
 # the whole sample set
 dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 1 --end 13
