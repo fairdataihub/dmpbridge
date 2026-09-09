@@ -57,6 +57,24 @@ def main() -> None:
         ),
     )
     parser.add_argument(
+        "--extractor",
+        default="pdfplumber",
+        choices=["pdfplumber", "lightonocr", "docling"],
+        help="PDF extraction backend (default: pdfplumber).",
+    )
+    parser.add_argument(
+        "--fallback",
+        default="auto",
+        choices=["auto", "lightonocr", "docling", "off"],
+        help=(
+            "Re-read the PDF with this extractor when its text layer extracts "
+            "as garbage — a scanned page, or fonts with no character mapping. "
+            "'auto' (default) means LightOnOCR, which needs a CUDA GPU; it "
+            "fails soft with a warning when unavailable. 'off' disables the "
+            "rescue and labels the broken text as-is."
+        ),
+    )
+    parser.add_argument(
         "--raw-dir",
         default=DEFAULT_RAW_DIR,
         metavar="DIR",
@@ -124,8 +142,14 @@ def main() -> None:
             else output.with_name(output.stem + "_structured.json")
         )
 
+    from ..core.pipeline import normalize_fallbacks
     from ..strategies.wholedoc import WholeDocStrategy
-    strategy = WholeDocStrategy(provider=args.provider, model=args.model, host=args.host)
+    fallback = None if args.fallback == "off" else args.fallback
+    strategy = WholeDocStrategy(
+        provider=args.provider, model=args.model, host=args.host,
+        extractor=args.extractor,
+        fallback_extractors=normalize_fallbacks(fallback, args.extractor),
+    )
 
     try:
         blocks = process_pdf(
