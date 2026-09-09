@@ -64,6 +64,11 @@ class ExperimentConfig:
     prompt:
         Prompt variant to use.  ``"default"`` is the only supported value now;
         reserved for future A/B prompt experiments.
+    fallback:
+        Extractor to re-read a document with when the primary extractor's
+        text fails the garbled-text check — ``"auto"`` (= LightOnOCR), an
+        explicit name, or an ordered list.  ``None`` disables the rescue.
+        Per document: clean documents are untouched.
     pdf_dir:
         Directory that contains ``sample1.pdf`` … ``sample10.pdf``.
     out_dir:
@@ -83,6 +88,13 @@ class ExperimentConfig:
 
     host:         str = "http://localhost:11434"
     prompt:       str = "default"
+
+    # Rescue for documents whose text layer extracts as garbage: "auto"
+    # (= LightOnOCR, the production path), an explicit extractor name, or a
+    # list. None keeps the pre-fallback behaviour, so YAML files written
+    # before this field existed still run exactly as they did.
+    fallback:     str | list | None = None
+
     pdf_dir:      str = "data/input/pdfs"
     out_dir:      str = "data/output/labeled"
     sample_start: int = 1
@@ -221,6 +233,7 @@ class Experiment:
     def _get_strategy(self, model: str, extractor: str):
         key = (model, extractor)
         if key not in self._strategies:
+            from ..core import paths as p
             from ..strategies import get_strategy
             cfg = self.config
             self._strategies[key] = get_strategy(
@@ -229,6 +242,10 @@ class Experiment:
                 model=model,
                 host=cfg.host,
                 extractor=extractor,
+                # Same stage-1 cache and fallback the CLI uses, so a
+                # YAML-driven run and dmpbridge-wholedoc read PDFs identically.
+                cache_dir=p.EXTRACTED_DIR / extractor,
+                fallback=cfg.fallback,
             )
         return self._strategies[key]
 

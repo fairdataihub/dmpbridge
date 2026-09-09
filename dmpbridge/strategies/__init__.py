@@ -56,6 +56,8 @@ def get_strategy(
     model: str | None = None,
     host: str | None = None,
     extractor: str = "pdfplumber",
+    cache_dir=None,
+    fallback: str | list[str] | None = None,
 ) -> Strategy:
     """Return a configured Strategy instance by name.
 
@@ -72,9 +74,18 @@ def get_strategy(
     host:
         Ollama base URL.  Falls back to ``config.HOST`` when omitted.
     extractor:
-        PDF extraction backend — ``"pdfplumber"`` is the only one implemented.
+        PDF extraction backend — ``"pdfplumber"`` (default), ``"lightonocr"``
+        or ``"docling"``.
+    cache_dir:
+        Stage-1 cache directory.  ``None`` re-extracts every time.
+    fallback:
+        Extractor(s) to fall back to when *extractor*'s text fails the
+        garbled-text check — ``"auto"`` (= LightOnOCR, the production path),
+        an explicit name, or an ordered list.  ``None`` disables the rescue,
+        leaving a broken text layer to be labeled as-is.
     """
     from ..core import config as _cfg
+    from ..core.pipeline import normalize_fallbacks
     from .wholedoc import WholeDocStrategy
 
     _provider = provider or _cfg.PROVIDER
@@ -83,7 +94,9 @@ def get_strategy(
 
     if name == "wholedoc":
         return WholeDocStrategy(
-            provider=_provider, model=_model, host=_host, extractor=extractor
+            provider=_provider, model=_model, host=_host, extractor=extractor,
+            cache_dir=cache_dir,
+            fallback_extractors=normalize_fallbacks(fallback, extractor),
         )
 
     raise ValueError(

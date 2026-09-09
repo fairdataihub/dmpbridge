@@ -134,10 +134,19 @@ Option B is what the research runs use.
 
 ### Option A — Jupyter demo
 
-Edit [`demo/config.yaml`](demo/config.yaml) — model, extractor, sample range — then open
-[`notebooks/demo-from-yaml-config.ipynb`](notebooks/demo-from-yaml-config.ipynb) and run it
-top to bottom. It shows the YAML as input and the final labeled document as output, side by
-side. Nothing inside the notebook needs editing; the config is the only input.
+Edit [`demo/config.yaml`](demo/config.yaml) — model, extractor, fallback, sample range —
+then open [`notebooks/demo-from-yaml-config.ipynb`](notebooks/demo-from-yaml-config.ipynb)
+and run it top to bottom. It shows the YAML as input and the final labeled document as
+output, side by side. Nothing inside the notebook needs editing; the config is the only
+input.
+
+It runs the same two-step read the CLI does. **A normal PDF is read by pdfplumber**, which
+takes the text layer along with the bold, italic and underline cues the fonts carry. **A PDF
+whose text layer is missing or broken** — a scanned page, or fonts with no
+character-to-text mapping — fails a readability check before the model ever sees it, and is
+re-read from its page images by **LightOnOCR** instead. That check runs per document, so
+clean PDFs never touch the fallback, and you'll see `[fallback]` lines in the output saying
+why one did. Set `fallback: null` to turn the rescue off.
 
 The same config also runs headless, writing each stage into
 `demo/output/{labeled,structured,final}/`:
@@ -198,12 +207,18 @@ provider: ollama
 host: http://localhost:11434
 
 model: llama3.1:8b          # any model already pulled in Ollama
+
 extractor: pdfplumber       # pdfplumber | lightonocr | docling
+fallback: auto              # auto = LightOnOCR | docling | null to disable
 
 pdf_dir: data/input/pdfs    # expects sample1.pdf, sample2.pdf, ...
 sample_start: 1
 sample_end: 1               # keep this small for a quick demo run
 ```
+
+`extractor` is what reads a normal PDF; `fallback` is what rescues one whose text layer is
+broken. They are separate settings because the rescue is conditional — the fallback only
+runs on a document that fails the readability check.
 
 `experiments/full-example.yaml` shows every field the format accepts, including multiple
 models, multiple extractors, and the `evaluation:` list that drives scoring.

@@ -14,7 +14,16 @@ models:
   - gemma4:e4b
   - llama3.3:70b
 extractors:
-  - pdfplumber               # the only extractor — whole-document, extraction+labeling fused
+  - pdfplumber               # whole-document, extraction+labeling fused; also
+                             # lightonocr (page images, needs a CUDA GPU) and
+                             # docling (experimental)
+
+# Rescue for a document whose text layer extracts as garbage — scanned pages,
+# or fonts with no character-to-text mapping. The extracted text is checked
+# before the model sees it, and only a document that fails the check is
+# re-read with the fallback; clean documents are untouched. Omit or set null
+# to disable, leaving a broken text layer to be labeled as-is.
+fallback: auto               # auto = lightonocr | docling | a list, in order
 
 provider: ollama
 host: http://localhost:11434

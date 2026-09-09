@@ -10,7 +10,13 @@ provider: ollama
 host: http://localhost:11434
 
 model: llama3.1:8b          # any model already pulled in Ollama
+
+# How the PDF is read. pdfplumber handles a normal PDF with a real text layer;
+# if that text comes out garbled (a scanned page, or fonts with no character
+# mapping) the document is re-read from its page images by LightOnOCR instead.
+# Per document — clean PDFs never touch the fallback.
 extractor: pdfplumber       # pdfplumber | lightonocr | docling
+fallback: auto              # auto = LightOnOCR | docling | null to disable
 
 pdf_dir: data/input/pdfs    # expects sample1.pdf, sample2.pdf, ...
 sample_start: 1
