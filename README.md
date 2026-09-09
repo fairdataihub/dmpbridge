@@ -1,14 +1,8 @@
 # DMPBridge
 
-Turn Data Management Plan PDFs into structured, machine-readable records — using a local
-LLM, with nothing leaving your machine.
+A Data Management Plan (DMP) describes how researchers will manage, preserve, and share project data in line with the Findable, Accessible, Interoperable, and Reusable (FAIR) principles and other relevant disciplinary guidelines.1 DMPs are commonly required by funders with every grant proposal, but the formats and requirements imposed by each funder keep evolving, and no two funders' PDFs are structured the same way. DMP Bridge is an open-source (MIT License), Python-based pipeline that converts DMP PDFs from any funder format into DMP Tool JSON, combining a narrative portion that mirrors DMP Tool's internal structure with the RDA DMP Common Standard JSON for machine-actionable output.
 
-A DMP is a document researchers write to describe what data a project will produce and how
-it will be stored and shared. They arrive as PDFs, which makes them hard to search or
-compare at scale. DMPBridge reads one, works out what each piece of text *is* — a section
-heading, a question, an answer — and outputs structured JSON.
-
-> **This is an active research project — things change often.** 
+> **This is an active research project, things change often.** 
 ---
 
 ## How it works
@@ -51,16 +45,6 @@ flowchart TD
     class PATHB pathB
 ```
 
-Each numbered box is written to disk, so any stage can be inspected on its own.
-The readability check catches PDFs whose text layer extracts as garbage (scanned pages,
-fonts with no character mapping) *before* the model sees them; with `--fallback auto`
-such a document is re-read from its page images by LightOnOCR — per document, clean
-documents untouched. If the rescue itself cannot run (for example, CPU-only torch — see
-the LightOnOCR install note below), the run currently **proceeds with a loud warning and
-unusable output**, so check the log for `[fallback]` lines before trusting results for a
-new document. A third extractor, Docling, stays available for experiments
-(`--extractor docling`) but is not part of this flow.
-More detail in **[docs/pipeline.md](docs/pipeline.md)**.
 
 Every block gets one of five labels:
 
