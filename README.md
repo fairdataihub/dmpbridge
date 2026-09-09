@@ -29,7 +29,6 @@ knowledge.
 > **This is an active research project, things change often.**
 
 ---
----
 
 ## How it works
 
@@ -142,26 +141,6 @@ them, and the researcher's answer attached to each question:
 
 ---
 
-## Run it on your own PDF
-
-The command above works through the bundled sample set. For a document of your own, point
-`dmpbridge` straight at the file:
-
-```bash
-dmpbridge my-plan.pdf --model gemma4:e4b
-```
-
-It writes `my-plan_labeled.json` and `my-plan_labeled_structured.json` next to your PDF.
-
-**Scanned or image-only PDFs are handled for you.** DMPBridge checks whether the text it
-pulled out is actually readable before sending it to the model. If a PDF has no real text
-layer — a scan, or fonts with no character mapping — it is re-read from the page images by
-LightOnOCR instead, and you'll see a `[fallback]` line saying so. This runs per document,
-and normal PDFs are untouched. (The rescue needs a CUDA GPU; without one it warns and
-carries on.)
-
----
-
 ## Prefer a notebook?
 
 [`notebooks/demo-from-yaml-config.ipynb`](notebooks/demo-from-yaml-config.ipynb) runs the
@@ -186,48 +165,19 @@ data/output/
 `<tag>` is `<model>_<extractor>_whole_doc`. Filenames are the same at every stage, so you
 can follow one document all the way through.
 
-**Re-running skips finished work.** A document that already has output is left alone, and
-reading a PDF is cached separately from labeling it — so trying a second model costs one
-model run, not a second read. To redo a document, delete its files under `data/output/`.
-
----
-
-## Documentation
-
-| Page | Covers |
-|---|---|
-| [docs/configuration.md](docs/configuration.md) | every setting — YAML fields, all CLI flags, environment variables |
-| [docs/pipeline.md](docs/pipeline.md) | the four stages in detail |
-| [docs/extraction.md](docs/extraction.md) | the three extractors, the visual-emphasis markers, native dumps, and scanned or broken PDFs |
-| [docs/scoring.md](docs/scoring.md) | Path A / Path B, the match threshold, the results notebooks, and how to read the numbers |
-| [docs/troubleshooting.md](docs/troubleshooting.md) | Ollama on multiple GPUs, the `gemma4:e4b` load crash, CUDA torch for LightOnOCR |
-
-Running the tests:
-
-```bash
-pip install -e ".[dev]"
-pytest tests/
-```
-
 ---
 
 ## License
+This work is licensed under the **[MIT License](https://opensource.org/license/mit/)**. See **[LICENSE](https://github.com/fairdataihub/dmpbridge/blob/main/LICENSE)** for more information.
 
-MIT — see [LICENSE](LICENSE). You may use, modify and redistribute this code, including
-commercially, provided the copyright notice is kept.
 
 ---
 
-## Feedback and contributions
-
-Bug reports, questions and suggestions are welcome as
-[GitHub issues](https://github.com/fairdataihub/dmpbridge/issues). When reporting a problem
-with a document, the most useful things to include are the command you ran, the model and
-extractor, and the stage-1 JSON — that usually separates an extraction problem from a model
-one.
+## Feedback and contribution
+Use **[GitHub Issues](https://github.com/fairdataihub/dmpbridge/issues)** to submit feedback, report problems, or suggest improvements.  
+You can also **fork** the repository and submit a **Pull Request** with your changes.
 
 ---
 
 ## How to cite
-If you use this code, please cite this repository using the versioned DOI on Zenodo for the specific release you used (instructions will be added once the Zenodo record is available). For now, you can reference the repository here: fairdataihub/dmpbridge.
-```
+If you use this code, please cite this repository using the **versioned DOI on Zenodo** for the specific release you used (instructions will be added once the Zenodo record is available). For now, you can reference the repository here: **[fairdataihub/dmpchef](https://github.com/fairdataihub/dmpbridge)**.
