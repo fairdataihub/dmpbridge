@@ -179,14 +179,30 @@ dmpbridge my-plan.pdf --model gemma4:e4b
 
 This writes `my-plan_labeled.json` and `my-plan_labeled_structured.json` next to your PDF.
 
-The flags that matter most for both:
+What each command does if you pass nothing:
+
+**`dmpbridge-wholedoc`** — the bundled sample set
 
 | Flag | Default | What it does |
 |---|---|---|
-| `--model` | `llama3.3:70b` | any model pulled in Ollama — **pass `gemma4:e4b` unless you have the 70B** |
+| `--model` | `llama3.3:70b` | any model pulled in Ollama |
 | `--extractor` | `pdfplumber` | `pdfplumber`, `lightonocr` or `docling` |
-| `--fallback` | `auto` for `dmpbridge`, off for `dmpbridge-wholedoc` | re-read the PDF with LightOnOCR when its text layer extracts as garbage |
-| `--start` / `--end` | `1` / `10` | `dmpbridge-wholedoc` only — inclusive sample range |
+| `--fallback` | off | `auto` re-reads the PDF with LightOnOCR when its text layer extracts as garbage |
+| `--start` / `--end` | `1` / `10` | inclusive sample range |
+
+**`dmpbridge`** — one PDF at any path
+
+| Flag | Default | What it does |
+|---|---|---|
+| `--model` | `llama3.3:70b` | any model pulled in Ollama |
+| `--extractor` | `pdfplumber` | `pdfplumber`, `lightonocr` or `docling` |
+| `--fallback` | `auto` | `off` disables the OCR rescue |
+
+Two defaults are worth knowing before you rely on them. **`--model` is the 70B**, which is
+around 40 GB — every command above passes `--model gemma4:e4b` instead, the ~3 GB model
+from the quick start. And **the OCR rescue is on by default for `dmpbridge` but off for
+`dmpbridge-wholedoc`**, which is why the sample-set commands pass `--fallback auto`
+explicitly.
 
 Every flag, plus the YAML fields and environment variables, is in
 **[docs/configuration.md](docs/configuration.md)**.
