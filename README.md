@@ -28,26 +28,8 @@ knowledge.
 
 ---
 ## Standards followed
-
-The overall codebase is organized in alignment with the
-**[FAIR-BioRS guidelines](https://fair-biors.org/)**. All Python code follows
-**[PEP 8](https://peps.python.org/pep-0008/)** conventions, including consistent formatting,
-inline comments, and docstrings — 86% of modules, classes and functions carry one — with
-[ruff](https://docs.astral.sh/ruff/) configured in
-**[pyproject.toml](https://github.com/fairdataihub/dmpbridge/blob/main/pyproject.toml)** to
-enforce it.
-
-Project dependencies are fully captured in that same
-**[pyproject.toml](https://github.com/fairdataihub/dmpbridge/blob/main/pyproject.toml)** —
-the core set under `[project].dependencies`, and the optional extras (`server`,
-`notebooks`, `lighton`, `docling`, `dev`) under `[project.optional-dependencies]`, so
-`pip install -e ".[dev]"` reproduces an exact environment.
-
-The prompt template that drives labeling is kept in source as `SYSTEM_PROMPT` in
-**[dmpbridge/prompts/constants.py](https://github.com/fairdataihub/dmpbridge/blob/main/dmpbridge/prompts/constants.py)**,
-alongside the JSON schema the model is required to return. It is treated as
-whitespace-significant and versioned with the code, so any run can be traced back to the
-exact prompt that produced it.
+The overall codebase is organized in alignment with the **[FAIR-BioRS guidelines](https://fair-biors.org/)**. All Python code follows **[PEP 8](https://peps.python.org/pep-0008/)** conventions, including consistent formatting, inline comments, and docstrings.Project dependencies are fully captured in that same
+**[pyproject.toml](https://github.com/fairdataihub/dmpbridge/blob/main/pyproject.toml)**.
 
 ---
 
