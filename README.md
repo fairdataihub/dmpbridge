@@ -141,7 +141,9 @@ them, and the researcher's answer attached to each question:
 
 ---
 
-## Prefer a notebook?
+## Ways to run it
+
+### Option A — Jupyter demo
 
 [`notebooks/demo-from-yaml-config.ipynb`](notebooks/demo-from-yaml-config.ipynb) runs the
 same pipeline and shows the settings and the finished document side by side. Edit
@@ -153,6 +155,61 @@ The same config runs without Jupyter, writing each stage into `demo/output/`:
 ```bash
 python scripts/run_demo.py
 ```
+
+### Option B — CLI
+
+Command-line entry point for running the pipeline end-to-end — extract, label, structure,
+apply the annotation rules — in one command. Two of them, depending on what you're running.
+
+**The bundled sample set** — this is the command from the quick start:
+
+```bash
+# one document
+dmpbridge-wholedoc --model gemma4:e4b --fallback auto --start 1 --end 1
+
+# the whole sample set
+dmpbridge-wholedoc --model gemma4:e4b --fallback auto --start 1 --end 13
+```
+
+Results land in `data/output/4_final/<model>_<extractor>_whole_doc/`.
+
+**Your own PDF**, at any path — no `sampleN.pdf` naming needed:
+
+```bash
+dmpbridge my-plan.pdf --model gemma4:e4b
+```
+
+This writes `my-plan_labeled.json` and `my-plan_labeled_structured.json` next to your PDF.
+
+The flags that matter most for both:
+
+| Flag | Default | What it does |
+|---|---|---|
+| `--model` | `llama3.3:70b` | any model pulled in Ollama — **pass `gemma4:e4b` unless you have the 70B** |
+| `--extractor` | `pdfplumber` | `pdfplumber`, `lightonocr` or `docling` |
+| `--fallback` | `auto` for `dmpbridge`, off for `dmpbridge-wholedoc` | re-read the PDF with LightOnOCR when its text layer extracts as garbage |
+| `--start` / `--end` | `1` / `10` | `dmpbridge-wholedoc` only — inclusive sample range |
+
+Every flag, plus the YAML fields and environment variables, is in
+**[docs/configuration.md](docs/configuration.md)**.
+
+To use DMPBridge from Python instead of the shell:
+
+```python
+import dmpbridge
+
+blocks = dmpbridge.process_pdf(
+    "my-plan.pdf",
+    model="gemma4:e4b",
+    extractor="pdfplumber",
+    fallback="auto",
+    structured_output="structured.json",
+)
+```
+
+---
+
+## Where the output goes
 
 ```
 data/output/
