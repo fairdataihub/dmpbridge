@@ -6,15 +6,17 @@
 [![License](https://img.shields.io/github/license/fairdataihub/dmpbridge?style=flat-square&color=1f6feb)](LICENSE)
 [![DOI](https://img.shields.io/badge/DOI-pending-9e9e9e?style=flat-square)](#how-to-cite)
 
-Turn Data Management Plan PDFs into structured, machine-readable records — using a local
-LLM, with nothing leaving your machine.
+A Data Management Plan (DMP) describes how researchers will manage, preserve, and share
+project data in line with the Findable, Accessible, Interoperable, and Reusable (FAIR)
+principles and other relevant disciplinary guidelines. DMPs are commonly required by funders
+with every grant proposal, but the formats and requirements imposed by each funder keep
+evolving, and no two funders' PDFs are structured the same way.
 
-A DMP is a document researchers write to describe what data a project will produce and how
-it will be stored and shared. They arrive as PDFs, which makes them hard to search or
-compare at scale. DMPBridge reads one, works out what each piece of text *is* — a section
-heading, a question, an answer — and outputs structured JSON.
+DMPBridge is an open-source (MIT License), Python-based pipeline that converts DMP PDFs from
+any funder format into DMP Tool JSON, combining a narrative portion that mirrors DMP Tool's
+internal structure with the RDA DMP Common Standard JSON for machine-actionable output.
 
-> **This is an active research project — things change often.**
+> **This is an active research project, things change often.**
 
 ---
 
@@ -151,7 +153,7 @@ extract, label, structure, apply rules:
 
 ```bash
 # one document
-dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 13 --end 13
+dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 1 --end 1
 
 # the whole sample set
 dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 1 --end 13
