@@ -89,6 +89,35 @@ models, multiple extractors, and the `evaluation:` list that drives scoring.
 
 ---
 
+## From Python
+
+For embedding DMPBridge in an application rather than calling it from a shell.
+`process_pdf` takes the same options as the `dmpbridge` command:
+
+```python
+import dmpbridge
+
+blocks = dmpbridge.process_pdf(
+    "my-plan.pdf",
+    model="gemma4:e4b",
+    extractor="pdfplumber",
+    fallback="auto",              # or a name, or an ordered list of names
+    structured_output="structured.json",
+)
+```
+
+To run the whole sample set from Python, drive it from a config object instead — this is
+what `scripts/run_demo.py` and the demo notebook do:
+
+```python
+from dmpbridge.evaluation.experiment import ExperimentConfig, Experiment
+
+cfg = ExperimentConfig.from_yaml("demo/config.yaml")
+Experiment(cfg).run()
+```
+
+---
+
 ## Environment variables
 
 | Variable | Overrides |

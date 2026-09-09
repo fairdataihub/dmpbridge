@@ -156,70 +156,37 @@ python scripts/run_demo.py
 
 ### Option B — CLI
 
-Command-line entry point for running the pipeline end-to-end — extract, label, structure,
-apply the annotation rules — in one command. Two of them, depending on what you're running.
-
-**The bundled sample set** — this is the command from the quick start:
-
-```bash
-# one document
-dmpbridge-wholedoc --model gemma4:e4b --fallback auto --start 1 --end 1
-
-# the whole sample set
-dmpbridge-wholedoc --model gemma4:e4b --fallback auto --start 1 --end 13
-```
-
-Results land in `data/output/4_final/<model>_<extractor>_whole_doc/`.
-
-**Your own PDF**, at any path — no `sampleN.pdf` naming needed:
+One command, one PDF:
 
 ```bash
 dmpbridge my-plan.pdf --model gemma4:e4b
 ```
 
-This writes `my-plan_labeled.json` and `my-plan_labeled_structured.json` next to your PDF.
+That's the whole thing. It runs the pipeline end to end — read, label, structure, apply the
+annotation rules — and writes two files next to your PDF:
 
-What each command does if you pass nothing:
+| File | What's in it |
+|---|---|
+| `my-plan_labeled.json` | every block of text with its label |
+| `my-plan_labeled_structured.json` | the nested DMP Tool JSON — this is the one you want |
 
-**`dmpbridge-wholedoc`** — the bundled sample set
+**Scanned or broken PDFs are handled for you, no flag needed.** DMPBridge checks whether the
+text it pulled out is actually readable before sending it to the model. If it isn't — a
+scan, or fonts with no character mapping — the PDF is re-read from its page images by
+LightOnOCR automatically, and you'll see a `[fallback]` line saying so. Normal PDFs are
+untouched. (The rescue uses a CUDA GPU; without one it warns and carries on.)
 
-| Flag | Default | What it does |
-|---|---|---|
-| `--model` | `llama3.3:70b` | any model pulled in Ollama |
-| `--extractor` | `pdfplumber` | `pdfplumber`, `lightonocr` or `docling` |
-| `--fallback` | off | `auto` re-reads the PDF with LightOnOCR when its text layer extracts as garbage |
-| `--start` / `--end` | `1` / `10` | inclusive sample range |
+`--model gemma4:e4b` is the only flag you need, because the built-in default is the 40 GB
+70B model. Set it once and you can drop the flag:
 
-**`dmpbridge`** — one PDF at any path
-
-| Flag | Default | What it does |
-|---|---|---|
-| `--model` | `llama3.3:70b` | any model pulled in Ollama |
-| `--extractor` | `pdfplumber` | `pdfplumber`, `lightonocr` or `docling` |
-| `--fallback` | `auto` | `off` disables the OCR rescue |
-
-Two defaults are worth knowing before you rely on them. **`--model` is the 70B**, which is
-around 40 GB — every command above passes `--model gemma4:e4b` instead, the ~3 GB model
-from the quick start. And **the OCR rescue is on by default for `dmpbridge` but off for
-`dmpbridge-wholedoc`**, which is why the sample-set commands pass `--fallback auto`
-explicitly.
-
-Every flag, plus the YAML fields and environment variables, is in
-**[docs/configuration.md](docs/configuration.md)**.
-
-To use DMPBridge from Python instead of the shell:
-
-```python
-import dmpbridge
-
-blocks = dmpbridge.process_pdf(
-    "my-plan.pdf",
-    model="gemma4:e4b",
-    extractor="pdfplumber",
-    fallback="auto",
-    structured_output="structured.json",
-)
+```bash
+export DMPBRIDGE_MODEL=gemma4:e4b      # Windows PowerShell:  $env:DMPBRIDGE_MODEL="gemma4:e4b"
+dmpbridge my-plan.pdf
 ```
+
+> **Developing, or running experiments?** The batch runner over the sample set
+> (`dmpbridge-wholedoc`), the Python API, every flag and default, the YAML config format and
+> the environment variables are all in **[docs/configuration.md](docs/configuration.md)**.
 
 ---
 
