@@ -16,6 +16,8 @@ DMPBridge is an open-source (MIT License), Python-based pipeline that converts D
 any funder format into DMP Tool JSON, combining a narrative portion that mirrors DMP Tool's
 internal structure with the RDA DMP Common Standard JSON for machine-actionable output.
 
+This project is part of a broader extension of the DMP Tool platform. The ultimate goal is to integrate the DMP Chef pipeline into the DMP Tool platform, providing researchers with a familiar and convenient user interface that does not require any coding knowledge.
+👉 Learn more: DMPBridge.
 > **This is an active research project, things change often.**
 
 ---
