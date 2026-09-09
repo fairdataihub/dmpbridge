@@ -16,7 +16,7 @@ DMPBridge is an open-source (MIT License), Python-based pipeline that converts D
 any funder format into DMP Tool JSON, combining a narrative portion that mirrors DMP Tool's
 internal structure with the RDA DMP Common Standard JSON for machine-actionable output.
 
-This project is part of a broader extension of the DMP Tool platform. The ultimate goal is to integrate the DMP Chef pipeline into the DMP Tool platform, providing researchers with a familiar and convenient user interface that does not require any coding knowledge.
+This project is part of a broader extension of the DMP Tool platform. The ultimate goal is to integrate the DMP Chef pipeline into the [DMP Tool](https://dmptool.org/), providing researchers with a familiar and convenient user interface that does not require any coding knowledge.
 
 👉 Learn more: **[DMP Bridge](https://fairdataihub.org/dmp-bridge)**.
 > **This is an active research project, things change often.**
@@ -74,7 +74,6 @@ gets one of five labels:
 | `question.text` | A question or prompt |
 | `answer.text` | The researcher's response |
 
-More detail in **[docs/pipeline.md](docs/pipeline.md)**.
 
 ---
 
@@ -110,7 +109,7 @@ documents:
 ollama pull gemma4:e4b
 ```
 
-Any model already in Ollama works — `llama3.1:8b`, `qwen2.5:14b` and `llama3.3:70b` are
+Any model already in Ollama works — `llama3.1:8b`, `gemma4:e4b`  and `llama3.3:70b` are
 also evaluated here. Larger models are slower: `llama3.3:70b` takes roughly 112 seconds per
 document against about 8 seconds for the small ones.
 
