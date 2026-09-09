@@ -199,6 +199,9 @@ data/output/
 `<tag>` is `<model>_<extractor>_whole_doc`. Filenames are the same at every stage, so you
 can follow one document all the way through.
 
+📚 **More info:** configuration, extraction, scoring, troubleshooting and the pipeline
+internals are all documented in **[docs/](docs/README.md)**.
+
 ---
 
 ## License
