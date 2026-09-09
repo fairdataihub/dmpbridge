@@ -1,5 +1,14 @@
 # Editing the diagrams
 
+[← Main README](../README.md) · [All docs](README.md)
+
+**Who this is for:** anyone changing the pipeline diagram. No prior Mermaid knowledge
+assumed — work through it top to bottom, or jump to
+[the worked example](#5-worked-example--adding-a-box) if you just want to add one box.
+
+> **Before you start:** the same diagram appears in **two** places — `docs/pipeline.md` and
+> the main `README.md`. Changing one means changing the other, or they drift apart.
+
 The project diagram in [pipeline.md](pipeline.md) is written in **Mermaid** — a small text
 language for diagrams. You edit text; the picture is drawn for you.
 

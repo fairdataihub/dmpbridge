@@ -1,6 +1,21 @@
 # Troubleshooting
 
-Failures that have actually happened on this project, and what fixes each one.
+[← Main README](../README.md) · [All docs](README.md)
+
+Failures that have actually happened on this project, and what fixes each one. **Find your
+symptom in the table, then jump to it.**
+
+| What you're seeing | Jump to |
+|---|---|
+| `could not connect to ollama` | Ollama isn't running — start it with `ollama serve` and re-run |
+| `GGML_ASSERT(n_inputs < GGML_SCHED_MAX_SPLIT_INPUTS)` — `gemma4:e4b` won't load | [Ollama environment variables](#ollama-multiple-gpus-and-the-gemma4e4b-load-crash) |
+| Ollama grabs the wrong GPUs, or dies mid-run | [Ollama environment variables](#ollama-multiple-gpus-and-the-gemma4e4b-load-crash) |
+| a run is taking hours instead of minutes | [Check `100% GPU`](#check-100-gpu-before-a-long-run) |
+| `operator torchvision::nms does not exist`, or `Could not import module 'AutoProcessor'` | [CPU-only torch on Windows](#lightonocr-cpu-only-torch-on-windows) |
+| LightOnOCR produces garbage, or the fallback does nothing | [CPU-only torch on Windows](#lightonocr-cpu-only-torch-on-windows) |
+| "already exists — skipping", nothing runs | [A document was skipped](#a-document-was-skipped) |
+| the command times out before finishing | [A run times out](#a-run-times-out-in-the-foreground) |
+| output reads fine but doesn't match the PDF | [Output is fluent but wrong](#output-is-fluent-but-wrong) |
 
 ---
 

@@ -1,14 +1,33 @@
 # Extraction
 
-How a PDF becomes stage-1 text blocks, and what to do when a PDF won't read.
+[← Main README](../README.md) · [All docs](README.md)
+
+How a PDF becomes text before the model ever sees it, and what to do when a PDF won't read.
+
+## The short version
+
+**You almost certainly don't need to choose.** The default reads a normal PDF with
+pdfplumber, and automatically switches to OCR for a PDF whose text is unreadable:
+
+```bash
+dmpbridge my-plan.pdf --model gemma4:e4b        # that's it
+```
+
+Pick one explicitly only if you have a reason:
+
+| Extractor | Use it when | Needs |
+|---|---|---|
+| **`pdfplumber`** *(default)* | the PDF has a real text layer — almost always | nothing |
+| **`lightonocr`** | the PDF is scanned or image-only, or its text comes out as garbage | a CUDA GPU |
+| **`docling`** | you're comparing extractors for research | `pip install -e ".[docling]"` |
 
 Stage 1 is keyed by **extractor**, not by model, and is cached in
-`data/output/1_extracted/<extractor>/sampleN.json`. Labeling the same documents with four
-models costs one read, not four.
+`data/output/1_extracted/<extractor>/sampleN.json` — so labeling the same documents with
+four models costs one read, not four.
 
 ---
 
-## The three extractors
+## The three extractors in detail
 
 ### `pdfplumber` (default)
 
@@ -87,14 +106,17 @@ python scripts/extract_pdfplumber.py
 
 ## Broken or scanned PDFs
 
+**Short answer: nothing, if you use `dmpbridge`** — the rescue is on by default there. Read
+on if you're using `dmpbridge-wholedoc`, where it is off unless you pass `--fallback auto`.
+
 A PDF can have a text layer whose fonts carry no character-to-text mapping. Extraction then
 *succeeds* as garbage — `(cid:NN)` tokens or mojibake — and the model hallucinates a fluent
-document from it. This was observed on sample 11.
+document from it. In the current sample set, `sample13.pdf` does this.
 
 The pipeline checks every stage-1 text and logs a loud warning when it does not look like
-readable language. **The warning is a guard, not a gate: by default the run still
-proceeds**, so check the log for `[fallback]` lines before trusting output for a new
-document.
+readable language. **The warning is a guard, not a gate: without a fallback configured the
+run still proceeds**, so check the log for `[fallback]` lines before trusting output for a
+new document.
 
 ### Automatic rescue — `--fallback auto`
 

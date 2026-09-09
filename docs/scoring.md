@@ -1,7 +1,25 @@
 # Scoring
 
+[← Main README](../README.md) · [All docs](README.md)
+
 How output is compared against hand-annotated reference documents, and how to read the
 numbers.
+
+## The short version
+
+```bash
+dmpbridge-evaluate      gemma4-e4b_pdfplumber_whole_doc    # Path A
+dmpbridge-evaluate-new  gemma4-e4b_pdfplumber_whole_doc    # Path B
+```
+
+Three things to know before you read any number:
+
+1. **There are always two scores, A and B.** Report both — they use different reference
+   versions, so the gap between them is the annotation rules' contribution, not a second
+   opinion on one number.
+2. **Differences below ~0.005 F1 are noise.** The measured floor is ±0.002.
+3. **You don't have to compute anything.** The results notebooks already have every number —
+   see [Where the numbers live](#where-the-numbers-live).
 
 ---
 
@@ -16,11 +34,6 @@ The annotation standard changed partway through the project, so everything is sc
 **Always report both.** They use different reference versions, so the gap between them
 measures the annotation rules' contribution — it is not a second opinion on one number.
 Support differs between the paths for the same reason, so compare scores, not counts.
-
-```bash
-dmpbridge-evaluate      gemma4-e4b_pdfplumber_whole_doc    # Path A
-dmpbridge-evaluate-new  gemma4-e4b_pdfplumber_whole_doc    # Path B
-```
 
 Both paths are also driven from one YAML file, which is what the results notebooks are
 built from:

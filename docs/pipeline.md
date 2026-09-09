@@ -1,5 +1,15 @@
 # Pipeline
 
+[← Main README](../README.md) · [All docs](README.md)
+
+What happens between the PDF you hand in and the JSON you get back. You don't need any of
+this to use DMPBridge — it's here for when you want to know why an answer looks the way it
+does, or you're changing the pipeline yourself.
+
+**In one line:** read the PDF → label every block of text → nest the labels into sections
+and questions → fill blanks from the rules. Each of those four steps writes a file, so you
+can open any stage and see exactly what it did.
+
 ```mermaid
 flowchart TD
     PDF["<b>DMP PDF</b>"]

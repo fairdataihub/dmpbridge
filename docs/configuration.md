@@ -1,8 +1,34 @@
 # Configuration
 
+[← Main README](../README.md) · [All docs](README.md)
+
 Every setting the pipeline accepts, in one place. For just running it, the
 [README quick start](../README.md#quick-start) is enough — this page is the reference you
 come back to.
+
+## The short version
+
+Two settings cover almost everything:
+
+```bash
+dmpbridge my-plan.pdf --model gemma4:e4b
+```
+
+- **`--model`** — which Ollama model labels the text. The built-in default is
+  `llama3.3:70b` (~40 GB), so pass `gemma4:e4b` (~3 GB) unless you have the big one. Set it
+  once with `DMPBRIDGE_MODEL` and you can drop the flag entirely.
+- **`--extractor` / `--fallback`** — how the PDF is read. Leave both alone: the defaults
+  read a normal PDF and OCR a broken one.
+
+The rest of this page is the full reference.
+
+| Looking for | Section |
+|---|---|
+| where PDFs and rules live | [Inputs](#inputs) |
+| the YAML config file | [Settings in YAML](#settings-in-yaml--democonfigyaml) |
+| every command-line flag | [Settings on the command line](#settings-on-the-command-line) |
+| calling it from Python | [From Python](#from-python) |
+| `DMPBRIDGE_*` variables | [Environment variables](#environment-variables) |
 
 ---
 
