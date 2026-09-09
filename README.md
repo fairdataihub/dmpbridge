@@ -184,10 +184,6 @@ Convert a PDF and get the JSON. Nothing to configure.
    JSON. (`my-plan_labeled.json` is also written — the flat list of labeled blocks behind
    it.)
 
-Scanned or image-only PDFs are OCR'd automatically, no flag needed. Every other flag, the
-batch runner for the sample set, and the Python API are in
-**[docs/configuration.md](docs/configuration.md)**.
-
 ---
 
 ## Where the output goes
