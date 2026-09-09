@@ -166,50 +166,45 @@ them, and the researcher's answer attached to each question:
 
 ### Option A — Jupyter demo
 
-[`notebooks/demo-from-yaml-config.ipynb`](notebooks/demo-from-yaml-config.ipynb) runs the
-same pipeline and shows the settings and the finished document side by side. Edit
-[`demo/config.yaml`](demo/config.yaml) — model, extractor, sample range — then run the
-notebook top to bottom. Nothing inside the notebook needs changing.
+See each stage happen, with the settings and the finished document side by side.
 
-The same config runs without Jupyter, writing each stage into `demo/output/`:
+1. Open [`demo/config.yaml`](demo/config.yaml) and set the model:
+
+   ```yaml
+   model: gemma4:e4b
+   sample_end: 1        # how many sample PDFs to run
+   ```
+
+2. Open [`notebooks/demo-from-yaml-config.ipynb`](notebooks/demo-from-yaml-config.ipynb)
+   and click **Run All**. Nothing inside the notebook needs editing.
+
+3. The last cell prints the finished document — title, sections, questions, answers.
+
+No Jupyter? The same config runs from the terminal, writing each stage into `demo/output/`:
 
 ```bash
 python scripts/run_demo.py
 ```
 
-### Option B — CLI
+### Option B — one command
 
-One command, one PDF:
+Convert a PDF and get the JSON. Nothing to configure.
 
-```bash
-dmpbridge my-plan.pdf --model gemma4:e4b
-```
+1. Put your PDF anywhere you like.
 
-That's the whole thing. It runs the pipeline end to end — read, label, structure, apply the
-annotation rules — and writes two files next to your PDF:
+2. Run:
 
-| File | What's in it |
-|---|---|
-| `my-plan_labeled.json` | every block of text with its label |
-| `my-plan_labeled_structured.json` | the nested DMP Tool JSON — this is the one you want |
+   ```bash
+   dmpbridge my-plan.pdf --model gemma4:e4b
+   ```
 
-**Scanned or broken PDFs are handled for you, no flag needed.** DMPBridge checks whether the
-text it pulled out is actually readable before sending it to the model. If it isn't — a
-scan, or fonts with no character mapping — the PDF is re-read from its page images by
-LightOnOCR automatically, and you'll see a `[fallback]` line saying so. Normal PDFs are
-untouched. (The rescue uses a CUDA GPU; without one it warns and carries on.)
+3. Open **`my-plan_labeled_structured.json`**, written next to your PDF. That's the DMP Tool
+   JSON. (`my-plan_labeled.json` is also written — the flat list of labeled blocks behind
+   it.)
 
-`--model gemma4:e4b` is the only flag you need, because the built-in default is the 40 GB
-70B model. Set it once and you can drop the flag:
-
-```bash
-export DMPBRIDGE_MODEL=gemma4:e4b      # Windows PowerShell:  $env:DMPBRIDGE_MODEL="gemma4:e4b"
-dmpbridge my-plan.pdf
-```
-
-> **Developing, or running experiments?** The batch runner over the sample set
-> (`dmpbridge-wholedoc`), the Python API, every flag and default, the YAML config format and
-> the environment variables are all in **[docs/configuration.md](docs/configuration.md)**.
+Scanned or image-only PDFs are OCR'd automatically, no flag needed. Every other flag, the
+batch runner for the sample set, and the Python API are in
+**[docs/configuration.md](docs/configuration.md)**.
 
 ---
 
