@@ -1,5 +1,11 @@
 # DMPBridge
 
+[![Contributors](https://img.shields.io/github/contributors/fairdataihub/dmpbridge?style=flat-square&logo=github&logoColor=white&color=2ea44f)](https://github.com/fairdataihub/dmpbridge/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/fairdataihub/dmpbridge?style=flat-square&logo=github&logoColor=white&color=f9d949)](https://github.com/fairdataihub/dmpbridge/stargazers)
+[![Issues](https://img.shields.io/github/issues/fairdataihub/dmpbridge?style=flat-square&logo=github&logoColor=white&color=ff7a00)](https://github.com/fairdataihub/dmpbridge/issues)
+[![License](https://img.shields.io/github/license/fairdataihub/dmpbridge?style=flat-square&color=1f6feb)](LICENSE)
+[![DOI](https://img.shields.io/badge/DOI-pending-9e9e9e?style=flat-square)](#how-to-cite)
+
 Turn Data Management Plan PDFs into structured, machine-readable records — using a local
 LLM, with nothing leaving your machine.
 
@@ -8,7 +14,8 @@ it will be stored and shared. They arrive as PDFs, which makes them hard to sear
 compare at scale. DMPBridge reads one, works out what each piece of text *is* — a section
 heading, a question, an answer — and outputs structured JSON.
 
-> **This is an active research project — things change often.** 
+> **This is an active research project — things change often.**
+
 ---
 
 ## How it works
@@ -51,18 +58,8 @@ flowchart TD
     class PATHB pathB
 ```
 
-Each numbered box is written to disk, so any stage can be inspected on its own.
-The readability check catches PDFs whose text layer extracts as garbage (scanned pages,
-fonts with no character mapping) *before* the model sees them; with `--fallback auto`
-such a document is re-read from its page images by LightOnOCR — per document, clean
-documents untouched. If the rescue itself cannot run (for example, CPU-only torch — see
-the LightOnOCR install note below), the run currently **proceeds with a loud warning and
-unusable output**, so check the log for `[fallback]` lines before trusting results for a
-new document. A third extractor, Docling, stays available for experiments
-(`--extractor docling`) but is not part of this flow.
-More detail in **[docs/pipeline.md](docs/pipeline.md)**.
-
-Every block gets one of five labels:
+Each numbered box is written to disk, so any stage can be inspected on its own. Every block
+gets one of five labels:
 
 | Label | Meaning |
 |---|---|
@@ -72,36 +69,97 @@ Every block gets one of five labels:
 | `question.text` | A question or prompt |
 | `answer.text` | The researcher's response |
 
----
-
-## Where the project stands
-
-Research code — results are provisional and the evaluation set is small.
-
-All four models are fully evaluated under the current pipeline (`pdfplumber`, whole-document,
-both scoring paths). Numbers change often enough that this file doesn't hardcode a table —
-see `notebooks/results-<model>-pdfplumber.ipynb` for one model, or
-`notebooks/comparison-4models-pdfplumber-75pct-overlap.ipynb` for all four side by side.
-
-Run-to-run noise is ±0.002 F1 (one configuration run three times, every count identical) —
-differences smaller than ~0.005 are not meaningful.
+More detail in **[docs/pipeline.md](docs/pipeline.md)**.
 
 ---
 
-## Quick start
+## Step 1 — Install DMPBridge
 
-**Requirements:** Python 3.10+ · [Ollama](https://ollama.com) running locally
+**Requirements:** Python 3.10+ and [Ollama](https://ollama.com). No GPU needed for the
+default setup.
 
 ```bash
+git clone https://github.com/fairdataihub/dmpbridge.git
+cd dmpbridge
+
 python -m venv venv
 venv\Scripts\Activate.ps1        # Windows
 # source venv/bin/activate       # macOS / Linux
 
 pip install -e .
-ollama pull gemma4:e4b           # ~3 GB — recommended
 ```
 
-Label one PDF:
+Optional extras, only if you need them: `pip install -e ".[notebooks]"` for the analysis
+notebooks, `".[docling]"` or `".[lighton]"` for the alternative extractors, `".[dev]"` for
+the tests.
+
+---
+
+## Step 2 — Pull a model
+
+Install [Ollama](https://ollama.com), then pull a model. `gemma4:e4b` is the recommended
+starting point — about 3 GB and the strongest of the small models on this project's
+documents:
+
+```bash
+ollama pull gemma4:e4b
+```
+
+Any model already in Ollama works — `llama3.1:8b`, `qwen2.5:14b` and `llama3.3:70b` are
+also evaluated here. Larger models are slower: `llama3.3:70b` takes roughly 112 seconds per
+document against about 8 seconds for the small ones.
+
+---
+
+## Step 3 — Start Ollama
+
+```bash
+ollama serve
+```
+
+Leave it running. DMPBridge talks to it at `http://localhost:11434` by default — change
+that with `--host` if yours differs.
+
+**On a multi-GPU machine, or if `gemma4:e4b` crashes on load, Ollama needs extra
+environment variables** — see [docs/troubleshooting.md](docs/troubleshooting.md).
+
+---
+
+## Step 4 — Run DMPBridge
+
+Two ways in. Option A is the gentler one if you want to see a single document go through;
+Option B is what the research runs use.
+
+### Option A — Jupyter demo
+
+Edit [`demo/config.yaml`](demo/config.yaml) — model, extractor, sample range — then open
+[`notebooks/demo-from-yaml-config.ipynb`](notebooks/demo-from-yaml-config.ipynb) and run it
+top to bottom. It shows the YAML as input and the final labeled document as output, side by
+side. Nothing inside the notebook needs editing; the config is the only input.
+
+The same config also runs headless, writing each stage into
+`demo/output/{labeled,structured,final}/`:
+
+```bash
+python scripts/run_demo.py
+```
+
+### Option B — CLI
+
+`dmpbridge-wholedoc` is the command-line entry point that runs the pipeline end to end —
+extract, label, structure, apply rules:
+
+```bash
+# one document
+dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 13 --end 13
+
+# the whole sample set
+dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 1 --end 13
+```
+
+The final JSON lands in `data/output/4_final/<model>_<extractor>_whole_doc/`.
+
+To use DMPBridge as a library instead of a command:
 
 ```python
 import dmpbridge
@@ -110,131 +168,64 @@ blocks = dmpbridge.process_pdf(
     "document.pdf",
     model="gemma4:e4b",
     extractor="pdfplumber",
-    fallback="auto",     # scanned / broken text layer -> docling-OCR, then lightonocr
+    fallback="auto",
     structured_output="structured.json",
 )
 ```
 
-Or run samples from the terminal — this is the recommended command:
+---
 
-```bash
-# one sample
-dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 13 --end 13
+## Inputs and configuration
 
-# the whole sample set
-dmpbridge-wholedoc --model gemma4:e4b --extractor pdfplumber --fallback auto --start 1 --end 13
+### Inputs
+
+| What | Where | Notes |
+|---|---|---|
+| DMP PDFs | `data/input/pdfs/` | named `sample1.pdf`, `sample2.pdf`, … — the `--start`/`--end` range indexes these |
+| Annotation rules | `data/input/Rules.xlsx` | drives stage 4; **column order is load-bearing**, see [docs/scoring.md](docs/scoring.md) |
+| Reference annotations | `data/input/ground_truth_old_version/`, `ground_truth_new_version/` | only needed for scoring |
+
+### Execution settings — `demo/config.yaml`
+
+One YAML file describes a run. This is what both Option A entry points read:
+
+```yaml
+name: Demo run
+strategy: wholedoc
+provider: ollama
+host: http://localhost:11434
+
+model: llama3.1:8b          # any model already pulled in Ollama
+extractor: pdfplumber       # pdfplumber | lightonocr | docling
+
+pdf_dir: data/input/pdfs    # expects sample1.pdf, sample2.pdf, ...
+sample_start: 1
+sample_end: 1               # keep this small for a quick demo run
 ```
 
-`--fallback auto` handles PDFs whose text layer is broken or missing (scanned pages, fonts
-with no character mapping): the extracted text is checked before the model sees it, and a
-document that fails the check is re-read from its page images by LightOnOCR — you'll see
-two `[fallback]` lines in the terminal saying why and what was used. Clean documents are
-untouched. The final JSON lands in `data/output/4_final/<model>_<extractor>_whole_doc/`.
+`experiments/full-example.yaml` shows every field the format accepts, including multiple
+models, multiple extractors, and the `evaluation:` list that drives scoring.
 
-Re-runs skip samples that already have output — delete a sample's files under
-`data/output/` to run it again.
+### Execution settings — CLI flags
 
-**Or the smallest possible example** — edit [`demo/config.yaml`](demo/config.yaml) (just
-a model, extractor, and sample range) and run:
+The same settings on the command line, for Option B:
 
-```bash
-python scripts/run_demo.py
-```
-
-which writes each stage's result into `demo/output/{labeled,structured,final}/`. The same
-config also drives [`notebooks/demo-from-yaml-config.ipynb`](notebooks/demo-from-yaml-config.ipynb),
-which shows the YAML as input and the final document as output side by side.
+| Flag | Default | What it does |
+|---|---|---|
+| `--model` | from config | any model pulled in Ollama |
+| `--extractor` | `pdfplumber` | `pdfplumber`, `lightonocr` or `docling` |
+| `--start` / `--end` | `1` / `10` | inclusive sample range |
+| `--pdf-dir` | `data/input/pdfs` | where the PDFs live |
+| `--host` | `http://localhost:11434` | Ollama server URL |
+| `--fallback` | off | `auto` re-reads a document with LightOnOCR when its text extracts as garbage |
+| `--no-cache` | off | re-extract even when stage 1 already has the document |
+| `--no-rules` | off | stop after stage 3, skip the rule-converted final JSON |
+| `--no-save-native` | off | skip the extractor's raw native dump |
+| `--force-ocr` | off | docling only — OCR every page instead of trusting the text layer |
 
 ---
 
-## How extraction works
-
-**`pdfplumber` (default)** — no GPU needed, no extra install. It reads the whole document at
-once and sends it to the model in a single call. Words visually emphasized relative to the
-document's own body-text font (bold, larger, or underlined) are wrapped in `**bold**`,
-`_italic_`, or `++underline++` markers, so the model gets the PDF's own visual structure as
-a signal without needing bounding-box or font-size fields — extraction and labeling are
-fused into one step rather than separate segment-then-classify calls. It assumes a text
-layer exists (not a scanned/image-only PDF).
-
-**`lightonocr` (alternative)** — a vision-LLM (LightOnOCR-2-1B) that reads each page as an
-image instead, using the same marker convention. Needs a CUDA GPU and
-`pip install dmpbridge[lighton]`. **On Windows, plain pip installs the CPU-only torch build,
-with which LightOnOCR cannot run** — and the `--fallback auto` rescue then fails soft and the
-run proceeds with unusable text (observed directly: two runs from a venv with CPU torch
-produced garbage output while the same command worked from an environment with CUDA torch).
-On a machine with a CUDA GPU, install the CUDA build explicitly:
-
-```bash
-pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 --index-url https://download.pytorch.org/whl/cu121
-```
-
-(torch and torchvision must be **matching builds** — a torchvision compiled for a different
-torch fails at import with `operator torchvision::nms does not exist`, surfacing as a
-misleading `Could not import module 'AutoProcessor'` from transformers). Check with
-`python -c "import torch; print(torch.cuda.is_available())"` — it must print `True`. Scores lower and runs slower than pdfplumber on this
-project's documents so far, but works on scanned/image-only PDFs pdfplumber can't read at
-all — see `notebooks/comparison-gemma-pdfplumber-vs-lightonocr.ipynb`.
-
-**`docling` (alternative)** — Docling's layout model reads each page, and the text is built
-from Docling's *native* page cells rather than its Markdown export (which drops every font):
-pdfplumber's bold/italic rules applied to each word's font name and size, hyperlink
-rectangles as `++underline++`, and Docling's own heading label where the font marks nothing.
-On sample 2 it reproduces pdfplumber's markers exactly (42 bold, 41 italic, 11 underlined)
-and matches them on 8 of 10 documents. With gemma4:e4b it scores 0.924 Path A / 0.910 Path B
-against pdfplumber's 0.946 / 0.951: ahead on samples 2 and 5, level on seven, and behind only
-on sample 6, whose headings are drawn underlines with no link behind them — Docling has no
-shape data for those at any level. Runs on CPU in 0.1–3 s per document; needs
-`pip install dmpbridge[docling]`. All three extractors side by side — markers per document,
-both scoring paths, per class, per document, confusion matrices — are in
-`notebooks/comparison-gemma-extractors.ipynb`.
-
-Two side files sit next to stage 1 in `1_extracted/docling/`: `sampleN.md`, Docling's own
-Markdown, and `sampleN.native.json`, Docling's full native result (parsed page cells with
-fonts, sizes and hyperlinks, layout clusters with confidences, page images).
-
-**Native dumps for both extractors.** `sampleN.native.json` is the extractor's raw reading
-of the PDF before any marker rule — for pdfplumber, every word with its font name, size and
-box, the drawn rectangles and lines that underline detection works from, and hyperlinks with
-their URIs, in `1_extracted/pdfplumber/`. It never changes the stage-1 text; it is there so a
-marker can be traced back to what produced it. `dmpbridge-wholedoc` writes it **by default** for pdfplumber and docling
-runs, for every sample in range that lacks one (cached or already labeled) — pass
-`--no-save-native` to skip; `python scripts/native_dump.py --extractor pdfplumber|docling`
-does the same for all samples without touching the model stages.
-
-**Broken or scanned PDFs.** A PDF can have a text layer whose fonts carry no
-character-to-text mapping — extraction then *succeeds* as garbage (`(cid:NN)` tokens or
-mojibake) and the model hallucinates a fluent document from it (observed on sample 11).
-The pipeline now checks every stage-1 text and logs a loud warning when it does not look
-like readable language. When that fires, or for scanned/image-only PDFs:
-
-1. `--extractor lightonocr` — reads the page image; unaffected by the text layer, and it
-   structures OCR'd documents far better than text OCR does (on the one broken PDF
-   measured, it produced proper sections/questions/answers where docling-OCR text
-   collapsed into a single fused question). Needs the CUDA GPU.
-2. `--extractor docling --force-ocr` — **experimental, not part of the production fallback**:
-   OCRs every page (`OcrMode.FULL_PAGE`) instead of trusting the text layer. CPU-only, so it
-   works without a GPU, but bold/italic markers are mostly lost with the fonts and structure
-   suffers (on the one broken PDF measured it fused five sections into one question). The
-   stage-1 cache is keyed by extractor only, so clear the cached `sampleN.json` (or pass
-   `--no-cache`) or the garbage text is reused.
-3. `pdfplumber` has no fallback — it can only read the text layer.
-
-The warning is a guard, not a gate: by default the run still proceeds, so check the log
-before trusting output for a new document. To handle it automatically, add
-`--fallback auto` (= lightonocr; docling-OCR only if named explicitly): a document
-whose text fails the check is re-extracted with the fallback and labeled from that text
-instead — per document, opt-in, clean documents untouched. The primary extractor's stage-1
-cache keeps what it really read (the garbage), while the accepted rescue text is cached
-under the **fallback's own** stage-1 directory (e.g. `1_extracted/lightonocr/sampleN.json`),
-so the rescue is inspectable on disk and later runs reuse it — making rescued documents
-reproducible instead of re-rolling the OCR each time. The Python API takes the same
-option — `process_pdf(..., fallback="auto")` (or a name, or an ordered list) — so an
-application embedding the package gets the same behaviour without the CLI.
-
----
-
-## Where the output goes
+## Outputs
 
 ```
 data/output/
@@ -248,55 +239,22 @@ data/output/
 can open `sampleN.json` in each folder and follow one document through.
 
 **Stage 1 is keyed by extractor, not by model**, and is cached — reading a PDF doesn't
-depend on which LLM labels it. Labeling with four models costs one read, not four:
-
-```bash
-dmpbridge-wholedoc --model llama3.1:8b   # reads and caches
-dmpbridge-wholedoc --model gemma4:e4b    # reuses the cache
-
-dmpbridge-wholedoc --model gemma4:e4b --no-cache   # force re-read
-dmpbridge-wholedoc --model gemma4:e4b --no-rules   # skip stage 4
-```
-
-To read PDFs with no LLM involved at all:
-
-```bash
-python scripts/extract_pdfplumber.py
-```
+depend on which LLM labels it, so labeling with four models costs one read, not four.
+Stages 2–4 are cached by file existence too: **a document that already has output is
+skipped**. To run it again, delete its files under `data/output/`.
 
 ---
 
-## Scoring
+## Documentation
 
-Output is compared against hand-annotated reference documents. The annotation standard
-changed partway through the project, so everything is scored twice:
+| Page | Covers |
+|---|---|
+| [docs/pipeline.md](docs/pipeline.md) | the four stages in detail |
+| [docs/extraction.md](docs/extraction.md) | the three extractors, the visual-emphasis markers, native dumps, and scanned or broken PDFs |
+| [docs/scoring.md](docs/scoring.md) | Path A / Path B, the match threshold, the results notebooks, and how to read the numbers |
+| [docs/troubleshooting.md](docs/troubleshooting.md) | Ollama on multiple GPUs, the `gemma4:e4b` load crash, CUDA torch for LightOnOCR |
 
-- **Path A** — the structured output against the original annotation
-- **Path B** — after filling blank questions using `data/input/Rules.xlsx`, against the newer one
-
-Both use the same scoring: a predicted item matches a reference item when enough of its
-words are contained in it (**75% by default** — partial credit allowed; pass
-`threshold=1.0` to require an exact match instead), then precision, recall and F1 as usual.
-
-```bash
-dmpbridge-evaluate      gemma4-e4b_pdfplumber_whole_doc    # Path A
-dmpbridge-evaluate-new  gemma4-e4b_pdfplumber_whole_doc    # Path B
-```
-
-Both paths are also driven from one YAML file, which is what the numbers table above is
-built from:
-
-```bash
-dmpbridge-experiment experiments/llama3.1-8b-wholedoc.yaml --evaluate
-```
-
-A new annotation source ("Path C") doesn't need new code — it's a new entry in an
-`evaluation:` list in the YAML (`experiments/full-example.yaml` shows every field). See
-`EvaluationPath` in `dmpbridge/evaluation/evaluate.py`.
-
----
-
-## Tests
+Tests:
 
 ```bash
 pip install -e ".[dev]"
@@ -305,19 +263,46 @@ pytest tests/
 
 ---
 
-## Running on multiple GPUs
+## License
 
-Ollama may pick the Vulkan backend over CUDA, which is unstable across several cards and
-ignores `CUDA_VISIBLE_DEVICES`. **`gemma4:e4b`** — the recommended model above — also
-crashes on load under recent Ollama versions unless one more flag is set, since it's
-multimodal and the crash is in fitting its vision projector, not a GPU problem. Start the
-server with all of these, killing any running instance first (env vars only apply to a
-freshly started process):
+MIT — see [LICENSE](LICENSE). You may use, modify and redistribute this code, including
+commercially, provided the copyright notice is kept.
 
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 OLLAMA_VULKAN=0 OLLAMA_SCHED_SPREAD=0 \
-OLLAMA_KEEP_ALIVE=-1 LLAMA_ARG_FIT=off ollama serve
+---
+
+## Feedback and contributions
+
+Bug reports, questions and suggestions are welcome as
+[GitHub issues](https://github.com/fairdataihub/dmpbridge/issues). When reporting a problem
+with a document, the most useful things to include are the command you ran, the model and
+extractor, and the stage-1 JSON — that usually separates an extraction problem from a model
+one.
+
+Pull requests are welcome too. Please run `pytest tests/` before opening one. Two things
+worth knowing before you edit:
+
+- **The system prompt in `dmpbridge/prompts/constants.py` is whitespace-significant.**
+  Moving blank lines, with no
+  wording change, has moved F1 by nearly two points. Don't reformat it, and re-run every
+  model after any prompt change — prompt edits do not transfer between models.
+- **The column order in `data/input/Rules.xlsx` is load-bearing.** A test reads the sheet
+  header and fails if it changes; if that test fails, fix `RULE_FIELDS` rather than the
+  test.
+
+---
+
+## How to cite
+
+If you use DMPBridge in published work, please cite it. GitHub builds a formatted citation
+from [CITATION.cff](CITATION.cff) — use the **Cite this repository** button on the
+repository page, or:
+
+```bibtex
+@software{zeinali_dmpbridge,
+  author  = {Zeinali, Nahid},
+  title   = {DMPBridge: structured extraction of Data Management Plans with local LLMs},
+  year    = {2026},
+  url     = {https://github.com/fairdataihub/dmpbridge},
+  version = {0.1.0}
+}
 ```
-
-Then check `ollama ps` reports **100% GPU**. Anything less means part of the model spilled
-to CPU, and a large model will take hours instead of minutes. 

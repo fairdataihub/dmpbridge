@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "DMPBridge: structured extraction of Data Management Plans with local LLMs"
+abstract: >-
+  DMPBridge turns Data Management Plan PDFs into structured, machine-readable
+  records using a locally hosted LLM. It reads a PDF, classifies each block of
+  text as a title, section heading, section description, question or answer,
+  and outputs JSON in the DMP Tool schema. Nothing leaves the machine it runs
+  on.
+type: software
+authors:
+  - family-names: Zeinali
+    given-names: Nahid
+repository-code: "https://github.com/fairdataihub/dmpbridge"
+url: "https://github.com/fairdataihub/dmpbridge"
+version: 0.1.0
+license: MIT
+keywords:
+  - data management plan
+  - document structuring
+  - large language models
+  - research data management
+  - FAIR data
