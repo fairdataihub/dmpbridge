@@ -1,8 +1,9 @@
 """Build notebooks/pdf-to-rda-dmp-json.ipynb.
 
-PDF to RDA DMP JSON: hand llama3.1:8b the pdfplumber blob text of one DMP plus
-the official RDA maDMP 1.2 schema, ask for JSON that complies with it, then tidy
-the nesting and validate the result against the schema itself.
+PDF to RDA DMP JSON. Builds a complete skeleton from the official maDMP 1.2
+schema — every key the standard defines, all null — then asks llama3.1:8b to fill
+in whatever the DMP document actually says. Anything the document does not
+mention stays null, so the output always has the schema's full shape.
 
     python scripts/build/build_rda_extraction_notebook.py
 """
@@ -29,24 +30,30 @@ cells = [
 md("title", '''
 # PDF to RDA DMP JSON
 
-Take one Data Management Plan PDF and ask `llama3.1:8b` to turn it into JSON that
-follows the **RDA DMP Common Standard** schema, filling in whatever the document
-actually contains.
+Turn one Data Management Plan PDF into **RDA DMP Common Standard** JSON with
+`llama3.1:8b`, keeping the standard's complete structure.
+
+**How this works.** The skeleton is built from the schema itself — every key the
+standard defines, in the right place, set to `null`. The model is then asked only
+to supply *values*. Whatever it finds gets written in; whatever the document does
+not mention stays `null`.
+
+That means the output always has the full schema shape, and fields can never land
+in the wrong place, because we build the structure rather than asking the model to
+get the nesting right.
 
 | Step | What happens |
 |---|---|
 | 1 | Read the PDF into text with pdfplumber |
 | 2 | Clean the text |
-| 3 | Load the RDA schema |
-| 4 | One prompt — schema + document, JSON out |
-| 5 | Tidy the nesting |
+| 3 | Build the empty skeleton from the schema |
+| 4 | Ask the model for the values |
+| 5 | Fill the skeleton — everything else stays null |
 | 6 | Check it against the schema |
 | 7 | Save it |
 
 Schema: `maDMP-schema-1.2.json`, from
 [RDA-DMP-Common-Standard](https://github.com/RDA-DMP-Common/RDA-DMP-Common-Standard/blob/master/examples/JSON/JSON-schema/1.2/maDMP-schema-1.2.json).
-
-Run the cells top to bottom. Only the settings in the next cell need changing.
 '''),
 
 code("setup", '''
@@ -75,23 +82,20 @@ print("Output :", OUT)
 
 md("s1", '''
 ## Step 1 — Read the PDF
-
-The project's pdfplumber extractor returns the whole document as one blob of text.
 '''),
 
 code("read", '''
 raw_text = get_extractor("pdfplumber").extract(PDF)[0]["text"]
 
 print(f"{len(raw_text):,} characters, {len(raw_text.split()):,} words\\n")
-print(raw_text[:500])
+print(raw_text[:400])
 '''),
 
 md("s2", '''
 ## Step 2 — Clean the text
 
-pdfplumber wraps visually emphasized words in `**bold**`, `_italic_` and
-`++underline++` markers. Useful elsewhere in this project, noise here — so we
-strip them and tidy the spacing. No words are changed.
+Strips the `**bold**` / `_italic_` / `++underline++` markers pdfplumber adds and
+tidies the spacing. No words are changed.
 '''),
 
 code("clean", '''
@@ -106,24 +110,25 @@ def clean_text(text):
 
 
 clean = clean_text(raw_text)
-
 print(f"{len(raw_text):,} chars -> {len(clean):,} chars\\n")
-print(clean[:500])
+print(clean[:400])
 '''),
 
 md("s3", '''
-## Step 3 — Load the RDA schema
+## Step 3 — Build the empty skeleton
 
-**The `$ref` pointers have to go first.** The schema is written as
-`"dmp": {"$ref": "#/$defs/DMPData"}`, with 48 definitions kept in a `$defs`
-section. Handed to the model like that, it copies the pointers into its answer and
-you get `"contact": {"$ref": "#/$defs/Contact"}` back instead of a contact.
+Walk the schema and produce every key it defines, set to `null`. Two things have
+to be handled on the way:
 
-So we replace every `$ref` with the definition it points at. There are no circular
-references, so it flattens cleanly.
+- **`$ref`** — the schema keeps 48 definitions in `$defs` and points at them, so
+  each pointer is replaced with what it points to.
+- **`oneOf`** — some fields accept either one object or a list of them
+  (`contact_id` is written this way). We take the first form.
+
+Arrays get one specimen entry, so you can see the shape of what belongs there.
 '''),
 
-code("schema", '''
+code("skeleton", '''
 schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
 defs = schema.get("$defs", {})
 
@@ -141,154 +146,195 @@ def inline_refs(node, depth=0):
     return node
 
 
-flat_schema = inline_refs({k: v for k, v in schema.items() if k != "$defs"})
+flat = inline_refs({k: v for k, v in schema.items() if k != "$defs"})
 
 
-def strip_docs(node):
-    """Drop the schema's prose. It documents the standard for humans; the model
-    needs the field names and the shape, and this is 64% of the prompt."""
-    if isinstance(node, dict):
-        return {k: strip_docs(v) for k, v in node.items()
-                if k not in ("description", "title", "examples", "$schema", "$id")}
-    if isinstance(node, list):
-        return [strip_docs(v) for v in node]
-    return node
+def build_skeleton(node, depth=0):
+    """Every key the schema defines; null at the leaves, one entry per array."""
+    if depth > 12 or not isinstance(node, dict):
+        return None
+    if "oneOf" in node or "anyOf" in node:
+        options = node.get("oneOf") or node.get("anyOf")
+        pick = next((o for o in options if o.get("type") != "null"), options[0])
+        return build_skeleton(pick, depth)
+    kind = node.get("type")
+    if isinstance(kind, list):
+        kind = next((k for k in kind if k != "null"), None)
+    if kind == "object" or "properties" in node:
+        return {k: build_skeleton(v, depth + 1)
+                for k, v in node.get("properties", {}).items()}
+    if kind == "array":
+        return [build_skeleton(node.get("items", {}), depth + 1)]
+    return None
 
 
-SLIM_SCHEMA = True   # False to send the full schema, prose and all (2.7x slower)
+SKELETON = build_skeleton(flat)
 
-prompt_schema = strip_docs(flat_schema) if SLIM_SCHEMA else flat_schema
-schema_text = json.dumps(prompt_schema, separators=(",", ":"))
 
-# The fields the standard says live inside "dmp" — used to tidy up in step 5.
-DMP_FIELDS = list(flat_schema["properties"]["dmp"]["properties"])
+def leaf_paths(obj, prefix=""):
+    """Dotted path for every leaf; '[]' marks a list."""
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            yield from leaf_paths(v, f"{prefix}.{k}" if prefix else k)
+    elif isinstance(obj, list):
+        if obj:
+            yield from leaf_paths(obj[0], prefix + "[]")
+    else:
+        yield prefix
 
-print(f"as downloaded : {len(json.dumps(schema)):,} chars, {len(defs)} definitions")
-print(f"inlined       : {len(json.dumps(flat_schema, separators=(',', ':'))):,} chars")
-print(f"sent to model : {len(schema_text):,} chars   (SLIM_SCHEMA={SLIM_SCHEMA})")
-print(f'contains $ref : {"$ref" in schema_text}')
-print()
-print(f"schema   ~{len(schema_text)//4:,} tokens")
-print(f"document ~{len(clean)//4:,} tokens")
-print(f"prompt   ~{(len(schema_text)+len(clean))//4:,} tokens   (context is 32,768)")
-print()
-print(f"fields allowed inside dmp ({len(DMP_FIELDS)}):")
-print(" ", ", ".join(DMP_FIELDS))
+
+ALL_PATHS = list(leaf_paths(SKELETON))
+
+print(f"{len(ALL_PATHS)} fields in the skeleton\\n")
+print("top-level dmp keys:")
+for k in SKELETON["dmp"]:
+    print("  ", k)
 '''),
 
 md("s4", '''
-## Step 4 — One prompt
+## Step 4 — Ask the model for the values
 
-Schema in, document in, JSON out.
+109 fields is too many for one call, so they are asked for a subtree at a time —
+`contact`, `contributor`, `dataset`, `project` and so on. Each call gets the field
+paths and the document, and returns a value or `null` for each.
 
-The model is told to leave out anything the document does not state. That matters
-more than it sounds: the schema marks `contact.mbox`, `contact.contact_id`,
-`created`, `modified`, `language` and `dataset.dataset_id` as **required**, but a
-DMP frequently contains none of them. Asked to satisfy "required" literally, the
-model fills the gaps with invented emails and dates. We would rather have an
-incomplete document than a fictional one, and step 6 reports the gaps honestly.
+`null` is the expected answer for most of them. A DMP does not usually state a ROR
+identifier, a byte size or a licence URL, and a wrong value is worse than none.
 '''),
 
 code("ask", '''
 llm = OllamaModel(model=MODEL, host="http://localhost:11434", num_ctx=32768)
 
-SYSTEM = """You convert Data Management Plan documents into JSON matching the RDA
-DMP Common Standard schema you are given.
+# One group per top-level dmp key, with the plain scalars bundled together.
+CHUNK = 15   # a call asking for more than this starts dropping fields
 
-Use only information written in the document. Leave out anything it does not
-state - it is correct to omit a field, and wrong to guess one. Never invent
-identifiers, emails, ORCIDs, DOIs, grant numbers or dates. Never output "$ref";
-write real values. Output JSON only."""
+subtrees = {}
+for path in ALL_PATHS:
+    parts = path.split(".")
+    key = parts[1].replace("[]", "") if len(parts) > 1 else "dmp"
+    name = key if len(parts) > 2 or "[]" in path else "basics"
+    subtrees.setdefault(name, []).append(path)
 
-PROMPT = f"""Here is the RDA DMP Common Standard JSON schema (version 1.2):
+groups = {}
+for name, paths in subtrees.items():
+    if len(paths) <= CHUNK:
+        groups[name] = paths
+    else:
+        for i in range(0, len(paths), CHUNK):
+            groups[f"{name} {i // CHUNK + 1}"] = paths[i:i + CHUNK]
 
-{schema_text}
+print(f"{len(ALL_PATHS)} fields in {len(groups)} calls\\n")
 
-Here is the Data Management Plan:
+SYSTEM = """You read Data Management Plans and report what they say.
 
---- DOCUMENT ---
-{clean}
---- END DOCUMENT ---
+If the document does not state something, answer null. Do not guess and do not
+invent identifiers, emails, ORCIDs, DOIs, grant numbers or dates. Most fields will
+be null - that is the correct answer, not a failure."""
 
-Produce one JSON object that follows the schema above, filling in everything the
-document actually states and leaving out everything it does not.
 
-Everything goes inside a single top-level "dmp" object - nothing at the top level
-except "dmp" - and each field must sit exactly where the schema puts it. Output
-only the JSON object."""
+def ask(paths, text):
+    """Ask for one group of field paths; returns {path: value or None}."""
+    lines = ["Read the Data Management Plan below and report these fields.", ""]
+    lines += [f"  {p}" for p in paths]
+    lines += ["", "Answer null for anything the document does not state.", "",
+              "--- DOCUMENT ---", text, "--- END DOCUMENT ---"]
+    fmt = {"type": "object",
+           "properties": {p: {"type": ["string", "null"]} for p in paths},
+           "required": paths}
+    raw = llm.complete(SYSTEM, "\\n".join(lines), schema=fmt)
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        m = re.search(r"\\{.*\\}", raw, re.S)
+        return json.loads(m.group(0)) if m else {}
 
-raw = llm.complete(SYSTEM, PROMPT, schema="json")   # Ollama JSON mode
 
-try:
-    result = json.loads(raw)
-except json.JSONDecodeError:
-    m = re.search(r"\\{.*\\}", raw, re.S)
-    result = json.loads(m.group(0)) if m else {}
+values = {}
+for name, paths in groups.items():
+    print(f"  {name:22} {len(paths):>3} fields ...", flush=True)
+    values.update(ask(paths, clean))
 
-print(f"{len(raw):,} characters returned")
-print("top level :", list(result))
-print("dmp fields:", list(result.get("dmp", {})))
+print(f"\\ngot answers for {len(values)} fields")
 '''),
 
 md("s5", '''
-## Step 5 — Tidy the nesting
+## Step 5 — Fill the skeleton
 
-The one structural mistake this model reliably makes is letting fields escape to
-the top level — `dataset`, `contributor`, `language` and friends sitting next to
-`dmp` instead of inside it. They are the right values in the wrong place, so we
-move them in rather than throw them away.
+Values are written into the skeleton at their own paths, so everything lands where
+the standard puts it. Anything the model answered `null` for keeps the skeleton's
+`null`.
 '''),
 
-code("tidy", '''
-def tidy(obj):
-    """Move any stray top-level RDA fields inside "dmp"."""
-    dmp = dict(obj.get("dmp") or {})
-    moved, dropped = [], []
-    for key, value in obj.items():
-        if key == "dmp":
-            continue
-        if key in DMP_FIELDS:
-            if key not in dmp:
-                dmp[key] = value
-                moved.append(key)
+code("fill", '''
+def is_empty(value):
+    return value is None or str(value).strip().lower() in ("", "null", "none", "n/a")
+
+
+def set_path(obj, path, value):
+    """Write value into obj at a dotted path; '[]' means the first list entry."""
+    parts = path.split(".")
+    cur = obj
+    for i, part in enumerate(parts):
+        last = i == len(parts) - 1
+        is_list = part.endswith("[]")
+        key = part[:-2] if is_list else part
+        if last:
+            if is_list:
+                if not isinstance(cur.get(key), list) or not cur[key]:
+                    cur[key] = [None]
+                cur[key][0] = value
+            else:
+                cur[key] = value
+            return
+        if is_list:
+            if not isinstance(cur.get(key), list) or not cur[key]:
+                cur[key] = [{}]
+            cur = cur[key][0]
         else:
-            dropped.append(key)
-    return {"dmp": dmp}, moved, dropped
+            if not isinstance(cur.get(key), dict):
+                cur[key] = {}
+            cur = cur[key]
 
 
-result, moved, dropped = tidy(result)
+result = json.loads(json.dumps(SKELETON))   # fresh copy, all null
 
-print("moved into dmp :", ", ".join(moved) if moved else "nothing")
-print("not in schema  :", ", ".join(dropped) if dropped else "nothing")
-print()
-print("dmp now has:", ", ".join(result["dmp"]) or "(empty)")
+filled = []
+for path in ALL_PATHS:
+    value = values.get(path)
+    if not is_empty(value):
+        set_path(result, path, value)
+        filled.append(path)
+
+print(f"filled {len(filled)} of {len(ALL_PATHS)} fields; "
+      f"{len(ALL_PATHS) - len(filled)} left null\\n")
+for path in filled:
+    print(f"  {path:52} {str(values[path])[:48]}")
 '''),
 
 md("s6", '''
 ## Step 6 — Check it against the schema
 
-Validated with `jsonschema` against the real schema — the one that still has its
-`required` lists. Anything reported here is a field the standard wants and this
-document did not supply. That is information, not failure: it tells you what this
-DMP is missing, without anything being made up to hide it.
+Validated against the schema as published, `required` lists and all. Anything
+reported here is a field the standard wants that this document did not supply —
+information about the DMP, not a bug.
 '''),
 
 code("validate", '''
 import jsonschema
 
-validator = jsonschema.Draft202012Validator(schema)
-errors = sorted(validator.iter_errors(result), key=lambda e: list(e.path))
+errors = sorted(jsonschema.Draft202012Validator(schema).iter_errors(result),
+                key=lambda e: list(e.path))
 
 if not errors:
-    print("Valid against maDMP-schema-1.2 — nothing missing.")
+    print("Valid against maDMP-schema-1.2.")
 else:
-    print(f"{len(errors)} thing(s) the schema wants but the document did not provide:\\n")
-    for e in errors:
+    print(f"{len(errors)} schema complaint(s) - mostly nulls where the standard "
+          f"wants a value:\\n")
+    for e in errors[:25]:
         where = "/".join(str(p) for p in e.path) or "(root)"
-        print(f"  {where:34} {e.message[:88]}")
-
-filled = sum(1 for v in result["dmp"].values() if v not in (None, "", [], {}))
-print(f"\\n{filled} of {len(DMP_FIELDS)} top-level dmp fields filled from the document")
+        print(f"  {where:38} {e.message[:78]}")
+    if len(errors) > 25:
+        print(f"  ... and {len(errors) - 25} more")
 '''),
 
 md("s7", '''
@@ -299,7 +345,7 @@ code("save", '''
 OUT.parent.mkdir(parents=True, exist_ok=True)
 OUT.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
 print(f"saved -> {OUT}  ({OUT.stat().st_size:,} bytes)\\n")
-print(json.dumps(result, indent=2, ensure_ascii=False)[:3000])
+print(json.dumps(result, indent=2, ensure_ascii=False)[:2500])
 '''),
 
 md("check", '''
@@ -307,11 +353,8 @@ md("check", '''
 
 ### Quick sanity check
 
-Not part of the pipeline. Emails, ORCIDs and DOIs are the values a model is most
-likely to produce from thin air, and the hardest to spot by eye — an invented one
-looks exactly like a real one. This just asks whether each is actually in the PDF.
-
-Delete this cell if you don't want it.
+Emails, ORCIDs and DOIs are what a model invents most readily, and an invented one
+looks exactly like a real one. This just asks whether each is in the PDF.
 '''),
 
 code("sanity", '''
