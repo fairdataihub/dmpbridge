@@ -1,0 +1,212 @@
+{
+  "dmp": {
+    "title": "Hakai Institute Juvenile Salmon Program Time Series",
+    "description": "The Hakai Institute Juvenile Salmon program is an ongoing initiative that was established in 2015 in partnership with the University of British Columbia, University of Toronto, Simon Fraser University and Salmon Coast Field Station. This program researches the early life history of juvenile salmon in coastal British Columbia.",
+    "dmp_id": {
+      "identifier": "https://doi.org/10.48321/D1CW23",
+      "type": null
+    },
+    "created": null,
+    "modified": null,
+    "ethical_issues_exist": "no",
+    "ethical_issues_description": null,
+    "ethical_issues_report": null,
+    "language": null,
+    "contact": {
+      "name": "Brett Johnson",
+      "mbox": null,
+      "affiliation": [
+        {
+          "name": "Hakai Institute",
+          "affiliation_id": {
+            "identifier": null,
+            "type": null
+          }
+        }
+      ],
+      "contact_id": [
+        {
+          "identifier": "0000-0001-9317-0364",
+          "type": null
+        }
+      ]
+    },
+    "contributor": [
+      {
+        "name": null,
+        "contributor_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "affiliation": [
+          {
+            "name": null,
+            "affiliation_id": {
+              "identifier": null,
+              "type": null
+            }
+          }
+        ],
+        "role": []
+      }
+    ],
+    "dataset": [
+      {
+        "title": null,
+        "type": null,
+        "description": null,
+        "dataset_id": {
+          "identifier": null,
+          "type": null
+        },
+        "personal_data": null,
+        "sensitive_data": null,
+        "issued": null,
+        "metadata": [
+          {
+            "description": null,
+            "language": null,
+            "metadata_standard_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ],
+        "distribution": [
+          {
+            "title": null,
+            "byte_size": null,
+            "issued": null,
+            "data_access": "open",
+            "license": [
+              {
+                "license_ref": null,
+                "start_date": null
+              }
+            ],
+            "host": {
+              "title": "Hakai JSP GitHub repository",
+              "url": null,
+              "host_id": [
+                {
+                  "identifier": null,
+                  "type": null
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": null,
+        "relation_type": null,
+        "resource_type": null,
+        "type": null
+      }
+    ],
+    "alternate_identifier": [
+      {
+        "identifier": null,
+        "type": null
+      }
+    ],
+    "project": [
+      {
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "description": "The Hakai Institute Juvenile Salmon program is an ongoing initiative that was established in 2015 in partnership with the University of British Columbia, University of Toronto, Simon Fraser University and Salmon Coast Field Station.",
+        "project_id": [
+          {
+            "identifier": null,
+            "type": null
+          }
+        ],
+        "start": "05-12-2015",
+        "end": "07-05-2023",
+        "funding": [
+          {
+            "name": "Tula Foundation",
+            "funding_status": null,
+            "funder_id": {
+              "identifier": null,
+              "type": null
+            },
+            "grant_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rda_schema_version": "1.2",
+  "provenance": null,
+  "status": "draft",
+  "privacy": "private",
+  "featured": "no",
+  "registered": null,
+  "tombstoned": null,
+  "research_domain": {
+    "name": null,
+    "research_domain_identifier": {
+      "identifier": null,
+      "type": null
+    }
+  },
+  "research_facility": [
+    {
+      "name": null,
+      "type": null,
+      "research_facility_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_opportunity": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "opportunity_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "funding_project": [
+    {
+      "project_id": {
+        "identifier": null,
+        "type": null
+      },
+      "funder_id": {
+        "identifier": null,
+        "type": null
+      },
+      "project_identifier": {
+        "identifier": null,
+        "type": null
+      }
+    }
+  ],
+  "version": [
+    {
+      "access_url": null,
+      "version": null
+    }
+  ]
+}
