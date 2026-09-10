@@ -142,13 +142,30 @@ def inline_refs(node, depth=0):
 
 
 flat_schema = inline_refs({k: v for k, v in schema.items() if k != "$defs"})
-schema_text = json.dumps(flat_schema, separators=(",", ":"))
+
+
+def strip_docs(node):
+    """Drop the schema's prose. It documents the standard for humans; the model
+    needs the field names and the shape, and this is 64% of the prompt."""
+    if isinstance(node, dict):
+        return {k: strip_docs(v) for k, v in node.items()
+                if k not in ("description", "title", "examples", "$schema", "$id")}
+    if isinstance(node, list):
+        return [strip_docs(v) for v in node]
+    return node
+
+
+SLIM_SCHEMA = True   # False to send the full schema, prose and all (2.7x slower)
+
+prompt_schema = strip_docs(flat_schema) if SLIM_SCHEMA else flat_schema
+schema_text = json.dumps(prompt_schema, separators=(",", ":"))
 
 # The fields the standard says live inside "dmp" — used to tidy up in step 5.
 DMP_FIELDS = list(flat_schema["properties"]["dmp"]["properties"])
 
 print(f"as downloaded : {len(json.dumps(schema)):,} chars, {len(defs)} definitions")
-print(f"after inlining: {len(schema_text):,} chars")
+print(f"inlined       : {len(json.dumps(flat_schema, separators=(',', ':'))):,} chars")
+print(f"sent to model : {len(schema_text):,} chars   (SLIM_SCHEMA={SLIM_SCHEMA})")
 print(f'contains $ref : {"$ref" in schema_text}')
 print()
 print(f"schema   ~{len(schema_text)//4:,} tokens")
