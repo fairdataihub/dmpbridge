@@ -16,12 +16,14 @@
           "name": null
         }
       ],
-      "contact_id": {
-        "identifier": null,
-        "type": null
-      },
+      "contact_id": [
+        {
+          "identifier": null,
+          "type": null
+        }
+      ],
       "mbox": null,
-      "name": "Brett Johnson"
+      "name": "Brett Johnson, Brian Hunt"
     },
     "contributor": [
       {
@@ -34,10 +36,12 @@
             "name": "Hakai Institute"
           }
         ],
-        "contributor_id": {
-          "identifier": "0000-0001-9317-0364",
-          "type": null
-        },
+        "contributor_id": [
+          {
+            "identifier": "0000-0001-9317-0364",
+            "type": null
+          }
+        ],
         "mbox": null,
         "name": "Brett Johnson",
         "role": [
@@ -73,10 +77,12 @@
                 "name": "Hakai Institute"
               }
             ],
-            "creator_id": {
-              "identifier": "0000-0001-9317-0364",
-              "type": "ORCID"
-            },
+            "creator_id": [
+              {
+                "identifier": "0000-0001-9317-0364",
+                "type": null
+              }
+            ],
             "mbox": null,
             "name": "Brett Johnson"
           }
@@ -86,12 +92,12 @@
         ],
         "dataset_id": {
           "identifier": "https://doi.org/10.48321/D1CW23",
-          "type": "DOI"
+          "type": null
         },
         "description": "Hakai Institute Juvenile Salmon Program Time Series",
         "distribution": [
           {
-            "access_url": null,
+            "access_url": "www.github.com/hakaiinstitute/jsp-data",
             "available_until": null,
             "byte_size": null,
             "data_access": null,
@@ -124,7 +130,7 @@
             "issued": null,
             "license": [
               {
-                "license_ref": "CC BY 4.0",
+                "license_ref": null,
                 "start_date": null
               }
             ],
@@ -141,10 +147,12 @@
           {
             "description": null,
             "language": null,
-            "metadata_standard_id": {
-              "identifier": null,
-              "type": null
-            }
+            "metadata_standard_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
           }
         ],
         "personal_data": null,

@@ -154,8 +154,12 @@ def build_skeleton(node, depth=0):
     if depth > 12 or not isinstance(node, dict):
         return None
     if "oneOf" in node or "anyOf" in node:
-        options = node.get("oneOf") or node.get("anyOf")
-        pick = next((o for o in options if o.get("type") != "null"), options[0])
+        # "either one object or a list of them" (contact_id, contributor_id,
+        # creator_id, metadata_standard_id). Take the list form: it is what the
+        # RDA skeleton uses, and it keeps every sub-key the schema defines.
+        options = [o for o in (node.get("oneOf") or node.get("anyOf"))
+                   if o.get("type") != "null"]
+        pick = next((o for o in options if o.get("type") == "array"), options[0])
         return build_skeleton(pick, depth)
     kind = node.get("type")
     if isinstance(kind, list):
