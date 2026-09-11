@@ -22,17 +22,25 @@ class OllamaModel:
     num_ctx:
         Context window size passed to Ollama.  32 768 comfortably fits a full
         DMP document for whole-doc inference.
+    num_predict:
+        Cap on generated tokens.  ``None`` (the default) is Ollama's own
+        default: no limit at all — with context shifting, generation can run
+        indefinitely.  Set it for prompts where the model may not stop on its
+        own: a full schema in JSON mode once fell into a repetition loop
+        (the same contributor block, over and over) for ~40 minutes.
     """
 
     def __init__(
         self,
-        model:   str,
-        host:    str,
-        num_ctx: int = 32768,
+        model:       str,
+        host:        str,
+        num_ctx:     int = 32768,
+        num_predict: int | None = None,
     ) -> None:
-        self.model   = model
-        self.host    = host.rstrip("/")
-        self.num_ctx = num_ctx
+        self.model       = model
+        self.host        = host.rstrip("/")
+        self.num_ctx     = num_ctx
+        self.num_predict = num_predict
         self._verify_connection()
 
     def complete(self, system: str, prompt: str, *, schema: dict) -> str:
@@ -41,6 +49,9 @@ class OllamaModel:
         ``temperature`` stays pinned at ``0.0`` regardless of caller — this is
         what makes runs reproducible.
         """
+        options = {"temperature": 0.0, "num_ctx": self.num_ctx}
+        if self.num_predict is not None:
+            options["num_predict"] = self.num_predict
         resp = requests.post(
             f"{self.host}/api/generate",
             json={
@@ -50,10 +61,7 @@ class OllamaModel:
                 "stream":     False,
                 "format":     schema,
                 "keep_alive": -1,   # keep model in VRAM indefinitely
-                "options": {
-                    "temperature": 0.0,
-                    "num_ctx":     self.num_ctx,
-                },
+                "options":    options,
             },
             timeout=3600,
         )
