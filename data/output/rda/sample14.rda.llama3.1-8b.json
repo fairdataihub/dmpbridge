@@ -1,0 +1,35 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "0000-0001-9317-0364",
+          "type": "orcid"
+        }
+      ],
+      "mbox": "brett.johnson@hakai.org",
+      "name": "Brett Johnson"
+    },
+    "created": "2015-05-12T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.48321/D1CW23",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "type": "dataset"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://doi.org/10.48321/D1CW23",
+      "type": "handle"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2024-06-11T00:00:00Z",
+    "title": "Hakai Institute Juvenile Salmon Program Time Series Data Management Plan"
+  }
+}

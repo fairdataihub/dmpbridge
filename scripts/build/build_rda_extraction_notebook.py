@@ -1,7 +1,8 @@
 """Build notebooks/pdf-to-rda-dmp-json.ipynb.
 
-One simple prompt: the pdfplumber text of a DMP plus the complete maDMP 1.2
-schema, asking llama3.1:8b for JSON that complies with the schema.
+One prompt: the pdfplumber text of a DMP plus the complete, unmodified maDMP 1.2
+schema, with strict instructions to follow the schema. Run with llama3.1:8b, then
+the same prompt with gemma4:e4b, and save both results.
 
     python scripts/build/build_rda_extraction_notebook.py
 """
@@ -28,16 +29,17 @@ cells = [
 md("title", '''
 # PDF to RDA DMP JSON
 
-One simple prompt. Give `llama3.1:8b` the text of a DMP PDF and the complete
-**maDMP 1.2** schema, and ask for JSON that complies with the schema, extracting
-whatever information the DMP contains.
+One prompt: the text of a DMP PDF plus the complete **maDMP 1.2** schema, with
+strict instructions to follow the schema. Run first with `llama3.1:8b`, then the
+same prompt with `gemma4:e4b`.
 
 | Step | What happens |
 |---|---|
 | 1 | Read sample 14 with pdfplumber |
-| 2 | Load the schema |
-| 3 | Prompt: schema + DMP text → JSON |
-| 4 | Save |
+| 2 | Load the schema — unchanged |
+| 3 | Prompt → `llama3.1:8b` |
+| 4 | Same prompt → `gemma4:e4b` |
+| 5 | Save both |
 '''),
 
 code("setup", '''
@@ -51,10 +53,12 @@ if Path.cwd().name == "notebooks":
 from dmpbridge.extractors import get_extractor
 from dmpbridge.models.ollama import OllamaModel
 
-PDF    = Path("data/input/pdfs/sample14.pdf")
-SCHEMA = Path("data/output/rda/maDMP-schema-1.2.json")
-MODEL  = "llama3.1:8b"
-OUT    = Path("data/output/rda") / (PDF.stem + ".rda.json")
+PDF     = Path("data/input/pdfs/sample14.pdf")
+SCHEMA  = Path("data/output/rda/maDMP-schema-1.2.json")
+HOST    = "http://localhost:11434"
+MODEL   = "llama3.1:8b"
+MODEL_2 = "gemma4:e4b"
+OUT_DIR = Path("data/output/rda")
 '''),
 
 md("s1", '''
@@ -71,8 +75,9 @@ print(dmp_text[:500])
 md("s2", '''
 ## Step 2 — Load the schema
 
-The schema uses `$ref` pointers into its `$defs` section. They are replaced with
-the definitions they point to, so the model sees the complete schema in one piece.
+The schema is used exactly as published — nothing removed, nothing changed. Its
+`$ref` pointers are resolved to the definitions they point to, so the model sees
+the schema in one piece instead of copying `"$ref"` into its answer.
 '''),
 
 code("schema", '''
@@ -80,69 +85,43 @@ schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
 defs = schema["$defs"]
 
 
-def inline_refs(node):
-    """Replace every $ref with the definition it points at."""
+def resolve_refs(node):
+    """Replace every $ref with the definition it points at. Content unchanged."""
     if isinstance(node, dict):
         if "$ref" in node:
-            return inline_refs(defs[node["$ref"].split("/")[-1]])
-        return {k: inline_refs(v) for k, v in node.items() if k != "$defs"}
+            return resolve_refs(defs[node["$ref"].split("/")[-1]])
+        return {k: resolve_refs(v) for k, v in node.items() if k != "$defs"}
     if isinstance(node, list):
-        return [inline_refs(v) for v in node]
+        return [resolve_refs(v) for v in node]
     return node
 
 
-def without(node, keys, in_properties=False):
-    """Drop the given annotation keys — but never a field NAME: dmp.title,
-    dataset.description and distribution.format are real fields that happen
-    to share a name with schema annotations."""
-    if isinstance(node, dict):
-        out = {}
-        for k, v in node.items():
-            if in_properties:
-                out[k] = without(v, keys)
-            elif k == "properties":
-                out[k] = without(v, keys, in_properties=True)
-            elif k not in keys:
-                out[k] = without(v, keys)
-        return out
-    if isinstance(node, list):
-        return [without(v, keys) for v in node]
-    return node
+schema_full = resolve_refs(schema)
+schema_text = json.dumps(schema_full, separators=(",", ":"))
 
-
-full = inline_refs(schema)
-
-# For the prompt: the complete schema, minus its "examples" — the model copied
-# example values (a sample funder ID, a sample grant URL) into the output as
-# if the DMP had stated them.
-schema_text = json.dumps(without(full, {"examples"}), separators=(",", ":"))
-
-# For Ollama's `format`: the structure only. Ollama constrains decoding to it,
-# which is what makes the output follow the schema — and stop.
-format_schema = without(full, {"description", "title", "examples", "format", "$schema", "$id"})
-
-print(f"{len(schema_text):,} characters of schema in the prompt")
-print(f"{len(json.dumps(format_schema)):,} characters of schema as the output constraint")
+print(f"{len(schema_text):,} characters of schema, {len(defs)} definitions resolved")
 '''),
 
 md("s3", '''
-## Step 3 — Prompt
+## Step 3 — Prompt → llama3.1:8b
 
 The schema is given to the model twice: as text in the prompt, and as Ollama's
 `format`, which constrains the JSON it generates to that structure. Without the
-constraint, `llama3.1:8b` fell into a loop on this prompt — the same contributor
-block repeated 47 times — and never stopped. `num_predict` is a cap in case it
-ever does again.
-
-One consequence to know about: the schema **requires** `contact.mbox`, `created`
-and `modified`. This DMP states none of them, so the model fills them in itself.
+constraint, `llama3.1:8b` fell into a loop on this prompt and never stopped;
+`num_predict` is a cap in case it ever does again.
 '''),
 
 code("prompt", '''
-llm = OllamaModel(model=MODEL, host="http://localhost:11434",
-                  num_ctx=32768, num_predict=8000)
+SYSTEM = """You convert Data Management Plans into RDA maDMP JSON.
 
-PROMPT = f"""Here is the RDA maDMP JSON schema (version 1.2):
+Strict rules:
+1. Use only the field names defined in the schema. Never add a key that is not in the schema.
+2. Put every field exactly where the schema places it. The whole document is one top-level "dmp" object.
+3. Where the schema lists allowed values, use one of them, spelled exactly as in the schema.
+4. Take every value from the Data Management Plan text. Never copy example values from the schema.
+5. Output only the JSON object. No explanation, no markdown."""
+
+PROMPT = f"""Here is the RDA maDMP JSON schema (version 1.2). Follow it strictly:
 
 {schema_text}
 
@@ -150,24 +129,39 @@ Here is the text of a Data Management Plan:
 
 {dmp_text}
 
-Generate a JSON document that complies with the schema above, extracting whatever
-information is possible from the Data Management Plan text. Output only the JSON."""
+Generate one JSON object that strictly follows the schema above, filling in
+whatever information the Data Management Plan text contains. Output only the JSON."""
 
-raw = llm.complete("You convert Data Management Plans into RDA maDMP JSON.",
-                   PROMPT, schema=format_schema)
-result = json.loads(raw)
 
-print(json.dumps(result, indent=2, ensure_ascii=False))
+def run(model):
+    """Send the prompt to one model; the schema is also the output constraint."""
+    llm = OllamaModel(model=model, host=HOST, num_ctx=32768, num_predict=8000)
+    return json.loads(llm.complete(SYSTEM, PROMPT, schema=schema_full))
+
+
+result_llama = run(MODEL)
+print(json.dumps(result_llama, indent=2, ensure_ascii=False))
 '''),
 
 md("s4", '''
-## Step 4 — Save
+## Step 4 — Same prompt → gemma4:e4b
+'''),
+
+code("gemma", '''
+result_gemma = run(MODEL_2)
+print(json.dumps(result_gemma, indent=2, ensure_ascii=False))
+'''),
+
+md("s5", '''
+## Step 5 — Save both
 '''),
 
 code("save", '''
-OUT.parent.mkdir(parents=True, exist_ok=True)
-OUT.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
-print(f"saved -> {OUT}")
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+for model, result in ((MODEL, result_llama), (MODEL_2, result_gemma)):
+    out = OUT_DIR / f"{PDF.stem}.rda.{model.replace(':', '-')}.json"
+    out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"{model:14} -> {out}")
 '''),
 ]
 

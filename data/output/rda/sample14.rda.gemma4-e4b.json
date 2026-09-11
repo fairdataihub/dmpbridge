@@ -1,0 +1,147 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "0000-0003-0644-4174",
+          "type": "orcid"
+        }
+      ],
+      "mbox": "N/A",
+      "name": "Brett Johnson"
+    },
+    "created": "2015-05-12T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.48321/D1CW23",
+          "type": "doi"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Fatty acids from juvenile salmon",
+        "type": "image"
+      },
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Otolith Microchemistry from juvenile sockeye",
+        "type": "image"
+      },
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Sealice microbiome viral and bacterial data",
+        "type": "image"
+      },
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+        "type": "image"
+      },
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+        "type": "image"
+      },
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "eDNA from JSP seines",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+        "type": "image"
+      },
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Genetic stock identification of sockeye",
+        "type": "image"
+      },
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://doi.org/10.48321/D1CW23",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2024-11-06T00:00:00Z",
+    "title": "Hakai Institute Juvenile Salmon Program Time Series",
+    "project": [
+      {
+        "title": "The Hakai Institute Juvenile Salmon program is an ongoing initiative that was established in 2015 in partnership with the University of British Columbia, University of Toronto, Simon Fraser University and Salmon Coast Field Station. This program researches the early life history of juvenile salmon in coastal British Columbia. Primary research objectives are determining: 1) Migration timing rates and routes; 2) Migration habitat, including physical and chemical oceanographic conditions, and availability of plankton prey; 3) The impacts of prey phenology, quantity and quality on juvenile salmon growth and condition; 4) Species and stock-specific feeding biology and competitive interactions; 5) Pathogen and parasite infection dynamics; and 6) Mortality estimates. The program targets Fraser River sockeye, and pink and chum salmon, but additionally provides information on coho, chinook, and herring through incidental capture. The field program operates between May and July during the peak of the juvenile sockeye outward migration. Purse seine and oceanographic sampling are conducted in the northern Strait of Georgia / Discovery Islands region (~ 220 km from the Fraser River mouth."
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://www.elsevier.com/authors/policies-and-guidelines/credit-author-statement",
+        "relation_type": "HasMetadata",
+        "type": "url"
+      }
+    ]
+  }
+}
