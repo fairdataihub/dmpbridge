@@ -2,7 +2,7 @@
 
 One prompt: the pdfplumber text of a DMP plus the complete, unmodified maDMP 1.2
 schema, with strict instructions to follow the schema. Run with llama3.1:8b, then
-the same prompt with gemma4:e4b, and save both results.
+the same prompt with gemma4:e4b and llama3.3:70b, and save all three results.
 
     python scripts/build/build_rda_extraction_notebook.py
 """
@@ -31,7 +31,7 @@ md("title", '''
 
 One prompt: the text of a DMP PDF plus the complete **maDMP 1.2** schema, with
 strict instructions to follow the schema. Run first with `llama3.1:8b`, then the
-same prompt with `gemma4:e4b`.
+same prompt with `gemma4:e4b` and `llama3.3:70b`.
 
 | Step | What happens |
 |---|---|
@@ -39,7 +39,8 @@ same prompt with `gemma4:e4b`.
 | 2 | Load the schema — unchanged |
 | 3 | Prompt → `llama3.1:8b` |
 | 4 | Same prompt → `gemma4:e4b` |
-| 5 | Save both |
+| 5 | Same prompt → `llama3.3:70b` |
+| 6 | Save all three |
 '''),
 
 code("setup", '''
@@ -58,6 +59,7 @@ SCHEMA  = Path("data/output/rda/maDMP-schema-1.2.json")
 HOST    = "http://localhost:11434"
 MODEL   = "llama3.1:8b"
 MODEL_2 = "gemma4:e4b"
+MODEL_3 = "llama3.3:70b"
 OUT_DIR = Path("data/output/rda")
 '''),
 
@@ -153,12 +155,29 @@ print(json.dumps(result_gemma, indent=2, ensure_ascii=False))
 '''),
 
 md("s5", '''
-## Step 5 — Save both
+## Step 5 — Same prompt → llama3.3:70b
+
+The 70B needs about 42 GB of VRAM, so the two smaller models are unloaded first.
+This call takes a few minutes.
+'''),
+
+code("llama33", '''
+import subprocess
+for m in (MODEL, MODEL_2):
+    subprocess.run(["ollama", "stop", m], check=False)
+
+result_llama33 = run(MODEL_3)
+print(json.dumps(result_llama33, indent=2, ensure_ascii=False))
+'''),
+
+md("s6", '''
+## Step 6 — Save all three
 '''),
 
 code("save", '''
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-for model, result in ((MODEL, result_llama), (MODEL_2, result_gemma)):
+for model, result in ((MODEL, result_llama), (MODEL_2, result_gemma),
+                      (MODEL_3, result_llama33)):
     out = OUT_DIR / f"{PDF.stem}.rda.{model.replace(':', '-')}.json"
     out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"{model:14} -> {out}")
