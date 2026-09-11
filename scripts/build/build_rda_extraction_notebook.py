@@ -114,6 +114,9 @@ constraint, `llama3.1:8b` fell into a loop on this prompt and never stopped;
 '''),
 
 code("prompt", '''
+import subprocess
+import time
+
 SYSTEM = """You convert Data Management Plans into RDA maDMP JSON.
 
 Strict rules:
@@ -136,9 +139,22 @@ whatever information the Data Management Plan text contains. Output only the JSO
 
 
 def run(model):
-    """Send the prompt to one model; the schema is also the output constraint."""
+    """Send the prompt to one model; the schema is also the output constraint.
+    Prints how long it took and how many tokens went in and came out."""
+    for other in (MODEL_1, MODEL_2, MODEL_3):
+        if other != model:
+            subprocess.run(["ollama", "stop", other], check=False)   # one model in VRAM at a time
+
     llm = OllamaModel(model=model, host=HOST, num_ctx=32768, num_predict=8000)
-    return json.loads(llm.complete(SYSTEM, PROMPT, schema=schema_full))
+    t0 = time.perf_counter()
+    result = json.loads(llm.complete(SYSTEM, PROMPT, schema=schema_full))
+    elapsed = time.perf_counter() - t0
+
+    s = llm.last_call
+    print(f"{model}: {elapsed:.0f} s total, of which model load {s['load_duration'] / 1e9:.0f} s")
+    print(f"tokens sent to the model: {s['prompt_eval_count']:,}   tokens generated: {s['eval_count']:,}")
+    print()
+    return result
 
 
 result_llama = run(MODEL_1)
@@ -157,15 +173,11 @@ print(json.dumps(result_gemma, indent=2, ensure_ascii=False))
 md("s5", '''
 ## Step 5 — Same prompt → llama3.3:70b
 
-The 70B needs about 42 GB of VRAM, so the two smaller models are unloaded first.
-This call takes a few minutes.
+The 70B needs about 42 GB of VRAM; `run()` unloads the other models first.
+This call takes a few minutes, most of it loading the model.
 '''),
 
 code("llama33", '''
-import subprocess
-for m in (MODEL_1, MODEL_2):
-    subprocess.run(["ollama", "stop", m], check=False)
-
 result_llama33 = run(MODEL_3)
 print(json.dumps(result_llama33, indent=2, ensure_ascii=False))
 '''),

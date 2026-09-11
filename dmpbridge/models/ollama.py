@@ -41,6 +41,10 @@ class OllamaModel:
         self.host        = host.rstrip("/")
         self.num_ctx     = num_ctx
         self.num_predict = num_predict
+        # Ollama's own counters for the most recent call: prompt_eval_count
+        # (tokens read), eval_count (tokens generated), load_duration and
+        # the other *_duration fields in nanoseconds, done_reason.
+        self.last_call: dict | None = None
         self._verify_connection()
 
     def complete(self, system: str, prompt: str, *, schema: dict) -> str:
@@ -66,7 +70,11 @@ class OllamaModel:
             timeout=3600,
         )
         resp.raise_for_status()
-        return resp.json().get("response", "")
+        data = resp.json()
+        self.last_call = {k: data.get(k) for k in (
+            "prompt_eval_count", "eval_count", "load_duration",
+            "prompt_eval_duration", "eval_duration", "total_duration", "done_reason")}
+        return data.get("response", "")
 
     def _verify_connection(self) -> None:
         try:
