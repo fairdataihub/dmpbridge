@@ -57,7 +57,7 @@ from dmpbridge.models.ollama import OllamaModel
 PDF     = Path("data/input/pdfs/sample14.pdf")
 SCHEMA  = Path("data/output/rda/maDMP-schema-1.2.json")
 HOST    = "http://localhost:11434"
-MODEL   = "llama3.1:8b"
+MODEL_1 = "llama3.1:8b"
 MODEL_2 = "gemma4:e4b"
 MODEL_3 = "llama3.3:70b"
 OUT_DIR = Path("data/output/rda")
@@ -141,7 +141,7 @@ def run(model):
     return json.loads(llm.complete(SYSTEM, PROMPT, schema=schema_full))
 
 
-result_llama = run(MODEL)
+result_llama = run(MODEL_1)
 print(json.dumps(result_llama, indent=2, ensure_ascii=False))
 '''),
 
@@ -163,7 +163,7 @@ This call takes a few minutes.
 
 code("llama33", '''
 import subprocess
-for m in (MODEL, MODEL_2):
+for m in (MODEL_1, MODEL_2):
     subprocess.run(["ollama", "stop", m], check=False)
 
 result_llama33 = run(MODEL_3)
@@ -176,7 +176,7 @@ md("s6", '''
 
 code("save", '''
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-for model, result in ((MODEL, result_llama), (MODEL_2, result_gemma),
+for model, result in ((MODEL_1, result_llama), (MODEL_2, result_gemma),
                       (MODEL_3, result_llama33)):
     out = OUT_DIR / f"{PDF.stem}.rda.{model.replace(':', '-')}.json"
     out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
