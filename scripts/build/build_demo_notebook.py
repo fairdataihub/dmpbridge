@@ -99,6 +99,30 @@ cells = [
         "            print(f'   A: {answer[:90]}{\"...\" if len(answer) > 90 else \"\"}')",
         "    print()",
     ]),
+
+    md("md-save", [
+        "## Save — copy the result into demo/output/",
+        "",
+        "`exp.run()` writes to the pipeline's standard location under `data/output/`.",
+        "This copies each stage for the samples in the config into",
+        "`demo/output/{labeled,structured,final}/` — the same layout `scripts/run_demo.py` uses.",
+    ]),
+    code("save", [
+        "import shutil",
+        "",
+        "OUTPUT_DIR = Path('demo/output')",
+        "STAGES = [('labeled', P.labeled_path), ('structured', P.structured_path), ('final', P.final_path)]",
+        "",
+        "for n in cfg.sample_range:",
+        "    for stage, resolve in STAGES:",
+        "        src = resolve(tag, n)",
+        "        if not src.exists():",
+        "            continue",
+        "        dest = OUTPUT_DIR / stage / f'sample{n}.json'",
+        "        dest.parent.mkdir(parents=True, exist_ok=True)",
+        "        shutil.copy2(src, dest)",
+        "        print(f'{stage:10} -> {dest}')",
+    ]),
 ]
 
 nb = {"cells": cells,
