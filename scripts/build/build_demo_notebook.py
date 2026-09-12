@@ -28,6 +28,7 @@ def code(cid, lines):
 # HTML attribute quotes don't need escaping line by line.
 HTML_CELL = '''
 from html import escape
+from itertools import groupby
 from IPython.display import HTML, display
 
 # label -> (colour, text colour); same palette as the pipeline diagram
@@ -48,14 +49,15 @@ def pill(label, extra=''):
             f"border-radius:10px;font-family:monospace'>{escape(label)}{extra}</span>")
 
 
-def block_html(b):
-    bg, _ = COLORS.get(b['label'], ('#ddd', 'black'))
+def group_html(label, texts):
+    """One cell for a run of consecutive blocks with the same label."""
+    bg, _ = COLORS.get(label, ('#ddd', 'black'))
+    body = ''.join(f"<div style='margin-top:6px;white-space:pre-wrap'>{escape(x)}</div>" for x in texts)
     return (f"<div style='border-left:6px solid {bg};background:{bg}18;padding:6px 12px;"
             f"margin:6px 0;font-family:system-ui,sans-serif;"
-            f"font-size:{SIZE.get(b['label'], '13px')};"
-            f"font-weight:{'bold' if b['label'] in BOLD else 'normal'}'>"
-            f"{pill(b['label'])}"
-            f"<div style='margin-top:4px;white-space:pre-wrap'>{escape(b['text'])}</div></div>")
+            f"font-size:{SIZE.get(label, '13px')};"
+            f"font-weight:{'bold' if label in BOLD else 'normal'}'>"
+            f"{pill(label, f' x{len(texts)}' if len(texts) > 1 else '')}{body}</div>")
 
 
 for n in cfg.sample_range:
@@ -64,9 +66,12 @@ for n in cfg.sample_range:
     for b in blocks:
         counts[b['label']] = counts.get(b['label'], 0) + 1
     legend = ' '.join(pill(l, f' x{c}') for l, c in counts.items())
+    # consecutive blocks with the same label share one cell
+    groups = [(label, [b['text'] for b in run])
+              for label, run in groupby(blocks, key=lambda b: b['label'])]
     display(HTML(f"<h3 style='font-family:system-ui,sans-serif'>sample{n} - "
-                 f"{len(blocks)} labeled blocks</h3><p>{legend}</p>"
-                 + ''.join(block_html(b) for b in blocks)))
+                 f"{len(blocks)} labeled blocks in {len(groups)} cells</h3><p>{legend}</p>"
+                 + ''.join(group_html(label, texts) for label, texts in groups)))
 '''
 
 
