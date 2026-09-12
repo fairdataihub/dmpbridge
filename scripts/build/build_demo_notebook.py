@@ -24,6 +24,52 @@ def code(cid, lines):
             "outputs": [], "source": [l + "\n" for l in lines]}
 
 
+# The labeled document rendered as colour-coded HTML. Kept as one block so the
+# HTML attribute quotes don't need escaping line by line.
+HTML_CELL = '''
+from html import escape
+from IPython.display import HTML, display
+
+# label -> (colour, text colour); same palette as the pipeline diagram
+COLORS = {
+    'title':               ('#1E406E', 'white'),
+    'section.title':       ('#0F766E', 'white'),
+    'section.description': ('#94A3B8', 'black'),
+    'question.text':       ('#B45309', 'white'),
+    'answer.text':         ('#CBD5E1', 'black'),
+}
+SIZE   = {'title': '20px', 'section.title': '16px'}
+BOLD   = {'title', 'section.title', 'question.text'}
+
+
+def pill(label, extra=''):
+    bg, fg = COLORS.get(label, ('#ddd', 'black'))
+    return (f"<span style='background:{bg};color:{fg};font-size:11px;padding:2px 9px;"
+            f"border-radius:10px;font-family:monospace'>{escape(label)}{extra}</span>")
+
+
+def block_html(b):
+    bg, _ = COLORS.get(b['label'], ('#ddd', 'black'))
+    return (f"<div style='border-left:6px solid {bg};background:{bg}18;padding:6px 12px;"
+            f"margin:6px 0;font-family:system-ui,sans-serif;"
+            f"font-size:{SIZE.get(b['label'], '13px')};"
+            f"font-weight:{'bold' if b['label'] in BOLD else 'normal'}'>"
+            f"{pill(b['label'])}"
+            f"<div style='margin-top:4px;white-space:pre-wrap'>{escape(b['text'])}</div></div>")
+
+
+for n in cfg.sample_range:
+    blocks = json.loads(P.labeled_path(tag, n).read_text(encoding='utf-8'))
+    counts = {}
+    for b in blocks:
+        counts[b['label']] = counts.get(b['label'], 0) + 1
+    legend = ' '.join(pill(l, f' x{c}') for l, c in counts.items())
+    display(HTML(f"<h3 style='font-family:system-ui,sans-serif'>sample{n} - "
+                 f"{len(blocks)} labeled blocks</h3><p>{legend}</p>"
+                 + ''.join(block_html(b) for b in blocks)))
+'''
+
+
 cells = [
     md("title", [
         "# Demo — from `demo/config.yaml` to the final document",
@@ -123,6 +169,14 @@ cells = [
         "        shutil.copy2(src, dest)",
         "        print(f'{stage:10} -> {dest}')",
     ]),
+
+    md("md-html", [
+        "## The labels, as a document",
+        "",
+        "Every block of text with the label the model gave it, colour-coded:",
+        "title, section heading, section description, question, answer.",
+    ]),
+    code("labels-html", HTML_CELL.strip().splitlines()),
 ]
 
 nb = {"cells": cells,
