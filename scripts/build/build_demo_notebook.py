@@ -28,7 +28,6 @@ def code(cid, lines):
 # HTML attribute quotes don't need escaping line by line.
 HTML_CELL = '''
 from html import escape
-from itertools import groupby
 from IPython.display import HTML, display
 
 # label -> (colour, text colour); same palette as the pipeline diagram
@@ -49,7 +48,7 @@ def pill(label, extra=''):
             f"border-radius:10px;font-family:monospace'>{escape(label)}{extra}</span>")
 
 
-def group_html(label, texts, extra=''):
+def group_html(label, texts):
     """One cell for a run of consecutive blocks with the same label."""
     bg, _ = COLORS.get(label, ('#ddd', 'black'))
     body = ''.join(f"<div style='margin-top:6px;white-space:pre-wrap'>{escape(x)}</div>" for x in texts)
@@ -57,44 +56,25 @@ def group_html(label, texts, extra=''):
             f"margin:6px 0;font-family:system-ui,sans-serif;"
             f"font-size:{SIZE.get(label, '13px')};"
             f"font-weight:{'bold' if label in BOLD else 'normal'}'>"
-            f"{pill(label, (f' x{len(texts)}' if len(texts) > 1 else '') + extra)}{body}</div>")
+            f"{pill(label, f' x{len(texts)}' if len(texts) > 1 else '')}{body}</div>")
 
 
 for n in cfg.sample_range:
-    blocks = json.loads(P.labeled_path(tag, n).read_text(encoding='utf-8'))
-    counts = {}
-    for b in blocks:
-        counts[b['label']] = counts.get(b['label'], 0) + 1
-    legend = ' '.join(pill(l, f' x{c}') for l, c in counts.items())
-    # consecutive blocks with the same label share one cell
-    groups = [(label, [b['text'] for b in run])
-              for label, run in groupby(blocks, key=lambda b: b['label'])]
-    display(HTML(f"<h3 style='font-family:system-ui,sans-serif'>sample{n} - "
-                 f"{len(blocks)} labeled blocks in {len(groups)} cells</h3><p>{legend}</p>"
-                 + ''.join(group_html(label, texts) for label, texts in groups)))
-
     # The final document (stage 4) as saved: sections -> questions -> answers.
-    # A question that was blank before the rules step is marked, because it was
-    # created by the pipeline, not labeled by the model.
     final = json.loads(P.final_path(tag, n).read_text(encoding='utf-8'))['narrative']['template']
-    structured = json.loads(P.structured_path(tag, n).read_text(encoding='utf-8'))['narrative']['template']
-    before = {(si, qi): q.get('text', '')
-              for si, s in enumerate(structured['section'])
-              for qi, q in enumerate(s.get('question', []))}
     parts = [group_html('title', [final['title']])] if final.get('title') else []
     n_questions = 0
-    for si, s in enumerate(final['section']):
+    for s in final['section']:
         parts.append(group_html('section.title', [s['title']]))
         if s.get('description'):
             parts.append(group_html('section.description', [s['description']]))
-        for qi, q in enumerate(s.get('question', [])):
+        for q in s.get('question', []):
             n_questions += 1
-            filled = bool(q.get('text')) and not before.get((si, qi))
-            parts.append(group_html('question.text', [q.get('text', '')], ' (filled by rules)' if filled else ''))
+            parts.append(group_html('question.text', [q.get('text', '')]))
             answer = q.get('answer', {}).get('json', {}).get('answer', '')
             if answer:
                 parts.append(group_html('answer.text', [answer]))
-    display(HTML(f"<h3 style='font-family:system-ui,sans-serif;margin-top:28px'>sample{n} - "
+    display(HTML(f"<h3 style='font-family:system-ui,sans-serif'>sample{n} - "
                  f"the final document: {len(final['section'])} sections, {n_questions} questions</h3>"
                  + ''.join(parts)))
 '''
@@ -201,15 +181,10 @@ cells = [
     ]),
 
     md("md-html", [
-        "## The labels, then the final document",
+        "## The final document",
         "",
-        "First, every block of text with the label the model gave it, colour-coded:",
-        "title, section heading, section description, question, answer.",
-        "",
-        "Then the final document as saved in `demo/output/final/` - the same colours,",
-        "arranged as sections, questions and answers. Where a section had answers but",
-        "no labeled question, the structure step created one and the rules filled its",
-        "text from the section title; those are marked **(filled by rules)**.",
+        "The document as saved in `demo/output/final/`, colour-coded by label and",
+        "arranged as sections, questions and answers.",
     ]),
     code("labels-html", HTML_CELL.strip().splitlines()),
 ]
