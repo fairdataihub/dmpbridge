@@ -1,9 +1,8 @@
 """Build notebooks/evaluate-rda-json.ipynb.
 
-Automates the manual evaluation in data/output/rda/RDA_simple14_*.xlsx: every
-field a model wrote into its RDA maDMP JSON is scored Correct or Hallucinated
-against the hand-made reference JSON for the same sample, every reference field
-the model never got right is Missed, and precision / recall / F1 follow.
+Scores each model's RDA maDMP JSON against the hand-made reference JSON for the
+same sample: every field a model wrote is Correct or Hallucinated, every
+reference field it never got right is Missed, and precision / recall / F1 follow.
 
     python scripts/build/build_rda_eval_notebook.py
 """
@@ -30,43 +29,42 @@ cells = [
 md("title", '''
 # Evaluating the RDA DMP JSON outputs
 
-Three models turned DMP PDFs into RDA maDMP JSON. This notebook scores each model's
-JSON against the manually written reference JSON for the same sample, the same way
-the manual workbook does — but computed, so every verdict can be traced to a rule.
+Three models turned a DMP PDF into RDA maDMP JSON. This notebook scores each model's
+JSON against the manually written reference JSON for the same sample and reports how
+much each model got right, got wrong, and left out.
 
-**The three verdicts, exactly as in the workbook**
+**Every field gets one of three verdicts**
 
 | Verdict | Meaning |
 |---|---|
-| **Correct** | the model wrote a field, and its value matches the reference — or both are empty |
+| **Correct** | the model wrote a field and its value matches the reference — or both are empty |
 | **Hallucinated** | the model wrote a field whose value is wrong, invented (the reference has nothing there), or empty where the reference has a value |
 | **Missed** | a reference field the model never produced correctly |
 
-Every field the model output gets one of the first two; `Correct + Hallucinated` is
-therefore exactly "fields the model output". `Missed` is counted on the reference side.
+Every field the model wrote is Correct or Hallucinated, so `Correct + Hallucinated` is
+exactly "fields the model output". Missed is counted on the reference side.
 
-**The metrics, with the numbers from the workbook's llama3.1 sheet.** 17 fields output,
-14 correct, 3 hallucinated, 115 fields in the reference:
+**Three numbers summarise a model**
 
-- precision = correct / fields output = 14 / 17 = **0.82** — of what the model said, how much was right
-- recall = correct / fields in reference = 14 / 115 = **0.12** — of what the document contains, how much was found
-- F1 = 2 × 0.82 × 0.12 / (0.82 + 0.12) = **0.21** — the balance of the two
+- **precision** = correct ÷ fields output — of what the model said, how much was right
+- **recall** = fields it got right ÷ fields in the reference — of what the document contains, how much was found
+- **F1** — the balance of the two (section 5 shows the arithmetic with this run's numbers)
 
-**How a value is judged to match** — the workbook's leniencies, written down:
+**When do two values count as the same?** Strict for identifiers, lenient for prose:
 
-| Kind of field | Rule | Example that passes |
+| Kind of field | Rule | Passes |
 |---|---|---|
-| identifiers, emails, URLs | exact, after dropping `https://`, `www.`, `doi.org/`, case and trailing `/` | `https://doi.org/10.21966/1.566666` = `10.21966/1.566666` |
+| identifiers, emails, URLs | exact, ignoring `https://`, `www.`, `doi.org/`, case and a trailing `/` | `https://doi.org/10.21966/1.566666` = `10.21966/1.566666` |
 | licences | exact, after mapping to a short form | `https://creativecommons.org/licenses/by/4.0/` = `CC BY 4.0` |
 | dates | same calendar day | `2015-05-12T00:00:00Z` = `2015-05-12` |
 | controlled values (`type`, `data_access`, yes/no fields, `language`, roles) | exact, case-insensitive | `DOI` = `doi` |
-| free text (titles, names, descriptions) | at least 75% of the model's words appear in the reference value — the same containment rule the project's Path A / Path B scoring uses | `Hakai JSP Time Series` ≈ `Hakai Institute Juvenile Salmon Program Time Series` |
+| free text (titles, names, descriptions) | at least 75% of the model's words appear in the reference value — the project's usual containment rule | `Hakai JSP Time Series` ≈ `Hakai Institute Juvenile Salmon Program Time Series` |
 
-Saying *less* than the reference can still match; saying *more* cannot:
-"… Time Series **Data Management Plan**" fails because only 7 of its 10 words are in the
-reference. Datasets, contributors and other list items are paired with the reference
-item of the same title or name when there is one, and by position otherwise — again
-what the workbook did by hand.
+Saying *less* than the reference can still match; saying *more* cannot — a title with
+"Data Management Plan" appended fails, because only 7 of its 10 words are in the reference.
+
+**Sections:** 1 flatten · 2 line up list items · 3 judge · 4 score · 5 metrics ·
+6 detail tables · 7 where the misses are · 8 charts · 9 save
 '''),
 
 code("setup", r'''
@@ -89,11 +87,11 @@ RDA_DIR   = Path("data/output/rda")
 MODELS    = ["llama3.1-8b", "gemma4-e4b", "llama3.3-70b"]      # as in the file names
 REFERENCE = "RDA_DMP_sample{n}_manual_annotation.json"           # one per sample
 OUTPUT    = "sample{n}.rda.{model}.json"                         # one per sample and model
-WORKBOOK  = RDA_DIR / "RDA_simple14_ simple prompt and full RDA.xlsx"   # manual verdicts, for the agreement check
 RESULTS   = RDA_DIR / "evaluation_results.xlsx"
+CHART     = RDA_DIR / "evaluation_charts.png"
 
 # ── Judging rules ────────────────────────────────────────────────────────────
-EMPTY       = {"", "null", "none", "n/a", "na", "unknown value"}   # what counts as "nothing"
+EMPTY       = {"", "null", "none", "n/a", "na"}                     # what counts as "nothing"
 THRESHOLD   = CONTAINMENT_THRESHOLD                                 # 0.75: share of the model's words that must be in the reference
 ONE_OR_MANY = {"contact_id", "contributor_id", "creator_id", "metadata_standard_id"}  # schema allows one object or a list
 
@@ -103,9 +101,10 @@ ENUM_FIELDS = {"type", "data_access", "personal_data", "sensitive_data", "ethica
                "language", "relation_type", "resource_type", "funding_status", "role",
                "certified_with", "geo_location", "pid_system", "currency_code", "is_reused"}
 
-# Charts: repo palette. Verdicts use the validated blue/red pair plus a neutral gray for
-# "missed" (deliberately colourless: it means nothing was extracted). Models keep the
-# slot order every other notebook in this repo uses, so a model's colour never changes.
+# ── Chart style: the repo's palette ──────────────────────────────────────────
+# Verdicts: a validated blue/red pair plus a neutral gray for "missed" (deliberately
+# colourless — it means nothing was extracted). Models: the same slot order every
+# other notebook in this repo uses, so a model's colour never changes.
 VERDICT_COLOUR = {"Correct": "#2a78d6", "Hallucinated": "#e34948", "Missed": "#898781"}
 MODEL_COLOUR   = dict(zip(MODELS, ["#2a78d6", "#eb6834", "#1baf7a"]))
 INK, MUTED, SURFACE, GRID = "#0b0b0b", "#52514e", "#fcfcfb", "#e6e6e2"
@@ -132,13 +131,13 @@ md("s1", '''
 ## 1. Flatten the JSON into fields
 
 A nested document becomes a list of `path = value` pairs, e.g.
-`dmp.dataset[2].title = "Otolith Microchemistry from juvenile sockeye"`. Two details:
+`dmp.dataset[2].title = "Otolith Microchemistry from juvenile sockeye"`.
 
 - Where the schema allows *either one object or a list* (`contact_id`, `contributor_id`,
   `creator_id`, `metadata_standard_id`), a single object is treated as a one-item list, so
   `contact_id.identifier` and `contact_id[0].identifier` are the same field.
-- A reference field only counts if it has a value; an empty model field still counts as
-  "output", because the model chose to write it (the workbook counts them the same way).
+- A reference field only counts if it has a value. An empty model field still counts as
+  "output", because the model chose to write it.
 '''),
 
 code("flatten", r'''
@@ -177,12 +176,10 @@ def load(path):
     return canonical(json.loads(Path(path).read_text(encoding="utf-8")))
 
 
-# Quick look at the reference for the first sample
 ref = load(RDA_DIR / REFERENCE.format(n=samples[0]))
 ref_fields = {p: v for p, v in flatten(ref) if not is_empty(v)}
-print(f"sample{samples[0]} reference: {len(ref_fields)} fields with a value "
-      f"(of {sum(1 for _ in flatten(ref))} leaves in the file)")
-for p, v in list(ref_fields.items())[:8]:
+print(f"sample{samples[0]} reference: {len(ref_fields)} fields with a value")
+for p, v in list(ref_fields.items())[:6]:
     print(f"  {p:48} {json.dumps(v, ensure_ascii=False)[:60]}")
 print("  ...")
 '''),
@@ -190,16 +187,19 @@ print("  ...")
 md("s2", '''
 ## 2. Line up list items
 
-A model may put the datasets in a different order from the reference, or find only some
-of them. Before comparing values, each list item in the model output is paired with a
-reference item: by **matching title / name / identifier** when one exists, otherwise by
-**position**. The model's paths are then rewritten to use the reference's indices, so
-`dataset[1]` in the model can be scored against `dataset[2]` in the reference when that
-is the dataset it actually describes.
+A model may list the datasets in a different order from the reference, or find only some
+of them. Each list item in the model output is paired with a reference item — by matching
+**title / name / identifier** when one exists, otherwise by **position** — and the model's
+paths are rewritten to use the reference's indices. So `dataset[1]` in the model can be
+scored against `dataset[2]` in the reference when that is the dataset it describes.
 '''),
 
 code("align", r'''
 KEY_FIELDS = ("title", "name", "identifier", "license_ref")
+
+
+def norm_text(v):
+    return re.sub(r"\s+", " ", str(v)).strip().lower()
 
 
 def item_key(item):
@@ -210,10 +210,6 @@ def item_key(item):
                 return norm_text(item[k])
         return None
     return norm_text(item) if not is_empty(item) else None
-
-
-def norm_text(v):
-    return re.sub(r"\s+", " ", str(v)).strip().lower()
 
 
 def pair_items(model_list, ref_list):
@@ -247,32 +243,32 @@ def flatten_aligned(model, ref, path="", mpath=""):
         mapping = pair_items(model, ref_list)
         for i, v in enumerate(model):
             j = mapping[i]
-            yield from flatten_aligned(v, ref_list[j] if j < len(ref_list) else None, f"{path}[{j}]", f"{mpath}[{i}]")
+            yield from flatten_aligned(v, ref_list[j] if j < len(ref_list) else None,
+                                       f"{path}[{j}]", f"{mpath}[{i}]")
     else:
         yield path, mpath, model
 
 
-# Example: which reference dataset each model dataset was paired with, first sample
+# How each model's datasets were paired, for the first sample
+ds_ref = ref.get("dmp", {}).get("dataset", [])
 for m in MODELS:
     p = RDA_DIR / OUTPUT.format(n=samples[0], model=m)
     if not p.exists():
         continue
-    out = load(p)
-    ds_model = out.get("dmp", {}).get("dataset", [])
-    ds_ref = ref.get("dmp", {}).get("dataset", [])
-    pairs = pair_items(ds_model, ds_ref)
+    ds_model = load(p).get("dmp", {}).get("dataset", [])
     print(f"{m}:")
-    for i, j in pairs.items():
+    for i, j in pair_items(ds_model, ds_ref).items():
         mt = ds_model[i].get("title") if isinstance(ds_model[i], dict) else ds_model[i]
         rt = ds_ref[j].get("title") if j < len(ds_ref) else "(no reference item)"
-        print(f"   model dataset[{i}] {str(mt)[:38]!r:42} -> reference dataset[{j}] {str(rt)[:38]!r}")
+        print(f"   model dataset[{i}] {str(mt)[:36]!r:40} -> reference dataset[{j}] {str(rt)[:36]!r}")
 '''),
 
 md("s3", '''
 ## 3. Judge each field
 
-`verdict(path, model_value, reference_value)` returns **Correct** or **Hallucinated** and
-a one-line reason. The rule used depends on the kind of field (see the table at the top).
+`verdict(path, model_value, reference_value)` returns **Correct** or **Hallucinated** and a
+one-line reason, using the rule for that kind of field (the table at the top). The examples
+underneath show the rules on real cases from sample 14.
 '''),
 
 code("judge", r'''
@@ -300,9 +296,8 @@ def norm_id(v):
 
 
 def norm_date(v):
-    s = norm_text(v)
-    m = re.search(r"(\d{4})-(\d{2})-(\d{2})", s)
-    return f"{m[1]}-{m[2]}-{m[3]}" if m else s
+    m = re.search(r"(\d{4})-(\d{2})-(\d{2})", norm_text(v))
+    return f"{m[1]}-{m[2]}-{m[3]}" if m else norm_text(v)
 
 
 def verdict(path, mv, rv):
@@ -327,21 +322,21 @@ def verdict(path, mv, rv):
     return ("Correct", "") if ok else ("Hallucinated", how)
 
 
-# Sanity check against cases decided by hand in the workbook
-checks = [
-    ("dmp.dataset[0].title", "Hakai JSP Time Series", "Hakai Institute Juvenile Salmon Program Time Series", "Correct"),
+examples = [
+    ("dmp.dataset[0].title", "Hakai JSP Time Series", "Hakai Institute Juvenile Salmon Program Time Series"),
     ("dmp.title", "Hakai Institute Juvenile Salmon Program Time Series Data Management Plan",
-                  "Hakai Institute Juvenile Salmon Program Time Series", "Hallucinated"),
-    ("dmp.dataset[0].distribution[0].license[0].license_ref", "https://creativecommons.org/licenses/by/4.0/", "CC BY 4.0", "Correct"),
-    ("dmp.project[0].start", "2015-05-12T00:00:00Z", "2015-05-12", "Correct"),
-    ("dmp.contact.mbox", "brett.johnson@hakai.org", None, "Hallucinated"),
-    ("dmp.contact.mbox", "N/A", None, "Correct"),
-    ("dmp.contact.name", "N/A", "Brett Johnson", "Hallucinated"),
-    ("dmp.dataset[0].dataset_id.identifier", "https://doi.org/10.48321/D1CW23", "https://doi.org/10.21966/1.566666", "Hallucinated"),
+                  "Hakai Institute Juvenile Salmon Program Time Series"),
+    ("dmp.dataset[0].distribution[0].license[0].license_ref", "https://creativecommons.org/licenses/by/4.0/", "CC BY 4.0"),
+    ("dmp.project[0].start", "2015-05-12T00:00:00Z", "2015-05-12"),
+    ("dmp.contact.mbox", "brett.johnson@hakai.org", None),
+    ("dmp.contact.mbox", "N/A", None),
+    ("dmp.contact.name", "N/A", "Brett Johnson"),
+    ("dmp.dataset[0].dataset_id.identifier", "https://doi.org/10.48321/D1CW23", "https://doi.org/10.21966/1.566666"),
 ]
-for path, mv, rv, expected in checks:
-    got, why = verdict(path, mv, rv)
-    print(f"{'ok ' if got == expected else 'XX '} {got:13} {str(mv)[:42]!r:46} vs {str(rv)[:34]!r:38} {why}")
+print(f"{'verdict':13} {'model value':46} {'reference value':38} reason")
+for path, mv, rv in examples:
+    v, why = verdict(path, mv, rv)
+    print(f"{v:13} {str(mv)[:42]!r:46} {str(rv)[:34]!r:38} {why}")
 '''),
 
 md("s4", '''
@@ -373,15 +368,16 @@ for n in samples:
                          "reference value": ref_values[path], "verdict": "Missed", "reason": ""})
 
 details = pd.DataFrame(rows)
-print(f"{len(details)} judged rows across {len(samples)} sample(s) and {details['model'].nunique()} models")
-details.groupby(["model", "verdict"]).size().unstack(fill_value=0)[["Correct", "Hallucinated", "Missed"]]
+print(f"{len(details)} judged rows across {len(samples)} sample(s) and {details['model'].nunique()} models\n")
+details.groupby(["model", "verdict"]).size().unstack(fill_value=0)[["Correct", "Hallucinated", "Missed"]].loc[
+    [m for m in MODELS if m in set(details["model"])]]
 '''),
 
 md("s5", '''
 ## 5. Metrics
 
-Per model, over all samples (and per sample underneath). `fields in reference` counts
-reference fields with a value; `fields output` counts every field the model wrote.
+One row per model, over all samples. `fields in reference` counts reference fields with a
+value; `fields output` counts every field the model wrote.
 '''),
 
 code("metrics", r'''
@@ -389,61 +385,72 @@ def metrics(df, n_ref):
     c = int((df["verdict"] == "Correct").sum())
     h = int((df["verdict"] == "Hallucinated").sum())
     miss = int((df["verdict"] == "Missed").sum())
-    out = c + h
-    found = n_ref - miss                               # reference fields the model got right
+    out, found, total = c + h, n_ref - miss, c + h + miss
     precision = c / out if out else 0.0
     recall = found / n_ref if n_ref else 0.0
     f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
-    total = c + h + miss
     return {"fields in reference": n_ref, "fields output": out, "correct": c, "hallucinated": h,
-            "missed": miss, "precision": round(precision, 3), "recall": round(recall, 3),
-            "f1": round(f1, 3), "correct %": round(c / total, 3), "hallucinated %": round(h / total, 3),
-            "missed %": round(miss / total, 3)}
+            "missed": miss, "precision": round(precision, 3), "recall": round(recall, 3), "f1": round(f1, 3),
+            "correct %": c / total, "hallucinated %": h / total, "missed %": miss / total}
 
 
-n_ref_total = {n: len({p for p, v in flatten(load(RDA_DIR / REFERENCE.format(n=n))) if not is_empty(v)})
-               for n in samples}
+n_ref = {n: len({p for p, v in flatten(load(RDA_DIR / REFERENCE.format(n=n))) if not is_empty(v)}) for n in samples}
+summary = pd.DataFrame([{"model": m, **metrics(details[details["model"] == m], sum(n_ref.values()))}
+                        for m in MODELS if m in set(details["model"])]).set_index("model")
 
-summary = pd.DataFrame({m: metrics(details[details["model"] == m], sum(n_ref_total.values()))
-                        for m in MODELS if m in set(details["model"])})
-per_sample = pd.DataFrame(
-    {(n, m): metrics(details[(details["model"] == m) & (details["sample"] == n)], n_ref_total[n])
-     for n in samples for m in MODELS if ((details["model"] == m) & (details["sample"] == n)).any()})
+def show(df):
+    """The metrics table with the shares as percentages."""
+    out = df.copy()
+    for c in ("correct %", "hallucinated %", "missed %"):
+        out[c] = out[c].map("{:.1%}".format)
+    display(out)
 
-print("All samples together:")
-display(summary)
+
+show(summary)
+
 if len(samples) > 1:
+    per_sample = pd.DataFrame([{"sample": n, "model": m, **metrics(details[(details["model"] == m) & (details["sample"] == n)], n_ref[n])}
+                               for n in samples for m in MODELS if ((details["model"] == m) & (details["sample"] == n)).any()]
+                              ).set_index(["sample", "model"])
     print("\nPer sample:")
-    display(per_sample)
+    show(per_sample)
+
+# The arithmetic behind the three numbers, with this run's values for the first model
+m = summary.index[0]
+c, out, ref_n, miss = (int(summary.loc[m, k]) for k in ("correct", "fields output", "fields in reference", "missed"))
+print(f"\nWorked example, {m}:")
+print(f"  precision = correct / fields output              = {c} / {out} = {summary.loc[m, 'precision']}")
+print(f"  recall    = (reference - missed) / reference     = ({ref_n} - {miss}) / {ref_n} = {summary.loc[m, 'recall']}")
+print(f"  F1        = 2 * precision * recall / (precision + recall) = {summary.loc[m, 'f1']}")
 '''),
 
 md("s6", '''
 ## 6. Detailed comparison, per model
 
-The same columns as the workbook's per-model sheets — field, model value, reference value,
-verdict — plus the reason the rule gave. Hallucinated rows first, so the problems are at the top.
+Every field the model wrote — model value, reference value, verdict, reason — with the
+Hallucinated rows first so the problems are at the top. (Missed fields are counted above and
+listed in the saved workbook, section 9.)
 '''),
 
 code("tables", r'''
-ORDER = {"Hallucinated": 0, "Correct": 1, "Missed": 2}
+ORDER = {"Hallucinated": 0, "Correct": 1}
 for m in MODELS:
-    d = details[details["model"] == m].copy()
+    d = details[(details["model"] == m) & (details["verdict"] != "Missed")].copy()
     if d.empty:
         continue
-    d["_o"] = d["verdict"].map(ORDER)
-    d = d.sort_values(["sample", "_o", "field"]).drop(columns="_o")
-    counts = d["verdict"].value_counts()
+    d = d.sort_values(["sample", "verdict", "model field"], key=lambda col: col.map(ORDER) if col.name == "verdict" else col)
+    counts = details[details["model"] == m]["verdict"].value_counts()
     print(f"\n{'=' * 100}\n{m}: {counts.get('Correct', 0)} correct, {counts.get('Hallucinated', 0)} hallucinated, "
           f"{counts.get('Missed', 0)} missed\n{'=' * 100}")
-    display(d[d["verdict"] != "Missed"][["sample", "field", "model value", "reference value", "verdict", "reason"]]
-            .reset_index(drop=True))
+    display(d[["sample", "model field", "model value", "reference value", "verdict", "reason"]]
+            .rename(columns={"model field": "field"}).reset_index(drop=True))
 '''),
 
 md("s7", '''
 ## 7. Where the misses are
 
-Missed fields grouped by the part of the schema they belong to — this says *what kind* of
-information each model fails to extract, which the overall count hides.
+Missed fields grouped by the part of the schema they belong to, next to how many reference
+fields that part has — this says *what kind* of information each model fails to extract.
 '''),
 
 code("missed", r'''
@@ -457,74 +464,77 @@ ref_counts = pd.Series([section(p) for n in samples for p, v in flatten(load(RDA
 missed = details[details["verdict"] == "Missed"].copy()
 missed["section"] = missed["field"].map(section)
 by_section = (missed.groupby(["section", "model"]).size().unstack(fill_value=0)
-              .reindex(ref_counts.index, fill_value=0))
+              .reindex(ref_counts.index, fill_value=0)[[m for m in MODELS if m in set(details["model"])]])
 by_section.insert(0, "reference fields", ref_counts)
+by_section.columns.name = "missed by"
 by_section
 '''),
 
 md("s8", '''
 ## 8. Charts
 
-Left: the share of each model's total that is correct, hallucinated or missed — the
-workbook's "slide bar". Right: precision, recall and F1 per model.
+Left: each model's fields split into correct, hallucinated and missed, with the counts in
+the label so nothing depends on a segment being wide enough to read. Right: precision,
+recall and F1 per model.
 '''),
 
 code("charts", r'''
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 3.9), gridspec_kw={"width_ratios": [1.25, 1]})
+models = list(summary.index)
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13.5, 4.2), gridspec_kw={"width_ratios": [1.3, 1]})
 
-# ── Correct / Hallucinated / Missed shares, one bar per model ────────────────
-models = list(summary.columns)
+# ── Shares, one bar per model ─────────────────────────────────────────────────
+labels = [f"{m}\n{int(summary.loc[m, 'correct'])} correct · {int(summary.loc[m, 'hallucinated'])} hallucinated · "
+          f"{int(summary.loc[m, 'missed'])} missed" for m in models]
 left = [0.0] * len(models)
 for v in ("Correct", "Hallucinated", "Missed"):
-    vals = [summary.loc[f"{v.lower()} %", m] for m in models]
-    bars = ax1.barh(models, vals, left=left, height=0.5, color=VERDICT_COLOUR[v],
+    vals = [summary.loc[m, f"{v.lower()} %"] for m in models]
+    bars = ax1.barh(labels, vals, left=left, height=0.52, color=VERDICT_COLOUR[v],
                     edgecolor=SURFACE, linewidth=2, label=v)
     for bar, val in zip(bars, vals):
-        if val >= 0.07:                                       # label only where it fits
-            ax1.text(bar.get_x() + bar.get_width() / 2, bar.get_y() + bar.get_height() / 2,
-                     f"{val:.0%}", ha="center", va="center", fontsize=9,
-                     color="white" if v != "Missed" else INK)
+        if val >= 0.05:                                       # percentage inside the segment when it fits
+            ax1.text(bar.get_x() + bar.get_width() / 2, bar.get_y() + bar.get_height() / 2, f"{val:.0%}",
+                     ha="center", va="center", fontsize=8.5, color="white" if v != "Missed" else INK)
     left = [l + x for l, x in zip(left, vals)]
 ax1.set_xlim(0, 1)
 ax1.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{x:.0%}"))
 ax1.invert_yaxis()
-ax1.set_title("Share of fields: correct, hallucinated, missed")
+ax1.tick_params(axis="y", labelsize=9)
+ax1.set_title("Fields: correct, hallucinated, missed")
 ax1.grid(axis="x", color=GRID, linewidth=0.9)
 ax1.set_axisbelow(True)
-ax1.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.12))
+ax1.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.14))
 for side in ("top", "right", "left"):
     ax1.spines[side].set_visible(False)
 
 # ── Precision / recall / F1 per model ────────────────────────────────────────
-metrics_shown = ["precision", "recall", "f1"]
-x = range(len(metrics_shown))
+shown = ["precision", "recall", "f1"]
 w = 0.8 / len(models)
 for k, m in enumerate(models):
-    vals = [summary.loc[mt, m] for mt in metrics_shown]
-    bars = ax2.bar([i + (k - (len(models) - 1) / 2) * w for i in x], vals, width=w * 0.92,
+    xs = [i + (k - (len(models) - 1) / 2) * w for i in range(len(shown))]
+    bars = ax2.bar(xs, [summary.loc[m, s] for s in shown], width=w * 0.92,
                    color=MODEL_COLOUR[m], edgecolor=SURFACE, linewidth=2, label=m)
     ax2.bar_label(bars, fmt="%.2f", padding=2, fontsize=8, color=MUTED)
-ax2.set_xticks(list(x))
+ax2.set_xticks(range(len(shown)))
 ax2.set_xticklabels(["Precision", "Recall", "F1"])
 ax2.set_ylim(0, 1.08)
 ax2.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
 ax2.set_title("Precision, recall and F1")
 ax2.grid(axis="y", color=GRID, linewidth=0.9)
 ax2.set_axisbelow(True)
-ax2.legend(ncol=len(models), loc="upper center", bbox_to_anchor=(0.5, -0.12))
+ax2.legend(ncol=len(models), loc="upper center", bbox_to_anchor=(0.5, -0.14))
 for side in ("top", "right"):
     ax2.spines[side].set_visible(False)
 
 plt.tight_layout()
-fig.savefig(RDA_DIR / "evaluation_charts.png", dpi=200, bbox_inches="tight", facecolor=SURFACE)
+fig.savefig(CHART, dpi=200, bbox_inches="tight", facecolor=SURFACE)
 plt.show()
 '''),
 
 md("s9", '''
-## 9. Save the results
+## 9. Save
 
-An Excel workbook laid out like the manual one: a `summary` sheet, one sheet per model with
-the detailed verdicts, and `details` with every row.
+An Excel workbook with a `summary` sheet, one sheet per model listing every verdict
+(including the Missed fields), and `details` with all rows together.
 '''),
 
 code("save", r'''
@@ -536,71 +546,7 @@ with pd.ExcelWriter(RESULTS) as xw:
             d.drop(columns="model").to_excel(xw, sheet_name=m[:31], index=False)
     details.to_excel(xw, sheet_name="details", index=False)
 print(f"saved -> {RESULTS}")
-print(f"saved -> {RDA_DIR / 'evaluation_charts.png'}")
-'''),
-
-md("s10", '''
-## 10. Agreement with the manual workbook
-
-Does the automated verdict match the one made by hand? For every field in the workbook's
-per-model sheets, the two verdicts are compared, and each disagreement is explained as one
-of three things: the reference JSON is empty where the workbook's ground truth has a value
-(fix the reference), the workbook judged an older model output than the file now on disk
-(re-check the workbook), or the rule genuinely disagrees with the hand judgement (adjust
-the rule, or the judgement). Either way it is visible.
-'''),
-
-code("agreement", r'''
-def sheet_path(p):
-    """Workbook paths sometimes omit [0] on one-or-many fields; add it."""
-    p = str(p).strip()
-    for k in ONE_OR_MANY:
-        p = re.sub(rf"\.{k}\.", f".{k}[0].", p)
-    return p
-
-
-if WORKBOOK.exists():
-    xl = pd.ExcelFile(WORKBOOK)
-    reports = []
-    for m in MODELS:
-        sheet = next((s for s in xl.sheet_names if m in s), None)
-        if sheet is None:
-            continue
-        manual = xl.parse(sheet)
-        manual = manual[manual["Field"].notna()].copy()
-        manual["field"] = manual["Field"].map(sheet_path)
-        n = int(re.search(r"sample(\d+)", sheet).group(1))
-        auto = details[(details["model"] == m) & (details["sample"] == n) & (details["verdict"] != "Missed")]
-        joined = manual.merge(auto[["model field", "field", "model value", "verdict", "reason"]]
-                              .rename(columns={"model field": "field", "field": "scored as"}),
-                              on="field", how="left", suffixes=(" (manual)", " (auto)"))
-        joined = joined.rename(columns={"Verdict": "manual verdict", "verdict": "auto verdict"})
-        ref_now = dict(flatten(load(RDA_DIR / REFERENCE.format(n=n))))
-        joined["reference JSON"] = joined["scored as"].map(ref_now)
-
-        def explain(r):
-            """Why a hand verdict and the rule's verdict differ."""
-            if r["manual verdict"] == r["auto verdict"]:
-                return ""
-            if is_empty(r["reference JSON"]) and not is_empty(r["Ground truth"]):
-                return "reference JSON is empty here; the workbook's ground truth is not"
-            sheet_value = "" if pd.isna(r["Value"]) else str(r["Value"])
-            if norm_text(sheet_value) != norm_text("" if r["model value"] is None else r["model value"]):
-                return "the workbook judged a different model value than the file on disk"
-            return "the rule disagrees with the hand judgement"
-
-        joined["why they differ"] = joined.apply(explain, axis=1)
-        agree = (joined["manual verdict"] == joined["auto verdict"]).sum()
-        reports.append((m, agree, len(joined)))
-        diff = joined[joined["manual verdict"] != joined["auto verdict"]]
-        print(f"\n{m}: {agree} of {len(joined)} verdicts agree with the workbook")
-        if not diff.empty:
-            display(diff[["field", "Value", "model value", "Ground truth", "reference JSON",
-                          "manual verdict", "auto verdict", "why they differ"]].reset_index(drop=True))
-            print(diff["why they differ"].value_counts().to_string())
-    print("\nOverall:", ", ".join(f"{m} {a}/{t}" for m, a, t in reports))
-else:
-    print("no manual workbook found at", WORKBOOK)
+print(f"saved -> {CHART}")
 '''),
 ]
 
