@@ -1,13 +1,12 @@
 {
   "run": "v2",
-  "date": "2026-10-02T14:28",
+  "date": "2026-10-02T14:45",
   "sample": 14,
   "models": [
     "llama3.1:8b",
     "gemma4:e4b",
     "llama3.3:70b"
   ],
-  "schema": "maDMP-schema-1.2.json",
   "num_ctx": 32768,
   "timings": {
     "llama3.1:8b": {
