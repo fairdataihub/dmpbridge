@@ -30,17 +30,21 @@ md("title", '''
 # PDF to RDA DMP JSON
 
 One prompt: the text of a DMP PDF plus the complete **maDMP 1.2** schema, with
-strict instructions to follow the schema. Run for each sample in `SAMPLES`, first
-with `llama3.1:8b`, then the same prompt with `gemma4:e4b` and `llama3.3:70b`.
+strict instructions to follow the schema — first with `llama3.1:8b`, then the same
+prompt with `gemma4:e4b` and `llama3.3:70b`.
+
+Each prompt version is a named run (`RUN_NAME` in the settings). Its results, the exact
+prompt and the timings are saved under `data/output/rda/runs/<RUN_NAME>/`, so you can
+change the prompt, run again under a new name, and evaluate every version separately.
 
 | Step | What happens |
 |---|---|
-| 1 | Read the samples with pdfplumber |
+| 1 | Read sample 14 with pdfplumber |
 | 2 | Load the schema — unchanged |
 | 3 | Prompt → `llama3.1:8b` |
 | 4 | Same prompt → `gemma4:e4b` |
 | 5 | Same prompt → `llama3.3:70b` |
-| 6 | Save every result |
+| 6 | Save this run — results, prompt and timings under `runs/<RUN_NAME>/` |
 '''),
 
 code("setup", '''
@@ -54,15 +58,20 @@ if Path.cwd().name == "notebooks":
 from dmpbridge.extractors import get_extractor
 from dmpbridge.models.ollama import OllamaModel
 
-SAMPLES = [1, 14]
-PDF_DIR = Path("data/input/pdfs")
-SCHEMA  = Path("data/output/rda/maDMP-schema-1.2.json")
-HOST    = "http://localhost:11434"
-NUM_CTX = 32768
-MODEL_1 = "llama3.1:8b"
-MODEL_2 = "gemma4:e4b"
-MODEL_3 = "llama3.3:70b"
-OUT_DIR = Path("data/output/rda")
+SAMPLES  = [14]
+PDF_DIR  = Path("data/input/pdfs")
+SCHEMA   = Path("data/output/rda/maDMP-schema-1.2.json")
+HOST     = "http://localhost:11434"
+NUM_CTX  = 32768
+MODEL_1  = "llama3.1:8b"
+MODEL_2  = "gemma4:e4b"
+MODEL_3  = "llama3.3:70b"
+OUT_DIR  = Path("data/output/rda")
+
+# Give each prompt version its own name. Results go to data/output/rda/runs/<RUN_NAME>/
+# and nothing from earlier runs is overwritten. Change the prompt -> change the name.
+RUN_NAME = "v1"
+RUN_DIR  = OUT_DIR / "runs" / RUN_NAME
 '''),
 
 md("s1", '''
@@ -175,6 +184,8 @@ def run(model, sample):
     elapsed = time.perf_counter() - t0
 
     s = llm.last_call
+    timings[model, sample] = {"seconds": round(elapsed), "model_load_seconds": round(load),
+                              "tokens_sent": s["prompt_eval_count"], "tokens_generated": s["eval_count"]}
     print(f"{model}, sample{sample}: {elapsed:.0f} s   (loading the model took {load:.0f} s)")
     print(f"tokens sent to the model: {s['prompt_eval_count']:,}   tokens generated: {s['eval_count']:,}")
     print()
@@ -193,7 +204,7 @@ def run_all(model):
         print()
 
 
-results = {}
+results, timings = {}, {}
 run_all(MODEL_1)
 '''),
 
@@ -217,18 +228,41 @@ run_all(MODEL_3)
 '''),
 
 md("s6", '''
-## Step 6 — Save every result
+## Step 6 — Save this run
+
+Everything goes into `data/output/rda/runs/<RUN_NAME>/`: the result JSON per model,
+`prompt.txt` (the exact prompt that produced them) and `run.json` (timings and tokens).
+The results are also copied to `data/output/rda/` as the current ones.
+
+**Next:** open `notebooks/evaluate-rda-json.ipynb`, set `RUN` to the same name, run it.
 '''),
 
-code("save", '''
-OUT_DIR.mkdir(parents=True, exist_ok=True)
+code("save", r'''
+import shutil
+from datetime import datetime
+
+RUN_DIR.mkdir(parents=True, exist_ok=True)
 for (model, n), result in results.items():
     if result is None:
         print(f"{model:14} sample{n}: skipped, nothing saved")
         continue
-    out = OUT_DIR / f"sample{n}.rda.{model.replace(':', '-')}.json"
-    out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"{model:14} sample{n} -> {out}")
+    name = f"sample{n}.rda.{model.replace(':', '-')}.json"
+    (RUN_DIR / name).write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+    shutil.copy2(RUN_DIR / name, OUT_DIR / name)                  # also the "current" copy
+    print(f"{model:14} sample{n} -> {RUN_DIR / name}")
+
+# The exact prompt and settings behind these results, so the run can be reproduced.
+(RUN_DIR / "prompt.txt").write_text(
+    "SYSTEM:\n" + SYSTEM + "\n\nPROMPT (the schema and the document text go in the braces):\n"
+    + make_prompt("{dmp_text}").replace(schema_text, "{schema_text}"), encoding="utf-8")
+(RUN_DIR / "run.json").write_text(json.dumps({
+    "run": RUN_NAME, "date": datetime.now().isoformat(timespec="minutes"), "samples": SAMPLES,
+    "models": [MODEL_1, MODEL_2, MODEL_3], "schema": SCHEMA.name, "num_ctx": NUM_CTX,
+    "timings": {f"{m} sample{n}": t for (m, n), t in timings.items()},
+    "skipped": [f"{m} sample{n}" for (m, n), r in results.items() if r is None],
+}, indent=2), encoding="utf-8")
+print(f"\nprompt.txt and run.json -> {RUN_DIR}")
+print(f"\nNext: in notebooks/evaluate-rda-json.ipynb set RUN = {RUN_NAME!r} and run it.")
 '''),
 ]
 

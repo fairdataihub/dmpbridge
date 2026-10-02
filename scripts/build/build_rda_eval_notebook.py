@@ -36,6 +36,11 @@ carefully, from the same PDF. This notebook compares the two.
 **Not technical? Read this cell, then sections 5, 7 and 8, and "In plain words" at the end.**
 Sections 1–4 show the mechanics of how the comparison is made.
 
+**Which results?** `RUN` in the settings cell: leave it as `None` to evaluate the current
+model outputs, or give the name of a saved prompt version (a folder under
+`data/output/rda/runs/`) to evaluate that one — its results and chart are then saved in the
+same folder, so every prompt version keeps its own evaluation.
+
 **Every field the model wrote gets one of three marks**
 
 | Mark | Meaning |
@@ -79,10 +84,15 @@ from dmpbridge.evaluation.evaluate import tokenize, containment, CONTAINMENT_THR
 # ── Where things are ─────────────────────────────────────────────────────────
 RDA_DIR   = Path("data/output/rda")
 MODELS    = ["llama3.1-8b", "gemma4-e4b", "llama3.3-70b"]      # as in the file names
-REFERENCE = "RDA_DMP_sample{n}_manual_annotation.json"           # one per sample
-OUTPUT    = "sample{n}.rda.{model}.json"                         # one per sample and model
-RESULTS   = RDA_DIR / "evaluation_results.xlsx"
-CHART     = RDA_DIR / "evaluation_charts.png"
+REFERENCE = "RDA_DMP_sample{n}_manual_annotation.json"           # one per sample, always in RDA_DIR
+
+# Which model outputs to evaluate: None = the current files in data/output/rda/;
+# a run name = that saved prompt version in data/output/rda/runs/<name>/ (results saved there too)
+RUN       = None
+OUT_DIR   = RDA_DIR / "runs" / RUN if RUN else RDA_DIR
+OUTPUT    = "sample{n}.rda.{model}.json"                         # one per sample and model, in OUT_DIR
+RESULTS   = OUT_DIR / "evaluation_results.xlsx"
+CHART     = OUT_DIR / "evaluation_charts.png"
 
 # ── Judging rules ────────────────────────────────────────────────────────────
 EMPTY       = {"", "null", "none", "n/a", "na"}                     # what counts as "nothing"
@@ -115,9 +125,12 @@ pd.set_option("display.width", 200)
 
 samples = sorted(int(m.group(1)) for p in RDA_DIR.glob("RDA_DMP_sample*_manual_annotation.json")
                  if (m := re.search(r"sample(\d+)", p.name)))
+saved_runs = sorted(p.name for p in (RDA_DIR / "runs").glob("*") if p.is_dir())
+print("evaluating:", f"run {RUN!r}" if RUN else "the current files in data/output/rda/",
+      "| saved runs:", ", ".join(saved_runs) or "none yet")
 print("samples with a reference:", samples)
 for n in samples:
-    have = [m for m in MODELS if (RDA_DIR / OUTPUT.format(n=n, model=m)).exists()]
+    have = [m for m in MODELS if (OUT_DIR / OUTPUT.format(n=n, model=m)).exists()]
     print(f"  sample{n}: outputs from {', '.join(have) or 'no model'}")
 '''),
 
@@ -241,7 +254,7 @@ def flatten_aligned(model, ref, path="", mpath=""):
 # How each model's datasets were paired, for the first sample
 ds_ref = ref.get("dmp", {}).get("dataset", [])
 for m in MODELS:
-    p = RDA_DIR / OUTPUT.format(n=samples[0], model=m)
+    p = OUT_DIR / OUTPUT.format(n=samples[0], model=m)
     if not p.exists():
         continue
     ds_model = load(p).get("dmp", {}).get("dataset", [])
@@ -340,7 +353,7 @@ for n in samples:
     ref_values = dict(flatten(ref))
     ref_fields = {p for p, v in ref_values.items() if not is_empty(v)}
     for m in MODELS:
-        p = RDA_DIR / OUTPUT.format(n=n, model=m)
+        p = OUT_DIR / OUTPUT.format(n=n, model=m)
         if not p.exists():
             continue
         covered = set()
