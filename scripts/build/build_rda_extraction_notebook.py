@@ -33,9 +33,11 @@ One prompt: the text of a DMP PDF plus the complete **maDMP 1.2** schema, with
 strict instructions to follow the schema — first with `llama3.1:8b`, then the same
 prompt with `gemma4:e4b` and `llama3.3:70b`.
 
-Each prompt version is a named run (`RUN_NAME` in the settings). Its results, the exact
-prompt and the timings are saved under `data/output/rda/runs/<RUN_NAME>/`, so you can
-change the prompt, run again under a new name, and evaluate every version separately.
+Every run of the notebook is saved in its own folder, `data/output/rda/runs/v1/`,
+`v2/`, `v3/` ... — the result JSON per model, the exact prompt (`prompt.txt`) and the
+timings (`run.json`). So you can change the prompt a little, run all cells again, and
+nothing from an earlier run is lost. The run number is picked automatically; set
+`RUN_NAME` in the settings if you want a name of your own.
 
 | Step | What happens |
 |---|---|
@@ -68,10 +70,21 @@ MODEL_2  = "gemma4:e4b"
 MODEL_3  = "llama3.3:70b"
 OUT_DIR  = Path("data/output/rda")
 
-# Give each prompt version its own name. Results go to data/output/rda/runs/<RUN_NAME>/
-# and nothing from earlier runs is overwritten. Change the prompt -> change the name.
-RUN_NAME = "v1"
-RUN_DIR  = OUT_DIR / "runs" / RUN_NAME
+# Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
+# Leave RUN_NAME = None and each run gets the next number (v1, v2, v3 ...) by itself;
+# or give it a name of your own. An existing run is never overwritten.
+RUN_NAME = None
+
+import re
+saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
+if RUN_NAME is None:
+    numbers = [int(s[1:]) for s in saved if re.fullmatch(r"v\\d+", s)]
+    RUN_NAME = f"v{1 + max(numbers, default=0)}"
+elif RUN_NAME in saved:
+    raise SystemExit(f"Run {RUN_NAME!r} already exists. Set RUN_NAME = None for the next free number, "
+                     f"or pick a name not in: {', '.join(saved)}")
+RUN_DIR = OUT_DIR / "runs" / RUN_NAME
+print(f"this run: {RUN_NAME}   (earlier runs: {', '.join(saved) or 'none'})")
 '''),
 
 md("s1", '''
@@ -234,7 +247,8 @@ Everything goes into `data/output/rda/runs/<RUN_NAME>/`: the result JSON per mod
 `prompt.txt` (the exact prompt that produced them) and `run.json` (timings and tokens).
 The results are also copied to `data/output/rda/` as the current ones.
 
-**Next:** open `notebooks/evaluate-rda-json.ipynb`, set `RUN` to the same name, run it.
+**Next:** open `notebooks/evaluate-rda-json.ipynb`, set `RUN` to this run's name
+(printed below), run it.
 '''),
 
 code("save", r'''
