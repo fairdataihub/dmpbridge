@@ -1,0 +1,18 @@
+{
+  "run": "v2",
+  "date": "2026-10-02T14:28",
+  "sample": 14,
+  "fields in reference": 135,
+  "scores": {
+    "gemma4:e4b": {
+      "fields in reference": 135,
+      "fields output": 136,
+      "correct": 51,
+      "hallucinated": 85,
+      "missed": 95,
+      "precision": 0.375,
+      "recall": 0.296,
+      "f1": 0.331
+    }
+  }
+}

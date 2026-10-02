@@ -1,6 +1,6 @@
 {
   "run": "v2",
-  "date": "2026-10-02T14:24",
+  "date": "2026-10-02T14:28",
   "sample": 14,
   "models": [
     "llama3.1:8b",
@@ -24,6 +24,7 @@
     }
   },
   "not_run": {
-    "llama3.1:8b": "no valid JSON - it stopped at the 8,000-token cap, so it never finished"
+    "llama3.1:8b": "no valid JSON - it stopped at the 8,000-token cap, so it never finished",
+    "llama3.3:70b": "not fully on the GPU (ollama ps says: not loaded)"
   }
 }

@@ -247,7 +247,9 @@ code("run", r'''
 RUN_INFO = RUN_DIR / "run.json"
 timings = {k.split(" sample")[0]: v for k, v in                       # keyed by model name
            (json.loads(RUN_INFO.read_text(encoding="utf-8")).get("timings", {}) if RUN_INFO.exists() else {}).items()}
-results, not_run = {}, {}            # not_run: model -> why there is no result
+results = {}
+saved_info = json.loads(RUN_INFO.read_text(encoding="utf-8")) if RUN_INFO.exists() else {}
+not_run = {m: why for m, why in saved_info.get("not_run", {}).items() if "no valid JSON" in why}   # model -> why there is no result
 
 
 def save_run_info():
@@ -266,6 +268,12 @@ def run(model):
         if t:
             print(f"(that run took {t['seconds']} s, {t['tokens_sent']:,} tokens sent, {t['tokens_generated']:,} generated)")
         return json.loads(out.read_text(encoding="utf-8"))
+    raw_file = RUN_DIR / f"sample{SAMPLE}.rda.{tag(model)}.raw.txt"
+    if raw_file.exists():
+        not_run.setdefault(model, "no valid JSON")
+        print(f"{model}: already failed for version {RUN_NAME!r} - {not_run[model]}")
+        print(f"(delete {raw_file.name} in the version's folder to try it again)")
+        return None
 
     for other in MODELS:
         if other != model:
@@ -301,7 +309,6 @@ def run(model):
         cut = (f"it stopped at the {MAX_TOKENS:,}-token cap, so it never finished"
                if s["done_reason"] == "length" else f"{e.msg} at character {e.pos:,}")
         not_run[model] = f"no valid JSON - {cut}"
-        raw_file = RUN_DIR / f"sample{SAMPLE}.rda.{tag(model)}.raw.txt"
         raw_file.write_text(raw, encoding="utf-8")
         print(f"{model}: FAILED - {not_run[model]}")
         print(f"what it wrote is kept in {raw_file}")
@@ -634,16 +641,23 @@ display(table.loc[versions])
 print("\nF1 per version and model:")
 display(history.pivot(index="version", columns="model", values="f1").loc[versions].reindex(columns=[m for m in MODELS if m in set(history["model"])]))
 
+# A model with no score in a version: say why
+for v in versions:
+    info = json.loads((RUNS_DIR / v / "run.json").read_text(encoding="utf-8"))
+    for m, why in info.get("not_run", {}).items():
+        print(f"{v}: no score for {m} - {why}")
+
 # ── Chart: F1 and recall across versions, one line per model ─────────────────
 fig, axes = plt.subplots(1, 2, figsize=(12, 3.8))
 for ax, metric in zip(axes, ("f1", "recall")):
-    for m in MODELS:
+    for k, m in enumerate(MODELS):
         h = history[history["model"] == m].set_index("version").reindex(versions)
         if h[metric].notna().any():
             ax.plot(range(len(versions)), h[metric], marker="o", markersize=7, linewidth=2, color=MODEL_COLOUR[m], label=m)
             for x, y in enumerate(h[metric]):
-                if pd.notna(y):
-                    ax.annotate(f"{y:.2f}", (x, y), textcoords="offset points", xytext=(0, 7), ha="center", fontsize=8, color=MUTED)
+                if pd.notna(y):                               # labels above / below / right so models don't collide
+                    ax.annotate(f"{y:.2f}", (x, y), textcoords="offset points", ha="center", fontsize=8,
+                                color=MODEL_COLOUR[m], xytext=[(0, 7), (0, -13), (14, -3)][k % 3])
     ax.set_xticks(range(len(versions)))
     ax.set_xticklabels(versions)
     ax.set_ylim(0, 1.08)
@@ -691,10 +705,13 @@ else:
               f"correct {int(s_prev['correct'])} -> {int(s_now['correct'])}, "
               f"hallucinated {int(s_prev['hallucinated'])} -> {int(s_now['hallucinated'])}, "
               f"missed {int(s_prev['missed'])} -> {int(s_now['missed'])}")
-        print(f"   now right, was not:   {len(fixed)}" + (f"   {', '.join(fixed.index)}" if len(fixed) else ""))
-        print(f"   was right, now not:   {len(broken)}" + (f"   {', '.join(broken.index)}" if len(broken) else ""))
-        if len(other):
-            print(f"   missed <-> hallucinated: {len(other)}   {', '.join(other.index)}")
+        def some(fields, n=6):
+            return ", ".join(fields[:n]) + (f", ... and {len(fields) - n} more" if len(fields) > n else "")
+
+        print(f"   now right, was not before:  {len(fixed):3}   {some(list(fixed.index))}")
+        print(f"   was right, now not:         {len(broken):3}   {some(list(broken.index))}")
+        print(f"   wrong both times, differently (missed before and a wrong value now, or the reverse): {len(other)}")
+        print("   The full list is in details.csv in each version's folder.")
         print()
 
     print("Prompt change:\n")
