@@ -27,44 +27,38 @@ def code(cid, body):
 cells = [
 
 md("title", '''
-# Evaluating the RDA DMP JSON outputs
+# How well do the models fill in the RDA DMP form?
 
-Three models turned a DMP PDF into RDA maDMP JSON. This notebook scores each model's
-JSON against the manually written reference JSON for the same sample and reports how
-much each model got right, got wrong, and left out.
+Three AI models read a Data Management Plan (a PDF) and tried to fill in a standard form
+about it — the RDA "machine-actionable DMP" JSON. A person filled in the same form by hand,
+carefully, from the same PDF. This notebook compares the two.
 
-**Every field gets one of three verdicts**
+**Not technical? Read this cell, then sections 5, 7 and 8, and "In plain words" at the end.**
+Sections 1–4 show the mechanics of how the comparison is made.
 
-| Verdict | Meaning |
+**Every field the model wrote gets one of three marks**
+
+| Mark | Meaning |
 |---|---|
-| **Correct** | the model wrote a field and its value matches the reference — or both are empty |
-| **Hallucinated** | the model wrote a field whose value is wrong, invented (the reference has nothing there), or empty where the reference has a value |
-| **Missed** | a reference field the model never produced correctly |
+| **Correct** | the model's value matches what the person wrote — or both left it blank |
+| **Hallucinated** | the model wrote something wrong, made up something that is not in the document, or left blank a field the person filled in |
+| **Missed** | the person filled it in; the model never got it |
 
-Every field the model wrote is Correct or Hallucinated, so `Correct + Hallucinated` is
-exactly "fields the model output". Missed is counted on the reference side.
+Every field the model wrote is either Correct or Hallucinated, so those two add up to
+"fields the model output". Missed is counted on the person's side.
 
-**Three numbers summarise a model**
+**Three scores sum each model up**
 
-- **precision** = correct ÷ fields output — of what the model said, how much was right
-- **recall** = fields it got right ÷ fields in the reference — of what the document contains, how much was found
-- **F1** — the balance of the two (section 5 shows the arithmetic with this run's numbers)
+- **precision** — of everything the model wrote, the share that was right
+- **recall** — of everything the document contains, the share the model found
+- **F1** — one number that balances the two (section 5 shows the arithmetic)
 
-**When do two values count as the same?** Strict for identifiers, lenient for prose:
-
-| Kind of field | Rule | Passes |
-|---|---|---|
-| identifiers, emails, URLs | exact, ignoring `https://`, `www.`, `doi.org/`, case and a trailing `/` | `https://doi.org/10.21966/1.566666` = `10.21966/1.566666` |
-| licences | exact, after mapping to a short form | `https://creativecommons.org/licenses/by/4.0/` = `CC BY 4.0` |
-| dates | same calendar day | `2015-05-12T00:00:00Z` = `2015-05-12` |
-| controlled values (`type`, `data_access`, yes/no fields, `language`, roles) | exact, case-insensitive | `DOI` = `doi` |
-| free text (titles, names, descriptions) | at least 75% of the model's words appear in the reference value — the project's usual containment rule | `Hakai JSP Time Series` ≈ `Hakai Institute Juvenile Salmon Program Time Series` |
-
-Saying *less* than the reference can still match; saying *more* cannot — a title with
-"Data Management Plan" appended fails, because only 7 of its 10 words are in the reference.
-
-**Sections:** 1 flatten · 2 line up list items · 3 judge · 4 score · 5 metrics ·
-6 detail tables · 7 where the misses are · 8 charts · 9 save
+**When do two values count as "the same"?** Strictly for identifiers — a DOI, an email, a
+URL must be the same thing, ignoring `https://` and capital letters. Leniently for text: a
+title or description counts as right when at least three-quarters of the model's words appear
+in the person's version, so a shortened title passes but a title with extra words added does
+not. Dates count as the same if they are the same day, however they are written, and a
+licence can be given as a name or as its web address.
 '''),
 
 code("setup", r'''
@@ -128,16 +122,12 @@ for n in samples:
 '''),
 
 md("s1", '''
-## 1. Flatten the JSON into fields
+## 1. Turn each JSON file into a list of fields
 
-A nested document becomes a list of `path = value` pairs, e.g.
-`dmp.dataset[2].title = "Otolith Microchemistry from juvenile sockeye"`.
-
-- Where the schema allows *either one object or a list* (`contact_id`, `contributor_id`,
-  `creator_id`, `metadata_standard_id`), a single object is treated as a one-item list, so
-  `contact_id.identifier` and `contact_id[0].identifier` are the same field.
-- A reference field only counts if it has a value. An empty model field still counts as
-  "output", because the model chose to write it.
+The form is nested — datasets inside the plan, licences inside datasets. To compare two
+forms, every entry becomes one line: the field's name and its value. Fields the person
+left blank are not part of the reference; a field the model wrote but left blank still
+counts as something the model wrote.
 '''),
 
 code("flatten", r'''
@@ -185,13 +175,12 @@ print("  ...")
 '''),
 
 md("s2", '''
-## 2. Line up list items
+## 2. Match up the datasets
 
-A model may list the datasets in a different order from the reference, or find only some
-of them. Each list item in the model output is paired with a reference item — by matching
-**title / name / identifier** when one exists, otherwise by **position** — and the model's
-paths are rewritten to use the reference's indices. So `dataset[1]` in the model can be
-scored against `dataset[2]` in the reference when that is the dataset it describes.
+A model may list the datasets in a different order from the person, or find only some of
+them. Each dataset (or contributor) the model wrote is paired with the person's entry that
+has the same title or name; where there is no such match, with the entry in the same
+position. The print-out shows which was paired with which.
 '''),
 
 code("align", r'''
@@ -264,11 +253,10 @@ for m in MODELS:
 '''),
 
 md("s3", '''
-## 3. Judge each field
+## 3. Decide whether each value is right
 
-`verdict(path, model_value, reference_value)` returns **Correct** or **Hallucinated** and a
-one-line reason, using the rule for that kind of field (the table at the top). The examples
-underneath show the rules on real cases from sample 14.
+One function applies the rules described at the top. The examples underneath are real
+cases from sample 14 and show how the rules decide.
 '''),
 
 code("judge", r'''
@@ -340,9 +328,9 @@ for path, mv, rv in examples:
 '''),
 
 md("s4", '''
-## 4. Score every sample and model
+## 4. Score everything
 
-One row per judged field. Missed reference fields are added as rows with no model value.
+One line per field, for every model. The table counts the marks.
 '''),
 
 code("score", r'''
@@ -374,10 +362,11 @@ details.groupby(["model", "verdict"]).size().unstack(fill_value=0)[["Correct", "
 '''),
 
 md("s5", '''
-## 5. Metrics
+## 5. The scores
 
-One row per model, over all samples. `fields in reference` counts reference fields with a
-value; `fields output` counts every field the model wrote.
+One row per model. *Fields in reference* is how many fields the person filled in;
+*fields output* is how many the model wrote. The worked example underneath shows the
+arithmetic with the real numbers.
 '''),
 
 code("metrics", r'''
@@ -425,11 +414,10 @@ print(f"  F1        = 2 * precision * recall / (precision + recall) = {summary.l
 '''),
 
 md("s6", '''
-## 6. Detailed comparison, per model
+## 6. Every field, model by model
 
-Every field the model wrote — model value, reference value, verdict, reason — with the
-Hallucinated rows first so the problems are at the top. (Missed fields are counted above and
-listed in the saved workbook, section 9.)
+What each model wrote, next to what the person wrote, with the mark and the reason.
+Hallucinated rows come first so the problems are at the top.
 '''),
 
 code("tables", r'''
@@ -447,10 +435,11 @@ for m in MODELS:
 '''),
 
 md("s7", '''
-## 7. Where the misses are
+## 7. What the models miss
 
-Missed fields grouped by the part of the schema they belong to, next to how many reference
-fields that part has — this says *what kind* of information each model fails to extract.
+The missed fields grouped by the part of the form they belong to, next to how many
+fields that part has. This shows what *kind* of information gets lost, which the overall
+count hides.
 '''),
 
 code("missed", r'''
@@ -473,9 +462,9 @@ by_section
 md("s8", '''
 ## 8. Charts
 
-Left: each model's fields split into correct, hallucinated and missed, with the counts in
-the label so nothing depends on a segment being wide enough to read. Right: precision,
-recall and F1 per model.
+Left: each model's fields split into correct (blue), hallucinated (red) and missed (grey),
+with the counts written in the label. Right: the three scores for each model — taller is
+better.
 '''),
 
 code("charts", r'''
@@ -533,8 +522,8 @@ plt.show()
 md("s9", '''
 ## 9. Save
 
-An Excel workbook with a `summary` sheet, one sheet per model listing every verdict
-(including the Missed fields), and `details` with all rows together.
+The results as an Excel workbook — a summary sheet and one sheet per model listing every
+field and its mark — and the charts as an image.
 '''),
 
 code("save", r'''
@@ -547,6 +536,33 @@ with pd.ExcelWriter(RESULTS) as xw:
     details.to_excel(xw, sheet_name="details", index=False)
 print(f"saved -> {RESULTS}")
 print(f"saved -> {CHART}")
+'''),
+
+md("s10", '''
+## In plain words
+
+A short reading of the results, written from the numbers above so it is always current.
+'''),
+
+code("plain", r'''
+n_ref = int(summary["fields in reference"].iloc[0])
+print(f"The person filled in {n_ref} fields for sample {samples[0]}.\n")
+for m in summary.index:
+    s = summary.loc[m]
+    print(f"{m} wrote {int(s['fields output'])} fields: {int(s['correct'])} were right, "
+          f"{int(s['hallucinated'])} were wrong or made up. It found {n_ref - int(s['missed'])} of the "
+          f"{n_ref} fields in the document ({s['recall']:.0%}) and missed {int(s['missed'])}.")
+
+best_p, best_r, best_f = summary["precision"].idxmax(), summary["recall"].idxmax(), summary["f1"].idxmax()
+print()
+print(f"Most reliable: {best_p} - {summary.loc[best_p, 'precision']:.0%} of what it wrote was right.")
+print(f"Found the most: {best_r} - {summary.loc[best_r, 'recall']:.0%} of the document's fields.")
+print(f"Best overall (F1): {best_f}.")
+
+part = by_section.drop(columns="reference fields").sum(axis=1).idxmax()
+missed_here = by_section.loc[part].drop("reference fields")
+print(f"\nWhere it goes wrong: the '{part}' part of the form holds {int(by_section.loc[part, 'reference fields'])} "
+      f"of the {n_ref} fields, and the models miss between {int(missed_here.min())} and {int(missed_here.max())} of them.")
 '''),
 ]
 
