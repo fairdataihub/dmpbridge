@@ -131,7 +131,7 @@ print("evaluating:", f"run {RUN!r}" if RUN else "the current files in data/outpu
 print("samples with a reference:", samples)
 for n in samples:
     have = [m for m in MODELS if (OUT_DIR / OUTPUT.format(n=n, model=m)).exists()]
-    print(f"  sample{n}: outputs from {', '.join(have) or 'no model'}")
+    print(f"  sample{n}: outputs from {', '.join(have) or 'NO MODEL - nothing to evaluate here'}")
 '''),
 
 md("s1", '''
@@ -369,6 +369,10 @@ for n in samples:
                          "reference value": ref_values[path], "verdict": "Missed", "reason": ""})
 
 details = pd.DataFrame(rows)
+if details.empty:
+    raise SystemExit(f"No model outputs to evaluate in {OUT_DIR} - looking for files named like "
+                     f"{OUTPUT.format(n=samples[0] if samples else 'N', model='<model>')}. "
+                     "Run pdf-to-rda-dmp-json.ipynb first, or check RUN.")
 print(f"{len(details)} judged rows across {len(samples)} sample(s) and {details['model'].nunique()} models\n")
 details.groupby(["model", "verdict"]).size().unstack(fill_value=0)[["Correct", "Hallucinated", "Missed"]].loc[
     [m for m in MODELS if m in set(details["model"])]]
