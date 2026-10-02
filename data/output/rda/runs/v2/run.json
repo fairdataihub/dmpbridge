@@ -1,0 +1,29 @@
+{
+  "run": "v2",
+  "date": "2026-10-02T14:24",
+  "sample": 14,
+  "models": [
+    "llama3.1:8b",
+    "gemma4:e4b",
+    "llama3.3:70b"
+  ],
+  "schema": "maDMP-schema-1.2.json",
+  "num_ctx": 32768,
+  "timings": {
+    "llama3.1:8b": {
+      "seconds": 81,
+      "model_load_seconds": 4,
+      "tokens_sent": 12421,
+      "tokens_generated": 8000
+    },
+    "gemma4:e4b": {
+      "seconds": 26,
+      "model_load_seconds": 9,
+      "tokens_sent": 12736,
+      "tokens_generated": 2725
+    }
+  },
+  "not_run": {
+    "llama3.1:8b": "no valid JSON - it stopped at the 8,000-token cap, so it never finished"
+  }
+}

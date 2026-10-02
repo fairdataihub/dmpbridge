@@ -1,9 +1,7 @@
 {
   "run": "v1",
-  "date": "2026-10-02T14:11",
-  "samples": [
-    14
-  ],
+  "date": "2026-10-02T14:22",
+  "sample": 14,
   "models": [
     "llama3.1:8b",
     "gemma4:e4b",
@@ -12,20 +10,20 @@
   "schema": "maDMP-schema-1.2.json",
   "num_ctx": 32768,
   "timings": {
-    "llama3.1:8b sample14": {
+    "llama3.1:8b": {
       "seconds": 7,
       "model_load_seconds": 2,
       "tokens_sent": 12392,
       "tokens_generated": 267
     },
-    "gemma4:e4b sample14": {
+    "gemma4:e4b": {
       "seconds": 12,
       "model_load_seconds": 12,
       "tokens_sent": 12706,
       "tokens_generated": 492
     }
   },
-  "skipped": [
-    "llama3.3:70b sample14"
-  ]
+  "not_run": {
+    "llama3.3:70b": "not fully on the GPU (ollama ps says: not loaded)"
+  }
 }
