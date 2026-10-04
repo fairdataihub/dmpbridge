@@ -77,7 +77,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = "v1"
+RUN_NAME = None
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
@@ -158,7 +158,7 @@ Strict rules:
 1. Use only the field names defined in the schema. Never add a key that is not in the schema.
 2. Put every field exactly where the schema places it. The whole document is one top-level "dmp" object.
 3. Where the schema lists allowed values, use one of them, spelled exactly as in the schema .
-4. Take every value from the Data Management Plan text. Never copy example values from the schema and never hallucinate.
+4. Take every value from the Data Management Plan text. Never copy example values from the schema.
 5. Output only the JSON object. No explanation, no markdown."""
 
 
@@ -184,6 +184,11 @@ def run(model, sample):
         print(f"{model}, sample{sample}: loaded from the saved run {RUN_NAME} - the model was not called")
         print()
         return json.loads(saved_result.read_text(encoding="utf-8"))
+    if (RUN_DIR / f"sample{sample}.rda.{model.replace(':', '-')}.raw.txt").exists():
+        print(f"{model}, sample{sample}: already failed in run {RUN_NAME} (no valid JSON) - not called again. "
+              f"Delete the .raw.txt file in the run's folder to retry.")
+        print()
+        return None
 
     for other in (MODEL_1, MODEL_2, MODEL_3):
         if other != model:
@@ -205,10 +210,22 @@ def run(model, sample):
 
     llm = OllamaModel(model=model, host=HOST, num_ctx=NUM_CTX, num_predict=8000)
     t0 = time.perf_counter()
-    result = json.loads(llm.complete(SYSTEM, make_prompt(dmp_texts[sample]), schema=schema_full))
+    raw = llm.complete(SYSTEM, make_prompt(dmp_texts[sample]), schema=schema_full)
     elapsed = time.perf_counter() - t0
 
     s = llm.last_call
+    try:
+        result = json.loads(raw)
+    except json.JSONDecodeError:
+        # The model never finished a valid JSON - usually it looped until the 8000-token cap.
+        RUN_DIR.mkdir(parents=True, exist_ok=True)
+        raw_file = RUN_DIR / f"sample{sample}.rda.{model.replace(':', '-')}.raw.txt"
+        raw_file.write_text(raw, encoding="utf-8")
+        print(f"{model}, sample{sample}: FAILED after {elapsed:.0f} s - no valid JSON "
+              f"({s['eval_count']:,} tokens generated, stopped because: {s['done_reason']}). "
+              f"What it wrote is in {raw_file.name}")
+        print()
+        return None
     timings[model, sample] = {"seconds": round(elapsed), "model_load_seconds": round(load),
                               "tokens_sent": s["prompt_eval_count"], "tokens_generated": s["eval_count"]}
     print(f"{model}, sample{sample}: {elapsed:.0f} s   (loading the model took {load:.0f} s)")

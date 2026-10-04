@@ -23,6 +23,13 @@
       "model_load_seconds": 12,
       "tokens_sent": 12706,
       "tokens_generated": 492
+    },
+    "llama3.3:70b sample14": {
+      "seconds": 64,
+      "model_load_seconds": 25,
+      "tokens_sent": 12392,
+      "tokens_generated": 458,
+      "note": "run by scripts/run_70b_partial_offload.py on 2026-10-04 08:33 with 81/81 layers on the GPU (llama3.3:70b a6eb4748fd29 55 GB 100% GPU 32768 Forever)"
     }
   },
   "skipped": []

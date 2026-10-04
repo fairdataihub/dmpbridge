@@ -1,0 +1,55 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "0000-0001-9317-0364",
+        "type": "orcid"
+      },
+      "mbox": "brett.johnson@hakai.org",
+      "name": "Brett Johnson",
+      "affiliation": [
+        {
+          "affiliation_id": {
+            "identifier": "https://www.hakai.org/",
+            "type": "url"
+          },
+          "name": "Hakai Institute"
+        }
+      ]
+    },
+    "created": "2015-05-12T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "description": "The Hakai Institute Juvenile Salmon program is an ongoing initiative that was established in 2015 in partnership with the University of British Columbia, University of Toronto, Simon Fraser University and Salmon Coast Field Station.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Hakai JSP Time Series",
+            "description": "Core observations made in the field and from lab dissections conducted by Hakai staff including species counts, fork lengths, and weights",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2020-01-01"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://doi.org/10.48321/D1CW23",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2024-06-11T00:00:00Z",
+    "title": "Hakai Institute Juvenile Salmon Program Time Series"
+  }
+}
