@@ -159,7 +159,10 @@ Strict rules:
 2. Put every field exactly where the schema places it. The whole document is one top-level "dmp" object.
 3. Where the schema lists allowed values, use one of them, spelled exactly as in the schema .
 4. Take every value from the Data Management Plan text. Never copy example values from the schema.
-5. Output only the JSON object. No explanation, no markdown."""
+5. Output only the JSON object. No explanation, no markdown.
+6. Every heading of the form Dataset - "<name>" is a separate dataset. Use <name> as its title and the text under that heading as its description, and add its distribution and metadata where the text gives them.
+7. Every person the text names with a role, such as Principal Investigator or Data Manager, is a contributor with that role.
+8. Put the project's title, abstract, start and end dates, and funder into "project"."""
 
 
 def make_prompt(dmp_text):

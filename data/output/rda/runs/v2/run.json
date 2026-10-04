@@ -1,6 +1,6 @@
 {
   "run": "v2",
-  "date": "2026-10-04T08:35",
+  "date": "2026-10-04T08:47",
   "samples": [
     14
   ],
@@ -13,22 +13,22 @@
   "num_ctx": 32768,
   "timings": {
     "llama3.1:8b sample14": {
-      "seconds": 8,
+      "seconds": 16,
       "model_load_seconds": 4,
-      "tokens_sent": 12388,
-      "tokens_generated": 351
+      "tokens_sent": 12483,
+      "tokens_generated": 1282
     },
     "gemma4:e4b sample14": {
-      "seconds": 8,
+      "seconds": 14,
       "model_load_seconds": 10,
-      "tokens_sent": 12702,
-      "tokens_generated": 487
+      "tokens_sent": 12800,
+      "tokens_generated": 1226
     },
     "llama3.3:70b sample14": {
-      "seconds": 64,
-      "model_load_seconds": 25,
-      "tokens_sent": 12388,
-      "tokens_generated": 458
+      "seconds": 339,
+      "model_load_seconds": 26,
+      "tokens_sent": 12483,
+      "tokens_generated": 2737
     }
   },
   "skipped": []

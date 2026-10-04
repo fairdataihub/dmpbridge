@@ -10,8 +10,8 @@
       "affiliation": [
         {
           "affiliation_id": {
-            "identifier": "https://www.hakai.org/",
-            "type": "url"
+            "identifier": "Hakai Institute",
+            "type": "other"
           },
           "name": "Hakai Institute"
         }
@@ -21,24 +21,321 @@
     "dataset": [
       {
         "dataset_id": {
-          "identifier": "https://doi.org/10.21966/1.566666",
-          "type": "doi"
+          "identifier": "Fatty acids from juvenile salmon",
+          "type": "other"
         },
         "personal_data": "no",
         "sensitive_data": "no",
-        "title": "Hakai Institute Juvenile Salmon Program Time Series",
-        "description": "The Hakai Institute Juvenile Salmon program is an ongoing initiative that was established in 2015 in partnership with the University of British Columbia, University of Toronto, Simon Fraser University and Salmon Coast Field Station.",
+        "title": "Fatty acids from juvenile salmon",
+        "description": "This dataset will include fatty acid data derived from juvenile salmon tissue samples.",
         "distribution": [
           {
             "data_access": "open",
-            "title": "Hakai JSP Time Series",
-            "description": "Core observations made in the field and from lab dissections conducted by Hakai staff including species counts, fork lengths, and weights",
+            "title": "Fatty acids from juvenile salmon",
             "license": [
               {
                 "license_ref": "https://creativecommons.org/licenses/by/4.0/",
-                "start_date": "2020-01-01"
+                "start_date": "2024-04-13"
               }
             ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/32551.html",
+              "type": "url"
+            },
+            "description": "ISO 19115 Metadata Standard"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Otolith Microchemistry from juvenile sockeye",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Otolith Microchemistry from juvenile sockeye",
+        "description": "Microchemistry data as obtained from otolith analysis. Otoliths were obtained from juvenile salmon as part of the Juvenile Salmon Program (JSP).",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Otolith Microchemistry from juvenile sockeye",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/32551.html",
+              "type": "url"
+            },
+            "description": "ISO 19115 Metadata Standard"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Sealice microbiome viral and bacterial data",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Sealice microbiome viral and bacterial data",
+        "description": "The responsible parties for this dataset are Tianyi Chang and Curtis Suttle.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Sealice microbiome viral and bacterial data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/32551.html",
+              "type": "url"
+            },
+            "description": "ISO 19115 Metadata Standard"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Stable isotope ratios from juvenile salmon muscle tissue",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+        "description": "This dataset will contain isotope data obtained from juvenile salmon caught during the JSP.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/32551.html",
+              "type": "url"
+            },
+            "description": "ISO 19115 Metadata Standard"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Zooplankton Isotopes from JSP surface horizontal tows",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+        "description": "This dataset will contain isotope data obtained from the zooplankton caught as part of the Juvenile Salmon Program (JSP).",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/32551.html",
+              "type": "url"
+            },
+            "description": "ISO 19115 Metadata Standard"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "eDNA from JSP seines",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "eDNA from JSP seines",
+        "description": "Environmental DNA (eDNA) is collected as part of the Juvenile Salmon Program field operations, starting in 2020.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "eDNA from JSP seines",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/32551.html",
+              "type": "url"
+            },
+            "description": "ISO 19115 Metadata Standard"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+        "description": "An integration of Sam James, Vanessa Fladmark, and Natalie Mahara's zooplankton taxonomy from horizontal surface tows in the Discovery Islands and Johnstone Strait.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/32551.html",
+              "type": "url"
+            },
+            "description": "ISO 19115 Metadata Standard"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+        "description": "Dataset from fish tissue samples sent to Kristi Millers lab.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/32551.html",
+              "type": "url"
+            },
+            "description": "ISO 19115 Metadata Standard"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Genetic stock identification of sockeye",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Genetic stock identification of sockeye",
+        "description": "Fin clips and liver samples are sent to the Pacific Biological Station for stock identification.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Genetic stock identification of sockeye",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/32551.html",
+              "type": "url"
+            },
+            "description": "ISO 19115 Metadata Standard"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+        "description": "Scales are collected for every salmon and herring and archived.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/32551.html",
+              "type": "url"
+            },
+            "description": "ISO 19115 Metadata Standard"
           }
         ]
       }
@@ -50,6 +347,20 @@
     "ethical_issues_exist": "no",
     "language": "eng",
     "modified": "2024-06-11T00:00:00Z",
-    "title": "Hakai Institute Juvenile Salmon Program Time Series"
+    "title": "Hakai Institute Juvenile Salmon Program Time Series",
+    "project": [
+      {
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "description": "The Hakai Institute Juvenile Salmon program is an ongoing initiative that was established in 2015 in partnership with the University of British Columbia, University of Toronto, Simon Fraser University and Salmon Coast Field Station.",
+        "start": "2015-05-12"
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://doi.org/10.48321/D1CW23",
+        "relation_type": "IsDescribedBy",
+        "type": "doi"
+      }
+    ]
   }
 }

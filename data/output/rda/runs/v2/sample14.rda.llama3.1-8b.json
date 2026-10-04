@@ -19,6 +19,116 @@
         "sensitive_data": "no",
         "title": "Hakai Institute Juvenile Salmon Program Time Series",
         "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Fatty acids from juvenile salmon",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Otolith Microchemistry from juvenile sockeye",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Sealice microbiome viral and bacterial data",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "eDNA from JSP seines",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Genetic stock identification of sockeye",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+        "type": "dataset"
       }
     ],
     "dmp_id": {
@@ -31,7 +141,8 @@
     "title": "Hakai Institute Juvenile Salmon Program Time Series",
     "project": [
       {
-        "title": "Hakai Institute Juvenile Salmon Program",
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "description": "The Hakai Institute Juvenile Salmon program is an ongoing initiative that was established in 2015 in partnership with the University of British Columbia, University of Toronto, Simon Fraser University and Salmon Coast Field Station.",
         "start": "2015-05-12"
       }
     ],
