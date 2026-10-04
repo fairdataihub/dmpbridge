@@ -1,0 +1,252 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "0000-0001-9317-0364",
+          "type": "orcid"
+        }
+      ],
+      "mbox": "brett.johnson@hakai.org",
+      "name": "Brett Johnson"
+    },
+    "created": "2015-05-12T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.48321/D1CW23",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "description": "The core of the Hakai JSP are the observations made at sea during seining operations, and the observations and measurements made in the lab during fish dissections.",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "description": "Core observations made in the field and from lab dissections conducted by Hakai staff including species counts, fork lengths, and weights are published to the Ocean Biodiversity Information System which also is automatically registered with the Global Biodiversity Information Facility These records will be updated annually.",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.26428/1606-9919-2021-201-669-685",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "Otolith Microchemistry from juvenile sockeye",
+        "description": "Microchemistry data as obtained from otolith analysis. Otoliths were obtained from juvenile salmon as part of the Juvenile Salmon Program (JSP). The responsible party for this dataset is Yuliya Kuzmenko (UBC).",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.567667",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "Sealice microbiome viral and bacterial data",
+        "description": "The responsible parties for this dataset are Tianyi Chang and Curtis Suttle.",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.568668",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+        "description": "This dataset will contain isotope data obtained from juvenile salmon caught during the JSP. The responsible party for this dataset is Brian Hunt.",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.569669",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+        "description": "This dataset will contain isotope data obtained from the zooplankton caught as part of the Juvenile Salmon Program (JSP). Brian Hunt is the responsible party for this dataset.",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.570670",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "eDNA from JSP seines",
+        "description": "Environmental DNA (eDNA) is collected as part of the Juvenile Salmon Program field operations, starting in 2020. The responsible party for this dataset is Natalie Benoit (UBC).",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.571671",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+        "description": "An integration of Sam James, Vanessa Fladmark, and Natalie Mahara's zooplankton taxonomy from horizontal surface tows in the Discovery Islands and Johnstone Strait.",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.572672",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+        "description": "Dataset from fish tissue samples sent to Kristi Millers lab. Currently 2015 sockeye, pink and chum dataset is published as part of the Hakai JSP data package.",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.573673",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "Genetic stock identification of sockeye",
+        "description": "Fin clips and liver samples are sent to the Pacific Biological Station for stock identification. Currently, we have results from 2015–2019.",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.574674",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+        "description": "Scales are collected for every salmon and herring and archived. No analysis has been completed at this stage nor is any planned.",
+        "language": "eng",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://doi.org/10.48321/D1CW23",
+      "type": "handle"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2024-06-11T00:00:00Z",
+    "title": "Hakai Institute Juvenile Salmon Program Time Series Data Management Plan",
+    "project": [
+      {
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "start": "2015-05-12"
+      }
+    ],
+    "related_identifier": []
+  }
+}

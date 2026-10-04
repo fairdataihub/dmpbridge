@@ -79,7 +79,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = None
+RUN_NAME = "v5"
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
@@ -156,9 +156,9 @@ import requests
 
 SYSTEM = """You convert a Data Management Plan into one RDA maDMP JSON object that strictly follows the given schema.
 
-Use only the schema's field names, in the places and in the order the schema lists them, with only its allowed values. The whole document is one top-level "dmp" object.
+Use only the schema's field names, in the places the schema puts them, with only its allowed values. The whole document is one top-level "dmp" object.
 
-Go through the schema's fields in order and, at each one, check the plan before skipping it. Capture everything the plan states: every dataset it describes (each one once, with its own title, description and how it is shared), every person it names with a role (as a contributor, which comes right after the contact), the project and its funding, dates (YYYY-MM-DD), identifiers and licenses.
+Read the whole plan and capture everything it states: every dataset it describes (each one once, with its own title, description and how it is shared), the project and its funding, dates (YYYY-MM-DD), identifiers and licenses. Every person the plan names with a role is an entry in "contributor" with that name and role; when the plan gives no identifier for a person, use an empty string as the contributor_id identifier and "other" as its type.
 
 Every value must come from the plan's text. Never invent a value, never copy the schema's examples, and never copy one item's values into another. Leave out any field the plan says nothing about, and leave out a whole sub-object (a distribution, license, host, metadata or funding entry) when the plan does not give the values it requires. For yes/no fields write "unknown" when the plan does not say.
 

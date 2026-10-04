@@ -2,12 +2,13 @@
 
 With the default settings (penalty window 64 tokens) llama3.1:8b loops on prompts
 that ask for every dataset: it writes the same dataset block until the token cap and
-never closes the JSON. This script keeps the run's prompt exactly as saved and only
-widens the window the repeat penalty looks at, trying a few strengths until the
-answer is valid JSON. The result is saved into the run's folder with a note in
-run.json saying which setting produced it.
+never closes the JSON. A stronger penalty breaks the loop but can also make the model
+stop after one dataset. This script keeps the run's prompt exactly as saved, tries a
+few window/strength settings, and keeps the valid answer with the most datasets. The
+result is saved into the run's folder with a note in run.json saying which setting
+produced it; every attempt's raw text is kept too.
 
-    python scripts/run_llama31_repeat_penalty.py v3
+    python scripts/run_llama31_repeat_penalty.py v5
 """
 import argparse
 import json
@@ -21,7 +22,7 @@ import requests
 from dmpbridge.extractors import get_extractor
 
 MODEL, HOST, NUM_CTX, NUM_PREDICT, SAMPLE = "llama3.1:8b", "http://localhost:11434", 32768, 8000, 14
-TRIES = [(512, 1.1), (512, 1.2), (1024, 1.3)]        # (repeat_last_n, repeat_penalty)
+TRIES = [(1024, 1.1), (2048, 1.1), (1024, 1.15), (512, 1.2)]   # (repeat_last_n, repeat_penalty); the notebook uses (512, 1.1)
 
 ap = argparse.ArgumentParser()
 ap.add_argument("run")
@@ -56,6 +57,7 @@ for other in ("gemma4:e4b", "llama3.3:70b"):
     subprocess.run(["ollama", "stop", other], check=False, capture_output=True)
 
 tag = MODEL.replace(":", "-")
+best = None
 for last_n, penalty in TRIES:
     options = {"temperature": 0.0, "num_ctx": NUM_CTX, "num_predict": NUM_PREDICT,
                "repeat_last_n": last_n, "repeat_penalty": penalty}
@@ -68,26 +70,32 @@ for last_n, penalty in TRIES:
     body = r.json()
     line = (f"repeat_last_n={last_n} repeat_penalty={penalty}: {elapsed:.0f} s, "
             f"{body.get('eval_count', 0):,} tokens generated, stopped because: {body.get('done_reason')}")
+    (run_dir / f"sample{SAMPLE}.rda.{tag}.raw.last{last_n}-pen{penalty}.txt").write_text(body["response"], encoding="utf-8")
     try:
         result = json.loads(body["response"])
     except json.JSONDecodeError as e:
-        print(f"{line} -> still no valid JSON ({e.msg} at {e.pos:,})", flush=True)
+        print(f"{line} -> no valid JSON ({e.msg} at {e.pos:,})", flush=True)
         continue
     n_ds = len(result.get("dmp", {}).get("dataset") or [])
     print(f"{line} -> VALID JSON, {n_ds} datasets", flush=True)
-    out = run_dir / f"sample{SAMPLE}.rda.{tag}.json"
-    out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"saved -> {out}")
-    info = json.loads((run_dir / "run.json").read_text(encoding="utf-8"))
-    info["timings"][f"{MODEL} sample{SAMPLE}"] = {
-        "seconds": round(elapsed), "model_load_seconds": 0,
-        "tokens_sent": body.get("prompt_eval_count"), "tokens_generated": body.get("eval_count"),
-        "note": f"run by scripts/run_llama31_repeat_penalty.py on {datetime.now():%Y-%m-%d %H:%M}: same prompt, "
-                f"but repeat_last_n={last_n} and repeat_penalty={penalty} instead of the defaults (64, 1.1), "
-                f"because with the defaults the model looped until the token cap (see the .raw.txt files)"}
-    info["skipped"] = [s for s in info.get("skipped", []) if not s.startswith(MODEL)]
-    (run_dir / "run.json").write_text(json.dumps(info, indent=2), encoding="utf-8")
-    print("run.json updated")
-    break
-else:
+    if best is None or n_ds > best["datasets"]:
+        best = {"datasets": n_ds, "result": result, "body": body, "elapsed": elapsed, "last_n": last_n, "penalty": penalty}
+
+if best is None:
     raise SystemExit("no setting produced valid JSON; nothing saved")
+
+out = run_dir / f"sample{SAMPLE}.rda.{tag}.json"
+out.write_text(json.dumps(best["result"], indent=2, ensure_ascii=False), encoding="utf-8")
+print(f"kept repeat_last_n={best['last_n']} repeat_penalty={best['penalty']} ({best['datasets']} datasets) -> {out}")
+body = best["body"]
+info = json.loads((run_dir / "run.json").read_text(encoding="utf-8"))
+info["timings"][f"{MODEL} sample{SAMPLE}"] = {
+    "seconds": round(best["elapsed"]), "model_load_seconds": 0,
+    "tokens_sent": body.get("prompt_eval_count"), "tokens_generated": body.get("eval_count"),
+    "note": f"run by scripts/run_llama31_repeat_penalty.py on {datetime.now():%Y-%m-%d %H:%M}: same prompt, "
+            f"but repeat_last_n={best['last_n']} and repeat_penalty={best['penalty']} instead of the notebook's settings, "
+            f"because with those the model looped until the token cap (see the .raw.*.txt files); "
+            f"the setting kept is the valid answer with the most datasets"}
+info["skipped"] = [s for s in info.get("skipped", []) if not s.startswith(MODEL)]
+(run_dir / "run.json").write_text(json.dumps(info, indent=2), encoding="utf-8")
+print("run.json updated")
