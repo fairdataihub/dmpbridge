@@ -1,0 +1,299 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "0000-0001-9317-0364",
+        "type": "orcid"
+      },
+      "mbox": "brett.johnson@hakai.org",
+      "name": "Brett Johnson",
+      "affiliation": [
+        {
+          "affiliation_id": {
+            "identifier": "Hakai Institute",
+            "type": "other"
+          },
+          "name": "Hakai Institute"
+        }
+      ]
+    },
+    "created": "2015-05-12T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "https://doi.org/10.21966/1.566666",
+          "type": "doi"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Hakai Institute Juvenile Salmon Program Time Series",
+        "description": "The core of the Hakai JSP are the observations made at sea during seining operations, and the observations and measurements made in the lab during fish dissections.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Hakai JSP Time Series",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Fatty acids from juvenile salmon",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Fatty acids from juvenile salmon",
+        "description": "Fatty acid data derived from juvenile salmon tissue samples.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Fatty acids from juvenile salmon",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Otolith Microchemistry from juvenile sockeye",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Otolith Microchemistry from juvenile sockeye",
+        "description": "Microchemistry data as obtained from otolith analysis.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Otolith Microchemistry from juvenile sockeye",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Sealice microbiome viral and bacterial data",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Sealice microbiome viral and bacterial data",
+        "description": "Sealice microbiome viral and bacterial data.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Sealice microbiome viral and bacterial data",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Stable isotope ratios from juvenile salmon muscle tissue",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+        "description": "Stable isotope ratios from juvenile salmon muscle tissue.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Zooplankton Isotopes from JSP surface horizontal tows",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+        "description": "Zooplankton Isotopes from JSP surface horizontal tows.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "eDNA from JSP seines",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "eDNA from JSP seines",
+        "description": "eDNA from JSP seines.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "eDNA from JSP seines",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+        "description": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+        "description": "RNA pathogen and gene expression data: Fitchip data from sockeye.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Genetic stock identification of sockeye",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Genetic stock identification of sockeye",
+        "description": "Genetic stock identification of sockeye.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Genetic stock identification of sockeye",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+        "description": "Scales collected from sockeye, pink, chum, coho, chinook and herring.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+            "access_url": "https://github.com/hakaiinstitute/jsp-data",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-06-11"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://doi.org/10.48321/D1CW23",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2024-06-11T00:00:00Z",
+    "title": "Hakai Institute Juvenile Salmon Program Time Series",
+    "project": [
+      {
+        "title": "Hakai Institute Juvenile Salmon Program",
+        "description": "The Hakai Institute Juvenile Salmon program is an ongoing initiative that was established in 2015 in partnership with the University of British Columbia, University of Toronto, Simon Fraser University and Salmon Coast Field Station.",
+        "start": "2015-05-12"
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://doi.org/10.21966/1.566666",
+        "relation_type": "IsPartOf",
+        "type": "doi"
+      }
+    ]
+  }
+}
