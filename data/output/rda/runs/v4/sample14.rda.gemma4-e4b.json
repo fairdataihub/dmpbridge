@@ -1,0 +1,256 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "0000-0003-0644-4174",
+        "type": "orcid"
+      },
+      "mbox": "N/A",
+      "name": "N/A"
+    },
+    "created": "2024-06-11T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Catch abundance by species",
+        "description": "The core of the Hakai JSP are the observations made at sea during seining operations, and the observations and measurements made in the lab during fish dissections. Many samples are produced from fish that are collected in the lab, and those data may be addressed in their own Data Management Plans. Data from the field and lab dissections are lumped into the Hakai JSP Time Series at www.github.com/hakaiinstitute/jsp-data and includes: Catch abundance by species Fork lengths and weights Sea lice counts Visual transect surface activity counts Survey metadata CTD data YSI Data Genetic Stock ID results Laboratory samples' unique identifiers are also stored in the GitHub jsp-data repository, while their physical location is tracked in eLab software. This includes: Muscle tissue for fatty acid analysis, isotope ratios, RNA:DNA ratios Fin clips for genetic stock ID Liver, kidney, heart, brain, gill tissues for histology and pathogen analysis Otoliths for ageing and microchemistry analysis Zooplankton samples",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Catch abundance by species",
+            "description": "The data are available immediately to internal collaborators, including UBC graduate students in the Pelagic Ecosystems (Hunt) Lab in their raw format via googlesheets in the JSP Team Drive.",
+            "download_url": "N/A",
+            "format": [
+              "N/A"
+            ],
+            "host": {
+              "title": "N/A",
+              "url": "N/A"
+            },
+            "issued": "2024-04-13",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Otolith Microchemistry from juvenile sockeye",
+            "description": "N/A",
+            "download_url": "N/A",
+            "format": [
+              "N/A"
+            ],
+            "host": {
+              "title": "N/A",
+              "url": "N/A"
+            },
+            "issued": "2024-04-13",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Sealice microbiome viral and bacterial data",
+            "description": "N/A",
+            "download_url": "N/A",
+            "format": [
+              "N/A"
+            ],
+            "host": {
+              "title": "N/A",
+              "url": "N/A"
+            },
+            "issued": "2024-04-13",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+            "description": "N/A",
+            "download_url": "N/A",
+            "format": [
+              "N/A"
+            ],
+            "host": {
+              "title": "N/A",
+              "url": "N/A"
+            },
+            "issued": "2024-04-13",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+            "description": "N/A",
+            "download_url": "N/A",
+            "format": [
+              "N/A"
+            ],
+            "host": {
+              "title": "N/A",
+              "url": "N/A"
+            },
+            "issued": "2024-04-13",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "eDNA from JSP seines Information",
+            "description": "N/A",
+            "download_url": "N/A",
+            "format": [
+              "N/A"
+            ],
+            "host": {
+              "title": "N/A",
+              "url": "N/A"
+            },
+            "issued": "2024-04-13",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+            "description": "N/A",
+            "download_url": "N/A",
+            "format": [
+              "N/A"
+            ],
+            "host": {
+              "title": "N/A",
+              "url": "N/A"
+            },
+            "issued": "2022-03-30",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2022-03-30"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+            "description": "N/A",
+            "download_url": "N/A",
+            "format": [
+              "N/A"
+            ],
+            "host": {
+              "title": "N/A",
+              "url": "N/A"
+            },
+            "issued": "2024-04-13",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Genetic stock identification of sockeye",
+            "description": "N/A",
+            "download_url": "N/A",
+            "format": [
+              "N/A"
+            ],
+            "host": {
+              "title": "N/A",
+              "url": "N/A"
+            },
+            "issued": "2024-04-13",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+            "description": "N/A",
+            "download_url": "N/A",
+            "format": [
+              "N/A"
+            ],
+            "host": {
+              "title": "N/A",
+              "url": "N/A"
+            },
+            "issued": "2024-04-13",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-04-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+              "type": "url"
+            }
+          }
+        ],
+        "preservation_statement": "N/A",
+        "rights": "N/A",
+        "related_identifier": [],
+        "security_and_privacy": [],
+        "technical_resource": [],
+        "type": "N/A"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://doi.org/10.48321/D1CW23",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-11-06T00:00:00Z",
+    "title": "Hakai Institute Juvenile Salmon Program Time Series",
+    "project": [
+      {
+        "title": "The Hakai Institute Juvenile Salmon program is an ongoing initiative that was established in 2015 in partnership with the University of British Columbia, University of Toronto, Simon Fraser University and Salmon Coast Field Station. This program researches the early life history of juvenile salmon in coastal British Columbia. Primary research objectives are determining: 1) Migration timing rates and routes; 2) Migration habitat, including physical and chemical oceanographic conditions, and availability of plankton prey; 3) The impacts of prey phenology, quantity and quality on juvenile salmon growth and condition; 4) Species and stock-specific feeding biology and competitive interactions; 5) Pathogen and parasite infection dynamics; and 6) Mortality estimates. The program targets Fraser River sockeye, and pink and chum salmon, but additionally provides information on coho, chinook, and herring through incidental capture. The field program operates between May and July during the peak of the juvenile sockeye outward migration. Purse seine and oceanographic sampling are conducted in the northern Strait of Georgia / Discovery Islands region (~ 220 km from the Fraser River mouth.",
+        "start": "2015-05-12"
+      }
+    ]
+  }
+}

@@ -28,6 +28,12 @@ class OllamaModel:
         indefinitely.  Set it for prompts where the model may not stop on its
         own: a full schema in JSON mode once fell into a repetition loop
         (the same contributor block, over and over) for ~40 minutes.
+    options:
+        Any further Ollama generation options, merged into the request's
+        ``options`` after the ones above (``temperature`` cannot be overridden).
+        Example: ``{"repeat_last_n": 512}`` widens the window the repeat
+        penalty looks at - with the default 64, llama3.1:8b looped on a
+        dataset block longer than 64 tokens and never closed its JSON.
     """
 
     def __init__(
@@ -36,11 +42,13 @@ class OllamaModel:
         host:        str,
         num_ctx:     int = 32768,
         num_predict: int | None = None,
+        options:     dict | None = None,
     ) -> None:
         self.model       = model
         self.host        = host.rstrip("/")
         self.num_ctx     = num_ctx
         self.num_predict = num_predict
+        self.options     = dict(options or {})
         # Ollama's own counters for the most recent call: prompt_eval_count
         # (tokens read), eval_count (tokens generated), load_duration and
         # the other *_duration fields in nanoseconds, done_reason.
@@ -56,6 +64,7 @@ class OllamaModel:
         options = {"temperature": 0.0, "num_ctx": self.num_ctx}
         if self.num_predict is not None:
             options["num_predict"] = self.num_predict
+        options.update({k: v for k, v in self.options.items() if k != "temperature"})
         resp = requests.post(
             f"{self.host}/api/generate",
             json={

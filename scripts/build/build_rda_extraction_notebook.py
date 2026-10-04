@@ -69,6 +69,8 @@ PDF_DIR  = Path("data/input/pdfs")
 SCHEMA   = Path("data/output/rda/maDMP-schema-1.2.json")
 HOST     = "http://localhost:11434"
 NUM_CTX  = 32768
+OPTIONS  = {"repeat_last_n": 512}   # the repeat penalty looks back 512 tokens, not Ollama's default 64:
+                                    # with 64, llama3.1:8b repeated one dataset block until the token cap
 MODEL_1  = "llama3.1:8b"
 MODEL_2  = "gemma4:e4b"
 MODEL_3  = "llama3.3:70b"
@@ -77,7 +79,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = "v3"
+RUN_NAME = None
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
@@ -154,11 +156,11 @@ import requests
 
 SYSTEM = """You convert a Data Management Plan into one RDA maDMP JSON object that strictly follows the given schema.
 
-Use only the schema's field names, in the places the schema puts them, with only its allowed values. The whole document is one top-level "dmp" object.
+Use only the schema's field names, in the places and in the order the schema lists them, with only its allowed values. The whole document is one top-level "dmp" object.
 
-Read the whole plan and capture everything it states: every dataset it describes (each one once, with its own title, description and how it is shared), every person and their role, the project, funding, dates (YYYY-MM-DD), identifiers and licenses.
+Go through the schema's fields in order and, at each one, check the plan before skipping it. Capture everything the plan states: every dataset it describes (each one once, with its own title, description and how it is shared), every person it names with a role (as a contributor, which comes right after the contact), the project and its funding, dates (YYYY-MM-DD), identifiers and licenses.
 
-Every value must come from the plan's text. Never invent a value, never copy the schema's examples, and never copy one item's values into another. Where the plan says nothing, leave the field out; for yes/no fields write "unknown".
+Every value must come from the plan's text. Never invent a value, never copy the schema's examples, and never copy one item's values into another. Leave out any field the plan says nothing about, and leave out a whole sub-object (a distribution, license, host, metadata or funding entry) when the plan does not give the values it requires. For yes/no fields write "unknown" when the plan does not say.
 
 Output only the JSON. No explanation, no markdown."""
 
@@ -209,7 +211,7 @@ def run(model, sample):
         subprocess.run(["ollama", "stop", model], check=False)
         return None
 
-    llm = OllamaModel(model=model, host=HOST, num_ctx=NUM_CTX, num_predict=8000)
+    llm = OllamaModel(model=model, host=HOST, num_ctx=NUM_CTX, num_predict=8000, options=OPTIONS)
     t0 = time.perf_counter()
     raw = llm.complete(SYSTEM, make_prompt(dmp_texts[sample]), schema=schema_full)
     elapsed = time.perf_counter() - t0
@@ -307,6 +309,7 @@ earlier = json.loads(run_file.read_text(encoding="utf-8")) if run_file.exists() 
 run_file.write_text(json.dumps({
     "run": RUN_NAME, "date": earlier.get("date", datetime.now().isoformat(timespec="minutes")),
     "samples": SAMPLES, "models": [MODEL_1, MODEL_2, MODEL_3], "schema": SCHEMA.name, "num_ctx": NUM_CTX,
+    "options": OPTIONS,
     "timings": {**earlier.get("timings", {}), **{f"{m} sample{n}": t for (m, n), t in timings.items()}},
     "skipped": [f"{m} sample{n}" for (m, n), r in results.items() if r is None],
 }, indent=2), encoding="utf-8")
