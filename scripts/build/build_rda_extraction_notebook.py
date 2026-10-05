@@ -64,7 +64,7 @@ if Path.cwd().name == "notebooks":
 from dmpbridge.extractors import get_extractor
 from dmpbridge.models.ollama import OllamaModel
 
-SAMPLES  = [10]
+SAMPLES  = [3]
 PDF_DIR  = Path("data/input/pdfs")
 SCHEMA   = Path("data/output/rda/maDMP-schema-1.2.json")
 HOST     = "http://localhost:11434"
@@ -79,7 +79,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = "v2-sample10"
+RUN_NAME = "v2-sample3"
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())

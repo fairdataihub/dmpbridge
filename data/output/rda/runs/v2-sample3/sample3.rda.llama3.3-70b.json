@@ -1,0 +1,39 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "not specified",
+        "type": "other"
+      },
+      "mbox": "not specified",
+      "name": "not specified"
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "not specified",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Experimental Data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "not specified",
+      "type": "other"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "Data Management Plan for CPS 2015",
+    "project": [
+      {
+        "title": "CPS 2015",
+        "description": "not specified",
+        "start": "2020-01-01"
+      }
+    ]
+  }
+}
