@@ -1,0 +1,33 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "0000-0003-0644-4174",
+        "type": "orcid"
+      },
+      "mbox": "cc@example.com",
+      "name": "Charlie Chaplin"
+    },
+    "created": "2020-03-14T10:53:49Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923628",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "10.1371/journal.pcbi.1006750",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2020-03-14T10:53:49Z",
+    "title": "Data Management Plan for Nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies"
+  }
+}

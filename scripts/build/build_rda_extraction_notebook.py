@@ -64,7 +64,7 @@ if Path.cwd().name == "notebooks":
 from dmpbridge.extractors import get_extractor
 from dmpbridge.models.ollama import OllamaModel
 
-SAMPLES  = [14]
+SAMPLES  = [10]
 PDF_DIR  = Path("data/input/pdfs")
 SCHEMA   = Path("data/output/rda/maDMP-schema-1.2.json")
 HOST     = "http://localhost:11434"
@@ -79,7 +79,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = "v5"
+RUN_NAME = "v2-sample10"
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
@@ -154,15 +154,17 @@ import time
 
 import requests
 
-SYSTEM = """You convert a Data Management Plan into one RDA maDMP JSON object that strictly follows the given schema.
+SYSTEM = """You convert Data Management Plans into RDA maDMP JSON.
 
-Use only the schema's field names, in the places the schema puts them, with only its allowed values. The whole document is one top-level "dmp" object.
-
-Read the whole plan and capture everything it states: every dataset it describes (each one once, with its own title, description and how it is shared), the project and its funding, dates (YYYY-MM-DD), identifiers and licenses. Every person the plan names with a role is an entry in "contributor" with that name and role; when the plan gives no identifier for a person, use an empty string as the contributor_id identifier and "other" as its type.
-
-Every value must come from the plan's text. Never invent a value, never copy the schema's examples, and never copy one item's values into another. Leave out any field the plan says nothing about, and leave out a whole sub-object (a distribution, license, host, metadata or funding entry) when the plan does not give the values it requires. For yes/no fields write "unknown" when the plan does not say.
-
-Output only the JSON. No explanation, no markdown."""
+Strict rules:
+1. Use only the field names defined in the schema. Never add a key that is not in the schema.
+2. Put every field exactly where the schema places it. The whole document is one top-level "dmp" object.
+3. Where the schema lists allowed values, use one of them, spelled exactly as in the schema .
+4. Take every value from the Data Management Plan text. Never copy example values from the schema.
+5. Output only the JSON object. No explanation, no markdown.
+6. Every heading of the form Dataset - "<name>" is a separate dataset. Use <name> as its title and the text under that heading as its description, and add its distribution and metadata where the text gives them.
+7. Every person the text names with a role, such as Principal Investigator or Data Manager, is a contributor with that role.
+8. Put the project's title, abstract, start and end dates, and funder into "project"."""
 
 
 def make_prompt(dmp_text):
@@ -410,6 +412,9 @@ pd.set_option("display.width", 200)
 samples = [n for n in SAMPLES if (RDA_DIR / REFERENCE.format(n=n)).exists()]
 print(f"evaluating run {RUN_NAME} in {RUN_DIR}")
 print("samples with a reference:", samples)
+if not samples:
+    print(f"\nNo hand-made reference for sample {SAMPLES} (expected {RDA_DIR / REFERENCE.format(n=SAMPLES[0])}).")
+    print("The models' JSON files are saved above; the scoring cells below are skipped.")
 for n in samples:
     have = [m for m in MODELS if (RUN_DIR / OUTPUT.format(n=n, model=m)).exists()]
     print(f"  sample{n}: outputs from {', '.join(have) or 'NO MODEL - nothing to evaluate here'}")
@@ -425,47 +430,50 @@ counts as something the model wrote.
 '''),
 
 code("eval_flatten", r'''
-def is_empty(v):
-    return v is None or v == [] or v == {} or (isinstance(v, str) and v.strip().lower() in EMPTY)
+if not samples:
+    print("skipped - no reference for this sample")
+else:
+    def is_empty(v):
+        return v is None or v == [] or v == {} or (isinstance(v, str) and v.strip().lower() in EMPTY)
 
 
-def canonical(node):
-    """Wrap a single object into a one-item list wherever the schema allows either."""
-    if isinstance(node, dict):
-        out = {}
-        for k, v in node.items():
-            v = canonical(v)
-            if k in ONE_OR_MANY and isinstance(v, dict):
-                v = [v]
-            out[k] = v
-        return out
-    if isinstance(node, list):
-        return [canonical(v) for v in node]
-    return node
+    def canonical(node):
+        """Wrap a single object into a one-item list wherever the schema allows either."""
+        if isinstance(node, dict):
+            out = {}
+            for k, v in node.items():
+                v = canonical(v)
+                if k in ONE_OR_MANY and isinstance(v, dict):
+                    v = [v]
+                out[k] = v
+            return out
+        if isinstance(node, list):
+            return [canonical(v) for v in node]
+        return node
 
 
-def flatten(node, path=""):
-    """Every leaf of a document as (path, value)."""
-    if isinstance(node, dict):
-        for k, v in node.items():
-            yield from flatten(v, f"{path}.{k}" if path else k)
-    elif isinstance(node, list):
-        for i, v in enumerate(node):
-            yield from flatten(v, f"{path}[{i}]")
-    else:
-        yield path, node
+    def flatten(node, path=""):
+        """Every leaf of a document as (path, value)."""
+        if isinstance(node, dict):
+            for k, v in node.items():
+                yield from flatten(v, f"{path}.{k}" if path else k)
+        elif isinstance(node, list):
+            for i, v in enumerate(node):
+                yield from flatten(v, f"{path}[{i}]")
+        else:
+            yield path, node
 
 
-def load(path):
-    return canonical(json.loads(Path(path).read_text(encoding="utf-8")))
+    def load(path):
+        return canonical(json.loads(Path(path).read_text(encoding="utf-8")))
 
 
-ref = load(RDA_DIR / REFERENCE.format(n=samples[0]))
-ref_fields = {p: v for p, v in flatten(ref) if not is_empty(v)}
-print(f"sample{samples[0]} reference: {len(ref_fields)} fields with a value")
-for p, v in list(ref_fields.items())[:6]:
-    print(f"  {p:48} {json.dumps(v, ensure_ascii=False)[:60]}")
-print("  ...")
+    ref = load(RDA_DIR / REFERENCE.format(n=samples[0]))
+    ref_fields = {p: v for p, v in flatten(ref) if not is_empty(v)}
+    print(f"sample{samples[0]} reference: {len(ref_fields)} fields with a value")
+    for p, v in list(ref_fields.items())[:6]:
+        print(f"  {p:48} {json.dumps(v, ensure_ascii=False)[:60]}")
+    print("  ...")
 '''),
 
 md("eval_s2", '''
@@ -478,72 +486,75 @@ position. The print-out shows which was paired with which.
 '''),
 
 code("eval_align", r'''
-KEY_FIELDS = ("title", "name", "identifier", "license_ref")
+if not samples:
+    print("skipped - no reference for this sample")
+else:
+    KEY_FIELDS = ("title", "name", "identifier", "license_ref")
 
 
-def norm_text(v):
-    return re.sub(r"\s+", " ", str(v)).strip().lower()
+    def norm_text(v):
+        return re.sub(r"\s+", " ", str(v)).strip().lower()
 
 
-def item_key(item):
-    """The value that identifies a list item, if it has one."""
-    if isinstance(item, dict):
-        for k in KEY_FIELDS:
-            if not is_empty(item.get(k)):
-                return norm_text(item[k])
-        return None
-    return norm_text(item) if not is_empty(item) else None
+    def item_key(item):
+        """The value that identifies a list item, if it has one."""
+        if isinstance(item, dict):
+            for k in KEY_FIELDS:
+                if not is_empty(item.get(k)):
+                    return norm_text(item[k])
+            return None
+        return norm_text(item) if not is_empty(item) else None
 
 
-def pair_items(model_list, ref_list):
-    """model index -> reference index. Exact key matches first, then position."""
-    ref_keys = {item_key(r): j for j, r in enumerate(ref_list)}
-    ref_keys.pop(None, None)
-    mapping, taken = {}, set()
-    for i, m in enumerate(model_list):                       # pass 1: same title / name
-        j = ref_keys.get(item_key(m))
-        if j is not None and j not in taken:
+    def pair_items(model_list, ref_list):
+        """model index -> reference index. Exact key matches first, then position."""
+        ref_keys = {item_key(r): j for j, r in enumerate(ref_list)}
+        ref_keys.pop(None, None)
+        mapping, taken = {}, set()
+        for i, m in enumerate(model_list):                       # pass 1: same title / name
+            j = ref_keys.get(item_key(m))
+            if j is not None and j not in taken:
+                mapping[i], taken = j, taken | {j}
+        for i, m in enumerate(model_list):                       # pass 2: same position, else a free slot
+            if i in mapping:
+                continue
+            j = i if i not in taken else next((k for k in range(len(ref_list)) if k not in taken), None)
+            if j is None:                                        # more items than the reference has
+                j = len(ref_list) + len([x for x in mapping.values() if x >= len(ref_list)])
             mapping[i], taken = j, taken | {j}
-    for i, m in enumerate(model_list):                       # pass 2: same position, else a free slot
-        if i in mapping:
+        return mapping
+
+
+    def flatten_aligned(model, ref, path="", mpath=""):
+        """Flatten the model document using the reference's list indices.
+        Yields (reference-aligned path, the model's own path, value)."""
+        if isinstance(model, dict):
+            for k, v in model.items():
+                r = ref.get(k) if isinstance(ref, dict) else None
+                yield from flatten_aligned(v, r, f"{path}.{k}" if path else k, f"{mpath}.{k}" if mpath else k)
+        elif isinstance(model, list):
+            ref_list = ref if isinstance(ref, list) else []
+            mapping = pair_items(model, ref_list)
+            for i, v in enumerate(model):
+                j = mapping[i]
+                yield from flatten_aligned(v, ref_list[j] if j < len(ref_list) else None,
+                                           f"{path}[{j}]", f"{mpath}[{i}]")
+        else:
+            yield path, mpath, model
+
+
+    # How each model's datasets were paired, for the first sample
+    ds_ref = ref.get("dmp", {}).get("dataset", [])
+    for m in MODELS:
+        p = RUN_DIR / OUTPUT.format(n=samples[0], model=m)
+        if not p.exists():
             continue
-        j = i if i not in taken else next((k for k in range(len(ref_list)) if k not in taken), None)
-        if j is None:                                        # more items than the reference has
-            j = len(ref_list) + len([x for x in mapping.values() if x >= len(ref_list)])
-        mapping[i], taken = j, taken | {j}
-    return mapping
-
-
-def flatten_aligned(model, ref, path="", mpath=""):
-    """Flatten the model document using the reference's list indices.
-    Yields (reference-aligned path, the model's own path, value)."""
-    if isinstance(model, dict):
-        for k, v in model.items():
-            r = ref.get(k) if isinstance(ref, dict) else None
-            yield from flatten_aligned(v, r, f"{path}.{k}" if path else k, f"{mpath}.{k}" if mpath else k)
-    elif isinstance(model, list):
-        ref_list = ref if isinstance(ref, list) else []
-        mapping = pair_items(model, ref_list)
-        for i, v in enumerate(model):
-            j = mapping[i]
-            yield from flatten_aligned(v, ref_list[j] if j < len(ref_list) else None,
-                                       f"{path}[{j}]", f"{mpath}[{i}]")
-    else:
-        yield path, mpath, model
-
-
-# How each model's datasets were paired, for the first sample
-ds_ref = ref.get("dmp", {}).get("dataset", [])
-for m in MODELS:
-    p = RUN_DIR / OUTPUT.format(n=samples[0], model=m)
-    if not p.exists():
-        continue
-    ds_model = load(p).get("dmp", {}).get("dataset", [])
-    print(f"{m}:")
-    for i, j in pair_items(ds_model, ds_ref).items():
-        mt = ds_model[i].get("title") if isinstance(ds_model[i], dict) else ds_model[i]
-        rt = ds_ref[j].get("title") if j < len(ds_ref) else "(no reference item)"
-        print(f"   model dataset[{i}] {str(mt)[:36]!r:40} -> reference dataset[{j}] {str(rt)[:36]!r}")
+        ds_model = load(p).get("dmp", {}).get("dataset", [])
+        print(f"{m}:")
+        for i, j in pair_items(ds_model, ds_ref).items():
+            mt = ds_model[i].get("title") if isinstance(ds_model[i], dict) else ds_model[i]
+            rt = ds_ref[j].get("title") if j < len(ds_ref) else "(no reference item)"
+            print(f"   model dataset[{i}] {str(mt)[:36]!r:40} -> reference dataset[{j}] {str(rt)[:36]!r}")
 '''),
 
 md("eval_s3", '''
@@ -554,71 +565,74 @@ cases from sample 14 and show how the rules decide.
 '''),
 
 code("eval_judge", r'''
-def field_kind(path):
-    last = re.sub(r"\[\d+\]$", "", path.split(".")[-1])
-    if last in ID_FIELDS:   return "identifier"
-    if last in DATE_FIELDS: return "date"
-    if last in ENUM_FIELDS: return "controlled"
-    return "text"
+if not samples:
+    print("skipped - no reference for this sample")
+else:
+    def field_kind(path):
+        last = re.sub(r"\[\d+\]$", "", path.split(".")[-1])
+        if last in ID_FIELDS:   return "identifier"
+        if last in DATE_FIELDS: return "date"
+        if last in ENUM_FIELDS: return "controlled"
+        return "text"
 
 
-LICENCE = [(re.compile(r"creativecommons\.org/licenses/([a-z\-]+)/(\d\.\d)"), r"cc-\1-\2"),
-           (re.compile(r"^cc[\s\-]+([a-z][a-z\-]*)[\s\-]+(\d\.\d)$"), r"cc-\1-\2")]
+    LICENCE = [(re.compile(r"creativecommons\.org/licenses/([a-z\-]+)/(\d\.\d)"), r"cc-\1-\2"),
+               (re.compile(r"^cc[\s\-]+([a-z][a-z\-]*)[\s\-]+(\d\.\d)$"), r"cc-\1-\2")]
 
 
-def norm_id(v):
-    s = norm_text(v)
-    s = re.sub(r"^https?://", "", s)
-    s = re.sub(r"^(www\.|dx\.)?doi\.org/", "", s)
-    s = re.sub(r"^www\.", "", s).rstrip("/")
-    for pattern, repl in LICENCE:
-        if pattern.search(s):
-            return pattern.sub(repl, s)
-    return s
+    def norm_id(v):
+        s = norm_text(v)
+        s = re.sub(r"^https?://", "", s)
+        s = re.sub(r"^(www\.|dx\.)?doi\.org/", "", s)
+        s = re.sub(r"^www\.", "", s).rstrip("/")
+        for pattern, repl in LICENCE:
+            if pattern.search(s):
+                return pattern.sub(repl, s)
+        return s
 
 
-def norm_date(v):
-    m = re.search(r"(\d{4})-(\d{2})-(\d{2})", norm_text(v))
-    return f"{m[1]}-{m[2]}-{m[3]}" if m else norm_text(v)
+    def norm_date(v):
+        m = re.search(r"(\d{4})-(\d{2})-(\d{2})", norm_text(v))
+        return f"{m[1]}-{m[2]}-{m[3]}" if m else norm_text(v)
 
 
-def verdict(path, mv, rv):
-    """-> (verdict, reason)."""
-    m_empty, r_empty = is_empty(mv), is_empty(rv)
-    if m_empty and r_empty:
-        return "Correct", "both empty"
-    if m_empty:
-        return "Hallucinated", "empty where the reference has a value"
-    if r_empty:
-        return "Hallucinated", "not in the reference"
-    kind = field_kind(path)
-    if kind == "identifier":
-        ok, how = norm_id(mv) == norm_id(rv), "identifier differs"
-    elif kind == "date":
-        ok, how = norm_date(mv) == norm_date(rv), "different day"
-    elif kind == "controlled":
-        ok, how = norm_text(mv) == norm_text(rv), "different value"
-    else:
-        share = containment(tokenize(str(mv)), tokenize(str(rv)))
-        ok, how = share >= THRESHOLD, f"only {share:.0%} of the model's words are in the reference"
-    return ("Correct", "") if ok else ("Hallucinated", how)
+    def verdict(path, mv, rv):
+        """-> (verdict, reason)."""
+        m_empty, r_empty = is_empty(mv), is_empty(rv)
+        if m_empty and r_empty:
+            return "Correct", "both empty"
+        if m_empty:
+            return "Hallucinated", "empty where the reference has a value"
+        if r_empty:
+            return "Hallucinated", "not in the reference"
+        kind = field_kind(path)
+        if kind == "identifier":
+            ok, how = norm_id(mv) == norm_id(rv), "identifier differs"
+        elif kind == "date":
+            ok, how = norm_date(mv) == norm_date(rv), "different day"
+        elif kind == "controlled":
+            ok, how = norm_text(mv) == norm_text(rv), "different value"
+        else:
+            share = containment(tokenize(str(mv)), tokenize(str(rv)))
+            ok, how = share >= THRESHOLD, f"only {share:.0%} of the model's words are in the reference"
+        return ("Correct", "") if ok else ("Hallucinated", how)
 
 
-examples = [
-    ("dmp.dataset[0].title", "Hakai JSP Time Series", "Hakai Institute Juvenile Salmon Program Time Series"),
-    ("dmp.title", "Hakai Institute Juvenile Salmon Program Time Series Data Management Plan",
-                  "Hakai Institute Juvenile Salmon Program Time Series"),
-    ("dmp.dataset[0].distribution[0].license[0].license_ref", "https://creativecommons.org/licenses/by/4.0/", "CC BY 4.0"),
-    ("dmp.project[0].start", "2015-05-12T00:00:00Z", "2015-05-12"),
-    ("dmp.contact.mbox", "brett.johnson@hakai.org", None),
-    ("dmp.contact.mbox", "N/A", None),
-    ("dmp.contact.name", "N/A", "Brett Johnson"),
-    ("dmp.dataset[0].dataset_id.identifier", "https://doi.org/10.48321/D1CW23", "https://doi.org/10.21966/1.566666"),
-]
-print(f"{'verdict':13} {'model value':46} {'reference value':38} reason")
-for path, mv, rv in examples:
-    v, why = verdict(path, mv, rv)
-    print(f"{v:13} {str(mv)[:42]!r:46} {str(rv)[:34]!r:38} {why}")
+    examples = [
+        ("dmp.dataset[0].title", "Hakai JSP Time Series", "Hakai Institute Juvenile Salmon Program Time Series"),
+        ("dmp.title", "Hakai Institute Juvenile Salmon Program Time Series Data Management Plan",
+                      "Hakai Institute Juvenile Salmon Program Time Series"),
+        ("dmp.dataset[0].distribution[0].license[0].license_ref", "https://creativecommons.org/licenses/by/4.0/", "CC BY 4.0"),
+        ("dmp.project[0].start", "2015-05-12T00:00:00Z", "2015-05-12"),
+        ("dmp.contact.mbox", "brett.johnson@hakai.org", None),
+        ("dmp.contact.mbox", "N/A", None),
+        ("dmp.contact.name", "N/A", "Brett Johnson"),
+        ("dmp.dataset[0].dataset_id.identifier", "https://doi.org/10.48321/D1CW23", "https://doi.org/10.21966/1.566666"),
+    ]
+    print(f"{'verdict':13} {'model value':46} {'reference value':38} reason")
+    for path, mv, rv in examples:
+        v, why = verdict(path, mv, rv)
+        print(f"{v:13} {str(mv)[:42]!r:46} {str(rv)[:34]!r:38} {why}")
 '''),
 
 md("eval_s4", '''
@@ -628,35 +642,38 @@ One line per field, for every model. The table counts the marks.
 '''),
 
 code("eval_score", r'''
-rows = []
-for n in samples:
-    ref = load(RDA_DIR / REFERENCE.format(n=n))
-    ref_values = dict(flatten(ref))
-    ref_fields = {p for p, v in ref_values.items() if not is_empty(v)}
-    for m in MODELS:
-        p = RUN_DIR / OUTPUT.format(n=n, model=m)
-        if not p.exists():
-            continue
-        covered = set()
-        for path, mpath, mv in flatten_aligned(load(p), ref):
-            rv = ref_values.get(path)
-            v, why = verdict(path, mv, rv)
-            if v == "Correct" and path in ref_fields:
-                covered.add(path)
-            rows.append({"sample": n, "model": m, "field": path, "model field": mpath, "model value": mv,
-                         "reference value": rv, "verdict": v, "reason": why})
-        for path in sorted(ref_fields - covered):
-            rows.append({"sample": n, "model": m, "field": path, "model field": None, "model value": None,
-                         "reference value": ref_values[path], "verdict": "Missed", "reason": ""})
+if not samples:
+    print("skipped - no reference for this sample")
+else:
+    rows = []
+    for n in samples:
+        ref = load(RDA_DIR / REFERENCE.format(n=n))
+        ref_values = dict(flatten(ref))
+        ref_fields = {p for p, v in ref_values.items() if not is_empty(v)}
+        for m in MODELS:
+            p = RUN_DIR / OUTPUT.format(n=n, model=m)
+            if not p.exists():
+                continue
+            covered = set()
+            for path, mpath, mv in flatten_aligned(load(p), ref):
+                rv = ref_values.get(path)
+                v, why = verdict(path, mv, rv)
+                if v == "Correct" and path in ref_fields:
+                    covered.add(path)
+                rows.append({"sample": n, "model": m, "field": path, "model field": mpath, "model value": mv,
+                             "reference value": rv, "verdict": v, "reason": why})
+            for path in sorted(ref_fields - covered):
+                rows.append({"sample": n, "model": m, "field": path, "model field": None, "model value": None,
+                             "reference value": ref_values[path], "verdict": "Missed", "reason": ""})
 
-details = pd.DataFrame(rows)
-if details.empty:
-    raise SystemExit(f"No model outputs to evaluate in {OUT_DIR} - looking for files named like "
-                     f"{OUTPUT.format(n=samples[0] if samples else 'N', model='<model>')}. "
-                     "Run Part 1 first, or check RUN_NAME.")
-print(f"{len(details)} judged rows across {len(samples)} sample(s) and {details['model'].nunique()} models\n")
-details.groupby(["model", "verdict"]).size().unstack(fill_value=0)[["Correct", "Hallucinated", "Missed"]].loc[
-    [m for m in MODELS if m in set(details["model"])]]
+    details = pd.DataFrame(rows)
+    if details.empty:
+        raise SystemExit(f"No model outputs to evaluate in {OUT_DIR} - looking for files named like "
+                         f"{OUTPUT.format(n=samples[0] if samples else 'N', model='<model>')}. "
+                         "Run Part 1 first, or check RUN_NAME.")
+    print(f"{len(details)} judged rows across {len(samples)} sample(s) and {details['model'].nunique()} models\n")
+    details.groupby(["model", "verdict"]).size().unstack(fill_value=0)[["Correct", "Hallucinated", "Missed"]].loc[
+        [m for m in MODELS if m in set(details["model"])]]
 '''),
 
 md("eval_s5", '''
@@ -668,47 +685,50 @@ arithmetic with the real numbers.
 '''),
 
 code("eval_metrics", r'''
-def metrics(df, n_ref):
-    c = int((df["verdict"] == "Correct").sum())
-    h = int((df["verdict"] == "Hallucinated").sum())
-    miss = int((df["verdict"] == "Missed").sum())
-    out, found, total = c + h, n_ref - miss, c + h + miss
-    precision = c / out if out else 0.0
-    recall = found / n_ref if n_ref else 0.0
-    f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
-    return {"fields in reference": n_ref, "fields output": out, "correct": c, "hallucinated": h,
-            "missed": miss, "precision": round(precision, 3), "recall": round(recall, 3), "f1": round(f1, 3),
-            "correct %": c / total, "hallucinated %": h / total, "missed %": miss / total}
+if not samples:
+    print("skipped - no reference for this sample")
+else:
+    def metrics(df, n_ref):
+        c = int((df["verdict"] == "Correct").sum())
+        h = int((df["verdict"] == "Hallucinated").sum())
+        miss = int((df["verdict"] == "Missed").sum())
+        out, found, total = c + h, n_ref - miss, c + h + miss
+        precision = c / out if out else 0.0
+        recall = found / n_ref if n_ref else 0.0
+        f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
+        return {"fields in reference": n_ref, "fields output": out, "correct": c, "hallucinated": h,
+                "missed": miss, "precision": round(precision, 3), "recall": round(recall, 3), "f1": round(f1, 3),
+                "correct %": c / total, "hallucinated %": h / total, "missed %": miss / total}
 
 
-n_ref = {n: len({p for p, v in flatten(load(RDA_DIR / REFERENCE.format(n=n))) if not is_empty(v)}) for n in samples}
-summary = pd.DataFrame([{"model": m, **metrics(details[details["model"] == m], sum(n_ref.values()))}
-                        for m in MODELS if m in set(details["model"])]).set_index("model")
+    n_ref = {n: len({p for p, v in flatten(load(RDA_DIR / REFERENCE.format(n=n))) if not is_empty(v)}) for n in samples}
+    summary = pd.DataFrame([{"model": m, **metrics(details[details["model"] == m], sum(n_ref.values()))}
+                            for m in MODELS if m in set(details["model"])]).set_index("model")
 
-def show(df):
-    """The metrics table with the shares as percentages."""
-    out = df.copy()
-    for c in ("correct %", "hallucinated %", "missed %"):
-        out[c] = out[c].map("{:.1%}".format)
-    display(out)
+    def show(df):
+        """The metrics table with the shares as percentages."""
+        out = df.copy()
+        for c in ("correct %", "hallucinated %", "missed %"):
+            out[c] = out[c].map("{:.1%}".format)
+        display(out)
 
 
-show(summary)
+    show(summary)
 
-if len(samples) > 1:
-    per_sample = pd.DataFrame([{"sample": n, "model": m, **metrics(details[(details["model"] == m) & (details["sample"] == n)], n_ref[n])}
-                               for n in samples for m in MODELS if ((details["model"] == m) & (details["sample"] == n)).any()]
-                              ).set_index(["sample", "model"])
-    print("\nPer sample:")
-    show(per_sample)
+    if len(samples) > 1:
+        per_sample = pd.DataFrame([{"sample": n, "model": m, **metrics(details[(details["model"] == m) & (details["sample"] == n)], n_ref[n])}
+                                   for n in samples for m in MODELS if ((details["model"] == m) & (details["sample"] == n)).any()]
+                                  ).set_index(["sample", "model"])
+        print("\nPer sample:")
+        show(per_sample)
 
-# The arithmetic behind the three numbers, with this run's values for the first model
-m = summary.index[0]
-c, out, ref_n, miss = (int(summary.loc[m, k]) for k in ("correct", "fields output", "fields in reference", "missed"))
-print(f"\nWorked example, {m}:")
-print(f"  precision = correct / fields output              = {c} / {out} = {summary.loc[m, 'precision']}")
-print(f"  recall    = (reference - missed) / reference     = ({ref_n} - {miss}) / {ref_n} = {summary.loc[m, 'recall']}")
-print(f"  F1        = 2 * precision * recall / (precision + recall) = {summary.loc[m, 'f1']}")
+    # The arithmetic behind the three numbers, with this run's values for the first model
+    m = summary.index[0]
+    c, out, ref_n, miss = (int(summary.loc[m, k]) for k in ("correct", "fields output", "fields in reference", "missed"))
+    print(f"\nWorked example, {m}:")
+    print(f"  precision = correct / fields output              = {c} / {out} = {summary.loc[m, 'precision']}")
+    print(f"  recall    = (reference - missed) / reference     = ({ref_n} - {miss}) / {ref_n} = {summary.loc[m, 'recall']}")
+    print(f"  F1        = 2 * precision * recall / (precision + recall) = {summary.loc[m, 'f1']}")
 '''),
 
 md("eval_s6", '''
@@ -719,17 +739,20 @@ Hallucinated rows come first so the problems are at the top.
 '''),
 
 code("eval_tables", r'''
-ORDER = {"Hallucinated": 0, "Correct": 1}
-for m in MODELS:
-    d = details[(details["model"] == m) & (details["verdict"] != "Missed")].copy()
-    if d.empty:
-        continue
-    d = d.sort_values(["sample", "verdict", "model field"], key=lambda col: col.map(ORDER) if col.name == "verdict" else col)
-    counts = details[details["model"] == m]["verdict"].value_counts()
-    print(f"\n{'=' * 100}\n{m}: {counts.get('Correct', 0)} correct, {counts.get('Hallucinated', 0)} hallucinated, "
-          f"{counts.get('Missed', 0)} missed\n{'=' * 100}")
-    display(d[["sample", "model field", "model value", "reference value", "verdict", "reason"]]
-            .rename(columns={"model field": "field"}).reset_index(drop=True))
+if not samples:
+    print("skipped - no reference for this sample")
+else:
+    ORDER = {"Hallucinated": 0, "Correct": 1}
+    for m in MODELS:
+        d = details[(details["model"] == m) & (details["verdict"] != "Missed")].copy()
+        if d.empty:
+            continue
+        d = d.sort_values(["sample", "verdict", "model field"], key=lambda col: col.map(ORDER) if col.name == "verdict" else col)
+        counts = details[details["model"] == m]["verdict"].value_counts()
+        print(f"\n{'=' * 100}\n{m}: {counts.get('Correct', 0)} correct, {counts.get('Hallucinated', 0)} hallucinated, "
+              f"{counts.get('Missed', 0)} missed\n{'=' * 100}")
+        display(d[["sample", "model field", "model value", "reference value", "verdict", "reason"]]
+                .rename(columns={"model field": "field"}).reset_index(drop=True))
 '''),
 
 md("eval_s7", '''
@@ -741,20 +764,23 @@ count hides.
 '''),
 
 code("eval_missed", r'''
-def section(path):
-    parts = path.split(".")
-    return re.sub(r"\[\d+\]", "", parts[1]) if parts[0] == "dmp" and len(parts) > 1 else parts[0]
+if not samples:
+    print("skipped - no reference for this sample")
+else:
+    def section(path):
+        parts = path.split(".")
+        return re.sub(r"\[\d+\]", "", parts[1]) if parts[0] == "dmp" and len(parts) > 1 else parts[0]
 
 
-ref_counts = pd.Series([section(p) for n in samples for p, v in flatten(load(RDA_DIR / REFERENCE.format(n=n)))
-                        if not is_empty(v)]).value_counts()
-missed = details[details["verdict"] == "Missed"].copy()
-missed["section"] = missed["field"].map(section)
-by_section = (missed.groupby(["section", "model"]).size().unstack(fill_value=0)
-              .reindex(ref_counts.index, fill_value=0)[[m for m in MODELS if m in set(details["model"])]])
-by_section.insert(0, "reference fields", ref_counts)
-by_section.columns.name = "missed by"
-by_section
+    ref_counts = pd.Series([section(p) for n in samples for p, v in flatten(load(RDA_DIR / REFERENCE.format(n=n)))
+                            if not is_empty(v)]).value_counts()
+    missed = details[details["verdict"] == "Missed"].copy()
+    missed["section"] = missed["field"].map(section)
+    by_section = (missed.groupby(["section", "model"]).size().unstack(fill_value=0)
+                  .reindex(ref_counts.index, fill_value=0)[[m for m in MODELS if m in set(details["model"])]])
+    by_section.insert(0, "reference fields", ref_counts)
+    by_section.columns.name = "missed by"
+    display(by_section)
 '''),
 
 md("eval_s8", '''
@@ -766,55 +792,58 @@ better.
 '''),
 
 code("eval_charts", r'''
-models = list(summary.index)
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13.5, 4.2), gridspec_kw={"width_ratios": [1.3, 1]})
+if not samples:
+    print("skipped - no reference for this sample")
+else:
+    models = list(summary.index)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13.5, 4.2), gridspec_kw={"width_ratios": [1.3, 1]})
 
-# ── Shares, one bar per model ─────────────────────────────────────────────────
-labels = [f"{m}\n{int(summary.loc[m, 'correct'])} correct · {int(summary.loc[m, 'hallucinated'])} hallucinated · "
-          f"{int(summary.loc[m, 'missed'])} missed" for m in models]
-left = [0.0] * len(models)
-for v in ("Correct", "Hallucinated", "Missed"):
-    vals = [summary.loc[m, f"{v.lower()} %"] for m in models]
-    bars = ax1.barh(labels, vals, left=left, height=0.52, color=VERDICT_COLOUR[v],
-                    edgecolor=SURFACE, linewidth=2, label=v)
-    for bar, val in zip(bars, vals):
-        if val >= 0.05:                                       # percentage inside the segment when it fits
-            ax1.text(bar.get_x() + bar.get_width() / 2, bar.get_y() + bar.get_height() / 2, f"{val:.0%}",
-                     ha="center", va="center", fontsize=8.5, color="white" if v != "Missed" else INK)
-    left = [l + x for l, x in zip(left, vals)]
-ax1.set_xlim(0, 1)
-ax1.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{x:.0%}"))
-ax1.invert_yaxis()
-ax1.tick_params(axis="y", labelsize=9)
-ax1.set_title("Fields: correct, hallucinated, missed")
-ax1.grid(axis="x", color=GRID, linewidth=0.9)
-ax1.set_axisbelow(True)
-ax1.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.14))
-for side in ("top", "right", "left"):
-    ax1.spines[side].set_visible(False)
+    # ── Shares, one bar per model ─────────────────────────────────────────────────
+    labels = [f"{m}\n{int(summary.loc[m, 'correct'])} correct · {int(summary.loc[m, 'hallucinated'])} hallucinated · "
+              f"{int(summary.loc[m, 'missed'])} missed" for m in models]
+    left = [0.0] * len(models)
+    for v in ("Correct", "Hallucinated", "Missed"):
+        vals = [summary.loc[m, f"{v.lower()} %"] for m in models]
+        bars = ax1.barh(labels, vals, left=left, height=0.52, color=VERDICT_COLOUR[v],
+                        edgecolor=SURFACE, linewidth=2, label=v)
+        for bar, val in zip(bars, vals):
+            if val >= 0.05:                                       # percentage inside the segment when it fits
+                ax1.text(bar.get_x() + bar.get_width() / 2, bar.get_y() + bar.get_height() / 2, f"{val:.0%}",
+                         ha="center", va="center", fontsize=8.5, color="white" if v != "Missed" else INK)
+        left = [l + x for l, x in zip(left, vals)]
+    ax1.set_xlim(0, 1)
+    ax1.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{x:.0%}"))
+    ax1.invert_yaxis()
+    ax1.tick_params(axis="y", labelsize=9)
+    ax1.set_title("Fields: correct, hallucinated, missed")
+    ax1.grid(axis="x", color=GRID, linewidth=0.9)
+    ax1.set_axisbelow(True)
+    ax1.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.14))
+    for side in ("top", "right", "left"):
+        ax1.spines[side].set_visible(False)
 
-# ── Precision / recall / F1 per model ────────────────────────────────────────
-shown = ["precision", "recall", "f1"]
-w = 0.8 / len(models)
-for k, m in enumerate(models):
-    xs = [i + (k - (len(models) - 1) / 2) * w for i in range(len(shown))]
-    bars = ax2.bar(xs, [summary.loc[m, s] for s in shown], width=w * 0.92,
-                   color=MODEL_COLOUR[m], edgecolor=SURFACE, linewidth=2, label=m)
-    ax2.bar_label(bars, fmt="%.2f", padding=2, fontsize=8, color=MUTED)
-ax2.set_xticks(range(len(shown)))
-ax2.set_xticklabels(["Precision", "Recall", "F1"])
-ax2.set_ylim(0, 1.08)
-ax2.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
-ax2.set_title("Precision, recall and F1")
-ax2.grid(axis="y", color=GRID, linewidth=0.9)
-ax2.set_axisbelow(True)
-ax2.legend(ncol=len(models), loc="upper center", bbox_to_anchor=(0.5, -0.14))
-for side in ("top", "right"):
-    ax2.spines[side].set_visible(False)
+    # ── Precision / recall / F1 per model ────────────────────────────────────────
+    shown = ["precision", "recall", "f1"]
+    w = 0.8 / len(models)
+    for k, m in enumerate(models):
+        xs = [i + (k - (len(models) - 1) / 2) * w for i in range(len(shown))]
+        bars = ax2.bar(xs, [summary.loc[m, s] for s in shown], width=w * 0.92,
+                       color=MODEL_COLOUR[m], edgecolor=SURFACE, linewidth=2, label=m)
+        ax2.bar_label(bars, fmt="%.2f", padding=2, fontsize=8, color=MUTED)
+    ax2.set_xticks(range(len(shown)))
+    ax2.set_xticklabels(["Precision", "Recall", "F1"])
+    ax2.set_ylim(0, 1.08)
+    ax2.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
+    ax2.set_title("Precision, recall and F1")
+    ax2.grid(axis="y", color=GRID, linewidth=0.9)
+    ax2.set_axisbelow(True)
+    ax2.legend(ncol=len(models), loc="upper center", bbox_to_anchor=(0.5, -0.14))
+    for side in ("top", "right"):
+        ax2.spines[side].set_visible(False)
 
-plt.tight_layout()
-fig.savefig(CHART, dpi=200, bbox_inches="tight", facecolor=SURFACE)
-plt.show()
+    plt.tight_layout()
+    fig.savefig(CHART, dpi=200, bbox_inches="tight", facecolor=SURFACE)
+    plt.show()
 '''),
 
 md("eval_s9", '''
@@ -825,15 +854,18 @@ field and its mark — and the charts as an image, both in this run's folder.
 '''),
 
 code("eval_save", r'''
-with pd.ExcelWriter(RESULTS) as xw:
-    summary.to_excel(xw, sheet_name="summary")
-    for m in MODELS:
-        d = details[details["model"] == m]
-        if not d.empty:
-            d.drop(columns="model").to_excel(xw, sheet_name=m[:31], index=False)
-    details.to_excel(xw, sheet_name="details", index=False)
-print(f"saved -> {RESULTS}")
-print(f"saved -> {CHART}")
+if not samples:
+    print("skipped - no reference for this sample")
+else:
+    with pd.ExcelWriter(RESULTS) as xw:
+        summary.to_excel(xw, sheet_name="summary")
+        for m in MODELS:
+            d = details[details["model"] == m]
+            if not d.empty:
+                d.drop(columns="model").to_excel(xw, sheet_name=m[:31], index=False)
+        details.to_excel(xw, sheet_name="details", index=False)
+    print(f"saved -> {RESULTS}")
+    print(f"saved -> {CHART}")
 '''),
 
 md("eval_s10", '''
@@ -843,24 +875,27 @@ A short reading of the results, written from the numbers above so it is always c
 '''),
 
 code("eval_plain", r'''
-n_ref = int(summary["fields in reference"].iloc[0])
-print(f"The person filled in {n_ref} fields for sample {samples[0]}.\n")
-for m in summary.index:
-    s = summary.loc[m]
-    print(f"{m} wrote {int(s['fields output'])} fields: {int(s['correct'])} were right, "
-          f"{int(s['hallucinated'])} were wrong or made up. It found {n_ref - int(s['missed'])} of the "
-          f"{n_ref} fields in the document ({s['recall']:.0%}) and missed {int(s['missed'])}.")
+if not samples:
+    print("skipped - no reference for this sample")
+else:
+    n_ref = int(summary["fields in reference"].iloc[0])
+    print(f"The person filled in {n_ref} fields for sample {samples[0]}.\n")
+    for m in summary.index:
+        s = summary.loc[m]
+        print(f"{m} wrote {int(s['fields output'])} fields: {int(s['correct'])} were right, "
+              f"{int(s['hallucinated'])} were wrong or made up. It found {n_ref - int(s['missed'])} of the "
+              f"{n_ref} fields in the document ({s['recall']:.0%}) and missed {int(s['missed'])}.")
 
-best_p, best_r, best_f = summary["precision"].idxmax(), summary["recall"].idxmax(), summary["f1"].idxmax()
-print()
-print(f"Most reliable: {best_p} - {summary.loc[best_p, 'precision']:.0%} of what it wrote was right.")
-print(f"Found the most: {best_r} - {summary.loc[best_r, 'recall']:.0%} of the document's fields.")
-print(f"Best overall (F1): {best_f}.")
+    best_p, best_r, best_f = summary["precision"].idxmax(), summary["recall"].idxmax(), summary["f1"].idxmax()
+    print()
+    print(f"Most reliable: {best_p} - {summary.loc[best_p, 'precision']:.0%} of what it wrote was right.")
+    print(f"Found the most: {best_r} - {summary.loc[best_r, 'recall']:.0%} of the document's fields.")
+    print(f"Best overall (F1): {best_f}.")
 
-part = by_section.drop(columns="reference fields").sum(axis=1).idxmax()
-missed_here = by_section.loc[part].drop("reference fields")
-print(f"\nWhere it goes wrong: the '{part}' part of the form holds {int(by_section.loc[part, 'reference fields'])} "
-      f"of the {n_ref} fields, and the models miss between {int(missed_here.min())} and {int(missed_here.max())} of them.")
+    part = by_section.drop(columns="reference fields").sum(axis=1).idxmax()
+    missed_here = by_section.loc[part].drop("reference fields")
+    print(f"\nWhere it goes wrong: the '{part}' part of the form holds {int(by_section.loc[part, 'reference fields'])} "
+          f"of the {n_ref} fields, and the models miss between {int(missed_here.min())} and {int(missed_here.max())} of them.")
 '''),
 ]
 

@@ -1,0 +1,32 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "University of California, Riverside",
+        "type": "other"
+      },
+      "mbox": "bcoe@ucr.edu",
+      "name": "Bourns College of Engineering"
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "NETs",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Nano-vesicles (NETs) data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://example.org/dmp",
+      "type": "url"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "Data Management Plan for Nano-vesicles (NETs) research"
+  }
+}
