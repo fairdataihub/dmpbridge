@@ -1,0 +1,60 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "data related to each of our proposed experiments",
+        "description": "These will include the detailed protocols used for each experiment, the raw data collected from each experiment, and the experimental code used to collect those data. The relevant code will include both the data acquisition code, and the code for the controllers used in the experiment. Together, this information will be sufficient for recreating the circumstances of each data collection session."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "code and results for all analyses completed on experimental data",
+        "description": "We store all code necessary to recreate figures, tables, and other results reported in all published manuscripts."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "simulation code for controller development and testing and outputs relevant to all key findings",
+        "description": "The proposed foundational developments will produce substantial simulation code for controller development and testing. These and the outputs relevant to all key findings will also be managed."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "CPS 2015",
+    "project": [
+      {
+        "title": "unknown",
+        "description": "unknown",
+        "start": "2015-01-01"
+      }
+    ]
+  }
+}
