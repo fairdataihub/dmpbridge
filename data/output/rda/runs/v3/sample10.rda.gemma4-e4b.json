@@ -1,0 +1,52 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "nano-vesicles (NETs) data",
+        "description": "We will make the proposed nano-vesicles (NETs) available to interested investigators who would like to use them in their scientific research. The dataset includes data obtained from the study on nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Study data",
+        "description": "Data obtained from the study on nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Data Management Plan for nano-vesicles (NETs) study",
+    "project": [
+      {
+        "title": "Study on nano-vesicles (NETs) as photo-theranostic materials",
+        "description": "Under this application, we will determine the effectiveness the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.",
+        "start": "2024-01-01"
+      }
+    ]
+  }
+}

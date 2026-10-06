@@ -1,0 +1,88 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown",
+      "affiliation": [
+        {
+          "affiliation_id": {
+            "identifier": "unknown",
+            "type": "unknown"
+          },
+          "name": "Bourns College of Engineering (BCOE) at UCR"
+        }
+      ]
+    },
+    "created": "2023-03-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Proposed nano-vesicles (NETs) data",
+        "description": "Data related to the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Proposed nano-vesicles (NETs) data distribution",
+            "access_url": "http://escholarship.org/uc/search?entity=bcoe",
+            "license": [
+              {
+                "license_ref": "unknown",
+                "start_date": "2023-03-01"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2023-03-01T00:00:00Z",
+    "title": "Data Management Plan for Proposed nano-vesicles (NETs) Research",
+    "project": [
+      {
+        "title": "Proposed nano-vesicles (NETs) Research",
+        "description": "Research on the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "unknown",
+              "type": "unknown"
+            },
+            "funding_status": "granted",
+            "grant_id": {
+              "identifier": "unknown",
+              "type": "unknown"
+            }
+          }
+        ],
+        "project_id": [
+          {
+            "identifier": "unknown",
+            "type": "unknown"
+          }
+        ],
+        "start": "2023-03-01"
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "http://nanoparticlelibrary.net/index.asp",
+        "relation_type": "IsCitedBy",
+        "type": "url"
+      }
+    ]
+  }
+}

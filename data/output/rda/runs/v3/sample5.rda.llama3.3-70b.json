@@ -1,0 +1,126 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown",
+      "affiliation": [
+        {
+          "affiliation_id": {
+            "identifier": "unknown",
+            "type": "unknown"
+          },
+          "name": "unknown"
+        }
+      ]
+    },
+    "created": "2023-03-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Groundwater well data",
+        "description": "Data collected from groundwater wells in the West",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Raw data",
+            "access_url": "https://datadryad.org",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2023-03-01"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Processed data",
+            "access_url": "https://datadryad.org",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2023-03-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Scientist spotlight data",
+        "description": "Data collected for scientist spotlight activities",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Scientist spotlight biographies",
+            "access_url": "https://example.com/dashboard",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2023-03-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Workshop data",
+        "description": "Data collected for workshop activities",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Workshop materials",
+            "access_url": "https://example.com/google-drive",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2023-03-01"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2023-03-01T00:00:00Z",
+    "title": "Data Management Plan for Groundwater Project",
+    "project": [
+      {
+        "title": "Groundwater Project",
+        "description": "This project aims to analyze the impact of urbanization on local biodiversity by collecting and assessing environmental data from multiple urban centers.",
+        "start": "2023-03-01"
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://datadryad.org",
+        "relation_type": "IsCitedBy",
+        "type": "url"
+      }
+    ]
+  }
+}

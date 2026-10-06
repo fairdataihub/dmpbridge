@@ -60,7 +60,7 @@ if Path.cwd().name == "notebooks":
     import os
     os.chdir(Path.cwd().parent)
 
-RUN    = "v7"                                    # a folder name under data/output/rda/runs/
+RUN    = "v3"                                    # a folder name under data/output/rda/runs/
 RESULT = Path("data/output/rda/runs") / RUN / "evaluation_results.xlsx"
 CHART  = Path("data/output/rda/runs") / RUN / "evaluation_overview.png"   # per-sample figures go next to it
 MODELS = ["llama3.1-8b", "gemma4-e4b", "llama3.3-70b"]

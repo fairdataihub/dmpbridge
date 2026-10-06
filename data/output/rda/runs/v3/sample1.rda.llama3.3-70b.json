@@ -1,0 +1,115 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown",
+      "affiliation": [
+        {
+          "affiliation_id": {
+            "identifier": "unknown",
+            "type": "unknown"
+          },
+          "name": "University of California San Diego"
+        }
+      ]
+    },
+    "created": "2023-03-13T13:13:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "yes",
+        "sensitive_data": "no",
+        "title": "RISE study data",
+        "description": "De-identified data from the RISE study",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "RISE study data distribution",
+            "access_url": "https://library.ucsd.edu/",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2025-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "yes",
+        "sensitive_data": "no",
+        "title": "iWATCH study data",
+        "description": "De-identified data from the iWATCH study",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "iWATCH study data distribution",
+            "access_url": "https://library.ucsd.edu/",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2025-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "yes",
+        "sensitive_data": "no",
+        "title": "NHANES cohorts data",
+        "description": "De-identified data from the NHANES cohorts",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "NHANES cohorts data distribution",
+            "access_url": "https://library.ucsd.edu/",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2025-01-01"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2023-03-13T13:13:00Z",
+    "title": "Data Management Plan for Deep Postures project",
+    "project": [
+      {
+        "title": "Deep Postures project",
+        "description": "This project aims to analyze the impact of urbanization on local biodiversity by collecting and assessing environmental data from multiple urban centers.",
+        "start": "2023-04-01"
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://library.ucsd.edu/",
+        "relation_type": "IsDescribedBy",
+        "type": "url"
+      }
+    ]
+  }
+}
