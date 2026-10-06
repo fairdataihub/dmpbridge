@@ -64,7 +64,7 @@ if Path.cwd().name == "notebooks":
 from dmpbridge.extractors import get_extractor
 from dmpbridge.models.ollama import OllamaModel
 
-SAMPLES  = [3, 10]
+SAMPLES  = [3, 7, 8, 9, 10]
 PDF_DIR  = Path("data/input/pdfs")
 SCHEMA   = Path("data/output/rda/maDMP-schema-1.2.json")
 HOST     = "http://localhost:11434"
