@@ -79,7 +79,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = "v6"
+RUN_NAME = "v7"
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
@@ -161,12 +161,12 @@ Use only the schema's field names, in the places the schema puts them, with only
 Capture everything the plan states, in the plan's own words:
 - title: the plan's title or first heading, exactly as written.
 - dataset: one entry for each kind of data, code, software or other output the plan says it will produce, keep or share, whether it has its own heading or is only described in a sentence. Use the plan's own short phrase for it as the title and the plan's sentences about it as the description.
-- For each dataset: where it will be stored or shared (a repository, archive, server or website) is the host of a distribution, with its URL if the plan gives one; a license the plan names goes in that distribution's license; how the data will be documented goes in the metadata description. A statement that covers all of the data applies to every dataset.
+- For each dataset: where it will be stored or shared (a repository, archive, server or website) is the host of a distribution, with its URL if the plan gives one; a license the plan names goes in that distribution's license, written as the plan writes it; how the data will be documented goes in the metadata description. A statement that clearly covers all of the data applies to every dataset; a statement about one kind of output applies only to that one.
 - People the plan names with a role are contributors. The project's aims and its funder go in the project.
 
 Template guidance is not part of the plan: ignore text that only explains what a plan should contain, such as a funder's questions or instructions.
 
-Never invent a value. When the schema requires a field the plan does not give, write an empty string, and for yes/no fields write "unknown". Never use the schema's example values or placeholders such as "N/A" or "not specified", and never copy one item's identifier, title or description into another.
+Never invent a value. When the schema requires a field the plan does not give - a name, email, identifier, URL or a distribution's title - write an empty string, not a word such as "unknown", "N/A" or "not specified". The schema's examples are not data and must never appear in the output: not "Charlie Chaplin", "cc@example.com", "0000-0003-0644-4174", "10.1371/journal.pcbi.1006750", "11353/10.923628", "501100002428" or any example description. Never copy one item's identifier, title or description into another.
 
 Output only the JSON. No explanation, no markdown."""
 

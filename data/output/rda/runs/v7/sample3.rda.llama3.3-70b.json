@@ -1,0 +1,134 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-03-13T13:13:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Experimental data",
+        "description": "Data related to each of our proposed experiments, including detailed protocols, raw data, and experimental code.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Experimental data distribution",
+            "description": "Data will be made available upon request, after the conclusion of each study.",
+            "host": {
+              "title": "Rehabilitation Institute of Chicago servers",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+                "start_date": "2024-03-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "Metadata will include experimental conditions and analysis procedures used during generation."
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Analysis code and results",
+        "description": "Code and results for all analyses completed on experimental data.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Analysis code and results distribution",
+            "description": "Code and results will be made available through peer-reviewed journal publications and conference presentations.",
+            "host": {
+              "title": "Project website",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+                "start_date": "2024-03-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "Metadata will include information on analysis procedures and code used."
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Simulation code",
+        "description": "Substantial simulation code for controller development and testing.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Simulation code distribution",
+            "description": "Code will be made available for free download on the labs' websites.",
+            "host": {
+              "title": "Labs' websites",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+                "start_date": "2024-03-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "Metadata will include information on simulation procedures and code used."
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2024-03-13T13:13:00Z",
+    "title": "CPS 2015 Data Management Plan"
+  }
+}

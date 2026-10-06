@@ -38,7 +38,9 @@ ap = argparse.ArgumentParser()
 ap.add_argument("runs", nargs="+")
 ap.add_argument("--samples", nargs="*", type=int)
 ap.add_argument("--show", type=int, default=0, help="print up to N invented values per model")
+ap.add_argument("--dir", default=str(RUNS), help="folder that holds the run folders")
 args = ap.parse_args()
+RUNS = Path(args.dir)
 
 
 def norm(s):
