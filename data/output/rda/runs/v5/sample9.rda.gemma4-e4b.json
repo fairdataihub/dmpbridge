@@ -1,0 +1,209 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "other"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Experimental data generated over the course of the research",
+        "description": "Experimental data generated over the course of the research will include synthesis procedures and results from characterization of battery electrode samples. Digital characterization data in tabular form will be produced by electrochemical testing, X-ray diffraction, solid-state NMR spectroscopy, EPR spectroscopy, magnetometry, impedance spectroscopy, X-ray photoelectron and absorption spectroscopy, and Mössbauer spectroscopy measurements. Rietveld refinements of scattering data will generate crystallographic data. Scanning electron microscopy will generate images. Synthetic work and optimization of NMR experimental procedures will be documented in lab notebooks and generate physical data. The Van der Ven group’s CASM software will be extended to enable the simulation of finite temperature NMR spectra of paramagnetic materials. First principles and Monte Carlo simulations will produce text files, density of states plots and two-dimensional charge density maps. Educational and outreach materials, and assessment results, will be digitized.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Digital characterization data",
+            "description": "Digital characterization data in tabular form will be produced by electrochemical testing, X-ray diffraction, solid-state NMR spectroscopy, EPR spectroscopy, magnetometry, impedance spectroscopy, X-ray photoelectron and absorption spectroscopy, and Mössbauer spectroscopy measurements. Rietveld refinements of scattering data will generate crystallographic data. Scanning electron microscopy will generate images. Synthetic work and optimization of NMR experimental procedures will be documented in lab notebooks and generate physical data. The Van der Ven group’s CASM software will be extended to enable the simulation of finite temperature NMR spectra of paramagnetic materials. First principles and Monte Carlo simulations will produce text files, density of states plots and two-dimensional charge density maps. Educational and outreach materials, and assessment results, will be digitized.",
+            "format": [
+              "unknown"
+            ],
+            "host": {
+              "title": "Super Repository",
+              "url": "unknown"
+            },
+            "issued": "2024-01-01",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2024-01-01"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "CASM software additions",
+            "description": "All additions of the CASM software developed during this project will be incorporated into the CASM software and made accessible free of charge and open source under a similar LGPL license.",
+            "format": [
+              "unknown"
+            ],
+            "host": {
+              "title": "Super Repository",
+              "url": "unknown"
+            },
+            "issued": "2024-01-01",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2024-01-01"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Program Toolkit and Activity Plans",
+            "description": "The Program Toolkit and Activity Plans developed for the educational and outreach activities in partnership with Jamboree Housing (JH) will be uploaded to JH’s filesharing system for broad and free dissemination to their different centers and partners in California.",
+            "format": [
+              "unknown"
+            ],
+            "host": {
+              "title": "Super Repository",
+              "url": "unknown"
+            },
+            "issued": "2024-01-01",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2024-01-01"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Supporting information accompanying publications",
+            "description": "The supporting information accompanying publications will include detailed experimental/simulation/synthetic procedures, as well as detailed information on models used for data analysis.",
+            "format": [
+              "unknown"
+            ],
+            "host": {
+              "title": "Super Repository",
+              "url": "unknown"
+            },
+            "issued": "2024-01-01",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2024-01-01"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Publication pre-prints and supplementary information",
+            "description": "All of the journals of interest to the group make supporting information files publicly-available online free of charge. In addition, all publication pre-prints will be made freely available, along with supplementary information, on the UC eScholarship website.",
+            "format": [
+              "unknown"
+            ],
+            "host": {
+              "title": "Super Repository",
+              "url": "unknown"
+            },
+            "issued": "2024-01-01",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2024-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Battery material samples",
+        "description": "Battery material samples will be synthesized in powder form and identified through a consistent and systematic labeling procedure, which will include sample composition, name of researcher and date.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Battery material samples",
+            "description": "Battery material samples will be synthesized in powder form and identified through a consistent and systematic labeling procedure, which will include sample composition, name of researcher and date.",
+            "format": [
+              "unknown"
+            ],
+            "host": {
+              "title": "Super Repository",
+              "url": "unknown"
+            },
+            "issued": "2024-01-01",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2024-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Laboratory notebooks and samples",
+        "description": "Laboratory notebooks and samples will be retained for a minimum of 5 years following the conclusion of the program and will remain the property of UC Santa Barbara and kept on campus after students graduate.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Laboratory notebooks and samples",
+            "description": "Laboratory notebooks and samples will be retained for a minimum of 5 years following the conclusion of the program and will remain the property of UC Santa Barbara and kept on campus after students graduate.",
+            "format": [
+              "unknown"
+            ],
+            "host": {
+              "title": "Super Repository",
+              "url": "unknown"
+            },
+            "issued": "2024-01-01",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2024-01-01"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES",
+    "project": [
+      {
+        "title": "unknown",
+        "description": "unknown",
+        "end": "2024-01-01",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "unknown",
+              "type": "unknown"
+            },
+            "funding_status": "planned"
+          }
+        ]
+      }
+    ],
+    "related_identifier": []
+  }
+}

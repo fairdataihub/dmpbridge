@@ -1,0 +1,44 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": "other"
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "final datasets",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "audio recordings of the treatment sessions",
+        "type": "audio"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": "other"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Resource/Data Sharing Plan",
+    "project": []
+  }
+}

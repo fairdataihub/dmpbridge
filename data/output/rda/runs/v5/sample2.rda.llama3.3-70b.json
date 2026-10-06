@@ -1,0 +1,32 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": "other"
+      },
+      "mbox": "",
+      "name": "Director Samuel Stupp"
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Computational and experimental data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "Data Management Plan for Center for Bio-Inspired Energy Science"
+  }
+}

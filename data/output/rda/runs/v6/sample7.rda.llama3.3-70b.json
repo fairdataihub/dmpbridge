@@ -1,0 +1,91 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-03-13T13:13:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Demographic and clinical assessment data",
+        "description": "The final datasets will include demographic and clinical assessment data obtained from interviews, questionnaires, and behavioral tasks collected from human subjects.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "NIMH Data Archive (NDA) Data Sharing",
+            "description": "The investigators will be fully compliant to the NIMH Data Archive (NDA) Data Sharing Terms and Conditions, including submitting and harmonizing all descriptive/raw data and analyzed data at the item and subject-level to the National Database for Clinical Trials (NDCT) according to the expected timeline.",
+            "host": {
+              "title": "NIMH Data Archive (NDA)",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2024-03-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "The investigators will certify the quality of all data prior to submission and review the data for accuracy after submission."
+          }
+        ],
+        "preservation_statement": "The investigators will associate the submitted data in NDA with the findings/publications (both positive and negative) using NDA-provided features.",
+        "rights": "The exception to the above is the audio recordings of the treatment sessions. Even with the removal of all identifiers, we believe that it would be difficult if not impossible to protect the identities of participants given the voice characteristics of participants will be readily available and the relatively restricted area from which we are recruiting participants."
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Audio recordings of treatment sessions",
+        "description": "The audio recordings of the treatment sessions will not be shared.",
+        "distribution": [],
+        "metadata": [],
+        "preservation_statement": "",
+        "rights": "The audio recordings of the treatment sessions will not be shared because it would be difficult to protect the identities of participants."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2024-03-13T13:13:00Z",
+    "title": "Resource/Data Sharing Plan",
+    "project": [
+      {
+        "title": "",
+        "description": "",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "",
+              "type": ""
+            },
+            "funding_status": "granted"
+          }
+        ]
+      }
+    ]
+  }
+}

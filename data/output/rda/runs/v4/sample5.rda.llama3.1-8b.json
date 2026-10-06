@@ -1,0 +1,60 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "0000-0003-0644-4174",
+        "type": "orcid"
+      },
+      "mbox": "cc@example.com",
+      "name": "Charlie Chaplin"
+    },
+    "created": "2020-03-14T10:53:49Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923628",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Aquifer formation characterization and groundwater components of the water budget",
+        "type": "dataset"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "10.1371/journal.pcbi.1006750",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2020-03-14T10:53:49Z",
+    "title": "DATA MANAGEMENT PLAN",
+    "project": [
+      {
+        "title": "Our New Project",
+        "description": "This project aims to analyze the impact of urbanization on local biodiversity by collecting and assessing environmental data from multiple urban centers.",
+        "end": "2020-03-31",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "501100002428",
+              "type": "fundref"
+            },
+            "funding_status": "granted",
+            "grant_id": {
+              "identifier": "http://example.org/grants/776242",
+              "type": "url"
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://example.com/",
+        "relation_type": "HasMetadata",
+        "type": "url"
+      }
+    ]
+  }
+}

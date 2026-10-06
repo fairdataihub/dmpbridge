@@ -1,0 +1,169 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Battery material samples",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Experimental data generated over the course of the research",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Digital characterization data in tabular form",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Rietveld refinements of scattering data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Scanning electron microscopy images",
+        "type": "image"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Synthetic work and optimization of NMR experimental procedures",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "First principles and Monte Carlo simulations",
+        "type": "text file"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Educational and outreach materials, and assessment results",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Program Toolkit and Activity Plans",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Supporting information accompanying publications",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Publication pre-prints",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "CASM results packet",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES Products of Research",
+    "project": [
+      {
+        "title": "unknown",
+        "description": "The project involves synthesizing and characterizing battery electrode samples using various spectroscopic and simulation techniques. The data generated includes experimental measurements, crystallographic data, microscopy images, and computational results. The project also involves developing and extending software tools (CASM) for advanced simulations and creating educational/outreach materials.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "unknown",
+              "type": "unknown"
+            },
+            "funding_status": "applied",
+            "grant_id": {
+              "identifier": "unknown",
+              "type": "unknown"
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://prisms-center.github.io/CASMcode_docs/",
+        "relation_type": "hasPart",
+        "type": "url"
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "",
+          "type": "other"
+        }
+      ],
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Produced Data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Scripts and code for analyses",
+        "type": "software"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Scientist spotlight biographies, assignments, and open-access readings",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Workshop material",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": "other"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "REVIEW OF PROPOSAL COMPONENTS",
+    "project": [
+      {
+        "title": "REVIEW OF PROPOSAL COMPONENTS",
+        "description": "The proposal is separated into three sections. Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls. Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale. Section 2.3 integrates research and education through the _ Scientist Spotlight _ and _ Hydrologic _ Sciences Workshops.",
+        "start": "2016-01-01"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": "other"
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "RISE study",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "RISE study data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "iWATCH study",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "iWATCH study data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "NHANES cohorts",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "NHANES cohorts data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": "other"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "DATA MANAGEMENT AND SHARING PLAN"
+  }
+}

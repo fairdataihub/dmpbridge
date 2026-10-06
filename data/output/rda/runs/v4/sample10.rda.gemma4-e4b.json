@@ -1,0 +1,73 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "nano-vesicles (NETs) data",
+        "description": "The dataset will contain data related to the effectiveness of proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "data obtained and this study",
+        "description": "Data obtained and this study will be made available to the research community. The data includes results of research on nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "materials uploaded to the eScholarship site",
+        "description": "All materials uploaded to the eScholarship site will be tagged uniformly with metadata about the source and nature of the data. Any electronic file format (e.g. text, spreadsheets, images) can be accepted."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Data Management Plan for nano-vesicles (NETs) research",
+    "project": [
+      {
+        "title": "Study of nano-vesicles (NETs) as photo-theranostic materials",
+        "description": "Under this application, we will determine the effectiveness the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.",
+        "end": "2020-03-31",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "unknown",
+              "type": "unknown"
+            },
+            "funding_status": "granted",
+            "grant_id": {
+              "identifier": "unknown",
+              "type": "url"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

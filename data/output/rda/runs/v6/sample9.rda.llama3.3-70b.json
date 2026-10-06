@@ -1,0 +1,221 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": "",
+      "affiliation": []
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Battery material samples",
+        "description": "Battery material samples will be synthesized in powder form and identified through a consistent and systematic labeling procedure.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Battery material samples",
+            "host": {
+              "title": "Dryad",
+              "url": "https://datadryad.org/"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2020-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Experimental data",
+        "description": "Experimental data generated over the course of the research will include synthesis procedures and results from characterization of battery electrode samples.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Experimental data",
+            "host": {
+              "title": "Dryad",
+              "url": "https://datadryad.org/"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2020-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Digital characterization data",
+        "description": "Digital characterization data in tabular form will be produced by electrochemical testing, X-ray diffraction, solid-state NMR spectroscopy, EPR spectroscopy, magnetometry, impedance spectroscopy, X-ray photoelectron and absorption spectroscopy, and Mössbauer spectroscopy measurements.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Digital characterization data",
+            "host": {
+              "title": "Dryad",
+              "url": "https://datadryad.org/"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2020-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Rietveld refinements of scattering data",
+        "description": "Rietveld refinements of scattering data will generate crystallographic data.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Rietveld refinements of scattering data",
+            "host": {
+              "title": "Dryad",
+              "url": "https://datadryad.org/"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2020-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Scanning electron microscopy images",
+        "description": "Scanning electron microscopy will generate images.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Scanning electron microscopy images",
+            "host": {
+              "title": "Dryad",
+              "url": "https://datadryad.org/"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2020-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "First principles and Monte Carlo simulations",
+        "description": "First principles and Monte Carlo simulations will produce text files, density of states plots and two-dimensional charge density maps.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "First principles and Monte Carlo simulations",
+            "host": {
+              "title": "Dryad",
+              "url": "https://datadryad.org/"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2020-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Educational and outreach materials",
+        "description": "Educational and outreach materials, and assessment results, will be digitized.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Educational and outreach materials",
+            "host": {
+              "title": "JH’s filesharing system",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2020-01-01"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES",
+    "project": [
+      {
+        "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES",
+        "description": "This project aims to analyze the impact of urbanization on local biodiversity by collecting and assessing environmental data from multiple urban centers.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "",
+              "type": ""
+            },
+            "funding_status": "granted"
+          }
+        ]
+      }
+    ]
+  }
+}

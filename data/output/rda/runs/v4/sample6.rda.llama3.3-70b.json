@@ -1,0 +1,69 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown",
+      "affiliation": []
+    },
+    "created": "2023-03-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Fluid state variables",
+        "description": "1, 2, 3, and 4 dimensional arrays of numbers and bytes representing fluid state variables generated via computer simulations of fluid flow",
+        "distribution": [
+          {
+            "data_access": "shared",
+            "title": "Simulation data",
+            "description": "Several terrabytes of simulation data"
+          }
+        ],
+        "preservation_statement": "Local data will be archived on the group's mass storage system. All data generated is archived with the entire code that generated it. Further backups of the data will be provided by CU's NSF-funded research computing."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Images and video files",
+        "description": "Images and video files created from the fluid data using commercial packages such as Matlab and free visualization packages such as VAPOR",
+        "distribution": [
+          {
+            "data_access": "shared",
+            "title": "Images and video files",
+            "description": "Images and video files created from the fluid data"
+          }
+        ],
+        "preservation_statement": "Local data will be archived on the group's mass storage system. All data generated is archived with the entire code that generated it. Further backups of the data will be provided by CU's NSF-funded research computing."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2023-03-01T00:00:00Z",
+    "title": "Data Management Plan",
+    "description": "This Data Management Plan outlines the policies and procedures for managing data generated during the project",
+    "project": [
+      {
+        "title": "Fluid Flow Simulation",
+        "description": "This project aims to simulate fluid flow using computer simulations",
+        "start": "2023-03-01"
+      }
+    ],
+    "related_identifier": []
+  }
+}

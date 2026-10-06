@@ -1,0 +1,125 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "0000-0003-0644-4174",
+          "type": "orcid"
+        }
+      ],
+      "mbox": "cc@example.com",
+      "name": "Charlie Chaplin"
+    },
+    "created": "2023-02-20T14:30:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923628",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Secondary data analysis project",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923629",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "RISE study data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923630",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "iWATCH study data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923631",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "NHANES cohorts data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923632",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "SOL-VIDA Study data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923633",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "MOCA Study data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923634",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "PHASE Study data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923635",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "AusDiab Study data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923636",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "ACT Study data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923637",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "WHISH accelerometer sub-study data",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "10.1371/journal.pcbi.1006750",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2023-02-20T14:30:00Z",
+    "title": "Data Management and Sharing Plan"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "University of California, Riverside",
+        "type": "other"
+      },
+      "mbox": "unknown",
+      "name": "University of California, Riverside",
+      "affiliation": [
+        {
+          "affiliation_id": {
+            "identifier": "University of California, Riverside",
+            "type": "other"
+          },
+          "name": "University of California, Riverside"
+        }
+      ]
+    },
+    "created": "2011-06-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "other"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Research Data",
+        "description": "Data generated in research projects",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "eScholarship series",
+            "description": "A curated site where all BCOE investigators can store and disseminate their data",
+            "host": {
+              "title": "eScholarship series",
+              "url": "http://escholarship.org/uc/bcoe"
+            }
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "other"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2023-03-01T00:00:00Z",
+    "title": "Univ. of California, Riverside Data Management Plan",
+    "project": [
+      {
+        "title": "Research Project",
+        "description": "The proposed project will develop programming, compiler, and runtime support for applications",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "National Science Foundation",
+              "type": "other"
+            },
+            "funding_status": "granted"
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "http://escholarship.org/uc/bcoe",
+        "relation_type": "IsDescribedBy",
+        "type": "url"
+      }
+    ]
+  }
+}

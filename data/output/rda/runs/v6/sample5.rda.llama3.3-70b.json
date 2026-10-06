@@ -1,0 +1,208 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2023-02-20T14:30:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Input data",
+        "description": "Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Input data",
+            "description": "Available data will be systematically reviewed and downloaded.",
+            "host": {
+              "title": "UCSB Box",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2023-02-20"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/26020.html",
+              "type": "url"
+            },
+            "description": "Data elements and attributes will be described following ISO 19115 specifications and metadata schema and standards in Hydrology."
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Produced data",
+        "description": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Produced data",
+            "description": "Datasets will be produced in Sections 2.1-2.3 of the proposal.",
+            "host": {
+              "title": "Dryad",
+              "url": "https://datadryad.org"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2023-02-20"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/26020.html",
+              "type": "url"
+            },
+            "description": "Data elements and attributes will be described following ISO 19115 specifications and metadata schema and standards in Hydrology."
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Scripts and code for analyses",
+        "description": "All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Scripts and code for analyses",
+            "description": "All scripts and code will be archived in supplementary information appendices in publications.",
+            "host": {
+              "title": "Zenodo",
+              "url": "https://zenodo.org"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2023-02-20"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/26020.html",
+              "type": "url"
+            },
+            "description": "Code and scripts produced in R and/or python will be documented for reproducibility purposes."
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Scientist spotlight",
+        "description": "All scientist spotlight biographies, assignments, and open-access readings will be posted to an online Dashboard associated with the PI’s website.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Scientist spotlight",
+            "description": "All scientist spotlight biographies, assignments, and open-access readings will be posted to an online Dashboard.",
+            "host": {
+              "title": "PI's website",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2023-02-20"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/26020.html",
+              "type": "url"
+            },
+            "description": "All scientist spotlight biographies, assignments, and open-access readings will be posted to an online Dashboard."
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Workshop frameworks",
+        "description": "Workshop material will be shared with UCSB’s Diversity Committee through Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Workshop frameworks",
+            "description": "Workshop material will be shared with UCSB’s Diversity Committee through Google Drive.",
+            "host": {
+              "title": "Google Drive",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2023-02-20"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/26020.html",
+              "type": "url"
+            },
+            "description": "Workshop material will be shared with UCSB’s Diversity Committee through Google Drive."
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2023-02-20T14:30:00Z",
+    "title": "DATA MANAGEMENT PLAN"
+  }
+}

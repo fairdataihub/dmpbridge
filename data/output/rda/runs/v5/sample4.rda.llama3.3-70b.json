@@ -1,0 +1,41 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": "other"
+      },
+      "mbox": "",
+      "name": "Professor Steven Brint"
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Longevity analysis data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Comparative analysis data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "DATA MANAGEMENT PLAN"
+  }
+}

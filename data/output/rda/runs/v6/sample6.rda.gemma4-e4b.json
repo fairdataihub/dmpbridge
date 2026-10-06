@@ -1,0 +1,131 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "fluid state variables generated via computer simulations of fluid flow",
+        "description": "The bulk of the data generated in this project will be 1, 2, 3, and 4 dimensional arrays of numbers and bytes representing fluid state variables generated via computer simulations of fluid flow. Images and video files will be created from the fluid data using both commercial packages, such as Matlab and free visualization packages such as VAPOR (developed at NCAR).",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "fluid state variables generated via computer simulations of fluid flow",
+            "description": "The bulk of the data generated in this project will be 1, 2, 3, and 4 dimensional arrays of numbers and bytes representing fluid state variables generated via computer simulations of fluid flow. Images and video files will be created from the fluid data using both commercial packages, such as Matlab and free visualization packages such as VAPOR (developed at NCAR).",
+            "host": {
+              "title": "group’s mass storage system",
+              "url": "unknown"
+            },
+            "license": [
+              {
+                "license_ref": "unknown",
+                "start_date": "2024-01-01"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "code and readme files",
+            "description": "Codes are stored within the same directory on a mass storage system along with the data they generate. “Readme” files will also be provided for explanation of the directory content.",
+            "host": {
+              "title": "group’s mass storage system",
+              "url": "unknown"
+            },
+            "license": [
+              {
+                "license_ref": "unknown",
+                "start_date": "2024-01-01"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "unknown",
+                "type": "url"
+              }
+            ]
+          }
+        ],
+        "preservation_statement": "Local data will be archived on the group’s mass storage system. As mentioned above, all data generated is archived with the entire code that generated it. Additionally, further backups of the data will be provided by CU’s NSF-funded research computing. We imagine the data being of relevance and stored for > 10 years.",
+        "rights": "Simulation data will be made publicly available upon request at the end of the project. Although open-source, we envisage that intellectual rights to the code will be retained by the CU group.",
+        "technical_resource": [
+          {
+            "name": "Matlab",
+            "description": "Commercial package used for creating images and video files from fluid data."
+          },
+          {
+            "name": "VAPOR",
+            "description": "Free visualization package developed at NCAR, used for creating images and video files from fluid data."
+          }
+        ],
+        "type": "unknown"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "code and readme files",
+        "description": "Codes are stored within the same directory on a mass storage system along with the data they generate. “Readme” files will also be provided for explanation of the directory content.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "code and readme files",
+            "description": "Codes are stored within the same directory on a mass storage system along with the data they generate. “Readme” files will also be provided for explanation of the directory content.",
+            "host": {
+              "title": "group’s mass storage system",
+              "url": "unknown"
+            },
+            "license": [
+              {
+                "license_ref": "unknown",
+                "start_date": "2024-01-01"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "unknown",
+                "type": "url"
+              }
+            ]
+          }
+        ],
+        "preservation_statement": "Local data will be archived on the group’s mass storage system. As mentioned above, all data generated is archived with the entire code that generated it. Additionally, further backups of the data will be provided by CU’s NSF-funded research computing. We imagine the data being of relevance and stored for > 10 years.",
+        "rights": "Simulation data will be made publicly available upon request at the end of the project. Although open-source, we envisage that intellectual rights to the code will be retained by the CU group.",
+        "technical_resource": [],
+        "type": "unknown"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Data Management Plan: "
+  }
+}

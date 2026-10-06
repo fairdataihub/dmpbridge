@@ -1,0 +1,55 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "unknown",
+          "type": "unknown"
+        }
+      ],
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Datasets produced in Sections 2.1-2.3 of the proposal",
+        "description": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections)."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Raw data",
+        "description": "Detailed information about how the data were obtained, including detailed contact information or websites for direct download and citations to all datasets will be provided to allow for accessibility and correct attribution to original collectors."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Scripts and code for analyses",
+        "description": "All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "REVIEW OF PROPOSAL COMPONENTS"
+  }
+}

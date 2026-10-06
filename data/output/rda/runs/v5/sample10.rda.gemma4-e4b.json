@@ -1,0 +1,78 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "other"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "nano-vesicles (NETs) data",
+        "description": "We will make the proposed nano-vesicles (NETs) available to interested investigators who would like to use them in their scientific research. The dataset will be used to determine the effectiveness of the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "unknown",
+              "type": "url"
+            }
+          }
+        ],
+        "technical_resource": [
+          {
+            "name": "unknown"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "research data",
+        "description": "The dataset includes data obtained and the study results. The data is subject to policies and restrictions in protocols adopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act (FERPA) regulations. Confidential material will be handled according to policies and protocols at UCR, Family Educational Rights and Privacy Act (FERPA), and any other applicable regulations and restrictions.",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "unknown",
+              "type": "url"
+            }
+          }
+        ],
+        "technical_resource": [
+          {
+            "name": "unknown"
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Data Management Plan for nano-vesicles (NETs) research",
+    "project": [
+      {
+        "title": "Determining the effectiveness of nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.",
+        "description": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific community as necessary to validate research findings” be made available at little or no cost to the PI or project. The study will determine the effectiveness of the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.",
+        "start": "2024-01-01"
+      }
+    ]
+  }
+}

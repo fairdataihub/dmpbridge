@@ -1,0 +1,107 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": "Professor Steven Brint",
+      "affiliation": [
+        {
+          "affiliation_id": {
+            "identifier": "",
+            "type": ""
+          },
+          "name": "University of California, Riverside"
+        }
+      ]
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Longevity analysis data",
+        "description": "Data on the length of time clusters have operated, including the length of time between first hires and closures for those that have disbanded.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Longevity analysis data",
+            "host": {
+              "title": "Project website",
+              "url": ""
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Comparative analysis data",
+        "description": "Data on performance and attitudes from cluster participants, including publications, citations, research grants, patents, licenses, and start-ups founded by members of interdisciplinary cluster hires.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Comparative analysis data",
+            "host": {
+              "title": "Project website",
+              "url": ""
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Interview data",
+        "description": "Interview data from cluster leads and university administrators.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Interview data",
+            "host": {
+              "title": "Project website",
+              "url": ""
+            }
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "DATA MANAGEMENT PLAN",
+    "project": [
+      {
+        "title": "Interdisciplinary Cluster Hiring Project",
+        "description": "This project aims to analyze the impact of interdisciplinary cluster hiring on research productivity and collaboration.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "",
+              "type": ""
+            },
+            "funding_status": "granted"
+          }
+        ]
+      }
+    ]
+  }
+}

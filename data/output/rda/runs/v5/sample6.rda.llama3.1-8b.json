@@ -1,0 +1,47 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "0000-0003-0644-4174",
+        "type": "orcid"
+      },
+      "mbox": "john.doe@example.com",
+      "name": "John Doe"
+    },
+    "created": "2023-02-20T14:30:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923628",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Fluid State Variables",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "10.1371/journal.pcbi.1006750",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2023-02-20T14:30:00Z",
+    "title": "Data Management Plan",
+    "project": [
+      {
+        "title": "Fluid Flow Simulation",
+        "description": "This project aims to simulate fluid flow using computer simulations.",
+        "start": "2023-02-01"
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://example.com/",
+        "relation_type": "HasMetadata",
+        "type": "url"
+      }
+    ]
+  }
+}

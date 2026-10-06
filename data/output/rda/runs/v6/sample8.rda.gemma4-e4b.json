@@ -1,0 +1,60 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "primary data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "code",
+        "type": "software"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "applications",
+        "type": "software"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Univ. of California, Riverside Data Management Plan",
+    "project": [
+      {
+        "title": "unknown",
+        "description": "This Data Management Plan addresses the NSF policy that primary data “commonly accepted in the scientific community as necessary to validate research findings” be made available at little or no cost to the PI or project. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after its acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF guidelines. The release of data about students or any other human subjects is subject to policies and restrictions in protocols adopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act (FERPA) regulations. The proposed project will develop programming, compiler, and runtime support for applications, as described in this proposal. The implementations will be made available to other researchers. All code will be preserved and maintained for a minimum of three years beyond the award period as required by NSF guidelines. In addition, sample adaptive versions of applications that will be developed in this work will also be made available.",
+        "start": "2024-01-01"
+      }
+    ]
+  }
+}

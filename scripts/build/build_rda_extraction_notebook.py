@@ -79,7 +79,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = "v4"
+RUN_NAME = "v7"
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
@@ -156,11 +156,17 @@ import requests
 
 SYSTEM = """You convert a Data Management Plan into one RDA maDMP JSON object that strictly follows the given schema.
 
-Use only the schema's field names, in the places and in the order the schema lists them, with only its allowed values. The whole document is one top-level "dmp" object.
+Use only the schema's field names, in the places the schema puts them, with only its allowed values. The whole document is one top-level "dmp" object.
 
-Go through the schema's fields in order and, at each one, check the plan before skipping it. Capture everything the plan states: every dataset it describes (each one once, with its own title, description and how it is shared), every person it names with a role (as a contributor, which comes right after the contact), the project and its funding, dates (YYYY-MM-DD), identifiers and licenses.
+Capture everything the plan states, in the plan's own words:
+- title: the plan's title or first heading, exactly as written.
+- dataset: one entry for each kind of data, code, software or other output the plan says it will produce, keep or share, whether it has its own heading or is only described in a sentence. Use the plan's own short phrase for it as the title and the plan's sentences about it as the description.
+- For each dataset: where it will be stored or shared (a repository, archive, server or website) is the host of a distribution, with its URL if the plan gives one; a license the plan names goes in that distribution's license, written as the plan writes it; how the data will be documented goes in the metadata description. A statement that clearly covers all of the data applies to every dataset; a statement about one kind of output applies only to that one.
+- People the plan names with a role are contributors. The project's aims and its funder go in the project.
 
-Every value must come from the plan's text. Never invent a value, never copy the schema's examples, and never copy one item's values into another. Leave out any field the plan says nothing about, and leave out a whole sub-object (a distribution, license, host, metadata or funding entry) when the plan does not give the values it requires. For yes/no fields write "unknown" when the plan does not say.
+Template guidance is not part of the plan: ignore text that only explains what a plan should contain, such as a funder's questions or instructions.
+
+Never invent a value. When the schema requires a field the plan does not give - a name, email, identifier, URL or a distribution's title - write an empty string, not a word such as "unknown", "N/A" or "not specified". The schema's examples are not data and must never appear in the output: not "Charlie Chaplin", "cc@example.com", "0000-0003-0644-4174", "10.1371/journal.pcbi.1006750", "11353/10.923628", "501100002428" or any example description. Never copy one item's identifier, title or description into another.
 
 Output only the JSON. No explanation, no markdown."""
 

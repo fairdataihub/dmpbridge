@@ -1,0 +1,115 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": "",
+      "affiliation": []
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Software and applications",
+        "description": "The software will be made available in source code form and so will the applications developed.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Software and applications",
+            "host": {
+              "title": "eScholarship series",
+              "url": "http://escholarship.org/uc/bcoe"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2020-01-01"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "Any electronic file format (e.g., text, spreadsheets, images) can be accepted."
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Research data",
+        "description": "Data that must be withheld long enough to enable peer review and publication/dissemination or protection of intellectual property is subject to this plan only after those steps have taken place.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Research data",
+            "host": {
+              "title": "eScholarship series",
+              "url": "http://escholarship.org/uc/bcoe"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2020-01-01"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "Any electronic file format (e.g., text, spreadsheets, images) can be accepted."
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "Univ. of California, Riverside Data Management Plan",
+    "project": [
+      {
+        "title": "Proposed project",
+        "description": "The proposed project will develop programming, compiler, and runtime support for applications.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "National Science Foundation",
+              "type": "other"
+            },
+            "funding_status": "granted",
+            "grant_id": {
+              "identifier": "",
+              "type": "other"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
