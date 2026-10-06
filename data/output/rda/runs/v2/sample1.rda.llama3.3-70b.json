@@ -1,0 +1,94 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": "",
+      "affiliation": []
+    },
+    "created": "2023-03-13T13:13:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "RISE study",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "RISE study",
+        "description": "De-identified data from the RISE study",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "RISE study data",
+            "description": "De-identified data from the RISE study",
+            "host": {
+              "title": "University of California San Diego Library repository",
+              "url": ""
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "iWATCH study",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "iWATCH study",
+        "description": "De-identified data from the iWATCH study",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "iWATCH study data",
+            "description": "De-identified data from the iWATCH study",
+            "host": {
+              "title": "University of California San Diego Library repository",
+              "url": ""
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "NHANES cohorts",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "NHANES cohorts",
+        "description": "De-identified data from the NHANES cohorts",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "NHANES cohorts data",
+            "description": "De-identified data from the NHANES cohorts",
+            "host": {
+              "title": "University of California San Diego Library repository",
+              "url": ""
+            }
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2023-03-13T13:13:00Z",
+    "title": "DATA MANAGEMENT AND SHARING PLAN",
+    "project": [
+      {
+        "title": "Deep Postures",
+        "description": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts",
+        "start": "2023-04-01"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "University of California, Riverside",
+        "type": "other"
+      },
+      "mbox": "",
+      "name": "University of California, Riverside"
+    },
+    "created": "2011-06-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "http://escholarship.org/uc/bcoe",
+          "type": "url"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "BCOE Research Data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://example.org/dmp",
+      "type": "url"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2023-03-01T00:00:00Z",
+    "title": "Univ. of California, Riverside Data Management Plan"
+  }
+}

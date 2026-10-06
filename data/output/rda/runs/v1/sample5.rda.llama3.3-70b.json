@@ -1,0 +1,66 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown",
+      "affiliation": [
+        {
+          "affiliation_id": {
+            "identifier": "unknown",
+            "type": "unknown"
+          },
+          "name": "unknown"
+        }
+      ]
+    },
+    "created": "2023-02-20T14:30:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "https://datadryad.org",
+          "type": "url"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Groundwater data",
+        "description": "Data collected for the groundwater project",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Groundwater data distribution",
+            "access_url": "https://datadryad.org",
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/publicdomain/zero/1.0/",
+                "start_date": "2023-02-20"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://www.iso.org/standard/26020.html",
+              "type": "url"
+            },
+            "description": "Metadata for the groundwater data"
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2023-02-20T14:30:00Z",
+    "title": "Data Management Plan for Groundwater Project",
+    "description": "This is a data management plan for the groundwater project"
+  }
+}

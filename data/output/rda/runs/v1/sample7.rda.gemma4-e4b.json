@@ -1,0 +1,33 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "N/A",
+        "type": "url"
+      },
+      "mbox": "N/A",
+      "name": "N/A"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "N/A",
+          "type": "handle"
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "final datasets",
+        "description": "The final datasets will include demographic and clinical assessment data obtained from interviews, questionnaires, and behavioral tasks collected from human subjects. All submitted data will include an NDA Global Unique Identifier (GUID) and will not include personally identifiable information (PII). The exception to the above is the audio recordings of the treatment sessions. Even with the removal of all identifiers, we believe that it would be difficult if not impossible to protect the identities of participants given the voice characteristics of participants will be readily available and the relatively restricted area from which we are recruiting participants. Therefore, we are not planning to share this part of the data."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "N/A",
+      "type": "url"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Resource/Data Sharing Plan"
+  }
+}

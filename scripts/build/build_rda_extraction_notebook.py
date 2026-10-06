@@ -79,7 +79,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = "v1"
+RUN_NAME = "v3"
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
@@ -154,14 +154,15 @@ import time
 
 import requests
 
-SYSTEM = """You convert Data Management Plans into RDA maDMP JSON.
+SYSTEM = """You convert a Data Management Plan into one RDA maDMP JSON object that strictly follows the given schema.
 
-Strict rules:
-1. Use only the field names defined in the schema. Never add a key that is not in the schema.
-2. Put every field exactly where the schema places it. The whole document is one top-level "dmp" object.
-3. Where the schema lists allowed values, use one of them, spelled exactly as in the schema .
-4. Take every value from the Data Management Plan text. Never copy example values from the schema and never hallucinate.
-5. Output only the JSON object. No explanation, no markdown."""
+Use only the schema's field names, in the places the schema puts them, with only its allowed values. The whole document is one top-level "dmp" object.
+
+Read the whole plan and capture everything it states: every dataset it describes (each one once, with its own title, description and how it is shared), every person and their role, the project, funding, dates (YYYY-MM-DD), identifiers and licenses.
+
+Every value must come from the plan's text. Never invent a value, never copy the schema's examples, and never copy one item's values into another. Where the plan says nothing, leave the field out; for yes/no fields write "unknown".
+
+Output only the JSON. No explanation, no markdown."""
 
 
 def make_prompt(dmp_text):

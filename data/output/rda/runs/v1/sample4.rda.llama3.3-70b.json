@@ -1,0 +1,73 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "Steven Brint",
+        "type": "name"
+      },
+      "mbox": "",
+      "name": "Steven Brint",
+      "affiliation": [
+        {
+          "affiliation_id": {
+            "identifier": "University of California, Riverside",
+            "type": "name"
+          },
+          "name": "University of California, Riverside"
+        }
+      ]
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Longevity analysis data",
+        "description": "Data on the length of time clusters have operated",
+        "distribution": [
+          {
+            "data_access": "closed",
+            "title": "Longevity analysis data",
+            "host": {
+              "title": "Project office",
+              "url": ""
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Comparative analysis data",
+        "description": "Data on performance and attitudes from cluster participants",
+        "distribution": [
+          {
+            "data_access": "closed",
+            "title": "Comparative analysis data",
+            "host": {
+              "title": "Project office",
+              "url": ""
+            }
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "DATA MANAGEMENT PLAN",
+    "description": "This DMP is for our new project"
+  }
+}

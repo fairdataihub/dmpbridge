@@ -1,0 +1,62 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "0000-0003-0644-4174",
+        "type": "orcid"
+      },
+      "mbox": "cc@example.com",
+      "name": "Charlie Chaplin"
+    },
+    "created": "2019-03-13T13:13:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923628",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Dataset 1",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "11354/10.923629",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Dataset 2",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "10.1371/journal.pcbi.1006750",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2020-03-14T10:53:49Z",
+    "title": "UCR Data Management Plan",
+    "project": [
+      {
+        "title": "Project 1",
+        "description": "This project aims to analyze the impact of urbanization on local biodiversity by collecting and assessing environmental data from multiple urban centers.",
+        "start": "2019-04-01"
+      },
+      {
+        "title": "Project 2",
+        "description": "This project aims to develop programming, compiler, and runtime support for applications.",
+        "start": "2019-04-01"
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://example.com/",
+        "relation_type": "HasMetadata",
+        "type": "url"
+      }
+    ]
+  }
+}

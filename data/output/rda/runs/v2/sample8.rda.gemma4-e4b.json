@@ -1,0 +1,64 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Data generated in the research",
+        "description": "The data generated in the research will be made readily and reliably accessible through a new, custom data management system established by the Bourns College of Engineering (BCOE) at the University of California, Riverside, in partnership with the UCR Libraries and the California Digital Library. The system combines an eScholarship series and EZID permanent identifiers for long-term identification and management of data resources. Data will be available for access and sharing as soon as is reasonably possible, and no later than two years after its acquisition. The data will be preserved for at least three years beyond the award period, as required by NSF guidelines. The release of data about students or any other human subjects is subject to policies and restrictions in protocols adopted by the relevant Institutional Research Board (IRB) and the Family Educational Rights and Privacy Act (FERPA) regulations. All code will be preserved and maintained for a minimum of three years beyond the award period as required by NSF guidelines. The software and applications developed will be made available in source code form. All materials uploaded to the eScholarship site from UCR will be tagged uniformly with metadata about the source and nature of the data. Any electronic file format (e.g., text, spreadsheets, images) can be accepted. Stored materials are downloadable but not editable, and they are backed up to assure no loss of data. All uploads are approved by a curator before they are published.",
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "unknown",
+                "type": "url"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Univ. of California, Riverside Data Management Plan",
+    "project": [
+      {
+        "title": "Project related to the research",
+        "description": "The project aims to develop programming, compiler, and runtime support for applications, as described in the proposal. The implementations will be made available to other researchers. The project will develop programming, compiler, and runtime support for applications, and sample adaptive versions of applications will also be made available. The data will be preserved for at least three years beyond the award period, as required by NSF guidelines.",
+        "end": "2024-12-31",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "unknown",
+              "type": "fundref"
+            },
+            "funding_status": "planned",
+            "grant_id": {
+              "identifier": "unknown",
+              "type": "url"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

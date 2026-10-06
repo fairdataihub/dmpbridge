@@ -1,0 +1,41 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "NIMH",
+        "type": "organization"
+      },
+      "mbox": "nimh@example.com",
+      "name": "NIMH Investigators"
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "NDA",
+          "type": "repository"
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Demographic and Clinical Assessment Data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "NDCT",
+          "type": "repository"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Analyzed Data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://example.org/dmp",
+      "type": "url"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "Resource/Data Sharing Plan"
+  }
+}

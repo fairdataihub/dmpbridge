@@ -1,0 +1,81 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "Steven Brint",
+        "type": "name"
+      },
+      "mbox": "",
+      "name": "Professor Steven Brint",
+      "affiliation": [
+        {
+          "affiliation_id": {
+            "identifier": "University of California, Riverside",
+            "type": "name"
+          },
+          "name": "University of California, Riverside"
+        }
+      ]
+    },
+    "created": "2020-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "Longevity Analysis Data",
+          "type": "name"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Longevity Analysis Data",
+        "description": "Data on the length of time clusters have operated, including the length of time between first hires and closures for those that have disbanded.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Longevity Analysis Data",
+            "description": "Data on the length of time clusters have operated, including the length of time between first hires and closures for those that have disbanded.",
+            "host": {
+              "title": "Project Website",
+              "url": "https://example.com/project"
+            }
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "Comparative Analysis Data",
+          "type": "name"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Comparative Analysis Data",
+        "description": "Data on performance and attitudes from cluster participants, including publications, citations, research grants, patents, licenses, and start-ups founded by members of interdisciplinary cluster hires.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Comparative Analysis Data",
+            "description": "Data on performance and attitudes from cluster participants, including publications, citations, research grants, patents, licenses, and start-ups founded by members of interdisciplinary cluster hires.",
+            "host": {
+              "title": "Project Website",
+              "url": "https://example.com/project"
+            }
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://example.com/dmp",
+      "type": "url"
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2020-01-01T00:00:00Z",
+    "title": "Data Management Plan for Cluster Hiring Project",
+    "project": [
+      {
+        "title": "Cluster Hiring Project",
+        "description": "This project aims to analyze the impact of cluster hiring on interdisciplinary research and collaboration.",
+        "start": "2020-01-01"
+      }
+    ]
+  }
+}

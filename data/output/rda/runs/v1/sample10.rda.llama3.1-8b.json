@@ -1,0 +1,32 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "0000-0003-0644-4174",
+        "type": "orcid"
+      },
+      "mbox": "cc@example.com",
+      "name": "Charlie Chaplin"
+    },
+    "created": "2019-03-13T13:13:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "11353/10.923628",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "The dataset includes detailed measurements of temperature, humidity, and soil moisture levels collected at various time intervals (every 30 minutes) across multiple locations. The dataset will also include metadata such as GPS coordinates, sensor calibration data, and environmental conditions. The primary objective of this dataset is to analyze the correlation between these variables and their impact on plant growth patterns over a 6-month period."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "10.1371/journal.pcbi.1006750",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2020-03-14T10:53:49Z",
+    "title": "DMP for our new project"
+  }
+}

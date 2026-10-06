@@ -1,0 +1,90 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown@example.com",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Datasets produced in Sections 2.1-2.3 of the proposal",
+        "description": "The dataset includes detailed measurements of temperature, humidity, and soil moisture levels collected at various time intervals (every 30 minutes) across multiple locations. The dataset will also include metadata such as GPS coordinates, sensor calibration data, and environmental conditions. The primary objective of this dataset is to analyze the correlation between these variables and their impact on plant growth patterns over a 6-month period.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Full resolution images",
+            "description": "Datasets will be formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections).",
+            "format": [
+              "text/csv"
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Code and scripts for analyses",
+        "description": "Code and scripts produced in R and/or python will be documented for reproducibility purposes. The metadata for the codes will include: (1) description of the functions required to operate the analyses; (2) description of input parameters and outputs; and (3) test case, files and plots documenting the expected response of the model (Section 2.1) to a standard set of input parameters.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Code and scripts for analyses",
+            "description": "All scripts and code will be archived in supplementary information appendices in publications as well as uploaded to Zenodo through the Dryad repository submission process along with the sharable raw and processed data in order to allow citations and a better connection to the research data curation and publication processes.",
+            "format": [
+              "text/csv"
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Sharable instructional materials",
+        "description": "These outputs include: (a) source code to quality control, collate, and merge datasets, (b) open source models and budgets in R and/or python, and (c) sharable instructional materials ( _ Scientist Spotlight _ activities and workshop materials).",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Sharable instructional materials",
+            "description": "All scientist spotlight biographies, assignments, and open-access readings will be posted to an online Dashboard associated with the PI’s website, which is updated bi-monthly. Workshop material will be shared with UCSB’s Diversity Committee through Google Drive; if workshop materials are fully supported by the Diversity Committee, these materials will also be shared through eSholarship for broader dissemination.",
+            "format": [
+              "application/pdf"
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "handle"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Data Management Plan for Proposal Review",
+    "project": [
+      {
+        "title": "Review of Proposal Components",
+        "description": "The proposal is separated into three sections. Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls. Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale. Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops.",
+        "start": "2016-01-01"
+      }
+    ]
+  }
+}
