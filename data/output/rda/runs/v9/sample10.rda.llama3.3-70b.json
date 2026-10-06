@@ -1,0 +1,92 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2020-03-13T13:13:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Proposed nano-vesicles (NETs)",
+        "description": "The proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "eScholarship series",
+            "host": {
+              "title": "eScholarship series",
+              "url": "http://escholarship.org/uc/search?entity=bcoe"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2020-03-13"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "nanotechnology information library (NIL)",
+            "host": {
+              "title": "nanotechnology information library (NIL)",
+              "url": "http://nanoparticlelibrary.net/index.asp"
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2020-03-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "Any electronic file format (e.g., text, spreadsheets, images) can be accepted."
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2020-03-14T10:53:49Z",
+    "title": "DATA MANAGEMENT",
+    "project": [
+      {
+        "title": "Our New Project",
+        "description": "This project aims to analyze the effectiveness the proposed nano-vesicles (NETs) as photo-theranostic materials for fluorescence imaging and photothermal therapies.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "National Science Foundation",
+              "type": "fundref"
+            },
+            "funding_status": "granted",
+            "grant_id": {
+              "identifier": "",
+              "type": "url"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

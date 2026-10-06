@@ -1,0 +1,115 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2011-06-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Research Data",
+        "description": "Data generated in research",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "eScholarship series",
+            "host": {
+              "title": "eScholarship series",
+              "url": "http://escholarship.org/uc/bcoe"
+            },
+            "license": [
+              {
+                "license_ref": "https://www.nsf.gov/policies/index.jsp",
+                "start_date": "2011-06-01"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "Metadata about the source and nature of the data"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Software and Code",
+        "description": "Software and code developed in the project",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "eScholarship series",
+            "host": {
+              "title": "eScholarship series",
+              "url": "http://escholarship.org/uc/bcoe"
+            },
+            "license": [
+              {
+                "license_ref": "https://www.nsf.gov/policies/index.jsp",
+                "start_date": "2011-06-01"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "Metadata about the source and nature of the software and code"
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2011-06-01T00:00:00Z",
+    "title": "Univ. of California, Riverside Data Management Plan",
+    "description": "This Data Management Plan addresses the NSF policy that primary data be made available at little or no cost to the PI or project",
+    "project": [
+      {
+        "title": "Proposed Project",
+        "description": "The proposed project will develop programming, compiler, and runtime support for applications",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "National Science Foundation",
+              "type": "fundref"
+            },
+            "funding_status": "granted",
+            "grant_id": {
+              "identifier": "",
+              "type": "url"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
