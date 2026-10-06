@@ -64,13 +64,13 @@ if Path.cwd().name == "notebooks":
 from dmpbridge.extractors import get_extractor
 from dmpbridge.models.ollama import OllamaModel
 
-SAMPLES  = [3]
+SAMPLES  = [3, 10]
 PDF_DIR  = Path("data/input/pdfs")
 SCHEMA   = Path("data/output/rda/maDMP-schema-1.2.json")
 HOST     = "http://localhost:11434"
 NUM_CTX  = 32768
-OPTIONS  = {"repeat_last_n": 512}   # the repeat penalty looks back 512 tokens, not Ollama's default 64:
-                                    # with 64, llama3.1:8b repeated one dataset block until the token cap
+OPTIONS  = {"repeat_last_n": 1024}  # the repeat penalty looks back 1024 tokens, not Ollama's default 64:
+                                    # with 64 or 512, llama3.1:8b repeated one dataset block until the token cap
 MODEL_1  = "llama3.1:8b"
 MODEL_2  = "gemma4:e4b"
 MODEL_3  = "llama3.3:70b"
@@ -79,7 +79,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = "v2-sample3"
+RUN_NAME = "v6"
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
@@ -154,17 +154,21 @@ import time
 
 import requests
 
-SYSTEM = """You convert Data Management Plans into RDA maDMP JSON.
+SYSTEM = """You convert a Data Management Plan into one RDA maDMP JSON object that strictly follows the given schema.
 
-Strict rules:
-1. Use only the field names defined in the schema. Never add a key that is not in the schema.
-2. Put every field exactly where the schema places it. The whole document is one top-level "dmp" object.
-3. Where the schema lists allowed values, use one of them, spelled exactly as in the schema .
-4. Take every value from the Data Management Plan text. Never copy example values from the schema.
-5. Output only the JSON object. No explanation, no markdown.
-6. Every heading of the form Dataset - "<name>" is a separate dataset. Use <name> as its title and the text under that heading as its description, and add its distribution and metadata where the text gives them.
-7. Every person the text names with a role, such as Principal Investigator or Data Manager, is a contributor with that role.
-8. Put the project's title, abstract, start and end dates, and funder into "project"."""
+Use only the schema's field names, in the places the schema puts them, with only its allowed values. The whole document is one top-level "dmp" object.
+
+Capture everything the plan states, in the plan's own words:
+- title: the plan's title or first heading, exactly as written.
+- dataset: one entry for each kind of data, code, software or other output the plan says it will produce, keep or share, whether it has its own heading or is only described in a sentence. Use the plan's own short phrase for it as the title and the plan's sentences about it as the description.
+- For each dataset: where it will be stored or shared (a repository, archive, server or website) is the host of a distribution, with its URL if the plan gives one; a license the plan names goes in that distribution's license; how the data will be documented goes in the metadata description. A statement that covers all of the data applies to every dataset.
+- People the plan names with a role are contributors. The project's aims and its funder go in the project.
+
+Template guidance is not part of the plan: ignore text that only explains what a plan should contain, such as a funder's questions or instructions.
+
+Never invent a value. When the schema requires a field the plan does not give, write an empty string, and for yes/no fields write "unknown". Never use the schema's example values or placeholders such as "N/A" or "not specified", and never copy one item's identifier, title or description into another.
+
+Output only the JSON. No explanation, no markdown."""
 
 
 def make_prompt(dmp_text):
