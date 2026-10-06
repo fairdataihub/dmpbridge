@@ -1,0 +1,59 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Longevity analysis data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Comparative analysis data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "Interview data",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "DATA MANAGEMENT PLAN",
+    "project": [
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  }
+}

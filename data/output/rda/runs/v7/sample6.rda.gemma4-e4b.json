@@ -1,0 +1,67 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "fluid state variables, images and video files",
+        "description": "The bulk of the data generated in this project will be 1, 2, 3, and 4 dimensional arrays of numbers and bytes representing fluid state variables generated via computer simulations of fluid flow. Images and video files will be created from the fluid data using both commercial packages, such as Matlab and free visualization packages such as VAPOR (developed at NCAR).",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Data will be made publicly available upon request at the end of the project.",
+            "description": "Data will be made publicly available upon request at the end of the project."
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "codes",
+        "description": "Codes are stored within the same directory on a mass storage system along with the data they generate. “Readme” files will also be provided for explanation of the directory content.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Codes are stored within the same directory on a mass storage system along with the data they generate.",
+            "description": "Codes are stored within the same directory on a mass storage system along with the data they generate. “Readme” files will also be provided for explanation of the directory content."
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Data Management Plan",
+    "project": [
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  }
+}
