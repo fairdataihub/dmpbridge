@@ -1,0 +1,49 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "no",
+        "sensitive_data": "unknown",
+        "title": "final datasets",
+        "description": "The final datasets will include demographic and clinical assessment data obtained from interviews, questionnaires, and behavioral tasks collected from human subjects. All submitted data will include an NDA Global Unique Identifier (GUID) and will not include personally identifiable information (PII). The exception to the above is the audio recordings of the treatment sessions. Even with the removal of all identifiers, we believe that it would be difficult if not impossible to protect the identities of participants given the voice characteristics of participants will be readily available and the relatively restricted area from which we are recruiting participants. Therefore, we are not planning to share this part of the data."
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "audio recordings of the treatment sessions",
+        "description": "The exception to the above is the audio recordings of the treatment sessions. Even with the removal of all identifiers, we believe that it would be difficult if not impossible to protect the identities of participants given the voice characteristics of participants will be readily available and the relatively restricted area from which we are recruiting participants. Therefore, we are not planning to share this part of the data."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Resource/Data Sharing Plan",
+    "project": [
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  }
+}

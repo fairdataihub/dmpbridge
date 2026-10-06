@@ -1,0 +1,116 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2020-03-13T13:13:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Software",
+        "description": "The software will be made available in source code form and so will the applications developed. This will allow other researchers to so not only use it but also modify it for their use.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Software Distribution",
+            "description": "The software will be made available in source code form and so will the applications developed.",
+            "host": {
+              "title": "eScholarship series",
+              "url": "http://escholarship.org/uc/bcoe"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2020-03-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "Any electronic file format (e.g., text, spreadsheets, images) can be accepted."
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Applications",
+        "description": "Sample adaptive versions of applications that will be developed in this work will also be made available.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Applications Distribution",
+            "description": "Sample adaptive versions of applications that will be developed in this work will also be made available.",
+            "host": {
+              "title": "eScholarship series",
+              "url": "http://escholarship.org/uc/bcoe"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2020-03-13"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "description": "Any electronic file format (e.g., text, spreadsheets, images) can be accepted."
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2020-03-14T10:53:49Z",
+    "title": "Univ. of California, Riverside Data Management Plan",
+    "project": [
+      {
+        "title": "Our New Project",
+        "description": "This project aims to develop programming, compiler, and runtime support for applications.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "National Science Foundation",
+              "type": "other"
+            },
+            "funding_status": "granted",
+            "grant_id": {
+              "identifier": "",
+              "type": ""
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
