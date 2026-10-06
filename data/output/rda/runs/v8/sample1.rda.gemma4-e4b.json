@@ -1,0 +1,63 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": "url"
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "handle"
+        },
+        "personal_data": "yes",
+        "sensitive_data": "no",
+        "title": "Scientific data that will be preserved and shared, and the rationale for doing so:"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "handle"
+        },
+        "personal_data": "yes",
+        "sensitive_data": "no",
+        "title": "Code and models will be included in the repository and in on our project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep Postures”."
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "handle"
+        },
+        "personal_data": "yes",
+        "sensitive_data": "no",
+        "title": "Objective sedentary behavior metrics – _ no existing standards _"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": "handle"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "DATA MANAGEMENT AND SHARING PLAN",
+    "project": [
+      {
+        "title": "",
+        "description": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts (wrist NHANES 2011-2014; hip/counts-NHANES 2003-2006). The studies include (i) the RISE Study, (ii) the SOL-VIDA Study, (iii) the iWATCH Study, (iv) the MOCA Study, (v) the PHASE Study, (vi) the AusDiab Study, (vii) the ACT Study, and (viii) the WHISH accelerometer sub-study. The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It will be deposited into the UC San Diego Library Data repository along with study protocols, code, and models for public use. De-identified data will be available after the main outcome papers are published."
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://example.com/",
+        "relation_type": "HasMetadata",
+        "type": "url"
+      }
+    ]
+  }
+}

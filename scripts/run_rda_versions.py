@@ -11,7 +11,8 @@ The script starts its own Ollama server (with the flags this machine needs) and 
 it at the end, so a long series does not depend on a server started elsewhere.
 
     python scripts/run_rda_versions.py v1=v1-sample14 v2=v2-sample14 --samples 1-10 --restore v7
-      (v1=v1-sample14: run name v1, prompt taken from runs/v1-sample14/prompt.txt)
+      (v1=v1-sample14: run name v1, prompt taken from runs/v1-sample14/prompt.txt;
+       a name with no saved prompt.txt, e.g. a new v8, runs the prompt currently in the builder)
 """
 import argparse
 import os
@@ -51,9 +52,11 @@ def system_of(folder):
 
 
 def set_extraction(run_name, system, sample_list):
+    """system=None keeps the prompt that is in the builder now (a new version with no saved prompt yet)."""
     t = EXTRACT.read_text(encoding="utf-8")
-    start = t.index('SYSTEM = """') + len('SYSTEM = """')
-    t = t[:start] + system + t[t.index('"""', start):]
+    if system is not None:
+        start = t.index('SYSTEM = """') + len('SYSTEM = """')
+        t = t[:start] + system + t[t.index('"""', start):]
     t = re.sub(r'^SAMPLES  = \[.*\]$', f"SAMPLES  = {sample_list}", t, count=1, flags=re.M)
     t = re.sub(r'^RUN_NAME = .*$', f'RUN_NAME = "{run_name}"', t, count=1, flags=re.M)
     EXTRACT.write_text(t, encoding="utf-8")
@@ -96,8 +99,9 @@ try:
         run_name, _, folder = spec.partition("=")
         folder = folder or run_name
         t0 = time.time()
-        log(f"{run_name}: prompt from runs/{folder}/prompt.txt")
-        set_extraction(run_name, system_of(folder), samples)
+        saved = (RUNS / folder / "prompt.txt").exists()
+        log(f"{run_name}: prompt from " + (f"runs/{folder}/prompt.txt" if saved else "the builder (new version)"))
+        set_extraction(run_name, system_of(folder) if saved else None, samples)
         ok = execute("notebooks/pdf-to-rda-dmp-json.ipynb")
         got = sorted(f.name for f in (RUNS / run_name).glob("sample*.rda.*.json")) if (RUNS / run_name).exists() else []
         failed = sorted(f.name for f in (RUNS / run_name).glob("sample*.rda.*.raw.txt")) if (RUNS / run_name).exists() else []
@@ -108,7 +112,8 @@ try:
             execute("notebooks/rda-evaluation-overview.ipynb")
             log(f"{run_name}: overview figures saved")
 finally:
-    set_extraction(args.restore, system_of(args.restore), samples)
+    restore_saved = (RUNS / args.restore / "prompt.txt").exists()
+    set_extraction(args.restore, system_of(args.restore) if restore_saved else None, samples)
     set_overview(args.restore)
     execute("notebooks/rda-evaluation-overview.ipynb")
     log(f"builders set back to {args.restore}")

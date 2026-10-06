@@ -1,0 +1,120 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "unknown"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Battery material samples",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Experimental data generated over the course of the research",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Digital characterization data in tabular form",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Crystallographic data for previously-unreported compounds/structures",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "First principles and Monte Carlo simulations",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Educational and outreach materials, and assessment results",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "CASM additions",
+        "type": "software"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES Products of Research",
+    "project": [
+      {
+        "title": "unknown",
+        "description": "This project involves synthesizing and characterizing battery material samples using high-resolution NMR and various spectroscopic techniques. The project also involves developing and extending computational methods (CASM software) for simulating NMR spectra and generating various types of data, including crystallographic data and simulation results. Educational and outreach materials are also produced.",
+        "end": "2025-12-31",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "unknown",
+              "type": "unknown"
+            },
+            "funding_status": "planned",
+            "grant_id": {
+              "identifier": "unknown",
+              "type": "unknown"
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://prisms-center.github.io/CASMcode_docs/",
+        "relation_type": "HasMetadata",
+        "type": "url"
+      }
+    ]
+  }
+}

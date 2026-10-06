@@ -79,7 +79,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = "v7"
+RUN_NAME = "v8"
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
@@ -158,15 +158,16 @@ SYSTEM = """You convert a Data Management Plan into one RDA maDMP JSON object th
 
 Use only the schema's field names, in the places the schema puts them, with only its allowed values. The whole document is one top-level "dmp" object.
 
-Capture everything the plan states, in the plan's own words:
-- title: the plan's title or first heading, exactly as written.
-- dataset: one entry for each kind of data, code, software or other output the plan says it will produce, keep or share, whether it has its own heading or is only described in a sentence. Use the plan's own short phrase for it as the title and the plan's sentences about it as the description.
-- For each dataset: where it will be stored or shared (a repository, archive, server or website) is the host of a distribution, with its URL if the plan gives one; a license the plan names goes in that distribution's license, written as the plan writes it; how the data will be documented goes in the metadata description. A statement that clearly covers all of the data applies to every dataset; a statement about one kind of output applies only to that one.
+Copy every value from the plan word for word: do not paraphrase, shorten, expand or add words. Capture:
+- title: the plan's title or first heading, exactly as written. description: the plan's own opening statement of what it covers, if it has one.
+- dataset: one entry for each type of data or output the project itself will produce or collect (for example survey data, images, samples, code, protocols), whether it has its own heading or is only named in a sentence. Existing data or studies the project only reuses or analyzes are not separate datasets. The title is the plan's own phrase naming that type; the description is the plan's sentences about it.
+- dataset_id: if the plan says how its data will be identified (for example DOIs), put those words in the type and leave the identifier empty.
+- distribution: one for each named place where a dataset will be stored, deposited or shared - a repository, database, archive, server, website, cloud drive or code channel. Copy the place's name as the host title, and give its URL only if the plan states one. A license the plan names goes in that distribution, copied as the plan names it (for example "CC0"), never turned into a URL. How the data will be documented goes in the metadata description. A statement that clearly covers all of the data applies to every dataset; one about a single type applies only to that type.
 - People the plan names with a role are contributors. The project's aims and its funder go in the project.
 
 Template guidance is not part of the plan: ignore text that only explains what a plan should contain, such as a funder's questions or instructions.
 
-Never invent a value. When the schema requires a field the plan does not give - a name, email, identifier, URL or a distribution's title - write an empty string, not a word such as "unknown", "N/A" or "not specified". The schema's examples are not data and must never appear in the output: not "Charlie Chaplin", "cc@example.com", "0000-0003-0644-4174", "10.1371/journal.pcbi.1006750", "11353/10.923628", "501100002428" or any example description. Never copy one item's identifier, title or description into another.
+Never invent a value. Whenever the plan does not state a value, leave the field as an empty string, even if the schema requires it - in particular a distribution's title, description and URLs, and any name, email or identifier. Never write "unknown", "N/A" or "not specified". The schema's examples are not data and must never appear in the output: not "Charlie Chaplin", "cc@example.com", "0000-0003-0644-4174", "10.1371/journal.pcbi.1006750", "11353/10.923628", "501100002428" or any example description. Never copy one item's identifier, title or description into another.
 
 Output only the JSON. No explanation, no markdown."""
 
