@@ -1,0 +1,147 @@
+{
+    "dmp": {
+        "contact": {
+            "contact_id": [
+                {"identifier": "0000-0001-9317-0364", "type": "orcid"}
+            ],
+            "mbox": "brett.johnson@hakai.org",
+            "name": "Brett Johnson"
+        },
+        "created": "2015-05-12T00:00:00Z",
+        "dataset": [
+            {
+                "dataset_id": {
+                    "identifier": "https://doi.org/10.48321/D1CW23",
+                    "type": "handle"
+                },
+                "personal_data": "no",
+                "sensitive_data": "unknown",
+                "title": "Hakai Institute Juvenile Salmon Program Time Series",
+                "description": "Data produced by the Hakai Institute Juvenile Salmon program.",
+                "metadata": [
+                    {
+                    "language": "eng",
+                    "metadata_standard_id": {
+                    "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+                    "type": "url"
+                    }
+                    }
+                ]
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Fatty acids from juvenile salmon",
+                "description": "This dataset will include fatty acid data derived from juvenile salmon tissue samples."
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Otolith Microchemistry from juvenile sockeye",
+                "description": "Microchemistry data as obtained from otolith analysis."
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Sealice microbiome viral and bacterial data",
+                "description": "The responsible parties for this dataset are Tianyi Chang and Curtis Suttle."
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+                "description": "This dataset will contain isotope data obtained from juvenile salmon caught during the JSP."
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+                "description": "This dataset will contain isotope data obtained from the zooplankton caught as part of the Juvenile Salmon Program (JSP)."
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "eDNA from JSP seines",
+                "description": "Environmental DNA (eDNA) is collected as part of the Juvenile Salmon Program field operations, starting in 2020."
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+                "description": "An integration of Sam James, Vanessa Fladmark, and Natalie Mahara's zooplankton taxonomy from horizontal surface tows in the Discovery Islands and Johnstone Strait."
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+                "description": "Dataset from fish tissue samples sent to Kristi Millers lab."
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Genetic stock identification of sockeye",
+                "description": "Fin clips and liver samples are sent to the Pacific Biological Station for stock identification."
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+                "description": "Scales are collected for every salmon and herring and archived."
+            }
+        ],
+        "dmp_id": {
+            "identifier": "https://doi.org/10.48321/D1CW23",
+            "type": "handle"
+        },
+        "ethical_issues_exist": "no",
+        "language": "eng",
+        "modified": "2024-06-11T00:00:00Z",
+        "title": "Hakai Institute Juvenile Salmon Program Time Series Data Management Plan",
+        "project": [
+            {
+                "title": "Hakai Institute Juvenile Salmon program",
+                "start": "2015-05-12"
+            }
+        ]
+    }
+}
