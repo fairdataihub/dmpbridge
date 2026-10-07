@@ -65,9 +65,9 @@ if Path.cwd().name == "notebooks":
     import os
     os.chdir(Path.cwd().parent)
 
-RUN    = "v9-narrative"                           # a folder under data/output/rda/runs/
-SAMPLE = 6
-PROMPT = "v9"                                    # shown in the figure titles
+RUN    = "v4b-sample14"                           # a folder under data/output/rda/runs/
+SAMPLE = 14
+PROMPT = "v4b"                                    # shown in the figure titles
 FOLDER = Path("data/output/rda/runs") / RUN
 RESULT = FOLDER / "evaluation_results.xlsx"
 # A folder that holds one sample keeps plain figure names; a folder with several samples
@@ -76,7 +76,7 @@ SUFFIX = "" if RUN.endswith(f"-sample{SAMPLE}") else f"_sample{SAMPLE}"
 MODELS = ["llama3.1-8b", "gemma4-e4b", "llama3.3-70b"]
 NAME   = {"llama3.1-8b": "Llama 3.1 8B", "gemma4-e4b": "Gemma 4 e4b", "llama3.3-70b": "Llama 3.3 70B"}
 OUTCOMES = ["Correct", "Mismatch", "Missed"]
-COLOUR = {"Correct": "#2a78d6", "Mismatch": "#e34948", "Missed": "#898781"}
+COLOUR = {"Correct": "#238b45", "Mismatch": "#e34948", "Missed": "#898781"}
 
 INK, MUTED, SURFACE = "#0b0b0b", "#52514e", "#fcfcfb"
 plt.rcParams.update({"figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "text.color": INK})
@@ -152,7 +152,7 @@ md("s2", '''
 ## 2. The matrix: correct, mismatch and missed
 
 Rows: the annotated fields, grouped into parts of the form, with how many were annotated in
-brackets. Columns: for each model, how many of them were correct (blue), a mismatch (red) or
+brackets. Columns: for each model, how many of them were correct (green), a mismatch (red) or
 missed (grey), and that share of the row. The darker a cell, the larger its share.
 Saved as `matrix_three_labels.png`.
 '''),
