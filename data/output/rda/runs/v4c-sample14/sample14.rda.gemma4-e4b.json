@@ -1,0 +1,186 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "other"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2015-05-12T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "www.github.com/hakaiinstitute/jsp-data",
+          "type": "url"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Hakai JSP Time Series",
+        "description": "The core of the Hakai JSP are the observations made at sea during seining operations, and the observations and measurements made in the lab during fish dissections. Many samples are produced from fish that are collected in the lab, and those data may be addressed in their own Data Management Plans. Data from the field and lab dissections are lumped into the Hakai JSP Time Series at www.github.com/hakaiinstitute/jsp-data and includes: Catch abundance by species; Fork lengths and weights; Sea lice counts; Visual transect surface activity counts; Survey metadata; CTD data; YSI Data; Genetic Stock ID results; Laboratory samples' unique identifiers are also stored in the GitHub jsp-data repository, while their physical location is tracked in eLab software. This includes: Muscle tissue for fatty acid analysis, isotope ratios, RNA:DNA ratios; Fin clips for genetic stock ID; Liver, kidney, heart, brain, gill tissues for histology and pathogen analysis; Otoliths for ageing and microchemistry analysis; Zooplankton samples."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Fatty acids from juvenile salmon",
+        "description": "This dataset will include fatty acid data derived from juvenile salmon tissue samples."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Otolith Microchemistry from juvenile sockeye",
+        "description": "Microchemistry data as obtained from otolith analysis. Otoliths were obtained from juvenile salmon as part of the Juvenile Salmon Program (JSP)."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Sealice microbiome viral and bacterial data",
+        "description": "The responsible parties for this dataset are Tianyi Chang and Curtis Suttle."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+        "description": "This dataset will contain isotope data obtained from juvenile salmon caught during the JSP."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+        "description": "This dataset will contain isotope data obtained from the zooplankton caught as part of the Juvenile Salmon Program (JSP)."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "eDNA from JSP seines",
+        "description": "Environmental DNA (eDNA) is collected as part of the Juvenile Salmon Program field operations, starting in 2020."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+        "description": "An integration of Sam James, Vanessa Fladmark, and Natalie Mahara's zooplankton taxonomy from horizontal surface tows in the Discovery Islands and Johnstone Strait."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+        "description": "Dataset from fish tissue samples sent to Kristi Millers lab. Currently 2015 sockeye, pink and chum dataset is published as part of the Hakai JSP data package."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Genetic stock identification of sockeye",
+        "description": "Fin clips and liver samples are sent to the Pacific Biological Station for stock identification. Currently, we have results from 2015–2019."
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "unknown"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+        "description": "Scales are collected for every salmon and herring and archived. No analysis has been completed at this stage nor is any planned."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://doi.org/10.48321/D1CW23",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-11-06T00:00:00Z",
+    "title": "Hakai Institute Juvenile Salmon Program Time Series",
+    "contributor": [
+      {
+        "contributor_id": {
+          "identifier": "++ 0000-0001-9317-0364 ++",
+          "type": "orcid"
+        },
+        "name": "Brett Johnson",
+        "role": [
+          "Researcher",
+          "DataManager"
+        ]
+      },
+      {
+        "contributor_id": {
+          "identifier": "unknown",
+          "type": "other"
+        },
+        "name": "Brian Hunt",
+        "role": [
+          "Researcher",
+          "Principal Investigator"
+        ]
+      },
+      {
+        "contributor_id": {
+          "identifier": "unknown",
+          "type": "other"
+        },
+        "name": "Tim van der Stap",
+        "role": [
+          "DataManager"
+        ]
+      },
+      {
+        "contributor_id": {
+          "identifier": "unknown",
+          "type": "other"
+        },
+        "name": "Krystal Bachen",
+        "role": [
+          "DataManager"
+        ]
+      }
+    ],
+    "project": [
+      {
+        "title": "The Hakai Institute Juvenile Salmon program is an ongoing initiative that was established in 2015 in partnership with the University of British Columbia, University of Toronto, Simon Fraser University and Salmon Coast Field Station. This program researches the early life history of juvenile salmon in coastal British Columbia. Primary research objectives are determining: 1) Migration timing rates and routes; 2) Migration habitat, including physical and chemical oceanographic conditions, and availability of plankton prey; 3) The impacts of prey phenology, quantity and quality on juvenile salmon growth and condition; 4) Species and stock-specific feeding biology and competitive interactions; 5) Pathogen and parasite infection dynamics; and 6) Mortality estimates. The program targets Fraser River sockeye, and pink and chum salmon, but additionally provides information on coho, chinook, and herring through incidental capture. The field program operates between May and July during the peak of the juvenile sockeye outward migration. Purse seine and oceanographic sampling are conducted in the northern Strait of Georgia / Discovery Islands region (~ 220 km from the Fraser River mouth."
+      },
+      {
+        "title": "unknown",
+        "start": "2015-05-12"
+      }
+    ]
+  }
+}

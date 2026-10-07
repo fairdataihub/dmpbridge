@@ -1,0 +1,39 @@
+{
+  "run": "v4c-sample14",
+  "date": "2026-10-07T13:04",
+  "samples": [
+    14
+  ],
+  "models": [
+    "llama3.1:8b",
+    "gemma4:e4b",
+    "llama3.3:70b"
+  ],
+  "schema": "maDMP-schema-1.2.json",
+  "num_ctx": 32768,
+  "options": {
+    "repeat_last_n": 1024
+  },
+  "timings": {
+    "gemma4:e4b sample14": {
+      "seconds": 17,
+      "model_load_seconds": 9,
+      "tokens_sent": 13086,
+      "tokens_generated": 1616
+    },
+    "llama3.3:70b sample14": {
+      "seconds": 382,
+      "model_load_seconds": 26,
+      "tokens_sent": 12753,
+      "tokens_generated": 3085
+    },
+    "llama3.1:8b sample14": {
+      "seconds": 25,
+      "model_load_seconds": 0,
+      "tokens_sent": 12753,
+      "tokens_generated": 1967,
+      "note": "run by scripts/run_llama31_repeat_penalty.py on 2026-10-07 13:05: same prompt, but repeat_last_n=1024 and repeat_penalty=1.1 instead of the notebook's settings, because with those the model looped until the token cap (see the .raw.*.txt files); the setting kept is the valid answer with the most datasets"
+    }
+  },
+  "skipped": []
+}

@@ -1,0 +1,161 @@
+{
+    "dmp": {
+        "contact": {
+            "contact_id": [
+                {
+                    "identifier": "0000-0001-9317-0364",
+                    "type": "orcid"
+                }
+            ],
+            "mbox": "brett.johnson@hakai.org",
+            "name": "Brett Johnson"
+        },
+        "created": "2015-05-12T00:00:00Z",
+        "dataset": [
+            {
+                "dataset_id": {
+                    "identifier": "https://doi.org/10.48321/D1CW23",
+                    "type": "handle"
+                },
+                "personal_data": "no",
+                "sensitive_data": "unknown",
+                "title": "Hakai Institute Juvenile Salmon Program Time Series",
+                "description": "The core of the Hakai JSP are the observations made at sea during seining operations, and the observations and measurements made in the lab during fish dissections.",
+                "metadata": [
+                    {
+                    "language": "eng",
+                    "metadata_standard_id": {
+                    "identifier": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+                    "type": "url"
+                    }
+                    }
+                ]
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Fatty acids from juvenile salmon",
+                "description": "",
+                "metadata": []
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Otolith Microchemistry from juvenile sockeye",
+                "description": "",
+                "metadata": []
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Sealice microbiome viral and bacterial data",
+                "description": "",
+                "metadata": []
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+                "description": "",
+                "metadata": []
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+                "description": "",
+                "metadata": []
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "eDNA from JSP seines",
+                "description": "",
+                "metadata": []
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+                "description": "",
+                "metadata": []
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+                "description": "",
+                "metadata": []
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Genetic stock identification of sockeye",
+                "description": "",
+                "metadata": []
+            },
+            {
+                "dataset_id": {
+                    "identifier": "https://github.com/hakaiinstitute/jsp-data",
+                    "type": "url"
+                },
+                "personal_data": "yes",
+                "sensitive_data": "unknown",
+                "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+                "description": "",
+                "metadata": []
+            }
+        ],
+        "dmp_id": {
+            "identifier": "https://doi.org/10.48321/D1CW23",
+            "type": "handle"
+        },
+        "ethical_issues_exist": "no",
+        "language": "eng",
+        "modified": "2024-06-11T00:00:00Z",
+        "title": "Hakai Institute Juvenile Salmon Program Data Management Plan",
+        "project": [
+            {
+                "title": "Hakai Institute Juvenile Salmon program",
+                "start": "2015-05-12"
+            }
+        ],
+        "related_identifier": []
+    }
+}
