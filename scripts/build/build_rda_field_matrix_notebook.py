@@ -82,6 +82,36 @@ pd.set_option("display.max_rows", 300)
 pd.set_option("display.width", 220)
 '''),
 
+md("labels", '''
+## What the labels mean
+
+Every field of the form falls into one of five cases, depending on whether the person
+annotated it and whether the model wrote a value there:
+
+| Label | You annotated | The model wrote | Meaning | In the figures below? |
+|---|---|---|---|---|
+| **Correct** | a value | the same value | the model got it right | yes |
+| **Mismatch** | a value | a different value | it found the spot but wrote something else | yes |
+| **Missed** | a value | nothing, or an empty value | it did not capture the information | yes |
+| **Both empty** | nothing | nothing | the two agree that there is nothing to fill in | no |
+| **Extra** | nothing | a value | the model added something the person did not annotate - possibly a hallucination | no, a next step |
+
+When are two values the same? A free-text value counts when at least three-quarters of the
+model's words appear in the annotation; identifiers (DOI, email, URL) must be the same thing,
+ignoring `https://` and capitals; dates must be the same day.
+
+**Why the figures show only the first three.** They answer one question: what happened to the
+fields the person annotated. For every model each annotated field gets exactly one of the three
+labels, so they add up to the number of annotated fields.
+
+**Both empty** is not counted as correct here. The scoring in the evaluation notebook does count
+it as correct, which rewards a model for leaving fields empty: on sample 14 with prompt v4,
+50 of gemma's 59 "correct" were Both empty.
+
+**Extra** is what the evaluation notebook counts as hallucinated when the reference is empty. It
+is not tied to an annotated field, so it needs its own view; that is the next step.
+'''),
+
 md("s1", '''
 ## 1. One outcome per annotated field and model
 '''),
