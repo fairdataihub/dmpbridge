@@ -206,10 +206,8 @@ for s in dict.fromkeys(r[0] for r in rows):
     idx = [i for i, r in enumerate(rows) if r[0] == s]
     ax.text(-0.31, (idx[0] + idx[-1]) / 2, s.upper(), transform=ax.get_yaxis_transform(), ha="right",
             va="center", fontsize=10, fontweight="bold", color=MUTED)
-    if idx[0] > 0:                                             # section line inside each model's block only
-        for x0, x1 in blocks:
-            ax.plot([x0 + 0.04, x1 - 0.04], [idx[0] - 0.5] * 2, color=MUTED, linewidth=1.6, zorder=4,
-                    solid_capstyle="butt")
+    if idx[0] > 0:                                             # a wider white gap between sections
+        ax.axhline(idx[0] - 0.5, color=SURFACE, linewidth=9, zorder=4)
 
 ax.set_xticks([j for j, c in enumerate(cols) if c])
 ax.set_xticklabels([c[1] for c in cols if c], fontsize=11.5)
