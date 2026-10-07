@@ -197,12 +197,19 @@ for i, r in enumerate(rows):
 ax.set_yticks(range(len(rows)))
 ax.set_yticklabels([f"{r[1]}  ({n_row[r]})" for r in rows], fontsize=12.5)
 ax.tick_params(length=0)
+blocks = [(cols.index((m, OUTCOMES[0])) - 0.5, cols.index((m, OUTCOMES[-1])) + 0.5) for m in models]
+for i in range(len(rows) + 1):                                 # the same white gap between every pair of rows
+    ax.axhline(i - 0.5, color=SURFACE, linewidth=3, zorder=3)
+for j in range(len(cols) + 1):                                 # and between every pair of columns
+    ax.axvline(j - 0.5, color=SURFACE, linewidth=3, zorder=3)
 for s in dict.fromkeys(r[0] for r in rows):
     idx = [i for i, r in enumerate(rows) if r[0] == s]
     ax.text(-0.31, (idx[0] + idx[-1]) / 2, s.upper(), transform=ax.get_yaxis_transform(), ha="right",
             va="center", fontsize=10, fontweight="bold", color=MUTED)
-    if idx[0] > 0:
-        ax.axhline(idx[0] - 0.5, color=MUTED, linewidth=1.2)
+    if idx[0] > 0:                                             # section line inside each model's block only
+        for x0, x1 in blocks:
+            ax.plot([x0 + 0.04, x1 - 0.04], [idx[0] - 0.5] * 2, color=MUTED, linewidth=1.6, zorder=4,
+                    solid_capstyle="butt")
 
 ax.set_xticks([j for j, c in enumerate(cols) if c])
 ax.set_xticklabels([c[1] for c in cols if c], fontsize=11.5)
@@ -213,10 +220,6 @@ for m in models:
     ax.text(first + 1, -1.35, NAME.get(m, m), ha="center", va="bottom", fontsize=15, fontweight="bold")
     ax.text(first + 1, -1.05, f"{t['Correct']} correct · {t['Wrong']} wrong · {t['Missed']} missed",
             ha="center", va="bottom", fontsize=10.5, color=MUTED)
-for j in range(len(cols)):
-    ax.axvline(j - 0.5, color=SURFACE, linewidth=2.5)
-for i in range(len(rows) + 1):
-    ax.axhline(i - 0.5, color=SURFACE, linewidth=1.5, zorder=0.5)
 for spine in ax.spines.values():
     spine.set_visible(False)
 ax.set_title(f"What each model did with the {n_fields} annotated fields - sample {SAMPLE}, prompt {PROMPT}",
