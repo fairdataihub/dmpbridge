@@ -1,7 +1,7 @@
 {
   "dmp": {
     "title": "CPS 2015",
-    "description": null,
+    "description": "We will manage all scientific and technical content generated from this proposal. Our products will include 3 broad types of data.",
     "dmp_id": {
       "identifier": null,
       "type": null
@@ -100,6 +100,28 @@
                 }
               ]
             }
+          },
+          {
+            "title": null,
+            "byte_size": null,
+            "issued": null,
+            "data_access": null,
+            "license": [
+              {
+                "license_ref": null,
+                "start_date": null
+              }
+            ],
+            "host": {
+              "title": "project's website",
+              "url": null,
+              "host_id": [
+                {
+                  "identifier": null,
+                  "type": null
+                }
+              ]
+            }
           }
         ]
       },
@@ -124,6 +146,16 @@
                 "type": null
               }
             ]
+          },
+          {
+            "description": "The code needed to generate all published results will be documented clearly.",
+            "language": null,
+            "metadata_standard_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
           }
         ],
         "distribution": [
@@ -139,7 +171,7 @@
               }
             ],
             "host": {
-              "title": "servers at the Rehabilitation Institute of Chicago",
+              "title": "project's website",
               "url": null,
               "host_id": [
                 {
@@ -188,6 +220,54 @@
             ],
             "host": {
               "title": "labs' websites",
+              "url": null,
+              "host_id": [
+                {
+                  "identifier": null,
+                  "type": null
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "videos of the experiments",
+        "type": null,
+        "description": "Select videos of the experiments will be distributed, with subject faces blurred so as to be unidentifiable.",
+        "dataset_id": {
+          "identifier": null,
+          "type": null
+        },
+        "personal_data": null,
+        "sensitive_data": null,
+        "issued": null,
+        "metadata": [
+          {
+            "description": null,
+            "language": null,
+            "metadata_standard_id": [
+              {
+                "identifier": null,
+                "type": null
+              }
+            ]
+          }
+        ],
+        "distribution": [
+          {
+            "title": null,
+            "byte_size": null,
+            "issued": null,
+            "data_access": null,
+            "license": [
+              {
+                "license_ref": null,
+                "start_date": null
+              }
+            ],
+            "host": {
+              "title": null,
               "url": null,
               "host_id": [
                 {
