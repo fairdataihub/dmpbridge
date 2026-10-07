@@ -1,9 +1,9 @@
 """Build notebooks/rda-field-matrix.ipynb.
 
 For one saved RDA maDMP run and one sample: every field the person annotated, marked
-Correct, Wrong or Missed for each model, drawn two ways for slides:
+Correct, Mismatch or Missed for each model, drawn two ways for slides:
 
-  matrix_three_labels.png    rows = kinds of field, columns = Correct / Wrong / Missed per
+  matrix_three_labels.png    rows = kinds of field, columns = Correct / Mismatch / Missed per
                              model, each cell the count and its share of the row
   slide_option1_heatmap.png  rows = models, columns = parts of the form, each cell the share
                              of annotated fields extracted correctly
@@ -35,16 +35,16 @@ def code(cid, body):
 cells = [
 
 md("title", '''
-# Annotated fields: correct, wrong or missed
+# Annotated fields: correct, mismatch or missed
 
 For one run and one sample, every field the person annotated is checked against what each
 model wrote at the same place:
 
-| Outcome | Meaning |
-|---|---|
-| **Correct** | the model's value matches the annotation |
-| **Wrong** | the model wrote a different value there |
-| **Missed** | the model wrote nothing there, or left it empty |
+| Label | You annotated | The model wrote | Meaning |
+|---|---|---|---|
+| **Correct** | a value | the same value | the model got it right |
+| **Mismatch** | a value | a different value | it found the spot but wrote something else |
+| **Missed** | a value | nothing, or an empty value | it did not capture the information |
 
 Fields the person left empty are not shown. Two figures follow, both sized for slides and
 saved in the run's folder, then a table of every annotated field.
@@ -72,8 +72,8 @@ FOLDER = Path("data/output/rda/runs") / RUN
 RESULT = FOLDER / "evaluation_results.xlsx"
 MODELS = ["llama3.1-8b", "gemma4-e4b", "llama3.3-70b"]
 NAME   = {"llama3.1-8b": "Llama 3.1 8B", "gemma4-e4b": "Gemma 4 e4b", "llama3.3-70b": "Llama 3.3 70B"}
-OUTCOMES = ["Correct", "Wrong", "Missed"]
-COLOUR = {"Correct": "#2a78d6", "Wrong": "#e34948", "Missed": "#898781"}
+OUTCOMES = ["Correct", "Mismatch", "Missed"]
+COLOUR = {"Correct": "#2a78d6", "Mismatch": "#e34948", "Missed": "#898781"}
 
 INK, MUTED, SURFACE = "#0b0b0b", "#52514e", "#fcfcfb"
 plt.rcParams.update({"figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "text.color": INK})
@@ -98,7 +98,7 @@ def outcome(rows):
     if (rows.verdict == "Correct").any():
         return "Correct"
     wrote = rows[(rows.verdict == "Hallucinated") & (rows.reason != "empty where the reference has a value")]
-    return "Wrong" if len(wrote) else "Missed"
+    return "Mismatch" if len(wrote) else "Missed"
 
 
 annotated = details[details["reference value"].notna()]
@@ -116,10 +116,10 @@ display(fields.pivot_table(index="model", columns="outcome", values="field", agg
 '''),
 
 md("s2", '''
-## 2. The matrix: correct, wrong and missed
+## 2. The matrix: correct, mismatch and missed
 
 Rows: the annotated fields, grouped into parts of the form, with how many were annotated in
-brackets. Columns: for each model, how many of them it got correct (blue), wrong (red) or
+brackets. Columns: for each model, how many of them were correct (blue), a mismatch (red) or
 missed (grey), and that share of the row. The darker a cell, the larger its share.
 Saved as `matrix_three_labels.png`.
 '''),
@@ -216,7 +216,7 @@ for m in models:
     first = cols.index((m, OUTCOMES[0]))
     t = counts.xs(m, level="model").sum()
     ax.text(first + 1, -1.35, NAME.get(m, m), ha="center", va="bottom", fontsize=15, fontweight="bold")
-    ax.text(first + 1, -1.05, f"{t['Correct']} correct · {t['Wrong']} wrong · {t['Missed']} missed",
+    ax.text(first + 1, -1.05, f"{t['Correct']} correct · {t['Mismatch']} mismatch · {t['Missed']} missed",
             ha="center", va="bottom", fontsize=10.5, color=MUTED)
 for spine in ax.spines.values():
     spine.set_visible(False)
@@ -302,14 +302,14 @@ md("s4", '''
 ## 4. Every annotated field
 
 One row per field the person annotated: the annotated value, each model's outcome, and,
-when it was wrong, what the model wrote instead.
+for a mismatch, what the model wrote instead.
 '''),
 
 code("table", r'''
 wide = fields.pivot(index="field", columns="model", values="outcome").reindex(columns=models)
 wide.insert(0, "annotated value", values.reindex(wide.index).astype(str).str.slice(0, 60))
 for m in models:
-    wide[f"{m} wrote"] = [str(wrote.get((f, m), ""))[:45] if wide.loc[f, m] == "Wrong" else ""
+    wide[f"{m} wrote"] = [str(wrote.get((f, m), ""))[:45] if wide.loc[f, m] == "Mismatch" else ""
                           for f in wide.index]
 natural = lambda f: [int(x) if x.isdigit() else x for x in re.split(r"(\d+)", f)]
 display(wide.loc[sorted(wide.index, key=natural)].reset_index())
