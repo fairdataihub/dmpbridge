@@ -65,11 +65,14 @@ if Path.cwd().name == "notebooks":
     import os
     os.chdir(Path.cwd().parent)
 
-RUN    = "v4-sample14"                           # a folder under data/output/rda/runs/
-SAMPLE = 14
-PROMPT = "v4"                                    # shown in the figure titles
+RUN    = "v9"                           # a folder under data/output/rda/runs/
+SAMPLE = 6
+PROMPT = "v9"                                    # shown in the figure titles
 FOLDER = Path("data/output/rda/runs") / RUN
 RESULT = FOLDER / "evaluation_results.xlsx"
+# A folder that holds one sample keeps plain figure names; a folder with several samples
+# (e.g. v9, samples 1-10) gets the sample number in the names so they do not overwrite each other.
+SUFFIX = "" if RUN.endswith(f"-sample{SAMPLE}") else f"_sample{SAMPLE}"
 MODELS = ["llama3.1-8b", "gemma4-e4b", "llama3.3-70b"]
 NAME   = {"llama3.1-8b": "Llama 3.1 8B", "gemma4-e4b": "Gemma 4 e4b", "llama3.3-70b": "Llama 3.3 70B"}
 OUTCOMES = ["Correct", "Mismatch", "Missed"]
@@ -245,14 +248,17 @@ ax.xaxis.tick_top()
 for m in models:
     first = cols.index((m, OUTCOMES[0]))
     t = counts.xs(m, level="model").sum()
-    ax.text(first + 1, -1.35, NAME.get(m, m), ha="center", va="bottom", fontsize=15, fontweight="bold")
-    ax.text(first + 1, -1.05, f"{t['Correct']} correct · {t['Mismatch']} mismatch · {t['Missed']} missed",
-            ha="center", va="bottom", fontsize=10.5, color=MUTED)
+    # placed a fixed distance above the grid (in points), so the layout holds for any number of rows
+    ax.annotate(NAME.get(m, m), xy=(first + 1, 1), xycoords=("data", "axes fraction"), xytext=(0, 38),
+                textcoords="offset points", ha="center", va="bottom", fontsize=15, fontweight="bold")
+    ax.annotate(f"{t['Correct']} correct · {t['Mismatch']} mismatch · {t['Missed']} missed",
+                xy=(first + 1, 1), xycoords=("data", "axes fraction"), xytext=(0, 22),
+                textcoords="offset points", ha="center", va="bottom", fontsize=10.5, color=MUTED)
 for spine in ax.spines.values():
     spine.set_visible(False)
 ax.set_title(f"What each model did with the {n_fields} annotated fields - sample {SAMPLE}, prompt {PROMPT}",
-             loc="left", fontsize=15, fontweight="bold", pad=62)
-out = FOLDER / "matrix_three_labels.png"
+             loc="left", fontsize=15, fontweight="bold", pad=78)
+out = FOLDER / f"matrix_three_labels{SUFFIX}.png"
 fig.savefig(out, dpi=200, bbox_inches="tight", facecolor=SURFACE)
 plt.show()
 print(f"saved -> {out}")
@@ -322,7 +328,7 @@ for s in ax.spines.values():
     s.set_visible(False)
 ax.set_title(f"How much of the {n_fields} annotated fields each model got correct - sample {SAMPLE}, prompt {PROMPT}",
              pad=70, loc="left", fontsize=15, fontweight="bold")
-out = FOLDER / "slide_option1_heatmap.png"
+out = FOLDER / f"slide_option1_heatmap{SUFFIX}.png"
 fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=SURFACE)
 plt.show()
 print(f"saved -> {out}")
