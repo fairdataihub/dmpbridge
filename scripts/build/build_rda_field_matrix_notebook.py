@@ -146,11 +146,12 @@ def group(path):
 
 GROUPS = ["Plan information", "Contact", "Dataset title", "Dataset description", "Dataset properties",
           "Storage, access & licence", "Metadata", "Contributors", "Project & funding"]
-HEADER = {"Plan information": "Plan\ninformation", "Contact": "Contact\n", "Dataset title": "Dataset\ntitle",
+# Every header is two lines of name, so all names sit on the same lines and every count below them
+HEADER = {"Plan information": "Plan\ninformation", "Contact": "\nContact", "Dataset title": "Dataset\ntitle",
           "Dataset description": "Dataset\ndescription", "Dataset properties": "Dataset\nproperties",
-          "Storage, access & licence": "Storage, access\n& licence", "Metadata": "Metadata\n",
-          "Contributors": "Contributors\n", "Project & funding": "Project &\nfunding", "All": "All\nfields"}
-NAME = {"llama3.1-8b": "Llama 3.1 8B", "gemma4-e4b": "Gemma 4 E4B", "llama3.3-70b": "Llama 3.3 70B"}
+          "Storage, access & licence": "Storage, access\n& licence", "Metadata": "\nMetadata",
+          "Contributors": "\nContributors", "Project & funding": "Project &\nfunding", "All": "All\nfields"}
+NAME = {"llama3.1-8b": "Llama 3.1 8B", "gemma4-e4b": "Gemma 4 e4b", "llama3.3-70b": "Llama 3.3 70B"}
 
 fields["group"] = fields["field"].map(group)
 n_group = fields.drop_duplicates("field").group.value_counts()
