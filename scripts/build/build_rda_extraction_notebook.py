@@ -64,12 +64,12 @@ if Path.cwd().name == "notebooks":
 from dmpbridge.extractors import get_extractor
 from dmpbridge.models.ollama import OllamaModel
 
-SAMPLES  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+SAMPLES  = [14]
 PDF_DIR  = Path("data/input/pdfs")
 SCHEMA   = Path("data/output/rda/maDMP-schema-1.2.json")
 HOST     = "http://localhost:11434"
 NUM_CTX  = 32768
-OPTIONS  = {"repeat_last_n": 1024}  # the repeat penalty looks back 1024 tokens, not Ollama's default 64:
+OPTIONS  = {"repeat_last_n": 512}   # the repeat penalty looks back 1024 tokens, not Ollama's default 64:
                                     # with 64 or 512, llama3.1:8b repeated one dataset block until the token cap
 MODEL_1  = "llama3.1:8b"
 MODEL_2  = "gemma4:e4b"
@@ -79,7 +79,7 @@ OUT_DIR  = Path("data/output/rda")
 # Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
-RUN_NAME = "v9"
+RUN_NAME = "v4b-sample14"
 
 import re
 saved = sorted(p.name for p in (OUT_DIR / "runs").glob("*") if p.is_dir())
@@ -156,20 +156,17 @@ import requests
 
 SYSTEM = """You convert a Data Management Plan into one RDA maDMP JSON object that strictly follows the given schema.
 
-Use only the schema's field names, in the places the schema puts them, with only its allowed values. The whole document is one top-level "dmp" object.
+Use only the schema's field names, in the places and in the order the schema lists them, with only its allowed values. The whole document is one top-level "dmp" object.
 
-Capture everything the plan states, in the plan's own words. What each part of the RDA DMP Common Standard means:
-- dmp: the plan itself. title: the plan's title or first heading, exactly as written. description: the plan's own statement of what it covers, if it has one.
-- dataset: a logical group of data the plan describes, such as raw data, processed data, software or code, images, samples, protocols or publications - one entry for each group, whether it has its own heading or is only described in a sentence. Use the plan's own short phrase for the group as the title and the plan's sentences about it as the description. Data that the project only reuses, not produces, is a dataset with is_reused set to true. dataset_id: how the plan says the data will be identified, such as DOIs, with an empty identifier unless the plan gives one.
-- distribution: one place where a dataset is kept or made available. A dataset can have several: for example the server where it is stored during the project, and the repository, archive, database or website where it is published at the end. Each named place is the host of its own distribution: the host title is the place's name as the plan writes it, and the host URL only if the plan gives one. data_access is open, shared or closed as the plan describes access. A license the plan names goes in that distribution's license, written as the plan writes it.
-- metadata: the metadata standard the plan names, and in the description the plan's sentences about how the data will be documented or described.
-- contributor: each person the plan names with a role, with that role.
-- project: the project's title, its aims and scope as the description, and its funder.
-A statement that clearly covers all of the data applies to every dataset; a statement about one group applies only to that one.
+Go through the schema's fields in order and, at each one, check the plan before skipping it. Capture everything the plan states: every dataset it describes (each one once, with its own title, description and how it is shared), every person it names with a role (as a contributor, which comes right after the contact), the project and its funding, dates (YYYY-MM-DD), identifiers and licenses.
 
-Template guidance is not part of the plan: ignore text that only explains what a plan should contain, such as a funder's questions or instructions.
+Every value must come from the plan's text. Never invent a value, never copy the schema's examples, and never copy one item's values into another. Leave out any field the plan says nothing about, and leave out a whole sub-object (a distribution, license, host, metadata or funding entry) when the plan does not give the values it requires. For yes/no fields write "unknown" when the plan does not say.
 
-Never invent a value. When the schema requires a field the plan does not give - a name, email, identifier, URL or a distribution's title - write an empty string, not a word such as "unknown", "N/A" or "not specified". The schema's examples are not data and must never appear in the output: not "Charlie Chaplin", "cc@example.com", "0000-0003-0644-4174", "10.1371/journal.pcbi.1006750", "11353/10.923628", "501100002428" or any example description. Never copy one item's identifier, title or description into another.
+Contributors: every person named after a role label, such as "Principal Investigator:" or "Data Manager:", is a contributor. A person listed under several roles is one contributor with all of those roles. When the plan gives no identifier for a person, write an empty string as the contributor_id identifier and "other" as its type, and still include the contributor.
+
+Dataset descriptions: a dataset's description is the plan's sentences under that dataset's heading, copied as written - never the dataset's title repeated.
+
+Summary table: many plans end with a table that gives, for each dataset, its release date, access level, license, repository, metadata standard and whether it contains personal data. In the text this table may be broken across several lines. Read it row by row: find each row by its dataset title, and take that row's access level for data_access ("Open" is open), its license for the distribution's license, its repository as the distribution's host title, and its metadata standard for the dataset's metadata. "None specified" or "Unspecified" means there is no value.
 
 Output only the JSON. No explanation, no markdown."""
 
