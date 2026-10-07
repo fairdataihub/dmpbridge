@@ -122,108 +122,89 @@ display(fields.pivot_table(index="model", columns="outcome", values="field", agg
 md("s2", '''
 ## 2. The matrix
 
-Rows: the annotated fields, grouped into parts of the form, with how many were annotated in
-brackets. Columns: for each model, how many of them it got correct (blue), wrong (red) or
-missed (grey). The darker a cell, the larger its share of the row. Sized 16:9 for slides.
+One row per model, one column per part of the form, with how many fields were annotated in
+brackets; the last column is all fields together. Each cell: the share extracted correctly
+(also its colour), how many of how many, and how many were wrong or missed. Sized 16:9 for
+slides.
 '''),
 
 code("matrix", r'''
-import matplotlib.colors as mcolors
-
-# Each annotated field -> (part of the form, row). Rows are kept few and in plain words.
-def row_of(path):
+def group(path):
     p = re.sub(r"\[\d+\]", "", path).replace("dmp.", "", 1)
-    if p in ("title", "description"):                      return "Plan", "Plan title & description"
-    if p.startswith("contact"):                            return "Contact", "Contact person"
-    if p.startswith("contributor"):                        return "People & project", "Contributors"
-    if p.startswith("project"):                            return "People & project", "Project & funding"
-    if p.startswith("dataset.distribution.data_access"):   return "Storage & licence", "Data access"
-    if p.startswith("dataset.distribution.host"):          return "Storage & licence", "Storage place (host)"
-    if p.startswith("dataset.distribution.license"):       return "Storage & licence", "Licence"
-    if p.startswith("dataset.distribution"):               return "Storage & licence", "Other distribution details"
-    if p.startswith("dataset.metadata"):                   return "Metadata", "Metadata & standards"
-    if p == "dataset.title":                               return "Datasets", "Dataset title"
-    if p == "dataset.description":                         return "Datasets", "Dataset description"
-    if p == "dataset.type":                                return "Datasets", "Dataset type"
-    if p in ("dataset.personal_data", "dataset.sensitive_data"):
-        return "Datasets", "Personal & sensitive data"
-    if p.startswith("dataset"):                            return "Datasets", "Dataset identifier & dates"
-    return "Plan", "Plan details (dates, ID, language, ethics)"
+    if p.startswith("dataset."):
+        rest = p[len("dataset."):]
+        if rest == "title":                return "Dataset title"
+        if rest == "description":          return "Dataset description"
+        if rest.startswith("distribution"): return "Storage, access & licence"
+        if rest.startswith("metadata"):    return "Metadata"
+        return "Dataset properties"
+    if p.startswith("contact"):            return "Contact"
+    if p.startswith("contributor"):        return "Contributors"
+    if p.startswith("project"):            return "Project & funding"
+    return "Plan information"
 
 
-ROWS = [("Plan", "Plan title & description"), ("Plan", "Plan details (dates, ID, language, ethics)"),
-        ("Contact", "Contact person"),
-        ("Datasets", "Dataset title"), ("Datasets", "Dataset description"), ("Datasets", "Dataset type"),
-        ("Datasets", "Personal & sensitive data"), ("Datasets", "Dataset identifier & dates"),
-        ("Storage & licence", "Storage place (host)"), ("Storage & licence", "Data access"),
-        ("Storage & licence", "Licence"), ("Storage & licence", "Other distribution details"),
-        ("Metadata", "Metadata & standards"),
-        ("People & project", "Contributors"), ("People & project", "Project & funding")]
-COLOUR = {"Correct": "#2a78d6", "Wrong": "#e34948", "Missed": "#898781"}
+GROUPS = ["Plan information", "Contact", "Dataset title", "Dataset description", "Dataset properties",
+          "Storage, access & licence", "Metadata", "Contributors", "Project & funding"]
+HEADER = {"Plan information": "Plan\ninformation", "Contact": "Contact\n", "Dataset title": "Dataset\ntitle",
+          "Dataset description": "Dataset\ndescription", "Dataset properties": "Dataset\nproperties",
+          "Storage, access & licence": "Storage, access\n& licence", "Metadata": "Metadata\n",
+          "Contributors": "Contributors\n", "Project & funding": "Project &\nfunding", "All": "All\nfields"}
+NAME = {"llama3.1-8b": "Llama 3.1 8B", "gemma4-e4b": "Gemma 4 E4B", "llama3.3-70b": "Llama 3.3 70B"}
 
-fields[["section", "row"]] = fields["field"].map(row_of).tolist()
-n_row = fields.drop_duplicates("field").groupby(["section", "row"]).size()
-rows = [r for r in ROWS if r in n_row.index]                  # only rows this sample has
-counts = (fields.groupby(["section", "row", "model", "outcome"]).size()
-          .unstack(fill_value=0).reindex(columns=OUTCOMES, fill_value=0))
+fields["group"] = fields["field"].map(group)
+n_group = fields.drop_duplicates("field").group.value_counts()
+groups = [g for g in GROUPS if g in n_group.index] + ["All"]
+n_group["All"] = n_fields
+cnt = fields.groupby(["model", "group", "outcome"]).size().unstack(fill_value=0).reindex(columns=OUTCOMES, fill_value=0)
 
-# Grid: per model three outcome columns, with an empty column between models
-cols = []
-for k, m in enumerate(models):
-    cols += [(m, o) for o in OUTCOMES] + ([None] if k < len(models) - 1 else [])
-surface = np.array(mcolors.to_rgb(SURFACE))
-img = np.ones((len(rows), len(cols), 3)) * surface
-for i, r in enumerate(rows):
-    for j, c in enumerate(cols):
-        if c is None:
-            continue
-        n = counts.loc[(*r, c[0]), c[1]] if (*r, c[0]) in counts.index else 0
-        share = n / n_row[r]
-        strength = 0.12 + 0.88 * share if n else 0.04
-        img[i, j] = surface * (1 - strength) + np.array(mcolors.to_rgb(COLOUR[c[1]])) * strength
 
-fig, ax = plt.subplots(figsize=(16, 0.52 * len(rows) + 2.6))
-ax.imshow(img, aspect="auto")
-for i, r in enumerate(rows):
-    for j, c in enumerate(cols):
-        if c is None:
-            continue
-        n = counts.loc[(*r, c[0]), c[1]] if (*r, c[0]) in counts.index else 0
-        share = n / n_row[r]
-        ax.text(j, i, str(n) if n else "–", ha="center", va="center", fontsize=13,
-                fontweight="bold" if n else "normal",
-                color=("white" if share > 0.5 else INK) if n else "#c9c8c3")
+def cell(m, g):
+    c = cnt.xs(m, level="model").sum() if g == "All" else (
+        cnt.loc[(m, g)] if (m, g) in cnt.index else pd.Series(0, index=OUTCOMES))
+    return c, c["Correct"] / n_group[g]
 
-# Row labels with counts, section labels and separators
-ax.set_yticks(range(len(rows)))
-ax.set_yticklabels([f"{r[1]}  ({n_row[r]})" for r in rows], fontsize=12.5)
-ax.tick_params(length=0)
-sections = list(dict.fromkeys(r[0] for r in rows))
-for s in sections:                                             # section name centred on its rows, far left
-    idx = [i for i, r in enumerate(rows) if r[0] == s]
-    ax.text(-0.31, (idx[0] + idx[-1]) / 2, s.upper(), transform=ax.get_yaxis_transform(), ha="right",
-            va="center", fontsize=10, fontweight="bold", color=MUTED)
-    if idx[0] > 0:                                             # line between sections
-        ax.axhline(idx[0] - 0.5, color=MUTED, linewidth=1.2)
 
-# Column headers: outcome under each model name
-ax.set_xticks([j for j, c in enumerate(cols) if c])
-ax.set_xticklabels([c[1] for c in cols if c], fontsize=11.5)
+share = np.array([[cell(m, g)[1] for g in groups] for m in models])
+fig, ax = plt.subplots(figsize=(16, 2.0 * len(models) + 2.4))
+im = ax.imshow(share, cmap="Blues", vmin=0, vmax=1, aspect="auto")
+for i, m in enumerate(models):
+    for j, g in enumerate(groups):
+        c, v = cell(m, g)
+        dark = v > 0.55
+        ax.text(j, i - 0.24, f"{v:.0%}", ha="center", va="center", fontsize=22, fontweight="bold",
+                color="white" if dark else INK)
+        ax.text(j, i + 0.04, f"{c['Correct']} / {n_group[g]}", ha="center", va="center", fontsize=12,
+                color="white" if dark else INK)
+        ax.text(j, i + 0.23, f"{c['Wrong']} wrong", ha="center", va="center", fontsize=9.5,
+                color="#dbe7f6" if dark else MUTED)
+        ax.text(j, i + 0.38, f"{c['Missed']} missed", ha="center", va="center", fontsize=9.5,
+                color="#dbe7f6" if dark else MUTED)
+
+ax.set_xticks(range(len(groups)))
+ax.set_xticklabels([f"{HEADER[g]}\n({n_group[g]})" for g in groups], fontsize=12.5)
+for lbl in ax.get_xticklabels()[-1:]:
+    lbl.set_fontweight("bold")
 ax.xaxis.tick_top()
-for k, m in enumerate(models):
-    first = cols.index((m, OUTCOMES[0]))
-    t = counts.xs(m, level="model").sum()
-    ax.text(first + 1, -1.35, f"{m}", ha="center", va="bottom", fontsize=15, fontweight="bold")
-    ax.text(first + 1, -1.05, f"{t['Correct']} correct · {t['Wrong']} wrong · {t['Missed']} missed",
-            ha="center", va="bottom", fontsize=10.5, color=MUTED)
-for j, c in enumerate(cols):                                   # white gaps between cells
-    ax.axvline(j - 0.5, color=SURFACE, linewidth=2.5)
-for i in range(len(rows) + 1):
-    ax.axhline(i - 0.5, color=SURFACE, linewidth=1.5, zorder=0.5)
-for spine in ax.spines.values():
-    spine.set_visible(False)
-ax.set_title(f"Run {RUN}, sample {SAMPLE}: what each model did with the {n_fields} annotated fields",
-             loc="left", fontsize=15, pad=62)
+ax.set_yticks(range(len(models)))
+ax.set_yticklabels([NAME.get(m, m) for m in models], fontsize=16, fontweight="bold")
+ax.set_xticks(np.arange(-.5, len(groups), 1), minor=True)
+ax.set_yticks(np.arange(-.5, len(models), 1), minor=True)
+ax.grid(which="minor", color=SURFACE, linewidth=5)
+ax.tick_params(which="both", length=0)
+ax.axvline(len(groups) - 1.5, color=INK, linewidth=2.5)        # separates the total column
+for s in ax.spines.values():
+    s.set_visible(False)
+
+cbar = fig.colorbar(im, ax=ax, fraction=0.018, pad=0.015)
+cbar.outline.set_visible(False)
+cbar.set_ticks([0, 0.5, 1.0])
+cbar.set_ticklabels(["0%", "50%", "100%"])
+cbar.set_label("% of annotated fields extracted correctly", fontsize=11)
+fig.text(0.06, 1.0, f"How much of the form each model filled in correctly", fontsize=19, fontweight="bold",
+         ha="left", va="bottom")
+fig.text(0.06, 0.965, f"Run {RUN}, sample {SAMPLE} - {n_fields} fields annotated by hand", fontsize=12.5,
+         color=MUTED, ha="left", va="bottom")
 fig.savefig(CHART, dpi=200, bbox_inches="tight", facecolor=SURFACE)
 plt.show()
 print(f"saved -> {CHART}")
