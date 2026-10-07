@@ -320,8 +320,8 @@ ax.grid(which="minor", color=SURFACE, linewidth=4)
 ax.tick_params(which="both", length=0)
 for s in ax.spines.values():
     s.set_visible(False)
-ax.set_title(f"Share of annotated fields extracted correctly - sample {SAMPLE}, prompt {PROMPT}",
-             pad=70, loc="left", fontsize=16, fontweight="bold")
+ax.set_title(f"How much of the {n_fields} annotated fields each model got correct - sample {SAMPLE}, prompt {PROMPT}",
+             pad=70, loc="left", fontsize=15, fontweight="bold")
 out = FOLDER / "slide_option1_heatmap.png"
 fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=SURFACE)
 plt.show()
