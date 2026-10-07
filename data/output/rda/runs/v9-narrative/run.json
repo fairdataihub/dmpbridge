@@ -1,0 +1,201 @@
+{
+  "run": "v9-narrative",
+  "date": "2026-10-06T14:27",
+  "samples": [
+    3,
+    6
+  ],
+  "models": [
+    "llama3.1:8b",
+    "gemma4:e4b",
+    "llama3.3:70b"
+  ],
+  "schema": "maDMP-schema-1.2.json",
+  "num_ctx": 32768,
+  "options": {
+    "repeat_last_n": 1024
+  },
+  "timings": {
+    "llama3.1:8b sample1": {
+      "seconds": 9,
+      "model_load_seconds": 4,
+      "tokens_sent": 11392,
+      "tokens_generated": 562
+    },
+    "llama3.1:8b sample2": {
+      "seconds": 5,
+      "model_load_seconds": 2,
+      "tokens_sent": 12823,
+      "tokens_generated": 259
+    },
+    "llama3.1:8b sample3": {
+      "seconds": 6,
+      "model_load_seconds": 2,
+      "tokens_sent": 11068,
+      "tokens_generated": 412
+    },
+    "llama3.1:8b sample4": {
+      "seconds": 5,
+      "model_load_seconds": 2,
+      "tokens_sent": 11247,
+      "tokens_generated": 248
+    },
+    "llama3.1:8b sample5": {
+      "seconds": 8,
+      "model_load_seconds": 2,
+      "tokens_sent": 11472,
+      "tokens_generated": 576
+    },
+    "llama3.1:8b sample6": {
+      "seconds": 5,
+      "model_load_seconds": 2,
+      "tokens_sent": 10401,
+      "tokens_generated": 247
+    },
+    "llama3.1:8b sample7": {
+      "seconds": 6,
+      "model_load_seconds": 2,
+      "tokens_sent": 10337,
+      "tokens_generated": 380
+    },
+    "llama3.1:8b sample8": {
+      "seconds": 5,
+      "model_load_seconds": 2,
+      "tokens_sent": 11096,
+      "tokens_generated": 299
+    },
+    "llama3.1:8b sample9": {
+      "seconds": 8,
+      "model_load_seconds": 2,
+      "tokens_sent": 11507,
+      "tokens_generated": 630
+    },
+    "llama3.1:8b sample10": {
+      "seconds": 4,
+      "model_load_seconds": 2,
+      "tokens_sent": 11187,
+      "tokens_generated": 206
+    },
+    "gemma4:e4b sample1": {
+      "seconds": 14,
+      "model_load_seconds": 10,
+      "tokens_sent": 11727,
+      "tokens_generated": 1145
+    },
+    "gemma4:e4b sample2": {
+      "seconds": 23,
+      "model_load_seconds": 2,
+      "tokens_sent": 13197,
+      "tokens_generated": 2436
+    },
+    "gemma4:e4b sample3": {
+      "seconds": 8,
+      "model_load_seconds": 2,
+      "tokens_sent": 11404,
+      "tokens_generated": 454
+    },
+    "gemma4:e4b sample4": {
+      "seconds": 11,
+      "model_load_seconds": 2,
+      "tokens_sent": 11578,
+      "tokens_generated": 827
+    },
+    "gemma4:e4b sample5": {
+      "seconds": 9,
+      "model_load_seconds": 2,
+      "tokens_sent": 11805,
+      "tokens_generated": 640
+    },
+    "gemma4:e4b sample6": {
+      "seconds": 6,
+      "model_load_seconds": 2,
+      "tokens_sent": 10709,
+      "tokens_generated": 244
+    },
+    "gemma4:e4b sample7": {
+      "seconds": 9,
+      "model_load_seconds": 2,
+      "tokens_sent": 10636,
+      "tokens_generated": 887
+    },
+    "gemma4:e4b sample8": {
+      "seconds": 4,
+      "model_load_seconds": 2,
+      "tokens_sent": 11412,
+      "tokens_generated": 211
+    },
+    "gemma4:e4b sample9": {
+      "seconds": 9,
+      "model_load_seconds": 2,
+      "tokens_sent": 11794,
+      "tokens_generated": 770
+    },
+    "gemma4:e4b sample10": {
+      "seconds": 19,
+      "model_load_seconds": 2,
+      "tokens_sent": 11511,
+      "tokens_generated": 2113
+    },
+    "llama3.3:70b sample1": {
+      "seconds": 157,
+      "model_load_seconds": 25,
+      "tokens_sent": 11392,
+      "tokens_generated": 1247
+    },
+    "llama3.3:70b sample2": {
+      "seconds": 99,
+      "model_load_seconds": 2,
+      "tokens_sent": 12823,
+      "tokens_generated": 852
+    },
+    "llama3.3:70b sample3": {
+      "seconds": 48,
+      "model_load_seconds": 2,
+      "tokens_sent": 11068,
+      "tokens_generated": 434
+    },
+    "llama3.3:70b sample4": {
+      "seconds": 106,
+      "model_load_seconds": 2,
+      "tokens_sent": 11247,
+      "tokens_generated": 916
+    },
+    "llama3.3:70b sample5": {
+      "seconds": 178,
+      "model_load_seconds": 2,
+      "tokens_sent": 11472,
+      "tokens_generated": 1510
+    },
+    "llama3.3:70b sample6": {
+      "seconds": 75,
+      "model_load_seconds": 2,
+      "tokens_sent": 10401,
+      "tokens_generated": 671
+    },
+    "llama3.3:70b sample7": {
+      "seconds": 49,
+      "model_load_seconds": 2,
+      "tokens_sent": 10337,
+      "tokens_generated": 465
+    },
+    "llama3.3:70b sample8": {
+      "seconds": 80,
+      "model_load_seconds": 2,
+      "tokens_sent": 11096,
+      "tokens_generated": 715
+    },
+    "llama3.3:70b sample9": {
+      "seconds": 220,
+      "model_load_seconds": 2,
+      "tokens_sent": 11507,
+      "tokens_generated": 1872
+    },
+    "llama3.3:70b sample10": {
+      "seconds": 65,
+      "model_load_seconds": 2,
+      "tokens_sent": 11187,
+      "tokens_generated": 598
+    }
+  },
+  "skipped": []
+}

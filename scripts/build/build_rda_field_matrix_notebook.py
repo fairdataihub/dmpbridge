@@ -65,7 +65,7 @@ if Path.cwd().name == "notebooks":
     import os
     os.chdir(Path.cwd().parent)
 
-RUN    = "v9"                           # a folder under data/output/rda/runs/
+RUN    = "v9-narrative"                           # a folder under data/output/rda/runs/
 SAMPLE = 6
 PROMPT = "v9"                                    # shown in the figure titles
 FOLDER = Path("data/output/rda/runs") / RUN

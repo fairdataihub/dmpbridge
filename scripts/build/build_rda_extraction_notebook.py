@@ -6,12 +6,36 @@ gemma4:e4b and llama3.3:70b; every run is saved in its own numbered folder.
 Part 2: the evaluation of that run against the hand-made reference (the same cells
 as evaluate-rda-json.ipynb, pointed at the run's folder).
 
-    python scripts/build/build_rda_extraction_notebook.py
+    python scripts/build/build_rda_extraction_notebook.py               # the main notebook
+    python scripts/build/build_rda_extraction_notebook.py --narrative   # the narrative-plan notebook
+
+--narrative builds notebooks/pdf-to-rda-dmp-json-narrative.ipynb instead: the same notebook,
+but for traditional narrative plans (samples 3 and 6), with its own prompt read from
+scripts/build/prompts/rda_narrative_v9.txt and its own run folder, runs/v9-narrative/.
+Prompt edits made here, in the main notebook's SYSTEM text, do not reach it.
 """
+import argparse
 import json
+import re
 from pathlib import Path
 
+ap = argparse.ArgumentParser()
+ap.add_argument("--narrative", action="store_true", help="build the narrative-plan notebook")
+ARGS = ap.parse_args()
+
 NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
+
+# The narrative-plan notebook: what differs from the main one
+NARRATIVE = {
+    "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v9.txt"),
+    "samples":  [3, 6],
+    "run":      "v9-narrative",
+    "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
+                "For traditional narrative plans - sections of prose, as in samples 3 and 6 - with "
+                "their own prompt (v9). DMPTool-style plans such as sample 14 use "
+                "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
+}
 
 
 def md(cid, body):
@@ -905,6 +929,27 @@ else:
           f"of the {n_ref} fields, and the models miss between {int(missed_here.min())} and {int(missed_here.max())} of them.")
 '''),
 ]
+
+if ARGS.narrative:
+    # Same cells; swap in the narrative prompt, samples, run folder and title.
+    def edit(cid, fn):
+        cell = next(c for c in cells if c["id"] == cid)
+        cell["source"] = [l + "\n" for l in fn("".join(cell["source"]).rstrip("\n")).split("\n")]
+
+    system = NARRATIVE["prompt"].read_text(encoding="utf-8")
+
+    def set_prompt(src):
+        start = src.index('SYSTEM = """') + len('SYSTEM = """')
+        return src[:start] + system + src[src.index('"""', start):]
+
+    def set_run(src):
+        src = re.sub(r"^SAMPLES  = \[.*\]$", f"SAMPLES  = {NARRATIVE['samples']}", src, count=1, flags=re.M)
+        return re.sub(r"^RUN_NAME = .*$", f'RUN_NAME = "{NARRATIVE["run"]}"', src, count=1, flags=re.M)
+
+    edit("prompt", set_prompt)
+    edit("setup", set_run)
+    edit("title", lambda src: src.replace("# PDF to RDA DMP JSON", NARRATIVE["title"], 1))
+    NB = NARRATIVE["notebook"]
 
 nb = {"cells": cells,
       "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",

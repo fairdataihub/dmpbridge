@@ -35,11 +35,14 @@ OLLAMA_ENV = {"CUDA_VISIBLE_DEVICES": "0,1,2", "OLLAMA_VULKAN": "0", "OLLAMA_SCH
 
 ap = argparse.ArgumentParser()
 ap.add_argument("versions", nargs="+", help="RUN_NAME=prompt-folder, or just RUN_NAME if its folder holds the prompt")
-ap.add_argument("--samples", default="1-10")
+ap.add_argument("--samples", default="1-10", help='a range "1-10", a list "3,6" or one sample "14"')
 ap.add_argument("--restore", required=True, help="run folder whose prompt and name the builders get back at the end")
 args = ap.parse_args()
-lo, _, hi = args.samples.partition("-")
-samples = list(range(int(lo), int(hi or lo) + 1))
+if "," in args.samples:                          # a list, e.g. "3,6"
+    samples = [int(s) for s in args.samples.split(",")]
+else:                                            # a range, e.g. "1-10", or one sample, e.g. "14"
+    lo, _, hi = args.samples.partition("-")
+    samples = list(range(int(lo), int(hi or lo) + 1))
 
 
 def log(msg):
