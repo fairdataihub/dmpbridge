@@ -122,50 +122,108 @@ display(fields.pivot_table(index="model", columns="outcome", values="field", agg
 md("s2", '''
 ## 2. The matrix
 
-Rows: kinds of annotated fields, most frequent first, with how many were annotated.
-Columns: what each model did with them. A row's three cells add up to 100%.
+Rows: the annotated fields, grouped into parts of the form, with how many were annotated in
+brackets. Columns: for each model, how many of them it got correct (blue), wrong (red) or
+missed (grey). The darker a cell, the larger its share of the row. Sized 16:9 for slides.
 '''),
 
 code("matrix", r'''
-order = fields.drop_duplicates("field")["kind"].value_counts()
-kinds = list(order.index)
+import matplotlib.colors as mcolors
 
-fig, axes = plt.subplots(1, len(models), figsize=(3.6 * len(models) + 3.2, 0.42 * len(kinds) + 1.8),
-                         sharey=True, squeeze=False)
-axes = axes[0]
-for ax, m in zip(axes, models):
-    counts = (fields[fields.model == m].groupby(["kind", "outcome"]).size().unstack(fill_value=0)
-              .reindex(index=kinds, columns=OUTCOMES, fill_value=0))
-    share = counts.div(counts.sum(axis=1).replace(0, 1), axis=0).to_numpy()
-    im = ax.imshow(share, cmap="Blues", vmin=0, vmax=1, aspect="auto")
-    for i in range(len(kinds)):
-        for j in range(len(OUTCOMES)):
-            v, n = share[i, j], counts.iloc[i, j]
-            ax.text(j, i, f"{v:.0%} ({n})" if n else "0", ha="center", va="center", fontsize=8,
-                    fontweight="bold" if j == 0 and n else "normal",
-                    color="#b9b9b4" if n == 0 else ("white" if v > 0.55 else INK))
-    total = counts.sum()
-    ax.set_title(f"{m}\n{total['Correct']} correct · {total['Wrong']} wrong · {total['Missed']} missed",
-                 pad=26, fontsize=11)
-    ax.set_xticks(range(len(OUTCOMES)))
-    ax.set_xticklabels(OUTCOMES)
-    ax.xaxis.tick_top()
-    ax.set_xticks(np.arange(-.5, len(OUTCOMES), 1), minor=True)
-    ax.set_yticks(np.arange(-.5, len(kinds), 1), minor=True)
-    ax.grid(which="minor", color=SURFACE, linewidth=2)
-    ax.tick_params(which="minor", length=0)
-    ax.tick_params(axis="x", length=0)
-    ax.add_patch(plt.Rectangle((-.5, -.5), 1, len(kinds), fill=False, edgecolor=INK, linewidth=1.6, zorder=5))
-    for spine in ax.spines.values():
-        spine.set_visible(False)
-axes[0].set_yticks(range(len(kinds)))
-axes[0].set_yticklabels([f"{k}  ({order[k]})" for k in kinds])
-plt.tight_layout()
-cbar = fig.colorbar(im, ax=list(axes), fraction=0.02, pad=0.02, label="share of the row")
-cbar.outline.set_visible(False)
-cbar.set_ticks([0, 0.25, 0.5, 0.75, 1.0])
-cbar.set_ticklabels(["0%", "25%", "50%", "75%", "100%"])
-fig.suptitle(f"Run {RUN}, sample {SAMPLE}: {n_fields} annotated fields", fontweight="bold", y=1.03)
+# Each annotated field -> (part of the form, row). Rows are kept few and in plain words.
+def row_of(path):
+    p = re.sub(r"\[\d+\]", "", path).replace("dmp.", "", 1)
+    if p in ("title", "description"):                      return "Plan", "Plan title & description"
+    if p.startswith("contact"):                            return "Contact", "Contact person"
+    if p.startswith("contributor"):                        return "People & project", "Contributors"
+    if p.startswith("project"):                            return "People & project", "Project & funding"
+    if p.startswith("dataset.distribution.data_access"):   return "Storage & licence", "Data access"
+    if p.startswith("dataset.distribution.host"):          return "Storage & licence", "Storage place (host)"
+    if p.startswith("dataset.distribution.license"):       return "Storage & licence", "Licence"
+    if p.startswith("dataset.distribution"):               return "Storage & licence", "Other distribution details"
+    if p.startswith("dataset.metadata"):                   return "Metadata", "Metadata & standards"
+    if p == "dataset.title":                               return "Datasets", "Dataset title"
+    if p == "dataset.description":                         return "Datasets", "Dataset description"
+    if p == "dataset.type":                                return "Datasets", "Dataset type"
+    if p in ("dataset.personal_data", "dataset.sensitive_data"):
+        return "Datasets", "Personal & sensitive data"
+    if p.startswith("dataset"):                            return "Datasets", "Dataset identifier & dates"
+    return "Plan", "Plan details (dates, ID, language, ethics)"
+
+
+ROWS = [("Plan", "Plan title & description"), ("Plan", "Plan details (dates, ID, language, ethics)"),
+        ("Contact", "Contact person"),
+        ("Datasets", "Dataset title"), ("Datasets", "Dataset description"), ("Datasets", "Dataset type"),
+        ("Datasets", "Personal & sensitive data"), ("Datasets", "Dataset identifier & dates"),
+        ("Storage & licence", "Storage place (host)"), ("Storage & licence", "Data access"),
+        ("Storage & licence", "Licence"), ("Storage & licence", "Other distribution details"),
+        ("Metadata", "Metadata & standards"),
+        ("People & project", "Contributors"), ("People & project", "Project & funding")]
+COLOUR = {"Correct": "#2a78d6", "Wrong": "#e34948", "Missed": "#898781"}
+
+fields[["section", "row"]] = fields["field"].map(row_of).tolist()
+n_row = fields.drop_duplicates("field").groupby(["section", "row"]).size()
+rows = [r for r in ROWS if r in n_row.index]                  # only rows this sample has
+counts = (fields.groupby(["section", "row", "model", "outcome"]).size()
+          .unstack(fill_value=0).reindex(columns=OUTCOMES, fill_value=0))
+
+# Grid: per model three outcome columns, with an empty column between models
+cols = []
+for k, m in enumerate(models):
+    cols += [(m, o) for o in OUTCOMES] + ([None] if k < len(models) - 1 else [])
+surface = np.array(mcolors.to_rgb(SURFACE))
+img = np.ones((len(rows), len(cols), 3)) * surface
+for i, r in enumerate(rows):
+    for j, c in enumerate(cols):
+        if c is None:
+            continue
+        n = counts.loc[(*r, c[0]), c[1]] if (*r, c[0]) in counts.index else 0
+        share = n / n_row[r]
+        strength = 0.12 + 0.88 * share if n else 0.04
+        img[i, j] = surface * (1 - strength) + np.array(mcolors.to_rgb(COLOUR[c[1]])) * strength
+
+fig, ax = plt.subplots(figsize=(16, 0.52 * len(rows) + 2.6))
+ax.imshow(img, aspect="auto")
+for i, r in enumerate(rows):
+    for j, c in enumerate(cols):
+        if c is None:
+            continue
+        n = counts.loc[(*r, c[0]), c[1]] if (*r, c[0]) in counts.index else 0
+        share = n / n_row[r]
+        ax.text(j, i, str(n) if n else "–", ha="center", va="center", fontsize=13,
+                fontweight="bold" if n else "normal",
+                color=("white" if share > 0.5 else INK) if n else "#c9c8c3")
+
+# Row labels with counts, section labels and separators
+ax.set_yticks(range(len(rows)))
+ax.set_yticklabels([f"{r[1]}  ({n_row[r]})" for r in rows], fontsize=12.5)
+ax.tick_params(length=0)
+sections = list(dict.fromkeys(r[0] for r in rows))
+for s in sections:                                             # section name centred on its rows, far left
+    idx = [i for i, r in enumerate(rows) if r[0] == s]
+    ax.text(-0.31, (idx[0] + idx[-1]) / 2, s.upper(), transform=ax.get_yaxis_transform(), ha="right",
+            va="center", fontsize=10, fontweight="bold", color=MUTED)
+    if idx[0] > 0:                                             # line between sections
+        ax.axhline(idx[0] - 0.5, color=MUTED, linewidth=1.2)
+
+# Column headers: outcome under each model name
+ax.set_xticks([j for j, c in enumerate(cols) if c])
+ax.set_xticklabels([c[1] for c in cols if c], fontsize=11.5)
+ax.xaxis.tick_top()
+for k, m in enumerate(models):
+    first = cols.index((m, OUTCOMES[0]))
+    t = counts.xs(m, level="model").sum()
+    ax.text(first + 1, -1.35, f"{m}", ha="center", va="bottom", fontsize=15, fontweight="bold")
+    ax.text(first + 1, -1.05, f"{t['Correct']} correct · {t['Wrong']} wrong · {t['Missed']} missed",
+            ha="center", va="bottom", fontsize=10.5, color=MUTED)
+for j, c in enumerate(cols):                                   # white gaps between cells
+    ax.axvline(j - 0.5, color=SURFACE, linewidth=2.5)
+for i in range(len(rows) + 1):
+    ax.axhline(i - 0.5, color=SURFACE, linewidth=1.5, zorder=0.5)
+for spine in ax.spines.values():
+    spine.set_visible(False)
+ax.set_title(f"Run {RUN}, sample {SAMPLE}: what each model did with the {n_fields} annotated fields",
+             loc="left", fontsize=15, pad=62)
 fig.savefig(CHART, dpi=200, bbox_inches="tight", facecolor=SURFACE)
 plt.show()
 print(f"saved -> {CHART}")
