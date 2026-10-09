@@ -66,7 +66,7 @@ if Path.cwd().name == "notebooks":
     os.chdir(Path.cwd().parent)
 
 RUN    = "v9-narrative"                           # a folder under data/output/rda/runs/
-SAMPLE = 3
+SAMPLE = 1
 PROMPT = "v9"                                    # shown in the figure titles
 FOLDER = Path("data/output/rda/runs") / RUN
 RESULT = FOLDER / "evaluation_results.xlsx"

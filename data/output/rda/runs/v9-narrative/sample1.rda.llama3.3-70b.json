@@ -1,0 +1,209 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2020-03-13T13:13:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "RISE study data",
+        "description": "De-identified data from the RISE study",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "UC San Diego Library Data repository",
+            "host": {
+              "title": "UC San Diego Library",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2025-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "iWATCH study data",
+        "description": "De-identified data from the iWATCH study",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "UC San Diego Library Data repository",
+            "host": {
+              "title": "UC San Diego Library",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2025-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "NHANES cohorts data",
+        "description": "De-identified data from the NHANES cohorts",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "UC San Diego Library Data repository",
+            "host": {
+              "title": "UC San Diego Library",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2025-01-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "SOL-VIDA Study data",
+        "description": "De-identified data from the SOL-VIDA Study",
+        "is_reused": true,
+        "related_identifier": [
+          {
+            "identifier": "https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs001945.v1.p1",
+            "relation_type": "HasMetadata",
+            "type": "url"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "MOCA Study data",
+        "description": "De-identified data from the MOCA Study",
+        "is_reused": true,
+        "related_identifier": [
+          {
+            "identifier": "",
+            "relation_type": "HasMetadata",
+            "type": "url"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "PHASE Study data",
+        "description": "De-identified data from the PHASE Study",
+        "is_reused": true,
+        "related_identifier": [
+          {
+            "identifier": "",
+            "relation_type": "HasMetadata",
+            "type": "url"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "AusDiab Study data",
+        "description": "De-identified data from the AusDiab Study",
+        "is_reused": true,
+        "related_identifier": [
+          {
+            "identifier": "",
+            "relation_type": "HasMetadata",
+            "type": "url"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "ACT Study data",
+        "description": "De-identified data from the ACT Study",
+        "is_reused": true,
+        "related_identifier": [
+          {
+            "identifier": "",
+            "relation_type": "HasMetadata",
+            "type": "url"
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "yes",
+        "sensitive_data": "yes",
+        "title": "WHISH accelerometer sub-study data",
+        "description": "De-identified data from the WHISH accelerometer sub-study",
+        "is_reused": true,
+        "related_identifier": [
+          {
+            "identifier": "",
+            "relation_type": "HasMetadata",
+            "type": "url"
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "yes",
+    "language": "eng",
+    "modified": "2025-01-01T00:00:00Z",
+    "title": "DATA MANAGEMENT AND SHARING PLAN"
+  }
+}
