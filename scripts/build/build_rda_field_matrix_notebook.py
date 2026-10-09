@@ -134,7 +134,11 @@ def outcome(rows):
     return "Mismatch" if len(wrote) else "Missed"
 
 
-annotated = details[details["reference value"].notna()]
+# Annotated = the person wrote a real value. The text "null", "none", "N/A" or an empty string
+# counts as not annotated - the same rule the evaluation uses.
+EMPTY = {"", "null", "none", "n/a", "na"}
+ref_text = details["reference value"].astype(str).str.strip().str.lower()
+annotated = details[details["reference value"].notna() & ~ref_text.isin(EMPTY)]
 fields = (annotated.groupby(["field", "model"]).apply(outcome, include_groups=False)
           .rename("outcome").reset_index())
 values = annotated.drop_duplicates("field").set_index("field")["reference value"]
