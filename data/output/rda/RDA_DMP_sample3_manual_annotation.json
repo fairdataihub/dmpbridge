@@ -63,8 +63,8 @@
           "identifier": null,
           "type": null
         },
-        "personal_data": null,
-        "sensitive_data": null,
+        "personal_data": "no",
+        "sensitive_data": "no",
         "issued": null,
         "metadata": [
           {
@@ -113,7 +113,7 @@
               }
             ],
             "host": {
-              "title": "project's website",
+              "title": "null",
               "url": null,
               "host_id": [
                 {
@@ -133,13 +133,13 @@
           "identifier": null,
           "type": null
         },
-        "personal_data": null,
-        "sensitive_data": null,
+        "personal_data": "no",
+        "sensitive_data": "no",
         "issued": null,
         "metadata": [
           {
             "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
-            "language": null,
+            "language": "eng",
             "metadata_standard_id": [
               {
                 "identifier": null,
@@ -171,7 +171,7 @@
               }
             ],
             "host": {
-              "title": "project's website",
+              "title": "null",
               "url": null,
               "host_id": [
                 {
@@ -191,13 +191,13 @@
           "identifier": null,
           "type": null
         },
-        "personal_data": null,
-        "sensitive_data": null,
+        "personal_data": "no",
+        "sensitive_data": "no",
         "issued": null,
         "metadata": [
           {
             "description": null,
-            "language": null,
+            "language": "eng",
             "metadata_standard_id": [
               {
                 "identifier": null,
@@ -219,7 +219,7 @@
               }
             ],
             "host": {
-              "title": "labs' websites",
+              "title": "null",
               "url": null,
               "host_id": [
                 {
@@ -239,13 +239,13 @@
           "identifier": null,
           "type": null
         },
-        "personal_data": null,
-        "sensitive_data": null,
+        "personal_data": "no",
+        "sensitive_data": "no",
         "issued": null,
         "metadata": [
           {
             "description": null,
-            "language": null,
+            "language": "eng",
             "metadata_standard_id": [
               {
                 "identifier": null,
