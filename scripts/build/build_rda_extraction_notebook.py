@@ -10,7 +10,7 @@ as evaluate-rda-json.ipynb, pointed at the run's folder).
     python scripts/build/build_rda_extraction_notebook.py --narrative   # the narrative-plan notebook
 
 --narrative builds notebooks/pdf-to-rda-dmp-json-narrative.ipynb instead: the same notebook,
-but for traditional narrative plans (samples 1 and 3), with its own prompt read from
+but for traditional narrative plans (sample 3), with its own prompt read from
 scripts/build/prompts/rda_narrative_v9.txt and its own run folder, runs/v9-narrative/.
 Prompt edits made here, in the main notebook's SYSTEM text, do not reach it.
 """
@@ -29,10 +29,10 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
     "prompt":   Path("scripts/build/prompts/rda_narrative_v9.txt"),
-    "samples":  [1, 3],
+    "samples":  [3],
     "run":      "v9-narrative",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
-                "For traditional narrative plans - sections of prose, as in samples 1 and 3 - with "
+                "For traditional narrative plans - sections of prose, as in sample 3 - with "
                 "their own prompt (v9). DMPTool-style plans such as sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
