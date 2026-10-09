@@ -1,0 +1,55 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "",
+          "type": ""
+        }
+      ],
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2023-02-20T14:30:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Data related to each of our proposed experiments",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Code and results for all analyses completed on experimental data",
+        "type": "code"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Simulation code for controller development and testing",
+        "type": "software"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2023-02-20T14:30:00Z",
+    "title": "CPS 2015 Data Management Plan"
+  }
+}

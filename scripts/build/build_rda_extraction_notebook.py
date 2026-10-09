@@ -11,7 +11,7 @@ as evaluate-rda-json.ipynb, pointed at the run's folder).
 
 --narrative builds notebooks/pdf-to-rda-dmp-json-narrative.ipynb instead: the same notebook,
 but for traditional narrative plans (sample 3), with its own prompt read from
-scripts/build/prompts/rda_narrative_v9.txt and its own run folder, runs/v9-narrative/.
+scripts/build/prompts/rda_narrative_v9b.txt and its own run folder, runs/v9b-narrative/.
 Prompt edits made here, in the main notebook's SYSTEM text, do not reach it.
 """
 import argparse
@@ -28,12 +28,12 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v9.txt"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v9b.txt"),
     "samples":  [3],
-    "run":      "v9-narrative",
+    "run":      "v9b-narrative",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v9). DMPTool-style plans such as sample 14 use "
+                "their own prompt (v9b). DMPTool-style plans such as sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
 

@@ -1,0 +1,131 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-03-13T13:13:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Experimental data",
+        "description": "Data related to each of our proposed experiments. These will include the detailed protocols used for each experiment, the raw data collected from each experiment, and the experimental code used to collect those data.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Raw data",
+            "description": "Raw data files will be saved in either Matlab or comma-separated value (CSV) format.",
+            "host": {
+              "title": "Rehabilitation Institute of Chicago servers",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+                "start_date": "2024-03-13"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Analysis results",
+        "description": "The code and results for all analyses completed on experimental data.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Analysis results",
+            "description": "Code for converting between formats will also be provided to ensure easy access.",
+            "host": {
+              "title": "Rehabilitation Institute of Chicago servers",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+                "start_date": "2024-03-13"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Simulation code",
+        "description": "Substantial simulation code for controller development and testing.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Simulation code",
+            "description": "Code for each of our 3 experimental systems.",
+            "host": {
+              "title": "Rehabilitation Institute of Chicago servers",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+                "start_date": "2024-03-13"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Videos of experiments",
+        "description": "Select videos of the experiments will be distributed, with subject faces blurred so as to be unidentifiable.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Videos of experiments",
+            "description": "Videos will be distributed with subject faces blurred.",
+            "host": {
+              "title": "Rehabilitation Institute of Chicago servers",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+                "start_date": "2024-03-13"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-03-13T13:13:00Z",
+    "title": "CPS 2015 Data Management Plan"
+  }
+}
