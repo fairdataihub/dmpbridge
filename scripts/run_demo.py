@@ -17,6 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+from dmpbridge.cli.rda_evaluate_cmd import evaluate_tag
 from dmpbridge.core import paths as P
 from dmpbridge.core.pipeline import normalize_fallbacks
 from dmpbridge.evaluation.experiment import Experiment
@@ -72,6 +73,8 @@ def main() -> None:
                 for n in cfg.sample_range:
                     run_rda_stages(strategy, Path(cfg.pdf_dir) / f"sample{n}.pdf", n,
                                    rda_model, model, extractor, host=cfg.host)
+            # Score the RDA JSON for the samples that have a hand-made reference.
+            evaluate_tag(P.rda_tag(rda_model, extractor), list(cfg.sample_range))
 
     counts: dict[str, int] = {}
     for model in cfg.models:

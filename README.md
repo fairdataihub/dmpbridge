@@ -179,6 +179,11 @@ with the RDA JSON first and the narrative JSON after it:
 Already ran the narrative part? `dmpbridge-rda --model llama3.1:8b --narrative-model gemma4:e4b`
 adds just the RDA part.
 
+For a sample with a hand-made reference, the pipeline then scores the RDA JSON and saves a
+field matrix — every annotated field marked Correct, Mismatch or Missed — in
+`data/output/5_rda/<rda-tag>/evaluation/`. To score again later:
+`dmpbridge-evaluate-rda llama3.1-8b_pdfplumber_rda`.
+
 ### What the RDA part fills in
 
 The model fills in this form, following the

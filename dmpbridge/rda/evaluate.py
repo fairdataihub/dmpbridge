@@ -370,11 +370,19 @@ def matrix_figure(outcomes: dict[str, dict[str, str]], title: str, out_path=None
         ax.axhline(i - 0.5, color=SURFACE, linewidth=3, zorder=3)
     for j in range(len(cols) + 1):                                 # and between every pair of columns
         ax.axvline(j - 0.5, color=SURFACE, linewidth=3, zorder=3)
+    # Section names sit just left of the widest row label, measured, so they never overlap
+    # it whatever the figure's width (one model or three).
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    label_left = min(t.get_window_extent(renderer).x0 for t in ax.get_yticklabels())
+    axes_left = ax.get_window_extent(renderer).x0
+    gap_points = (axes_left - label_left) * 72 / fig.dpi + 14
     for s in dict.fromkeys(r[0] for r in rows):
         idx = [i for i, r in enumerate(rows) if r[0] == s]
         if s != "Total":
-            ax.text(-0.31, (idx[0] + idx[-1]) / 2, s.upper(), transform=ax.get_yaxis_transform(), ha="right",
-                    va="center", fontsize=10, fontweight="bold", color=MUTED)
+            ax.annotate(s.upper(), xy=(0, (idx[0] + idx[-1]) / 2), xycoords=("axes fraction", "data"),
+                        xytext=(-gap_points, 0), textcoords="offset points", ha="right", va="center",
+                        fontsize=10, fontweight="bold", color=MUTED)
         if idx[0] > 0:                                             # a wider white gap between sections
             ax.axhline(idx[0] - 0.5, color=SURFACE, linewidth=14 if s == "Total" else 9, zorder=4)
 

@@ -12,6 +12,10 @@ Writes, for each sample:
     5_rda/<rda-model>_<extractor>_rda/                    RDA JSON
     6_merged/<narrative-model>+<rda-model>_<extractor>/   {"dmp": ..., "narrative": ...}
 
+Then, for each sample with a hand-made reference in data/input/rda_ground_truth/, the
+RDA JSON is scored as in ``dmpbridge-evaluate-rda`` (the field matrix, and precision,
+recall and F1); ``--no-evaluate`` skips it.
+
 Every stage is cached by file existence, as in ``dmpbridge-wholedoc``: a sample
 already done is skipped. Both parts read the plan's text the same way
 (``--extractor``, with the ``--fallback`` extractor for an unreadable PDF).
@@ -48,6 +52,8 @@ def main() -> None:
     ap.add_argument("--pdf-dir", default="data/input/pdfs", type=Path)
     ap.add_argument("--start", default=1, type=int, help="First sample index (inclusive)")
     ap.add_argument("--end", default=10, type=int, help="Last sample index (inclusive)")
+    ap.add_argument("--no-evaluate", action="store_true",
+                    help="skip scoring the RDA JSON against the hand-made references")
     args = ap.parse_args()
 
     # Stages 1-4: the narrative pipeline exactly as `dmpbridge-wholedoc` runs it.
@@ -70,6 +76,12 @@ def main() -> None:
     for i in range(args.start, args.end + 1):
         run_rda_stages(strategy, args.pdf_dir / f"sample{i}.pdf", i, args.rda_model,
                        args.narrative_model, args.extractor, host=args.host)
+
+    # Score the RDA JSON for the samples that have a hand-made reference.
+    if not args.no_evaluate:
+        from .rda_evaluate_cmd import evaluate_tag
+        evaluate_tag(paths.rda_tag(args.rda_model, args.extractor),
+                     list(range(args.start, args.end + 1)))
 
 
 if __name__ == "__main__":

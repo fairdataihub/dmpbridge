@@ -45,6 +45,7 @@ The rest of this page is the full reference.
 | DMP PDFs | `data/input/pdfs/` | named `sample1.pdf`, `sample2.pdf`, … — the `--start`/`--end` range indexes these |
 | Annotation rules | `data/input/Rules.xlsx` | drives stage 4; **column order is load-bearing**, see [scoring.md](scoring.md) |
 | Reference annotations | `data/input/ground_truth_old_version/`, `ground_truth_new_version/` | only needed for scoring |
+| RDA reference annotations | `data/input/rda_ground_truth/` | only needed for scoring the RDA JSON |
 
 To run a PDF that isn't part of the sample set, use the single-document command — it takes
 any path and doesn't need the `sampleN.pdf` naming:
@@ -107,6 +108,18 @@ Runs `dmpbridge-wholedoc` for stages 1–4, then the RDA part for stages 5–6.
 | `--start` / `--end` | `1` / `10` | inclusive sample range |
 | `--pdf-dir` | `data/input/pdfs` | where the PDFs live |
 | `--host` | `http://localhost:11434` | Ollama server URL |
+| `--no-evaluate` | off | skip scoring the RDA JSON against the hand-made references |
+
+### `dmpbridge-evaluate-rda` — score the RDA JSON
+
+| Argument | Default | What it does |
+|---|---|---|
+| `<rda-tag>` | — | a folder in `data/output/5_rda/`, e.g. `llama3.1-8b_pdfplumber_rda` |
+| `--start` / `--end` | every sample | inclusive sample range |
+| `--list` | off | list the RDA runs and exit |
+| `--no-save` | off | print only; write no figure or spreadsheet |
+
+See [Scoring → The RDA JSON](scoring.md#the-rda-json) for what the numbers mean.
 
 ### `dmpbridge-rda` — stages 5–6 only
 

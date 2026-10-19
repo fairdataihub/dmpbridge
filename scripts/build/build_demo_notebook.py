@@ -245,6 +245,28 @@ cells = [
         "            print(json.dumps(json.loads(path.read_text(encoding='utf-8')), indent=2, ensure_ascii=False))",
     ]),
 
+    md("md-rda-eval", [
+        "## Evaluate the RDA JSON",
+        "",
+        "Scored against the hand-made reference in `data/input/rda_ground_truth/`, for the",
+        "samples that have one — the same rules as the RDA notebooks. The matrix shows every",
+        "field the person annotated as **Correct**, **Mismatch** (the model wrote a different",
+        "value) or **Missed** (the model wrote nothing there). Saved in",
+        "`5_rda/<rda-tag>/evaluation/`.",
+    ]),
+    code("rda-eval", [
+        "from IPython.display import Image, display",
+        "from dmpbridge.cli.rda_evaluate_cmd import evaluate_tag",
+        "",
+        "if rda_model:",
+        "    rda_tag = P.rda_tag(rda_model, extractor)",
+        "    evaluate_tag(rda_tag, list(cfg.sample_range))",
+        "    for n in cfg.sample_range:",
+        "        png = P.RDA_DIR / rda_tag / 'evaluation' / f'matrix_sample{n}.png'",
+        "        if png.exists():",
+        "            display(Image(filename=str(png), width=900))",
+    ]),
+
     md("md-save", [
         "## Save — copy the result into demo/output/",
         "",

@@ -103,12 +103,22 @@ Research code: results are provisional and the evaluation set is small.
 
 ## The RDA JSON
 
-The pipeline does not score the RDA JSON it writes to `5_rda/`. Scoring happens in the RDA
-prompt experiments, which are kept apart from the pipeline in `notebooks/rda-experiments/`:
+```bash
+dmpbridge-evaluate-rda llama3.1-8b_pdfplumber_rda          # a folder in data/output/5_rda/
+```
+
+`dmpbridge-pipeline` runs this automatically at the end (`--no-evaluate` skips it), for
+every sample that has a hand-made reference. It prints a line per sample and saves, in
+`5_rda/<rda-tag>/evaluation/`, the field matrix as `matrix_sampleN.png` and every score in
+`evaluation_results.xlsx`.
+
+The rules are the ones the RDA prompt experiments use — the same code, in
+`dmpbridge/rda/evaluate.py` — so a pipeline run and a notebook run of the same output give
+the same numbers:
 
 | What | Where |
 |---|---|
-| hand-made references, samples 1–10 and 14 | `notebooks/rda-experiments/RDA_DMP_sample<n>_manual_annotation.json` |
+| hand-made references, samples 1–10 and 14 | `data/input/rda_ground_truth/RDA_DMP_sample<n>_manual_annotation.json` |
 | each prompt version's results, prompt and scores | `notebooks/rda-experiments/runs/<version>/` |
 | run a prompt version and score it | `notebooks/pdf-to-rda-dmp-json.ipynb` |
 | all models and samples for one version | `notebooks/rda-evaluation-overview.ipynb` |
