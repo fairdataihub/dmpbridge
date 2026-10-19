@@ -9,8 +9,9 @@ RDA prompt (``PROMPT_VERSION``) and the maDMP schema then produces the RDA JSON.
     result = extract_rda(plan_text, model="llama3.1:8b")
 """
 from .extract import (
-    PROMPT_VERSION, RdaExtractionError, extract_rda, load_schema, make_prompt, merge, system_prompt,
+    PROMPT_VERSION, RdaExtractionError, extract_rda, load_schema, make_prompt, merge,
+    prompt_fingerprint, system_prompt,
 )
 
 __all__ = ["PROMPT_VERSION", "RdaExtractionError", "extract_rda", "load_schema", "make_prompt",
-           "merge", "system_prompt"]
+           "merge", "prompt_fingerprint", "system_prompt"]

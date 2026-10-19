@@ -1,10 +1,9 @@
 """One model call: a plan's text -> RDA maDMP 1.2 JSON.
 
 The prompt is version v10c, developed and evaluated in
-notebooks/pdf-to-rda-dmp-json-narrative.ipynb: the v10b instructions as the system
-prompt (``prompt_v10b.txt``, a byte-for-byte copy of
-scripts/build/prompts/rda_narrative_v10b.txt, which is where earlier versions live),
-and a user prompt that holds only the plan's text. The complete, unmodified maDMP 1.2
+notebooks/pdf-to-rda-dmp-json-narrative.ipynb: ``prompt_v10c.txt`` as the system
+prompt (a byte-for-byte copy of scripts/build/prompts/rda_narrative_v10c.txt, which
+is where every version lives), and a user prompt that holds only the plan's text. The complete, unmodified maDMP 1.2
 schema (``maDMP-schema-1.2.json``, ``$ref`` pointers resolved) is not in the prompt -
 it is Ollama's structured-output ``format``, which constrains the answer to the
 schema's structure. Earlier versions also pasted the schema into the prompt as text;
@@ -24,7 +23,7 @@ from ..models.ollama import OllamaModel
 
 HERE = Path(__file__).parent
 PROMPT_VERSION = "v10c"
-PROMPT_FILE = HERE / "prompt_v10b.txt"      # v10c uses v10b's instructions unchanged
+PROMPT_FILE = HERE / "prompt_v10c.txt"
 SCHEMA_FILE = HERE / "maDMP-schema-1.2.json"
 
 NUM_CTX = 32768
@@ -64,6 +63,14 @@ def system_prompt() -> str:
     """The RDA system prompt (:data:`PROMPT_VERSION`), exactly as stored - it is
     whitespace-sensitive, so it is never stripped or reformatted."""
     return PROMPT_FILE.read_text(encoding="utf-8")
+
+
+def prompt_fingerprint() -> str:
+    """A short hash of the exact text sent (system prompt and user template). A version
+    name alone cannot tell two edits of the same version apart; this can, so a saved
+    stage-5 file made with an earlier wording is re-run rather than reused."""
+    import hashlib
+    return hashlib.sha256((system_prompt() + make_prompt("")).encode("utf-8")).hexdigest()[:12]
 
 
 def make_prompt(plan_text: str) -> str:

@@ -21,9 +21,17 @@ from typing import Optional
 
 from ..core import config, paths
 from ..utils import get_logger
-from .extract import PROMPT_VERSION, RdaExtractionError, extract_rda, merge
+from .extract import PROMPT_VERSION, RdaExtractionError, extract_rda, merge, prompt_fingerprint
 
 logger = get_logger(__name__)
+
+
+def run_record(rda_model: str, extractor: str) -> dict:
+    """What identifies a stage-5 run: the model, the extractor, and the prompt by name
+    and by fingerprint - so an edit to the prompt text, not only a new version name,
+    makes a saved file count as a different run."""
+    return {"rda_model": rda_model, "extractor": extractor,
+            "prompt": PROMPT_VERSION, "prompt_fingerprint": prompt_fingerprint()}
 
 
 def _write_json(path: Path, data: dict) -> None:
@@ -48,7 +56,7 @@ def run_rda_stages(strategy, pdf_path: Path, sample: int, rda_model: str,
     """
     label = f"[sample{sample}]"
     rda_out = paths.rda_path(sample)
-    this_run = {"rda_model": rda_model, "extractor": extractor, "prompt": PROMPT_VERSION}
+    this_run = run_record(rda_model, extractor)
     saved = read_run_info(rda_out) if rda_out.exists() else None
 
     if saved == this_run:
@@ -59,7 +67,7 @@ def run_rda_stages(strategy, pdf_path: Path, sample: int, rda_model: str,
         return None, None
     else:
         if rda_out.exists():
-            changed = ", ".join(f"{k} {saved[k]} -> {v}" for k, v in this_run.items()
+            changed = ", ".join(f"{k} {saved.get(k, '(none)')} -> {v}" for k, v in this_run.items()
                                 if saved.get(k) != v) if saved else "no run record"
             logger.info("%s saved RDA JSON is from a different run (%s) - replacing it", label, changed)
             rda_out.unlink()
