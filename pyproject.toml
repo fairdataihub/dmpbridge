@@ -52,9 +52,13 @@ dmpbridge-wholedoc     = "dmpbridge.cli.wholedoc_cmd:main"
 dmpbridge-evaluate     = "dmpbridge.evaluation.evaluate:main"
 dmpbridge-evaluate-new = "dmpbridge.evaluation.annotation_rules:main"
 dmpbridge-experiment   = "dmpbridge.evaluation.experiment:main"
+dmpbridge-rda          = "dmpbridge.cli.rda_cmd:main"
 
 [tool.setuptools.packages.find]
 include = ["dmpbridge*"]
+
+[tool.setuptools.package-data]
+dmpbridge = ["rda/*.txt", "rda/*.json"]
 
 [tool.ruff]
 target-version = "py310"

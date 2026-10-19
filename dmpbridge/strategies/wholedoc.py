@@ -154,10 +154,23 @@ class WholeDocStrategy:
 
     def run(self, pdf_path: Path) -> list[dict]:
         """Extract and classify *pdf_path* in one model call."""
+        full_text = self.extract_text(pdf_path)
+        if not full_text:
+            return []
+        return self.classify_entire_document(full_text)
+
+    def extract_text(self, pdf_path: Path) -> str:
+        """The document's full text, exactly as the narrative pipeline reads it.
+
+        Stage-1 cache, then the garbled-text check, then the fallback extractor
+        (LightOnOCR with ``fallback="auto"``) for a broken text layer. Any other
+        step that needs the plan's text - the RDA extraction - calls this, so
+        both read the same text. Returns ``""`` when the document has no text.
+        """
         blocks = self._extract(pdf_path)
         if not blocks:
             logger.warning("[wholedoc] no blocks found in %s", pdf_path.name)
-            return []
+            return ""
 
         full_text = blocks[0]["text"]
 
@@ -182,7 +195,7 @@ class WholeDocStrategy:
                 "text layer use --extractor lightonocr, or docling with "
                 "force_ocr (--force-ocr), or pass --fallback.", pdf_path.name, reason)
 
-        return self.classify_entire_document(full_text)
+        return full_text
 
     @staticmethod
     def _cached_stage1_text(extractor_name: str, pdf_path: Path) -> Optional[str]:
