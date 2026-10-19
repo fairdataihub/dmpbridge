@@ -101,6 +101,36 @@ Research code: results are provisional and the evaluation set is small.
 
 ---
 
+## The RDA JSON
+
+The pipeline does not score the RDA JSON it writes to `5_rda/`. Scoring happens in the RDA
+prompt experiments, which are kept apart from the pipeline in `notebooks/rda-experiments/`:
+
+| What | Where |
+|---|---|
+| hand-made references, samples 1–10 and 14 | `notebooks/rda-experiments/RDA_DMP_sample<n>_manual_annotation.json` |
+| each prompt version's results, prompt and scores | `notebooks/rda-experiments/runs/<version>/` |
+| run a prompt version and score it | `notebooks/pdf-to-rda-dmp-json.ipynb` |
+| all models and samples for one version | `notebooks/rda-evaluation-overview.ipynb` |
+| field by field for one sample | `notebooks/rda-field-matrix.ipynb` |
+
+Text fields match with the same 75% word-containment rule as above. Two sets of labels are
+used:
+
+- **The evaluation** (`pdf-to-rda-dmp-json.ipynb`, the overview) scores every field either
+  side wrote. **Correct** — the model's value matches the reference. **Hallucinated** — the
+  model wrote a wrong value, a value the reference doesn't have, or left blank a field the
+  reference fills in. **Missed** — the reference has it and the model never wrote the field.
+  Precision, recall and F1 follow from those counts.
+- **The field matrix** (`rda-field-matrix.ipynb`) looks only at fields the reference fills
+  in. **Correct** — the model's value matches. **Mismatch** — the model wrote a different
+  value. **Missed** — the model wrote nothing there.
+
+Judge a prompt change on all of samples 1–10, never on one sample — the first five prompt
+versions were tuned on sample 14 alone and did not carry over to the others.
+
+---
+
 ## The annotation rules — `data/input/Rules.xlsx`
 
 **The column order is load-bearing.** It has changed once already, silently remapping every

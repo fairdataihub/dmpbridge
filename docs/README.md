@@ -12,7 +12,9 @@ install steps and the one command you need. These pages are for everything after
 | change the model, the extractor, or any flag | **[Configuration](configuration.md)** |
 | run DMPBridge from Python instead of the shell | **[Configuration → From Python](configuration.md#from-python)** |
 | run the whole sample set, not one PDF | **[Configuration → dmpbridge-wholedoc](configuration.md#dmpbridge-wholedoc--the-sample-set-all-four-stages)** |
+| add the RDA JSON — all six stages in one command | **[Configuration → dmpbridge-pipeline](configuration.md#dmpbridge-pipeline--the-sample-set-all-six-stages)** |
 | understand what happens between PDF and JSON | **[Pipeline](pipeline.md)** |
+| see how the RDA prompt was chosen and scored | **[Scoring → The RDA JSON](scoring.md#the-rda-json)** |
 | know how a PDF is read, or fix a scanned PDF | **[Extraction](extraction.md)** |
 | read the accuracy numbers, or score a new run | **[Scoring](scoring.md)** |
 | fix something that broke | **[Troubleshooting](troubleshooting.md)** |

@@ -16,6 +16,8 @@ symptom in the table, then jump to it.**
 | "already exists — skipping", nothing runs | [A document was skipped](#a-document-was-skipped) |
 | the command times out before finishing | [A run times out](#a-run-times-out-in-the-foreground) |
 | output reads fine but doesn't match the PDF | [Output is fluent but wrong](#output-is-fluent-but-wrong) |
+| `did not return valid JSON` — a `sampleN.raw.txt` in `5_rda/` instead of the JSON | [The RDA JSON is not valid JSON](#the-rda-json-is-not-valid-json) |
+| `no narrative JSON at … - not merged` | [The RDA JSON was not merged](#the-rda-json-was-not-merged) |
 
 ---
 
@@ -90,9 +92,10 @@ surfaces as a misleading `Could not import module 'AutoProcessor'` from transfor
 
 ## A document was skipped
 
-Stages 2–4 are cached by file existence, so a document that already has output is skipped
+Stages 2–5 are cached by file existence, so a document that already has output is skipped
 entirely. **There is no `--force` flag.** To re-run one, delete its files from
-`data/output/2_labeled/<tag>/`, `3_structured/<tag>/` and `4_final/<tag>/`.
+`data/output/2_labeled/<tag>/`, `3_structured/<tag>/` and `4_final/<tag>/` — or, for the
+RDA JSON, from `5_rda/<rda-tag>/`. Stage 6 is only a merge and is rewritten on every run.
 
 Do **not** delete `data/output/1_extracted/`. It is keyed by extractor, not by model, and is
 shared by every model — re-extracting is wasted work. Use `--no-cache` if you genuinely need
@@ -117,3 +120,27 @@ exceeds a 10-minute foreground command limit. Run it in the background.
 If a document's structured output reads as plausible prose that doesn't match the PDF, the
 text layer is probably broken and the model hallucinated from garbage. Check the log for the
 garbled-text warning and see [extraction.md](extraction.md#broken-or-scanned-pdfs).
+
+---
+
+## The RDA JSON is not valid JSON
+
+The model's answer is saved as `5_rda/<rda-tag>/sampleN.raw.txt` so you can see what it
+wrote, and that sample is not merged. Two causes have happened here:
+
+- **The model repeated itself until the token cap** — the log says `stopped at the token
+  cap`. `llama3.1:8b` did this, writing one dataset block over and over; the repeat penalty
+  now looks back 1024 tokens (Ollama's default is 64), which stopped it on the samples
+  tested. The call is deterministic, so re-running gives the same answer — try another
+  RDA model for that document.
+- **Ollama 0.35.1 breaks `gemma4:e4b`'s JSON**, even on prompts that worked under 0.34.0.
+  Stay on 0.34.0 and turn off the tray app's automatic updates — one installed itself at a
+  reboot.
+
+---
+
+## The RDA JSON was not merged
+
+Stage 6 merges the RDA JSON with the narrative model's `4_final` file, so that file has to
+exist. With `dmpbridge-rda`, run `dmpbridge-wholedoc --model <narrative-model>` first and
+check `--narrative-model` names the same model — or use `dmpbridge-pipeline`, which runs both.

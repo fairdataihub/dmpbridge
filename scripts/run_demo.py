@@ -51,12 +51,11 @@ def main() -> None:
 
     cfg, rda_model = load_pipeline_config(CONFIG_PATH)
 
-    print(f"Demo      : {cfg.name}")
-    print(f"Model     : {', '.join(cfg.models)}")
-    if rda_model:
-        print(f"RDA model : {rda_model}")
-    print(f"Extractor : {', '.join(cfg.extractors)}")
-    print(f"Samples   : {cfg.sample_start}-{cfg.sample_end}\n")
+    print(f"Demo            : {cfg.name}")
+    print(f"Narrative model : {', '.join(cfg.models)}")
+    print(f"RDA model       : {rda_model or '(none - no rda: block)'}")
+    print(f"Extractor       : {', '.join(cfg.extractors)}")
+    print(f"Samples         : {cfg.sample_start}-{cfg.sample_end}\n")
 
     # Stages 1-4: the narrative pipeline.
     Experiment(cfg).run()

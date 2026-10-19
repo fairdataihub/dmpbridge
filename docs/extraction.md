@@ -23,7 +23,8 @@ Pick one explicitly only if you have a reason:
 
 Stage 1 is keyed by **extractor**, not by model, and is cached in
 `data/output/1_extracted/<extractor>/sampleN.json` — so labeling the same documents with
-four models costs one read, not four.
+four models costs one read, not four. The RDA part reads this same cached text, so the
+narrative and RDA models always see the same version of the plan.
 
 ---
 
@@ -106,8 +107,9 @@ python scripts/extract_pdfplumber.py
 
 ## Broken or scanned PDFs
 
-**Short answer: nothing, if you use `dmpbridge`** — the rescue is on by default there. Read
-on if you're using `dmpbridge-wholedoc`, where it is off unless you pass `--fallback auto`.
+**Short answer: nothing, if you use `dmpbridge` or `dmpbridge-pipeline`** — the rescue is on
+by default there. Read on if you're using `dmpbridge-wholedoc`, where it is off unless you
+pass `--fallback auto`.
 
 A PDF can have a text layer whose fonts carry no character-to-text mapping. Extraction then
 *succeeds* as garbage — `(cid:NN)` tokens or mojibake — and the model hallucinates a fluent

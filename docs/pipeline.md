@@ -10,6 +10,9 @@ does, or you're changing the pipeline yourself.
 and questions → fill blanks from the rules. Each of those four steps writes a file, so you
 can open any stage and see exactly what it did.
 
+**The RDA part** adds two more: a second model reads the same text and fills in the RDA
+maDMP JSON (stage 5), and that is merged with the final narrative JSON (stage 6).
+
 ```mermaid
 flowchart TD
     PDF["<b>DMP PDF</b>"]
@@ -29,6 +32,12 @@ flowchart TD
     RULES --> S4["<b>4. Final JSON</b>"]
     S4 --> PATHB["<b>Path B</b><br/>score vs new annotation"]
 
+    S1 --> RDA["<b>Extract the RDA JSON</b><br/><small>same text · RDA prompt · maDMP schema</small>"]
+    RDA --> S5["<b>5. RDA JSON</b>"]
+    S5 --> MERGE["<b>Merge</b>"]
+    S4 --> MERGE
+    MERGE --> S6["<b>6. Merged JSON</b><br/><small>RDA + narrative</small>"]
+
     classDef input  fill:#1E406E,stroke:#1E406E,color:#ffffff
     classDef step   fill:#F4F7FB,stroke:#94A3B8,stroke-width:1px,color:#334155
     classDef cached fill:#ffffff,stroke:#0F766E,stroke-width:2px,color:#111
@@ -39,16 +48,16 @@ flowchart TD
     classDef check  fill:#FDF4E9,stroke:#B45309,stroke-width:1px,color:#111
 
     class PDF input
-    class READ,LABEL,BUILD,RULES,OCR step
+    class READ,LABEL,BUILD,RULES,OCR,RDA,MERGE step
     class CHECK check
     class S1 cached
-    class S2,S3 data
+    class S2,S3,S5,S6 data
     class S4 rules
     class PATHA pathA
     class PATHB pathB
 ```
 
-The numbered boxes are the four things written to disk. The grey boxes between them are the
+The numbered boxes are the six things written to disk. The grey boxes between them are the
 steps that produce each one.
 
 **Three things worth noticing:**
@@ -66,6 +75,9 @@ steps that produce each one.
 - **The two scores branch at step 3.** Path A scores the structure as the model produced it.
   Path B first fills in blank questions using the rules, then scores that. Both are kept, so
   you can compare them.
+- **The RDA part reads the same stage-1 text** — same extractor, same fallback — so the two
+  models never see different versions of the plan. It is an add-on: the narrative stages run
+  exactly as they do without it, and the RDA model can be a different model.
 
 ---
 
@@ -77,6 +89,8 @@ steps that produce each one.
 | Label each block | one LLM call per document | `llama3.1:8b`, `gemma4:e4b`, `llama3.3:70b`, `qwen2.5:14b` |
 | Build the structure | nest into sections → questions → answers | — |
 | Apply the rules | fill blank questions | `data/input/Rules.xlsx` |
+| Extract the RDA JSON | one LLM call per document, answer constrained to the maDMP 1.2 schema | any model; prompt in `dmpbridge/rda/` |
+| Merge | RDA JSON first, then the final narrative JSON, each unchanged | — |
 
 Where each stage is written:
 
@@ -85,11 +99,17 @@ data/output/
 ├── 1_extracted/<extractor>/sampleN.json     keyed by extractor — shared across models
 ├── 2_labeled/<tag>/sampleN.json
 ├── 3_structured/<tag>/sampleN.json          <- Path A scores this
-└── 4_final/<tag>/sampleN.json               <- Path B scores this
+├── 4_final/<tag>/sampleN.json               <- Path B scores this
+├── 5_rda/<rda-tag>/sampleN.json             RDA JSON
+└── 6_merged/<merged-tag>/sampleN.json       {"dmp": <stage 5>, "narrative": <stage 4>}
 ```
 
-`<tag>` is `<model>_<extractor>_whole_doc`. Filenames are the same at every stage, so you
-can open `sampleN.json` in each folder and follow one document through.
+`<tag>` is `<model>_<extractor>_whole_doc`, `<rda-tag>` is `<rda-model>_<extractor>_rda`,
+and `<merged-tag>` is `<model>+<rda-model>_<extractor>`. Filenames are the same at every
+stage, so you can open `sampleN.json` in each folder and follow one document through.
+
+When the RDA model's answer is not valid JSON, it is saved as `sampleN.raw.txt` in the
+`5_rda` folder instead, and that sample is not merged.
 
 Both paths use the same scoring — match on shared words, then precision / recall / F1.
 Nothing differs but which annotation they compare against.

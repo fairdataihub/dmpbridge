@@ -20,6 +20,12 @@ dmpbridge my-plan.pdf --model gemma4:e4b
 - **`--extractor` / `--fallback`** — how the PDF is read. Leave both alone: the defaults
   read a normal PDF and OCR a broken one.
 
+For the RDA JSON as well, give each part its own model:
+
+```bash
+dmpbridge-pipeline --narrative-model gemma4:e4b --rda-model llama3.1:8b --start 1 --end 1
+```
+
 The rest of this page is the full reference.
 
 | Looking for | Section |
@@ -51,8 +57,8 @@ dmpbridge my-plan.pdf --model gemma4:e4b
 
 ## Settings in YAML — `demo/config.yaml`
 
-One YAML file describes a run. This is what `scripts/run_demo.py`,
-`notebooks/demo-from-yaml-config.ipynb` and `dmpbridge-experiment` all read:
+One YAML file describes a run. This is what `scripts/run_demo.py` and
+`notebooks/demo-from-yaml-config.ipynb` read:
 
 ```yaml
 name: Demo run
@@ -60,7 +66,10 @@ strategy: wholedoc
 provider: ollama
 host: http://localhost:11434
 
-model: llama3.1:8b          # any model already pulled in Ollama
+narrative:                  # labels the text, builds the DMP Tool JSON (stages 2-4)
+  model: gemma4:e4b         # any model already pulled in Ollama
+rda:                        # fills in the RDA JSON, then the merge (stages 5-6)
+  model: llama3.1:8b        # leave the rda: block out for the narrative part only
 
 extractor: pdfplumber       # pdfplumber | lightonocr | docling
 fallback: auto              # auto = LightOnOCR | docling | null to disable
@@ -74,12 +83,40 @@ sample_end: 1               # keep this small for a quick demo run
 broken. They are separate settings because the rescue is conditional — the fallback only
 runs on a document that fails the readability check, so clean PDFs are untouched.
 
-`experiments/full-example.yaml` shows every field the format accepts, including multiple
-models, multiple extractors, and the `evaluation:` list that drives scoring.
+A plain `model: gemma4:e4b` in place of the `narrative:` block also works.
+
+The experiment files in `experiments/`, read by `dmpbridge-experiment`, run the narrative
+part only and take `model:` / `models:` rather than the two blocks.
+`experiments/full-example.yaml` shows every field they accept, including multiple models,
+multiple extractors, and the `evaluation:` list that drives scoring.
 
 ---
 
 ## Settings on the command line
+
+### `dmpbridge-pipeline` — the sample set, all six stages
+
+Runs `dmpbridge-wholedoc` for stages 1–4, then the RDA part for stages 5–6.
+
+| Flag | Default | What it does |
+|---|---|---|
+| `--narrative-model` | *(required)* | model for stages 2–4 |
+| `--rda-model` | *(required)* | model for stage 5, the RDA JSON |
+| `--extractor` | `pdfplumber` | `pdfplumber`, `lightonocr` or `docling` |
+| `--fallback` | `auto` | `auto` re-reads a document with LightOnOCR when its text extracts as garbage |
+| `--start` / `--end` | `1` / `10` | inclusive sample range |
+| `--pdf-dir` | `data/input/pdfs` | where the PDFs live |
+| `--host` | `http://localhost:11434` | Ollama server URL |
+
+### `dmpbridge-rda` — stages 5–6 only
+
+For when the narrative part has already run. Same flags as `dmpbridge-pipeline`, except
+the models:
+
+| Flag | Default | What it does |
+|---|---|---|
+| `--model` | *(required)* | model for the RDA JSON |
+| `--narrative-model` | same as `--model` | whose `4_final` narrative JSON to merge with |
 
 ### `dmpbridge-wholedoc` — the sample set, all four stages
 
@@ -136,10 +173,20 @@ To run the whole sample set from Python, drive it from a config object instead �
 what `scripts/run_demo.py` and the demo notebook do:
 
 ```python
-from dmpbridge.evaluation.experiment import ExperimentConfig, Experiment
+from dmpbridge.evaluation.experiment import Experiment
+from dmpbridge.rda.config import load_pipeline_config
 
-cfg = ExperimentConfig.from_yaml("demo/config.yaml")
-Experiment(cfg).run()
+cfg, rda_model = load_pipeline_config("demo/config.yaml")   # rda_model is None without an rda: block
+Experiment(cfg).run()                                        # stages 1-4
+```
+
+`scripts/run_demo.py` then runs stages 5–6 with `dmpbridge.rda.stages.run_rda_stages`. To
+get the RDA JSON for a piece of text directly:
+
+```python
+from dmpbridge.rda import extract_rda
+
+rda, info = extract_rda(plan_text, model="llama3.1:8b")    # rda == {"dmp": {...}}
 ```
 
 ---
