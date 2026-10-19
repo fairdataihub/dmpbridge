@@ -28,12 +28,12 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v10.txt"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v10b.txt"),
     "samples":  [3],
-    "run":      "v10-narrative",
+    "run":      "v10b-narrative",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v10). DMPTool-style plans such as sample 14 use "
+                "their own prompt (v10b). DMPTool-style plans such as sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
 
