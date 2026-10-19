@@ -406,7 +406,8 @@ from dmpbridge.evaluation.evaluate import tokenize, containment, CONTAINMENT_THR
 # ── Where things are ─────────────────────────────────────────────────────────
 RDA_DIR   = Path("notebooks/rda-experiments")
 MODELS    = [m.replace(":", "-") for m in (MODEL_1, MODEL_2, MODEL_3)]   # as in the file names
-REFERENCE = "RDA_DMP_sample{n}_manual_annotation.json"           # one per sample, in RDA_DIR
+REF_DIR   = Path("data/input/rda_ground_truth")                  # the hand-made references
+REFERENCE = "RDA_DMP_sample{n}_manual_annotation.json"           # one per sample, in REF_DIR
 OUTPUT    = "sample{n}.rda.{model}.json"                         # one per sample and model, in RUN_DIR
 RESULTS   = RUN_DIR / "evaluation_results.xlsx"
 CHART     = RUN_DIR / "evaluation_charts.png"
@@ -440,11 +441,11 @@ plt.rcParams.update({
 pd.set_option("display.max_colwidth", 70)
 pd.set_option("display.width", 200)
 
-samples = [n for n in SAMPLES if (RDA_DIR / REFERENCE.format(n=n)).exists()]
+samples = [n for n in SAMPLES if (REF_DIR / REFERENCE.format(n=n)).exists()]
 print(f"evaluating run {RUN_NAME} in {RUN_DIR}")
 print("samples with a reference:", samples)
 if not samples:
-    print(f"\nNo hand-made reference for sample {SAMPLES} (expected {RDA_DIR / REFERENCE.format(n=SAMPLES[0])}).")
+    print(f"\nNo hand-made reference for sample {SAMPLES} (expected {REF_DIR / REFERENCE.format(n=SAMPLES[0])}).")
     print("The models' JSON files are saved above; the scoring cells below are skipped.")
 for n in samples:
     have = [m for m in MODELS if (RUN_DIR / OUTPUT.format(n=n, model=m)).exists()]
@@ -499,7 +500,7 @@ else:
         return canonical(json.loads(Path(path).read_text(encoding="utf-8")))
 
 
-    ref = load(RDA_DIR / REFERENCE.format(n=samples[0]))
+    ref = load(REF_DIR / REFERENCE.format(n=samples[0]))
     ref_fields = {p: v for p, v in flatten(ref) if not is_empty(v)}
     print(f"sample{samples[0]} reference: {len(ref_fields)} fields with a value")
     for p, v in list(ref_fields.items())[:6]:
@@ -678,7 +679,7 @@ if not samples:
 else:
     rows = []
     for n in samples:
-        ref = load(RDA_DIR / REFERENCE.format(n=n))
+        ref = load(REF_DIR / REFERENCE.format(n=n))
         ref_values = dict(flatten(ref))
         ref_fields = {p for p, v in ref_values.items() if not is_empty(v)}
         for m in MODELS:
@@ -732,7 +733,7 @@ else:
                 "correct %": c / total, "hallucinated %": h / total, "missed %": miss / total}
 
 
-    n_ref = {n: len({p for p, v in flatten(load(RDA_DIR / REFERENCE.format(n=n))) if not is_empty(v)}) for n in samples}
+    n_ref = {n: len({p for p, v in flatten(load(REF_DIR / REFERENCE.format(n=n))) if not is_empty(v)}) for n in samples}
     summary = pd.DataFrame([{"model": m, **metrics(details[details["model"] == m], sum(n_ref.values()))}
                             for m in MODELS if m in set(details["model"])]).set_index("model")
 
@@ -803,7 +804,7 @@ else:
         return re.sub(r"\[\d+\]", "", parts[1]) if parts[0] == "dmp" and len(parts) > 1 else parts[0]
 
 
-    ref_counts = pd.Series([section(p) for n in samples for p, v in flatten(load(RDA_DIR / REFERENCE.format(n=n)))
+    ref_counts = pd.Series([section(p) for n in samples for p, v in flatten(load(REF_DIR / REFERENCE.format(n=n)))
                             if not is_empty(v)]).value_counts()
     missed = details[details["verdict"] == "Missed"].copy()
     missed["section"] = missed["field"].map(section)
