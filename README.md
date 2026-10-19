@@ -54,7 +54,7 @@ flowchart TD
     RULES --> S4["<b>4. Final JSON</b>"]
     S4 --> PATHB["<b>Path B</b><br/>score vs new annotation"]
 
-    S1 --> RDA["<b>Extract the RDA JSON</b><br/><small>same text · v10 prompt · maDMP 1.2 schema</small>"]
+    S1 --> RDA["<b>Extract the RDA JSON</b><br/><small>same text · RDA prompt · maDMP schema</small>"]
     RDA --> S5["<b>5. RDA JSON</b>"]
     S5 --> MERGE["<b>Merge</b>"]
     S4 --> MERGE
@@ -178,6 +178,94 @@ with the RDA JSON first and the narrative JSON after it:
 
 Already ran the narrative part? `dmpbridge-rda --model llama3.1:8b --narrative-model gemma4:e4b`
 adds just the RDA part.
+
+### What the RDA part fills in
+
+The model fills in this form, following the
+[RDA DMP Common Standard](https://github.com/RDA-DMP-Common/RDA-DMP-Common-Standard).
+A `[REQUIRED]` field is always written — with the plan's value, otherwise its default;
+a `[RECOMMENDED]` field only when the plan gives that information.
+
+```json
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [{
+        "identifier": "[REQUIRED] ORCID preferred but email otherwise",
+        "type": "[REQUIRED]"
+      }],
+      "mbox": "[REQUIRED]",
+      "name": "[REQUIRED]"
+    },
+    "created": "[REQUIRED]",
+    "dataset": [{
+      "dataset_id": {
+        "identifier": "[REQUIRED]",
+        "type": "[REQUIRED]"
+      },
+      "description": "[RECOMMENDED]",
+      "distribution": [{
+        "byte_size": "[RECOMMENDED]",
+        "data_access": "[REQUIRED] default to 'closed'",
+        "description": "[RECOMMENDED]",
+        "host": {
+          "host_id": [{
+            "identifier": "[REQUIRED] if host info is present, ROR id preferred",
+            "type": "[REQUIRED] if host info is present"
+          }],
+          "title": "[REQUIRED] if host info is present"
+        },
+        "issued": "[RECOMMENDED]",
+        "license": [{
+          "license_ref": "[REQUIRED] if license is present",
+          "start_date": "[REQUIRED] if license is present, default to current date time"
+        }],
+        "title": "[REQUIRED]"
+      }],
+      "metadata": [{
+        "description": "[RECOMMENDED]",
+        "language": "[REQUIRED] default to 'eng'",
+        "metadata_standard_id": [
+          {
+            "identifier": "[REQUIRED] if metadata standard info is present",
+            "type": "[REQUIRED] if metadata standard info is present"
+          }
+        ]
+      }],
+      "personal_data": "[REQUIRED] default to 'unknown'",
+      "sensitive_data": "[REQUIRED] default to 'unknown'",
+      "title": "[REQUIRED]",
+      "type": "[REQUIRED] default to 'dataset'"
+    }],
+    "description": "[RECOMMENDED]",
+    "dmp_id": {
+      "identifier": "[REQUIRED]",
+      "type": "[REQUIRED]"
+    },
+    "ethical_issues_exist": "[REQUIRED] default to 'unknown'",
+    "language": "[REQUIRED] default to 'eng'",
+    "modified": "[REQUIRED]",
+    "project": [{
+      "description": "[REQUIRED]",
+      "end": "[RECOMMENDED]",
+      "funding": [{
+        "funder_id": {
+          "identifier": "[REQUIRED] ROR id preferred",
+          "type": "[REQUIRED]"
+        },
+        "funding_status": "[REQUIRED] default to 'planned'",
+        "grant_id": {
+          "identifier": "[RECOMMENDED]",
+          "type": "[RECOMMENDED]"
+        }
+      }],
+      "start": "[RECOMMENDED]",
+      "title": "[REQUIRED]"
+    }],
+    "title": "[REQUIRED]"
+  }
+}
+```
 
 ---
 
