@@ -54,6 +54,12 @@ flowchart TD
     RULES --> S4["<b>4. Final JSON</b>"]
     S4 --> PATHB["<b>Path B</b><br/>score vs new annotation"]
 
+    S1 --> RDA["<b>Extract the RDA JSON</b><br/><small>same text · v10 prompt · maDMP 1.2 schema</small>"]
+    RDA --> S5["<b>5. RDA JSON</b>"]
+    S5 --> MERGE["<b>Merge</b>"]
+    S4 --> MERGE
+    MERGE --> S6["<b>6. Merged JSON</b><br/><small>RDA + narrative</small>"]
+
     classDef input  fill:#1E406E,stroke:#1E406E,color:#ffffff
     classDef step   fill:#F4F7FB,stroke:#94A3B8,stroke-width:1px,color:#334155
     classDef cached fill:#ffffff,stroke:#0F766E,stroke-width:2px,color:#111
@@ -64,10 +70,10 @@ flowchart TD
     classDef check  fill:#FDF4E9,stroke:#B45309,stroke-width:1px,color:#111
 
     class PDF input
-    class READ,LABEL,BUILD,RULES,OCR step
+    class READ,LABEL,BUILD,RULES,OCR,RDA,MERGE step
     class CHECK check
     class S1 cached
-    class S2,S3 data
+    class S2,S3,S5,S6 data
     class S4 rules
     class PATHA pathA
     class PATHB pathB
@@ -83,6 +89,10 @@ labels, and the structure is built from those:
 | `section.description` | Instructions written by the funder |
 | `question.text` | A question or prompt |
 | `answer.text` | The researcher's response |
+
+Alongside the narrative, a second model reads the same text and fills in the
+[RDA DMP Common Standard](https://github.com/RDA-DMP-Common/RDA-DMP-Common-Standard)
+(maDMP 1.2) JSON — title, contact, datasets, and so on. The two are merged into one file.
 
 ---
 
@@ -142,6 +152,33 @@ them, and the researcher's answer attached to each question:
 }
 ```
 
+### Add the RDA JSON
+
+One command runs all six stages — the narrative part above, then the RDA part:
+
+```bash
+ollama pull llama3.1:8b
+dmpbridge-pipeline --narrative-model gemma4:e4b --rda-model llama3.1:8b --start 1 --end 1
+```
+
+The merged result is written to:
+
+```
+data/output/6_merged/gemma4-e4b+llama3.1-8b_pdfplumber/sample1.json
+```
+
+with the RDA JSON first and the narrative JSON after it:
+
+```json
+{
+  "dmp":       { "title": "…", "contact": { … }, "dataset": [ … ] },
+  "narrative": { "template": { "title": "…", "section": [ … ] } }
+}
+```
+
+Already ran the narrative part? `dmpbridge-rda --model llama3.1:8b --narrative-model gemma4:e4b`
+adds just the RDA part.
+
 ---
 
 ## Ways to run it
@@ -154,13 +191,17 @@ See each stage happen, with the settings and the finished document side by side.
 
    ```yaml
    model: gemma4:e4b
-   sample_end: 1        # how many sample PDFs to run
+   rda:
+     model: llama3.1:8b # delete these two lines to skip the RDA part
+   sample_start: 1
+   sample_end: 1        # which sample PDFs to run
    ```
 
 2. Open [`notebooks/demo-from-yaml-config.ipynb`](notebooks/demo-from-yaml-config.ipynb)
    and click **Run All**. Nothing inside the notebook needs editing.
 
-3. The last cell prints the finished document — title, sections, questions, answers.
+3. The notebook prints the finished document — title, sections, questions, answers — and
+   the RDA JSON.
 
 No Jupyter? The same config runs from the terminal, writing each stage into `demo/output/`:
 
@@ -193,11 +234,17 @@ data/output/
 ├── 1_extracted/<extractor>/sampleN.json     text blocks, no labels
 ├── 2_labeled/<tag>/sampleN.json             the same blocks, labeled
 ├── 3_structured/<tag>/sampleN.json          nested into the DMP Tool schema
-└── 4_final/<tag>/sampleN.json               annotation rules applied
+├── 4_final/<tag>/sampleN.json               annotation rules applied
+├── 5_rda/<rda-tag>/sampleN.json             RDA JSON, from the same text
+└── 6_merged/<merged-tag>/sampleN.json       RDA JSON + final narrative JSON
 ```
 
-`<tag>` is `<model>_<extractor>_whole_doc`. Filenames are the same at every stage, so you
-can follow one document all the way through.
+`<tag>` is `<model>_<extractor>_whole_doc`, `<rda-tag>` is `<rda-model>_<extractor>_rda`,
+and `<merged-tag>` is `<model>+<rda-model>_<extractor>`. Filenames are the same at every
+stage, so you can follow one document all the way through.
+
+The RDA prompt experiments (prompt versions v1–v10, their results and evaluation) are kept
+separately in `notebooks/rda-experiments/`.
 
 📚 **More info:** configuration, extraction, scoring, troubleshooting and the pipeline
 internals are all documented in **[docs/](docs/README.md)**.
