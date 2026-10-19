@@ -10,10 +10,14 @@ strategy: wholedoc
 provider: ollama
 host: http://localhost:11434
 
-model: gemma4:e4b          # narrative model (stages 2-4); any model already pulled in Ollama
+# Which model does which part - any model already pulled in Ollama.
+#
+# narrative: labels the plan's text and builds the DMP Tool JSON (stages 2-4).
+narrative:
+  model: gemma4:e4b
 
-# RDA maDMP JSON (stage 5, v10 prompt) from the same text, then merged with the
-# narrative JSON (stage 6). Delete this block for the narrative stages only.
+# rda: fills in the RDA maDMP JSON from the same text (stage 5), then merged with
+# the narrative JSON (stage 6). Delete this block for the narrative part only.
 rda:
   model: llama3.1:8b
 

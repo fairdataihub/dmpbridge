@@ -3,8 +3,9 @@ into its own subfolder under demo/output/ — extracted/, labeled/, structured/,
 final/, and with an ``rda:`` block in the config also rda/ and merged/ —
 mirroring the six stage folders data/output/ itself uses.
 
-Stages 1-4 run through the experiment runner unchanged; the ``rda:`` block is
-read here and runs stages 5-6 after it.
+The ``narrative:`` block picks the model for stages 1-4, which run through the
+experiment runner unchanged; the ``rda:`` block picks the model for stages 5-6,
+which run after it.
 
 Edit demo/config.yaml first (model, extractor, sample range), then:
 
@@ -14,13 +15,12 @@ import shutil
 import sys
 from pathlib import Path
 
-import yaml
-
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from dmpbridge.core import paths as P
 from dmpbridge.core.pipeline import normalize_fallbacks
-from dmpbridge.evaluation.experiment import ExperimentConfig, Experiment
+from dmpbridge.evaluation.experiment import Experiment
+from dmpbridge.rda.config import load_pipeline_config
 from dmpbridge.rda.stages import run_rda_stages
 from dmpbridge.strategies.wholedoc import WholeDocStrategy
 
@@ -49,12 +49,7 @@ def main() -> None:
     if not CONFIG_PATH.exists():
         raise FileNotFoundError(f"No config at {CONFIG_PATH} — see demo/config.yaml")
 
-    data = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8"))
-    rda = data.pop("rda", None)
-    if rda is not None and not (isinstance(rda, dict) and rda.get("model")):
-        raise ValueError(f"rda: must be a block with a model, e.g. 'rda: {{model: llama3.1:8b}}' - got {rda!r}")
-    rda_model = rda["model"] if rda else None
-    cfg = ExperimentConfig.from_dict(data)
+    cfg, rda_model = load_pipeline_config(CONFIG_PATH)
 
     print(f"Demo      : {cfg.name}")
     print(f"Model     : {', '.join(cfg.models)}")

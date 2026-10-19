@@ -275,12 +275,13 @@ a `[RECOMMENDED]` field only when the plan gives that information.
 
 See each stage happen, with the settings and the finished document side by side.
 
-1. Open [`demo/config.yaml`](demo/config.yaml) and set the model:
+1. Open [`demo/config.yaml`](demo/config.yaml) and set the models:
 
    ```yaml
-   model: gemma4:e4b
+   narrative:
+     model: gemma4:e4b    # labels the text, builds the DMP Tool JSON
    rda:
-     model: llama3.1:8b # delete these two lines to skip the RDA part
+     model: llama3.1:8b   # fills in the RDA JSON; delete these two lines to skip it
    sample_start: 1
    sample_end: 1        # which sample PDFs to run
    ```
