@@ -57,14 +57,15 @@ from dmpbridge.rda import evaluate as E
 SAMPLE = 3
 # (label shown in the figure, folder under notebooks/rda-experiments/runs/)
 RUNS = [("v9",                "v9"),
-        ("v10",               "v10-narrative"),
-        ("v10b",              "v10b-narrative"),
-        ("v10c\nbefore edit", "v10c-narrative-before-edit"),
-        ("v10c",              "v10c-narrative"),
-        ("v10d",              "v10d-narrative"),
-        ("v10e",              "v10e-narrative"),
-        ("v10f",              "v10f-narrative"),
-        ("v10g",              "v10g-narrative")]
+        ("v10",               "v10-sample3"),
+        ("v10b",              "v10b-sample3"),
+        ("v10c\nbefore edit", "v10c-before-edit-sample3"),
+        ("v10c",              "v10c-sample3"),
+        ("v10d",              "v10d-sample3"),
+        ("v10e",              "v10e-sample3"),
+        ("v10f",              "v10f-sample3"),
+        ("v10g",              "v10g-sample3"),
+        ("v10h",              "v10h-sample3")]
 MODELS = ["llama3.1-8b", "gemma4-e4b", "llama3.3-70b"]
 NAME   = {"llama3.1-8b": "Llama 3.1 8B", "gemma4-e4b": "Gemma 4 e4b", "llama3.3-70b": "Llama 3.3 70B"}
 OUTCOMES = ["Correct", "Mismatch", "Missed"]

@@ -11,7 +11,7 @@ as evaluate-rda-json.ipynb, pointed at the run's folder).
 
 --narrative builds notebooks/pdf-to-rda-dmp-json-narrative.ipynb instead: the same notebook,
 but for traditional narrative plans (sample 3), with its own prompt read from
-scripts/build/prompts/rda_narrative_v10.txt and its own run folder, runs/v10-narrative/.
+scripts/build/prompts/rda_narrative_v10.txt and its own run folder, runs/v10-sample3/.
 Prompt edits made here, in the main notebook's SYSTEM text, do not reach it.
 """
 import argparse
@@ -28,20 +28,23 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v10g.txt"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v10h.txt"),
     "samples":  [3],
-    "run":      "v10g-narrative",
+    "run":      "v10h-sample3",
     # False: the schema text is left out of the user prompt (it stays the output
-    # constraint), as in v10c, v10d, v10f and v10g. True puts it back, as in v10b and v10e.
+    # constraint), as in v10c and later. True puts it back, as in v10b and v10e.
     "schema_in_prompt": False,
     # The user prompt, with {dmp_text} for the plan's text. Omit for the default wording.
-    "user_prompt": "Data Management Plan:\n\n{dmp_text}\n\nFill the FORM from this plan. Copy the "
-                   "plan's words exactly. Leave empty what the plan does not say. Output only the JSON.",
+    "user_prompt": "Here is the text of a Data Management Plan:\n\n{dmp_text}\n\n"
+                   "Generate one JSON object that follows the JSON form in your instructions, filling in\n"
+                   "whatever information the Data Management Plan text contains. Copy the plan's words\n"
+                   "exactly and leave empty what the plan does not say. Output only the JSON.",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v10g: twelve numbered rules, a form whose fields carry "
-                "their own instruction in brackets, a new user prompt; no schema text in the "
-                "prompt). DMPTool-style plans such as sample 14 use "
+                "their own prompt (v10h: v10c's rules, the template's field order with "
+                "[REQUIRED] / [RECOMMENDED] markers and a per-field explanation, no dates as "
+                "defaults, a user prompt that repeats the copy-exactly rule; no schema text in "
+                "the prompt). DMPTool-style plans such as sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
 
