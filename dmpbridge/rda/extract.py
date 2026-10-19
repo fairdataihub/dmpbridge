@@ -1,13 +1,14 @@
 """One model call: a plan's text -> RDA maDMP 1.2 JSON.
 
-The prompt is the v10 RDA prompt (``prompt_v10.txt``, developed and evaluated in
-notebooks/pdf-to-rda-dmp-json-narrative.ipynb). The complete, unmodified maDMP 1.2
+The prompt is the v10b RDA prompt (``prompt_v10b.txt``, developed and evaluated in
+notebooks/pdf-to-rda-dmp-json-narrative.ipynb; a byte-for-byte copy of
+scripts/build/prompts/rda_narrative_v10b.txt, which is where earlier versions live). The complete, unmodified maDMP 1.2
 schema (``maDMP-schema-1.2.json``) is given to the model twice: as text in the prompt,
 and as Ollama's structured-output ``format``, which constrains the answer to the
 schema's structure. Its ``$ref`` pointers are resolved first so the model sees
 every definition in place.
 
-The settings match the notebook runs the v10 prompt was evaluated with:
+The settings match the notebook runs the prompt was evaluated with:
 temperature 0, a 32k context, an 8000-token answer cap, and a repeat-penalty window
 of 1024 tokens (with Ollama's default 64, llama3.1:8b repeated one dataset block
 until the token cap).
@@ -20,8 +21,8 @@ from ..core import config
 from ..models.ollama import OllamaModel
 
 HERE = Path(__file__).parent
-PROMPT_VERSION = "v10"
-PROMPT_FILE = HERE / "prompt_v10.txt"
+PROMPT_VERSION = "v10b"
+PROMPT_FILE = HERE / "prompt_v10b.txt"
 SCHEMA_FILE = HERE / "maDMP-schema-1.2.json"
 
 NUM_CTX = 32768
@@ -58,7 +59,8 @@ def load_schema() -> tuple[dict, str]:
 
 @lru_cache(maxsize=1)
 def system_prompt() -> str:
-    """The v10 RDA system prompt."""
+    """The RDA system prompt (:data:`PROMPT_VERSION`), exactly as stored - it is
+    whitespace-sensitive, so it is never stripped or reformatted."""
     return PROMPT_FILE.read_text(encoding="utf-8")
 
 

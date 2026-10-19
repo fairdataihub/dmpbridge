@@ -2,7 +2,7 @@
 
 The plan's text comes from the same stage-1 extraction as the narrative pipeline
 (pdfplumber, LightOnOCR fallback for an unreadable PDF); one model call with the
-v10 prompt and the maDMP schema then produces the RDA JSON. See
+RDA prompt (``PROMPT_VERSION``) and the maDMP schema then produces the RDA JSON. See
 :func:`extract_rda` and the ``dmpbridge-rda`` command.
 
     from dmpbridge.rda import extract_rda

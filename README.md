@@ -337,7 +337,7 @@ a `sampleN.run.json` beside each file names the models that made it, and a run w
 different RDA model replaces the file. Filenames are the same at every stage, so you can
 follow one document all the way through.
 
-The RDA prompt experiments (prompt versions v1–v10, their results and evaluation) are kept
+The RDA prompt experiments (every prompt version, its results and evaluation) are kept
 separately in `notebooks/rda-experiments/`.
 
 📚 **More info:** configuration, extraction, scoring, troubleshooting and the pipeline

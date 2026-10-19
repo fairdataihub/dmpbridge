@@ -3,8 +3,8 @@
     "contact": {
       "contact_id": [
         {
-          "identifier": "0000-0003-0644-4174",
-          "type": "orcid"
+          "identifier": "",
+          "type": "other"
         }
       ],
       "mbox": "",
@@ -15,39 +15,131 @@
       {
         "dataset_id": {
           "identifier": "",
-          "type": ""
+          "type": "other"
         },
         "personal_data": "no",
         "sensitive_data": "no",
         "title": "Data related to each of our proposed experiments",
-        "type": "dataset"
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Raw data collected from each experiment",
+            "host": {
+              "title": "The servers at the Rehabilitation Institute of Chicago",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2026-10-19"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "Code for the controllers used in the experiment",
+            "host": {
+              "title": "The servers at the Rehabilitation Institute of Chicago",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2026-10-19"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ]
+          }
+        ]
       },
       {
         "dataset_id": {
           "identifier": "",
-          "type": ""
+          "type": "other"
         },
         "personal_data": "no",
         "sensitive_data": "no",
         "title": "Code and results for all analyses completed on experimental data",
-        "type": "dataset"
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Code necessary to recreate figures, tables, and other results reported in all published manuscripts",
+            "host": {
+              "title": "The servers at the Rehabilitation Institute of Chicago",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2026-10-19"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ]
+          }
+        ]
       },
       {
         "dataset_id": {
           "identifier": "",
-          "type": ""
+          "type": "other"
         },
         "personal_data": "no",
         "sensitive_data": "no",
         "title": "Simulation code for controller development and testing",
-        "type": "dataset"
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "Simulation code for controller development and testing",
+            "host": {
+              "title": "The servers at the Rehabilitation Institute of Chicago",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2026-10-19"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ]
+          }
+        ]
       }
     ],
     "dmp_id": {
       "identifier": "",
-      "type": ""
+      "type": "other"
     },
-    "ethical_issues_exist": "unknown",
+    "ethical_issues_exist": "no",
     "language": "eng",
     "modified": "2026-10-19T00:00:00Z",
     "title": "CPS 2015"

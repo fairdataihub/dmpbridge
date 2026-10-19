@@ -1,5 +1,5 @@
 {
   "rda_model": "llama3.1:8b",
   "extractor": "pdfplumber",
-  "prompt": "v10"
+  "prompt": "v10b"
 }

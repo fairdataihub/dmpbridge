@@ -44,7 +44,7 @@ def main() -> None:
                     "(stages 5-6) on DMP PDF samples."
     )
     ap.add_argument("--narrative-model", required=True, help="model for stages 2-4")
-    ap.add_argument("--rda-model", required=True, help="model for stage 5 (v10 RDA prompt)")
+    ap.add_argument("--rda-model", required=True, help="model for stage 5, the RDA JSON")
     ap.add_argument("--host", default=config.HOST, help="Ollama host URL (default: %(default)s)")
     ap.add_argument("--extractor", default="pdfplumber",
                     choices=["pdfplumber", "lightonocr", "docling"],

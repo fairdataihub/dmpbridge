@@ -5,7 +5,7 @@ For a narrative run that already exists. To run all six stages in one command us
 
 Stage 5 reads each plan's text exactly as the narrative pipeline does (stage-1
 cache, pdfplumber, LightOnOCR fallback for an unreadable PDF), sends it to
-``--model`` with the v10 RDA prompt and the maDMP 1.2 schema, and writes the RDA
+``--model`` with the RDA prompt and the maDMP 1.2 schema, and writes the RDA
 JSON. Stage 6 merges it with the narrative pipeline's stage-4 JSON for
 ``--narrative-model``.
 

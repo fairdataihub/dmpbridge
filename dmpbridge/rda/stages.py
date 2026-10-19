@@ -59,8 +59,9 @@ def run_rda_stages(strategy, pdf_path: Path, sample: int, rda_model: str,
         return None, None
     else:
         if rda_out.exists():
-            logger.info("%s saved RDA JSON was made by %s - replacing it with %s", label,
-                        (saved or {}).get("rda_model", "an unknown run"), rda_model)
+            changed = ", ".join(f"{k} {saved[k]} -> {v}" for k, v in this_run.items()
+                                if saved.get(k) != v) if saved else "no run record"
+            logger.info("%s saved RDA JSON is from a different run (%s) - replacing it", label, changed)
             rda_out.unlink()
             paths.run_info_path(rda_out).unlink(missing_ok=True)
         text = strategy.extract_text(pdf_path)
