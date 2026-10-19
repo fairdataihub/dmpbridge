@@ -9,7 +9,7 @@ stage can be inspected, diffed or re-run without touching the others::
     ├── 3_structured/<tag>/sampleN.json          nested into the DMP Tool schema
     ├── 4_final/<tag>/sampleN.json               Rules.xlsx conversion applied
     ├── 5_rda/<rda-tag>/sampleN.json             RDA maDMP JSON, from the stage-1 text
-    └── 6_merged/<merged-tag>/sampleN.json       stage 4 and stage 5 combined
+    └── 6_merged/<merged-tag>/sampleN.json       stage 5 then stage 4, combined
 
 ``<tag>`` is ``<model-slug>_<extractor>_whole_doc``; ``<extractor>`` alone keys
 stage 1, because extraction does not depend on the model.  That is the point of

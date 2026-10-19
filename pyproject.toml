@@ -53,6 +53,7 @@ dmpbridge-evaluate     = "dmpbridge.evaluation.evaluate:main"
 dmpbridge-evaluate-new = "dmpbridge.evaluation.annotation_rules:main"
 dmpbridge-experiment   = "dmpbridge.evaluation.experiment:main"
 dmpbridge-rda          = "dmpbridge.cli.rda_cmd:main"
+dmpbridge-pipeline     = "dmpbridge.cli.pipeline_cmd:main"
 
 [tool.setuptools.packages.find]
 include = ["dmpbridge*"]

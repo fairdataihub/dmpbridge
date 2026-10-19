@@ -97,9 +97,9 @@ def extract_rda(plan_text: str, model: str, host: str = config.HOST) -> tuple[di
 
 
 def merge(narrative: dict, rda: dict) -> dict:
-    """The combined document: the narrative JSON's top level (``narrative``) and the
-    RDA JSON's top level (``dmp``) side by side, each unchanged."""
+    """The combined document: the RDA JSON's top level (``dmp``) first, then the
+    narrative JSON's top level (``narrative``), each unchanged."""
     overlap = set(narrative) & set(rda)
     if overlap:
         raise ValueError(f"narrative and RDA JSON share top-level keys: {sorted(overlap)}")
-    return {**narrative, **rda}
+    return {**rda, **narrative}
