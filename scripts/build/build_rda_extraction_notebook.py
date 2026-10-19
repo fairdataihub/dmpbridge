@@ -30,10 +30,14 @@ NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
     "prompt":   Path("scripts/build/prompts/rda_narrative_v10b.txt"),
     "samples":  [3],
-    "run":      "v10b-narrative",
+    "run":      "v10c-narrative",
+    # v10c = v10b's system prompt, without the schema text in the user prompt. The schema
+    # still constrains the output as Ollama's `format`; the model just no longer reads it.
+    "schema_in_prompt": False,
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v10b). DMPTool-style plans such as sample 14 use "
+                "their own prompt (v10c: v10b's instructions, without the schema text in the "
+                "prompt). DMPTool-style plans such as sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
 
@@ -941,7 +945,22 @@ if ARGS.narrative:
 
     def set_prompt(src):
         start = src.index('SYSTEM = """') + len('SYSTEM = """')
-        return src[:start] + system + src[src.index('"""', start):]
+        src = src[:start] + system + src[src.index('"""', start):]
+        if NARRATIVE.get("schema_in_prompt", True):
+            return src
+        # The user prompt without the schema text; the schema stays the output constraint.
+        start = src.index("def make_prompt(dmp_text):")
+        end = src.index("def run(model, sample):")
+        return src[:start] + '''def make_prompt(dmp_text):
+    return f"""Here is the text of a Data Management Plan:
+
+{dmp_text}
+
+Generate one JSON object that follows the JSON form in your instructions, filling in
+whatever information the Data Management Plan text contains. Output only the JSON."""
+
+
+''' + src[end:]
 
     def set_run(src):
         src = re.sub(r"^SAMPLES  = \[.*\]$", f"SAMPLES  = {NARRATIVE['samples']}", src, count=1, flags=re.M)

@@ -1,0 +1,38 @@
+{
+  "run": "v10c-narrative",
+  "date": "2026-10-19T09:05",
+  "samples": [
+    3
+  ],
+  "models": [
+    "llama3.1:8b",
+    "gemma4:e4b",
+    "llama3.3:70b"
+  ],
+  "schema": "maDMP-schema-1.2.json",
+  "num_ctx": 32768,
+  "options": {
+    "repeat_last_n": 1024
+  },
+  "timings": {
+    "llama3.1:8b sample3": {
+      "seconds": 9,
+      "model_load_seconds": 2,
+      "tokens_sent": 2396,
+      "tokens_generated": 453
+    },
+    "gemma4:e4b sample3": {
+      "seconds": 11,
+      "model_load_seconds": 8,
+      "tokens_sent": 2570,
+      "tokens_generated": 1127
+    },
+    "llama3.3:70b sample3": {
+      "seconds": 38,
+      "model_load_seconds": 26,
+      "tokens_sent": 2396,
+      "tokens_generated": 448
+    }
+  },
+  "skipped": []
+}
