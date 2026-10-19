@@ -1,0 +1,143 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": "other"
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2026-10-19T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Experimental data",
+        "description": "We will manage all scientific and technical content generated from this proposal. Our products will include 3 broad types of data. First, we will have data related to each of our proposed experiments. These will include the detailed protocols used for each experiment, the raw data collected from each experiment, and the experimental code used to collect those data.",
+        "distribution": [
+          {
+            "data_access": "shared",
+            "title": "Experimental data distribution",
+            "host": {
+              "title": "Rehabilitation Institute of Chicago servers",
+              "url": ""
+            }
+          },
+          {
+            "data_access": "shared",
+            "title": "Experimental data distribution",
+            "host": {
+              "title": "Project website",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ],
+            "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented."
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Analysis code and results",
+        "description": "Our second type of data will be the code and results for all analyses completed on experimental data. Specifically, we store all code necessary to recreate figures, tables, and other results reported in all published manuscripts.",
+        "distribution": [
+          {
+            "data_access": "shared",
+            "title": "Analysis code and results distribution",
+            "host": {
+              "title": "Rehabilitation Institute of Chicago servers",
+              "url": ""
+            }
+          },
+          {
+            "data_access": "shared",
+            "title": "Analysis code and results distribution",
+            "host": {
+              "title": "Project website",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ],
+            "description": ""
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Simulation code",
+        "description": "The proposed foundational developments will produce substantial simulation code for controller development and testing. These and the outputs relevant to all key findings will also be managed.",
+        "distribution": [
+          {
+            "data_access": "shared",
+            "title": "Simulation code distribution",
+            "host": {
+              "title": "Rehabilitation Institute of Chicago servers",
+              "url": ""
+            }
+          },
+          {
+            "data_access": "shared",
+            "title": "Simulation code distribution",
+            "host": {
+              "title": "Project website",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ],
+            "description": ""
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": "other"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2026-10-19T00:00:00Z",
+    "title": "CPS 2015"
+  }
+}
