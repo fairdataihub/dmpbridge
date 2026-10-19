@@ -203,7 +203,14 @@ for k, m in enumerate(models):
 surface = np.array(mcolors.to_rgb(SURFACE))
 
 
+TOTAL = ("Total", "Total")                                     # a last row: each column's total
+rows = rows + [TOTAL]
+n_row.loc[TOTAL] = n_fields
+
+
 def n_of(r, c):
+    if r == TOTAL:
+        return int(counts.xs(c[0], level="model").sum()[c[1]])
     return counts.loc[(*r, c[0]), c[1]] if (*r, c[0]) in counts.index else 0
 
 
@@ -233,6 +240,7 @@ for i, r in enumerate(rows):
 
 ax.set_yticks(range(len(rows)))
 ax.set_yticklabels([f"{r[1]}  ({n_row[r]})" for r in rows], fontsize=12.5)
+ax.get_yticklabels()[-1].set_fontweight("bold")                # the Total row
 ax.tick_params(length=0)
 blocks = [(cols.index((m, OUTCOMES[0])) - 0.5, cols.index((m, OUTCOMES[-1])) + 0.5) for m in models]
 for i in range(len(rows) + 1):                                 # the same white gap between every pair of rows
@@ -241,10 +249,11 @@ for j in range(len(cols) + 1):                                 # and between eve
     ax.axvline(j - 0.5, color=SURFACE, linewidth=3, zorder=3)
 for s in dict.fromkeys(r[0] for r in rows):
     idx = [i for i, r in enumerate(rows) if r[0] == s]
-    ax.text(-0.31, (idx[0] + idx[-1]) / 2, s.upper(), transform=ax.get_yaxis_transform(), ha="right",
-            va="center", fontsize=10, fontweight="bold", color=MUTED)
+    if s != "Total":
+        ax.text(-0.31, (idx[0] + idx[-1]) / 2, s.upper(), transform=ax.get_yaxis_transform(), ha="right",
+                va="center", fontsize=10, fontweight="bold", color=MUTED)
     if idx[0] > 0:                                             # a wider white gap between sections
-        ax.axhline(idx[0] - 0.5, color=SURFACE, linewidth=9, zorder=4)
+        ax.axhline(idx[0] - 0.5, color=SURFACE, linewidth=14 if s == "Total" else 9, zorder=4)
 
 ax.set_xticks([j for j, c in enumerate(cols) if c])
 ax.set_xticklabels([c[1] for c in cols if c], fontsize=11.5)
