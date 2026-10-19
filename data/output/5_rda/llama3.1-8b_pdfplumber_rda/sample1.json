@@ -1,0 +1,65 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "https://orcid.org/0000-0003-0644-4174",
+          "type": "orcid"
+        }
+      ],
+      "mbox": "john.doe@example.com",
+      "name": "John Doe"
+    },
+    "created": "2026-10-19T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "https://example.com/dataset",
+          "type": "url"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Secondary data analysis project",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://example.com/dataset2",
+          "type": "url"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "RISE study",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://example.com/dataset3",
+          "type": "url"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "iWATCH study",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://example.com/dataset4",
+          "type": "url"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "NHANES cohorts",
+        "type": "dataset"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://example.com/dmp",
+      "type": "url"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2026-10-19T00:00:00Z",
+    "title": "DATA MANAGEMENT AND SHARING PLAN"
+  }
+}
