@@ -28,17 +28,20 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v10c.txt"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v10g.txt"),
     "samples":  [3],
-    "run":      "v10c-narrative",
+    "run":      "v10g-narrative",
     # False: the schema text is left out of the user prompt (it stays the output
-    # constraint), as in v10c, v10d and v10f. True puts it back, as in v10b and v10e.
+    # constraint), as in v10c, v10d, v10f and v10g. True puts it back, as in v10b and v10e.
     "schema_in_prompt": False,
+    # The user prompt, with {dmp_text} for the plan's text. Omit for the default wording.
+    "user_prompt": "Data Management Plan:\n\n{dmp_text}\n\nFill the FORM from this plan. Copy the "
+                   "plan's words exactly. Leave empty what the plan does not say. Output only the JSON.",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v10c: v10b's instructions without the list of schema example "
-                "values, and no schema text in the prompt). DMPTool-style plans such as "
-                "sample 14 use "
+                "their own prompt (v10g: twelve numbered rules, a form whose fields carry "
+                "their own instruction in brackets, a new user prompt; no schema text in the "
+                "prompt). DMPTool-style plans such as sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
 
@@ -950,18 +953,14 @@ if ARGS.narrative:
         if NARRATIVE.get("schema_in_prompt", True):
             return src
         # The user prompt without the schema text; the schema stays the output constraint.
+        user = NARRATIVE.get("user_prompt") or (
+            "Here is the text of a Data Management Plan:\n\n{dmp_text}\n\n"
+            "Generate one JSON object that follows the JSON form in your instructions, filling in\n"
+            "whatever information the Data Management Plan text contains. Output only the JSON.")
+        assert '"""' not in user and user.count("{") == user.count("}") == 1, "user_prompt: only {dmp_text}"
         start = src.index("def make_prompt(dmp_text):")
         end = src.index("def run(model, sample):")
-        return src[:start] + '''def make_prompt(dmp_text):
-    return f"""Here is the text of a Data Management Plan:
-
-{dmp_text}
-
-Generate one JSON object that follows the JSON form in your instructions, filling in
-whatever information the Data Management Plan text contains. Output only the JSON."""
-
-
-''' + src[end:]
+        return src[:start] + 'def make_prompt(dmp_text):\n    return f"""' + user + '"""\n\n\n' + src[end:]
 
     def set_run(src):
         src = re.sub(r"^SAMPLES  = \[.*\]$", f"SAMPLES  = {NARRATIVE['samples']}", src, count=1, flags=re.M)
