@@ -13,14 +13,77 @@ A statement that clearly covers all of the data applies to every dataset; a stat
 
 Template guidance is not part of the plan: ignore text that only explains what a plan should contain, such as a funder's questions or instructions.
 
-Field rules. [REQUIRED] fields are always written: copy the value when the plan states it, otherwise use the default given here, and a required field without a default is an empty string. [RECOMMENDED] fields are written only when the plan states the information; if it does not, leave them out. Never invent a value for either kind.
-- dmp: title [REQUIRED]. description [RECOMMENDED]. language [REQUIRED], default "eng". created and modified [REQUIRED]: the date the plan gives, otherwise 2026-10-19T00:00:00Z. ethical_issues_exist [REQUIRED], default "unknown". dmp_id identifier and type [REQUIRED].
-- contact [REQUIRED]: name and mbox. contact_id identifier: the person's ORCID if the plan gives it, otherwise their email; type "orcid" for an ORCID, otherwise "other".
-- dataset: title [REQUIRED]. type [REQUIRED], default "dataset". description [RECOMMENDED]. personal_data and sensitive_data [REQUIRED]: "yes" or "no" when the plan says so, default "unknown". dataset_id identifier and type [REQUIRED].
-- distribution: title [REQUIRED]. data_access [REQUIRED], default "closed". description, byte_size and issued [RECOMMENDED]. host only if the plan names one: its title, and host_id identifier and type - a ROR id only if the plan gives it. license only if the plan names one: license_ref, and start_date - the date the plan gives, otherwise 2026-10-19.
-- metadata: language [REQUIRED], default "eng". description [RECOMMENDED]. metadata_standard_id identifier and type only if the plan names a metadata standard.
-- project: title and description [REQUIRED]. start and end [RECOMMENDED]. funding: funder_id identifier and type [REQUIRED] - a ROR id only if the plan gives it; funding_status [REQUIRED], default "planned"; grant_id identifier and type [RECOMMENDED].
+The form to fill. Each field is marked [REQUIRED] or [RECOMMENDED]; the text in each field is a rule for that field, never a value to copy:
+{
+  "dmp": {
+    "title": "[REQUIRED]",
+    "description": "[RECOMMENDED]",
+    "created": "[REQUIRED]",
+    "modified": "[REQUIRED]",
+    "language": "[REQUIRED] default 'eng'",
+    "ethical_issues_exist": "[REQUIRED] default 'unknown'",
+    "dmp_id": {"identifier": "[REQUIRED]", "type": "[REQUIRED]"},
+    "contact": {
+      "name": "[REQUIRED]",
+      "mbox": "[REQUIRED]",
+      "contact_id": [{"identifier": "[REQUIRED] ORCID preferred, email otherwise", "type": "[REQUIRED]"}]
+    },
+    "dataset": [{
+      "title": "[REQUIRED]",
+      "type": "[REQUIRED] default 'dataset'",
+      "description": "[RECOMMENDED]",
+      "personal_data": "[REQUIRED] default 'unknown'",
+      "sensitive_data": "[REQUIRED] default 'unknown'",
+      "dataset_id": {"identifier": "[REQUIRED]", "type": "[REQUIRED]"},
+      "distribution": [{
+        "title": "[REQUIRED]",
+        "data_access": "[REQUIRED] default 'closed'",
+        "description": "[RECOMMENDED]",
+        "byte_size": "[RECOMMENDED]",
+        "issued": "[RECOMMENDED]",
+        "host": {
+          "title": "[REQUIRED if a host is named]",
+          "host_id": [{"identifier": "[REQUIRED if a host is named] ROR id preferred", "type": "[REQUIRED if a host is named]"}]
+        },
+        "license": [{"license_ref": "[REQUIRED if a license is named]", "start_date": "[REQUIRED if a license is named] default today"}]
+      }],
+      "metadata": [{
+        "language": "[REQUIRED] default 'eng'",
+        "description": "[RECOMMENDED]",
+        "metadata_standard_id": [{"identifier": "[REQUIRED if a standard is named]", "type": "[REQUIRED if a standard is named]"}]
+      }]
+    }],
+    "project": [{
+      "title": "[REQUIRED]",
+      "description": "[REQUIRED]",
+      "start": "[RECOMMENDED]",
+      "end": "[RECOMMENDED]",
+      "funding": [{
+        "funder_id": {"identifier": "[REQUIRED] ROR id preferred", "type": "[REQUIRED]"},
+        "funding_status": "[REQUIRED] default 'planned'",
+        "grant_id": {"identifier": "[RECOMMENDED]", "type": "[RECOMMENDED]"}
+      }]
+    }]
+  }
+}
 
-Never invent a value. When the schema requires a field the plan does not give, use that field's default from the field rules below; a required field without a default - a name, email, identifier, URL or a distribution's title - is an empty string, never a word such as "N/A" or "not specified". The schema's examples are not data and must never appear in the output: not "Charlie Chaplin", "cc@example.com", "0000-0003-0644-4174", "10.1371/journal.pcbi.1006750", "11353/10.923628", "501100002428" or any example description. Never copy one item's identifier, title or description into another.
+How to fill the form:
+- [REQUIRED]: always write the field. Use the value the plan states; if the plan states none, use the default; if there is no default, write an empty string.
+- [RECOMMENDED]: write the field only when the plan states the information. If it does not, leave the field out.
+- [REQUIRED if ... is named]: write that part only when the plan names it - a host, a license or a metadata standard. When it does, its fields are required.
+- Never copy the bracketed text into the output, and never invent a value.
+
+Required fields and their defaults:
+- Plan: title. created and modified - the date the plan gives, otherwise 2026-10-19T00:00:00Z. language - default "eng". ethical_issues_exist - default "unknown". dmp_id identifier and type - default "".
+- Contact: name and mbox - default "". contact_id identifier - the person's ORCID if the plan gives it, otherwise their email; type - "orcid" for an ORCID, otherwise "other".
+- Every dataset: title. type - default "dataset". personal_data and sensitive_data - "no" when the plan says no personal, identifying or sensitive information is included, "yes" when it says there is, otherwise "unknown". dataset_id identifier and type - default "".
+- Every dataset has at least one distribution: title - default "". data_access - "open", "shared" or "closed" as the plan describes, default "closed".
+- Every dataset has at least one metadata entry: language - default "eng". Put the plan's sentences about documenting the data in its description.
+- Host, only if the plan names one: title - the name as the plan writes it. host_id identifier and type - a ROR id only if the plan gives one, otherwise "".
+- License, only if the plan names one: license_ref - as the plan writes it. start_date - the date the plan gives, otherwise 2026-10-19.
+- Metadata standard, only if the plan names one: identifier and type.
+- Project: title and description. funding: funder_id identifier and type - a ROR id only if the plan gives one, otherwise ""; funding_status - default "planned".
+
+Never invent a value. When the schema requires a field the plan does not give, use that field's default from the rules below; a required field without a default - a name, email, identifier, URL or a distribution's title - is an empty string, never a word such as "N/A" or "not specified". The schema's examples are not data and must never appear in the output: not "Charlie Chaplin", "cc@example.com", "0000-0003-0644-4174", "10.1371/journal.pcbi.1006750", "11353/10.923628", "501100002428" or any example description. Never copy one item's identifier, title or description into another.
 
 Output only the JSON. No explanation, no markdown.
