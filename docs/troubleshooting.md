@@ -95,7 +95,8 @@ surfaces as a misleading `Could not import module 'AutoProcessor'` from transfor
 Stages 2–5 are cached by file existence, so a document that already has output is skipped
 entirely. **There is no `--force` flag.** To re-run one, delete its files from
 `data/output/2_labeled/<tag>/`, `3_structured/<tag>/` and `4_final/<tag>/` — or, for the
-RDA JSON, from `5_rda/<rda-tag>/`. Stage 6 is only a merge and is rewritten on every run.
+RDA JSON, from `5_rda/`. Stage 5 also re-runs by itself when its `sampleN.run.json` names a
+different RDA model, extractor or prompt. Stage 6 is only a merge and is rewritten on every run.
 
 Do **not** delete `data/output/1_extracted/`. It is keyed by extractor, not by model, and is
 shared by every model — re-extracting is wasted work. Use `--no-cache` if you genuinely need
@@ -125,7 +126,7 @@ garbled-text warning and see [extraction.md](extraction.md#broken-or-scanned-pdf
 
 ## The RDA JSON is not valid JSON
 
-The model's answer is saved as `5_rda/<rda-tag>/sampleN.raw.txt` so you can see what it
+The model's answer is saved as `5_rda/sampleN.raw.txt` so you can see what it
 wrote, and that sample is not merged. Two causes have happened here:
 
 - **The model repeated itself until the token cap** — the log says `stopped at the token

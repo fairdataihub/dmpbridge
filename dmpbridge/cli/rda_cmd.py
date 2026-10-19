@@ -55,10 +55,8 @@ def main() -> None:
     logger.info("Narrative model : %s", narrative_model)
     logger.info("Extractor       : %s  (fallback %s)", args.extractor, args.fallback)
     logger.info("Samples         : %d-%d", args.start, args.end)
-    logger.info("Output          : 5_rda/%s  +  4_final/%s  ->  6_merged/%s",
-                paths.rda_tag(args.model, args.extractor),
-                paths.make_tag(narrative_model, args.extractor),
-                paths.merged_tag(narrative_model, args.model, args.extractor))
+    logger.info("Output          : 5_rda/  +  4_final/%s  ->  6_merged/",
+                paths.make_tag(narrative_model, args.extractor))
     logger.info("=" * 55)
 
     # Only its text extraction is used; the model it is built with is never called.

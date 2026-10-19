@@ -100,13 +100,17 @@ data/output/
 ├── 2_labeled/<tag>/sampleN.json
 ├── 3_structured/<tag>/sampleN.json          <- Path A scores this
 ├── 4_final/<tag>/sampleN.json               <- Path B scores this
-├── 5_rda/<rda-tag>/sampleN.json             RDA JSON
-└── 6_merged/<merged-tag>/sampleN.json       {"dmp": <stage 5>, "narrative": <stage 4>}
+├── 5_rda/sampleN.json                       RDA JSON
+└── 6_merged/sampleN.json                    {"dmp": <stage 5>, "narrative": <stage 4>}
 ```
 
-`<tag>` is `<model>_<extractor>_whole_doc`, `<rda-tag>` is `<rda-model>_<extractor>_rda`,
-and `<merged-tag>` is `<model>+<rda-model>_<extractor>`. Filenames are the same at every
-stage, so you can open `sampleN.json` in each folder and follow one document through.
+`<tag>` is `<model>_<extractor>_whole_doc`. Filenames are the same at every stage, so you
+can open `sampleN.json` in each folder and follow one document through.
+
+`5_rda` and `6_merged` have no model folder. Beside each `sampleN.json` there, a
+`sampleN.run.json` records the models, extractor and prompt that made it. Stage 5 reuses
+a saved file only when that record matches the current run; a run with a different RDA
+model, extractor or prompt replaces it.
 
 When the RDA model's answer is not valid JSON, it is saved as `sampleN.raw.txt` in the
 `5_rda` folder instead, and that sample is not merged.

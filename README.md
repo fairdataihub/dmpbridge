@@ -164,7 +164,7 @@ dmpbridge-pipeline --narrative-model gemma4:e4b --rda-model llama3.1:8b --start 
 The merged result is written to:
 
 ```
-data/output/6_merged/gemma4-e4b+llama3.1-8b_pdfplumber/sample1.json
+data/output/6_merged/sample1.json
 ```
 
 with the RDA JSON first and the narrative JSON after it:
@@ -181,8 +181,7 @@ adds just the RDA part.
 
 For a sample with a hand-made reference, the pipeline then scores the RDA JSON and saves a
 field matrix — every annotated field marked Correct, Mismatch or Missed — in
-`data/output/5_rda/<rda-tag>/evaluation/`. To score again later:
-`dmpbridge-evaluate-rda llama3.1-8b_pdfplumber_rda`.
+`data/output/5_rda/evaluation/`. To score again later: `dmpbridge-evaluate-rda`.
 
 ### What the RDA part fills in
 
@@ -329,13 +328,14 @@ data/output/
 ├── 2_labeled/<tag>/sampleN.json             the same blocks, labeled
 ├── 3_structured/<tag>/sampleN.json          nested into the DMP Tool schema
 ├── 4_final/<tag>/sampleN.json               annotation rules applied
-├── 5_rda/<rda-tag>/sampleN.json             RDA JSON, from the same text
-└── 6_merged/<merged-tag>/sampleN.json       RDA JSON + final narrative JSON
+├── 5_rda/sampleN.json                       RDA JSON, from the same text
+└── 6_merged/sampleN.json                    RDA JSON + final narrative JSON
 ```
 
-`<tag>` is `<model>_<extractor>_whole_doc`, `<rda-tag>` is `<rda-model>_<extractor>_rda`,
-and `<merged-tag>` is `<model>+<rda-model>_<extractor>`. Filenames are the same at every
-stage, so you can follow one document all the way through.
+`<tag>` is `<model>_<extractor>_whole_doc`. `5_rda` and `6_merged` have no model folder:
+a `sampleN.run.json` beside each file names the models that made it, and a run with a
+different RDA model replaces the file. Filenames are the same at every stage, so you can
+follow one document all the way through.
 
 The RDA prompt experiments (prompt versions v1–v10, their results and evaluation) are kept
 separately in `notebooks/rda-experiments/`.

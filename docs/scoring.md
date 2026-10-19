@@ -104,12 +104,12 @@ Research code: results are provisional and the evaluation set is small.
 ## The RDA JSON
 
 ```bash
-dmpbridge-evaluate-rda llama3.1-8b_pdfplumber_rda          # a folder in data/output/5_rda/
+dmpbridge-evaluate-rda                  # every sample in data/output/5_rda/
 ```
 
 `dmpbridge-pipeline` runs this automatically at the end (`--no-evaluate` skips it), for
 every sample that has a hand-made reference. It prints a line per sample and saves, in
-`5_rda/<rda-tag>/evaluation/`, the field matrix as `matrix_sampleN.png` and every score in
+`5_rda/evaluation/`, the field matrix as `matrix_sampleN.png` and every score in
 `evaluation_results.xlsx`.
 
 The rules are the ones the RDA prompt experiments use — the same code, in

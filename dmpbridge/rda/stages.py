@@ -4,11 +4,14 @@
 ``rda:`` block in demo/config.yaml) all call :func:`run_rda_stages`, so they
 write the same files:
 
-    5_rda/<rda-model>_<extractor>_rda/sampleN.json      the RDA JSON
-    5_rda/<rda-model>_<extractor>_rda/sampleN.raw.txt   the answer, when not valid JSON
-    6_merged/<narrative-model>+<rda-model>_<extractor>/sampleN.json
+    5_rda/sampleN.json          the RDA JSON
+    5_rda/sampleN.raw.txt       the answer, when it is not valid JSON
+    6_merged/sampleN.json       {"dmp": <stage 5>, "narrative": <stage 4>}
 
-Stage 5 is cached by file existence like stages 2-4; stage 6 is rewritten every
+The folders are not keyed by model, so beside each ``sampleN.json`` a
+``sampleN.run.json`` records the models, extractor and prompt that made it. Stage 5
+reuses a saved file only when that record matches the current run; a run with a
+different RDA model, extractor or prompt replaces it. Stage 6 is rewritten every
 time, since it is only a merge.
 """
 import json
@@ -18,7 +21,7 @@ from typing import Optional
 
 from ..core import config, paths
 from ..utils import get_logger
-from .extract import RdaExtractionError, extract_rda, merge
+from .extract import PROMPT_VERSION, RdaExtractionError, extract_rda, merge
 
 logger = get_logger(__name__)
 
@@ -26,6 +29,12 @@ logger = get_logger(__name__)
 def _write_json(path: Path, data: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def read_run_info(stage_file: Path) -> Optional[dict]:
+    """The ``sampleN.run.json`` record beside a stage 5 or 6 file, if there is one."""
+    info = paths.run_info_path(stage_file)
+    return json.loads(info.read_text(encoding="utf-8")) if info.exists() else None
 
 
 def run_rda_stages(strategy, pdf_path: Path, sample: int, rda_model: str,
@@ -38,15 +47,22 @@ def run_rda_stages(strategy, pdf_path: Path, sample: int, rda_model: str,
     stage-5 and stage-6 paths, each ``None`` when that stage could not be written.
     """
     label = f"[sample{sample}]"
-    rda_out = paths.rda_path(paths.rda_tag(rda_model, extractor), sample)
+    rda_out = paths.rda_path(sample)
+    this_run = {"rda_model": rda_model, "extractor": extractor, "prompt": PROMPT_VERSION}
+    saved = read_run_info(rda_out) if rda_out.exists() else None
 
-    if rda_out.exists():
-        logger.info("%s RDA JSON already exists - skipping extraction", label)
+    if saved == this_run:
+        logger.info("%s RDA JSON already exists for %s - skipping extraction", label, rda_model)
         rda = json.loads(rda_out.read_text(encoding="utf-8"))
     elif not pdf_path.exists():
         logger.warning("%s PDF not found: %s", label, pdf_path)
         return None, None
     else:
+        if rda_out.exists():
+            logger.info("%s saved RDA JSON was made by %s - replacing it with %s", label,
+                        (saved or {}).get("rda_model", "an unknown run"), rda_model)
+            rda_out.unlink()
+            paths.run_info_path(rda_out).unlink(missing_ok=True)
         text = strategy.extract_text(pdf_path)
         if not text:
             return None, None
@@ -60,6 +76,8 @@ def run_rda_stages(strategy, pdf_path: Path, sample: int, rda_model: str,
             logger.error("%s %s - answer saved to %s", label, e, raw_out)
             return None, None
         _write_json(rda_out, rda)
+        _write_json(paths.run_info_path(rda_out), this_run)
+        rda_out.with_name(f"sample{sample}.raw.txt").unlink(missing_ok=True)   # an earlier failure
         logger.info("%s RDA JSON in %.1f s (%s output tokens) -> %s",
                     label, time.perf_counter() - t0, info.get("eval_count"), rda_out)
 
@@ -68,7 +86,8 @@ def run_rda_stages(strategy, pdf_path: Path, sample: int, rda_model: str,
         logger.warning("%s no narrative JSON at %s - not merged", label, narrative_in)
         return rda_out, None
     narrative = json.loads(narrative_in.read_text(encoding="utf-8"))
-    merged_out = paths.merged_path(paths.merged_tag(narrative_model, rda_model, extractor), sample)
+    merged_out = paths.merged_path(sample)
     _write_json(merged_out, merge(narrative, rda))
+    _write_json(paths.run_info_path(merged_out), {"narrative_model": narrative_model, **this_run})
     logger.info("%s merged -> %s", label, merged_out)
     return rda_out, merged_out

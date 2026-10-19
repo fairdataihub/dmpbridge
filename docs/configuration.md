@@ -112,11 +112,9 @@ Runs `dmpbridge-wholedoc` for stages 1–4, then the RDA part for stages 5–6.
 
 ### `dmpbridge-evaluate-rda` — score the RDA JSON
 
-| Argument | Default | What it does |
+| Flag | Default | What it does |
 |---|---|---|
-| `<rda-tag>` | — | a folder in `data/output/5_rda/`, e.g. `llama3.1-8b_pdfplumber_rda` |
-| `--start` / `--end` | every sample | inclusive sample range |
-| `--list` | off | list the RDA runs and exit |
+| `--start` / `--end` | every sample in `5_rda/` | inclusive sample range |
 | `--no-save` | off | print only; write no figure or spreadsheet |
 
 See [Scoring → The RDA JSON](scoring.md#the-rda-json) for what the numbers mean.

@@ -9,8 +9,11 @@ Usage:
 Writes, for each sample:
     1_extracted/<extractor>/                              plan text
     2_labeled|3_structured|4_final/<narrative-model>_<extractor>_whole_doc/
-    5_rda/<rda-model>_<extractor>_rda/                    RDA JSON
-    6_merged/<narrative-model>+<rda-model>_<extractor>/   {"dmp": ..., "narrative": ...}
+    5_rda/sampleN.json                                    RDA JSON
+    6_merged/sampleN.json                                 {"dmp": ..., "narrative": ...}
+
+(5_rda and 6_merged are not keyed by model: a sampleN.run.json beside each file
+names the models that made it.)
 
 Then, for each sample with a hand-made reference in data/input/rda_ground_truth/, the
 RDA JSON is scored as in ``dmpbridge-evaluate-rda`` (the field matrix, and precision,
@@ -64,9 +67,7 @@ def main() -> None:
 
     # Stages 5-6. Only the strategy's text extraction is used, never its model.
     logger.info("=" * 55)
-    logger.info("RDA model : %s  ->  5_rda/%s  ->  6_merged/%s", args.rda_model,
-                paths.rda_tag(args.rda_model, args.extractor),
-                paths.merged_tag(args.narrative_model, args.rda_model, args.extractor))
+    logger.info("RDA model : %s  ->  5_rda/  ->  6_merged/", args.rda_model)
     logger.info("=" * 55)
     strategy = WholeDocStrategy(
         model=args.rda_model, host=args.host, extractor=args.extractor,
@@ -79,9 +80,8 @@ def main() -> None:
 
     # Score the RDA JSON for the samples that have a hand-made reference.
     if not args.no_evaluate:
-        from .rda_evaluate_cmd import evaluate_tag
-        evaluate_tag(paths.rda_tag(args.rda_model, args.extractor),
-                     list(range(args.start, args.end + 1)))
+        from .rda_evaluate_cmd import evaluate_rda
+        evaluate_rda(list(range(args.start, args.end + 1)))
 
 
 if __name__ == "__main__":
