@@ -1,6 +1,6 @@
 {
   "run": "v10c-narrative",
-  "date": "2026-10-19T09:05",
+  "date": "2026-10-19T09:42",
   "samples": [
     3
   ],
@@ -16,21 +16,21 @@
   },
   "timings": {
     "llama3.1:8b sample3": {
-      "seconds": 9,
-      "model_load_seconds": 2,
-      "tokens_sent": 2396,
-      "tokens_generated": 453
+      "seconds": 7,
+      "model_load_seconds": 4,
+      "tokens_sent": 2321,
+      "tokens_generated": 515
     },
     "gemma4:e4b sample3": {
       "seconds": 11,
-      "model_load_seconds": 8,
-      "tokens_sent": 2570,
-      "tokens_generated": 1127
+      "model_load_seconds": 9,
+      "tokens_sent": 2461,
+      "tokens_generated": 1116
     },
     "llama3.3:70b sample3": {
-      "seconds": 38,
-      "model_load_seconds": 26,
-      "tokens_sent": 2396,
+      "seconds": 48,
+      "model_load_seconds": 25,
+      "tokens_sent": 2321,
       "tokens_generated": 448
     }
   },

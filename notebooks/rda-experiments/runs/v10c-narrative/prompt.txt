@@ -60,7 +60,7 @@ FIELD NOTES:
 - Leave out a host, license or metadata standard the plan does not name, rather than filling it with empty values.
 - Fields with no information in the plan and no default above are empty strings - never "N/A", "unknown" or "not specified".
 
-GROUNDING: Only extract values that appear in the plan text - do not invent names, emails, identifiers, URLs, dates or repositories. The schema's examples are not data and must never appear in the output: not "Charlie Chaplin", "John Doe", "cc@example.com", anything at example.com, "0000-0003-0644-4174", "10.1371/journal.pcbi.1006750", "11353/10.923628" or "501100002428". Never copy one dataset's title or description into another.
+GROUNDING: Only extract values that appear in the plan text - do not invent names, emails, identifiers, URLs, dates or repositories. The schema's examples are not data and must never appear in the output.
 
 OUTPUT VALID JSON ONLY. No explanation, no markdown.
 

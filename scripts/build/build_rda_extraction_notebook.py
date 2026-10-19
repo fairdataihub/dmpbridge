@@ -28,16 +28,17 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v10e.txt"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v10c.txt"),
     "samples":  [3],
-    "run":      "v10e-narrative",
-    # v10c and v10d left the schema text out of the user prompt (it stayed the output
-    # constraint); v10e puts it back. False drops it.
-    "schema_in_prompt": True,
+    "run":      "v10c-narrative",
+    # False: the schema text is left out of the user prompt (it stays the output
+    # constraint), as in v10c, v10d and v10f. True puts it back, as in v10b and v10e.
+    "schema_in_prompt": False,
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v10e: v10d's [REQUIRED] / [RECOMMENDED] rules, with the "
-                "schema text back in the prompt). DMPTool-style plans such as sample 14 use "
+                "their own prompt (v10c: v10b's instructions without the list of schema example "
+                "values, and no schema text in the prompt). DMPTool-style plans such as "
+                "sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
 
