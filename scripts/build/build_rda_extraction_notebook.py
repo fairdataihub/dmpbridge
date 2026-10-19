@@ -28,22 +28,18 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v10h.txt"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v10i.txt"),
     "samples":  [3],
-    "run":      "v10h-sample3",
+    "run":      "v10i-sample3",
     # False: the schema text is left out of the user prompt (it stays the output
     # constraint), as in v10c and later. True puts it back, as in v10b and v10e.
     "schema_in_prompt": False,
     # The user prompt, with {dmp_text} for the plan's text. Omit for the default wording.
-    "user_prompt": "Here is the text of a Data Management Plan:\n\n{dmp_text}\n\n"
-                   "Generate one JSON object that follows the JSON form in your instructions, filling in\n"
-                   "whatever information the Data Management Plan text contains. Copy the plan's words\n"
-                   "exactly and leave empty what the plan does not say. Output only the JSON.",
+    # "user_prompt": "...",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v10h: v10c's rules, the template's field order with "
-                "[REQUIRED] / [RECOMMENDED] markers and a per-field explanation, no dates as "
-                "defaults, a user prompt that repeats the copy-exactly rule; no schema text in "
+                "their own prompt (v10i: v10c with [REQUIRED] / [RECOMMENDED] markers on the "
+                "form, and the fallback date filled in on the day it runs; no schema text in "
                 "the prompt). DMPTool-style plans such as sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
@@ -952,7 +948,13 @@ if ARGS.narrative:
 
     def set_prompt(src):
         start = src.index('SYSTEM = """') + len('SYSTEM = """')
-        src = src[:start] + system + src[src.index('"""', start):]
+        end = src.index('"""', start) + 3
+        today = ""
+        if "<<TODAY>>" in system:
+            # The prompt's fallback date is the day it runs, not a date written into the file.
+            today = ('\nTODAY = __import__("datetime").date.today().isoformat()\n'
+                     'SYSTEM = SYSTEM.replace("<<TODAY>>", TODAY)   # the current date as the fallback date\n')
+        src = src[:start] + system + src[end - 3:end] + today + src[end:]
         if NARRATIVE.get("schema_in_prompt", True):
             return src
         # The user prompt without the schema text; the schema stays the output constraint.
