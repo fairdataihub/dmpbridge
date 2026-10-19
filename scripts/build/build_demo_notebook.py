@@ -235,6 +235,20 @@ cells = [
         "        print()",
     ]),
 
+    md("md-rda-json", [
+        "## The RDA JSON",
+        "",
+        "Stage 5 in full, exactly as saved in `5_rda/` — the `dmp` part of the merged file.",
+    ]),
+    code("rda-json", [
+        "if rda_model:",
+        "    for n in cfg.sample_range:",
+        "        path = P.rda_path(P.rda_tag(rda_model, extractor), n)",
+        "        if path.exists():",
+        "            print(f'=== sample{n} - {path} ===')",
+        "            print(json.dumps(json.loads(path.read_text(encoding='utf-8')), indent=2, ensure_ascii=False))",
+    ]),
+
     md("md-save", [
         "## Save — copy the result into demo/output/",
         "",

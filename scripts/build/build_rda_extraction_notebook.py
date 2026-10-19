@@ -59,7 +59,7 @@ One prompt: the text of a DMP PDF plus the complete **maDMP 1.2** schema, with
 strict instructions to follow the schema — first with `llama3.1:8b`, then the same
 prompt with `gemma4:e4b` and `llama3.3:70b`.
 
-Every run of the notebook is saved in its own folder, `data/output/rda/runs/v1/`,
+Every run of the notebook is saved in its own folder, `notebooks/rda-experiments/runs/v1/`,
 `v2/`, `v3/` ... — the result JSON per model, the exact prompt (`prompt.txt`) and the
 timings (`run.json`). So you can change the prompt a little, run all cells again, and
 nothing from an earlier run is lost. The run number is picked automatically. Set
@@ -90,7 +90,7 @@ from dmpbridge.models.ollama import OllamaModel
 
 SAMPLES  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 PDF_DIR  = Path("data/input/pdfs")
-SCHEMA   = Path("data/output/rda/maDMP-schema-1.2.json")
+SCHEMA   = Path("notebooks/rda-experiments/maDMP-schema-1.2.json")
 HOST     = "http://localhost:11434"
 NUM_CTX  = 32768
 OPTIONS  = {"repeat_last_n": 1024}  # the repeat penalty looks back 1024 tokens, not Ollama's default 64:
@@ -98,9 +98,9 @@ OPTIONS  = {"repeat_last_n": 1024}  # the repeat penalty looks back 1024 tokens,
 MODEL_1  = "llama3.1:8b"
 MODEL_2  = "gemma4:e4b"
 MODEL_3  = "llama3.3:70b"
-OUT_DIR  = Path("data/output/rda")
+OUT_DIR  = Path("notebooks/rda-experiments")
 
-# Every run is saved in its own folder, data/output/rda/runs/<RUN_NAME>/, with its prompt.
+# Every run is saved in its own folder, notebooks/rda-experiments/runs/<RUN_NAME>/, with its prompt.
 #   RUN_NAME = None   -> a new run with the next number (v1, v2, v3 ...): the models are called
 #   RUN_NAME = "v1"   -> that saved run is loaded and evaluated: the models are NOT called again
 RUN_NAME = "v9"
@@ -308,7 +308,7 @@ run_all(MODEL_3)
 md("s6", '''
 ## Step 6 — Save this run
 
-Everything goes into `data/output/rda/runs/<RUN_NAME>/`: the result JSON per model,
+Everything goes into `notebooks/rda-experiments/runs/<RUN_NAME>/`: the result JSON per model,
 `prompt.txt` (the exact prompt that produced them) and `run.json` (timings and tokens).
 
 Part 2 below evaluates exactly these files.
@@ -404,7 +404,7 @@ if Path.cwd().name == "notebooks":
 from dmpbridge.evaluation.evaluate import tokenize, containment, CONTAINMENT_THRESHOLD
 
 # ── Where things are ─────────────────────────────────────────────────────────
-RDA_DIR   = Path("data/output/rda")
+RDA_DIR   = Path("notebooks/rda-experiments")
 MODELS    = [m.replace(":", "-") for m in (MODEL_1, MODEL_2, MODEL_3)]   # as in the file names
 REFERENCE = "RDA_DMP_sample{n}_manual_annotation.json"           # one per sample, in RDA_DIR
 OUTPUT    = "sample{n}.rda.{model}.json"                         # one per sample and model, in RUN_DIR

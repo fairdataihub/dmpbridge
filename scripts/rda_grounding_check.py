@@ -25,7 +25,7 @@ from pathlib import Path
 
 from dmpbridge.extractors import get_extractor
 
-RUNS = Path("data/output/rda/runs")
+RUNS = Path("notebooks/rda-experiments/runs")
 PDFS = Path("data/input/pdfs")
 NOT_CHECKED = {"type", "data_access", "personal_data", "sensitive_data", "ethical_issues_exist", "language",
                "funding_status", "is_reused", "certified_with", "pid_system", "support_versioning", "geo_location",

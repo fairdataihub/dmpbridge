@@ -25,7 +25,7 @@ from pathlib import Path
 
 import requests
 
-RUNS = Path("data/output/rda/runs")
+RUNS = Path("notebooks/rda-experiments/runs")
 EXTRACT = Path("scripts/build/build_rda_extraction_notebook.py")
 OVERVIEW = Path("scripts/build/build_rda_overview_notebook.py")
 JUPYTER = Path("venv/Scripts/jupyter.exe")

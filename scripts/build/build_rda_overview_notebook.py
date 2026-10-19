@@ -2,7 +2,7 @@
 
 One overview figure for a whole run (all samples pooled), then one figure per
 sample, every model side by side. It only reads the run's saved evaluation
-(data/output/rda/runs/<run>/evaluation_results.xlsx, written by
+(notebooks/rda-experiments/runs/<run>/evaluation_results.xlsx, written by
 pdf-to-rda-dmp-json.ipynb) - no model is called and nothing is re-scored.
 
     python scripts/build/build_rda_overview_notebook.py
@@ -60,9 +60,9 @@ if Path.cwd().name == "notebooks":
     import os
     os.chdir(Path.cwd().parent)
 
-RUN    = "v9"                                    # a folder name under data/output/rda/runs/
-RESULT = Path("data/output/rda/runs") / RUN / "evaluation_results.xlsx"
-CHART  = Path("data/output/rda/runs") / RUN / "evaluation_overview.png"   # per-sample figures go next to it
+RUN    = "v9"                                    # a folder name under notebooks/rda-experiments/runs/
+RESULT = Path("notebooks/rda-experiments/runs") / RUN / "evaluation_results.xlsx"
+CHART  = Path("notebooks/rda-experiments/runs") / RUN / "evaluation_overview.png"   # per-sample figures go next to it
 MODELS = ["llama3.1-8b", "gemma4-e4b", "llama3.3-70b"]
 
 # The repo's palette: model slots 1-3 as in every other notebook, verdicts blue / red / gray
@@ -77,7 +77,7 @@ plt.rcParams.update({
 })
 pd.set_option("display.width", 200)
 
-saved = sorted(p.parent.name for p in Path("data/output/rda/runs").glob("*/evaluation_results.xlsx"))
+saved = sorted(p.parent.name for p in Path("notebooks/rda-experiments/runs").glob("*/evaluation_results.xlsx"))
 print(f"run: {RUN}   (runs with a saved evaluation: {', '.join(saved)})")
 '''),
 

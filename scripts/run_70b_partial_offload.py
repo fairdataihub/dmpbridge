@@ -27,13 +27,13 @@ ap.add_argument("run")
 ap.add_argument("--layers", type=int, default=62, help="layers on the GPU (of 81); the rest run on the CPU")
 args = ap.parse_args()
 
-run_dir = Path("data/output/rda/runs") / args.run
+run_dir = Path("notebooks/rda-experiments/runs") / args.run
 record = (run_dir / "prompt.txt").read_text(encoding="utf-8")
 marker = "\n\nPROMPT (the schema and the document text go in the braces):\n"
 system = record[len("SYSTEM:\n"):record.index(marker)]
 template = record[record.index(marker) + len(marker):]
 
-schema = json.loads(Path("data/output/rda/maDMP-schema-1.2.json").read_text(encoding="utf-8"))
+schema = json.loads(Path("notebooks/rda-experiments/maDMP-schema-1.2.json").read_text(encoding="utf-8"))
 defs = schema["$defs"]
 
 
