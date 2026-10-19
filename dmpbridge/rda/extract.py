@@ -1,12 +1,14 @@
 """One model call: a plan's text -> RDA maDMP 1.2 JSON.
 
-The prompt is the v10b RDA prompt (``prompt_v10b.txt``, developed and evaluated in
-notebooks/pdf-to-rda-dmp-json-narrative.ipynb; a byte-for-byte copy of
-scripts/build/prompts/rda_narrative_v10b.txt, which is where earlier versions live). The complete, unmodified maDMP 1.2
-schema (``maDMP-schema-1.2.json``) is given to the model twice: as text in the prompt,
-and as Ollama's structured-output ``format``, which constrains the answer to the
-schema's structure. Its ``$ref`` pointers are resolved first so the model sees
-every definition in place.
+The prompt is version v10c, developed and evaluated in
+notebooks/pdf-to-rda-dmp-json-narrative.ipynb: the v10b instructions as the system
+prompt (``prompt_v10b.txt``, a byte-for-byte copy of
+scripts/build/prompts/rda_narrative_v10b.txt, which is where earlier versions live),
+and a user prompt that holds only the plan's text. The complete, unmodified maDMP 1.2
+schema (``maDMP-schema-1.2.json``, ``$ref`` pointers resolved) is not in the prompt -
+it is Ollama's structured-output ``format``, which constrains the answer to the
+schema's structure. Earlier versions also pasted the schema into the prompt as text;
+v10c dropped it, cutting the prompt from about 11,700 tokens to about 2,400.
 
 The settings match the notebook runs the prompt was evaluated with:
 temperature 0, a 32k context, an 8000-token answer cap, and a repeat-penalty window
@@ -21,8 +23,8 @@ from ..core import config
 from ..models.ollama import OllamaModel
 
 HERE = Path(__file__).parent
-PROMPT_VERSION = "v10b"
-PROMPT_FILE = HERE / "prompt_v10b.txt"
+PROMPT_VERSION = "v10c"
+PROMPT_FILE = HERE / "prompt_v10b.txt"      # v10c uses v10b's instructions unchanged
 SCHEMA_FILE = HERE / "maDMP-schema-1.2.json"
 
 NUM_CTX = 32768
@@ -65,17 +67,12 @@ def system_prompt() -> str:
 
 
 def make_prompt(plan_text: str) -> str:
-    """The user prompt: the schema, then the plan's text - the same wording as the notebook."""
-    _, schema_text = load_schema()
-    return f"""Here is the RDA maDMP JSON schema (version 1.2). Follow it strictly:
-
-{schema_text}
-
-Here is the text of a Data Management Plan:
+    """The user prompt: the plan's text only - the same wording as the notebook's v10c run."""
+    return f"""Here is the text of a Data Management Plan:
 
 {plan_text}
 
-Generate one JSON object that strictly follows the schema above, filling in
+Generate one JSON object that follows the JSON form in your instructions, filling in
 whatever information the Data Management Plan text contains. Output only the JSON."""
 
 
