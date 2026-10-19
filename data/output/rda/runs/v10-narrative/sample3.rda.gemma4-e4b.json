@@ -1,0 +1,88 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "unknown",
+        "type": "other"
+      },
+      "mbox": "unknown",
+      "name": "unknown"
+    },
+    "created": "2026-10-19T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "data related to each of our proposed experiments",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "code and results for all analyses completed on experimental data",
+        "type": "code and results"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "simulation code for controller development and testing",
+        "type": "code"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "videos of the experiments",
+        "type": "video"
+      },
+      {
+        "dataset_id": {
+          "identifier": "unknown",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "software generated under the project",
+        "type": "software"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "unknown",
+      "type": "handle"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2026-10-19T00:00:00Z",
+    "title": "CPS 2015",
+    "project": [
+      {
+        "title": "unknown",
+        "description": "The plan should outline the rights and obligations of all parties as to their roles and responsibilities in the management and retention of research data, and consider changes that would occur should a PI or co-PI leave the institution or project. Any costs should be explained in the Budget Justification pages.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "unknown",
+              "type": "fundref"
+            },
+            "funding_status": "planned"
+          }
+        ]
+      }
+    ]
+  }
+}
