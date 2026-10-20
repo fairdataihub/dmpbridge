@@ -9,103 +9,66 @@ CRITICAL RULES:
 5. A statement that covers all of the data applies to every dataset; a statement about one kind of data applies only to that dataset.
 6. A dataset is not a study, and a repository is not the funder or the university running the project - unless the plan names it as the place the data will be kept.
 7. Template guidance is not part of the plan: ignore text that only explains what a plan should contain, such as a funder's questions or instructions.
-8. No hallucination: never invent a value. Every name, email, date, identifier, URL, repository, license, title or description must appear in the plan text; if it does not, use the default named in the field, or an empty string if there is no default. Never use the schema's example values as data.
 
-MARKERS IN THE FORM:
-- [REQUIRED]: always write this field. Use the plan's value; if the plan gives none, use the default named in the field; if there is no default, write an empty string.
-- [RECOMMENDED]: write this field only when the plan gives the information; otherwise leave it out.
-- [REQUIRED] if ... is present: write that part only when the plan names it - a host, a license or a metadata standard. Then all its fields are required.
-- The markers and the explanations after them are instructions: never copy them into the output.
-
-JSON FORM:
+JSON FORM (each value says what to put there - never copy these descriptions into the output):
 {
   "dmp": {
+    "title": "the plan's title or first heading, exactly as written",
+    "description": "the plan's own statement of what it covers - leave out if it has none",
+    "created": "the date the plan gives, otherwise 2026-10-19T00:00:00Z",
+    "modified": "the date the plan gives, otherwise 2026-10-19T00:00:00Z",
+    "language": "eng",
+    "ethical_issues_exist": "yes | no | unknown",
+    "dmp_id": {"identifier": "", "type": "other"},
     "contact": {
-      "contact_id": [{
-        "identifier": "[REQUIRED] ORCID preferred but email otherwise - identifier of the contact person",
-        "type": "[REQUIRED] identifier type; suggested values orcid, isni, openid"
-      }],
-      "mbox": "[REQUIRED] contact person's e-mail address",
-      "name": "[REQUIRED] name of the contact person, the party that can provide any information on the DMP"
+      "name": "the contact person the plan names, otherwise empty",
+      "mbox": "their email as the plan gives it, otherwise empty",
+      "contact_id": [{"identifier": "their ORCID, otherwise their email, otherwise empty", "type": "orcid | other"}]
     },
-    "created": "[REQUIRED] date and time of the first version of the DMP; ISO 8601 date-time with timezone",
     "dataset": [{
-      "dataset_id": {
-        "identifier": "[REQUIRED] identifier of the dataset",
-        "type": "[REQUIRED] dataset identifier type; suggested values handle, doi, ark, url"
-      },
-      "description": "[RECOMMENDED] description of the dataset as an abstract concept (W3C DCAT)",
+      "title": "the plan's own short phrase for this data",
+      "description": "the plan's sentences about this data, verbatim",
+      "type": "dataset",
+      "personal_data": "yes | no | unknown",
+      "sensitive_data": "yes | no | unknown",
+      "dataset_id": {"identifier": "a DOI or other identifier only if the plan gives one, otherwise empty", "type": "doi | other"},
       "distribution": [{
-        "byte_size": "[RECOMMENDED] size in bytes, integer",
-        "data_access": "[REQUIRED] default to 'closed' - access mode for the data; allowed values open, shared, closed",
-        "description": "[RECOMMENDED] description of this specific instance of the data, e.g. a file",
-        "host": {
-          "host_id": [{
-            "identifier": "[REQUIRED] if host info is present, ROR id preferred - identifier of the host",
-            "type": "[REQUIRED] if host info is present - identifier type; suggested value url"
-          }],
-          "title": "[REQUIRED] if host info is present - title of the infrastructure (e.g. repository) where the data is stored",
-          "url": "[RECOMMENDED] URL of the infrastructure hosting the distribution, only if the plan gives it"
-        },
-        "issued": "[RECOMMENDED] date when the distribution was published or released; ISO 8601 date",
-        "license": [{
-          "license_ref": "[REQUIRED] if license is present - link to the license document",
-          "start_date": "[REQUIRED] if license is present, default to current date time - date the license starts; a future date indicates an embargo period; ISO 8601 date"
-        }],
-        "title": "[REQUIRED] title of this specific instance of the data, e.g. a file"
+        "title": "the plan's phrase for this copy of the data, otherwise empty",
+        "data_access": "open | shared | closed",
+        "host": {"title": "the repository's name exactly as written", "url": "only if the plan gives it"},
+        "license": [{"license_ref": "the license exactly as the plan names it", "start_date": "the date the plan gives, otherwise 2026-10-19"}]
       }],
       "metadata": [{
-        "description": "[RECOMMENDED] any details on the choice of the metadata standard",
-        "language": "[REQUIRED] default to 'eng' - language of the metadata, ISO 639-3 code",
-        "metadata_standard_id": [
-          {
-            "identifier": "[REQUIRED] if metadata standard info is present - identifier of the metadata standard used, e.g. a link to its specification",
-            "type": "[REQUIRED] if metadata standard info is present - identifier type; allowed values url, other"
-          }
-        ]
-      }],
-      "personal_data": "[REQUIRED] default to 'unknown' - whether the dataset contains personal data, i.e. data that can identify an individual (name, birthdate, address, voice recordings); allowed values yes, no, unknown",
-      "sensitive_data": "[REQUIRED] default to 'unknown' - whether the dataset contains sensitive data, i.e. information that could pose risks (financial information, medical records, passwords); allowed values yes, no, unknown",
-      "title": "[REQUIRED] title of the dataset as an abstract concept (W3C DCAT)",
-      "type": "[REQUIRED] default to 'dataset' - type according to the DataCite or COAR dictionary if appropriate, otherwise the common name for the type, e.g. raw data, software, survey"
+        "description": "the plan's sentences about documenting this data, verbatim",
+        "language": "eng",
+        "metadata_standard_id": [{"identifier": "the standard the plan names", "type": "other"}]
+      }]
     }],
-    "description": "[RECOMMENDED] any text related to this DMP, optionally describing the project; information that doesn't fit elsewhere",
-    "dmp_id": {
-      "identifier": "[REQUIRED] identifier for the DMP itself",
-      "type": "[REQUIRED] DMP identifier type; suggested values handle, doi, ark, url"
-    },
-    "ethical_issues_exist": "[REQUIRED] default to 'unknown' - whether there are ethical issues related to the data this DMP describes; allowed values yes, no, unknown",
-    "language": "[REQUIRED] default to 'eng' - language of the metadata, ISO 639-3 code",
-    "modified": "[REQUIRED] date and time the DMP was last modified, indicates a DMP version; ISO 8601 date-time with timezone",
     "project": [{
-      "description": "[REQUIRED] project abstract giving an overview of the project's goals and scope",
-      "end": "[RECOMMENDED] project end date; ISO 8601 date",
-      "funding": [{
-        "funder_id": {
-          "identifier": "[REQUIRED] ROR id preferred - funder ID; the schema recommends the CrossRef Funder Registry",
-          "type": "[REQUIRED] identifier type; suggested values fundref, url"
-        },
-        "funding_status": "[REQUIRED] default to 'planned' - phase of the project lifecycle; allowed values planned, applied, granted, rejected",
-        "grant_id": {
-          "identifier": "[RECOMMENDED] grant ID of the associated project",
-          "type": "[RECOMMENDED] identifier type; suggested value url"
-        }
-      }],
-      "start": "[RECOMMENDED] project start date; ISO 8601 date",
-      "title": "[REQUIRED] project title"
-    }],
-    "title": "[REQUIRED] title of the DMP"
+      "title": "the project's title",
+      "description": "the project's aims and scope as the plan states them",
+      "funding": [{"funder_id": {"identifier": "", "type": "other"}, "funding_status": "planned | applied | granted | rejected"}]
+    }]
   }
 }
+
+FIELD NOTES:
+- data_access MUST be exactly one of "open" | "shared" | "closed": "open" when anyone can get the data, "shared" when access is on request or restricted, "closed" when the plan says it will not be shared. If the plan does not say, "closed".
+- personal_data and sensitive_data MUST be exactly one of "yes" | "no" | "unknown": "no" when the plan says the data is de-identified, anonymised, involves no human subjects or contains no personal or identifying information; "yes" when it says the data contains such information; "unknown" only when the plan says nothing about it.
+- ethical_issues_exist MUST be exactly one of "yes" | "no" | "unknown".
+- funding_status MUST be exactly one of "planned" | "applied" | "granted" | "rejected"; "planned" if the plan does not say.
+- Leave out a host, license or metadata standard the plan does not name, rather than filling it with empty values.
+- Fields with no information in the plan and no default above are empty strings - never "N/A", "unknown" or "not specified".
+
+GROUNDING: Only extract values that appear in the plan text - do not invent names, emails, identifiers, URLs, dates or repositories. The schema's examples are not data and must never appear in the output.
 
 OUTPUT VALID JSON ONLY. No explanation, no markdown.
 
 
-PROMPT:
+PROMPT (the schema and the document text go in the braces):
 Here is the text of a Data Management Plan:
 
 {dmp_text}
 
 Generate one JSON object that follows the JSON form in your instructions, filling in
-whatever information the Data Management Plan text contains. Copy the plan's words
-exactly and leave empty what the plan does not say. Output only the JSON.
+whatever information the Data Management Plan text contains. Output only the JSON.
