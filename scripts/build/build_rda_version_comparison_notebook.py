@@ -307,6 +307,47 @@ plt.show()
 print(f"saved -> {out}")
 '''),
 
+md("s2d", '''
+## 2d. Each version, the three models side by side
+
+One panel per version, one stacked bar per model - the same green / red / grey as
+above, with the count in each segment and the correct share under the model's name.
+Saved as `version_comparison_by_model_sample{SAMPLE}.png`.
+'''),
+
+code("figure_by_model", r'''
+fig, axes = plt.subplots(1, len(versions), figsize=(3.9 * len(versions), 5.4), sharey=True)
+axes = np.atleast_1d(axes)
+for ax, v in zip(axes, versions):
+    d = df[df["version"] == v].set_index("model").reindex(MODELS)
+    bottom = np.zeros(len(MODELS))
+    for o in OUTCOMES:
+        vals = d[o].fillna(0).to_numpy()
+        ax.bar(range(len(MODELS)), vals, bottom=bottom, color=COLOUR[o], width=0.66, label=o)
+        for i, (n, b) in enumerate(zip(vals, bottom)):
+            if n:
+                ax.text(i, b + n / 2, f"{int(n)}", ha="center", va="center", fontsize=11,
+                        fontweight="bold", color="white" if o != "Missed" or n > 3 else INK)
+        bottom += vals
+    ax.set_xticks(range(len(MODELS)))
+    ax.set_xticklabels([f"{NAME[m]}\n{int(d.loc[m, 'Correct'])}/{n_fields} correct" for m in MODELS],
+                       fontsize=9.5)
+    ax.set_title(v, fontsize=14, fontweight="bold", loc="left")
+    ax.set_ylim(0, n_fields)
+    ax.tick_params(length=0)
+    for s in ax.spines.values():
+        s.set_visible(False)
+    ax.set_yticks([])
+axes[0].legend(loc="upper left", bbox_to_anchor=(0, -0.16), ncol=3, fontsize=10)
+fig.suptitle(f"Prompt versions on sample {SAMPLE}: the three models within each version "
+             f"({n_fields} annotated fields each)", x=0.01, ha="left", fontsize=14.5, fontweight="bold")
+fig.tight_layout(rect=(0, 0.03, 1, 0.94))
+out = OUT_DIR / f"version_comparison_by_model_sample{SAMPLE}.png"
+fig.savefig(out, dpi=170, bbox_inches="tight", facecolor=SURFACE)
+plt.show()
+print(f"saved -> {out}")
+'''),
+
 md("s3", '''
 ## 3. Per model
 
