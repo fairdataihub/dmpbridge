@@ -1,0 +1,6 @@
+{
+  "rda_model": "gemma4:e4b",
+  "extractor": "pdfplumber",
+  "prompt": "v10c",
+  "prompt_fingerprint": "0f03cab700bc"
+}
