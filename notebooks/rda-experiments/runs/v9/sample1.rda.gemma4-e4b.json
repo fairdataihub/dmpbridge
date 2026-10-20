@@ -1,0 +1,111 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": "unknown"
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "unknown"
+        },
+        "personal_data": "yes",
+        "sensitive_data": "unknown",
+        "title": "Secondary data analysis project data",
+        "description": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts (wrist NHANES 2011-2014; hip/counts-NHANES 2003-2006). The studies include (i) the RISE Study, (ii) the SOL-VIDA Study, (iii) the iWATCH Study, (iv) the MOCA Study, (v) the PHASE Study, (vi) the AusDiab Study, (vii) the ACT Study, and (viii) the WHISH accelerometer sub-study. Sufficient data from those datasets will be preserved to enable sharing to validate and replicate research findings described in the Aims with those datasets only. The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It will be deposited into the UC San Diego Library Data repository along with study protocols, code, and models for public use. De-identified data will be available after the main outcome papers are published.",
+        "distribution": [
+          {
+            "data_access": "open",
+            "title": "UC San Diego Library Repository",
+            "description": "De-identified data will be uploaded to the University of California San Diego Library repository. The research community will have access to data when the main outcome manuscript has been published. We anticipate data being available for the foreseeable future (minimum of at least 5 years) after the study has been completed. The University of California San Diego Library repository does not currently have a limit on how long data can be stored.",
+            "host": {
+              "title": "University of California San Diego Library repository",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "",
+                "start_date": "2024-01-01"
+              }
+            ]
+          },
+          {
+            "data_access": "open",
+            "title": "GitHub website",
+            "description": "Code and models will be included in the repository and in on our project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep Postures”."
+          },
+          {
+            "data_access": "open",
+            "title": "ActiLife software",
+            "description": "ActiGraph data will be processed and analyzed using ActiLife software which requires a paid license."
+          },
+          {
+            "data_access": "open",
+            "title": "Custom code and models",
+            "description": "Custom code and models will be included in the repository and in on our project’s GitHub website, hosted as part of the UCSD Advance Data Analytics Lab GitHub and titled “Deep Postures”."
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "url"
+              }
+            ],
+            "description": "The following data will be created as a result of this project: Objective sedentary behavior metrics – no existing standards."
+          }
+        ],
+        "related_identifier": [],
+        "security_and_privacy": [
+          {
+            "title": "All data used in this study was de-identified prior to use.",
+            "description": "All data used in this study was de-identified prior to use."
+          }
+        ],
+        "technical_resource": [
+          {
+            "name": "ActiGraph data",
+            "description": "ActiGraph data will be processed and analyzed using ActiLife software which requires a paid license."
+          }
+        ],
+        "type": "secondary data analysis project data type (deidentified data, code, and models required for validation and replication of research findings)."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "DATA MANAGEMENT AND SHARING PLAN",
+    "project": [
+      {
+        "title": "",
+        "description": "This secondary data analysis project will analyze deidentified data from 48,218 participants from eight studies and the publicly available NHANES cohorts (wrist NHANES 2011-2014; hip/counts-NHANES 2003-2006). The studies include (i) the RISE Study, (ii) the SOL-VIDA Study, (iii) the iWATCH Study, (iv) the MOCA Study, (v) the PHASE Study, (vi) the AusDiab Study, (vii) the ACT Study, and (viii) the WHISH accelerometer sub-study. The final dataset of data from the RISE study, the iWATCH study, and NHANES cohorts will be de-identified. It will be deposited into the UC San Diego Library Data repository along with study protocols, code, and models for public use. De-identified data will be available after the main outcome papers are published.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "",
+              "type": "unknown"
+            },
+            "funding_status": "planned",
+            "grant_id": {
+              "identifier": "",
+              "type": "unknown"
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": []
+  }
+}

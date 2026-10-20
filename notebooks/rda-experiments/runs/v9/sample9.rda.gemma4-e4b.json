@@ -1,0 +1,134 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Battery material samples",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Experimental data generated over the course of the research",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Digital characterization data in tabular form",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Crystallographic data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Images",
+        "type": "image"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Physical data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "First principles and Monte Carlo simulations",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Educational and outreach materials, and assessment results",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "CASM software",
+        "type": "software"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES Products of Research",
+    "project": [
+      {
+        "title": "CAREER: HIGH-RESOLUTION NMR FOR PARAMAGNETIC SODIUM ELECTRODES",
+        "description": "The project involves synthesizing battery material samples in powder form and characterizing them using various techniques, including electrochemical testing, X-ray diffraction, solid-state NMR spectroscopy, EPR spectroscopy, magnetometry, impedance spectroscopy, X-ray photoelectron and absorption spectroscopy, and Mössbauer spectroscopy measurements. The project also involves developing and extending the Van der Ven group’s CASM software to enable the simulation of finite temperature NMR spectra of paramagnetic materials, and performing first principles and Monte Carlo simulations. The project also includes documenting synthetic work and optimization of NMR experimental procedures, and digitizing educational and outreach materials and assessment results.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "",
+              "type": ""
+            }
+          }
+        ]
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://prisms-center.github.io/CASMcode_docs/",
+        "relation_type": "url",
+        "type": "url"
+      }
+    ]
+  }
+}

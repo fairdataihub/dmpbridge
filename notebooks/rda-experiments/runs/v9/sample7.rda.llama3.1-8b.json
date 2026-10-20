@@ -1,0 +1,59 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2023-02-20T14:30:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "NDA Global Unique Identifier",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Final datasets",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "NDA Global Unique Identifier",
+          "type": "handle"
+        },
+        "personal_data": "no",
+        "sensitive_data": "yes",
+        "title": "Audio recordings of treatment sessions",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "10.1371/journal.pcbi.1006750",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2023-02-20T14:30:00Z",
+    "title": "Resource/Data Sharing Plan",
+    "project": [
+      {
+        "title": "Study Title",
+        "description": "Study abstract providing an overview of the project's goals and scope",
+        "end": "2024-02-20",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "501100002428",
+              "type": "fundref"
+            },
+            "funding_status": "granted"
+          }
+        ]
+      }
+    ]
+  }
+}

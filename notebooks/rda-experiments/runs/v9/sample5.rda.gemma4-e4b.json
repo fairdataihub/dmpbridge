@@ -1,0 +1,92 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Input data",
+        "description": "Available data will be systematically reviewed and downloaded. These data are likely available in the form of Microsoft Access files or Microsoft Excel spreadsheets; shapefiles or raster files; or text files or comma-delimited files."
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Produced Data",
+        "description": "Datasets will be produced in Sections 2.1-2.3 of the proposal. These datasets will be formatted and shared in an open format (e.g., CSV) or in illustrator files (i.e., cross sections)."
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Source code to quality control, collate, and merge datasets",
+        "description": "Source code to quality control, collate, and merge datasets."
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Open source models and budgets in R and/or python",
+        "description": "Open source models and budgets in R and/or python."
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Sharable instructional materials (Scientist Spotlight activities and workshop materials)",
+        "description": "Sharable instructional materials (Scientist Spotlight activities and workshop materials)."
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "DATA MANAGEMENT PLAN",
+    "project": [
+      {
+        "title": "REVIEW OF PROPOSAL COMPONENTS",
+        "description": "The proposal is separated into three sections. Section 2.1 characterizes the aquifer formation that each groundwater well in the West taps and compares well construction patterns before and after the establishment of regulatory controls. Section 2.2 estimates groundwater components of the water budget (withdrawals and consumption) yearly (2016-2021) at the field scale. Section 2.3 integrates research and education through the Scientist Spotlight and Hydrologic Sciences Workshops.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "",
+              "type": ""
+            },
+            "funding_status": "planned",
+            "grant_id": {
+              "identifier": "",
+              "type": ""
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "",
+          "type": "other"
+        }
+      ],
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2026-10-19T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "data related to each of our proposed experiments",
+        "description": "These will include the detailed protocols used for each experiment, the raw data collected from each experiment, and the experimental code used to collect those data. The relevant code will include both the data acquisition code, and the code for the controllers used in the experiment. Together, this information will be sufficient for recreating the circumstances of each data collection session.",
+        "distribution": [
+          {
+            "data_access": "shared",
+            "title": "project’s website",
+            "description": "The availability of data (raw and analyzed) will be advertised on the project’s website.",
+            "host": {
+              "title": "project’s website",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "GNU Public License",
+                "start_date": "2026-10-19"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "code and results for all analyses completed on experimental data",
+        "description": "Specifically, we store all code necessary to recreate figures, tables, and other results reported in all published manuscripts.",
+        "distribution": [
+          {
+            "data_access": "shared",
+            "title": "peer-reviewed journal publications and conference presentations",
+            "description": "Experimental analyses results will be made available through peer-reviewed journal publications and conference presentations.",
+            "host": {
+              "title": "peer-reviewed journal publications and conference presentations",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "simulation code for controller development and testing",
+        "description": "These and the outputs relevant to all key findings will also be managed.",
+        "distribution": [
+          {
+            "data_access": "shared",
+            "title": "labs’ websites",
+            "description": "Software generated under the project will be released under the GNU Public License, and available for free download on the labs’ websites. This includes code for each of our 3 experimental systems.",
+            "host": {
+              "title": "labs’ websites",
+              "url": ""
+            },
+            "license": [
+              {
+                "license_ref": "GNU Public License",
+                "start_date": "2026-10-19"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": "other"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2026-10-19T00:00:00Z",
+    "title": "CPS 2015",
+    "project": [
+      {
+        "title": "",
+        "description": "We will manage all scientific and technical content generated from this proposal. Our products will include 3 broad types of data.",
+        "start": "2026-10-19"
+      }
+    ]
+  }
+}

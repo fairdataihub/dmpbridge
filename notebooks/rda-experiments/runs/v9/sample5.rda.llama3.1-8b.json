@@ -1,0 +1,89 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "",
+          "type": ""
+        }
+      ],
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2023-02-20T14:30:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "https://datadryad.org",
+          "type": "url"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Raw data",
+        "type": "raw data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://datadryad.org",
+          "type": "url"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Processed data",
+        "type": "processed data"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://zenodo.org",
+          "type": "url"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Code and scripts",
+        "type": "code and scripts"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://datadryad.org",
+          "type": "url"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Scientist spotlight biographies",
+        "type": "biographies"
+      },
+      {
+        "dataset_id": {
+          "identifier": "https://datadryad.org",
+          "type": "url"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Workshop frameworks",
+        "type": "workshop frameworks"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "10.1371/journal.pcbi.1006750",
+      "type": "doi"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2023-02-20T14:30:00Z",
+    "title": "Data Management Plan",
+    "project": [
+      {
+        "title": "Project title",
+        "description": "Project abstract providing an overview of the project's goals and scope",
+        "start": "2023-02-20"
+      }
+    ],
+    "related_identifier": [
+      {
+        "identifier": "https://datadryad.org",
+        "relation_type": "HasMetadata",
+        "type": "url"
+      }
+    ]
+  }
+}

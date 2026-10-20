@@ -1,0 +1,47 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": "unknown"
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2024-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "handle"
+        },
+        "personal_data": "unknown",
+        "sensitive_data": "unknown",
+        "title": "Data",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": "unknown"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2024-01-01T00:00:00Z",
+    "title": "Univ. of California, Riverside Data Management Plan",
+    "project": [
+      {
+        "title": "",
+        "description": "",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "",
+              "type": "unknown"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
