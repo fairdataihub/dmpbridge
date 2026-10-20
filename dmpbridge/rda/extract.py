@@ -33,7 +33,7 @@ from ..core import config
 from ..models.ollama import OllamaModel
 
 HERE = Path(__file__).parent
-PROMPT_VERSION = "v11"                      # see notebooks/rda-version-comparison.ipynb for how the versions score
+PROMPT_VERSION = "v10"                      # see notebooks/rda-version-comparison.ipynb for how the versions score
 PROMPT_FILE = HERE / "prompt.txt"
 SCHEMA_FILE = HERE / "maDMP-schema-1.2.json"
 
