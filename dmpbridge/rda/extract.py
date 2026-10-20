@@ -77,7 +77,8 @@ def parse_prompt_file(text: str) -> tuple[str, str]:
 
     The system part is everything between the ``SYSTEM:`` line and the ``PROMPT:``
     line, kept exactly (the prompts are whitespace-sensitive) except for the blank
-    lines that separate the two parts. The user template must contain ``{dmp_text}``.
+    lines that separate the two parts. The user template must contain ``{dmp_text}``
+    and may contain ``{schema_text}``.
     """
     if text.startswith("SYSTEM:\n"):
         text = text[len("SYSTEM:\n"):]
@@ -103,8 +104,13 @@ def system_prompt() -> str:
 
 
 def make_prompt(plan_text: str) -> str:
-    """The user prompt: the file's template with the plan's text in place of ``{dmp_text}``."""
-    return _prompt_parts()[1].replace("{dmp_text}", plan_text)
+    """The user prompt: the file's template with the plan's text in place of ``{dmp_text}``
+    and, if the template has a ``{schema_text}`` placeholder, the resolved schema as
+    compact JSON in its place (versions up to v10b and v12 put the schema in the prompt)."""
+    user = _prompt_parts()[1]
+    if "{schema_text}" in user:
+        user = user.replace("{schema_text}", load_schema()[1])
+    return user.replace("{dmp_text}", plan_text)
 
 
 def prompt_fingerprint() -> str:

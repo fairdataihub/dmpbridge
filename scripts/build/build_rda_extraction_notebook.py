@@ -28,9 +28,9 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v11.txt"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v12.txt"),
     "samples":  [3],
-    "run":      "v11-sample3",
+    "run":      "v12-sample3",
     # False: the schema text is left out of the user prompt (it stays the output
     # constraint), as in v10 and later. True puts it back, as in v10b and v10e.
     "schema_in_prompt": False,
@@ -39,9 +39,8 @@ NARRATIVE = {
     # "user_prompt": "...",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v11: the pipeline's prompt.txt - v10's rules, a "
-                "[REQUIRED] / [RECOMMENDED] form in the template's order, the current date as "
-                "the date default, numbered field notes; no schema text in the prompt). "
+                "their own prompt (v12: v10's text with punctuation edits, 'otherwise current "
+                "date' as the date default, and the schema text back in the user prompt). "
                 "DMPTool-style plans such as sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
@@ -969,7 +968,11 @@ if ARGS.narrative:
             "Here is the text of a Data Management Plan:\n\n{dmp_text}\n\n"
             "Generate one JSON object that follows the JSON form in your instructions, filling in\n"
             "whatever information the Data Management Plan text contains. Output only the JSON.")
-        assert '"""' not in user and user.count("{") == user.count("}") == 1, "user_prompt: only {dmp_text}"
+        # Inside the notebook the template becomes an f-string, so its only braces may be
+        # {dmp_text} and {schema_text} (both are variables there).
+        braces = user.replace("{dmp_text}", "").replace("{schema_text}", "")
+        assert '"""' not in user and "{" not in braces and "}" not in braces, \
+            "user_prompt: only {dmp_text} and {schema_text} may appear in braces"
         start = src.index("def make_prompt(dmp_text):")
         end = src.index("def run(model, sample):")
         return src[:start] + 'def make_prompt(dmp_text):\n    return f"""' + user + '"""\n\n\n' + src[end:]
