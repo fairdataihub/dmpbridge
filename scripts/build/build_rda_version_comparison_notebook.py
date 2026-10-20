@@ -237,6 +237,7 @@ score column is bold. Saved as `version_comparison_summary_sample{SAMPLE}.png`.
 
 code("table_summary", r'''
 import json as _json
+import matplotlib.colors as mcolors
 
 
 def prompt_size(run):
@@ -263,26 +264,60 @@ display(summary.set_index("Version"))
 best = {"Correct ↑": totals["Correct"].idxmax(), "Mismatch ↓": totals["Mismatch"].idxmin(),
         "Missed ↓": totals["Missed"].idxmin(), "F1 (mean)": totals["F1 (mean of models)"].idxmax()}
 
-fig, ax = plt.subplots(figsize=(13, 0.42 * len(versions) + 0.75))
-ax.axis("off")
-tbl = ax.table(cellText=summary.values, colLabels=summary.columns, loc="upper center",
-               cellLoc="center", colWidths=[0.09, 0.12, 0.13, 0.12, 0.12, 0.42])
-tbl.auto_set_font_size(False)
-tbl.set_fontsize(11.5)
-tbl.scale(1, 1.8)
-for (r, c), cell_ in tbl.get_celld().items():
-    cell_.set_edgecolor("#d8d8d4")
-    cell_.set_facecolor(SURFACE if r else "#eeeeea")
-    if r == 0 or c == 0:
-        cell_.get_text().set_fontweight("bold")
-    elif summary.columns[c] in best and summary["Version"][r - 1] == best[summary.columns[c]]:
-        cell_.get_text().set_fontweight("bold")
-        cell_.set_facecolor("#e6f2ea")
-    if c == len(summary.columns) - 1 and r > 0:
-        cell_.get_text().set_horizontalalignment("left")
-        cell_.PAD = 0.03
-ax.set_title(f"Prompt versions on sample {SAMPLE} - three models together ({3 * n_fields} annotated fields)",
-             loc="left", fontsize=13, fontweight="bold", pad=6)
+# A heatmap: the score cells tinted like the field matrix (darker = larger share of the
+# annotated fields), each showing the count and its share; F1 tinted blue; prompt size as text.
+score_cols = [("Correct ↑", "Correct"), ("Mismatch ↓", "Mismatch"), ("Missed ↓", "Missed")]
+cols = score_cols + [("F1 (mean)", None), ("Prompt size", None)]
+n_total = 3 * n_fields
+f1 = totals["F1 (mean of models)"]
+f1_lo, f1_hi = f1.min(), f1.max()
+surface = np.array(mcolors.to_rgb(SURFACE))
+blue = np.array(mcolors.to_rgb("#2a78d6"))
+
+img = np.ones((len(versions), len(cols), 3)) * surface
+for i, v in enumerate(versions):
+    for j, (label, outcome) in enumerate(cols):
+        if outcome:
+            n = int(totals.loc[v, outcome])
+            strength = 0.12 + 0.88 * (n / n_total) if n else 0.04
+            img[i, j] = surface * (1 - strength) + np.array(mcolors.to_rgb(COLOUR[outcome])) * strength
+        elif label == "F1 (mean)":
+            strength = 0.08 + 0.5 * ((f1[v] - f1_lo) / (f1_hi - f1_lo) if f1_hi > f1_lo else 0.5)
+            img[i, j] = surface * (1 - strength) + blue * strength
+
+fig, ax = plt.subplots(figsize=(13.5, 0.75 * len(versions) + 1.9))
+ax.imshow(img, aspect="auto")
+for i, v in enumerate(versions):
+    for j, (label, outcome) in enumerate(cols):
+        if outcome:
+            n = int(totals.loc[v, outcome])
+            share = n / n_total
+            ink = "white" if share > 0.5 else INK
+            if n:
+                ax.text(j - 0.07, i, str(n), ha="right", va="center", fontsize=14, fontweight="bold", color=ink)
+                ax.text(j + 0.04, i, f"{share:.0%}", ha="left", va="center", fontsize=11, color=ink)
+            else:
+                ax.text(j, i, "–", ha="center", va="center", fontsize=14, color="#c9c8c3")
+        elif label == "F1 (mean)":
+            weight = "bold" if v == best["F1 (mean)"] else "normal"
+            ax.text(j, i, f"{f1[v]:.3f}", ha="center", va="center", fontsize=13, fontweight=weight, color=INK)
+        else:
+            ax.text(j - 0.45, i, summary["Prompt size"][i], ha="left", va="center", fontsize=11, color=INK)
+ax.set_yticks(range(len(versions)))
+ax.set_yticklabels(versions, fontsize=14, fontweight="bold")
+ax.set_xticks(range(len(cols)))
+ax.set_xticklabels([f"{label}\n(of {n_total} fields)" if outcome else label for label, outcome in cols],
+                   fontsize=11.5)
+ax.xaxis.tick_top()
+ax.tick_params(length=0)
+for i in range(len(versions) + 1):
+    ax.axhline(i - 0.5, color=SURFACE, linewidth=4, zorder=3)
+for j in range(len(cols) + 1):
+    ax.axvline(j - 0.5, color=SURFACE, linewidth=4, zorder=3)
+for s in ax.spines.values():
+    s.set_visible(False)
+ax.set_title(f"Prompt versions on sample {SAMPLE} - three models together: count and share of the "
+             f"{n_total} annotated fields", loc="left", fontsize=13.5, fontweight="bold", pad=44)
 out = OUT_DIR / f"version_comparison_summary_sample{SAMPLE}.png"
 fig.savefig(out, dpi=170, bbox_inches="tight", facecolor=SURFACE)
 plt.show()
