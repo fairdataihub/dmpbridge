@@ -88,7 +88,7 @@ for label, run in RUNS:
         judged, met, outcomes = E.evaluate_file(f, ref)
         c = Counter(outcomes.values())
         rows.append({"version": label.replace("\n", " "), "model": m, "run": run,
-                     **{o: c[o] for o in OUTCOMES}, "F1": met["f1"],
+                     **{o: c[o] for o in OUTCOMES},
                      "fields written": met["fields output"],
                      "not in reference": sum(r["reason"] == "not in the reference" for r in judged)})
         for field, o in outcomes.items():
@@ -100,7 +100,6 @@ versions = [v for v in dict.fromkeys(df["version"])]
 print(f"sample {SAMPLE}: {n_fields} annotated fields, {len(versions)} versions, {df['model'].nunique()} models")
 
 totals = (df.groupby("version")[OUTCOMES].sum().reindex(versions))
-totals["F1 (mean of models)"] = df.groupby("version")["F1"].mean().reindex(versions).round(3)
 display(totals)
 '''),
 
@@ -150,8 +149,8 @@ md("s2b", '''
 
 The same numbers as a picture, for slides or a quick check: per model and in total,
 correct / mismatch / missed (tinted like the field matrix - the darker the cell, the
-larger its share of the annotated fields), then the mean F1 and how many fields the
-version wrote that the reference does not have. Saved as
+larger its share of the annotated fields), then how many fields the version wrote
+that the reference does not have. Saved as
 `version_comparison_table_sample{SAMPLE}.png`.
 '''),
 
@@ -165,7 +164,7 @@ groups = [(NAME[m], per_model[m]) for m in MODELS] + [("All three models", total
 cols = []                                   # (group, outcome) or (group, None) spacer
 for k, (g, _) in enumerate(groups):
     cols += [(g, o) for o in OUTCOMES] + ([(None, None)] if k < len(groups) - 1 else [])
-cols += [(None, None), ("", "F1"), ("", "extras")]
+cols += [(None, None), ("", "extras")]
 surface = np.array(mcolors.to_rgb(SURFACE))
 
 
@@ -196,15 +195,12 @@ for i, v in enumerate(versions):
             n, share = cell(v, g, o)
             ax.text(j, i, str(n) if n else "–", ha="center", va="center", fontsize=12.5,
                     fontweight="bold", color="white" if share > 0.5 else INK)
-        elif o == "F1":
-            ax.text(j, i, f"{totals.loc[v, 'F1 (mean of models)']:.3f}", ha="center", va="center",
-                    fontsize=11.5, color=INK)
         else:
             ax.text(j, i, f"{int(extras[v])}", ha="center", va="center", fontsize=11.5, color=MUTED)
 ax.set_yticks(range(len(versions)))
 ax.set_yticklabels(versions, fontsize=13, fontweight="bold")
 ax.set_xticks([j for j, (g, o) in enumerate(cols) if g is not None])
-ax.set_xticklabels([o if o in OUTCOMES else ("F1\nmean" if o == "F1" else "fields not\nin reference")
+ax.set_xticklabels([o if o in OUTCOMES else "fields not\nin reference"
                     for g, o in cols if g is not None], fontsize=10)
 ax.xaxis.tick_top()
 ax.tick_params(length=0)
@@ -229,10 +225,10 @@ print(f"saved -> {out}")
 md("s2c", '''
 ## 2c. The summary table
 
-One row per version: correct / mismatch / missed summed over the three models, the mean
-F1, and the prompt size (tokens sent to llama3.1 for this sample, from the run's
-`run.json`), noting when the schema text is part of the prompt. The best value in each
-score column is bold. Saved as `version_comparison_summary_sample{SAMPLE}.png`.
+One row per version: correct / mismatch / missed summed over the three models, each
+with its share of the annotated fields, and the prompt size (tokens sent to llama3.1
+for this sample, from the run's `run.json`), noting when the schema text is part of
+the prompt. Saved as `version_comparison_summary_sample{SAMPLE}.png`.
 '''),
 
 code("table_summary", r'''
@@ -256,23 +252,16 @@ summary = pd.DataFrame({
     "Correct ↑": totals["Correct"].astype(int).to_numpy(),
     "Mismatch ↓": totals["Mismatch"].astype(int).to_numpy(),
     "Missed ↓": totals["Missed"].astype(int).to_numpy(),
-    "F1 (mean)": totals["F1 (mean of models)"].map("{:.3f}".format).to_numpy(),
     "Prompt size": [prompt_size(dict((l.replace("\n", " "), r) for l, r in RUNS)[v]) for v in versions],
 })
 display(summary.set_index("Version"))
 
-best = {"Correct ↑": totals["Correct"].idxmax(), "Mismatch ↓": totals["Mismatch"].idxmin(),
-        "Missed ↓": totals["Missed"].idxmin(), "F1 (mean)": totals["F1 (mean of models)"].idxmax()}
-
 # A heatmap: the score cells tinted like the field matrix (darker = larger share of the
-# annotated fields), each showing the count and its share; F1 tinted blue; prompt size as text.
+# annotated fields), each showing the count and its share; prompt size as text.
 score_cols = [("Correct ↑", "Correct"), ("Mismatch ↓", "Mismatch"), ("Missed ↓", "Missed")]
-cols = score_cols + [("F1 (mean)", None), ("Prompt size", None)]
+cols = score_cols + [("Prompt size", None)]
 n_total = 3 * n_fields
-f1 = totals["F1 (mean of models)"]
-f1_lo, f1_hi = f1.min(), f1.max()
 surface = np.array(mcolors.to_rgb(SURFACE))
-blue = np.array(mcolors.to_rgb("#2a78d6"))
 
 img = np.ones((len(versions), len(cols), 3)) * surface
 for i, v in enumerate(versions):
@@ -281,11 +270,8 @@ for i, v in enumerate(versions):
             n = int(totals.loc[v, outcome])
             strength = 0.12 + 0.88 * (n / n_total) if n else 0.04
             img[i, j] = surface * (1 - strength) + np.array(mcolors.to_rgb(COLOUR[outcome])) * strength
-        elif label == "F1 (mean)":
-            strength = 0.08 + 0.5 * ((f1[v] - f1_lo) / (f1_hi - f1_lo) if f1_hi > f1_lo else 0.5)
-            img[i, j] = surface * (1 - strength) + blue * strength
 
-fig, ax = plt.subplots(figsize=(13.5, 0.75 * len(versions) + 1.9))
+fig, ax = plt.subplots(figsize=(12, 0.75 * len(versions) + 1.9))
 ax.imshow(img, aspect="auto")
 for i, v in enumerate(versions):
     for j, (label, outcome) in enumerate(cols):
@@ -298,9 +284,6 @@ for i, v in enumerate(versions):
                 ax.text(j + 0.04, i, f"{share:.0%}", ha="left", va="center", fontsize=11, color=ink)
             else:
                 ax.text(j, i, "–", ha="center", va="center", fontsize=14, color="#c9c8c3")
-        elif label == "F1 (mean)":
-            weight = "bold" if v == best["F1 (mean)"] else "normal"
-            ax.text(j, i, f"{f1[v]:.3f}", ha="center", va="center", fontsize=13, fontweight=weight, color=INK)
         else:
             ax.text(j - 0.45, i, summary["Prompt size"][i], ha="left", va="center", fontsize=11, color=INK)
 ax.set_yticks(range(len(versions)))
@@ -327,15 +310,15 @@ print(f"saved -> {out}")
 md("s3", '''
 ## 3. Per model
 
-Correct / mismatch / missed and F1 for every version and model. F1 is scored over
-every field either side wrote, so it also penalises fields the reference does not
-have ("not in reference").
+Correct / mismatch / missed for every version and model, then how many fields each
+wrote that the reference does not have ("not in reference") - the other kind of wrong
+value, which the three labels above do not count.
 '''),
 
 code("per_model", r'''
-wide = df.pivot(index="version", columns="model", values=OUTCOMES + ["F1"]).reindex(versions)
+wide = df.pivot(index="version", columns="model", values=OUTCOMES).reindex(versions)
 wide = wide.reorder_levels([1, 0], axis=1).sort_index(axis=1, level=0, sort_remaining=False)
-wide = wide[[(m, c) for m in MODELS for c in OUTCOMES + ["F1"] if (m, c) in wide.columns]]
+wide = wide[[(m, c) for m in MODELS for c in OUTCOMES if (m, c) in wide.columns]]
 display(wide)
 display(df.pivot(index="version", columns="model", values="not in reference").reindex(versions)
           .rename_axis(columns="fields written that the reference does not have"))
