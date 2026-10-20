@@ -226,6 +226,69 @@ plt.show()
 print(f"saved -> {out}")
 '''),
 
+md("s2c", '''
+## 2c. The summary table
+
+One row per version: correct / mismatch / missed summed over the three models, the mean
+F1, and the prompt size (tokens sent to llama3.1 for this sample, from the run's
+`run.json`), noting when the schema text is part of the prompt. The best value in each
+score column is bold. Saved as `version_comparison_summary_sample{SAMPLE}.png`.
+'''),
+
+code("table_summary", r'''
+import json as _json
+
+
+def prompt_size(run):
+    folder = Path("notebooks/rda-experiments/runs") / run
+    info = _json.loads((folder / "run.json").read_text(encoding="utf-8"))
+    sent = next((t["tokens_sent"] for k, t in info["timings"].items()
+                 if k.startswith("llama3.1:8b") and f"sample{SAMPLE}" in k), None)
+    prompt = (folder / "prompt.txt").read_text(encoding="utf-8")
+    with_schema = "{schema_text}" in prompt or "maDMP JSON schema" in prompt
+    size = f"~{round(sent, -2):,} tokens" if sent else "?"
+    return size + (" (schema text in prompt)" if with_schema else "")
+
+
+summary = pd.DataFrame({
+    "Version": versions,
+    "Correct ↑": totals["Correct"].astype(int).to_numpy(),
+    "Mismatch ↓": totals["Mismatch"].astype(int).to_numpy(),
+    "Missed ↓": totals["Missed"].astype(int).to_numpy(),
+    "F1 (mean)": totals["F1 (mean of models)"].map("{:.3f}".format).to_numpy(),
+    "Prompt size": [prompt_size(dict((l.replace("\n", " "), r) for l, r in RUNS)[v]) for v in versions],
+})
+display(summary.set_index("Version"))
+
+best = {"Correct ↑": totals["Correct"].idxmax(), "Mismatch ↓": totals["Mismatch"].idxmin(),
+        "Missed ↓": totals["Missed"].idxmin(), "F1 (mean)": totals["F1 (mean of models)"].idxmax()}
+
+fig, ax = plt.subplots(figsize=(13, 0.42 * len(versions) + 0.75))
+ax.axis("off")
+tbl = ax.table(cellText=summary.values, colLabels=summary.columns, loc="upper center",
+               cellLoc="center", colWidths=[0.09, 0.12, 0.13, 0.12, 0.12, 0.42])
+tbl.auto_set_font_size(False)
+tbl.set_fontsize(11.5)
+tbl.scale(1, 1.8)
+for (r, c), cell_ in tbl.get_celld().items():
+    cell_.set_edgecolor("#d8d8d4")
+    cell_.set_facecolor(SURFACE if r else "#eeeeea")
+    if r == 0 or c == 0:
+        cell_.get_text().set_fontweight("bold")
+    elif summary.columns[c] in best and summary["Version"][r - 1] == best[summary.columns[c]]:
+        cell_.get_text().set_fontweight("bold")
+        cell_.set_facecolor("#e6f2ea")
+    if c == len(summary.columns) - 1 and r > 0:
+        cell_.get_text().set_horizontalalignment("left")
+        cell_.PAD = 0.03
+ax.set_title(f"Prompt versions on sample {SAMPLE} - three models together ({3 * n_fields} annotated fields)",
+             loc="left", fontsize=13, fontweight="bold", pad=6)
+out = OUT_DIR / f"version_comparison_summary_sample{SAMPLE}.png"
+fig.savefig(out, dpi=170, bbox_inches="tight", facecolor=SURFACE)
+plt.show()
+print(f"saved -> {out}")
+'''),
+
 md("s3", '''
 ## 3. Per model
 
