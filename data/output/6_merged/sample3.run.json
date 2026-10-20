@@ -2,6 +2,6 @@
   "narrative_model": "gemma4:e4b",
   "rda_model": "gemma4:e4b",
   "extractor": "pdfplumber",
-  "prompt": "v10j",
+  "prompt": "v11",
   "prompt_fingerprint": "4777fe83422c"
 }

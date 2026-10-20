@@ -33,7 +33,7 @@ from ..core import config
 from ..models.ollama import OllamaModel
 
 HERE = Path(__file__).parent
-PROMPT_VERSION = "v10j"                      # v10c's rules + a no-hallucination rule + marked form
+PROMPT_VERSION = "v11"                       # v10c's rules + a no-hallucination rule + marked form
 PROMPT_FILE = HERE / "prompt.txt"
 SCHEMA_FILE = HERE / "maDMP-schema-1.2.json"
 

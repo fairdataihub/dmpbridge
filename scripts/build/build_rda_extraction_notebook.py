@@ -28,19 +28,21 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v10i.txt"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v11.txt"),
     "samples":  [3],
-    "run":      "v10i-sample3",
+    "run":      "v11-sample3",
     # False: the schema text is left out of the user prompt (it stays the output
     # constraint), as in v10c and later. True puts it back, as in v10b and v10e.
     "schema_in_prompt": False,
     # The user prompt, with {dmp_text} for the plan's text. Omit for the default wording.
+    # A two-part prompt file (SYSTEM: ... PROMPT: ...) carries its own and overrides this.
     # "user_prompt": "...",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v10i: v10c with [REQUIRED] / [RECOMMENDED] markers on the "
-                "form, and the fallback date filled in on the day it runs; no schema text in "
-                "the prompt). DMPTool-style plans such as sample 14 use "
+                "their own prompt (v11: the pipeline's prompt.txt - v10c's rules plus a "
+                "no-hallucination rule, a marked form explained in the schema's own words, "
+                "no field notes; no schema text in the prompt). DMPTool-style plans such as "
+                "sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
 
@@ -945,6 +947,11 @@ if ARGS.narrative:
         cell["source"] = [l + "\n" for l in fn("".join(cell["source"]).rstrip("\n")).split("\n")]
 
     system = NARRATIVE["prompt"].read_text(encoding="utf-8")
+    if system.startswith("SYSTEM:\n"):
+        # A two-part file in the format the runs save (and the pipeline's prompt.txt uses):
+        # the user prompt comes from the file, not from NARRATIVE["user_prompt"].
+        from dmpbridge.rda import parse_prompt_file
+        system, NARRATIVE["user_prompt"] = parse_prompt_file(system)
 
     def set_prompt(src):
         start = src.index('SYSTEM = """') + len('SYSTEM = """')
