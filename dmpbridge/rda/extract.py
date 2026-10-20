@@ -13,7 +13,7 @@ when the prompt is sent, so a fallback date is the day the pipeline runs rather 
 a date written into the file. The complete, unmodified maDMP 1.2 schema
 (``maDMP-schema-1.2.json``, ``$ref`` pointers resolved) is not in the prompt - it is
 Ollama's structured-output ``format``, which constrains the answer to the schema's
-structure. Versions up to v10b also pasted the schema into the prompt as text; v10c
+structure. Versions up to v10b also pasted the schema into the prompt as text; v10
 dropped it, cutting the prompt from about 11,700 tokens to about 2,400. The versions
 are in scripts/build/prompts/ and their results in notebooks/rda-experiments/runs/.
 
@@ -33,7 +33,7 @@ from ..core import config
 from ..models.ollama import OllamaModel
 
 HERE = Path(__file__).parent
-PROMPT_VERSION = "v10c"                      # the best measured version - see notebooks/rda-version-comparison.ipynb
+PROMPT_VERSION = "v10"                      # the best measured version - see notebooks/rda-version-comparison.ipynb
 PROMPT_FILE = HERE / "prompt.txt"
 SCHEMA_FILE = HERE / "maDMP-schema-1.2.json"
 

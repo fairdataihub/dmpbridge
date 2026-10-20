@@ -57,10 +57,9 @@ from dmpbridge.rda import evaluate as E
 SAMPLE = 3
 # (label shown in the figure, folder under notebooks/rda-experiments/runs/)
 RUNS = [("v9",                "v9"),
-        ("v10",               "v10-sample3"),
         ("v10b",              "v10b-sample3"),
-        ("v10c\nbefore edit", "v10c-before-edit-sample3"),
-        ("v10c",              "v10c-sample3"),
+        ("v10\nbefore edit", "v10-before-edit-sample3"),
+        ("v10",              "v10-sample3"),
         ("v10d",              "v10d-sample3"),
         ("v10e",              "v10e-sample3"),
         ("v10f",              "v10f-sample3"),

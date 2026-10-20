@@ -32,14 +32,14 @@ NARRATIVE = {
     "samples":  [3],
     "run":      "v11-sample3",
     # False: the schema text is left out of the user prompt (it stays the output
-    # constraint), as in v10c and later. True puts it back, as in v10b and v10e.
+    # constraint), as in v10 and later. True puts it back, as in v10b and v10e.
     "schema_in_prompt": False,
     # The user prompt, with {dmp_text} for the plan's text. Omit for the default wording.
     # A two-part prompt file (SYSTEM: ... PROMPT: ...) carries its own and overrides this.
     # "user_prompt": "...",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v11: the pipeline's prompt.txt - v10c's rules plus a "
+                "their own prompt (v11: the pipeline's prompt.txt - v10's rules plus a "
                 "no-hallucination rule, a marked form explained in the schema's own words, "
                 "no field notes; no schema text in the prompt). DMPTool-style plans such as "
                 "sample 14 use "
