@@ -85,12 +85,12 @@ for label, run in RUNS:
         if not f.exists():
             print(f"{run}: no {m} output for sample {SAMPLE} - left out")
             continue
-        _, met, outcomes = E.evaluate_file(f, ref)
+        judged, met, outcomes = E.evaluate_file(f, ref)
         c = Counter(outcomes.values())
         rows.append({"version": label.replace("\n", " "), "model": m, "run": run,
                      **{o: c[o] for o in OUTCOMES}, "F1": met["f1"],
                      "fields written": met["fields output"],
-                     "not in reference": met["hallucinated"] - c["Mismatch"]})
+                     "not in reference": sum(r["reason"] == "not in the reference" for r in judged)})
         for field, o in outcomes.items():
             rows[-1].setdefault("_parts", []).append((E.row_of(field)[1], o))
 
@@ -140,6 +140,87 @@ fig.suptitle(f"Prompt versions on sample {SAMPLE}: what each did with the {n_fie
              x=0.01, ha="left", fontsize=15, fontweight="bold")
 fig.tight_layout(rect=(0, 0.02, 1, 0.95))
 out = OUT_DIR / f"version_comparison_sample{SAMPLE}.png"
+fig.savefig(out, dpi=170, bbox_inches="tight", facecolor=SURFACE)
+plt.show()
+print(f"saved -> {out}")
+'''),
+
+md("s2b", '''
+## 2b. The table as a figure
+
+The same numbers as a picture, for slides or a quick check: per model and in total,
+correct / mismatch / missed (tinted like the field matrix - the darker the cell, the
+larger its share of the annotated fields), then the mean F1 and how many fields the
+version wrote that the reference does not have. Saved as
+`version_comparison_table_sample{SAMPLE}.png`.
+'''),
+
+code("table_figure", r'''
+import matplotlib.colors as mcolors
+
+per_model = {m: df[df["model"] == m].set_index("version").reindex(versions) for m in MODELS}
+extras = df.groupby("version")["not in reference"].sum().reindex(versions)
+
+groups = [(NAME[m], per_model[m]) for m in MODELS] + [("All three models", totals)]
+cols = []                                   # (group, outcome) or (group, None) spacer
+for k, (g, _) in enumerate(groups):
+    cols += [(g, o) for o in OUTCOMES] + ([(None, None)] if k < len(groups) - 1 else [])
+cols += [(None, None), ("", "F1"), ("", "extras")]
+surface = np.array(mcolors.to_rgb(SURFACE))
+
+
+def cell(v, g, o):
+    """(value, share of the annotated fields) for one cell."""
+    d = dict(groups)[g]
+    n = d.loc[v, o]
+    denom = n_fields * (3 if g == "All three models" else 1)
+    return int(n), n / denom
+
+
+img = np.ones((len(versions), len(cols), 3)) * surface
+fig, ax = plt.subplots(figsize=(1.05 * len(cols) + 2.5, 0.62 * len(versions) + 2.4))
+for i, v in enumerate(versions):
+    for j, (g, o) in enumerate(cols):
+        if g is None:
+            continue
+        if o in OUTCOMES:
+            n, share = cell(v, g, o)
+            strength = 0.12 + 0.88 * share if n else 0.04
+            img[i, j] = surface * (1 - strength) + np.array(mcolors.to_rgb(COLOUR[o])) * strength
+ax.imshow(img, aspect="auto")
+for i, v in enumerate(versions):
+    for j, (g, o) in enumerate(cols):
+        if g is None:
+            continue
+        if o in OUTCOMES:
+            n, share = cell(v, g, o)
+            ax.text(j, i, str(n) if n else "–", ha="center", va="center", fontsize=12.5,
+                    fontweight="bold", color="white" if share > 0.5 else INK)
+        elif o == "F1":
+            ax.text(j, i, f"{totals.loc[v, 'F1 (mean of models)']:.3f}", ha="center", va="center",
+                    fontsize=11.5, color=INK)
+        else:
+            ax.text(j, i, f"{int(extras[v])}", ha="center", va="center", fontsize=11.5, color=MUTED)
+ax.set_yticks(range(len(versions)))
+ax.set_yticklabels(versions, fontsize=13, fontweight="bold")
+ax.set_xticks([j for j, (g, o) in enumerate(cols) if g is not None])
+ax.set_xticklabels([o if o in OUTCOMES else ("F1\nmean" if o == "F1" else "fields not\nin reference")
+                    for g, o in cols if g is not None], fontsize=10)
+ax.xaxis.tick_top()
+ax.tick_params(length=0)
+for i in range(len(versions) + 1):
+    ax.axhline(i - 0.5, color=SURFACE, linewidth=3, zorder=3)
+for j in range(len(cols) + 1):
+    ax.axvline(j - 0.5, color=SURFACE, linewidth=3, zorder=3)
+for g, _ in groups:                         # group names above their three columns
+    js = [j for j, (gg, o) in enumerate(cols) if gg == g]
+    ax.annotate(g, xy=((js[0] + js[-1]) / 2, 1), xycoords=("data", "axes fraction"), xytext=(0, 30),
+                textcoords="offset points", ha="center", va="bottom", fontsize=12, fontweight="bold")
+for s in ax.spines.values():
+    s.set_visible(False)
+ax.set_title(f"Prompt versions on sample {SAMPLE}: correct / mismatch / missed of the {n_fields} annotated fields",
+             loc="left", fontsize=14, fontweight="bold", pad=62)
+out = OUT_DIR / f"version_comparison_table_sample{SAMPLE}.png"
 fig.savefig(out, dpi=170, bbox_inches="tight", facecolor=SURFACE)
 plt.show()
 print(f"saved -> {out}")
