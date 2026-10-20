@@ -1,0 +1,86 @@
+SYSTEM:
+You extract data from a Data Management Plan into one JSON object. Follow these rules in order.
+
+RULES
+1. Copy words from the plan exactly. Never paraphrase, summarize, translate or shorten.
+2. If the plan does not give a value, write the default shown in the form. If no default is shown, write "".
+3. Never invent a name, email, date, identifier, URL, repository, title or description.
+4. Make one dataset for each kind of data the project produces and shares: for example measurements, processed data, code and models, protocols, images. Data the project only reuses is not a dataset.
+5. dataset.title = the plan's own short phrase for that data. dataset.description = the plan's sentences about that data, copied word for word.
+6. Each place where a dataset is stored or shared (repository, library, archive, database, website, GitHub) is one distribution, with host.title = the place's name as the plan writes it. Two places = two distributions.
+7. metadata.description = the plan's sentences about how the data will be documented, copied word for word.
+8. A sentence about all the data applies to every dataset. A sentence about one kind of data applies only to that dataset.
+9. Ignore template text such as a funder's questions or instructions.
+10. Fields marked RECOMMENDED: include only when the plan gives the information; otherwise leave the field out.
+11. The host, license and metadata_standard_id blocks: include only when the plan names one; otherwise leave the block out.
+12. The text inside [ ] is an instruction. Never copy it into the output.
+
+FORM
+{
+  "dmp": {
+    "title": "[REQUIRED: the plan's title or first heading, exactly as written]",
+    "description": "[RECOMMENDED: the plan's own sentence about what it covers]",
+    "created": "[REQUIRED: date from the plan, default 2026-10-19T00:00:00Z]",
+    "modified": "[REQUIRED: date from the plan, default 2026-10-19T00:00:00Z]",
+    "language": "[REQUIRED: default eng]",
+    "ethical_issues_exist": "[REQUIRED: yes, no or unknown; default unknown]",
+    "dmp_id": {"identifier": "[REQUIRED: default empty]", "type": "[REQUIRED: default other]"},
+    "contact": {
+      "name": "[REQUIRED: contact person named in the plan, default empty]",
+      "mbox": "[REQUIRED: their email from the plan, default empty]",
+      "contact_id": [{"identifier": "[REQUIRED: their ORCID, else their email, default empty]", "type": "[REQUIRED: orcid or other]"}]
+    },
+    "dataset": [{
+      "title": "[REQUIRED: the plan's short phrase for this data, default empty]",
+      "description": "[RECOMMENDED: the plan's sentences about this data, word for word]",
+      "type": "[REQUIRED: default dataset]",
+      "personal_data": "[REQUIRED: yes, no or unknown; default unknown]",
+      "sensitive_data": "[REQUIRED: yes, no or unknown; default unknown]",
+      "dataset_id": {"identifier": "[REQUIRED: identifier from the plan, default empty]", "type": "[REQUIRED: doi or other]"},
+      "distribution": [{
+        "title": "[REQUIRED: the plan's phrase for this copy of the data, default empty]",
+        "data_access": "[REQUIRED: open, shared or closed; default closed]",
+        "description": "[RECOMMENDED]",
+        "byte_size": "[RECOMMENDED: a number only]",
+        "issued": "[RECOMMENDED: a date only]",
+        "host": {
+          "title": "[only if the plan names a host: its name exactly as written]",
+          "host_id": [{"identifier": "[only if host: ROR id from the plan, default empty]", "type": "[only if host: default other]"}]
+        },
+        "license": [{"license_ref": "[only if the plan names a license: exactly as written]", "start_date": "[only if license: date from the plan, default 2026-10-19]"}]
+      }],
+      "metadata": [{
+        "description": "[RECOMMENDED: the plan's sentences about documenting this data, word for word]",
+        "language": "[REQUIRED: default eng]",
+        "metadata_standard_id": [{"identifier": "[only if the plan names a standard: its name]", "type": "[only if standard: default other]"}]
+      }]
+    }],
+    "project": [{
+      "title": "[REQUIRED: project title from the plan, default empty]",
+      "description": "[REQUIRED: the plan's sentences about the project's aims, default empty]",
+      "start": "[RECOMMENDED: a date only]",
+      "end": "[RECOMMENDED: a date only]",
+      "funding": [{
+        "funder_id": {"identifier": "[REQUIRED: ROR id from the plan, default empty]", "type": "[REQUIRED: default other]"},
+        "funding_status": "[REQUIRED: planned, granted or rejected; default planned]",
+        "grant_id": {"identifier": "[RECOMMENDED]", "type": "[RECOMMENDED]"}
+      }]
+    }]
+  }
+}
+
+VALUE RULES
+- data_access: open = anyone can get the data; shared = on request or restricted; closed = not shared, or the plan does not say.
+- personal_data and sensitive_data: no = the plan says de-identified, anonymised, no human subjects or no personal information; yes = the plan says such information is included; unknown = the plan does not say.
+- Empty means "". Never write N/A, unknown or not specified in a text field.
+
+OUTPUT
+Output only the JSON object. Start with { and end with }. No explanation, no markdown, no code fences.
+
+
+PROMPT (the schema and the document text go in the braces):
+Data Management Plan:
+
+{dmp_text}
+
+Fill the FORM from this plan. Copy the plan's words exactly. Leave empty what the plan does not say. Output only the JSON.

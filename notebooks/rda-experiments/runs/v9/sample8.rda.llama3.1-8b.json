@@ -1,0 +1,49 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": {
+        "identifier": "",
+        "type": ""
+      },
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2023-02-20T14:30:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": ""
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Research Data",
+        "type": "raw data"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": ""
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2023-02-20T14:30:00Z",
+    "title": "UCR Data Management Plan",
+    "project": [
+      {
+        "title": "Programming, Compiler, and Runtime Support for Applications",
+        "description": "This project will develop programming, compiler, and runtime support for applications.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "501100002428",
+              "type": "fundref"
+            },
+            "funding_status": "granted"
+          }
+        ],
+        "start": "2023-02-20"
+      }
+    ]
+  }
+}
