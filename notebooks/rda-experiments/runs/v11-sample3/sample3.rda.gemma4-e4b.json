@@ -1,0 +1,62 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "",
+          "type": "other"
+        }
+      ],
+      "mbox": "",
+      "name": ""
+    },
+    "created": "2015-01-01T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "data related to each of our proposed experiments",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "code and results for all analyses completed on experimental data",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "simulation code for controller development and testing",
+        "type": "dataset"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "",
+      "type": "other"
+    },
+    "ethical_issues_exist": "unknown",
+    "language": "eng",
+    "modified": "2015-01-01T00:00:00Z",
+    "title": "CPS 2015",
+    "project": [
+      {
+        "title": "CPS 2015",
+        "description": "Data will be generated at each of our institutional sites. The PI at each institution will be responsible for following the data management guidelines described below, and for saving the data to the RIC servers. This process of transferring all data to a central location will be facilitated by our research project coordinator. Our data management guidelines will be reviewed at the kickoff meeting for the project, and revisited briefly at each of our quarterly meetings with the PIs.",
+        "funding": []
+      }
+    ]
+  }
+}
