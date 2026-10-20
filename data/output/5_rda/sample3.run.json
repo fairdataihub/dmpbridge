@@ -1,6 +1,6 @@
 {
-  "rda_model": "llama3.1:8b",
+  "rda_model": "gemma4:e4b",
   "extractor": "pdfplumber",
-  "prompt": "v10c",
-  "prompt_fingerprint": "215da83f8650"
+  "prompt": "v10j",
+  "prompt_fingerprint": "4777fe83422c"
 }

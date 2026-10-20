@@ -10,8 +10,8 @@ RDA prompt (``PROMPT_VERSION``) and the maDMP schema then produces the RDA JSON.
 """
 from .extract import (
     PROMPT_VERSION, RdaExtractionError, extract_rda, load_schema, make_prompt, merge,
-    prompt_fingerprint, system_prompt,
+    parse_prompt_file, prompt_fingerprint, system_prompt,
 )
 
 __all__ = ["PROMPT_VERSION", "RdaExtractionError", "extract_rda", "load_schema", "make_prompt",
-           "merge", "prompt_fingerprint", "system_prompt"]
+           "merge", "parse_prompt_file", "prompt_fingerprint", "system_prompt"]
