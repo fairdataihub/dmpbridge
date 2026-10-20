@@ -18,3 +18,12 @@ data/** linguist-documentation
 # painful to resolve by hand and easy to resolve wrongly. Treat them as binary so
 # git asks which version to keep instead of interleaving two.
 *.ipynb merge=binary
+
+# The LLM prompts are whitespace-sensitive: moving a blank line has measurably
+# changed F1, and the pipeline fingerprints the prompt text to decide whether a
+# saved result still matches. With core.autocrlf=true a checkout silently turned
+# LF into CRLF, which changed the fingerprint and sent bytes to the model that
+# were never evaluated. Pin these to LF on every platform.
+dmpbridge/rda/prompt.txt            text eol=lf
+scripts/build/prompts/*.txt         text eol=lf
+notebooks/rda-experiments/runs/*/prompt.txt  text eol=lf
