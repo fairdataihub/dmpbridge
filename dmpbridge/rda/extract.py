@@ -18,7 +18,7 @@ required fields mandatory and lets the model skip everything optional, and with 
 full maDMP 1.2 schema the smaller models skipped every optional part - descriptions,
 distributions, metadata, hence licences. So the constraint is ``output_schema.json``,
 a simplified schema built from the prompt's form (a copy of
-scripts/build/prompts/rda_schema_v12.json): dataset, distribution and metadata
+scripts/build/prompts/rda_schema_v11.json): dataset, distribution and metadata
 mandatory, host / license / standard optional. On sample 3 that took the three models
 from 41 to 51 correct annotated fields with the prompt unchanged. The full schema
 (``maDMP-schema-1.2.json``) is kept for a ``{schema_text}`` placeholder in the prompt;
@@ -42,7 +42,7 @@ from ..core import config
 from ..models.ollama import OllamaModel
 
 HERE = Path(__file__).parent
-PROMPT_VERSION = "v12"                      # see notebooks/rda-version-comparison.ipynb for how the versions score
+PROMPT_VERSION = "v11"                      # see notebooks/rda-version-comparison.ipynb for how the versions score
 PROMPT_FILE = HERE / "prompt.txt"
 SCHEMA_FILE = HERE / "maDMP-schema-1.2.json"          # the full standard, for {schema_text} in a prompt
 OUTPUT_SCHEMA_FILE = HERE / "output_schema.json"      # the constraint sent as Ollama's `format`

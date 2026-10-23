@@ -4,104 +4,95 @@ Convert this Data Management Plan into one RDA maDMP JSON object that follows th
 CRITICAL RULES:
 1. Datasets: one dataset for each kind of data the project itself produces and shares - for example, measurements, processed data, code and models, protocols, images. A study, cohort, or database the project only reuses is NOT a dataset title of its own; mention it in the description of the dataset made from it.
 2. Copy the plan's words EXACTLY. A dataset's title is the plan's own short phrase for that data. Its description is the plan's sentences about that data, copied verbatim - do not paraphrase, summarize, or shorten.
-3. Repositories: every place the plan says data will be deposited, archived, published, or shared - a repository, library, archive, database, website, or GitHub - is a distribution of that dataset, with host.title the place's name exactly as the plan writes it. A dataset shared in two places has two distributions. Add host.url only if the plan gives one.
+3. Repositories: every place the plan says data will be deposited, archived, published or shared - a repository, library, archive, database, website or GitHub - is a distribution of that dataset, with host.title the place's name exactly as the plan writes it. A dataset shared in two places has two distributions. Add host.url only if the plan gives one.
 4. Metadata: the plan's sentences about how the data will be documented or described go verbatim into that dataset's metadata description. Add a metadata standard only if the plan names one.
 5. A statement that covers all of the data applies to every dataset; a statement about one kind of data applies only to that dataset.
 6. A dataset is not a study, and a repository is not the funder or the university running the project - unless the plan names it as the place the data will be kept.
 7. Template guidance is not part of the plan: ignore text that only explains what a plan should contain, such as a funder's questions or instructions.
 
-JSON FORM (each value says what to put there - never copy these descriptions into the output):
+WHAT THE MARKERS IN THE FORM MEAN:
+- [REQUIRED]: always write this field. Use the plan's value; if the plan gives none, use the default named in the field; if there is no default, write an empty string.
+- [RECOMMENDED]: write this field when the plan gives the information; leave it out when it does not.
+- [REQUIRED if a host / license / standard is named]: write that block only when the plan names one; then every field in it is required.
+- Every dataset has at least one distribution and at least one metadata entry.
+- The markers and the explanations after them are instructions: never copy them into the output.
+
 JSON FORM (each value says what to put there - never copy these descriptions into the output):
 {
   "dmp": {
-    "contact": {
-      "contact_id": [{
-        "identifier": "[REQUIRED] ORCID preferred but email otherwise",
-        "type": "[REQUIRED] orcid | other"
-      }],
-      "mbox": "[REQUIRED] their email as the plan gives it, otherwise empty",
-      "name": "[REQUIRED] the contact person the plan names, otherwise empty"
+    "title": "[REQUIRED] the plan's title or first heading, exactly as written",
+    "description": "[RECOMMENDED] the plan's own statement of what it covers - leave out if it has none",
+    "created": "[REQUIRED] the date the plan gives, otherwise 2026-10-23T00:00:00Z",
+    "modified": "[REQUIRED] the date the plan gives, otherwise 2026-10-23T00:00:00Z",
+    "language": "[REQUIRED] default 'eng'",
+    "ethical_issues_exist": "[REQUIRED] yes | no | unknown, default 'unknown'",
+    "dmp_id": {
+      "identifier": "[REQUIRED] an identifier for the plan only if it gives one, otherwise empty",
+      "type": "[REQUIRED] default 'other'"
     },
-    "created": "[REQUIRED] the date the plan gives, otherwise current date",
+    "contact": {
+      "name": "[REQUIRED] the contact person the plan names, otherwise empty",
+      "mbox": "[REQUIRED] their email as the plan gives it, otherwise empty",
+      "contact_id": [{
+        "identifier": "[REQUIRED] their ORCID preferred, otherwise their email, otherwise empty",
+        "type": "[REQUIRED] 'orcid' for an ORCID, otherwise 'other'"
+      }]
+    },
     "dataset": [{
+      "title": "[REQUIRED] the plan's own short phrase for this data",
+      "description": "[RECOMMENDED] the plan's sentences about this data, verbatim",
+      "type": "[REQUIRED] default 'dataset'",
+      "personal_data": "[REQUIRED] yes | no | unknown, default 'unknown'",
+      "sensitive_data": "[REQUIRED] yes | no | unknown, default 'unknown'",
       "dataset_id": {
         "identifier": "[REQUIRED] a DOI or other identifier only if the plan gives one, otherwise empty",
-        "type": "[REQUIRED] doi | other"
+        "type": "[REQUIRED] 'doi' for a DOI, otherwise 'other'"
       },
-      "description": "[RECOMMENDED] the plan's sentences about this data",
       "distribution": [{
-        "byte_size": "[RECOMMENDED] a number only, if the plan gives a size",
-        "data_access": "[REQUIRED] default to 'closed'",
-        "description": "[RECOMMENDED] the plan's sentence about this copy of the data, if any",
+        "title": "[REQUIRED] the plan's phrase for this copy of the data, otherwise empty",
+        "data_access": "[REQUIRED] open | shared | closed, default 'closed'",
         "host": {
-          "host_id": [{
-            "identifier": "[REQUIRED] if host info is present, ROR id preferred",
-            "type": "[REQUIRED] if host info is present"
-          }],
-          "title": "[REQUIRED] if host info is present - the repository's name exactly as written",
+          "title": "[REQUIRED if a host is named] the repository's name exactly as written",
           "url": "[RECOMMENDED] only if the plan gives it"
         },
-        "issued": "[RECOMMENDED] the release date, only if the plan gives one",
         "license": [{
-          "license_ref": "[REQUIRED] if license is present - the license exactly as the plan names it",
-          "start_date": "[REQUIRED] if license is present, default to current date time"
-        }],
-        "title": "[REQUIRED] the plan's phrase for this copy of the data, otherwise empty"
+          "license_ref": "[REQUIRED if a license is named] the license exactly as the plan names it",
+          "start_date": "[REQUIRED if a license is named] the date the plan gives, otherwise 2026-10-23"
+        }]
       }],
       "metadata": [{
-        "description": "[RECOMMENDED] the plan's sentences about documenting this data",
-        "language": "[REQUIRED] default to 'eng'",
-        "metadata_standard_id": [
-          {
-            "identifier": "[REQUIRED] if metadata standard info is present",
-            "type": "[REQUIRED] if metadata standard info is present"
-          }
-        ]
-      }],
-      "personal_data": "[REQUIRED] default to 'unknown' - yes | no | unknown",
-      "sensitive_data": "[REQUIRED] default to 'unknown' - yes | no | unknown",
-      "title": "[REQUIRED] the plan's own short phrase for this data",
-      "type": "[REQUIRED] default to 'dataset'"
+        "description": "[RECOMMENDED] the plan's sentences about documenting this data, verbatim",
+        "language": "[REQUIRED] default 'eng'",
+        "metadata_standard_id": [{
+          "identifier": "[REQUIRED if a standard is named] the standard exactly as the plan names it",
+          "type": "[REQUIRED if a standard is named] 'url' for a web address, otherwise 'other'"
+        }]
+      }]
     }],
-    "description": "[RECOMMENDED] the plan's own statement of what it covers",
-    "dmp_id": {
-      "identifier": "[REQUIRED]",
-      "type": "[REQUIRED]"
-    },
-    "ethical_issues_exist": "[REQUIRED] default to 'unknown' - yes | no | unknown",
-    "language": "[REQUIRED] default to 'eng'",
-    "modified": "[REQUIRED] the date the plan gives, otherwise current date",
     "project": [{
+      "title": "[REQUIRED] the project's title",
       "description": "[REQUIRED] the project's aims and scope as the plan states them",
-      "end": "[RECOMMENDED] the project end date, only if the plan gives one",
       "funding": [{
         "funder_id": {
-          "identifier": "[REQUIRED] ROR id preferred - only if the plan gives one, otherwise empty",
-          "type": "[REQUIRED]"
+          "identifier": "[REQUIRED] the funder's ROR id only if the plan gives one, otherwise empty",
+          "type": "[REQUIRED] default 'other'"
         },
-        "funding_status": "[REQUIRED] default to 'planned' - planned | applied | granted | rejected",
-        "grant_id": {
-          "identifier": "[RECOMMENDED] the grant number exactly as the plan gives it",
-          "type": "[RECOMMENDED]"
-        }
-      }],
-      "start": "[RECOMMENDED] the project start date, only if the plan gives one",
-      "title": "[REQUIRED] the project's title"
-    }],
-    "title": "[REQUIRED] the plan's title or first heading, exactly as written"
+        "funding_status": "[REQUIRED] planned | applied | granted | rejected, default 'planned'"
+      }]
+    }]
   }
 }
 
-
 FIELD NOTES:
-1- data_access MUST be exactly one of "open" | "shared" | "closed": "open" when anyone can get the data, "shared" when access is on request or restricted, "closed" when the plan says it will not be shared. If the plan does not say, "closed".
-2- personal_data and sensitive_data MUST be exactly one of "yes" | "no" | "unknown": "no" when the plan says the data is de-identified, anonymized, involves no human subjects, or contains no personal or identifying information; "yes" when it says the data contains such information; "unknown" only when the plan says nothing about it.
-3 ethical_issues_exist MUST be exactly one of "yes" | "no" | "unknown".
-4 funding_status MUST be exactly one of "planned" | "applied" | "granted" | "rejected"; "planned" if the plan does not say.
-5 Leave out a host, license, or metadata standard the plan does not name, rather than filling it with empty values.
-6 Fields with no information in the plan and no default above are empty strings - never "N/A", "unknown," or "not specified".
+- data_access MUST be exactly one of "open" | "shared" | "closed": "open" when anyone can get the data, "shared" when access is on request or restricted, "closed" when the plan says it will not be shared. If the plan does not say, "closed".
+- personal_data and sensitive_data MUST be exactly one of "yes" | "no" | "unknown": "no" when the plan says the data is de-identified, anonymized, involves no human subjects or contains no personal or identifying information; "yes" when it says the data contains such information; "unknown" only when the plan says nothing about it.
+- ethical_issues_exist MUST be exactly one of "yes" | "no" | "unknown".
+- funding_status MUST be exactly one of "planned" | "applied" | "granted" | "rejected"; "planned" if the plan does not say.
+- Leave out a host, license or metadata standard the plan does not name, rather than filling it with empty values.
+- Fields with no information in the plan and no default above are empty strings - never "N/A", "unknown," or "not specified".
 
 GROUNDING: Only extract values that appear in the plan text - do not invent names, emails, identifiers, URLs, dates, or repositories. The schema's examples are not data and must never appear in the output.
+
 OUTPUT VALID JSON ONLY. No explanation, no markdown.
 
 

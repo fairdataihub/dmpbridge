@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "RDA maDMP form - simplified output constraint (v12)",
+  "title": "RDA maDMP form - simplified output constraint (v11)",
   "description": "The fields of the prompt's JSON form only, with the containers the references score made mandatory (dataset, distribution, metadata) and the parts a plan may genuinely lack (host, license, standard, project) optional. Replaces the full maDMP 1.2 schema as Ollama's output constraint; the full schema made every unrequired part skippable, and the smaller models skipped them.",
   "type": "object",
   "required": ["dmp"],
