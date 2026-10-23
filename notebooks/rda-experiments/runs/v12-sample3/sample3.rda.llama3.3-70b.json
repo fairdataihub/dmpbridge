@@ -1,10 +1,10 @@
 {
   "dmp": {
     "title": "CPS 2015",
-    "created": "2026-10-19T00:00:00Z",
-    "modified": "2026-10-19T00:00:00Z",
+    "created": "2026-10-23T00:00:00Z",
+    "modified": "2026-10-23T00:00:00Z",
     "language": "eng",
-    "ethical_issues_exist": "yes",
+    "ethical_issues_exist": "unknown",
     "dmp_id": {
       "identifier": "",
       "type": "other"
@@ -21,7 +21,7 @@
     },
     "dataset": [
       {
-        "title": "data related to each of our proposed experiments",
+        "title": "Data related to proposed experiments",
         "description": "These will include the detailed protocols used for each experiment, the raw data collected from each experiment, and the experimental code used to collect those data. The relevant code will include both the data acquisition code, and the code for the controllers used in the experiment. Together, this information will be sufficient for recreating the circumstances of each data collection session.",
         "type": "dataset",
         "personal_data": "no",
@@ -37,7 +37,7 @@
             "license": [
               {
                 "license_ref": "",
-                "start_date": "2026-10-19"
+                "start_date": "2026-10-23"
               }
             ],
             "host": {
@@ -51,11 +51,11 @@
             "license": [
               {
                 "license_ref": "",
-                "start_date": "2026-10-19"
+                "start_date": "2026-10-23"
               }
             ],
             "host": {
-              "title": "Rehabilitation Institute of Chicago",
+              "title": "Rehabilitation Institute of Chicago servers",
               "url": ""
             }
           }
@@ -74,7 +74,7 @@
         ]
       },
       {
-        "title": "code and results for all analyses completed on experimental data",
+        "title": "Code and results for analyses completed on experimental data",
         "description": "Specifically, we store all code necessary to recreate figures, tables, and other results reported in all published manuscripts.",
         "type": "dataset",
         "personal_data": "no",
@@ -89,33 +89,19 @@
             "data_access": "shared",
             "license": [
               {
-                "license_ref": "",
-                "start_date": "2026-10-19"
+                "license_ref": "GNU Public License",
+                "start_date": "2026-10-23"
               }
             ],
             "host": {
-              "title": "project's website",
-              "url": ""
-            }
-          },
-          {
-            "title": "",
-            "data_access": "shared",
-            "license": [
-              {
-                "license_ref": "",
-                "start_date": "2026-10-19"
-              }
-            ],
-            "host": {
-              "title": "Rehabilitation Institute of Chicago",
+              "title": "labs' websites",
               "url": ""
             }
           }
         ],
         "metadata": [
           {
-            "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
+            "description": "",
             "language": "eng",
             "metadata_standard_id": [
               {
@@ -127,7 +113,7 @@
         ]
       },
       {
-        "title": "simulation code for controller development and testing",
+        "title": "Simulation code for controller development and testing",
         "description": "The proposed foundational developments will produce substantial simulation code for controller development and testing. These and the outputs relevant to all key findings will also be managed.",
         "type": "dataset",
         "personal_data": "no",
@@ -143,7 +129,7 @@
             "license": [
               {
                 "license_ref": "GNU Public License",
-                "start_date": "2026-10-19"
+                "start_date": "2026-10-23"
               }
             ],
             "host": {
@@ -154,7 +140,7 @@
         ],
         "metadata": [
           {
-            "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
+            "description": "",
             "language": "eng",
             "metadata_standard_id": [
               {
@@ -166,7 +152,7 @@
         ]
       },
       {
-        "title": "select videos of the experiments",
+        "title": "Select videos of the experiments",
         "description": "Select videos of the experiments will be distributed, with subject faces blurred so as to be unidentifiable.",
         "type": "dataset",
         "personal_data": "no",
@@ -182,18 +168,18 @@
             "license": [
               {
                 "license_ref": "",
-                "start_date": "2026-10-19"
+                "start_date": "2026-10-23"
               }
             ],
             "host": {
-              "title": "project's website",
+              "title": "",
               "url": ""
             }
           }
         ],
         "metadata": [
           {
-            "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
+            "description": "",
             "language": "eng",
             "metadata_standard_id": [
               {

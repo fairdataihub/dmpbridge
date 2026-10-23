@@ -1,6 +1,6 @@
 {
   "run": "v12-sample3",
-  "date": "2026-10-22T17:07",
+  "date": "2026-10-23T10:30",
   "samples": [
     3
   ],
@@ -16,22 +16,22 @@
   },
   "timings": {
     "llama3.1:8b sample3": {
-      "seconds": 9,
+      "seconds": 10,
       "model_load_seconds": 4,
-      "tokens_sent": 2321,
-      "tokens_generated": 875
+      "tokens_sent": 2690,
+      "tokens_generated": 927
     },
     "gemma4:e4b sample3": {
-      "seconds": 12,
-      "model_load_seconds": 9,
-      "tokens_sent": 2461,
-      "tokens_generated": 1206
+      "seconds": 14,
+      "model_load_seconds": 10,
+      "tokens_sent": 2856,
+      "tokens_generated": 1455
     },
     "llama3.3:70b sample3": {
-      "seconds": 141,
+      "seconds": 142,
       "model_load_seconds": 25,
-      "tokens_sent": 2321,
-      "tokens_generated": 1221
+      "tokens_sent": 2690,
+      "tokens_generated": 1233
     }
   },
   "skipped": []

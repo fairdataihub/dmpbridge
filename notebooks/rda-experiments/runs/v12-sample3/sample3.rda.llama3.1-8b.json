@@ -1,10 +1,10 @@
 {
   "dmp": {
     "title": "CPS 2015",
-    "created": "2015",
-    "modified": "2015",
+    "created": "2026-10-23T00:00:00Z",
+    "modified": "2026-10-23T00:00:00Z",
     "language": "eng",
-    "ethical_issues_exist": "no",
+    "ethical_issues_exist": "unknown",
     "dmp_id": {
       "identifier": "",
       "type": "other"
@@ -12,12 +12,7 @@
     "contact": {
       "name": "",
       "mbox": "",
-      "contact_id": [
-        {
-          "identifier": "",
-          "type": "other"
-        }
-      ]
+      "contact_id": []
     },
     "dataset": [
       {
@@ -34,28 +29,18 @@
           {
             "title": "Raw data files",
             "data_access": "shared",
-            "license": [
-              {
-                "license_ref": "GNU Public License",
-                "start_date": "2015"
-              }
-            ],
+            "license": [],
             "host": {
               "title": "RIC servers",
               "url": ""
             }
           },
           {
-            "title": "Code for each of our 3 experimental systems",
-            "data_access": "open",
-            "license": [
-              {
-                "license_ref": "GNU Public License",
-                "start_date": "2015"
-              }
-            ],
+            "title": "Code for converting between formats",
+            "data_access": "shared",
+            "license": [],
             "host": {
-              "title": "labs' websites",
+              "title": "RIC servers",
               "url": ""
             }
           }
@@ -64,12 +49,7 @@
           {
             "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
             "language": "eng",
-            "metadata_standard_id": [
-              {
-                "identifier": "",
-                "type": "other"
-              }
-            ]
+            "metadata_standard_id": []
           }
         ]
       },
@@ -85,12 +65,12 @@
         },
         "distribution": [
           {
-            "title": "Code needed to generate all published results",
-            "data_access": "open",
+            "title": "Code for each of our 3 experimental systems",
+            "data_access": "shared",
             "license": [
               {
                 "license_ref": "GNU Public License",
-                "start_date": "2015"
+                "start_date": "2026-10-23"
               }
             ],
             "host": {
@@ -103,12 +83,7 @@
           {
             "description": "The code needed to generate all published results will be documented clearly.",
             "language": "eng",
-            "metadata_standard_id": [
-              {
-                "identifier": "",
-                "type": "other"
-              }
-            ]
+            "metadata_standard_id": []
           }
         ]
       },
@@ -125,11 +100,11 @@
         "distribution": [
           {
             "title": "Simulation code",
-            "data_access": "open",
+            "data_access": "shared",
             "license": [
               {
                 "license_ref": "GNU Public License",
-                "start_date": "2015"
+                "start_date": "2026-10-23"
               }
             ],
             "host": {
@@ -140,14 +115,9 @@
         ],
         "metadata": [
           {
-            "description": "The code and results for all analyses completed on experimental data will be documented.",
+            "description": "The code needed to generate all published results will be documented clearly.",
             "language": "eng",
-            "metadata_standard_id": [
-              {
-                "identifier": "",
-                "type": "other"
-              }
-            ]
+            "metadata_standard_id": []
           }
         ]
       }
@@ -155,14 +125,14 @@
     "project": [
       {
         "title": "CPS 2015",
-        "description": "The project will manage all scientific and technical content generated from this proposal.",
+        "description": "The project aims to [insert project description here].",
         "funding": [
           {
             "funder_id": {
               "identifier": "",
               "type": "other"
             },
-            "funding_status": "granted"
+            "funding_status": "planned"
           }
         ]
       }
