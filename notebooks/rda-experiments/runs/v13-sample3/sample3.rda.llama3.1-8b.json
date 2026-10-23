@@ -1,0 +1,141 @@
+{
+  "dmp": {
+    "title": "CPS 2015",
+    "created": "2026-10-23T00:00:00Z",
+    "modified": "2026-10-23T00:00:00Z",
+    "language": "eng",
+    "ethical_issues_exist": "unknown",
+    "dmp_id": {
+      "identifier": "",
+      "type": "other"
+    },
+    "contact": {
+      "name": "",
+      "mbox": "",
+      "contact_id": []
+    },
+    "dataset": [
+      {
+        "title": "Data related to each of our proposed experiments",
+        "description": "These will include the detailed protocols used for each experiment, the raw data collected from each experiment, and the experimental code used to collect those data. The relevant code will include both the data acquisition code, and the code for the controllers used in the experiment. Together, this information will be sufficient for recreating the circumstances of each data collection session.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "distribution": [
+          {
+            "title": "Raw data files",
+            "data_access": "shared",
+            "license": [],
+            "host": {
+              "title": "RIC servers",
+              "url": ""
+            }
+          },
+          {
+            "title": "Code for converting between formats",
+            "data_access": "shared",
+            "license": [],
+            "host": {
+              "title": "RIC servers",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
+            "language": "eng",
+            "metadata_standard_id": []
+          }
+        ]
+      },
+      {
+        "title": "Code and results for all analyses completed on experimental data",
+        "description": "Specifically, we store all code necessary to recreate figures, tables, and other results reported in all published manuscripts.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "distribution": [
+          {
+            "title": "Code for each of our 3 experimental systems",
+            "data_access": "shared",
+            "license": [
+              {
+                "license_ref": "GNU Public License",
+                "start_date": "2026-10-23"
+              }
+            ],
+            "host": {
+              "title": "labs' websites",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "description": "The code needed to generate all published results will be documented clearly.",
+            "language": "eng",
+            "metadata_standard_id": []
+          }
+        ]
+      },
+      {
+        "title": "Simulation code for controller development and testing",
+        "description": "These and the outputs relevant to all key findings will also be managed.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "distribution": [
+          {
+            "title": "Simulation code",
+            "data_access": "shared",
+            "license": [
+              {
+                "license_ref": "GNU Public License",
+                "start_date": "2026-10-23"
+              }
+            ],
+            "host": {
+              "title": "labs' websites",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "description": "The code needed to generate all published results will be documented clearly.",
+            "language": "eng",
+            "metadata_standard_id": []
+          }
+        ]
+      }
+    ],
+    "project": [
+      {
+        "title": "CPS 2015",
+        "description": "The project aims to [insert project description here].",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "funding_status": "planned"
+          }
+        ]
+      }
+    ]
+  }
+}
