@@ -59,8 +59,7 @@ SAMPLE = 3
 RUNS = [("v9",                "v9-sample3"),
         ("v10",               "v10-sample3"),
         ("v11",               "v11-sample3"),
-        ("v12",               "v12-sample3"),
-        ("v13",               "v13-sample3")]
+        ("v12",               "v12-sample3")]
 MODELS = ["llama3.1-8b", "gemma4-e4b", "llama3.3-70b"]
 NAME   = {"llama3.1-8b": "Llama 3.1 8B", "gemma4-e4b": "Gemma 4 e4b", "llama3.3-70b": "Llama 3.3 70B"}
 OUTCOMES = ["Correct", "Mismatch", "Missed"]
