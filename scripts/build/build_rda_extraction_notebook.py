@@ -529,9 +529,10 @@ md("eval_s2", '''
 ## 2. Match up the datasets
 
 A model may list the datasets in a different order from the person, or find only some of
-them. Each dataset (or contributor) the model wrote is paired with the person's entry that
-has the same title or name; where there is no such match, with the entry in the same
-position. The print-out shows which was paired with which.
+them. Each dataset (or distribution, or contributor) the model wrote is paired with the
+person's entry that shares an identifying value - the same title or name, or for a
+distribution the same storage place (host title); where there is no such match, with the
+entry in the same position. The print-out shows which was paired with which.
 '''),
 
 code("eval_align", r'''
@@ -545,25 +546,43 @@ else:
         return re.sub(r"\s+", " ", str(v)).strip().lower()
 
 
-    def item_key(item):
-        """The value that identifies a list item, if it has one."""
+    def item_keys(item):
+        """The values that identify a list item, in order of preference: its own title,
+        name, identifier or licence, then the title of its host (a distribution is most
+        recognisable by where it is kept - the annotator leaves distribution titles empty)."""
         if isinstance(item, dict):
-            for k in KEY_FIELDS:
-                if not is_empty(item.get(k)):
-                    return norm_text(item[k])
-            return None
-        return norm_text(item) if not is_empty(item) else None
+            keys = [norm_text(item[k]) for k in KEY_FIELDS if not is_empty(item.get(k))]
+            host = item.get("host")
+            if isinstance(host, dict) and not is_empty(host.get("title")):
+                keys.append(norm_text(host["title"]))
+            return keys
+        return [norm_text(item)] if not is_empty(item) else []
 
 
     def pair_items(model_list, ref_list):
-        """model index -> reference index. Exact key matches first, then position."""
-        ref_keys = {item_key(r): j for j, r in enumerate(ref_list)}
-        ref_keys.pop(None, None)
+        """model index -> reference index. An item is paired with the reference item that
+        shares any of its identifying values (title, name, identifier, licence, host title);
+        what is left is paired by position."""
+        ref_keys = {}
+        for j, r in enumerate(ref_list):
+            for k in item_keys(r):
+                ref_keys.setdefault(k, j)
         mapping, taken = {}, set()
-        for i, m in enumerate(model_list):                       # pass 1: same title / name
-            j = ref_keys.get(item_key(m))
-            if j is not None and j not in taken:
-                mapping[i], taken = j, taken | {j}
+        for i, m in enumerate(model_list):                       # pass 1: a shared identifying value
+            for k in item_keys(m):
+                j = ref_keys.get(k)
+                if j is not None and j not in taken:
+                    mapping[i], taken = j, taken | {j}
+                    break
+        for i, m in enumerate(model_list):                       # pass 1b: the same value, worded as the
+            if i in mapping:                                     # verdict rule accepts it (75% of the
+                continue                                         # model's words in the reference's)
+            for k in item_keys(m):
+                j = next((jj for rk, jj in ref_keys.items() if jj not in taken
+                          and containment(tokenize(k), tokenize(rk)) >= THRESHOLD), None)
+                if j is not None:
+                    mapping[i], taken = j, taken | {j}
+                    break
         for i, m in enumerate(model_list):                       # pass 2: same position, else a free slot
             if i in mapping:
                 continue

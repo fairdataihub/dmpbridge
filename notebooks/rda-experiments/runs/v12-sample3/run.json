@@ -9,7 +9,7 @@
     "gemma4:e4b",
     "llama3.3:70b"
   ],
-  "schema": "rda_schema_v12.json",
+  "schema": "rda_schema_v13.json",
   "num_ctx": 32768,
   "options": {
     "repeat_last_n": 1024

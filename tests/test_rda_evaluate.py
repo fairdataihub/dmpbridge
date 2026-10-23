@@ -43,6 +43,19 @@ def test_datasets_are_paired_by_title_not_position():
     assert outcomes["dmp.dataset[1].title"] == "Correct"
 
 
+def test_distributions_are_paired_by_host_title_regardless_of_order():
+    """The annotator lists the storage server first; a model that lists the website first
+    and the server second must still get the server right, not a mismatch plus an extra."""
+    ref = {"dmp": {"dataset": [{"title": "Field data", "distribution": [
+        {"host": {"title": "servers at the Rehabilitation Institute of Chicago"}},
+        {"host": {"title": "null"}}]}]}}
+    model = {"dmp": {"dataset": [{"title": "Field data", "distribution": [
+        {"title": "", "data_access": "open", "host": {"title": "project's website"}},
+        {"title": "", "data_access": "closed", "host": {"title": "Rehabilitation Institute of Chicago"}}]}]}}
+    outcomes = E.field_outcomes(E.judge(E.canonical(model), E.canonical(ref)))
+    assert outcomes["dmp.dataset[0].distribution[0].host.title"] == "Correct"
+
+
 def test_field_matrix_outcomes():
     model = {"dmp": {"title": "Cyber physical systems plan", "language": "en",
                      "contact": {"mbox": "", "contact_id": [{"identifier": "0000-0001", "type": "orcid"}]}}}
