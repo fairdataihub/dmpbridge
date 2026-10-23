@@ -3,5 +3,5 @@
   "rda_model": "llama3.3:70b",
   "extractor": "pdfplumber",
   "prompt": "v11",
-  "prompt_fingerprint": "cb94da0a5ca1"
+  "prompt_fingerprint": "b3f964316332"
 }
