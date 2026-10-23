@@ -42,7 +42,12 @@
             ],
             "host": {
               "title": "RIC servers",
-              "url": ""
+              "host_id": [
+                {
+                  "identifier": "",
+                  "type": "other"
+                }
+              ]
             }
           },
           {
@@ -56,7 +61,12 @@
             ],
             "host": {
               "title": "labs' websites",
-              "url": ""
+              "host_id": [
+                {
+                  "identifier": "",
+                  "type": "other"
+                }
+              ]
             }
           }
         ],
@@ -85,7 +95,7 @@
         },
         "distribution": [
           {
-            "title": "Code needed to generate all published results",
+            "title": "Code for each of our 3 experimental systems",
             "data_access": "open",
             "license": [
               {
@@ -95,13 +105,18 @@
             ],
             "host": {
               "title": "labs' websites",
-              "url": ""
+              "host_id": [
+                {
+                  "identifier": "",
+                  "type": "other"
+                }
+              ]
             }
           }
         ],
         "metadata": [
           {
-            "description": "The code needed to generate all published results will be documented clearly.",
+            "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
             "language": "eng",
             "metadata_standard_id": [
               {
@@ -134,13 +149,18 @@
             ],
             "host": {
               "title": "labs' websites",
-              "url": ""
+              "host_id": [
+                {
+                  "identifier": "",
+                  "type": "other"
+                }
+              ]
             }
           }
         ],
         "metadata": [
           {
-            "description": "The code and results for all analyses completed on experimental data will be documented.",
+            "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
             "language": "eng",
             "metadata_standard_id": [
               {

@@ -42,7 +42,12 @@
             ],
             "host": {
               "title": "project's website",
-              "url": ""
+              "host_id": [
+                {
+                  "identifier": "",
+                  "type": "other"
+                }
+              ]
             }
           },
           {
@@ -56,7 +61,12 @@
             ],
             "host": {
               "title": "Rehabilitation Institute of Chicago",
-              "url": ""
+              "host_id": [
+                {
+                  "identifier": "",
+                  "type": "other"
+                }
+              ]
             }
           }
         ],
@@ -95,7 +105,12 @@
             ],
             "host": {
               "title": "project's website",
-              "url": ""
+              "host_id": [
+                {
+                  "identifier": "",
+                  "type": "other"
+                }
+              ]
             }
           },
           {
@@ -109,7 +124,12 @@
             ],
             "host": {
               "title": "Rehabilitation Institute of Chicago",
-              "url": ""
+              "host_id": [
+                {
+                  "identifier": "",
+                  "type": "other"
+                }
+              ]
             }
           }
         ],
@@ -148,7 +168,12 @@
             ],
             "host": {
               "title": "labs' websites",
-              "url": ""
+              "host_id": [
+                {
+                  "identifier": "",
+                  "type": "other"
+                }
+              ]
             }
           }
         ],
@@ -187,7 +212,12 @@
             ],
             "host": {
               "title": "project's website",
-              "url": ""
+              "host_id": [
+                {
+                  "identifier": "",
+                  "type": "other"
+                }
+              ]
             }
           }
         ],
