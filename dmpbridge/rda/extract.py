@@ -106,7 +106,7 @@ def system_prompt() -> str:
 def make_prompt(plan_text: str) -> str:
     """The user prompt: the file's template with the plan's text in place of ``{dmp_text}``
     and, if the template has a ``{schema_text}`` placeholder, the resolved schema as
-    compact JSON in its place (versions up to v10b and v12 put the schema in the prompt)."""
+    compact JSON in its place (versions up to v10b put the schema text in the prompt)."""
     user = _prompt_parts()[1]
     if "{schema_text}" in user:
         user = user.replace("{schema_text}", load_schema()[1])
