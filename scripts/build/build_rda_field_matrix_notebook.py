@@ -65,9 +65,9 @@ if Path.cwd().name == "notebooks":
     import os
     os.chdir(Path.cwd().parent)
 
-RUN    = "v13-sample3"                          # a folder under notebooks/rda-experiments/runs/
+RUN    = "v12-sample3"                          # a folder under notebooks/rda-experiments/runs/
 SAMPLE = 3
-PROMPT = "v13"                                   # shown in the figure titles
+PROMPT = "v12"                                   # shown in the figure titles
 FOLDER = Path("notebooks/rda-experiments/runs") / RUN
 RESULT = FOLDER / "evaluation_results.xlsx"
 # A folder that holds one sample keeps plain figure names; a folder with several samples

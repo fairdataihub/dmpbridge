@@ -28,9 +28,9 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v13.txt"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v12.txt"),
     "samples":  [3],
-    "run":      "v13-sample3",
+    "run":      "v12-sample3",
     # The schema used as Ollama's output constraint. Omit for the full maDMP 1.2 schema.
     # v12: a simplified schema built from the form - dataset, distribution and metadata
     # mandatory, host / license / standard optional - because the full schema lets the
@@ -44,7 +44,7 @@ NARRATIVE = {
     # "user_prompt": "...",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v13: v10's rules and field notes with every field in the "
+                "their own prompt (v12: v10's rules and field notes with every field in the "
                 "form marked [REQUIRED] / [RECOMMENDED] and explained, the date default filled "
                 "in on the day it runs; v12's simplified schema as the output constraint). "
                 "DMPTool-style plans such as sample 14 use "
