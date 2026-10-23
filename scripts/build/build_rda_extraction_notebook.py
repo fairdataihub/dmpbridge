@@ -28,14 +28,14 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v12.txt"),
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v11.txt"),
     "samples":  [3],
-    "run":      "v12-sample3",
+    "run":      "v11-sample3",
     # The schema used as Ollama's output constraint. Omit for the full maDMP 1.2 schema.
-    # v12: a simplified schema built from the form - dataset, distribution and metadata
+    # v11: a simplified schema built from the form - dataset, distribution and metadata
     # mandatory, host / license / standard optional - because the full schema lets the
     # model skip every unrequired part, and the smaller models skipped them all.
-    "schema":   Path("scripts/build/prompts/rda_schema_v12.json"),
+    "schema":   Path("scripts/build/prompts/rda_schema_v11.json"),
     # False: the schema text is left out of the user prompt (it stays the output
     # constraint), as in v10 and later. True puts it back, as in v10b and v10e.
     "schema_in_prompt": False,
@@ -44,9 +44,9 @@ NARRATIVE = {
     # "user_prompt": "...",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v12: v10's rules and field notes with every field in the "
+                "their own prompt (v11: v10's rules and field notes with every field in the "
                 "form marked [REQUIRED] / [RECOMMENDED] and explained, the date default filled "
-                "in on the day it runs; v12's simplified schema as the output constraint). "
+                "in on the day it runs; v11's simplified schema as the output constraint). "
                 "DMPTool-style plans such as sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
@@ -153,7 +153,7 @@ The schema is used exactly as published — nothing removed, nothing changed.
 
 code("schema", '''
 schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
-defs = schema.get("$defs", {})       # a simplified schema (v12) has no definitions to resolve
+defs = schema.get("$defs", {})       # a simplified schema (v11) has no definitions to resolve
 
 
 def resolve_refs(node):
