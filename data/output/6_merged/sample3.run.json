@@ -1,7 +1,7 @@
 {
   "narrative_model": "gemma4:e4b",
-  "rda_model": "gemma4:e4b",
+  "rda_model": "llama3.3:70b",
   "extractor": "pdfplumber",
-  "prompt": "v10",
-  "prompt_fingerprint": "0f03cab700bc"
+  "prompt": "v12",
+  "prompt_fingerprint": "3b3746f27c50"
 }

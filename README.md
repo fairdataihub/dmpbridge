@@ -157,8 +157,8 @@ them, and the researcher's answer attached to each question:
 One command runs all six stages — the narrative part above, then the RDA part:
 
 ```bash
-ollama pull llama3.1:8b
-dmpbridge-pipeline --narrative-model gemma4:e4b --rda-model llama3.1:8b --start 1 --end 1
+ollama pull llama3.3:70b      # ~40 GB, the best RDA results; llama3.1:8b (~5 GB) is the fast alternative
+dmpbridge-pipeline --narrative-model gemma4:e4b --rda-model llama3.3:70b --start 1 --end 1
 ```
 
 The merged result is written to:
@@ -285,7 +285,7 @@ See each stage happen, with the settings and the finished document side by side.
    narrative:
      model: gemma4:e4b    # labels the text, builds the DMP Tool JSON
    rda:
-     model: llama3.1:8b   # fills in the RDA JSON; delete these two lines to skip it
+     model: llama3.3:70b  # fills in the RDA JSON; delete these two lines to skip it
    sample_start: 1
    sample_end: 1        # which sample PDFs to run
    ```

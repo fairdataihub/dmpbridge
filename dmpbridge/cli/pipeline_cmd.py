@@ -4,7 +4,7 @@ Stages 1-4 are the narrative pipeline, run by ``dmpbridge-wholedoc`` itself,
 unchanged; stages 5-6 (RDA maDMP JSON, then the merge) are added after it.
 
 Usage:
-    dmpbridge-pipeline --narrative-model gemma4:e4b --rda-model llama3.1:8b --start 3 --end 3
+    dmpbridge-pipeline --narrative-model gemma4:e4b --rda-model llama3.3:70b --start 3 --end 3
 
 Writes, for each sample:
     1_extracted/<extractor>/                              plan text

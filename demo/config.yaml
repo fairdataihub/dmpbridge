@@ -19,7 +19,7 @@ narrative:
 # rda: fills in the RDA maDMP JSON from the same text (stage 5), then merged with
 # the narrative JSON (stage 6). Delete this block for the narrative part only.
 rda:
-  model: gemma4:e4b
+  model: llama3.3:70b       # best RDA results (~40 GB; llama3.1:8b is the fast alternative)
 
 # How the PDF is read. pdfplumber handles a normal PDF with a real text layer;
 # if that text comes out garbled (a scanned page, or fonts with no character

@@ -9,8 +9,8 @@ import pytest
 from dmpbridge.core import paths
 from datetime import date
 
-from dmpbridge.rda import (RdaExtractionError, extract_rda, load_schema, make_prompt, merge,
-                           parse_prompt_file, prompt_fingerprint, system_prompt)
+from dmpbridge.rda import (RdaExtractionError, extract_rda, load_output_schema, load_schema, make_prompt,
+                           merge, parse_prompt_file, prompt_fingerprint, system_prompt)
 from dmpbridge.rda import extract as rda_extract
 
 
@@ -92,7 +92,33 @@ def test_extract_rda_sends_the_evaluated_settings(fake):
     assert fake.seen["model"] == "llama3.1:8b"
     assert fake.seen["num_ctx"] == 32768 and fake.seen["num_predict"] == 8000
     assert fake.seen["options"] == {"repeat_last_n": 1024}
-    assert fake.seen["schema"] == load_schema()[0]
+    assert fake.seen["schema"] == load_output_schema()          # the constraint, not the full standard
+
+
+def test_output_schema_is_the_evaluated_constraint():
+    """The package copy must be the schema the notebook run was evaluated with, byte for
+    byte, and it must make the parts the smaller models used to skip mandatory."""
+    from pathlib import Path
+    evaluated = Path(f"scripts/build/prompts/rda_schema_{rda_extract.PROMPT_VERSION}.json")
+    if evaluated.exists():
+        assert rda_extract.OUTPUT_SCHEMA_FILE.read_bytes() == evaluated.read_bytes()
+    dataset = load_output_schema()["properties"]["dmp"]["properties"]["dataset"]
+    assert dataset["minItems"] == 1
+    for part in ("description", "distribution", "metadata"):
+        assert part in dataset["items"]["required"]
+    assert dataset["items"]["properties"]["distribution"]["minItems"] == 1
+
+
+def test_fingerprint_changes_with_the_output_schema(monkeypatch, tmp_path):
+    before = prompt_fingerprint()
+    p = tmp_path / "output_schema.json"
+    p.write_text('{"type": "object", "properties": {"dmp": {"type": "object"}}}', encoding="utf-8")
+    monkeypatch.setattr(rda_extract, "OUTPUT_SCHEMA_FILE", p)
+    rda_extract.load_output_schema.cache_clear()
+    try:
+        assert prompt_fingerprint() != before
+    finally:
+        rda_extract.load_output_schema.cache_clear()
 
 
 def test_invalid_json_raises_with_the_raw_answer(fake):

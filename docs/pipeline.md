@@ -89,7 +89,7 @@ steps that produce each one.
 | Label each block | one LLM call per document | `llama3.1:8b`, `gemma4:e4b`, `llama3.3:70b`, `qwen2.5:14b` |
 | Build the structure | nest into sections → questions → answers | — |
 | Apply the rules | fill blank questions | `data/input/Rules.xlsx` |
-| Extract the RDA JSON | one LLM call per document, answer constrained to the maDMP 1.2 schema | any model; prompt in `dmpbridge/rda/` |
+| Extract the RDA JSON | one LLM call per document; the answer is constrained by a simplified schema built from the prompt's form (`dmpbridge/rda/output_schema.json`) — with the full maDMP 1.2 schema as the constraint, the smaller models skipped every optional part | any model; prompt and schema in `dmpbridge/rda/` |
 | Merge | RDA JSON first, then the final narrative JSON, each unchanged | — |
 
 Where each stage is written:

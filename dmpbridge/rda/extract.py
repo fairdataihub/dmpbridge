@@ -10,12 +10,21 @@ The prompt is ``prompt.txt``, in the format the RDA notebooks save with every ru
 
 A ``<<TODAY>>`` placeholder in the system prompt is replaced with the current date
 when the prompt is sent, so a fallback date is the day the pipeline runs rather than
-a date written into the file. The complete, unmodified maDMP 1.2 schema
-(``maDMP-schema-1.2.json``, ``$ref`` pointers resolved) is not in the prompt - it is
-Ollama's structured-output ``format``, which constrains the answer to the schema's
-structure. Versions up to v10b also pasted the schema into the prompt as text; v10
-dropped it, cutting the prompt from about 11,700 tokens to about 2,400. The versions
-are in scripts/build/prompts/ and their results in notebooks/rda-experiments/runs/.
+a date written into the file.
+
+The answer is constrained by Ollama's structured-output ``format``, and which schema
+goes there matters more than the prompt wording: the grammar built from it makes
+required fields mandatory and lets the model skip everything optional, and with the
+full maDMP 1.2 schema the smaller models skipped every optional part - descriptions,
+distributions, metadata, hence licences. So the constraint is ``output_schema.json``,
+a simplified schema built from the prompt's form (a copy of
+scripts/build/prompts/rda_schema_v12.json): dataset, distribution and metadata
+mandatory, host / license / standard optional. On sample 3 that took the three models
+from 41 to 51 correct annotated fields with the prompt unchanged. The full schema
+(``maDMP-schema-1.2.json``) is kept for a ``{schema_text}`` placeholder in the prompt;
+versions up to v10b pasted it in as text, which cost about 9,000 tokens per call.
+The versions are in scripts/build/prompts/ and their results in
+notebooks/rda-experiments/runs/.
 
 The settings match the notebook runs the prompt was evaluated with:
 temperature 0, a 32k context, an 8000-token answer cap, and a repeat-penalty window
@@ -33,9 +42,10 @@ from ..core import config
 from ..models.ollama import OllamaModel
 
 HERE = Path(__file__).parent
-PROMPT_VERSION = "v10"                      # see notebooks/rda-version-comparison.ipynb for how the versions score
+PROMPT_VERSION = "v12"                      # see notebooks/rda-version-comparison.ipynb for how the versions score
 PROMPT_FILE = HERE / "prompt.txt"
-SCHEMA_FILE = HERE / "maDMP-schema-1.2.json"
+SCHEMA_FILE = HERE / "maDMP-schema-1.2.json"          # the full standard, for {schema_text} in a prompt
+OUTPUT_SCHEMA_FILE = HERE / "output_schema.json"      # the constraint sent as Ollama's `format`
 
 NUM_CTX = 32768
 MAX_TOKENS = 8000
@@ -113,13 +123,21 @@ def make_prompt(plan_text: str) -> str:
     return user.replace("{dmp_text}", plan_text)
 
 
+@lru_cache(maxsize=1)
+def load_output_schema() -> dict:
+    """The schema sent as Ollama's ``format`` - the constraint the answer must fit."""
+    return json.loads(OUTPUT_SCHEMA_FILE.read_text(encoding="utf-8"))
+
+
 def prompt_fingerprint() -> str:
-    """A short hash of the prompt file's text (before the date goes in). A version name
-    alone cannot tell two edits of the same version apart; this can, so a saved stage-5
-    file made with an earlier wording is re-run rather than reused - while the date
-    changing from one day to the next does not force a re-run."""
+    """A short hash of what shapes the answer: the prompt file's text (before the date
+    goes in) and the output schema. A version name alone cannot tell two edits apart;
+    this can, so a saved stage-5 file made with an earlier wording or constraint is
+    re-run rather than reused - while the date changing from one day to the next does
+    not force a re-run."""
     system, user = _prompt_parts()
-    return hashlib.sha256((system + user).encode("utf-8")).hexdigest()[:12]
+    constraint = json.dumps(load_output_schema(), sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256((system + user + constraint).encode("utf-8")).hexdigest()[:12]
 
 
 def extract_rda(plan_text: str, model: str, host: str = config.HOST) -> tuple[dict, dict]:
@@ -129,9 +147,8 @@ def extract_rda(plan_text: str, model: str, host: str = config.HOST) -> tuple[di
     and timings. Raises :class:`RdaExtractionError` when the answer is not valid
     JSON - usually a model that looped until the token cap.
     """
-    schema, _ = load_schema()
     llm = OllamaModel(model=model, host=host, num_ctx=NUM_CTX, num_predict=MAX_TOKENS, options=OPTIONS)
-    raw = llm.complete(system_prompt(), make_prompt(plan_text), schema=schema)
+    raw = llm.complete(system_prompt(), make_prompt(plan_text), schema=load_output_schema())
     info = dict(llm.last_call or {})
     try:
         return json.loads(raw), info

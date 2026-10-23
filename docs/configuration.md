@@ -23,7 +23,7 @@ dmpbridge my-plan.pdf --model gemma4:e4b
 For the RDA JSON as well, give each part its own model:
 
 ```bash
-dmpbridge-pipeline --narrative-model gemma4:e4b --rda-model llama3.1:8b --start 1 --end 1
+dmpbridge-pipeline --narrative-model gemma4:e4b --rda-model llama3.3:70b --start 1 --end 1
 ```
 
 The rest of this page is the full reference.
@@ -70,7 +70,8 @@ host: http://localhost:11434
 narrative:                  # labels the text, builds the DMP Tool JSON (stages 2-4)
   model: gemma4:e4b         # any model already pulled in Ollama
 rda:                        # fills in the RDA JSON, then the merge (stages 5-6)
-  model: llama3.1:8b        # leave the rda: block out for the narrative part only
+  model: llama3.3:70b       # best RDA results (~40 GB; llama3.1:8b is the fast alternative)
+                            # leave the rda: block out for the narrative part only
 
 extractor: pdfplumber       # pdfplumber | lightonocr | docling
 fallback: auto              # auto = LightOnOCR | docling | null to disable
