@@ -28,14 +28,16 @@ NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
 # The narrative-plan notebook: what differs from the main one
 NARRATIVE = {
     "notebook": Path("notebooks/pdf-to-rda-dmp-json-narrative.ipynb"),
-    "prompt":   Path("scripts/build/prompts/rda_narrative_v10.txt"),   # v13 keeps v10's text
+    "prompt":   Path("scripts/build/prompts/rda_narrative_v10.txt"),   # v13 and v14 keep v10's text
     "samples":  [3],
-    "run":      "v13-sample3",
+    "run":      "v14-sample3",
     # The schema used as Ollama's output constraint. Omit for the full maDMP 1.2 schema.
     # v13: a simplified schema built from the form - dataset, distribution and metadata
     # mandatory, host / license / standard optional - because the full schema lets the
     # model skip every unrequired part, and the smaller models skipped them all.
-    "schema":   Path("scripts/build/prompts/rda_schema_v13.json"),
+    # v14: v13 with every [REQUIRED] field of the template forced (host_id, project) and
+    # the [RECOMMENDED] fields present as optional.
+    "schema":   Path("scripts/build/prompts/rda_schema_v14.json"),
     # False: the schema text is left out of the user prompt (it stays the output
     # constraint), as in v10 and later. True puts it back, as in v10b and v10e.
     "schema_in_prompt": False,
@@ -44,11 +46,11 @@ NARRATIVE = {
     # "user_prompt": "...",
     "title":    "# PDF to RDA DMP JSON - narrative plans\n\n"
                 "For traditional narrative plans - sections of prose, as in sample 3 - with "
-                "their own prompt (v13: v10's prompt unchanged; what changes is the output "
-                "constraint - a simplified schema built from the form, with dataset, "
-                "distribution and metadata mandatory, instead of the full maDMP 1.2 schema "
-                "whose optional parts the smaller models skipped). DMPTool-style plans such "
-                "as sample 14 use "
+                "their own prompt (v14: v10's prompt unchanged; the output constraint is "
+                "v13's simplified schema with every [REQUIRED] field of the template forced - "
+                "host_id when a host is written, a project with title and description - and "
+                "the [RECOMMENDED] fields present as optional). DMPTool-style plans such as "
+                "sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
 
