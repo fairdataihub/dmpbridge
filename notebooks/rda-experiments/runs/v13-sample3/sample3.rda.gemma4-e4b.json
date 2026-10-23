@@ -1,0 +1,151 @@
+{
+  "dmp": {
+    "title": "CPS 2015",
+    "created": "2026-10-19T00:00:00Z",
+    "modified": "2026-10-19T00:00:00Z",
+    "language": "eng",
+    "ethical_issues_exist": "no",
+    "dmp_id": {
+      "identifier": "",
+      "type": "other"
+    },
+    "contact": {
+      "name": "",
+      "mbox": "",
+      "contact_id": []
+    },
+    "dataset": [
+      {
+        "title": "data related to each of our proposed experiments",
+        "description": "These will include the detailed protocols used for each experiment, the raw data collected from each experiment, and the experimental code used to collect those data. The relevant code will include both the data acquisition code, and the code for the controllers used in the experiment. Together, this information will be sufficient for recreating the circumstances of each data collection session.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "distribution": [
+          {
+            "title": "",
+            "data_access": "shared",
+            "license": [
+              {
+                "license_ref": "GNU Public License",
+                "start_date": "2026-10-19"
+              }
+            ],
+            "host": {
+              "title": "labs’ websites",
+              "url": ""
+            }
+          },
+          {
+            "title": "",
+            "data_access": "shared",
+            "license": [],
+            "host": {
+              "title": "Rehabilitation Institute of Chicago",
+              "url": ""
+            }
+          },
+          {
+            "title": "",
+            "data_access": "shared",
+            "license": [],
+            "host": {
+              "title": "project's website",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
+            "language": "eng",
+            "metadata_standard_id": []
+          }
+        ]
+      },
+      {
+        "title": "code and results for all analyses completed on experimental data",
+        "description": "Specifically, we store all code necessary to recreate figures, tables, and other results reported in all published manuscripts. The proposed foundational developments will produce substantial simulation code for controller development and testing. These and the outputs relevant to all key findings will also be managed.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "distribution": [
+          {
+            "title": "",
+            "data_access": "shared",
+            "license": [],
+            "host": {
+              "title": "peer-reviewed journal publications",
+              "url": ""
+            }
+          },
+          {
+            "title": "",
+            "data_access": "shared",
+            "license": [],
+            "host": {
+              "title": "conference presentations",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "description": "The code needed to generate all published results will be documented clearly.",
+            "language": "eng",
+            "metadata_standard_id": []
+          }
+        ]
+      },
+      {
+        "title": "Software generated under the project",
+        "description": "Software generated under the project will be released under the GNU Public License, and available for free download on the labs’ websites. This includes code for each of our 3 experimental systems.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "distribution": [
+          {
+            "title": "",
+            "data_access": "open",
+            "license": [
+              {
+                "license_ref": "GNU Public License",
+                "start_date": "2026-10-19"
+              }
+            ],
+            "host": {
+              "title": "labs’ websites",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "description": "",
+            "language": "eng",
+            "metadata_standard_id": []
+          }
+        ]
+      }
+    ],
+    "project": [
+      {
+        "title": "CPS 2015",
+        "description": "We will manage all scientific and technical content generated from this proposal. Our products will include 3 broad types of data.",
+        "funding": []
+      }
+    ]
+  }
+}

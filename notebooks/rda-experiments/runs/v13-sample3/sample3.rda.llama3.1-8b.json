@@ -1,0 +1,171 @@
+{
+  "dmp": {
+    "title": "CPS 2015",
+    "created": "2015",
+    "modified": "2015",
+    "language": "eng",
+    "ethical_issues_exist": "no",
+    "dmp_id": {
+      "identifier": "",
+      "type": "other"
+    },
+    "contact": {
+      "name": "",
+      "mbox": "",
+      "contact_id": [
+        {
+          "identifier": "",
+          "type": "other"
+        }
+      ]
+    },
+    "dataset": [
+      {
+        "title": "Data related to each of our proposed experiments",
+        "description": "These will include the detailed protocols used for each experiment, the raw data collected from each experiment, and the experimental code used to collect those data. The relevant code will include both the data acquisition code, and the code for the controllers used in the experiment. Together, this information will be sufficient for recreating the circumstances of each data collection session.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "distribution": [
+          {
+            "title": "Raw data files",
+            "data_access": "shared",
+            "license": [
+              {
+                "license_ref": "GNU Public License",
+                "start_date": "2015"
+              }
+            ],
+            "host": {
+              "title": "RIC servers",
+              "url": ""
+            }
+          },
+          {
+            "title": "Code for each of our 3 experimental systems",
+            "data_access": "open",
+            "license": [
+              {
+                "license_ref": "GNU Public License",
+                "start_date": "2015"
+              }
+            ],
+            "host": {
+              "title": "labs' websites",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "description": "The contents of each data file, including the experimental conditions or the analysis procedures used during generation will be documented.",
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Code and results for all analyses completed on experimental data",
+        "description": "Specifically, we store all code necessary to recreate figures, tables, and other results reported in all published manuscripts.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "distribution": [
+          {
+            "title": "Code needed to generate all published results",
+            "data_access": "open",
+            "license": [
+              {
+                "license_ref": "GNU Public License",
+                "start_date": "2015"
+              }
+            ],
+            "host": {
+              "title": "labs' websites",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "description": "The code needed to generate all published results will be documented clearly.",
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Simulation code for controller development and testing",
+        "description": "These and the outputs relevant to all key findings will also be managed.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "distribution": [
+          {
+            "title": "Simulation code",
+            "data_access": "open",
+            "license": [
+              {
+                "license_ref": "GNU Public License",
+                "start_date": "2015"
+              }
+            ],
+            "host": {
+              "title": "labs' websites",
+              "url": ""
+            }
+          }
+        ],
+        "metadata": [
+          {
+            "description": "The code and results for all analyses completed on experimental data will be documented.",
+            "language": "eng",
+            "metadata_standard_id": [
+              {
+                "identifier": "",
+                "type": "other"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "project": [
+      {
+        "title": "CPS 2015",
+        "description": "The project will manage all scientific and technical content generated from this proposal.",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "",
+              "type": "other"
+            },
+            "funding_status": "granted"
+          }
+        ]
+      }
+    ]
+  }
+}
