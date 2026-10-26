@@ -10,6 +10,7 @@ exists because that notebook is one sample at a time.
 from __future__ import annotations
 
 import argparse
+import json
 from collections import Counter
 from pathlib import Path
 
@@ -27,7 +28,19 @@ MODELS = ["llama3.1-8b", "gemma4-e4b", "llama3.3-70b"]
 OUTCOMES = ["Correct", "Mismatch", "Missed"]
 COLOUR = {"Correct": "#238b45", "Mismatch": "#e34948", "Missed": "#898781"}
 INK, SURFACE = "#0b0b0b", "#fcfcfb"
-COLS = [("Correct ↑", "Correct"), ("Mismatch ↓", "Mismatch"), ("Missed ↓", "Missed")]
+COLS = [("Correct ↑", "Correct"), ("Mismatch ↓", "Mismatch"), ("Missed ↓", "Missed"), ("Prompt size", None)]
+
+
+def prompt_size(version: str, sample: int) -> str:
+    """Tokens sent to llama3.1:8b for this sample, as the version-comparison notebook shows it."""
+    folder = RUNS_DIR / f"{version}-sample{sample}"
+    info = json.loads((folder / "run.json").read_text(encoding="utf-8"))
+    sent = next((t["tokens_sent"] for k, t in info["timings"].items()
+                 if k.startswith("llama3.1:8b") and f"sample{sample}" in k), None)
+    prompt = (folder / "prompt.txt").read_text(encoding="utf-8")
+    with_schema = "{schema_text}" in prompt or "maDMP JSON schema" in prompt
+    size = f"~{round(sent, -2):,} tokens" if sent else "?"
+    return size + (chr(10) + "(schema text in prompt)" if with_schema else "")
 
 
 def totals_for(sample: int, versions: list[str]) -> tuple[dict[str, Counter], int]:
@@ -53,12 +66,17 @@ def draw_panel(ax, totals, n_fields, versions, sample):
     img = np.ones((len(versions), len(COLS), 3)) * surface
     for i, v in enumerate(versions):
         for j, (_, outcome) in enumerate(COLS):
+            if not outcome:
+                continue
             n = totals[v][outcome]
             strength = 0.12 + 0.88 * (n / n_total) if n else 0.04
             img[i, j] = surface * (1 - strength) + np.array(mcolors.to_rgb(COLOUR[outcome])) * strength
     ax.imshow(img, aspect="auto")
     for i, v in enumerate(versions):
         for j, (_, outcome) in enumerate(COLS):
+            if not outcome:
+                ax.text(j - 0.45, i, prompt_size(v, sample), ha="left", va="center", fontsize=11, color=INK)
+                continue
             n = totals[v][outcome]
             share = n / n_total
             ink = "white" if share > 0.5 else INK
@@ -90,7 +108,7 @@ def main():
     args = ap.parse_args()
 
     plt.rcParams.update({"figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "text.color": INK})
-    fig, axes = plt.subplots(1, len(args.samples), figsize=(6.2 * len(args.samples), 0.8 * len(args.versions) + 2.1))
+    fig, axes = plt.subplots(1, len(args.samples), figsize=(8.4 * len(args.samples), 0.8 * len(args.versions) + 2.1))
     for ax, sample in zip(np.atleast_1d(axes), args.samples):
         totals, n_fields = totals_for(sample, args.versions)
         draw_panel(ax, totals, n_fields, args.versions, sample)
@@ -98,7 +116,7 @@ def main():
             f"{v} {totals[v]['Correct']}/{totals[v]['Mismatch']}/{totals[v]['Missed']}" for v in args.versions))
     fig.suptitle("Prompt versions, three models together: count and share of the annotated fields",
                  x=0.01, ha="left", fontsize=14.5, fontweight="bold", y=1.12)
-    fig.subplots_adjust(wspace=0.35, top=0.78)
+    fig.subplots_adjust(wspace=0.28, top=0.78)
     out = OUT_DIR / ("version_comparison_summary_samples" + "_".join(map(str, args.samples)) + ".png")
     fig.savefig(out, dpi=170, bbox_inches="tight", facecolor=SURFACE)
     print(f"saved -> {out}")
