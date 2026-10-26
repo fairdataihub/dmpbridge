@@ -8,10 +8,19 @@ and the other RDA notebooks use.
 
     python scripts/build/build_rda_version_comparison_notebook.py
 """
+import argparse
 import json
+import re
 from pathlib import Path
 
-NB = Path("notebooks/rda-version-comparison.ipynb")
+# --sample 14 compares the same versions on sample 14 (run folders <version>-sample14) and
+# writes notebooks/rda-version-comparison-sample14.ipynb, leaving the sample-3 notebook alone.
+ap = argparse.ArgumentParser()
+ap.add_argument("--sample", type=int, default=3, help="sample number (default 3)")
+ARGS = ap.parse_args()
+
+NB = Path("notebooks/rda-version-comparison.ipynb" if ARGS.sample == 3
+          else f"notebooks/rda-version-comparison-sample{ARGS.sample}.ipynb")
 
 
 def md(cid, body):
@@ -383,6 +392,13 @@ part_df.index.name = "part of the form (annotated fields x 3 models)"
 display(part_df)
 '''),
 ]
+
+if ARGS.sample != 3:
+    setup = next(c for c in cells if c["id"] == "setup")
+    src = "".join(setup["source"])
+    src = re.sub(r"^SAMPLE = \d+", f"SAMPLE = {ARGS.sample}", src, count=1, flags=re.M)
+    src = src.replace("-sample3\"", f"-sample{ARGS.sample}\"")
+    setup["source"] = [l + "\n" for l in src.rstrip("\n").split("\n")]
 
 nb = {"cells": cells,
       "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},

@@ -21,6 +21,16 @@ from pathlib import Path
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--narrative", action="store_true", help="build the narrative-plan notebook")
+# Overrides for the narrative notebook, so one version can be run on another sample without
+# editing NARRATIVE below, e.g. --prompt scripts/build/prompts/rda_narrative_v9.txt --run v9-sample14
+# --samples 14 --schema-in-prompt (full maDMP schema as the constraint unless --schema is given).
+ap.add_argument("--prompt", type=Path, help="prompt file (system-only, or two-part SYSTEM:/PROMPT:)")
+ap.add_argument("--run", help="run folder name under notebooks/rda-experiments/runs/")
+ap.add_argument("--samples", type=int, nargs="+", help="sample numbers")
+ap.add_argument("--schema", type=Path, help="constraint schema; 'full' = the complete maDMP 1.2 schema")
+ap.add_argument("--schema-in-prompt", dest="schema_in_prompt", action="store_true", default=None,
+                help="paste the schema text into the user prompt (as v9 and v10b did)")
+ap.add_argument("--no-schema-in-prompt", dest="schema_in_prompt", action="store_false")
 ARGS = ap.parse_args()
 
 NB = Path("notebooks/pdf-to-rda-dmp-json.ipynb")
@@ -50,6 +60,25 @@ NARRATIVE = {
                 "DMPTool-style plans such as sample 14 use "
                 "`pdf-to-rda-dmp-json.ipynb`; a prompt change there does not reach this notebook.",
 }
+if ARGS.prompt:
+    NARRATIVE["prompt"] = ARGS.prompt
+if ARGS.run:
+    NARRATIVE["run"] = ARGS.run
+if ARGS.samples:
+    NARRATIVE["samples"] = ARGS.samples
+if ARGS.schema is not None:
+    if str(ARGS.schema) == "full":
+        NARRATIVE.pop("schema", None)
+    else:
+        NARRATIVE["schema"] = ARGS.schema
+if ARGS.schema_in_prompt is not None:
+    NARRATIVE["schema_in_prompt"] = ARGS.schema_in_prompt
+if ARGS.prompt or ARGS.run or ARGS.samples or ARGS.schema is not None:
+    NARRATIVE["title"] = (f"# PDF to RDA DMP JSON - {NARRATIVE['run']}\n\n"
+                          f"Prompt `{NARRATIVE['prompt'].name}`, sample(s) {NARRATIVE['samples']}, "
+                          f"constraint `{NARRATIVE['schema'].name if NARRATIVE.get('schema') else 'maDMP-schema-1.2.json'}`"
+                          f"{', schema text in the prompt' if NARRATIVE.get('schema_in_prompt') else ''}. "
+                          "Built with command-line overrides; see scripts/build/build_rda_extraction_notebook.py.")
 
 
 def md(cid, body):

@@ -14,10 +14,20 @@ model is called.
 
     python scripts/build/build_rda_field_matrix_notebook.py
 """
+import argparse
 import json
+import re
 from pathlib import Path
 
 NB = Path("notebooks/rda-field-matrix.ipynb")
+
+# Overrides, so the figures for another run or sample can be made without editing the
+# RUN / SAMPLE / PROMPT lines below: --run v11-sample14 --sample 14 --prompt v11
+ap = argparse.ArgumentParser()
+ap.add_argument("--run", help="run folder under notebooks/rda-experiments/runs/")
+ap.add_argument("--sample", type=int, help="sample number")
+ap.add_argument("--prompt", help="prompt version shown in the figure titles")
+ARGS = ap.parse_args()
 
 
 def md(cid, body):
@@ -364,6 +374,17 @@ natural = lambda f: [int(x) if x.isdigit() else x for x in re.split(r"(\d+)", f)
 display(wide.loc[sorted(wide.index, key=natural)].reset_index())
 '''),
 ]
+
+if ARGS.run or ARGS.sample or ARGS.prompt:
+    setup = next(c for c in cells if c["id"] == "setup")
+    src = "".join(setup["source"])
+    if ARGS.run:
+        src = re.sub(r'^RUN    = ".*?"', f'RUN    = "{ARGS.run}"', src, count=1, flags=re.M)
+    if ARGS.sample:
+        src = re.sub(r"^SAMPLE = \d+", f"SAMPLE = {ARGS.sample}", src, count=1, flags=re.M)
+    if ARGS.prompt:
+        src = re.sub(r'^PROMPT = ".*?"', f'PROMPT = "{ARGS.prompt}"', src, count=1, flags=re.M)
+    setup["source"] = [l + "\n" for l in src.rstrip("\n").split("\n")]
 
 nb = {"cells": cells,
       "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
