@@ -98,7 +98,7 @@ def draw_panel(ax, totals, n_fields, versions, sample):
     for s in ax.spines.values():
         s.set_visible(False)
     ax.set_title(f"Sample {sample}  ·  {n_fields} annotated fields × {len(MODELS)} models = {n_total}",
-                 loc="left", fontsize=12.5, fontweight="bold", pad=34)
+                 loc="center", fontsize=12.5, fontweight="bold", pad=34)
 
 
 def main():
@@ -115,8 +115,8 @@ def main():
         print(f"sample {sample}: " + "; ".join(
             f"{v} {totals[v]['Correct']}/{totals[v]['Mismatch']}/{totals[v]['Missed']}" for v in args.versions))
     fig.suptitle("Prompt versions, three models together: count and share of the annotated fields",
-                 x=0.01, ha="left", fontsize=14.5, fontweight="bold", y=1.12)
-    fig.subplots_adjust(wspace=0.28, top=0.78)
+                 x=0.5, ha="center", fontsize=15, fontweight="bold", y=1.07)
+    fig.subplots_adjust(wspace=0.28, top=0.80)
     out = OUT_DIR / ("version_comparison_summary_samples" + "_".join(map(str, args.samples)) + ".png")
     fig.savefig(out, dpi=170, bbox_inches="tight", facecolor=SURFACE)
     print(f"saved -> {out}")
