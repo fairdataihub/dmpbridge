@@ -1,0 +1,38 @@
+{
+  "run": "v11-sample14",
+  "date": "2026-10-26T08:31",
+  "samples": [
+    14
+  ],
+  "models": [
+    "llama3.1:8b",
+    "gemma4:e4b",
+    "llama3.3:70b"
+  ],
+  "schema": "rda_schema_v11.json",
+  "num_ctx": 32768,
+  "options": {
+    "repeat_last_n": 1024
+  },
+  "timings": {
+    "llama3.1:8b sample14": {
+      "seconds": 30,
+      "model_load_seconds": 4,
+      "tokens_sent": 4528,
+      "tokens_generated": 3409
+    },
+    "gemma4:e4b sample14": {
+      "seconds": 53,
+      "model_load_seconds": 9,
+      "tokens_sent": 4726,
+      "tokens_generated": 6765
+    },
+    "llama3.3:70b sample14": {
+      "seconds": 353,
+      "model_load_seconds": 25,
+      "tokens_sent": 4528,
+      "tokens_generated": 2950
+    }
+  },
+  "skipped": []
+}

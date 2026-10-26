@@ -1,0 +1,135 @@
+{
+  "dmp": {
+    "contact": {
+      "contact_id": [
+        {
+          "identifier": "0000-0001-9317-0364",
+          "type": "orcid"
+        }
+      ],
+      "mbox": "",
+      "name": "Brett Johnson"
+    },
+    "created": "2015-05-12T00:00:00Z",
+    "dataset": [
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Hakai JSP Time Series",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Fatty acids from juvenile salmon",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Otolith Microchemistry from juvenile sockeye",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Sealice microbiome viral and bacterial data",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Stable isotope ratios from juvenile salmon muscle tissue",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Zooplankton Isotopes from JSP surface horizontal tows",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "eDNA from JSP seines",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Zooplankton Taxonomy from JSP and Oceanography horizontal surface tows",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "RNA pathogen and gene expression data: Fitchip data from sockeye",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Genetic stock identification of sockeye",
+        "type": "dataset"
+      },
+      {
+        "dataset_id": {
+          "identifier": "",
+          "type": "other"
+        },
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "title": "Scales collected from sockeye, pink, chum, coho, chinook and herring",
+        "type": "dataset"
+      }
+    ],
+    "dmp_id": {
+      "identifier": "https://doi.org/10.48321/D1CW23",
+      "type": "other"
+    },
+    "ethical_issues_exist": "no",
+    "language": "eng",
+    "modified": "2024-06-11T00:00:00Z",
+    "title": "Hakai Institute Juvenile Salmon Program Time Series"
+  }
+}
