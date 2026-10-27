@@ -18,6 +18,11 @@ dependencies = [
     "Pillow>=11.0",
     "python-dotenv>=1.0",
     "pyyaml>=6.0",
+    # evaluation (dmpbridge-pipeline runs it by default): score tables, Excel export, matrix figures
+    "pandas>=2.3",
+    "openpyxl>=3.1",
+    "matplotlib>=3.10",
+    "numpy>=1.26",
 ]
 
 [project.optional-dependencies]
@@ -27,9 +32,12 @@ server = [
     "python-multipart>=0.0.20",
 ]
 notebooks = [
-    "matplotlib>=3.10",
+    # building and executing the notebooks and reports under scripts/build/
     "seaborn>=0.13",
-    "pandas>=2.3",
+    "jupyter>=1.0",
+    "nbconvert>=7.0",
+    "ipykernel>=6.0",
+    "python-docx>=1.1",
 ]
 lighton = [
     "torch>=2.0",
