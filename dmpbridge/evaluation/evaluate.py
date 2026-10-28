@@ -242,7 +242,7 @@ def gold_metrics(confusion: dict) -> tuple[int, int, int]:
     Unlike block accuracy (correct / predicted_blocks), gold accuracy uses the
     total number of manually labeled gold items as the denominator, making it
     directly comparable across strategies that produce different block counts
-    (e.g. pdfplumber line-level vs Claude PDF-direct paragraph-level).
+    (e.g. pdfplumber line-level vs a PDF-direct paragraph-level extractor).
 
     Returns
     -------

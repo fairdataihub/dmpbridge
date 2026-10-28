@@ -80,7 +80,7 @@ def main() -> None:
     print(f"\nTreat differences at or below {max(spread, 0.002):.3f} F1 as "
           f"indistinguishable from no change.")
     print("Update NOISE_FLOOR in scripts/compare_results.py and the figure in "
-          "CLAUDE.md if this differs from what they record.")
+          "docs/scoring.md if this differs from what they record.")
 
 
 if __name__ == "__main__":
