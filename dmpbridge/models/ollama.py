@@ -36,6 +36,10 @@ class OllamaModel:
         dataset block longer than 64 tokens and never closed its JSON.
     """
 
+    # Seconds to wait for one answer. The web API lowers it, so a stuck call fails and is
+    # retried instead of holding up everyone queued behind it.
+    timeout = 3600
+
     def __init__(
         self,
         model:       str,
@@ -76,7 +80,7 @@ class OllamaModel:
                 "keep_alive": -1,   # keep model in VRAM indefinitely
                 "options":    options,
             },
-            timeout=3600,
+            timeout=self.timeout,
         )
         resp.raise_for_status()
         data = resp.json()

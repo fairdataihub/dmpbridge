@@ -318,6 +318,35 @@ Convert a PDF and get the JSON. Nothing to configure.
    JSON. (`my-plan_labeled.json` is also written — the flat list of labeled blocks behind
    it.)
 
+### Option C — web API
+
+The API behind the DMP Bridge web app. It runs all six stages on an uploaded PDF and
+returns the merged JSON.
+
+```bash
+pip install -e ".[server]"
+uvicorn dmpbridge.api.app:app --port 8000
+```
+
+| Request | What it does |
+|---|---|
+| `POST /jobs` | Upload a PDF (form field `file`). Returns a job `id` right away |
+| `GET /jobs/{id}` | The job's `status` (`queued`, `running`, `done`, `failed`), its `stage` while running, and the `result` when done |
+| `GET /up` | Health check: returns 200 when Ollama is reachable and has both models |
+
+Try it:
+
+```bash
+curl -F "file=@data/input/pdfs/sample1.pdf" localhost:8000/jobs
+curl localhost:8000/jobs/<id>
+```
+
+A PDF takes about 30 seconds, so ask for the status every few seconds. A model answer
+that isn't valid JSON, doesn't fit the section / question shape the web app reads, or
+takes over 3 minutes is run again (up to 3 tries). Nothing is written to `data/output`,
+and each upload is deleted when its job finishes. Models, Ollama URL and limits are set
+with environment variables, listed at the top of [`dmpbridge/api/app.py`](dmpbridge/api/app.py).
+
 ---
 
 ## Where the output goes
