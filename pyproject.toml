@@ -52,6 +52,7 @@ docling = [
 ]
 dev = [
     "pytest>=8.0",
+    "httpx>=0.27",          # FastAPI's TestClient, for tests/test_api.py
 ]
 
 [project.scripts]
